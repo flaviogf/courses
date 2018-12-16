@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="txt_title_formulario">Formulário</string>
+    <string name="text_edit_text_nome">Nome</string>
+    <string name="text_edit_text_endereco">Endereço</string>
+    <string name="text_edit_text_numero">Numero</string>
+    <string name="text_edit_text_site">Site</string>
+    <string name="text_formulario_menu_salvar">Salvar</string>
+    <string name="text_fab_lista_alunos">+</string>
+</resources>
