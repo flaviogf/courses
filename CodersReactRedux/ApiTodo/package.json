@@ -1,0 +1,28 @@
+{
+  "name": "todo_app_react",
+  "version": "1.0.0",
+  "description": "todo_app_react",
+  "main": "src/loader.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flaviogf/todo_app_react.git"
+  },
+  "author": "Flavio Fernandes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flaviogf/todo_app_react/issues"
+  },
+  "homepage": "https://github.com/flaviogf/todo_app_react#readme",
+  "devDependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.4",
+    "node-restful": "^0.2.6",
+    "nodemon": "^1.11.0",
+    "pm2": "^2.4.0"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "production": "pm2 start src/loader.js --name todo-app"
+  }
+}

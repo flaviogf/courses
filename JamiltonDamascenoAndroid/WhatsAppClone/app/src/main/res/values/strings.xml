@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WhatsappCloneV2</string>
+    <string name="item_settings">Configurações</string>
+    <string name="item_sair">Sair</string>
+</resources>
