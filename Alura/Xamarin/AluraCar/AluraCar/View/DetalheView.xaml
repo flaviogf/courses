@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AluraCar.View.DetalheView"
+			 Title="{Binding Veiculo.Nome}"
+			 Padding="16">
+
+	<StackLayout>
+		<TableView Intent="Settings">
+			<TableRoot>
+				<TableSection Title="Opcionais">
+					<SwitchCell Text="{Binding TextoArCondicionado}" On="{Binding TemArCondicionado}" />
+					<SwitchCell Text="{Binding TextoFreioAbs}" On="{Binding TemFreioAbs}" />
+					<SwitchCell Text="{Binding TextoMp3Player}" On="{Binding TemMp3Player}"/>
+					<TextCell Text="{Binding ValorTotal}" />
+				</TableSection>
+			</TableRoot>
+		</TableView>
+		<Button VerticalOptions="End" Text="Proximo" Command="{Binding Proximo}"/>
+	</StackLayout>
+
+</ContentPage>

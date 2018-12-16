@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="MainTheme" parent="MainTheme.Base">
+  </style>
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="colorPrimary">#4caf50</item>
+    <item name="colorPrimaryDark">#087f23</item>
+    <item name="colorAccent">#2962ff</item>
+    <item name="windowActionModeOverlay">true</item>
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    
+    <item name="buttonStyle">@style/BotaoDefault</item>
+    <item name="android:colorActivatedHighlight">@android:color/transparent</item>
+
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#2962ff</item>
+  </style>
+
+  <style name="BotaoDefault" parent="Base.Widget.AppCompat.Button.Colored">
+    <item name="backgroundTint">#4caf50</item>
+  </style>
+</resources>

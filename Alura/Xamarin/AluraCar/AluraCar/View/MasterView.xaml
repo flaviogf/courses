@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			xmlns:converter="clr-namespace:AluraCar.Converter"
+	        x:Class="AluraCar.View.MasterView"
+		    Title="Usuário">
+
+	<TabbedPage.Resources>
+		<ResourceDictionary>
+			<converter:BoolConverter x:Key="BoolConverter"/>
+		</ResourceDictionary>
+	</TabbedPage.Resources>
+
+	<TabbedPage.Children>
+		<ContentPage Title="Perfil">
+			<Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="16">
+				<StackLayout>
+					<Image Source="{Binding Imagem}" HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" Margin="0,0,0,10" />
+					<Label Text="{Binding Nome}" HorizontalOptions="Center" />
+					<BoxView HeightRequest="1" BackgroundColor="Silver" />
+					<Label Text="{Binding Email}" HorizontalOptions="Center" />
+					<BoxView HeightRequest="1" BackgroundColor="Silver" />
+					<Button Text="Perfil" Command="{Binding EditarCommand}" />
+				</StackLayout>
+			</Frame>
+		</ContentPage>
+		<ContentPage Title="Editar">
+			<Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" Padding="16">
+				<StackLayout>
+					<Image Source="{Binding Imagem}" HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" />
+					<Button Text="Tirar Foto" Command="{Binding TirarFotoCommand}" />
+					<Entry Text="{Binding Nome}" Placeholder="Nome" IsEnabled="{Binding Editando}"/>
+					<Entry Text="{Binding Email}" Placeholder="E-mail" IsEnabled="{Binding Editando}" />
+					<Button Text="Editar" Command="{Binding HabilitarEdicaoCommand}" IsVisible="{Binding Editando, Converter={StaticResource BoolConverter}}" />
+					<Button Text="Salvar" Command="{Binding SalvarCommand}" IsVisible="{Binding Editando}" />
+				</StackLayout>
+			</Frame>
+		</ContentPage>
+	</TabbedPage.Children>
+</TabbedPage>

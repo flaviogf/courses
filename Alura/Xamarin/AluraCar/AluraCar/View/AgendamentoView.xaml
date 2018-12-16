@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AluraCar.View.AgendamentoView"
+			 Title="{Binding Agendamento.Veiculo.Nome}" Padding="16">
+
+    <StackLayout>
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Seus Dados">
+                    <EntryCell Label="Nome:" Text="{Binding Nome}" />
+                    <EntryCell Label="E-mail:" Keyboard="Email" Text="{Binding Email}" />
+                    <EntryCell Label="Numero:" Keyboard="Telephone" Text="{Binding Telefone}"/>
+                </TableSection>
+                <TableSection Title="Agendamento">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
+                            <Label FontSize="16" VerticalOptions="Center" Text="Data:" />
+                            <DatePicker HorizontalOptions="FillAndExpand" Date="{Binding Agendamento.Data}" />
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"  Margin="16,0,0,0">
+                            <Label FontSize="16" VerticalOptions="Center" Text="Horário:" />
+                            <TimePicker HorizontalOptions="FillAndExpand" Time="{Binding Agendamento.Horario}" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Confirmar" VerticalOptions="End" Command="{Binding Agendar}"/>
+    </StackLayout>
+
+</ContentPage>
