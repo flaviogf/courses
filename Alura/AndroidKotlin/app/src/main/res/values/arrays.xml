@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categorias_de_receita">
+        <item>Receita indefinida</item>
+        <item>Economias</item>
+        <item>Empréstimo</item>
+        <item>Pagamento</item>
+        <item>Presente</item>
+        <item>Salário</item>
+        <item>Vendas</item>
+    </string-array>
+    <string-array name="categorias_de_despesa">
+        <item>Despesa indefinida</item>
+        <item>Casa</item>
+        <item>Comida</item>
+        <item>Comunicações</item>
+        <item>Contas</item>
+        <item>Lazer</item>
+        <item>Roupas</item>
+        <item>Saúde</item>
+        <item>Supermercado</item>
+        <item>Transporte</item>
+    </string-array>
+    <string-array name="meses">
+        <item>Janeiro</item>
+        <item>Fevereiro</item>
+        <item>Março</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+    </string-array>
+</resources>
