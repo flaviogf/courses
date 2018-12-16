@@ -1,0 +1,43 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+@media screen and (max-width: 767px) {
+    .carousel-caption {
+        display: none;
+    }
+}
+.navbar-inverse {
+    background: #F8965D;
+    border-color: transparent;
+}
+.navbar-brand {
+    background-image: url('../images/logo.png');
+    height: 55px;
+    width: 215px;
+}
+.left.carousel-control,
+.right.carousel-control {
+    background-image: none;
+    margin: 100px 0;
+}
+.row-center {
+    display: flex;
+    align-items: center;
+}

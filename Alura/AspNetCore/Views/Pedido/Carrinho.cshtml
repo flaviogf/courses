@@ -1,0 +1,81 @@
+@model CarrinhoViewModel
+@{
+    ViewData["Title"] = "Meu Carrinho";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-6">Item</div>
+            <div class="col-md-2 text-center">Quantidade</div>
+            <div class="col-md-2 text-center">Preço Unitário</div>
+            <div class="col-md-2">
+                <div class="pull-right">
+                    Preço Total
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        @foreach(var item in Model.Itens) {
+            <div class="row row-center" data-item-id="@item.Id">
+
+                <div class="col-md-3">
+                    <img src="~/images/produto/small_@(item.Produto.Id).jpg">
+                </div>
+
+                <div class="col-md-3">
+                    @(item.Produto.Nome)
+                </div>
+
+                <div class="col-md-2 text-center">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" onclick="carrinho.clickDecrementar(this)">
+                                <span class="glyphicon-minus"></span>
+                            </button>
+                        </span>
+                        <input type="number" class="form-control text-center" value="@item.Quantidade" min="1" onblur="carrinho.updateData(this)"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" onclick="carrinho.clickIncrementar(this)">
+                                <span class="glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-2 text-center">R$ @item.PrecoUnitario</div>
+                <div class="col-md-2">
+                    <div class="pull-right">
+                        R$ <span data-sub-total>@item.SubTotal</span>
+                    </div>
+                    </div>
+            </div>
+        }
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-10">
+                <span data-itens>Total: @Model.Itens.Count() <span>@(Model.Itens.Count() > 1 ? "itens" : "item")</span></span>
+            </div>
+            <div class="col-md-2">
+                <div class="pull-right">
+                    R$ <span data-total>@Model.Total</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-success pull-right" asp-action="Resumo">Finalizar Pedido</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/carrinho.js"></script>
+}

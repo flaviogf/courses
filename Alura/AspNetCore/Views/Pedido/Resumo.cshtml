@@ -1,0 +1,48 @@
+@model CarrinhoViewModel
+@{
+    ViewData["Title"] = "Resumo do Pedido";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+       <div class="row">
+           <div class="col-md-12">
+               <h1>Nº do pedido: 123456</h1>
+           </div>
+       </div>
+       <hr />
+       <div class="row">
+           <div class="col-md-3">
+                <h3>Seus dados</h3>
+                <div>João da Silva</div>
+                <div>(11)1111-1111</div>
+           </div>
+           <div class="col-md-3">
+                <p>joao@email.com</p>
+           </div>
+           <div class="col-md-6">
+                <h3>Endereço de entrega</h3>
+                <div>Rua Qualquer, 123, São Paulo</div>
+           </div>
+       </div>
+       <hr />
+       <div class="row">
+           <div class="col-md-10">
+               <h3>Preço</h3>
+               @foreach(var item in Model.Itens) {
+                <div>@item.PrecoUnitario</div>
+               }
+           </div>
+           <div class="col-md-2">
+                <h3>Quantidade</h3>
+                <div class="pull-right">
+                    @foreach(var item in Model.Itens) {
+                        <div>@item.Quantidade</div>
+                    }
+                </div>
+           </div>
+       </div>
+    </div>
+</div>

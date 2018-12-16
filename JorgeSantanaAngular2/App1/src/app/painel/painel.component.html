@@ -1,0 +1,46 @@
+<section class="jumbotron">
+
+  <div class="row">
+
+    <article app-progresso [progresso]="progresso" class="col-sm-6"></article>
+
+    <article app-tentativas [tentativas]="tentativas" class="col-sm-6"></article>
+
+  </div>
+
+  <div class="row">
+
+    <article class="col">
+
+      <h6>{{ instrucao }}</h6>
+      <p>{{ rodadaFrase.fraseEng }}</p>
+
+      <form>
+
+        <fieldset class="form-group">
+
+          <textarea class="form-control" rows="3" (input)="atualizaResposta($event)" [value]="resposta"></textarea>
+
+        </fieldset>
+
+      </form>
+
+    </article>
+
+  </div>
+
+  <div class="row">
+
+    <article class="col">
+
+      <div class="d-flex justify-content-end">
+
+        <button type="button" class="btn btn-primary" (click)="verificarResposta()">Verificar</button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>

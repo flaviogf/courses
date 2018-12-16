@@ -1,0 +1,43 @@
+@model List<Produto>
+@{
+    ViewData["Title"] = "Catálogo";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div id="carousel-id" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @{
+            const int TAMANHO_PAGINA = 4;
+            int numPaginas = (int)Math.Ceiling((double)(Model.Count() / TAMANHO_PAGINA));
+        }
+        @for(int pagina = 0; pagina < numPaginas; pagina++) {
+            var produtos = Model
+                .Skip(TAMANHO_PAGINA * pagina)
+                .Take(TAMANHO_PAGINA);
+
+            <div class="item @(pagina == 0 ? "active" : "")">
+                <div class="row">
+                @foreach(var produto in produtos) {
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <img src="~/images/produto/large_@(produto.Id).jpg" class="img-responsive" />
+                            </div>
+                            <div class="panel-footer">
+                                <div>@produto.Nome</div>
+                                <div>R$ @produto.Preco</div>
+                                <div class="text-center">
+                                    <a asp-action="Carrinho" asp-route-produtoId="@produto.Id">Adicionar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        }
+    </div>
+    <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
