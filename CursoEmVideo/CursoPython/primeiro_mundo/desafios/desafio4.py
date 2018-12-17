@@ -1,0 +1,13 @@
+valor_digitado = input("Digite um valor: ")
+
+print("Tipo: {}".format(type(valor_digitado)))
+print("Alfanumerico numerico: {}".format(valor_digitado.isalnum()))
+print("Alfa: {}".format(valor_digitado.isalpha()))
+print("Decimal: {}".format(valor_digitado.isdecimal()))
+print("Digito: {}".format(valor_digitado.isdigit()))
+print("Identificador: {}".format(valor_digitado.isidentifier()))
+print("Caixa baixa: {}".format(valor_digitado.islower()))
+print("Impressivel: {}".format(valor_digitado.isprintable()))
+print("Espaco: {}".format(valor_digitado.isspace()))
+print("Titulo: {}".format(valor_digitado.istitle()))
+print("Caixa alta: {}".format(valor_digitado.isupper()))
