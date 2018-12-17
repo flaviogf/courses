@@ -1,17 +1,24 @@
 # Android
-*.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
+build
+captures
 .externalNativeBuild
-
-# NodeJs
-node_modules
+.gradle
+.idea/workspace.xml
+.idea/libraries
+.DS_Store
+local.properties
+*.iml
 
 # Editores
 .vscode
 .idea
+
+# .NET Core
+bin
+obj
+
+# NodeJs
+node_modules
+
+# Python
+venv

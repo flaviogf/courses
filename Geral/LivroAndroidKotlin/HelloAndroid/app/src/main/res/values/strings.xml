@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HelloAndroid</string>
+    <string name="main_text_view_usuario">Usuário</string>
+    <string name="main_text_view_senha">Senha</string>
+    <string name="main_button_login">Login</string>
+    <string name="menu_bem_vindo_buscar">Buscar</string>
+    <string name="menu_bem_vindo_atualizar">Atualizar</string>
+    <string name="menu_bem_vindo_configuracoes">Configurações</string>
+</resources>
