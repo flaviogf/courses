@@ -1,0 +1,2 @@
+pyperclip
+send2trash

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CursoFirebase</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="login_with_google">Login with google</string>
+</resources>
