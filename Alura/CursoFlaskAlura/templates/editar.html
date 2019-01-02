@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+
+{% block content %}
+<form action="{{ url_for('atualizar') }}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id_jogo" value="{{ jogo.id_jogo }}">
+    <figure>
+        <img id="imagem" src="{{ url_for('imagens', nome_arquivo=capa_jogo) }}">
+        <figcaption>
+            <input id="input_imagem" type="file" name="imagem" accept=".jpg">
+        </figcaption>
+    </figure>
+    <input type="text" id="nome" name="nome" value="{{ jogo.nome }}"/>
+    <input type="text" id="categoria" name="categoria" value="{{ jogo.categoria }}"/>
+    <input type="text" id="console" name="console" value="{{ jogo.console }}"/>
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

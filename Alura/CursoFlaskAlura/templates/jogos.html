@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+
+{% block content %}
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Console</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for jogo in jogos %}
+    <tr>
+        <td>{{ jogo.nome }}</td>
+        <td>{{ jogo.categoria }}</td>
+        <td>{{ jogo.console }}</td>
+        <td>
+            <a href="{{ url_for('editar', id_jogo=jogo.id_jogo) }}">Editar</a>
+            <a href="{{ url_for('deletar', id_jogo=jogo.id_jogo) }}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

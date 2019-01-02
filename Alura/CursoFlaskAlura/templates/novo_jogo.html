@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+
+{% block content %}
+<form action="{{ url_for('criar') }}" method="post" enctype="multipart/form-data">
+    <figure>
+        <img id="imagem" src="{{ url_for('imagens', nome_arquivo='sem_foto.jpg') }}">
+        <figcaption>
+            <input type="file" id="input_imagem" name="imagem" accept=".jpg">
+        </figcaption>
+    </figure>
+    <input type="text" id="nome" name="nome"/>
+    <input type="text" id="categoria" name="categoria"/>
+    <input type="text" id="console" name="console"/>
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

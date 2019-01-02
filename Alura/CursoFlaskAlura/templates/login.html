@@ -1,0 +1,9 @@
+{% extends "template.html" %}
+
+{% block content %}
+<form action="{{ url_for('autenticar') }}" method="post">
+    <input type="text" id="usuario" name="usuario" required/>
+    <input type="password" id="senha" name="senha" required/>
+    <button type="submit">Entrar</button>
+</form>
+{% endblock %}
