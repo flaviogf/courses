@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<section class="p-2 row">
+    <div class="col-10 p-3 bg-light">
+        <h4 class="content-subhead">Sobre o curso</h4>
+        {{ curso.descricao|linebreaks }}
+    </div>
+
+    <div class="col text-center">
+        {% if curso.imagem %}
+        <img src="{{ curso.imagem.url }}" alt="{{ curso }}" class="img-fluid mx-auto">
+        {% else %}
+        <img src="{% static 'imagens/nodejs.png' %}" alt="{{ curso }}" class="mx-auto d-block">
+        {% endif %}
+
+        <h1>{{ curso.nome }}</h1>
+        <a href="">Inscreva-se</a>
+    </div>
+</section>
+
+<div class="p-2 row">
+    <form class="col-4" method="post">
+        {% csrf_token %}
+
+        {% for campo in form %}
+        <div class="form-group">
+            {{ campo.label_tag }}
+            {{ campo }}
+        </div>
+        {% endfor %}
+
+        <button class="btn btn-primary" type="submit">Enviar</button>
+
+    </form>
+</div>
+
+{% if sucesso %}
+<div class="p-2 row">
+    <div class="col">
+        <div class="alert alert-success m-y-2" role="alert">
+            Mensagem enviada
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

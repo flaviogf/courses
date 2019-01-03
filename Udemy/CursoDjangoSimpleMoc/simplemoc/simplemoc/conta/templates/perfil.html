@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block conteudo %}
+
+<div class="p-2 row">
+    <div class="col">
+        <h1>Perfil</h1>
+        <h4>{{ user.username }}</h4>
+    </div>
+</div>
+
+<div class="p-2 row">
+    <div class="col">
+        <h3>Informações</h3>
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% for campo in form_usuario %}
+            <div class="form-group">
+                {{ campo.label_tag }}
+                {{ campo|add_class:'form-control' }}
+            </div>
+            {% endfor %}
+            <button class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

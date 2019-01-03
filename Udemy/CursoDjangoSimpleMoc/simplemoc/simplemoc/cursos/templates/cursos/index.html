@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+{% for curso in cursos %}
+<div class="p-2 row">
+    <div class="col">
+        <a href="{{ curso.get_absolute_url }}">
+            {% if curso.imagem %}
+            <img src="{{ curso.imagem.url }}" alt="{{ curso }}">
+            {% else %}
+            <img src="{% static 'imagens/nodejs.png' %}" alt="{{ curso }}">
+            {% endif %}
+        </a>
+    </div>
+
+    <div class="col-10 p-2 bg-light">
+        <h4>
+            <a href="{{ curso.get_absolute_url }}">{{ curso.nome }}</a>
+        </h4>
+        {{ curso.descricao|linebreaks }}
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

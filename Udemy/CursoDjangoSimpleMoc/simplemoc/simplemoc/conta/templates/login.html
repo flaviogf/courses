@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block conteudo %}
+<div class="p-2 row">
+    <div class="col">
+        <h1>Login</h1>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% for campo in form %}
+            <div class="form-group">
+                {{ campo.label_tag }}
+                {{ campo|add_class:'form-control'|add_error_class:'is-invalid' }}
+                {% for erro in campo.errors %}
+                <div class="invalid-feedback">
+                    {{ erro }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <button class="btn btn-primary" type="submit">Entrar</button>
+        </form>
+    </div>
+</div>
+
+<div class="p-2 row">
+    <div class="col">
+        <a href="{% url 'conta:cadastro' %}">Cadastre-se</a>
+    </div>
+</div>
+
+{% if form.errors %}
+<div class="p-2 row">
+    <div class="col">
+        <div class="alert alert-danger" role="alert">
+            Usuário ou senha inválidos
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block conteudo %}
+<div class="p-2 row">
+    <div class="col">
+        <h1>Cadastro</h1>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% for campo in form %}
+
+            <div class="form-group">
+                {{ campo.label_tag }}
+
+                {{ campo|add_class:'form-control'|add_error_class:'is-invalid' }}
+
+                {% for erro in campo.errors %}
+                <div class="invalid-feedback">
+                    {{ erro }}
+                </div>
+                {% endfor %}
+            </div>
+
+            {% endfor %}
+
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
