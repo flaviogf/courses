@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Editar</title>
+</h:head>
+<h:body>
+
+    <f:metadata>
+        <f:viewParam name="id_lembrete" value="#{lembreteBean.lembrete.id}"/>
+        <f:event type="preRenderView" listener="#{lembreteBean.buscaPorId}"/>
+    </f:metadata>
+
+    <p:messages>
+        <p:autoUpdate/>
+    </p:messages>
+
+    <h:form>
+        <p:panel header="Editar lembrete">
+            <p:panelGrid columns="3"
+                         cellpadding="5">
+                <p:outputLabel value="Titulo"
+                               for="titulo"/>
+                <p:inputText value="#{lembreteBean.lembrete.titulo}"
+                             id="titulo"
+                             label="Titulo"
+                             required="true"/>
+                <p:message for="titulo"/>
+
+                <p:outputLabel value="Descricao"
+                               for="descricacao"/>
+                <p:inputTextarea value="#{lembreteBean.lembrete.descricao}"
+                                 id="descricacao"
+                                 required="true"/>
+                <p:message for="descricacao"/>
+
+                <p:outputLabel value="Data inicio"
+                               for="data_inicio"/>
+                <p:calendar showOn="button"
+                            value="#{lembreteBean.lembrete.dataInicio}"
+                            id="data_inicio"
+                            required="true">
+                    <f:converter converterId="br.com.flaviogf.converter.CalendarConverter"/>
+                </p:calendar>
+                <p:message for="data_inicio"/>
+            </p:panelGrid>
+
+            <p:commandButton value="Salvar" action="#{lembreteBean.edita}"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

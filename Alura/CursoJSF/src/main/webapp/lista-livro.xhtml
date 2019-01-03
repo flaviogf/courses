@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="head">
+        <title>Livraria - Lista de livros</title>
+    </ui:define>
+
+    <ui:define name="conteudo">
+        <h3>Livros</h3>
+
+        <h:form>
+            <p:dataTable id="tabela_veiculos" value="#{livroBean.livros}" var="it">
+
+                <p:column headerText="Titulo" sortBy="#{it.titulo}">
+                    <h:outputText value="#{it.titulo}"/>
+                </p:column>
+
+                <p:column headerText="ISBN" sortBy="#{it.ISBN}">
+                    <h:outputText value="#{it.ISBN}"/>
+                </p:column>
+
+                <p:column headerText="Preço" sortBy="#{it.preco}">
+                    <h:outputText value="#{it.preco}"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

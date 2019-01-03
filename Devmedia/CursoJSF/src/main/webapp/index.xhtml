@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lembretes</title>
+</h:head>
+<h:body>
+
+    <p:link outcome="adicionar" value="Novo Lembrete"/>
+
+    <p:messages/>
+
+    <p:dataTable var="it" value="#{lembreteBean.lembretes}">
+
+        <p:column headerText="Id">
+            <h:outputText value="#{it.id}"/>
+        </p:column>
+
+        <p:column headerText="Titulo">
+            <h:outputText value="#{it.titulo}"/>
+        </p:column>
+
+        <p:column headerText="Descrição">
+            <h:outputText value="#{it.descricao}"/>
+        </p:column>
+
+        <p:column headerText="Data Cadastro">
+            <h:outputText value="#{it.dataCadastro.time}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+        </p:column>
+
+        <p:column headerText="Data Início">
+            <h:outputText value="#{it.dataInicio.time}">
+                <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+        </p:column>
+
+        <p:column headerText="Ações">
+            <div style="display: flex; justify-content: center;">
+                <p:button style="width: 100px;" outcome="remover" value="Remover">
+                    <f:param name="id_lembrete" value="#{it.id}"/>
+                </p:button>
+
+                <p:button style="width: 100px;" outcome="editar" value="Editar">
+                    <f:param name="id_lembrete" value="#{it.id}"/>
+                </p:button>
+            </div>
+        </p:column>
+    </p:dataTable>
+
+</h:body>
+</html>

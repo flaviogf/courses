@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="head">
+        <title>Livraria - Adicionar livro</title>
+    </ui:define>
+
+    <ui:define name="conteudo">
+
+        <p:growl>
+            <p:autoUpdate/>
+        </p:growl>
+
+        <h:form id="form_livro">
+            <p:fieldset legend="Novo livro">
+                <p:panelGrid columns="2" cellpadding="10">
+                    <p:column>
+                        <p:outputLabel for="titulo" value="Titulo"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:inputText id="titulo"
+                                     value="#{livroBean.livro.titulo}"
+                                     requiredMessage="O titulo do livro é obrigatório"
+                                     required="true"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:outputLabel for="isbn" value="ISBN"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:inputText id="isbn"
+                                     value="#{livroBean.livro.ISBN}"
+                                     requiredMessage="O ISBN do livro é obrigatório"
+                                     required="true"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:outputLabel for="preco" value="Preço"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:inputText id="preco"
+                                     value="#{livroBean.livro.preco}"
+                                     requiredMessage="O preço é obrigatório"
+                                     pt:type="number"
+                                     required="true"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:outputLabel for="autor" value="Autor"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:selectOneMenu id="autor" value="#{livroBean.idAutor}" required="true">
+                            <f:selectItems value="#{autorBean.autores}"
+                                           var="autor"
+                                           itemValue="#{autor.id}"
+                                           itemLabel="#{autor.nome}"/>
+                        </p:selectOneMenu>
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:row>
+                            <p:column>
+                                <p:link style="margin: 0 5px;"
+                                        outcome="adiciona-autor"
+                                        value="Novo Autor"/>
+                            </p:column>
+
+                            <p:column>
+                                <p:commandButton style="margin: 0 5px"
+                                                 value="Adicionar Autor"
+                                                 action="#{livroBean.adiciona}"
+                                                 process="@this,form_livro:autor"/>
+                            </p:column>
+
+                            <p:column>
+                                <p:commandButton style="margin: 0 5px"
+                                                 value="Salvar Livro"
+                                                 action="#{livroBean.salva}"/>
+                            </p:column>
+                        </p:row>
+                    </f:facet>
+
+                </p:panelGrid>
+            </p:fieldset>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

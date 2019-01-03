@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="primefaces-omega"/>
+    <ui:insert name="head"/>
+</h:head>
+<h:body>
+    <h:panelGrid columns="3" cellpadding="5">
+        <f:facet name="header">
+            <h:outputText value="Menu"/>
+        </f:facet>
+
+        <h:link outcome="adiciona-livro" value="Adicionar livro"/>
+        <h:link outcome="adiciona-autor" value="Adicionar autor"/>
+        <h:link outcome="lista-livro" value="Lista de livros"/>
+    </h:panelGrid>
+
+    <h2>Livraria</h2>
+    <ui:insert name="conteudo"/>
+</h:body>
+</html>

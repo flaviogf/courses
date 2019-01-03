@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Novo Lembrete</title>
+</h:head>
+<h:body>
+
+    <h:form>
+        <p:panel header="Novo lembrete">
+            <p:messages>
+                <p:autoUpdate/>
+            </p:messages>
+
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="titulo"
+                               value="Titulo"/>
+                <p:inputText value="#{lembreteBean.lembrete.titulo}"
+                             id="titulo"
+                             required="true"
+                             label="Titulo"/>
+                <p:message for="titulo"/>
+
+                <h:outputLabel for="descricao"
+                               value="Descrição"/>
+                <p:inputTextarea value="#{lembreteBean.lembrete.descricao}"
+                                 id="descricao"
+                                 required="true"
+                                 label="Descrição"/>
+                <p:messages for="descricao"/>
+
+                <h:outputLabel for="data_inicio" value="Data Inicio"/>
+                <p:calendar showOn="button"
+                            value="#{lembreteBean.lembrete.dataInicio}"
+                            id="data_inicio" required="true"
+                            label="Data inicio">
+                    <f:converter converterId="br.com.flaviogf.converter.CalendarConverter"/>
+                </p:calendar>
+                <p:messages for="data_inicio"/>
+
+            </h:panelGrid>
+            <p:commandButton value="Salvar" action="#{lembreteBean.adiciona}"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
