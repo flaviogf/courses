@@ -1,0 +1,8 @@
+<div class="row justify-content-center m-3">
+  <div class="input-group col-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+    </div>
+    <input type="text" class="form-control" (keyup)="debounce.next($event.target.value)" [value]="filter">
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "name": "CursoJQueryAlura",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
+}

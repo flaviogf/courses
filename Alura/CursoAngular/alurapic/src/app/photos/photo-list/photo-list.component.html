@@ -1,0 +1,3 @@
+<app-photo-filter (onFilter)="filter = $event" [filter]='filter'></app-photo-filter>
+
+<app-photos [photos]="photos | photoFilter:filter"></app-photos>

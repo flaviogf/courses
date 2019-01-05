@@ -1,0 +1,13 @@
+{
+    "name": "flaviogf/composer",
+    "type": "project",
+    "authors": [
+        {
+            "name": "flavio",
+            "email": "flavio@smn.com.br"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.23"
+    }
+}

@@ -1,0 +1,42 @@
+﻿@model CursoAspNetMvc5Alura.Web.ViewModels.ClienteViewModel
+
+@{
+    ViewData["Titulo"] = "Cadastro Cliente";
+}
+
+<div class="row">
+    <div class="col s12">
+        @using (Html.BeginForm("Cadastra", "Cliente"))
+        {
+            @Html.AntiForgeryToken()
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    @Html.TextBoxFor(it => it.Nome)
+                    @Html.LabelFor(it => it.Nome)
+                    @Html.ValidationMessageFor(it => it.Nome)
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    @Html.TextBoxFor(it => it.Usuario)
+                    @Html.LabelFor(it => it.Usuario)
+                    @Html.ValidationMessageFor(it => it.Usuario)
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    @Html.TextBoxFor(it => it.Senha, new { @type = "password" })
+                    @Html.LabelFor(it => it.Senha)
+                    @Html.ValidationMessageFor(it => it.Senha)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <button class="waves-effect waves-light btn">Cadastrar</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

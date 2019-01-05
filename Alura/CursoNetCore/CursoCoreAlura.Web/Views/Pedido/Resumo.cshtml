@@ -1,0 +1,16 @@
+﻿@model Pedido
+
+@{
+    ViewData["Titulo"] = "Resumo";
+}
+
+<h1>Resumo</h1>
+
+<h3>Pedido @Model.Id</h3>
+
+<div>
+    @foreach (var it in Model.ItensPedido)
+    {
+        <item-pedido-resumo item="@it"/>
+    }
+</div>

@@ -1,0 +1,63 @@
+﻿@model Pedido
+
+@{
+    ViewData["Titulo"] = "Carrinho";
+}
+
+<h1>Carrinho</h1>
+
+<h3 id="valor-carrinho">Valor: @Model.Valor.ToString("C")</h3>
+
+@foreach (var it in Model.ItensPedido)
+{
+    <div>
+        <h3>@it.Produto.Nome</h3>
+        <button id="btn-adicionar" data-codigo-item-pedido="@it.Id">+</button>
+        <input id="input-quantidade" type="number" data-codigo-item-pedido="@it.Id" value="@it.Quantidade"/>
+        <button id="btn-remover" data-codigo-item-pedido="@it.Id">-</button>
+    </div>
+}
+
+<a asp-action="Resumo">Avançar</a>
+
+@section Scripts
+{
+    <script>
+        (function() {
+            function adiciona() {
+                const id = this.getAttribute("data-codigo-item-pedido");
+                let quantidade = $(`input[data-codigo-item-pedido="${id}"]`).value.converteParaNumero();
+                const itemPedido = { id, quantidade: ++quantidade };
+                envia(itemPedido);
+            }
+
+            function remove() {
+                const id = this.getAttribute("data-codigo-item-pedido");
+                let quantidade = $(`input[data-codigo-item-pedido="${id}"]`).value.converteParaNumero();
+                const itemPedido = { id, quantidade: --quantidade };
+                envia(itemPedido);
+            }
+
+            function atualiza() {
+                const id = this.getAttribute("data-codigo-item-pedido");
+                const quantidade = $(`input[data-codigo-item-pedido="${id}"]`).value.converteParaNumero();
+                const itemPedido = { id, quantidade };
+                envia(itemPedido);
+            }
+
+            function atualizaPagina(pedido, itemPedido) {
+                $('#valor-carrinho').val(`Valor: ${pedido.valor.formatoMoedaBrasileira()}`);
+                $(`input[data-codigo-item-pedido="${itemPedido.id}"]`).val(itemPedido.quantidade);
+            }
+
+            function envia(itemPedido) {
+                const opcoes = { metodo: 'POST', url: '/Pedido/AtualizaItemPedido', data: itemPedido };
+                $.ajax(opcoes, atualizaPagina);
+            }
+
+            $.all('#btn-adicionar').forEach(it => it.onclick = adiciona);
+            $.all('#btn-remover').forEach(it => it.onclick = remove);
+            $.all('#input-quantidade').forEach(it => it.onblur = atualiza);
+        })();
+    </script>
+}

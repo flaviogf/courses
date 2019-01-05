@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CursoAspNetMvc5Alura.Web.ViewModels.ClienteViewModel>
+
+@{ 
+    ViewData["Titulo"] = "Clientes";
+}
+
+<div class="row">
+    <div class="col" s12>
+        <h2>Clientes</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Usuário</th>
+                    <th>Data de Cadastro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var it in Model)
+                {
+                    <tr>
+                        <td>
+                            @it.Nome
+                        </td>
+                        <td>
+                            @it.Usuario
+                        </td>
+                        <td>
+                            @it.DataCadastro.ToString("d")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col s12">
+        @Html.ActionLink("Novo", "Cadastra", "Cliente", null, new { @class = "waves-effect waves-light btn" })
+    </div>
+</div>

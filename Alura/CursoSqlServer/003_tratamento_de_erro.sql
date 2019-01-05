@@ -1,0 +1,19 @@
+IF OBJECT_ID('[dbo].[sp_divisao_por_zero]', 'P') IS NOT NULL
+	DROP PROCEDURE [dbo].[sp_divisao_por_zero]
+GO
+
+CREATE PROCEDURE [dbo].[sp_divisao_por_zero]
+	@ERRO VARCHAR(50) OUTPUT
+AS
+	BEGIN TRY
+		SELECT 10 / 0
+	END TRY
+	BEGIN CATCH
+		SET @ERRO = 'ERRO - CODIGO: ' + CONVERT(VARCHAR(50), @@ERROR) + ' - LINHAS: ' + CONVERT(VARCHAR(50), @@ROWCOUNT)
+	END CATCH
+GO
+
+DECLARE @ERRO VARCHAR(50)
+EXEC [dbo].[sp_divisao_por_zero] @ERRO OUTPUT
+SELECT @ERRO MENSAGEM
+GO

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @ViewData["Titulo"]
+    </title>
+    <style>
+        img {
+            height: 75px;
+            width: auto;
+        }
+    </style>
+    @RenderSection("Head", required: false)
+</head>
+<body>
+<nav>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+    <a asp-controller="Pedido" asp-action="Index">Pedido</a>
+    <a asp-controller="Pedido" asp-action="Carrinho">Carrinho</a>
+</nav>
+@RenderBody()
+<script>
+    const $ = document.querySelector.bind(document);
+    $.all = document.querySelectorAll.bind(document);
+    $.ajax = ({ metodo='GET', url, data }, callback) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                callback(this.responseText.deserializa(), data);
+            }
+        };
+        xhr.open(metodo, url);
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.send(data.serializa());
+    }
+
+    Object.prototype.serializa = function() {
+        return JSON.stringify(this);
+    }
+
+    HTMLInputElement.prototype.val = function(valor) {
+        this.value = valor;
+    }
+
+    HTMLElement.prototype.val = function(valor) {
+        this.innerText = valor;
+    }
+
+    String.prototype.deserializa = function() {
+        return JSON.parse(this);
+    }
+
+    String.prototype.converteParaNumero = function() {
+        return +this;
+    }
+
+    Number.prototype.formatoMoedaBrasileira = function() {
+        return `R$${this.toFixed(2).replace('.', ',')}`;
+    }
+</script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

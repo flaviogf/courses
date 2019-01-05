@@ -1,0 +1,25 @@
+{
+  "name": "meat-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc --watch",
+    "nodemon": "nodemon --inspect dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mongoose": "^5.2.17",
+    "@types/node": "^10.11.3",
+    "@types/restify": "^7.2.5",
+    "nodemon": "^1.18.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  },
+  "dependencies": {
+    "mongoose": "^5.3.1",
+    "restify": "^7.2.1"
+  }
+}

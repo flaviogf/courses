@@ -1,0 +1,21 @@
+@model IEnumerable<Produto>
+
+@{
+    ViewData["Titulo"] = "Pedido";
+}
+
+<h1>Pedido</h1>
+
+<div>
+    @foreach (var produto in Model)
+    {
+        <div>
+            <img src="~/images/large_@(produto.Codigo).jpg" alt="Imagem Produto">
+            <h3>@(produto.Nome)</h3>
+            <p>@(produto.Preco)</p>
+            <p>
+                <a asp-action="Carrinho" asp-route-codigo="@produto.Codigo">Adicionar</a>
+            </p>
+        </div>
+    }
+</div>
