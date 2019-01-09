@@ -1,0 +1,18 @@
+
+public class Funcionario {
+	private String nome;
+	private String cpf;
+	private double salario;
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public double getSalario() {
+		return salario;
+	}
+}
