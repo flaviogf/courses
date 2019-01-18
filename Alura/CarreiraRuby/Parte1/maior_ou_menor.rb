@@ -12,6 +12,7 @@ for tentativa in 1..numero_tentativas
 
 	if acertou
 		puts "Acertou"
+                break
 	else
 		puts "Errou"
 	end
