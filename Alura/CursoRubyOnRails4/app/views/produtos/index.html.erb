@@ -1,0 +1,35 @@
+<html>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preco</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @produtos_por_nome.each do |produto| %>
+      <tr>
+        <td><%= produto.nome %></td>
+        <td><%= produto.preco %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preco</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @produtos_por_preco.each do |produto| %>
+      <tr>
+        <td><%= produto.nome %></td>
+        <td><%= produto.preco %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</html>

@@ -1,0 +1,5 @@
+print(True)
+print(False)
+print(1)
+print('Texto')
+print('Voce é' + 3 * ' muito ' + 'legal')

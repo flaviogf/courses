@@ -1,0 +1,7 @@
+tupla = tuple()
+print(type(tupla))
+tupla = ()
+print(type(tupla))
+# tupla = ('um')
+tupla = ('um', )
+print(type(tupla))
