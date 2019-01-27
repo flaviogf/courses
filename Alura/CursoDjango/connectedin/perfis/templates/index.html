@@ -1,9 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ConnectedIn</title>
-  </head>
-  <body>
-    <h2>Bem vindo ao ConnectedIn</h2>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mt-3">
+    <div class="card-header">
+        <h3>Perfis</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th colspan="1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for it in perfis %}
+                <tr>
+                    <td>{{ it.nome }}</td>
+                    <td>{{ it.telefone }}</td>
+                    <td><a href="{% url 'exibe_perfil' it.id %}">Visualizar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

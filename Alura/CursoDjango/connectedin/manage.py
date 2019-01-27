@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/home/flavio/.virtualenvs/curso_django_alura/bin/python
 import os
 import sys
 

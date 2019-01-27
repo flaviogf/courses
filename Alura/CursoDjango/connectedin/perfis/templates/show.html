@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mt-3">
+    <div class="card-body">
+        <h1>{{ perfil.nome }}</h1>
+        <p>Telefone: {{ perfil.telefone }}</p>
+        <p>Empresa: {{ perfil.empresa }}</p>
+        <p>Criado em: {{ perfil.criado_em | date:"d/m/Y H:i" }}</p>
+        <p>Atualizado em: {{ perfil.atualizado_em | date:"d/m/Y H:i" }}</p>
+        <a href="{% url 'convida_perfil' perfil.id %}">Convidar</a>
+    </div>
+</div>
+{% endblock %}
