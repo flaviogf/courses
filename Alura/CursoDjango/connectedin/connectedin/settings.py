@@ -27,11 +27,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
+LOGIN_URL = 'autentica_usuario'
+LOGIN_REDIRECT_URL = 'lista_perfil'
+LOGOUT_REDIRECT_URL = 'autentica_usuario'
 
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
-    'django.contrib.messages', 'django.contrib.staticfiles', 'perfis'
+    'django.contrib.messages', 'django.contrib.staticfiles', 'perfis', 'usuarios'
 ]
 
 MIDDLEWARE = [

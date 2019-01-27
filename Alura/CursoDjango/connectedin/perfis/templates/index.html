@@ -1,28 +1,90 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card mt-3">
-    <div class="card-header">
-        <h3>Perfis</h3>
+<div class="row">
+    <div class="col s12">
+        <div class="card mt-3 mb-3">
+            <div class="card-header">
+                <h3>Perfis</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th colspan="1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for it in perfis %}
+                        <tr>
+                            <td>{{ it.nome }}</td>
+                            <td>{{ it.telefone }}</td>
+                            <td><a href="{% url 'exibe_perfil' it.id %}">Visualizar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th colspan="1"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for it in perfis %}
-                <tr>
-                    <td>{{ it.nome }}</td>
-                    <td>{{ it.telefone }}</td>
-                    <td><a href="{% url 'exibe_perfil' it.id %}">Visualizar</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card mt-3 mb-3">
+            <div class="card-header">
+                <h3>Convites</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th colspan="1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for it in perfil_logado.convites.all %}
+                        <tr>
+                            <td>{{ it.solicitante.nome }}</td>
+                            <td><a href="{% url 'aceita_convite' it.id %}">Aceitar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card mt-3 mb-3">
+            <div class="card-header">
+                <h3>Contatos</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th colspan="1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for it in perfil_logado.contatos.all %}
+                        <tr>
+                            <td>{{ it.nome }}</td>
+                            <td>{{ it.telefone }}</td>
+                            <td><a href="{% url 'exibe_perfil' it.id %}">Visualizar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

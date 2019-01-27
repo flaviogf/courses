@@ -6,5 +6,7 @@ urlpatterns = [
     path('', views.lista, name='lista_perfil'),
     re_path(r'(?P<perfil_id>\d+)$', views.exibe, name='exibe_perfil'),
     re_path(r'(?P<perfil_id>\d+)/convida$',
-            views.convida, name='convida_perfil')
+            views.convida, name='convida_perfil'),
+    re_path(r'(?P<convite_id>\d+)/aceita',
+            views.aceita_convite, name='aceita_convite')
 ]
