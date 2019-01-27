@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# Create your models here
 class Perfil(models.Model):
     nome = models.CharField('nome', max_length=250)
     telefone = models.CharField('telefone', max_length=250)
