@@ -1,4 +1,4 @@
-#!/home/flavio/.virtualenvs/curso_django/bin/python
+#!/usr/bin/python
 import os
 import sys
 
