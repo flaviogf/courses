@@ -1,5 +1,0 @@
-1546858356677	Delete element
-1546858675495	Extract local variable 'conta'
-1546858721619	Extract local variable 'cliente'
-1546858959074	Rename field 'titular'
-1546858973272	Rename method 'getTitular'

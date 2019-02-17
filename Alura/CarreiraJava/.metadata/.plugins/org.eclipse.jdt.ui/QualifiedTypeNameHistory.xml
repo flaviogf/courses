@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="Cliente"/>
-<fullyQualifiedTypeName name="Autenticador"/>
-<fullyQualifiedTypeName name="Autenticavel"/>
-<fullyQualifiedTypeName name="java.lang.AutoCloseable"/>
-<fullyQualifiedTypeName name="Conexao"/>
-<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
-</qualifiedTypeNameHistroy>

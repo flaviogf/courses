@@ -1,6 +1,0 @@
-
-public class SistemaInterno {
-	public boolean autentica(FuncionarioAutenticavel funcionario) {
-		return funcionario.autentica("123");
-	}
-}

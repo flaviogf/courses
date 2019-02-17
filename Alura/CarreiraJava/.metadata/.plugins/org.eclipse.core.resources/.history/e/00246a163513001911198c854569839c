@@ -1,7 +1,0 @@
-
-public class ContaCorrente extends Conta {
-
-	public ContaCorrente(double saldo, String titular) {
-		super(saldo, titular);
-	}
-}
