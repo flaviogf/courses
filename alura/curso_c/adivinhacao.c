@@ -1,18 +1,39 @@
 #include <stdio.h>
-
-#define TENTATIVAS 5
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
 	printf("bem vindo ao jogo de advinhação\n");
 
-	int numeroSecreto = 42;
+	srand(time(NULL));
+
+	int numeroSecreto = rand() % 50;
 
 	int numeroEscolhido;
 
-	for (int i = 1; i <= TENTATIVAS; i++) {
-		printf("tentativa %d de %d\n", i, TENTATIVAS);
+	int dificuldade;
 
-		printf("escolha um numero:");
+	int tentativas;
+
+	printf("escolha um dificuldade (0) facil, (1) medio, (2) dificil: ");
+	scanf("%d", &dificuldade);
+
+	switch(dificuldade) {
+		case 0:
+			tentativas = 20;
+			break;
+		case 1:
+			tentativas = 15;
+			break;
+		default:
+			tentativas = 5;
+			break;
+	}
+
+	for (int i = 1; i <= tentativas; i++) {
+		printf("tentativa %d de %d\n", i, tentativas);
+
+		printf("escolha um numero: ");
 		scanf("%d", &numeroEscolhido);
 
 		if (numeroEscolhido < 0) {
