@@ -8,5 +8,6 @@
     ],
     "python.unitTest.pyTestEnabled": false,
     "python.unitTest.nosetestsEnabled": false,
-    "python.unitTest.unittestEnabled": true
+    "python.unitTest.unittestEnabled": true,
+    "python.pythonPath": "/home/flavio/miniconda3/envs/curso_assistente_pessoal/bin/python"
 }

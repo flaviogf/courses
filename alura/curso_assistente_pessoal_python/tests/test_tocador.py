@@ -17,3 +17,10 @@ class TestTocador(TestCase):
         audio = tocador.salva_audio(audio='Olá mundo!', linguagem='pt-br')
 
         self.assertTrue(os.path.isfile(audio))
+
+    def test_tocador_toca_audio(self):
+        tocador = Tocador(diretorio='audios', arquivo='ola.mp3')
+
+        audio = tocador.toca_audio()
+
+        self.assertTrue(os.path.isfile(audio))
