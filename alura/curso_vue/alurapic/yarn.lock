@@ -5735,6 +5735,11 @@ vue-resource@1.0.3:
   resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.0.3.tgz#8d52d0d8a9ed5f2ae704c68d530c84ceaf97be14"
   integrity sha1-jVLQ2KntXyrnBMaNUwyEzq+XvhQ=
 
+vue-router@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.1.1.tgz#10c31bbdcb6da92bd3e0223fa12345e73018625a"
+  integrity sha1-EMMbvcttqSvT4CI/oSNF5zAYYlo=
+
 vue-style-loader@^3.0.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-3.1.2.tgz#6b66ad34998fc9520c2f1e4d5fa4091641c1597a"

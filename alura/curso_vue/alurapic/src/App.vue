@@ -1,47 +1,26 @@
 <template>
   <div>
-    <h1>{{ titulo }}</h1>
-    <input type="text" placeholder="filtre pelo nome" @input="filtro = $event.target.value">
-    <ul>
-      <li v-for="foto of fotosFiltradas">
-        <alurapic-painel :titulo="foto.titulo">
-          <img :src="foto.url" :alt="foto.titulo">
-        </alurapic-painel>
-      </li>
-    </ul>
+    <alurapic-menu :routes="routes"></alurapic-menu>
+    <div class="conteudo">
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import Painel from "./components/shared/painel/Painel.vue";
+import Menu from "./components/shared/menu/Menu.vue";
+import routes from "./routes";
 
 export default {
   components: {
-    "alurapic-painel": Painel
-  },
-  created() {
-    this.$http
-      .get("http://localhost:3000/v1/fotos")
-      .then(res => res.json())
-      .then(fotos => (this.fotos = fotos))
-      .catch(console.log);
+    "alurapic-menu": Menu
   },
   data() {
     return {
-      titulo: "Alurapic",
-      fotos: [],
-      filtro: ""
+      routes
     };
-  },
-  computed: {
-    fotosFiltradas() {
-      if (!this.filtro) {
-        return this.fotos;
-      } else {
-        const filtro = new RegExp(this.filtro, "i");
-        return this.fotos.filter(it => filtro.test(it.titulo));
-      }
-    }
   }
 };
 </script>
@@ -52,6 +31,7 @@ body
   background-color: #f5f5f5
   text-align: center
   margin: 0 auto
+  color: #2f2f2f
   width: 75%
 
 ul
@@ -70,4 +50,16 @@ input
   font-size: 18px
   height: 35px
   width: 100%
+
+a
+  color: #2f2f2f
+
+.conteudo
+  margin-top: 60px
+
+.fade-enter, .fade-leave-to
+  opacity: 0
+
+.fade-enter-active, fade-leave-active
+  transition: opacity .3s
 </style>
