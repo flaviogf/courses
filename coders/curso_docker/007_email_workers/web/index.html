@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-mails</title>
+
+    <style>
+        fieldset {
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        label {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="http://localhost:8080/" method="POST">
+        <fieldset>
+            <label for="assunto">Assunto</label>
+            <input type="text" id="assunto" name="assunto">
+        </fieldset>
+
+        <fieldset>
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea>
+        </fieldset>
+
+        <button>Enviar !</button>
+    </form>
+</body>
+
+</html>

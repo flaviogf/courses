@@ -1,0 +1,24 @@
+version: '3'
+volumes:
+  dados:
+services: 
+  db:
+    image: postgres:9.6
+    volumes: 
+      - dados:/var/lib/postgresql/data
+      - ./scripts:/scripts
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+  front-end:
+    image: nginx:1.13
+    volumes:
+      - ./web:/usr/share/nginx/html
+    ports: 
+      - 80:80
+  app:
+    image: python:3.6
+    volumes: 
+      - ./app:/app
+    working_dir: /app
+    command: bash ./app.sh
+    ports: 
+      - 8080:8080
