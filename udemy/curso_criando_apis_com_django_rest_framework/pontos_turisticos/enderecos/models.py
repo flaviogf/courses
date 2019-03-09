@@ -1,9 +1,12 @@
+import uuid
+
 from django.db import models
 
 # Create your models here.
 
 
 class Endereco(models.Model):
+    endereco_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     linha1 = models.CharField(max_length=250)
     linha2 = models.CharField(max_length=250, null=True, blank=True)
     cidade = models.CharField(max_length=250)
