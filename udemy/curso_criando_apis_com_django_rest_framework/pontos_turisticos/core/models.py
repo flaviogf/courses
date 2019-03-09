@@ -16,6 +16,7 @@ class PontoTuristico(models.Model):
     )
     nome = models.CharField(max_length=250)
     descricao = models.TextField()
+    aprovado = models.BooleanField(default=False)
     atracoes = models.ManyToManyField(Atracao)
     comentarios = models.ManyToManyField(Comentario)
     avaliacoes = models.ManyToManyField(Avaliacao)
