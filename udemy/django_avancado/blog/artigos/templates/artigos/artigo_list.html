@@ -1,0 +1,17 @@
+<h1>Artigos</h1>
+
+<ul>
+	{% for it in object_list %}
+	<li>{{ it.titulo }}</li>
+	{% endfor %}
+</ul>
+
+<ul>
+	{% if page_obj.has_previous %}
+	<li><a href="?page={{ page_obj.previous_page_number }}">voltar</a></li>
+	{% endif %}
+	<li>{{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</li>
+	{% if page_obj.has_next %}
+	<li><a href="?page={{ page_obj.next_page_number }}">proximo</a></li>
+	{% endif %}
+</ul>
