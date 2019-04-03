@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from artigos.views import ArtigoListView
+
+from artigos.views import ArtigoListView, ArtigoDetail, ArtigoUpdate, ArtigoCreate
 
 urlpatterns = [
-    path('', ArtigoListView.as_view()),
+    path('', ArtigoListView.as_view(), name='article-list'),
+    path('criar/', ArtigoCreate.as_view(), name='article-create'),
+    path('<int:pk>/', ArtigoDetail.as_view(), name='article-detail'),
+    path('<int:pk>/editar', ArtigoUpdate.as_view(), name='article-update'),
     path('admin/', admin.site.urls),
 ]
