@@ -1,0 +1,4 @@
+namespace Store.Domain.Entities
+{
+
+}
