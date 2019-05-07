@@ -1,7 +1,7 @@
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace Store.Domain.ValueObjects
+namespace Store.Domain.StoreContext.ValueObjects
 {
     public class Name : Notifiable
     {
@@ -12,8 +12,8 @@ namespace Store.Domain.ValueObjects
 
             AddNotifications(new Contract()
                 .Requires()
-                .HasMinLen(firstName, 3, nameof(FirstName), "Invalid FistName")
-                .HasMinLen(lastName, 3, nameof(LastName), "Invalid LastName"));
+                .HasMinLen(firstName, 3, nameof(FirstName), "Invalid name")
+                .HasMinLen(lastName, 3, nameof(LastName), "Invalid name"));
         }
 
         public string FirstName { get; }

@@ -1,12 +1,20 @@
-using Store.Domain.ValueObjects;
 using Xunit;
+using Store.Domain.StoreContext.ValueObjects;
 
-namespace Store.Tests.ValueObjects
+namespace Store.Tests.Domain.StoreContext.ValueObjects
 {
     public class NameTests
     {
         [Fact]
-        public void ShouldReturnValidTrueWhenFirstNameAndLastNameAreValid()
+        public void ShouldReturnValidTrueWhenFirstNameIsValid()
+        {
+            var name = new Name("Steve", "Rogers");
+
+            Assert.True(name.Valid);
+        }
+
+        [Fact]
+        public void ShouldReturnValidTrueWhenLastNameIsValid()
         {
             var name = new Name("Steve", "Rogers");
 

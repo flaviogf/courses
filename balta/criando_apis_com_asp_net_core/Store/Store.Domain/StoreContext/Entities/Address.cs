@@ -1,7 +1,8 @@
 using Flunt.Notifications;
-using Store.Domain.Enums;
+using Flunt.Validations;
+using Store.Domain.StoreContext.Enums;
 
-namespace Store.Domain.Entities
+namespace Store.Domain.StoreContext.Entities
 {
     public class Address : Notifiable
     {
@@ -20,13 +21,23 @@ namespace Store.Domain.Entities
         {
             Street = street;
             Number = number;
-            Complement = complement;
             District = district;
             City = city;
             State = state;
             Country = country;
             ZipCode = zipCode;
             Type = type;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(street, 2, nameof(Street), "Invalid street")
+                .HasMinLen(number, 2, nameof(Street), "Invalid number")
+                .HasMinLengthIfNotNullOrEmpty(complement, 2, nameof(Complement), "Invalid complement")
+                .HasMinLen(district, 2, nameof(District), "Invalid district")
+                .HasMinLen(city, 2, nameof(City), "Invalid city")
+                .HasMinLen(state, 2, nameof(State), "Invalid state")
+                .HasMinLen(country, 2, nameof(Country), "Invalid country")
+                .HasMinLen(zipCode, 2, nameof(ZipCode), "Invalid zipCode"));
         }
 
         public string Street { get; }

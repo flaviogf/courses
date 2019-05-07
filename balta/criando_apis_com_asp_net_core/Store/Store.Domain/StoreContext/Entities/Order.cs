@@ -1,4 +1,0 @@
-namespace Store.Domain.Entities
-{
-    
-}

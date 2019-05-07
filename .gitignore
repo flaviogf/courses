@@ -162,9 +162,7 @@ dmypy.json
 .gradle/
 ExportedObj/
 .consulo/
-*.csproj
 *.unityproj
-*.sln
 *.suo
 *.tmp
 *.user

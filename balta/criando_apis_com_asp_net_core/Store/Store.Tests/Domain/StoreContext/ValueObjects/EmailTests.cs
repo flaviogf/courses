@@ -1,12 +1,12 @@
-using Store.Domain.ValueObjects;
+using Store.Domain.StoreContext.ValueObjects;
 using Xunit;
 
-namespace Store.Tests.ValueObjects
+namespace Store.Tests.Domain.StoreContext.ValueObjects
 {
     public class EmailTests
     {
         [Fact]
-        public void ShouldReturnValidTrueWhenAddressIsValid()
+        public void ShoudlReturnValidTrueWhenEmailAddressIsValid()
         {
             var email = new Email("captain@marvel.com.br");
 
@@ -14,7 +14,7 @@ namespace Store.Tests.ValueObjects
         }
 
         [Fact]
-        public void ShouldReturnInvalidTrueWhenAddresIsInvaldi()
+        public void ShouldReturnInvalidTrueWhenEmailAddressIsInvalid()
         {
             var email = new Email("");
 
