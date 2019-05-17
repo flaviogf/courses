@@ -4,5 +4,7 @@ namespace Store.Domain.StoreContext.Enums
     {
         Created = 1,
         Paid = 2,
+        Shipped = 3,
+        Canceled = 4,
     }
 }

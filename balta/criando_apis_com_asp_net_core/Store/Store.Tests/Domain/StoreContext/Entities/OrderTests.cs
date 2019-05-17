@@ -52,25 +52,47 @@ namespace Store.Tests.Domain.StoreContext.Entities
         [Fact]
         public void ShouldStatusEqualToShippedWhenOrderIsShip()
         {
+            _order.Ship();
 
+            Assert.Equal(EOrderStatus.Shipped, _order.Status);
         }
 
         [Fact]
         public void ShouldStatusEqualToCanceledWhenOrderIsCancel()
         {
+            _order.Cancel();
 
+            Assert.Equal(EOrderStatus.Canceled, _order.Status);
         }
 
         [Fact]
         public void ShouldAddItemWhenProductContainsQuantity()
         {
+            var nintendo = new Product("Nintendo Switch", "Nintendo Switch", "switch.jpg", 1000.00M, 10M);
 
+            _order.AddItem(nintendo, 3M);
+
+            Assert.Equal(1, _order.Items.Count);
         }
 
         [Fact]
-        public void ShoudDoNotAddItemWhenProductDoNotContainsQuantity()
+        public void ShouldDoNotAddItemWhenProductDoNotContainsQuantity()
         {
+            var nintendo = new Product("Nintendo Switch", "Nintendo Switch", "switch.jpg", 1000.00M, 1M);
 
+            _order.AddItem(nintendo, 3M);
+
+            Assert.Equal(0, _order.Items.Count);
+        }
+
+        [Fact]
+        public void ShouldValidFalseWhenAddItemWithoutQuantity()
+        {
+            var nintendo = new Product("Nintendo Switch", "Nintendo Switch", "switch.jpg", 1000.00M, 1M);
+
+            _order.AddItem(nintendo, 3M);
+
+            Assert.False(_order.Valid);
         }
     }
 }
