@@ -38,6 +38,8 @@ def quartile(num_quartile, x):
 
 def mode(x):
     c = Counter(x)
+    import pdb
+    pdb.set_trace()
     return [x for x, y in c.items() if y == max(c.values())]
 
 
