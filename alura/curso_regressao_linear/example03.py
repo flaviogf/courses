@@ -12,10 +12,6 @@ data.columns = ['date',
                 'weekend',
                 'consumption']
 
-fig, ax = plt.subplots()
-
-ax.set_title('Consumo de cerveja', fontsize=16)
-
-sns.boxplot(data.consumption, orient='v', width=0.2)
+ax = sns.distplot(data.consumption)
 
 plt.show()

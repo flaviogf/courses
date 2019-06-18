@@ -1,11 +1,11 @@
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 data = pd.read_csv('consumo_cerveja.csv', thousands=',')
 
-data.columns = ['date',
-                'average_temp',
+data.columns = ['data',
+                'avg_temp',
                 'min_temp',
                 'max_temp',
                 'mm',
@@ -14,8 +14,8 @@ data.columns = ['date',
 
 fig, ax = plt.subplots()
 
-ax.set_title('Consumo de cerveja', fontsize=16)
+ax.figure.set_size_inches(12, 6)
 
-sns.boxplot(data.consumption, orient='v', width=0.2)
+sns.pairplot(data)
 
 plt.show()

@@ -4,18 +4,16 @@ import seaborn as sns
 
 data = pd.read_csv('consumo_cerveja.csv', thousands=',')
 
-data.columns = ['date',
-                'average_temp',
+data.columns = ['data',
+                'avg_temp',
                 'min_temp',
                 'max_temp',
                 'mm',
                 'weekend',
                 'consumption']
 
-fig, ax = plt.subplots()
+ax = sns.boxplot(y='consumption', x='weekend', data=data, orient='v')
 
-ax.set_title('Consumo de cerveja', fontsize=16)
-
-sns.boxplot(data.consumption, orient='v', width=0.2)
+ax.set_title('Consumo de cerveja')
 
 plt.show()

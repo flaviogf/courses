@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-data = pd.read_csv('consumo_cerveja.csv')
+data = pd.read_csv('consumo_cerveja.csv', thousands=',')
 
 data.columns = ['date',
                 'average_temp',
