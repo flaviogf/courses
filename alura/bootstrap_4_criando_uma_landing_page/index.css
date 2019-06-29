@@ -1,9 +1,24 @@
 .carousel-image {
-    object-fit: cover;
-    object-position: 0 50%;
-    height: 400px;
+  object-fit: cover;
+  object-position: 0 50%;
+  height: 400px;
 }
 
 .font-title {
-    font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
+}
+
+.special-color {
+  color: darkred !important;
+}
+
+.recipe {
+  max-width: 18rem;
+  margin: 2rem;
+  border: 1px solid darkred;
+}
+
+.btn-special {
+  background-color: darkred;
+  color: white;
 }
