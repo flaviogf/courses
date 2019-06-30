@@ -1,0 +1,13 @@
+{
+  "name": "css_grid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "minireset.css": "0.0.5",
+    "parcel": "1.12.3"
+  },
+  "scripts": {
+    "start": "yarn parcel index.html"
+  }
+}
