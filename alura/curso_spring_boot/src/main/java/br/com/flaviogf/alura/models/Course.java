@@ -1,11 +1,22 @@
 package br.com.flaviogf.alura.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import static java.lang.String.format;
 
+@Entity
 public class Course {
-    private final int id;
-    private final String name;
-    private final String category;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+    private String category;
+
+    private Course() {
+    }
 
     public Course(int id, String name, String category) {
         this.id = id;
