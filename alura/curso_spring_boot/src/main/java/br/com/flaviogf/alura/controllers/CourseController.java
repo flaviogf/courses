@@ -3,9 +3,13 @@ package br.com.flaviogf.alura.controllers;
 import br.com.flaviogf.alura.models.Course;
 import br.com.flaviogf.alura.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.validation.Valid;
+import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/courses")
@@ -18,13 +22,35 @@ public class CourseController {
         this.courseRepository = courseRepository;
     }
 
+    @PostMapping
+    public ResponseEntity<Course> create(@RequestBody @Valid Course course, UriComponentsBuilder builder) {
+        var created = courseRepository.save(course);
+
+        URI uri = builder.path("/courses/{id}").buildAndExpand(created.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(created);
+    }
+
     @GetMapping
-    public Iterable<Course> list() {
-        return courseRepository.findAll();
+    public ResponseEntity<Iterable<Course>> list() {
+        var courses = courseRepository.findAll();
+        return ResponseEntity.ok(courses);
     }
 
     @GetMapping("/filter")
-    public Iterable<Course> filter(String name) {
-        return courseRepository.findByName(name);
+    public ResponseEntity<Iterable<Course>> filter(String name) {
+        var courses = courseRepository.findByName(name);
+        return ResponseEntity.ok(courses);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Course> findById(@PathVariable long id) {
+        Optional<Course> course = courseRepository.findById(id);
+
+        if (course.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(course.get());
     }
 }

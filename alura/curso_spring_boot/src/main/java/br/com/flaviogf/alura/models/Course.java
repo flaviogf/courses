@@ -1,5 +1,7 @@
 package br.com.flaviogf.alura.models;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,9 +12,13 @@ import static java.lang.String.format;
 @Entity
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Length(min = 5, max = 250)
     private String name;
+
+    @Length(min = 5, max = 250)
     private String category;
 
     private Course() {
@@ -29,7 +35,7 @@ public class Course {
         return format("Course(name='%s')", this.name);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
