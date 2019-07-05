@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./node_modules/minireset.css/minireset.min.css">
+    <title>Exemplos</title>
+</head>
+
+<body>
+    <header>
+        <h1>Exemplos HTML</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="./exemplos/teste.html" wb-nav-item>Teste</a>
+            </li>
+            <li>
+                <a href="./exemplos/temp.html" wb-nav-item>Temp</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="content">
+        Conteudo
+    </section>
+
+    <script>
+        window.onload = () => {
+            const content = document.querySelector('#content')
+
+            document.querySelectorAll('[wb-nav-item]').forEach(link => {
+                link.onclick = e => {
+                    e.preventDefault()
+
+                    fetch(link.href)
+                        .then(resp => resp.text())
+                        .then(html => content.innerHTML = html)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
