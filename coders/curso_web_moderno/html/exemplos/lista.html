@@ -2,10 +2,10 @@
 
 <ul class="tree">
     <li>
-        backend
+        <span data-folder>backend</span>
         <ul>
             <li>
-                app
+                <span data-folder>app</span>
                 <ul>
                     <li>
                         venda.js
@@ -15,6 +15,44 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <span data-folder>config</span>
+                <ul>
+                    <li>
+                        db.js
+                    </li>
+                    <li>
+                        server.js
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span data-folder>frontend</span>
+        <ul>
+            <li>
+                app.js
+            </li>
+            <li>
+                index.html
+            </li>
+            <li>
+                style.css
+            </li>
         </ul>
     </li>
 </ul>
+
+<script>
+    document.querySelectorAll('[data-folder]').forEach(el => {
+
+        el.onclick = e => {
+            const ul = el.nextElementSibling
+
+            const current = ul.style.display
+
+            ul.style.display = current == 'none' ? 'block' : 'none'
+        }
+    })
+</script>

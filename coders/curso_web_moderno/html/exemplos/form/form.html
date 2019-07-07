@@ -1,0 +1,54 @@
+<form method="POST">
+    <fieldset>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name">
+    </fieldset>
+
+    <fieldset>
+        <label for="biography">Biografia</label>
+        <textarea name="biography" rows="5" id="biography"></textarea>
+    </fieldset>
+
+    <fieldset>
+        <input type="radio" name="type" checked> Admin
+        <input type="radio" name="type"> Regular
+    </fieldset>
+
+    <fieldset>
+        <label for="state">Estado</label>
+        <select name="state" id="state">
+            <option>Selecione</option>
+            <option value="rj">RJ</option>
+            <option value="sp">SP</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <label for="interest">Interesse</label>
+        <select name="interest" id="interest" multiple size="4">
+            <option value="js">Javascript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+        </select>
+    </fieldset>
+
+    <button type="submit" formaction="http://localhost:3000/insert">Inserir</button>
+    <button type="submit" formaction="http://localhost:3000/update/1">Atualizar</button>
+</form>
+
+<style>
+    fieldset {
+        border: none;
+    }
+
+    input,
+    textarea,
+    select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio] {
+        display: inline;
+    }
+</style>
