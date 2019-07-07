@@ -1,0 +1,41 @@
+<video id="video" src="http://files.cod3r.com.br/curso-web/video.mp4" controls width="640"></video>
+
+<button data-play="#video">Play</button>
+<div class="progress">
+    <div></div>
+</div>
+<button data-pause="#video">Pause</button>
+
+<style>
+    button {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .progress {
+        border: 1px solid greenyellow;
+        height: 50px;
+        width: 100%;
+    }
+
+    .progress>div {
+        height: 100%;
+        background-color: green;
+    }
+</style>
+
+<script>
+    const video = document.querySelector('#video')
+    const progressBar = document.querySelector('.progress > div')
+
+    video.oncontextmenu = () => false;
+
+    document.querySelector(`[data-play]`).onclick = e => video.play()
+    document.querySelector(`[data-pause]`).onclick = e => video.pause()
+
+    setInterval(() => {
+        const currentTimePercentual = video.currentTime * 100 / video.duration
+        progressBar.style.width = `${currentTimePercentual}%`
+    }, 500)
+
+</script>

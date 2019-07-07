@@ -13,19 +13,34 @@
 <style>
     img {
         position: absolute;
+        display: none;
     }
 
     .round {
-        background-color: #d3d3d3;
         width: 513;
         height: 342;
     }
 </style>
 
 <script>
-    const images = document.querySelectorAll('img')
+    const images = Array.from(document.querySelectorAll('img'))
 
     function slide(images) {
-        // TODO
+        function move(image, left = innerWidth) {
+            image.style.display = 'block'
+            image.style.left = left
+            if (left <= -image.width) return move(next(image))
+            setTimeout(() => move(image, left - 10), 50)
+        }
+
+        function next(image) {
+            const current = images.indexOf(image)
+            const next = current + 1
+            return images[next] || images[0]
+        }
+
+        move(images[0])
     }
+
+    slide(images)
 </script>
