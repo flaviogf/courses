@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .selector {
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            border: 5px solid navy;
+            font-family: Arial, Helvetica, sans-serif;
+            width: calc(100% - 40px);
+            background-color: rgb(54, 153, 189);
+        }
+
+        .selector:hover {
+            background-color: orangered;
+        }
+
+        .selector::first-letter {
+            font-size: 60px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="selector">Conteúdo</div>
+</body>
+
+</html>
