@@ -4,10 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <title>Desafio Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        * {
+            font-family: 'Oswald', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .cabecalho {
+            grid-template-areas: "logo menu-toggle";
+            box-shadow: 1px 3px 5px steelblue;
+            grid-template-columns: 1fr auto;
+            background-color: #333;
+            grid-template-rows: 1fr;
+            display: grid;
+            height: 60px;
+        }
+
+        .logo {
+            align-items: center;
+            grid-area: logo;
+            margin: 0 10px;
+            display: flex;
+        }
+
+        .logo img {
+            height: auto;
+            width: 200px;
+        }
+
+        .menu-toggle {
+            background-color: #4c4c4c;
+            grid-area: menu-toggle;
+            border-radius: 3px;
+            margin: 8px 10px;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            border: none;
+            width: 50px;
+        }
+
+        .menu {
+            grid-area: menu;
+            display: none;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0 10px;
+            display: flex;
+            height: 100%;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 10px 2px;
+            cursor: pointer;
+            display: block;
+            color: #fff;
+            width: 60px;
+        }
+
+        .menu li:hover {
+            background-color: steelblue;
+            color: #333;
+        }
+
+        .menu .active {
+            background-color: steelblue;
+            color: #333;
+        }
+
+        .menu a {
+            justify-content: center;
+            text-decoration: none;
+            align-items: center;
+            color: inherit;
+            display: flex;
+            height: 100%;
+        }
+
+        .autenticacao {
+            grid-area: autenticacao;
+            align-items: center;
+            margin: 0 10px;
+            display: none;
+            color: #fff;
+        }
+
+        .autenticacao a {
+            justify-content: center;
+            text-decoration: none;
+            align-items: center;
+            margin: 10px 2px;
+            color: inherit;
+            outline: none;
+            display: flex;
+            height: 40px;
+            width: 60px;
+        }
+
+        .autenticacao .botao {
+            width: 100px;
+        }
+
+        .botao {
+            border-radius: 25px;
+            padding: 4px 8px;
+            display: block;
+            width: 100px;
+        }
+
+        .destaque {
+            background-color: crimson;
+        }
+
+        @media (min-width: 768px) {
+            .cabecalho {
+                grid-template-areas: "logo menu menu-toggle";
+                grid-template-columns: auto 1fr auto;
+            }
+
+            .menu {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cabecalho {
+                grid-template-areas: "logo menu autenticacao";
+                grid-template-columns: auto 1fr auto;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .autenticacao {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
@@ -18,9 +162,11 @@
                 <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
             </a>
         </div>
+
         <button class="menu-toggle">
             <i class="fa fa-lg fa-bars"></i>
         </button>
+
         <nav class="menu">
             <ul>
                 <li>
@@ -37,6 +183,7 @@
                 </li>
             </ul>
         </nav>
+
         <aside class="autenticacao">
             <a href="#login">Login</a>
             <a href="#registar" class="botao destaque">Registrar</a>
@@ -44,7 +191,18 @@
     </header>
 
     <script>
-        // ...
+        onhashchange = e => {
+            const newHref = e.newURL.split('#')[1]
+            const newLink = document.querySelector(`li > a[href*=${newHref}]`)
+            newLink.classList.add('active')
+
+            const oldHref = e.oldURL.split('#')[1]
+            const oldLink = document.querySelector(`li > a[href*=${oldHref}]`)
+
+            if (!oldLink) return
+
+            oldLink.classList.remove('active')
+        }
     </script>
 </body>
 
