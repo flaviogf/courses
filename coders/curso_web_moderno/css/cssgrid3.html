@@ -3,18 +3,61 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Grid #03</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        body {
+            grid-template-columns: 1fr;
+            grid-template-rows: 80px 1fr 100px;
+            grid-template-areas:
+                "nav"
+                "main"
+                "footer";
+            display: grid;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            grid-area: header;
+            display: none;
+        }
+
+        nav {
+            grid-area: nav;
+        }
+
+        main {
+            grid-area: main
+        }
+
+        footer {
+            grid-area: footer;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                grid-template-columns: 300px 1fr;
+                grid-template-rows: 100px 1fr 100px;
+                grid-template-areas:
+                    "header header"
+                    "nav main"
+                    "footer footer";
+            }
+
+            header {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <main class="tag">CONTEÚDO</main>
-    <header class="tag">CABEÇALHO</header>
-    <footer class="tag">RODAPÉ</footer>
-    <nav class="tag">NAVEGAÇÃO</nav>
+    <main class="tag"></main>
+    <header class="tag"></header>
+    <footer class="tag"></footer>
+    <nav class="tag"></nav>
 
     <script src="js/tag.js"></script>
 </body>

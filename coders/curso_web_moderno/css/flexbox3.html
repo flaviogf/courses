@@ -6,7 +6,25 @@
     <title>Flexbox #03</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        .flex-container {
+            display: flex;
+            height: 400px;
+            flex-direction: column-reverse;
+        }
+
+        .flex-container div {
+            flex-basis: 200px;
+            flex-shrink: 1;
+        }
+
+        .flex-container div:nth-child(3) {
+            background-color: indianred;
+            order: 1;
+        }
+
+        .flex-container div:nth-child(4) {
+            flex-shrink: 2;
+        }
     </style>
 </head>
 
