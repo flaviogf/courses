@@ -3,6 +3,8 @@ package br.com.flaviogf.alura.controllers;
 import br.com.flaviogf.alura.models.Course;
 import br.com.flaviogf.alura.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -32,7 +34,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<Course>> list() {
+    public ResponseEntity<Iterable<Course>> all() {
         var courses = courseRepository.findAll();
         return ResponseEntity.ok(courses);
     }
@@ -52,5 +54,11 @@ public class CourseController {
         }
 
         return ResponseEntity.ok(course.get());
+    }
+
+    @GetMapping("paginated")
+    public ResponseEntity<Page<Course>> paginated(Pageable pageable) {
+        var page = courseRepository.findAll(pageable);
+        return ResponseEntity.ok(page);
     }
 }
