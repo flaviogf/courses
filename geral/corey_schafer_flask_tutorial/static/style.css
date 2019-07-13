@@ -1,0 +1,175 @@
+* {
+  font-family: "Oswald", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+  color: #333;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  background-color: #5f788a;
+  padding: 16px;
+}
+
+.navbar__title {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.navbar__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar__nav__item {
+  text-decoration: none;
+  margin: 8px 0px;
+  display: block;
+  color: #cbd5db;
+}
+
+.navbar__nav__item:last-child {
+  margin: 0;
+  margin-top: 8px;
+}
+
+.navbar__nav__item a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.post {
+  justify-content: space-around;
+  border: 1px solid lightgray;
+  background-color: #fff;
+  flex-direction: column;
+  margin: 5px 0;
+  display: flex;
+  height: 170px;
+  padding: 8px;
+}
+
+.post__title {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.post__description {
+  border-bottom: 1px solid lightgray;
+  font-size: 1.2rem;
+  color: #428bca;
+  order: -1;
+}
+
+.post__description span {
+  font-size: 1rem;
+  color: #b3b3b3;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content__aside {
+  display: none;
+}
+
+.form {
+  border: 1px solid lightgray;
+  background-color: #fff;
+  flex-direction: column;
+  border-radius: 2px;
+  padding: 8px 10px;
+  display: flex;
+}
+
+.form__title {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.form__group {
+  flex-direction: column;
+  display: flex;
+  margin: 8px 0;
+}
+
+.form__label {
+  margin-bottom: 5px;
+}
+
+.form__input {
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 0 10px;
+  outline: none;
+  height: 35px;
+  width: 100%;
+}
+
+.form__input:focus {
+  box-shadow: 0px 0px 1px 2px #007bff66;
+}
+
+.form__error {
+  color: indianred;
+  margin-left: 1px;
+  margin-top: 7px;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid #5f788a;
+  border-radius: 2px;
+  padding: 5px 12px;
+  font-size: 1rem;
+  color: #5f788a;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    align-items: center;
+    padding: 0 16px;
+    display: flex;
+    height: 60px;
+  }
+
+  .navbar__title {
+    margin-right: 16px;
+  }
+
+  .navbar__nav {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .navbar__nav:last-child {
+    justify-content: flex-end;
+  }
+
+  .navbar__nav__item {
+    margin: 0 8px;
+  }
+
+  .navbar__nav__item:last-child {
+    margin: 0 8px;
+  }
+
+  .content {
+    grid-template-columns: 1fr 200px;
+    display: grid;
+  }
+
+  .content__aside {
+    display: block;
+  }
+}

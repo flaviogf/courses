@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<form class="form" method="POST">
+    <span class="form__title">Join Today</span>
+
+    {{ form.hidden_tag() }}
+
+    <fieldset class="form__group">
+      {{ form.username.label(class="form__label") }}
+      {{ form.username(class="form__input") }}
+      {% for error in form.username.errors %}
+      <span class="form__error">{{ error }}</span>
+      {% endfor %}
+    </fieldset>
+
+    <fieldset class="form__group">
+      {{ form.email.label(class="form__label") }}
+      {{ form.email(class="form__input") }}
+      {% for error in form.email.errors %}
+      <span class="form__error">{{ error }}</span>
+      {% endfor %}
+    </fieldset>
+
+    <fieldset class="form__group">
+      {{ form.password.label(class="form__label") }}
+      {{ form.password(class="form__input") }}
+      {% for error in form.password.errors %}
+      <span class="form__error">{{ error }}</span>
+      {% endfor %}
+    </fieldset>
+
+    <fieldset class="form__group">
+      {{ form.confirm_password.label(class="form__label") }}
+      {{ form.confirm_password(class="form__input") }}
+      {% for error in form.confirm_password.errors %}
+      <span class="form__error">{{ error }}</span>
+      {% endfor %}
+    </fieldset>
+
+    <fieldset class="form__group">
+      {{ form.sign_up(class="btn") }}
+    </fieldset>
+</form>
+{% endblock %}
