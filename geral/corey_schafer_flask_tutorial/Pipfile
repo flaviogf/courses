@@ -4,10 +4,19 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
+autopep8 = "*"
+rope = "*"
+beautifulsoup4 = "*"
 
 [packages]
 flask = "*"
 flask-wtf = "*"
+alembic = "*"
+flask-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

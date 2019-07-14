@@ -1,57 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Oswald&display=swap"
-    />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.rawgit.com/jgthms/minireset.css/master/minireset.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-    {% if title %}
-    <title>Flask Blog - {{ title }}</title>
-    {% else %}
-    <title>Flask Blog</title>
-    {% endif %}
-  </head>
-  <body>
-    <nav class="navbar">
-      <span class="navbar__title">
-        <a href="{{ url_for('home') }}">Flask Blog</a>
-      </span>
-      <ul class="navbar__nav">
-        <li class="navbar__nav__item">
-          <a href="{{ url_for('home') }}">Home</a>
-        </li>
-        <li class="navbar__nav__item">
-          <a href="{{ url_for('about') }}">About</a>
-        </li>
-      </ul>
-      <span class="navbar__nav">
-        <a class="navbar__nav__item" href="{{ url_for('login') }}">Login</a>
-        <a class="navbar__nav__item" href="{{ url_for('register') }}"
-          >Register</a
-        >
-      </span>
-    </nav>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap" />
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/minireset.css/master/minireset.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 
-    <article class="content">
-      <main class="content__main">
-        {% block content %}{% endblock %}
-      </main>
+  {% if title %}
+  <title>Flask Blog - {{ title }}</title>
+  {% else %}
+  <title>Flask Blog</title>
+  {% endif %}
 
-      <aside class="content__aside"></aside>
-    </article>
-  </body>
+</head>
+
+<body>
+  <nav class="navbar">
+    <span class="navbar__title">
+      <a href="{{ url_for('home') }}">Flask Blog</a>
+    </span>
+    <ul class="navbar__nav">
+      <li class="navbar__nav__item">
+        <a href="{{ url_for('home') }}">Home</a>
+      </li>
+      <li class="navbar__nav__item">
+        <a href="{{ url_for('about') }}">About</a>
+      </li>
+    </ul>
+    <span class="navbar__nav">
+      <a class="navbar__nav__item" href="{{ url_for('login') }}">Login</a>
+      <a class="navbar__nav__item" href="{{ url_for('register') }}">Register</a>
+    </span>
+  </nav>
+
+  <article class="content">
+    <main class="content__main">
+      {% block content %}{% endblock %}
+    </main>
+
+    <aside class="content__aside"></aside>
+  </article>
+</body>
+
 </html>
