@@ -1,4 +1,5 @@
-from flask import redirect, render_template, url_for
+from flask import redirect, render_template, request, url_for
+from flask_login import login_required, login_user, logout_user
 
 from flaskblog import app, bcrypt, db
 from flaskblog.forms import LoginForm, RegisterForm
@@ -49,6 +50,23 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        return redirect(url_for('home'))
+        user = User.query.filter_by(email=form.email.data).first()
+
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, form.remember.data)
+            next_url = request.args.get('next')
+            return redirect(next_url) if next_url else redirect(url_for('home'))
 
     return render_template('login.html', title="Login", form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+@app.route('/account')
+@login_required
+def account():
+    return render_template('account.html', title='Acount')

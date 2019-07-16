@@ -15,6 +15,7 @@ flask-wtf = "*"
 alembic = "*"
 flask-sqlalchemy = "*"
 flask-bcrypt = "*"
+flask-login = "*"
 
 [requires]
 python_version = "3.7"

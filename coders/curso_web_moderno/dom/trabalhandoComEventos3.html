@@ -10,19 +10,19 @@
             margin: 0;
             display: flex;
         }
-        
+
         .esquerda {
             height: 100vh;
             width: 50%;
             background-color: coral;
         }
-        
+
         .direita {
             height: 100vh;
             width: 50%;
             background-color: cornflowerblue;
         }
-        
+
         .item {
             border: solid 5px black;
             background-color: darkgrey;
@@ -45,7 +45,21 @@
     </div>
     <div class="direita" wm-dropzone></div>
     <script>
-        // ...
+        const items = document.querySelectorAll('[wm-dropzone] .item');
+        items.forEach((el, index) => {
+            el.draggable = true;
+            el.id = index;
+            el.ondragstart = e => e.dataTransfer.setData('item-id', el.id);
+        })
+
+        const dropzones = document.querySelectorAll('[wm-dropzone]');
+        dropzones.forEach(el => {
+            el.ondragover = e => e.preventDefault();
+            el.ondrop = e => {
+                const item = document.getElementById(e.dataTransfer.getData('item-id'));
+                el.appendChild(item);
+            }
+        });
     </script>
 </body>
 

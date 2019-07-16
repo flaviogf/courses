@@ -1,0 +1,13 @@
+[web]
+192.168.50.10
+
+[web:vars]
+ansible_user = vagrant
+ansible_ssh_private_key_file = /home/flavio/dev/cursos/alura/curso_ansible/.vagrant/machines/default/virtualbox/private_key
+
+[homolog]
+192.168.7.5
+
+[homolog:vars]
+ansible_user = smn
+ansible_password = smn2019@!HADES

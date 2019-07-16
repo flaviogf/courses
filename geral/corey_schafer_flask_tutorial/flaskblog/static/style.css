@@ -126,6 +126,21 @@ fieldset {
   margin-top: 7px;
 }
 
+.form__check {
+  align-items: center;
+  display: flex;
+}
+
+.form__check label {
+  display: block;
+}
+
+.form__check input {
+  margin-right: 5px;
+  display: block;
+  order: -1;
+}
+
 .btn {
   background-color: transparent;
   border: 1px solid #5f788a;

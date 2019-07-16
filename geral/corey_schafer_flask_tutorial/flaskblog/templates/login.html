@@ -21,6 +21,11 @@
         {% endfor %}
     </fieldset>
 
+    <div class="form__check">
+        {{ form.remember.label }}
+        {{ form.remember }}
+    </div>
+
     <fieldset class="form__group">
         {{ form.login(class="btn") }}
     </fieldset>

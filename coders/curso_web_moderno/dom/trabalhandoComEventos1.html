@@ -9,9 +9,19 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <a wait="3" href="https://google.com.br">Google</a>
     </div>
     <script>
-        // ...
+        const link = document.querySelector('[wait]');
+
+        link.onclick = e => {
+            e.preventDefault();
+
+            const time = +link.attributes.wait.value * 1000;
+
+            console.log(`Redirect in ${time} ms`);
+
+            setTimeout(() => location.href = link.href, time);
+        }
     </script>
 </body>
