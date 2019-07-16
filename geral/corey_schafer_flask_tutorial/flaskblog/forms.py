@@ -1,3 +1,4 @@
+from flask_login import current_user
 from flask_wtf import FlaskForm
 from wtforms import ValidationError
 from wtforms.fields import (BooleanField, PasswordField, StringField,
@@ -38,3 +39,23 @@ class LoginForm(FlaskForm):
                              validators=[DataRequired()])
     remember = BooleanField('Remember')
     login = SubmitField('Login')
+
+
+class UpdateAccountForm(FlaskForm):
+    username = StringField('Username',
+                           validators=[DataRequired(), Length(min=2, max=20)])
+    email = StringField('E-mail',
+                        validators=[DataRequired(), Email()])
+    update = SubmitField('Update')
+
+    def validate_username(self, field):
+        if field.data != current_user.username:
+            user = User.query.filter_by(username=field.data).first()
+            if user:
+                raise ValidationError('That username is taken')
+
+    def validate_email(self, field):
+        if field.data != current_user.email:
+            user = User.query.filter_by(email=field.data).first()
+            if user:
+                raise ValidationError('That email is taken.')

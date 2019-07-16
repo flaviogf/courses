@@ -31,6 +31,13 @@
         <button wm-submit>Pesquisar</button>
     </form>
     <script>
-        // ...
+        document.pesquisa.onsubmit = e =>  {
+            e.preventDefault()
+
+            const form = new FormData(e.target)
+
+            console.log(`Has q => ${form.has('q')}`)
+            console.log(`Value hl => ${form.get('hl')}`)
+        }
     </script>
 </body>

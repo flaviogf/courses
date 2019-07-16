@@ -1,0 +1,28 @@
+[wm-flappy] {
+    border: 5px solid deepskyblue;
+    background-color: skyblue;
+    width: 1200px;
+    height: 700px;
+}
+
+.bar_pair {}
+
+.bar_pair__bar {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.bar_pair__bar__head {
+    background: linear-gradient(90deg, green, lightgreen);
+    border: 3px solid black;
+    height: 30px;
+    width: 150px;
+}
+
+.bar_pair__bar__body {
+    background: linear-gradient(90deg, green, lightgreen);
+    border: 3px solid black;
+    height: 300px;
+    width: 120px;
+}

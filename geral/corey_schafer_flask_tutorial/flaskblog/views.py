@@ -1,8 +1,8 @@
-from flask import redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user
+from flask import flash, redirect, render_template, request, url_for
+from flask_login import login_required, login_user, logout_user, current_user
 
 from flaskblog import app, bcrypt, db
-from flaskblog.forms import LoginForm, RegisterForm
+from flaskblog.forms import LoginForm, RegisterForm, UpdateAccountForm
 from flaskblog.models import User
 
 posts = [
@@ -39,8 +39,8 @@ def register():
 
         db.session.add(user)
         db.session.commit()
-
-        return redirect(url_for('home'))
+        flash('Your account has been created')
+        return redirect(url_for('login'))
 
     return render_template('register.html', title="Register", form=form)
 
@@ -57,6 +57,8 @@ def login():
             next_url = request.args.get('next')
             return redirect(next_url) if next_url else redirect(url_for('home'))
 
+        flash('Login Unsuccessful. Please check email and password')
+
     return render_template('login.html', title="Login", form=form)
 
 
@@ -66,7 +68,19 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    return render_template('account.html', title='Acount')
+    form = UpdateAccountForm()
+
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+
+    return render_template('account.html', title='Acount', form=form)
