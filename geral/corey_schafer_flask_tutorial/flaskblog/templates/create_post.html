@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form class="form" method="POST" novalidate>
+    <span class="form__title">New Post</span>
+
+    {{ form.hidden_tag() }}
+
+    <fieldset class="form__group">
+        {{ form.title.label(class="form__label") }}
+        {{ form.title(class="form__input") }}
+        {% for error in form.title.errors %}
+        <span class="form__error">{{ error }}</span>
+        {% endfor %}
+    </fieldset>
+
+    <fieldset class="form__group">
+        {{ form.content.label(class="form__label") }}
+        {{ form.content(class="form__input form__textarea") }}
+        {% for error in form.content.errors %}
+        <span class="form__error">{{ error }}</span>
+        {% endfor %}
+    </fieldset>
+
+    <fieldset class="form__group">
+        {{ form.submit(class="btn") }}
+    </fieldset>
+</form>
+{% endblock %}

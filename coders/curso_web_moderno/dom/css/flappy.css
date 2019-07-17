@@ -1,11 +1,17 @@
 [wm-flappy] {
+    position: relative;
     border: 5px solid deepskyblue;
     background-color: skyblue;
     width: 1200px;
     height: 700px;
 }
 
-.bar_pair {}
+.bird {
+    position: absolute;
+    left: calc(50% - 22px);
+    top: calc(50% - 30px);
+    width: 60px;
+}
 
 .bar_pair__bar {
     flex-direction: column;

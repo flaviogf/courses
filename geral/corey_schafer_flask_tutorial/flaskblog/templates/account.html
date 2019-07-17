@@ -1,28 +1,42 @@
 {% extends "layout.html" %}
 {% block content %}
-<form class="form" method="POST" novalidate>
-    <span class="form__title">Your Account</span>
+<section class="account">
+    <div class="account__header">
+        <img class="account__image" src="{{ file_image }}" alt="image account">
 
-    {{ form.hidden_tag() }}
+        <span class="account__username">{{ current_user.username }}</span>
+    </div>
 
-    <fieldset class="form__group">
-        {{ form.username.label(class="form__label") }}
-        {{ form.username(class="form__input") }}
-        {% for error in form.username.errors %}
-        <span class="form__error">{{ error }}</span>
-        {% endfor %}
-    </fieldset>
+    <form class="form" method="POST" enctype="multipart/form-data" novalidate>
+        <span class="form__title">Your Account</span>
 
-    <fieldset class="form__group">
-        {{ form.email.label(class="form__label") }}
-        {{ form.email(class="form__input") }}
-        {% for error in form.email.errors %}
-        <span class="form__error">{{ error }}</span>
-        {% endfor %}
-    </fieldset>
+        {{ form.hidden_tag() }}
 
-    <fieldset class="form__group">
-        {{ form.update(class="btn") }}
-    </fieldset>
-</form>
+        <fieldset class="form__group">
+            {{ form.username.label(class="form__label") }}
+            {{ form.username(class="form__input") }}
+            {% for error in form.username.errors %}
+            <span class="form__error">{{ error }}</span>
+            {% endfor %}
+        </fieldset>
+
+        <fieldset class="form__group">
+            {{ form.email.label(class="form__label") }}
+            {{ form.email(class="form__input") }}
+            {% for error in form.email.errors %}
+            <span class="form__error">{{ error }}</span>
+            {% endfor %}
+        </fieldset>
+
+        <fieldset class="form__group">
+            {{ form.image.label(class="form__label") }}
+            {{ form.image }}
+        </fieldset>
+
+        <fieldset class="form__group">
+            {{ form.submit(class="btn") }}
+        </fieldset>
+    </form>
+</section>
+
 {% endblock %}

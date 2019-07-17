@@ -1,23 +1,20 @@
+import secrets
+from os import path
+
 from flask import flash, redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import current_user, login_required, login_user, logout_user
+from PIL import Image
 
 from flaskblog import app, bcrypt, db
-from flaskblog.forms import LoginForm, RegisterForm, UpdateAccountForm
-from flaskblog.models import User
-
-posts = [
-    {
-        'author': 'Naruto',
-        'title': 'Blog Post 1',
-        'content': 'First content',
-        'publication_date': 'April 20, 2019'
-    }
-]
+from flaskblog.forms import (LoginForm, PostForm, RegisterForm,
+                             UpdateAccountForm)
+from flaskblog.models import Post, User
 
 
 @app.route('/')
 @app.route('/home')
 def home():
+    posts = Post.query.all()
     return render_template('home.html', posts=posts)
 
 
@@ -74,6 +71,8 @@ def account():
     form = UpdateAccountForm()
 
     if form.validate_on_submit():
+        if form.image.data:
+            current_user.image = save_image(form.image.data)
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
@@ -83,4 +82,40 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
 
-    return render_template('account.html', title='Acount', form=form)
+    file_image = url_for('static', filename=f'pictures/{current_user.image}')
+
+    return render_template('account.html', title='Acount', form=form, file_image=file_image)
+
+
+def save_image(file):
+    _, ext = path.splitext(file.filename)
+    filename = secrets.token_hex(8) + ext
+    filepath = path.join(app.root_path, 'static', 'pictures', filename)
+
+    image = Image.open(file)
+    image.resize((128, 128))
+    image.save(filepath)
+
+    return filename
+
+
+@app.route('/post/new', methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+
+    if form.validate_on_submit():
+        post = Post(title=form.title.data,
+                    content=form.content.data,
+                    author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('new_post'))
+
+    return render_template('create_post.html', title='New Post', form=form)
+
+
+@app.route('/post/<int:id>')
+def post(id):
+    post = Post.query.get_or_404(id)
+    return render_template('post.html', title=post.title, post=post)
