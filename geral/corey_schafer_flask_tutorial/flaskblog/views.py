@@ -1,7 +1,7 @@
 import secrets
 from os import path
 
-from flask import flash, redirect, render_template, request, url_for
+from flask import abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 from PIL import Image
 
@@ -87,18 +87,6 @@ def account():
     return render_template('account.html', title='Acount', form=form, file_image=file_image)
 
 
-def save_image(file):
-    _, ext = path.splitext(file.filename)
-    filename = secrets.token_hex(8) + ext
-    filepath = path.join(app.root_path, 'static', 'pictures', filename)
-
-    image = Image.open(file)
-    image.resize((128, 128))
-    image.save(filepath)
-
-    return filename
-
-
 @app.route('/post/new', methods=['GET', 'POST'])
 @login_required
 def new_post():
@@ -110,7 +98,7 @@ def new_post():
                     author=current_user)
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('new_post'))
+        return redirect(url_for('post', id=post.id))
 
     return render_template('create_post.html', title='New Post', form=form)
 
@@ -119,3 +107,44 @@ def new_post():
 def post(id):
     post = Post.query.get_or_404(id)
     return render_template('post.html', title=post.title, post=post)
+
+
+@app.route('/post/<int:id>/update', methods=['GET', 'POST'])
+@login_required
+def update_post(id):
+    post = Post.query.get_or_404(id)
+    if post.author != current_user:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        db.session.commit()
+        return redirect(url_for('post', id=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('create_post.html', title='Update Post', form=form)
+
+
+@app.route('/post/<int:id>/delete')
+@login_required
+def delete_post(id):
+    post = Post.query.get_or_404(id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('home'))
+
+
+def save_image(file):
+    _, ext = path.splitext(file.filename)
+    filename = secrets.token_hex(8) + ext
+    filepath = path.join(app.root_path, 'static', 'pictures', filename)
+
+    image = Image.open(file)
+    image.resize((128, 128))
+    image.save(filepath)
+
+    return filename

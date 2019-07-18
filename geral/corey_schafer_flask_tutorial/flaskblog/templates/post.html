@@ -1,5 +1,16 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block content %}
-<h2>{{ post.title }}</h2>
-<p>{{ post.content }}</p>
+<article class="post">
+    <h3 class="post__title">{{ post.title }}</h3>
+    <p class="post__content">{{ post.content }}</p>
+    <p class="post__description">
+        {{ post.author.username }} <span>{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}</span>
+    </p>
+    {% if post.author == current_user %}
+    <div class="post__options">
+        <a class="post__options__btn btn" href="{{ url_for('delete_post', id=post.id) }}">Delete</a>
+        <a class="post__options__btn btn" href="{{ url_for('update_post', id=post.id) }}">Update</a>
+    </div>
+    {% endif %}
+</article>
 {% endblock %}

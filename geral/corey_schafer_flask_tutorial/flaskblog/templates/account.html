@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-<section class="account">
-    <div class="account__header">
+<article class="account">
+    <header class="account__header">
         <img class="account__image" src="{{ file_image }}" alt="image account">
 
         <span class="account__username">{{ current_user.username }}</span>
-    </div>
+    </header>
 
     <form class="form" method="POST" enctype="multipart/form-data" novalidate>
         <span class="form__title">Your Account</span>
@@ -37,6 +37,6 @@
             {{ form.submit(class="btn") }}
         </fieldset>
     </form>
-</section>
+</article>
 
 {% endblock %}
