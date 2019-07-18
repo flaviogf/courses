@@ -25,4 +25,8 @@ app.use(bodyParser.urlencoded({
 
 app.post('/upload', upload.single('file'))
 
+app.post('/formulario', (req, res) => {
+    res.json(req.body)
+})
+
 app.listen(3000, () => console.log('|> Running on port 3000'))

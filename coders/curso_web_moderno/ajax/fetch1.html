@@ -11,6 +11,11 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        const stateToString = () => (html, state) => html + `<li>${state.nome}</li>`
+
+        fetch('dados/estados.json')
+            .then(res => res.json())
+            .then(states => states.reduce(stateToString(), ''))
+            .then(states => document.body.insertAdjacentHTML('beforeend', states))
     </script>
 </body>
