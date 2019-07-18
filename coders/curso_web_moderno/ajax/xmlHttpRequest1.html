@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax({
+            success,
+            fail,
+            method,
+            url
+        }) {
+            const xhr = new XMLHttpRequest()
+
+            xhr.onloadend = () => {
+                if (xhr.status == 200) {
+                    return success(xhr.responseText)
+                }
+
+                return fail({
+                    code: xhr.status,
+                    text: xhr.statusText
+                })
+            }
+
+            xhr.open(method, url)
+            xhr.send()
+        }
+
+        ajax({
+            url: '/dados/estados.json',
+            method: 'get',
+            success: (text) => {
+                const states = JSON.parse(text)
+
+                const table = document.createElement("table")
+
+                states.forEach(state => {
+                    const tr = document.createElement('tr')
+
+                    const id = document.createElement('td')
+                    id.innerHTML = state.id
+
+                    const name = document.createElement('td')
+                    name.innerHTML = state.nome
+
+                    const abbreviation = document.createElement('td')
+                    abbreviation.innerHTML = state.sigla
+
+                    tr.appendChild(id)
+                    tr.appendChild(name)
+                    tr.appendChild(abbreviation)
+
+                    table.appendChild(tr)
+                })
+
+                document.body.appendChild(table)
+            },
+            fail: (err) => {
+                document.body.appendChild(document.createTextNode(JSON.stringify(err)))
+            },
+        })
+    </script>
+</body>
