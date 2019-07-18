@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-{% for post in posts %}
+{% for post in posts.items %}
 <article class="post">
   <h3 class="post__title"><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></h3>
   <p class="post__content">{{ post.content }}</p>
@@ -9,4 +9,18 @@
   </p>
 </article>
 {% endfor %}
+
+<div class="pagination">
+  {% for page in posts.iter_pages(left_edge=1, left_current=1, right_current=2, right_edge=1) %}
+    {% if page %}
+      {% if page != posts.page %}
+        <a class="pagination__link" href="{{ url_for('home', page=page) }}">{{ page }}</a>
+      {% else %}
+        <span class="pagination__link">{{ page }}</span>
+      {% endif %}
+    {% else %}
+      <span>...</span>
+    {% endif %}
+  {% endfor %}
+</div>
 {% endblock %}

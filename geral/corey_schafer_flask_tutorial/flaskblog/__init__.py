@@ -1,3 +1,7 @@
+import json
+from os import path
+
+import click
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
@@ -21,5 +25,37 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
-from flaskblog.models import User
-from flaskblog import views
+@app.cli.command('seed', help='Add seed data to the database.')
+def seed():
+    def seed_user():
+        User.query.delete()
+
+        hashed_password = bcrypt.generate_password_hash('123')
+
+        naruto = User(username='naruto', email='naruto@uzumaki.com', password=hashed_password)
+        sasuke = User(username='sasuke', email='sasuke@uzumaki.com', password=hashed_password)
+
+        db.session.add(naruto)
+        db.session.add(sasuke)
+
+    def seed_post():
+        Post.query.delete()
+
+        filename = path.join(path.dirname(__file__), 'posts.json')
+
+        with open(filename) as file:
+            posts = file.read()
+
+            for post in json.loads(posts):
+                db.session.add(Post(**post))
+
+    seed_user()
+    seed_post()
+
+    db.session.commit()
+
+    click.secho('Seed data added to the database', fg='green')
+
+
+from flaskblog.models import Post, User
+from flaskblog import views, db

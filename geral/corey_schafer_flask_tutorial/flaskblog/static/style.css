@@ -256,6 +256,22 @@ a.post__options__btn {
   margin: 10px;
 }
 
+.pagination {
+  justify-content: center;
+  display: flex;
+}
+
+.pagination__link {
+  text-decoration: none;
+  color: #323232;
+  display: block;
+  margin: 0 5px;
+}
+
+span.pagination__link {
+  font-weight: bold;
+}
+
 @media (min-width: 768px) {
   .navbar {
     align-items: center;
