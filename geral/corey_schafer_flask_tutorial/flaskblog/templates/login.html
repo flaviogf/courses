@@ -26,8 +26,9 @@
         {{ form.remember }}
     </fieldset>
 
-    <fieldset class="form__group">
+    <div class="form__group form__group--inline">
         {{ form.submit(class="btn") }}
-    </fieldset>
+        <a class="form__group__link" href="{{ url_for('request_reset_password') }}">Forgot password</a>
+    </div>
 </form>
 {% endblock %}

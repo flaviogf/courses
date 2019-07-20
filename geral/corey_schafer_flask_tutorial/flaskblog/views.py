@@ -3,10 +3,12 @@ from os import path
 
 from flask import abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
+from flask_mail import Message
 from PIL import Image
 
-from flaskblog import app, bcrypt, db
+from flaskblog import app, bcrypt, db, mail
 from flaskblog.forms import (LoginForm, PostForm, RegisterForm,
+                             RequestResetPassword, ResetPassword,
                              UpdateAccountForm)
 from flaskblog.models import Post, User
 
@@ -139,6 +141,42 @@ def delete_post(id):
     return redirect(url_for('home'))
 
 
+@app.route('/request-reset-password', methods=['GET', 'POST'])
+def request_reset_password():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    form = RequestResetPassword()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+
+        if user:
+            send_mail(user)
+            flash('An email has been sent with instructions to reset your password.')
+            return redirect(url_for('login'))
+
+        flash('E-mail is not in use.')
+
+    return render_template('request_reset_password.html',
+                           title='Reset Password',
+                           form=form)
+
+
+@app.route('/reset-password/<string:token>', methods=['GET', 'POST'])
+def reset_password(token):
+    form = ResetPassword()
+
+    if form.validate_on_submit():
+        user = User.decode_token_reset(token)
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user.password = hashed_password
+        db.session.commit()
+        return redirect(url_for('login'))
+
+    return render_template('reset_password.html', form=form)
+
+
 def save_image(file):
     _, ext = path.splitext(file.filename)
     filename = secrets.token_hex(8) + ext
@@ -149,3 +187,13 @@ def save_image(file):
     image.save(filepath)
 
     return filename
+
+
+def send_mail(user):
+    message = Message(sender='noreply@flaskblog.com', recipients=[user.email])
+
+    message.body = f'''To reset your password, visit the following link:
+{url_for("reset_password", token=user.get_token_reset(), _external=True)}.
+If you did not make this request then simply ignore this email and no changes will be made.'''
+
+    mail.send(message)
