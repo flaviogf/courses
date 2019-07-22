@@ -1,10 +1,11 @@
 from datetime import datetime
 
 from flask_login import UserMixin
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
-from flaskblog import db
+from flaskblog import app, db
 
 
 class User(db.Model, UserMixin):
@@ -25,6 +26,21 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<User(id={self.id}), email='{self.email}')"
+
+    def get_token_reset(self):
+        serializer = Serializer(app.config['SECRET_KEY'])
+        token = serializer.dumps({'id': self.id}).decode('utf-8')
+        return token
+
+    @staticmethod
+    def decode_token_reset(token):
+        serializer = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = serializer.loads(token).get('id')
+        except:
+            return None
+        else:
+            return User.query.get(user_id)
 
 
 class Post(db.Model):

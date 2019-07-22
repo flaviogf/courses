@@ -7,7 +7,6 @@ verify_ssl = true
 pylint = "*"
 autopep8 = "*"
 rope = "*"
-beautifulsoup4 = "*"
 
 [packages]
 flask = "*"
@@ -16,6 +15,8 @@ alembic = "*"
 flask-sqlalchemy = "*"
 flask-bcrypt = "*"
 flask-login = "*"
+pillow = "*"
+flask-mail = "==0.9.1"
 
 [requires]
 python_version = "3.7"

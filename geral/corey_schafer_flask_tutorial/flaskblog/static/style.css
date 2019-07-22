@@ -134,6 +134,17 @@ a.post__options__btn {
   margin: 8px 0;
 }
 
+.form__group--inline {
+  align-items: center;
+  flex-direction: row;
+}
+
+.form__group__link {
+  text-decoration: none;
+  color: #5f788a;
+  margin: 0 5px;
+}
+
 .form__label {
   margin-bottom: 5px;
 }
