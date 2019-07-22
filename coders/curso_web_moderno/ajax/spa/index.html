@@ -25,6 +25,33 @@
     </nav>
     <div class="pagina"></div>
     <script>
-        // ...
+        function navigateAjax(selector, url, push = true) {
+            if (!selector || !url) return
+
+            const element = document.querySelector(selector)
+
+            const dataHistory = {
+                selector
+            }
+
+            fetch(url)
+                .then(resp => resp.text())
+                .then(html => element.innerHTML = html)
+                .then(() => push && history.pushState(dataHistory, null, url))
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(el => {
+            const selector = el.attributes['wm-destino'].value
+            const url = el.attributes['wm-link'].value
+
+            el.onclick = e => {
+                e.preventDefault()
+                navigateAjax(selector, url)
+            }
+        })
+
+        window.onpopstate = (e) => {
+            navigateAjax(e.state.selector, document.location.href)
+        }
     </script>
 </body>
