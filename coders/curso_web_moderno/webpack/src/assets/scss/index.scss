@@ -1,0 +1,9 @@
+$primary-color: #0FF;
+$secondary-color: #0FF;
+
+button {
+    background-color: $primary-color;
+    color: $secondary-color;
+    font-size: 2rem;
+    border: none;
+}
