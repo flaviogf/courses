@@ -1,0 +1,36 @@
+.main__container {
+  height: 100vh;
+  padding: 30px;
+}
+
+.main__card {
+}
+
+.main__card-header {
+  background-color: white;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.main__card-description {
+  flex-direction: column;
+  padding: 5px 16px;
+  display: flex;
+}
+
+.main__card-name {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #323232;
+}
+
+.main__card-bio {
+  color: #323232;
+  flex-grow: 1;
+}
+
+.main__card-footer {
+  background-color: white;
+  margin: 10px 0;
+}
