@@ -1,43 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Main.css";
+import like from "../assets/like.svg";
+import dislike from "../assets/dislike.svg";
+import logo from "../assets/logo.svg";
+import api from "../services/api";
 
-const devs = [
-  {
-    _id: "",
-    name: "Barry",
-    bio: "The fastest man alive.",
-    avatar: "https://api.adorable.io/avatars/285/abott@adorable.png"
-  },
-  {
-    _id: "",
-    name: "Barry",
-    bio: "The fastest man alive.",
-    avatar: "https://api.adorable.io/avatars/285/abott@adorable.png"
+export default function Main({ match }) {
+  const [devs, setDevs] = useState([]);
+
+  useEffect(() => {
+    async function listDevs() {
+      const response = await api.get("/devs", {
+        headers: {
+          user: match.params.id
+        }
+      });
+
+      setDevs(response.data);
+    }
+
+    listDevs();
+  }, [match.params.id]);
+
+  function clickDislike({ _id }) {
+    return async () => {
+      const response = await api.post(`/devs/${_id}/dislike`, null, {
+        headers: {
+          user: match.params.id
+        }
+      });
+
+      setDevs(devs.filter(dev => dev._id != _id));
+    };
   }
-];
 
-export default function Main() {
+  function clickLike({ _id }) {
+    return async () => {
+      const response = await api.post(`/devs/${_id}/like`, null, {
+        headers: {
+          user: match.params.id
+        }
+      });
+
+      setDevs(devs.filter(dev => dev._id != _id));
+    };
+  }
+
   return (
     <div className="main__container">
-      <ul>
-        {devs.map(dev => (
-          <li className="main__card">
-            <header className="main__card-header">
-              <img className="main__card-img" src={dev.avatar} alt="avatar" />
+      <Link to="/">
+        <img src={logo} alt="logo" />
+      </Link>
 
-              <div className="main__card-description">
-                <span className="main__card-name">{dev.name}</span>
-                <span className="main__card-bio">{dev.bio}</span>
+      {devs.length ? (
+        <ul className="main__dev-list">
+          {devs.map(dev => (
+            <li className="main__dev-card" key={dev._id}>
+              <img src={dev.avatar} alt="avatar" />
+
+              <footer>
+                <span className="main__dev-name">{dev.name}</span>
+                <span className="main__dev-bio">{dev.bio}</span>
+              </footer>
+
+              <div className="main__dev-buttons">
+                <button type="button">
+                  <img src={dislike} alt="like" onClick={clickDislike(dev)} />
+                </button>
+                <button type="button">
+                  <img src={like} alt="dislike" onClick={clickLike(dev)} />
+                </button>
               </div>
-            </header>
-
-            <footer className="main__card-footer">
-              <button type="button">Like</button>
-              <button type="button">Dislike</button>
-            </footer>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <span className="main__dev-list-empty">Acabou :(</span>
+      )}
     </div>
   );
 }

@@ -24,6 +24,12 @@ module.exports = {
   async store(req, res) {
     const { login } = req.body;
 
+    const registeredDev = await Dev.findOne({ login });
+
+    if (registeredDev) {
+      return res.json(registeredDev);
+    }
+
     const response = await axios.get(`https://api.github.com/users/${login}`);
 
     const { name, bio, avatar_url: avatar } = response.data;

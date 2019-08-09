@@ -1,36 +1,85 @@
 .main__container {
-  height: 100vh;
-  padding: 30px;
-}
-
-.main__card {
-}
-
-.main__card-header {
-  background-color: white;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
   display: flex;
+  padding: 16px;
 }
 
-.main__card-description {
-  flex-direction: column;
-  padding: 5px 16px;
-  display: flex;
+.main__dev-list {
+  grid-template-columns: 1fr;
+  margin-top: 50px;
+  grid-gap: 5px;
+  display: grid;
 }
 
-.main__card-name {
-  margin-bottom: 5px;
+.main__dev-list-empty {
+  margin-top: 50px;
+  color: #d3d3d3;
+  font-size: 2rem;
   font-weight: bold;
-  color: #323232;
 }
 
-.main__card-bio {
-  color: #323232;
+.main__dev-card {
+  flex-direction: column;
+  display: flex;
+  width: 180px;
+}
+
+.main__dev-card img {
+  border-radius: 4px 4px 0 0;
+}
+
+.main__dev-card footer {
   flex-grow: 1;
+  border-radius: 0 0 4px 4px;
+  background-color: white;
+  padding: 5px 15px;
 }
 
-.main__card-footer {
+.main__dev-name {
+  font-weight: bold;
+  display: block;
+  margin: 5px 0;
+  color: #333;
+}
+
+.main__dev-bio {
+  font-size: 12px;
+  display: block;
+  margin: 5px 0;
+  color: #999;
+}
+
+.main__dev-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  margin-top: 10px;
+}
+
+.main__dev-buttons button {
   background-color: white;
-  margin: 10px 0;
+  border-radius: 4px;
+  border: none;
+  padding: 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+.main__dev-buttons img:hover {
+  transform: translateY(-5px);
+  transition: all 0.2s;
+}
+
+@media (min-width: 375px) {
+  .main__dev-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .main__dev-list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
 }
