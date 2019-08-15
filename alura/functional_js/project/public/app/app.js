@@ -1,6 +1,7 @@
-import { log } from './utils/promise-helpers.js'
+import { log, promiseTimeout, delay, retry } from './utils/promise-helpers.js'
 import { noteService as service } from './notes/service.js'
 import { debounce, takeUnitl, pipe, partialize } from './utils/operators.js'
+import { EventEmitter } from './utils/event-emitter.js'
 
 /*
 const showMessage = () => console.log('hello')
@@ -28,9 +29,8 @@ const operation = pipe(
 )
 
 const action = operation(() =>
-  service
-    .sumItems('2143')
-    .then(log)
+  retry(3, 5000, promiseTimeout(5000, service.sumItems('2143')))
+    .then(sum => EventEmitter.emit('sumItems', sum))
     .catch(log))
 
 
