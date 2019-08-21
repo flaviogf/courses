@@ -54,4 +54,23 @@ describe('FullHeader', () => {
       expect(wrapper.get(0).props.style.backgroundColor).toBe('#f5f5f5');
     });
   });
+
+  describe('textColor', () => {
+    test('should have textColor #323232 when textColor not is passed', () => {
+      const wrapper = shallow(<FullHeader />);
+      expect(wrapper.get(0).props.style.color).toBe('#323232');
+    });
+
+    test('should have textColor white when textColor is passed', () => {
+      const wrapper = shallow(<FullHeader textColor="white" />);
+      expect(wrapper.get(0).props.style.color).toBe('white');
+    });
+  });
+
+  describe('font', () => {
+    test('should have fontFamily sans-serif when font not is passed', () => {
+      const wrapper = shallow(<FullHeader />);
+      expect(wrapper.get(0).props.style.fontFamily).toBe('sans-serif');
+    });
+  });
 });
