@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Example Spotify Wrapper</title>
+  </head>
+  <body>
+    <div id="albums"></div>
+    <script src="../dist/spotify-wrapper.umd.min.js"></script>
+    <script>
+      const API_TOKEN = 'BQDH84s0FYlM_o-NEiK2bQgSoJZnGu-I3_ABIg8N2d7lIXY4WRqzC5-z-Y3XZ9JTbYBu-F_zgYyLxF76jiRiq2YI69Uv-8UBl5kp4NxvXxy0XsoR0j11ew1rvf21zthc_cvI6xgYrkSL'
+
+      const render = () => (albums) => {
+        const images = albums
+          .map((album) => `<img src="${album.images[0].url}">`)
+          .join('')
+
+        document.querySelector('#albums').innerHTML = images
+      }
+
+      spotify(API_TOKEN)
+        .searchAlbums('Linkin Park')
+        .then((data) => data.albums.items)
+        .then(render())
+    </script>
+  </body>
+</html>

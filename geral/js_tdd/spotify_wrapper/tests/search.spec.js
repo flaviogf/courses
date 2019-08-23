@@ -23,23 +23,23 @@ describe('search', () => {
 
   context('smoke test', () => {
     it('should have search function', () => {
-      expect(search).to.be.exist
+      expect(search).to.be.a('function')
     })
 
     it('should have searchArtists function', () => {
-      expect(searchArtists).to.be.exist
+      expect(searchArtists).to.be.a('function')
     })
 
     it('should have searchAlbums function', () => {
-      expect(searchAlbums).to.be.exist
+      expect(searchAlbums).to.be.a('function')
     })
 
     it('should have searchTracks function', () => {
-      expect(searchTracks).to.be.exist
+      expect(searchTracks).to.be.a('function')
     })
 
     it('should have searchPlaylists function', () => {
-      expect(searchPlaylists).to.be.exist
+      expect(searchPlaylists).to.be.a('function')
     })
   })
 
