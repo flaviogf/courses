@@ -1,0 +1,25 @@
+{
+  "name": "spotify_wrapper",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "@babel/register": "7.5.5",
+    "chai": "4.2.0",
+    "eslint": "6.2.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.1.0",
+    "eslint-plugin-import": "2.18.2",
+    "mocha": "6.2.0",
+    "node-fetch": "2.6.0",
+    "nyc": "14.1.1",
+    "sinon": "7.4.1"
+  },
+  "scripts": {
+    "test": "mocha ./tests/**/*.spec.js --require @babel/register",
+    "test:coverage": "nyc npm run test",
+    "test:tdd": "mocha ./tests/**/*.spec.js --require @babel/register --reporter nyan --watch"
+  }
+}
