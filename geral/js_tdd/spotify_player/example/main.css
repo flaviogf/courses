@@ -144,4 +144,57 @@ body {
     rgba(20, 22, 25, 1) 85%
   );
   background-attachment: fixed;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: 'info track';
+}
+
+.album-info {
+  grid-area: info;
+  text-align: center;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.album-info__title {
+  color: var(--white);
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.album-info__artist {
+}
+
+.album-info__musics {
+  margin-top: 16px;
+}
+
+.album-track {
+  grid-area: track;
+}
+
+.album-track__item {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 8px;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.album-track__item:hover {
+  color: white;
+}
+
+.album-track__item--selected {
+  background-color: var(--black);
+}
+
+.album-track__item > span:nth-child(odd) {
+  flex: 1;
+}
+
+.album-track__item > span:nth-child(2) {
+  margin: 0 8px;
+  flex: 5;
 }
