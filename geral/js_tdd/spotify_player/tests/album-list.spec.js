@@ -1,9 +1,9 @@
-import { expect } from 'chai';
+import { expect } from 'chai'
 
-import { renderAlbumList } from '../src/album-list';
+import { renderAlbumList } from '../src/album-list'
 
 describe('AlbumList', () => {
-  const data1 = [{}];
+  const data1 = [{}]
 
   const markup1 = `
   <div class="menu-item">
@@ -12,15 +12,15 @@ describe('AlbumList', () => {
       <p class="menu-item__title">Title</p>
       <p class="menu-item__subtitle">Description</p>
     </div>
-  </div>`;
+  </div>`
 
   it('should create markup and render that on html', () => {
-    const element = document.createElement('div');
-    renderAlbumList(data1, element);
-    expect(element.innerHTML).to.be.eql(markup1);
-  });
+    const element = document.createElement('div')
+    renderAlbumList(data1, element)
+    expect(element.innerHTML).to.be.eql(markup1)
+  })
 
-  const data2 = [{}, {}];
+  const data2 = [{}, {}]
 
   const markup2 = `
   <div class="menu-item">
@@ -36,11 +36,11 @@ describe('AlbumList', () => {
       <p class="menu-item__title">Title</p>
       <p class="menu-item__subtitle">Description</p>
     </div>
-  </div>`;
+  </div>`
 
   it('should create markup and render with more than one element', () => {
-    const element = document.createElement('div');
-    renderAlbumList(data2, element);
-    expect(element.innerHTML).to.be.eql(markup2);
-  });
-});
+    const element = document.createElement('div')
+    renderAlbumList(data2, element)
+    expect(element.innerHTML).to.be.eql(markup2)
+  })
+})

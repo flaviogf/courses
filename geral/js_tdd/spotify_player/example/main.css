@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap');
 
+:root {
+  --black: rgb(10, 12, 13);
+  --white: rgb(255, 255, 255);
+  --green: rgb(30, 215, 96);
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Montserrat', sans-serif;
+  outline: none;
 }
 
 html,
@@ -21,19 +28,97 @@ body {
 
 .menu {
   grid-area: menu;
-  background-color: #212121;
+  background-color: var(--black);
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  cursor: pointer;
+  color: var(--white);
+  transition: color 0.1s;
+}
+
+.menu-header:hover {
+  color: var(--green);
+}
+
+.menu-header__icon {
+  height: 36px;
+  width: 36px;
+  margin-right: 12px;
+}
+
+.menu-header__title {
+  font-weight: 600;
+}
+
+.menu-search {
+  padding: 12px 5px;
+  position: relative;
+  border: 1px solid var(--white);
+  margin: 10px 10px 20px 10px;
+  border-right: none;
+  border-left: none;
+}
+
+.menu-search__icon {
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
+  color: var(--white);
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 5px;
+}
+
+.menu-search__input {
+  background-color: transparent;
+  border: none;
+  height: 36px;
+  font-size: 16px;
+  color: var(--white);
+  width: 100%;
+}
+
+.menu-search__input::placeholder {
+  color: var(--white);
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  height: 60px;
-  padding: 0 10px;
+  height: 40px;
+  padding: 0 10px 0 25px;
+  position: relative;
+  margin: 5px 0;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.1s;
+}
+
+.menu-item:hover {
+  color: var(--white);
+}
+
+.menu-item--selected {
+  color: var(--white);
+}
+
+.menu-item--selected::before {
+  content: '';
+  height: 100%;
+  width: 5px;
+  background-color: var(--green);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .menu-item__image {
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   margin-right: 8px;
 }
 
@@ -44,17 +129,19 @@ body {
 }
 
 .menu-item__title {
-  color: #b3b3b3;
   font-weight: 600;
 }
 
 .menu-item__subtitle {
   font-size: 0.8rem;
-  color: #535353;
-  font-weight: 600;
 }
 
 .player {
   grid-area: player;
-  background-image: linear-gradient(to bottom, #535353, #212121);
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(20, 22, 25, 0.8),
+    rgba(20, 22, 25, 1) 85%
+  );
+  background-attachment: fixed;
 }

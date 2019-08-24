@@ -6,14 +6,14 @@ function createMarkup(data) {
       <p class="menu-item__title">Title</p>
       <p class="menu-item__subtitle">Description</p>
     </div>
-  </div>`;
+  </div>`
 
-  return data.map(markup).join('');
+  return data.map(markup).join('')
 }
 
 export function renderAlbumList(data, element) {
-  const markup = createMarkup(data);
-  element.innerHTML = markup;
+  const markup = createMarkup(data)
+  element.innerHTML = markup
 }
 
-export default renderAlbumList;
+export default renderAlbumList
