@@ -1,10 +1,10 @@
 function createMarkup(data) {
   const markup = (item) => `
   <div class="menu-item">
-    <img class="menu-item__image" src="https://picsum.photos/id/415/200/200" alt="album">
+    <img class="menu-item__image" src="${item.images[2].url}" alt="album">
     <div class="menu-item__description">
-      <p class="menu-item__title">Title</p>
-      <p class="menu-item__subtitle">Description</p>
+      <p class="menu-item__title">${item.name}</p>
+      <p class="menu-item__subtitle">${item.artists[0].name}</p>
     </div>
   </div>`
 
