@@ -1,0 +1,35 @@
+{
+  "name": "spotify-wrapper-flaviogf",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "7.5.5",
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "@babel/register": "7.5.5",
+    "babel-loader": "8.0.6",
+    "chai": "4.2.0",
+    "eslint": "6.2.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.1.0",
+    "eslint-plugin-import": "2.18.2",
+    "mocha": "6.2.0",
+    "node-fetch": "2.6.0",
+    "nyc": "14.1.1",
+    "sinon": "7.4.1",
+    "webpack": "4.39.2",
+    "webpack-cli": "3.3.7"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "build:umd": "yarn webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "test": "mocha ./tests/**/*.spec.js --require @babel/register",
+    "test:coverage": "nyc npm run test",
+    "test:tdd": "mocha ./tests/**/*.spec.js --require @babel/register --reporter nyan --watch"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ]
+}
