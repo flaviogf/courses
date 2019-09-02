@@ -25,7 +25,7 @@ namespace BookList.Auth.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Store([FromBody] StoreUserViewModel viewModel)
+        public async Task<IActionResult> Store([FromBody] UserViewModel viewModel)
         {
             var user = new ApplicationUser { UserName = viewModel.Email, Email = viewModel.Email };
 
@@ -36,7 +36,7 @@ namespace BookList.Auth.Controllers
                 return BadRequest(result.Errors);
             }
 
-            _logger.LogInformation($"User created {user.Email}");
+            _logger.LogInformation($"|> User created -> {user.Email}");
 
             return Created($"api/auth/user/{user.Id}", viewModel);
         }

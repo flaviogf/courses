@@ -13,7 +13,7 @@ namespace BookList.Auth
         {
             services.AddDbContext<ApplicationContext>(options =>
             {
-                options.UseSqlite("Data Source=book_list.db");
+                options.UseSqlite("Data Source=db.sqlite3");
             });
 
             services

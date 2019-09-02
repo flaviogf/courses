@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookList.Auth.Models
 {
-    public class StoreUserViewModel
+    public class SignInViewModel
     {
         [Required]
         public string Email { get; set; }
