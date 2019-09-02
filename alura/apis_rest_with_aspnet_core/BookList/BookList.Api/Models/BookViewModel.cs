@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace BookList.Api.Models
 {
@@ -12,5 +13,7 @@ namespace BookList.Api.Models
 
         [Required]
         public int Status { get; set; }
+
+        public IFormFile Cover { get; set; }
     }
 }

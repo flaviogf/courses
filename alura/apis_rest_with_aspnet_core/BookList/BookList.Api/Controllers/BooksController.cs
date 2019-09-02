@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BookList.Api.Models;
@@ -39,7 +40,7 @@ namespace BookList.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Store([FromBody] BookViewModel viewModel)
+        public async Task<IActionResult> StoreAsync([FromForm] BookViewModel viewModel)
         {
             var book = new Book
             {
@@ -47,6 +48,15 @@ namespace BookList.Api.Controllers
                 Summary = viewModel.Summary,
                 Status = (EBookStatus)viewModel.Status
             };
+
+            if (viewModel.Cover != null)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await viewModel.Cover.CopyToAsync(stream);
+                    book.Cover = stream.ToArray();
+                }
+            }
 
             await _context.Books.AddAsync(book);
 
@@ -59,7 +69,7 @@ namespace BookList.Api.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] BookViewModel viewModel)
+        public async Task<IActionResult> UpdateAsync([FromRoute] int id, [FromForm] BookViewModel viewModel)
         {
             var book = _context.Books.FirstOrDefault(it => it.Id == id);
 
@@ -72,6 +82,15 @@ namespace BookList.Api.Controllers
             book.Summary = viewModel.Summary;
             book.Status = (EBookStatus)viewModel.Status;
 
+            if (viewModel.Cover != null)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    await viewModel.Cover.CopyToAsync(stream);
+                    book.Cover = stream.ToArray();
+                }
+            }
+
             await _context.SaveChangesAsync();
 
             _logger.LogInformation($"|> Book updated -> {book.Name}");
@@ -81,7 +100,7 @@ namespace BookList.Api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             var book = _context.Books.FirstOrDefault(it => it.Id == id);
 

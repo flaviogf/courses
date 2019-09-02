@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BookList.Auth.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
@@ -19,14 +20,18 @@ namespace BookList.Auth.Controllers
 
         private readonly ILogger<SignInController> _logger;
 
+        private readonly IConfiguration _configuration;
+
         public SignInController
         (
             SignInManager<ApplicationUser> signInManager,
-            ILogger<SignInController> logger
+            ILogger<SignInController> logger,
+            IConfiguration configuration
         )
         {
             _signInManager = signInManager;
             _logger = logger;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -39,7 +44,7 @@ namespace BookList.Auth.Controllers
                 return Unauthorized();
             }
 
-            var key = Encoding.UTF8.GetBytes("e9e5713ea1ae3184a2261d72670619e2");
+            var key = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("SecretKey"));
 
             var signInCredentials = new SigningCredentials(new SymmetricSecurityKey(key), "HS256");
 

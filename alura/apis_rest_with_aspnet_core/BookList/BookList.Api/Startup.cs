@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
@@ -10,14 +11,21 @@ namespace BookList.Api
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options =>
             {
-                options.UseSqlite("Data Source=db.sqlite3");
+                options.UseSqlite(_configuration.GetConnectionString("DefaultConnection"));
             });
 
-            var key = Encoding.UTF8.GetBytes("e9e5713ea1ae3184a2261d72670619e2");
+            var key = Encoding.UTF8.GetBytes(_configuration.GetValue<string>("SecretKey"));
 
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
