@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookList.Auth", "BookList.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookList.Api", "BookList.Api\BookList.Api.csproj", "{D3332768-7B12-4A0B-8446-55E0E4C64228}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookList.Cli", "BookList.Cli\BookList.Cli.csproj", "{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x64.Build.0 = Release|Any CPU
 		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x86.ActiveCfg = Release|Any CPU
 		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x86.Build.0 = Release|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Debug|x64.Build.0 = Debug|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Debug|x86.Build.0 = Debug|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Release|x64.ActiveCfg = Release|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Release|x64.Build.0 = Release|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Release|x86.ActiveCfg = Release|Any CPU
+		{F90E1A1C-4C5F-49B9-98F5-2CD8F8546051}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
