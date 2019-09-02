@@ -39,9 +39,9 @@ namespace BookList.Auth.Controllers
                 return Unauthorized();
             }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("e9e5713ea1ae3184a2261d72670619e2"));
+            var key = Encoding.UTF8.GetBytes("e9e5713ea1ae3184a2261d72670619e2");
 
-            var signInCredentials = new SigningCredentials(key, "HS256");
+            var signInCredentials = new SigningCredentials(new SymmetricSecurityKey(key), "HS256");
 
             var claims = new List<Claim>
             {
@@ -52,8 +52,6 @@ namespace BookList.Auth.Controllers
 
             var descriptor = new SecurityTokenDescriptor
             {
-                Issuer = "book-list",
-                Audience = "insomnia",
                 Subject = subject,
                 SigningCredentials = signInCredentials
             };

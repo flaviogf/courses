@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookList.Auth", "BookList.Auth\BookList.Auth.csproj", "{E372C512-5ED3-4CA1-BA37-58D737E9E4B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookList.Api", "BookList.Api\BookList.Api.csproj", "{D3332768-7B12-4A0B-8446-55E0E4C64228}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{E372C512-5ED3-4CA1-BA37-58D737E9E4B4}.Release|x64.Build.0 = Release|Any CPU
 		{E372C512-5ED3-4CA1-BA37-58D737E9E4B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{E372C512-5ED3-4CA1-BA37-58D737E9E4B4}.Release|x86.Build.0 = Release|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x64.Build.0 = Release|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3332768-7B12-4A0B-8446-55E0E4C64228}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
