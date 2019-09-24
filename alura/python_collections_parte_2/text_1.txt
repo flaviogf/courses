@@ -1,0 +1,3 @@
+Comecei a estudar Java recentemente na Alura e conforme o tempo foi passando descobri o que são IDE’s e para que servem. Depois de testar algumas delas como IntelliJ e Netbeans, optei por utilizar o Eclipse como minha IDE principal, porque me senti mais confortável com ela.
+
+Depois de algum tempo clicando nos ícones para salvar arquivos, gerar classes, e mais algumas outras operações, comecei a pensar se o Eclipse teria atalhos para fazer esses tipos de tarefa para mim, pois eu não estava me sentindo muito produtivo durante o desenvolvimento.

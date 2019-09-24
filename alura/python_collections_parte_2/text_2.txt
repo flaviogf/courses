@@ -1,0 +1,5 @@
+Neste artigo, iremos examinar um cenário inicial de uma solução de comércio eletrônico em .NET, propondo uma nova arquitetura de microsserviços e avaliando os desafios inerentes a esse tipo de abordagem.
+
+Vamos considerar possíveis padrões de arquitetura, tecnologias e ferramentas necessárias para realizar a comunicação entre os serviços, e ao final iremos demonstrar uma solução de exemplo, que pode ser baixada e executada, e na qual foram aplicados os conceitos que abordamos aqui.
+
+O assunto “microsserviços” é extremamente vasto, portanto vamos nos focar aqui apenas na comunicação entre serviços.
