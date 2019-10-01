@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: store-pod
+spec:
+  containers:
+    - name: store-container
+      imagePullPolicy: Never
+      image: store-image
+      ports:
+        - containerPort: 80

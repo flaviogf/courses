@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-deployment
+  labels:
+    app: store-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: store-pod
+  template:
+    metadata:
+      labels:
+        app: store-pod
+    spec:
+      containers:
+        - name: store-container
+          imagePullPolicy: Never
+          image: store-image
+          ports:
+            - containerPort: 80
