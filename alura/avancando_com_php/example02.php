@@ -10,10 +10,13 @@ $fernando = [
   "email" => "fernando@email.com"
 ];
 
-$accounts  = [$flavio, $fernando];
+$accounts  = [
+  '123.456.789-10' => $flavio,
+  '987.654.321-10' => $fernando
+];
 
-foreach($accounts as $account) {
+foreach($accounts as $cpf => $account) {
   $name = $account["name"];
   $email = $account["email"];
-  echo "$name => $email" . PHP_EOL;
+  echo "$cpf => $name - $email" . PHP_EOL;
 }
