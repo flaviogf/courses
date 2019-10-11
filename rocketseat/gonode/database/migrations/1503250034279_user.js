@@ -12,6 +12,8 @@ class UserSchema extends Schema {
         .notNullable()
         .unique()
       table.string('password', 60).notNullable()
+      table.string('token', 8).nullable()
+      table.timestamp('token_expired_date').nullable()
       table.timestamps()
     })
   }
