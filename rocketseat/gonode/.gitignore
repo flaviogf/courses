@@ -3,6 +3,7 @@ node_modules
 
 # Adonis directory for storing tmp files
 tmp/**/*.png
+tmp/**/*.jpg
 !tmp/uploads/fixture.png
 
 # Environment variables, never commit this file
