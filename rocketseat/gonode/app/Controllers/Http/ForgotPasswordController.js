@@ -5,7 +5,7 @@ const Mail = use('Mail')
 const User = use('App/Models/User')
 
 const crypto = require('crypto')
-const ms = require('ms')
+const { getTime, isAfter, subDays } = require('date-fns')
 
 class ForgotPasswordController {
   async store({ request, response }) {
@@ -16,7 +16,7 @@ class ForgotPasswordController {
     const token = crypto.randomBytes(8).toString('hex')
 
     user.token = token
-    user.token_expired_date = ms('1m')
+    user.token_created_at = getTime(new Date())
 
     await user.save()
 
@@ -34,6 +34,22 @@ class ForgotPasswordController {
     )
 
     return response.ok(user)
+  }
+
+  async update({ request, response }) {
+    const { token, password } = request.only(['token', 'password'])
+
+    const user = await User.findBy('token', token)
+
+    if (isAfter(subDays(new Date(), 2), user.token_created_at)) {
+      return response.badRequest({ data: null, errors: ['Token is expired.'] })
+    }
+
+    user.password = password
+
+    await user.save()
+
+    return response.ok({ data: null, errors: [] })
   }
 }
 
