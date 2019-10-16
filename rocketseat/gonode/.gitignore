@@ -11,3 +11,4 @@ tmp/**/*.jpg
 
 # The development sqlite file
 database/development.sqlite
+database/testing.sqlite
