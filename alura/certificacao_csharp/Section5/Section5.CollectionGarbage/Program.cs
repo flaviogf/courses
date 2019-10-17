@@ -6,15 +6,15 @@ namespace Section5.CollectionGarbage
     {
         public static void Main(string[] args)
         {
-          for(int i = 0; i < 1000000; i++)
-          {
-            new Person
+            for (int i = 0; i < 1000000; i++)
             {
-              Name = "Test"
-            };
-          }
+                new Person
+                {
+                    Name = "Test"
+                };
+            }
 
-          // GC.Collect();
+            // GC.Collect();
         }
     }
 
@@ -24,12 +24,12 @@ namespace Section5.CollectionGarbage
 
         public Person()
         {
-          Console.WriteLine("Begin");
+            Console.WriteLine("Begin");
         }
 
         ~Person()
         {
-          Console.WriteLine("End");
+            Console.WriteLine("End");
         }
     }
 }
