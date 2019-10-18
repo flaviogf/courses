@@ -9,8 +9,16 @@ class ProjectController {
     return response.ok({ data: projects, errors: [] })
   }
 
-  async store({ request, response }) {
-    const project = await Project.create(request.only(['title', 'description']))
+  async store({ request, response, auth }) {
+    const { title, description } = request.only(['title', 'description'])
+
+    const user = await auth.getUser()
+
+    const project = await Project.create({
+      title,
+      description,
+      user_id: user.id
+    })
 
     return response.created({ data: project, errros: [] })
   }

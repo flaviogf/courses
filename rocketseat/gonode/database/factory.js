@@ -12,10 +12,29 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
-// const Factory = use('Factory')
+const Factory = use('Factory')
+const Hash = use('Hash')
 
-// Factory.blueprint('App/Models/User', (faker) => {
-//   return {
-//     username: faker.username()
-//   }
-// })
+Factory.blueprint('App/Models/User', async (faker) => {
+  return {
+    email: faker.email(),
+    password: await Hash.make(faker.password())
+  }
+})
+
+Factory.blueprint('App/Models/File', (faker) => {
+  return {
+    file: faker.word(),
+    name: faker.word(),
+    type: faker.word(),
+    subtype: faker.word()
+  }
+})
+
+Factory.blueprint('App/Models/Project', async (faker, _, data) => {
+  return {
+    title: faker.word(),
+    description: faker.word(),
+    ...data
+  }
+})

@@ -26,4 +26,10 @@ Route.put('/forgot-password', 'ForgotPasswordController.update')
 Route.post('/file', 'FileController.store')
 Route.get('/file/:id', 'FileController.show')
 
-Route.resource('/project', 'ProjectController').apiOnly()
+Route.resource('/project', 'ProjectController')
+  .middleware('auth')
+  .apiOnly()
+
+Route.resource('/task', 'TaskController')
+  .middleware('auth')
+  .apiOnly()
