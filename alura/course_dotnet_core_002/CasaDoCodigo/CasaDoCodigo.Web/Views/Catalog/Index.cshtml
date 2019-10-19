@@ -1,0 +1,15 @@
+@{
+    Layout = "_Layout";
+}
+
+<main class="index__container">
+    <ul class="index__list">
+        @foreach(var product in Model)
+        {
+            <li class="index__item">
+                <img src="@product.ImageUrl" />
+                <h2>@product.Name</h2>
+            </li>
+        }
+    </ul>
+</main>
