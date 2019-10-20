@@ -3,15 +3,17 @@ using System;
 using CasaDoCodigo.Web.Infrastrucutre;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CasaDoCodigo.Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20191020120327_CreateTableCart")]
+    partial class CreateTableCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,28 +35,6 @@ namespace CasaDoCodigo.Web.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Carts");
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Web.Models.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CartId");
-
-                    b.Property<int>("Price");
-
-                    b.Property<int?>("ProductId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("CasaDoCodigo.Web.Models.Customer", b =>
@@ -96,17 +76,6 @@ namespace CasaDoCodigo.Web.Migrations
                     b.HasOne("CasaDoCodigo.Web.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Web.Models.CartItem", b =>
-                {
-                    b.HasOne("CasaDoCodigo.Web.Models.Cart", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartId");
-
-                    b.HasOne("CasaDoCodigo.Web.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
                 });
 #pragma warning restore 612, 618
         }

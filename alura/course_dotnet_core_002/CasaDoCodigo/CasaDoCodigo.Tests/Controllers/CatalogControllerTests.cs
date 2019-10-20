@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CasaDoCodigo.Web.Infrastrucutre;
@@ -8,7 +9,7 @@ using Xunit;
 
 namespace CasaDoCodigo.Web.Controllers
 {
-    public class CatalogControllerTests
+    public class CatalogControllerTests : IDisposable
     {
         private readonly CatalogController _catalogController;
 
@@ -16,7 +17,7 @@ namespace CasaDoCodigo.Web.Controllers
 
         public CatalogControllerTests()
         {
-            var options = new DbContextOptionsBuilder<ApplicationContext>().UseInMemoryDatabase("test.db").Options;
+            var options = new DbContextOptionsBuilder<ApplicationContext>().UseInMemoryDatabase("catalog.db").Options;
 
             _context = new ApplicationContext(options);
 
@@ -63,6 +64,11 @@ namespace CasaDoCodigo.Web.Controllers
             var model = Assert.IsAssignableFrom<IEnumerable<Product>>(result.ViewData.Model);
 
             Assert.Single(model);
+        }
+
+        public void Dispose()
+        {
+            _context.Database.EnsureDeleted();
         }
     }
 }

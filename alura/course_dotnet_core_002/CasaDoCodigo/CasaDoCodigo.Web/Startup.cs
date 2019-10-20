@@ -26,6 +26,10 @@ namespace CasaDoCodigo.Web
                 options.UseNpgsql(_configuration.GetConnectionString("Default"));
             });
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
             services.AddMvc();
         }
 
@@ -38,6 +42,8 @@ namespace CasaDoCodigo.Web
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvcWithDefaultRoute();
         }
