@@ -46,3 +46,17 @@ test('should update database when user is created', async ({
   assert.equal(user.email, data.email)
   assert.isTrue(await Hash.verify(data.password, user.password))
 })
+
+test('should return status 400 when request is invalid', async ({ client }) => {
+  const data = {
+    email: chance.word(),
+    password: chance.word()
+  }
+
+  const response = await client
+    .post('/user')
+    .send(data)
+    .end()
+
+  response.assertStatus(400)
+})

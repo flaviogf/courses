@@ -4,7 +4,11 @@ const Project = use('App/Models/Project')
 
 class ProjectController {
   async index({ response }) {
-    const projects = await Project.all()
+    const projects = await Project.query()
+      .with('tasks')
+      .with('tasks.user')
+      .with('tasks.file')
+      .fetch()
 
     return response.ok({ data: projects, errors: [] })
   }
