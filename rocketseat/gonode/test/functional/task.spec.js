@@ -75,3 +75,64 @@ test('should add task to database when task is created', async ({
   assert.equal(task.user_id, user.id)
   assert.equal(task.file_id, file.id)
 })
+
+test('should return status 200 when tasks are listed', async ({ client }) => {
+  const user = await Factory.model('App/Models/User').create()
+
+  const project = await Factory.model('App/Models/Project').create({
+    user_id: user.id
+  })
+
+  const file = await Factory.model('App/Models/File').create()
+
+  await Factory.model('App/Models/Task').create({
+    user_id: user.id,
+    project_id: project.id,
+    file_id: file.id
+  })
+
+  const response = await client
+    .get('/task')
+    .loginVia(user)
+    .end()
+
+  response.assertStatus(200)
+})
+
+test('should return a list of task when taks are listed', async ({
+  assert,
+  client
+}) => {
+  const user = await Factory.model('App/Models/User').create()
+
+  const project = await Factory.model('App/Models/Project').create({
+    user_id: user.id
+  })
+
+  const file = await Factory.model('App/Models/File').create()
+
+  const task = await Factory.model('App/Models/Task').create({
+    user_id: user.id,
+    project_id: project.id,
+    file_id: file.id
+  })
+
+  const response = await client
+    .get('/task')
+    .loginVia(user)
+    .end()
+
+  const { data } = response.body
+
+  assert.lengthOf(data, 1)
+  assert.equal(data[0].id, task.id)
+  assert.equal(data[0].user_id, task.user_id)
+  assert.equal(data[0].project_id, task.project_id)
+  assert.equal(data[0].file_id, task.file_id)
+  assert.equal(data[0].title, task.title)
+  assert.equal(data[0].description, task.description)
+  assert.equal(
+    new Date(data[0].due_date).toISOString(),
+    task.due_date.toISOString()
+  )
+})

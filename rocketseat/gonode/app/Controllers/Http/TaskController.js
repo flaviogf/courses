@@ -3,6 +3,12 @@
 const Task = use('App/Models/Task')
 
 class TaskController {
+  async index({ response }) {
+    const tasks = await Task.all()
+
+    return response.ok({ data: tasks, errors: [] })
+  }
+
   async store({ request, response, auth }) {
     const { projectId, title, description, dueDate, fileId } = request.only([
       'projectId',

@@ -38,3 +38,12 @@ Factory.blueprint('App/Models/Project', async (faker, _, data) => {
     ...data
   }
 })
+
+Factory.blueprint('App/Models/Task', async (faker, _, data) => {
+  return {
+    title: faker.word(),
+    description: faker.word(),
+    due_date: faker.date(),
+    ...data
+  }
+})
