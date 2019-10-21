@@ -31,6 +31,36 @@ class TaskController {
 
     return response.created({ data: task, errors: [] })
   }
+
+  async show({ params, response }) {
+    const { id } = params
+
+    const task = await Task.find(id)
+
+    return response.ok({ data: task, errors: [] })
+  }
+
+  async update({ params, request, response }) {
+    const { id } = params
+
+    const task = await Task.findOrFail(id)
+
+    task.merge(request.only(['title', 'description']))
+
+    await task.save()
+
+    return response.ok({ data: task.id, errors: [] })
+  }
+
+  async destroy({ params, response }) {
+    const { id } = params
+
+    const task = await Task.findOrFail(id)
+
+    await task.delete()
+
+    return response.ok({ data: null, errors: [] })
+  }
 }
 
 module.exports = TaskController
