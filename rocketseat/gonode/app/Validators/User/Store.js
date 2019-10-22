@@ -1,5 +1,7 @@
 'use strict'
 
+const Antl = use('Antl')
+
 class UserStore {
   get validateAll() {
     return true
@@ -10,6 +12,10 @@ class UserStore {
       email: 'required|unique:users|email',
       password: 'required'
     }
+  }
+
+  get messages() {
+    return Antl.list('validations')
   }
 }
 

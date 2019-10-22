@@ -1,0 +1,5 @@
+{
+  "required": "{{ field }} is required.",
+  "unique": "{{ field }} should be unique.",
+  "email": "{{ field }} should be a valid email."
+}
