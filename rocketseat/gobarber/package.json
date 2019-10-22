@@ -1,0 +1,23 @@
+{
+  "name": "gobarber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "sequelize": "5.21.1",
+    "sucrase": "3.10.1"
+  },
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.4.0",
+    "eslint-plugin-import": "2.18.2",
+    "nodemon": "1.19.4",
+    "pg": "^7.12.1",
+    "sequelize-cli": "5.5.1"
+  }
+}
