@@ -1,0 +1,6 @@
+# node modules
+node_modules
+
+# tmp
+tmp/uploads/*.jpg
+tmp/uploads/*.png
