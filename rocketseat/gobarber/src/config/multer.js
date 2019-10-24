@@ -5,7 +5,7 @@ import multer from 'multer'
 export default {
   storage: multer.diskStorage({
     destination(req, file, cb) {
-      const destination = path.resolve(__dirname, '..', '..', 'tmp', 'uploads')
+      const destination = path.resolve(__dirname, '..', '..', 'tmp', 'upload')
       cb(null, destination)
     },
     filename(req, file, cb) {
