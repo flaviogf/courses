@@ -4,6 +4,7 @@ import multer from 'multer'
 import AppointmentController from './app/controllers/AppointmentController'
 import FileController from './app/controllers/FileController'
 import ProviderController from './app/controllers/ProviderController'
+import ScheduleController from './app/controllers/ScheduleController'
 import SessionController from './app/controllers/SessionController'
 import UserControler from './app/controllers/UserController'
 
@@ -25,6 +26,9 @@ routes.post('/file', upload.single('file'), FileController.store)
 
 routes.get('/provider', ProviderController.index)
 
+routes.get('/appointment', AppointmentController.index)
 routes.post('/appointment', AppointmentController.store)
+
+routes.get('/schedule', ScheduleController.index)
 
 module.exports = routes
