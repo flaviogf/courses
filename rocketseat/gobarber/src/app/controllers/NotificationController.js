@@ -25,6 +25,18 @@ class NotificationController {
 
     return res.status(200).json({ data: notifications, errors: [] })
   }
+
+  async update(req, res) {
+    const { id } = req.params
+
+    const notification = await Notification.findById(id)
+
+    notification.read = true
+
+    await notification.save()
+
+    return res.status(200).json({ data: null, errors: [] })
+  }
 }
 
 export default new NotificationController()

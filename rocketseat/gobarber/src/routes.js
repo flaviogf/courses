@@ -29,9 +29,11 @@ routes.get('/provider', ProviderController.index)
 
 routes.get('/appointment', AppointmentController.index)
 routes.post('/appointment', AppointmentController.store)
+routes.delete('/appointment/:id', AppointmentController.delete)
 
 routes.get('/schedule', ScheduleController.index)
 
 routes.get('/notification', NotificationController.index)
+routes.put('/notification/:id', NotificationController.update)
 
 module.exports = routes
