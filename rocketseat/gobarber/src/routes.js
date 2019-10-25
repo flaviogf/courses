@@ -7,6 +7,7 @@ import ProviderController from './app/controllers/ProviderController'
 import ScheduleController from './app/controllers/ScheduleController'
 import SessionController from './app/controllers/SessionController'
 import UserControler from './app/controllers/UserController'
+import NotificationController from './app/controllers/NotificationController'
 
 import auth from './app/middlewares/auth'
 import multerConfig from './config/multer'
@@ -30,5 +31,7 @@ routes.get('/appointment', AppointmentController.index)
 routes.post('/appointment', AppointmentController.store)
 
 routes.get('/schedule', ScheduleController.index)
+
+routes.get('/notification', NotificationController.index)
 
 module.exports = routes
