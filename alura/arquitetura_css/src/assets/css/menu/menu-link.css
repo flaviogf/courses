@@ -1,0 +1,14 @@
+.menu__link {
+  text-transform: lowercase;
+  text-decoration: none;
+  color: #808080;
+}
+
+.menu__link:hover {
+  text-decoration: underline;
+}
+
+.menu__link--active {
+  font-weight: 700;
+  color: #333333;
+}
