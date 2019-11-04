@@ -12,7 +12,7 @@ function Routes() {
           <Main />
         </Route>
 
-        <Route path="/repository">
+        <Route path="/repository/:name">
           <Repository />
         </Route>
       </Switch>

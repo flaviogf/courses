@@ -17,6 +17,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "no-shadow": "off"
   }
 }

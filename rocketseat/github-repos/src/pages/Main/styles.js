@@ -1,7 +1,7 @@
 import styled, { keyframes, css } from 'styled-components'
 
 export const Container = styled.div`
-  heigth: 100%;
+  height: 100%;
   padding: 72px 16px 16px 16px;
 `
 
@@ -20,6 +20,7 @@ export const Logo = styled.div`
   align-items: center;
   background-color: #7519c1;
   border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 10px;
   display: flex;
   height: 75px;
   left: 50%;
@@ -111,11 +112,18 @@ export const List = styled.ul`
       align-items: center;
       background-color: transparent;
       border: none;
+      color: #aaaaaa;
+      cursor: pointer;
       display: flex;
       justify-content: center;
       margin-left: 5px;
       width: 50px;
       min-width: 50px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #7159c1;
+      }
     }
   }
 `

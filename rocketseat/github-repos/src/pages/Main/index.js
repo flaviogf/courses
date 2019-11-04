@@ -1,15 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { FaGithubAlt, FaPlus, FaTrash, FaSpinner } from 'react-icons/fa'
+import { FaGithubAlt, FaPlus, FaTrashAlt, FaSpinner } from 'react-icons/fa'
 
 import { Container, Card, Logo, Search, Input, Button, List } from './styles'
 
 import GitHub from '../../services/github'
 
+function useIsMount() {
+  const isMount = useRef(true)
+
+  useEffect(() => {
+    isMount.current = false
+  }, [])
+
+  return isMount.current
+}
+
 function Main() {
+  const isMount = useIsMount()
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
-  const [repos, setRepos] = useState([{ id: 2126244, name: 'twbs/bootstrap' }])
+  const [repos, setRepos] = useState([{ name: 'twbs/bootstrap' }])
+
+  useEffect(() => {
+    const storageRepos = localStorage.getItem('@repos')
+
+    if (storageRepos) {
+      setRepos(JSON.parse(storageRepos))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isMount) {
+      localStorage.setItem('@repos', JSON.stringify(repos))
+    }
+  }, [isMount, repos])
 
   function onSubmit(e) {
     e.preventDefault()
@@ -28,7 +53,7 @@ function Main() {
 
     beginLoading()
       .then(getRepo)
-      .then((repo) => ({ id: repo.id, name: repo.full_name }))
+      .then((repo) => ({ name: repo.full_name }))
       .then((repo) => setRepos([...repos, repo]))
       .then(() => setSearch(''))
       .finally(endLoading)
@@ -58,12 +83,12 @@ function Main() {
 
         <List>
           {repos.map((it) => (
-            <li key={String(it.id)}>
+            <li key={it.name}>
               <Link to={`repository/${encodeURIComponent(it.name)}`}>
                 {it.name}
               </Link>
               <button type="button">
-                <FaTrash color="#dddddd" size="16px" />
+                <FaTrashAlt size="16px" />
               </button>
             </li>
           ))}
