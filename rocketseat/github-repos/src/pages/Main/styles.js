@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 export const Container = styled.div`
   heigth: 100%;
@@ -46,12 +46,76 @@ export const Input = styled.input`
   width: 100%;
 `
 
-export const Button = styled.button`
+const loading = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+export const Button = styled.button.attrs((props) => ({
+  type: 'submit',
+  disabled: props.loading,
+}))`
+  align-items: center;
   background-color: #7159c1;
   border: 1px solid #7159c1;
   border-radius: 4px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
   margin-left: 5px;
   width: 50px;
   min-width: 50px;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  ${(props) =>
+    props.loading &&
+    css`
+      svg {
+        animation: ${loading} 2s linear infinite;
+      }
+    `}
+`
+
+export const List = styled.ul`
+  li {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    padding: 8px 0;
+
+    &:first-child {
+      margin-top: 16px;
+    }
+
+    & + li {
+      border-top: 1px solid #eeeeee;
+    }
+
+    a {
+      color: #333333;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    button {
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      justify-content: center;
+      margin-left: 5px;
+      width: 50px;
+      min-width: 50px;
+    }
+  }
 `

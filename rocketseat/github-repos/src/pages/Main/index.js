@@ -1,22 +1,37 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { FaGithubAlt, FaPlus, FaTrash, FaSpinner } from 'react-icons/fa'
 
-import { FaGithubAlt, FaPlus } from 'react-icons/fa'
-
-import { Container, Card, Logo, Search, Input, Button } from './styles'
+import { Container, Card, Logo, Search, Input, Button, List } from './styles'
 
 import GitHub from '../../services/github'
 
 function Main() {
+  const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
-  const [repos, setRepos] = useState([])
+  const [repos, setRepos] = useState([{ id: 2126244, name: 'twbs/bootstrap' }])
 
   function onSubmit(e) {
     e.preventDefault()
 
-    GitHub.get(`repos/${search}`)
-      .then((res) => res.data)
-      .then((repo) => ({ name: repo.full_name }))
+    function beginLoading() {
+      return Promise.resolve(setLoading(true))
+    }
+
+    function getRepo() {
+      return GitHub.get(`repos/${search}`).then((res) => res.data)
+    }
+
+    function endLoading() {
+      return Promise.resolve(setLoading(false))
+    }
+
+    beginLoading()
+      .then(getRepo)
+      .then((repo) => ({ id: repo.id, name: repo.full_name }))
       .then((repo) => setRepos([...repos, repo]))
+      .then(() => setSearch(''))
+      .finally(endLoading)
   }
 
   return (
@@ -32,10 +47,27 @@ function Main() {
             placeholder="Add repository"
             value={search}
           />
-          <Button type="submit">
-            <FaPlus color="#ffffff" size="16px" />
+          <Button loading={loading}>
+            {loading ? (
+              <FaSpinner color="#ffffff" size="16px" />
+            ) : (
+              <FaPlus color="#ffffff" size="16px" />
+            )}
           </Button>
         </Search>
+
+        <List>
+          {repos.map((it) => (
+            <li key={String(it.id)}>
+              <Link to={`repository/${encodeURIComponent(it.name)}`}>
+                {it.name}
+              </Link>
+              <button type="button">
+                <FaTrash color="#dddddd" size="16px" />
+              </button>
+            </li>
+          ))}
+        </List>
       </Card>
     </Container>
   )
