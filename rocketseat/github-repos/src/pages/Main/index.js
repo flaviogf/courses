@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { FaGithubAlt, FaPlus, FaTrashAlt, FaSpinner } from 'react-icons/fa'
+import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa'
 
-import { Container, Card, Logo, Search, Input, Button, List } from './styles'
+import { Card } from '../../components/Card'
+
+import { Container, CardHeader, Search, Button, List } from './styles'
 
 import GitHub from '../../services/github'
 
@@ -61,35 +63,32 @@ function Main() {
 
   return (
     <Container>
-      <Card onSubmit={onSubmit}>
-        <Logo>
-          <FaGithubAlt color="#ffffff" size="48px" />
-        </Logo>
-
-        <Search>
-          <Input
+      <Card>
+        <CardHeader>
+          <FaGithubAlt />
+          <p>Repositórios</p>
+        </CardHeader>
+        <Search onSubmit={onSubmit}>
+          <input
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Add repository"
             value={search}
           />
-          <Button loading={loading}>
+          <Button type="submit" disabled={loading} loading={loading}>
             {loading ? (
-              <FaSpinner color="#ffffff" size="16px" />
+              <FaSpinner color="#ffffff" size="18px" />
             ) : (
-              <FaPlus color="#ffffff" size="16px" />
+              <FaPlus color="#ffffff" size="18px" />
             )}
           </Button>
         </Search>
-
         <List>
           {repos.map((it) => (
             <li key={it.name}>
+              <p>{it.name}</p>
               <Link to={`repository/${encodeURIComponent(it.name)}`}>
-                {it.name}
+                Detalhes
               </Link>
-              <button type="button">
-                <FaTrashAlt size="16px" />
-              </button>
             </li>
           ))}
         </List>

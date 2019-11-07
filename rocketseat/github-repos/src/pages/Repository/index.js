@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+
+import { Card } from '../../components/Card'
+
+import { Container, CardHeader, List, Issue, Tags } from './styles'
 
 import GitHub from '../../services/github'
-
-import { Container, Avatar, List, Issue } from './styles'
 
 function Repository() {
   const { name } = useParams()
@@ -27,7 +29,11 @@ function Repository() {
     }
 
     function updateRepo([issues, repo]) {
-      setRepo({ avatar_url: repo.owner.avatar_url })
+      setRepo({
+        avatar_url: repo.owner.avatar_url,
+        description: repo.description,
+        name: repo.name,
+      })
       return [issues, repo]
     }
 
@@ -39,16 +45,38 @@ function Repository() {
 
   return (
     <Container>
-      <Avatar src={repo.avatar_url} />
+      <Card>
+        <CardHeader>
+          <Link to="/">Voltar aos repositorios</Link>
 
-      <List>
-        {issues.map((it) => (
-          <Issue key={String(it.id)}>
-            <img src={it.user.avatar_url} alt="user" />
-            <span>{it.title}</span>
-          </Issue>
-        ))}
-      </List>
+          <img src={repo.avatar_url} alt={repo.name} />
+
+          <h1>{repo.name}</h1>
+
+          <p>{repo.description}</p>
+        </CardHeader>
+
+        <List>
+          {issues.map((it) => (
+            <Issue key={String(it.id)}>
+              <img src={it.user.avatar_url} alt="user" />
+
+              <div>
+                <h3>{it.title}</h3>
+                <p>{it.user.login}</p>
+
+                {it.labels.length ? (
+                  <Tags>
+                    {it.labels.map((it) => (
+                      <span key={it.id}>{it.name}</span>
+                    ))}
+                  </Tags>
+                ) : null}
+              </div>
+            </Issue>
+          ))}
+        </List>
+      </Card>
     </Container>
   )
 }
