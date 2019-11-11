@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section5.DisposePattern", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section5.HandleStrings", "Section5.HandleStrings\Section5.HandleStrings.csproj", "{4EFA1E92-B2A5-4A3E-BDE9-235E0770C508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section5.SearchString", "Section5.SearchString\Section5.SearchString.csproj", "{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{4EFA1E92-B2A5-4A3E-BDE9-235E0770C508}.Release|x64.Build.0 = Release|Any CPU
 		{4EFA1E92-B2A5-4A3E-BDE9-235E0770C508}.Release|x86.ActiveCfg = Release|Any CPU
 		{4EFA1E92-B2A5-4A3E-BDE9-235E0770C508}.Release|x86.Build.0 = Release|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Debug|x64.Build.0 = Debug|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Release|x64.Build.0 = Release|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B52B21D-D5B4-48D1-AB8D-BC15BC46F7CD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
