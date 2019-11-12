@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<store xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <movies>
+    <movie name="Guardians of the Galaxy" />
+  </movies>
+  <editors>
+    <editor name="James Gunn" />
+  </editors>
+</store>
