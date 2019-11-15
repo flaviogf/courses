@@ -1,0 +1,18 @@
+<Movies>
+    <Movie>
+        <Name>Pulp Fiction</Name>
+        <Director>Quentin Tarantino</Director>
+    </Movie>
+    <Movie>
+        <Name>Django Libre</Name>
+        <Director>Quentin Tarantino</Director>
+    </Movie>
+    <Movie>
+        <Name>The Terminator</Name>
+        <Director>James Cameron</Director>
+    </Movie>
+    <Movie>
+        <Name>Avatar</Name>
+        <Director>James Cameron</Director>
+    </Movie>
+</Movies>
