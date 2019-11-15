@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section7.DataProjection", "Section7.DataProjection\Section7.DataProjection.csproj", "{2DA99D70-498C-4682-95B2-ADFAEE6BC786}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section7.GroupingAndAggregation", "Section7.GroupingAndAggregation\Section7.GroupingAndAggregation.csproj", "{914948DA-AE1F-4835-9825-7CAFE13816E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{2DA99D70-498C-4682-95B2-ADFAEE6BC786}.Release|x64.Build.0 = Release|Any CPU
 		{2DA99D70-498C-4682-95B2-ADFAEE6BC786}.Release|x86.ActiveCfg = Release|Any CPU
 		{2DA99D70-498C-4682-95B2-ADFAEE6BC786}.Release|x86.Build.0 = Release|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Debug|x64.Build.0 = Debug|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Debug|x86.Build.0 = Debug|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Release|x64.ActiveCfg = Release|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Release|x64.Build.0 = Release|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{914948DA-AE1F-4835-9825-7CAFE13816E0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

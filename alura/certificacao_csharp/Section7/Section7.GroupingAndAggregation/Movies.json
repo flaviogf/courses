@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "Title": "The terminator",
+    "Year": 1984,
+    "Minutes": 107,
+    "DirectorId": 1
+  },
+  {
+    "Id": 2,
+    "Title": "Avatar",
+    "Year": 2009,
+    "Minutes": 161,
+    "DirectorId": 1
+  },
+  {
+    "Id": 3,
+    "Title": "Bad Boys",
+    "Year": 1995,
+    "Minutes": 119,
+    "DirectorId": 2
+  },
+  {
+    "Id": 4,
+    "Title": "Transformers",
+    "Year": 2007,
+    "Minutes": 143,
+    "DirectorId": 2
+  }
+]
