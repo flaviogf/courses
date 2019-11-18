@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.ReadAndWriteBytesI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.ReadAndWriteStringsIntoFile", "Section8.ReadAndWriteStringsIntoFile\Section8.ReadAndWriteStringsIntoFile.csproj", "{F5608F0B-5EB8-4BCF-BB9F-3CA171C19E3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.HandleFiles", "Section8.HandleFiles\Section8.HandleFiles.csproj", "{D8B99E25-1482-4A8A-81B5-797737050468}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{F5608F0B-5EB8-4BCF-BB9F-3CA171C19E3B}.Release|x64.Build.0 = Release|Any CPU
 		{F5608F0B-5EB8-4BCF-BB9F-3CA171C19E3B}.Release|x86.ActiveCfg = Release|Any CPU
 		{F5608F0B-5EB8-4BCF-BB9F-3CA171C19E3B}.Release|x86.Build.0 = Release|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Debug|x64.Build.0 = Debug|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Debug|x86.Build.0 = Debug|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x64.ActiveCfg = Release|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x64.Build.0 = Release|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
