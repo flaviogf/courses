@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Section7.DataProjection/bin/Debug/netcoreapp2.2/Section7.DataProjection.dll",
+            "program": "${workspaceFolder}/Section8.ReadAndWriteBytesIntoFile/bin/Debug/netcoreapp2.2/Section8.ReadAndWriteBytesIntoFile.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Section7.DataProjection",
+            "cwd": "${workspaceFolder}/Section8.ReadAndWriteBytesIntoFile",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
