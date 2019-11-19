@@ -13,6 +13,26 @@ namespace Section8.HandleFiles
 
             GettingDriveInfo();
 
+            GettingFileInfo();
+
+            void ListDirectory(DirectoryInfo info)
+            {
+                foreach (var directory in info.GetDirectories())
+                {
+                    foreach (var file in directory.GetFiles("*.cs"))
+                    {
+                        Console.WriteLine(file.FullName);
+                    }
+
+                    ListDirectory(directory);
+                }
+            }
+
+            ListDirectory(new DirectoryInfo(Path.Join("..", "..")));
+        }
+
+        private static void GettingFileInfo()
+        {
             var info = new FileInfo("temp.txt");
 
             info.Create();
