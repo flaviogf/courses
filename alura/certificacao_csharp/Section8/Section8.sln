@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.ReadAndWriteString
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.HandleFiles", "Section8.HandleFiles\Section8.HandleFiles.csproj", "{D8B99E25-1482-4A8A-81B5-797737050468}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.AccessingTheWebAsynchronously", "Section8.AccessingTheWebAsynchronously\Section8.AccessingTheWebAsynchronously.csproj", "{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x64.Build.0 = Release|Any CPU
 		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x86.ActiveCfg = Release|Any CPU
 		{D8B99E25-1482-4A8A-81B5-797737050468}.Release|x86.Build.0 = Release|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Debug|x64.Build.0 = Debug|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Debug|x86.Build.0 = Debug|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x64.ActiveCfg = Release|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x64.Build.0 = Release|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
