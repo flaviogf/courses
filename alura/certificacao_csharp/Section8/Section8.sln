@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.HandleFiles", "Sec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.AccessingTheWebAsynchronously", "Section8.AccessingTheWebAsynchronously\Section8.AccessingTheWebAsynchronously.csproj", "{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section8.ReadingAndUpdatingDatabase", "Section8.ReadingAndUpdatingDatabase\Section8.ReadingAndUpdatingDatabase.csproj", "{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x64.Build.0 = Release|Any CPU
 		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x86.ActiveCfg = Release|Any CPU
 		{7FDE83C3-DFC8-46EC-8C53-09D3DBEB340C}.Release|x86.Build.0 = Release|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Debug|x64.Build.0 = Debug|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Debug|x86.Build.0 = Debug|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Release|x64.ActiveCfg = Release|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Release|x64.Build.0 = Release|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Release|x86.ActiveCfg = Release|Any CPU
+		{C3E3FBF9-707E-44ED-8E5C-DF15E6E68E6B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
