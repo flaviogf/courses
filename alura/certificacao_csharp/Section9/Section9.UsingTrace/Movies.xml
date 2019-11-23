@@ -1,0 +1,12 @@
+﻿<Store>
+  <Movies>
+    <Movie>
+      <Id>1</Id>
+      <Name>Bad Boys</Name>
+    </Movie>
+    <Movie>
+      <Id>2</Id>
+      <Name>Lord of the rings</Name>
+    </Movie>
+  </Movies>
+</Store>
