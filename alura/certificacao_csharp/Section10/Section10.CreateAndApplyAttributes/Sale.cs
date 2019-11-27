@@ -3,8 +3,8 @@
 namespace Section10.CreateAndApplyAttributes
 {
     [Serializable]
-    [SummarizedReport("{0} | {1}")]
-    [DetailedReport("{0} | {1} | {2}")]
+    [DetailedReport("{0,-20} {1,20:C} {2,-20}")]
+    [SummarizedReport("{0,20:C} {1,-20}")]
     public class Sale
     {
         public int Id { get; set; }

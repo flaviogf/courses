@@ -22,7 +22,7 @@ namespace Section10.CreateAndApplyAttributes
         [Conditional("Detailed"), Conditional("Summarized")]
         private void Header()
         {
-            Console.WriteLine("Header");
+            Console.WriteLine("{0,-20} {1,-20} {2,-20}", "Id", "Amount", "Date");
         }
 
         [Conditional("Detailed")]
@@ -30,9 +30,11 @@ namespace Section10.CreateAndApplyAttributes
         {
             using var context = new Context();
 
+            var attribute = Attribute.GetCustomAttribute(typeof(Sale), typeof(DetailedReportAttribute)) as DetailedReportAttribute;
+
             foreach (var sale in context.Sales)
             {
-                Console.WriteLine(sale);
+                Console.WriteLine(attribute.Format, sale.Id, sale.Amount, sale.Date);
             }
         }
 
@@ -41,9 +43,11 @@ namespace Section10.CreateAndApplyAttributes
         {
             using var context = new Context();
 
+            var attribute = Attribute.GetCustomAttribute(typeof(Sale), typeof(SummarizedReportAttribute)) as SummarizedReportAttribute;
+
             foreach (var sale in context.Sales)
             {
-                Console.WriteLine(sale);
+                Console.WriteLine(attribute.Format, sale.Amount, sale.Date);
             }
         }
     }
