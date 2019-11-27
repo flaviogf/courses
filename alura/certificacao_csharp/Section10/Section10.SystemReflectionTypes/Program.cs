@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using static System.Console;
 
 namespace Section10.SystemReflectionTypes
 {
@@ -11,9 +12,17 @@ namespace Section10.SystemReflectionTypes
         {
             var current = Assembly.GetExecutingAssembly();
 
-            current.GetTypes().ForEach(Console.WriteLine);
+            current.GetTypes().ForEach(WriteLine);
 
-            current.GetTypes().SelectMany((it) => it.GetMembers()).ForEach(Console.WriteLine);
+            current.GetTypes().SelectMany((it) => it.GetMembers()).ForEach(WriteLine);
+
+            WriteLine(current.FullName);
+
+            var name = current.GetName();
+
+            WriteLine("Version: {0}", name.Version);
+            WriteLine("Major: {0}", name.Version.Major);
+            WriteLine("Minor: {0}", name.Version.Minor);
         }
     }
 
