@@ -23,6 +23,16 @@ namespace Section10.SystemReflectionTypes
             WriteLine("Version: {0}", name.Version);
             WriteLine("Major: {0}", name.Version.Major);
             WriteLine("Minor: {0}", name.Version.Minor);
+
+            var type = typeof(Basket);
+
+            (from propertie in type.GetProperties()
+             select new
+             {
+                 propertie.Name,
+                 propertie.CanWrite,
+                 propertie.CanRead
+             }).ForEach(WriteLine);
         }
     }
 
