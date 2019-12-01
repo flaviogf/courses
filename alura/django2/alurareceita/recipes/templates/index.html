@@ -3,47 +3,22 @@
 {% load static %}
 
 {% block content %}
-<!-- ##### Best Receipe Area Start ##### -->
 <section class="best-receipe-area">
   <div class="container">
     <div class="row">
-      <!-- Single Best Receipe Area -->
+      {% for recipe in recipes %}
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="single-best-receipe-area mb-30">
           <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="" />
           <div class="receipe-content">
-            <a href="receita.html">
-              <h5>Nome da receita</h5>
+            <a href="{% url 'show' recipe.id %}">
+              <h5>{{ recipe.name }}</h5>
             </a>
           </div>
         </div>
       </div>
-
-      <!-- Single Best Receipe Area -->
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="single-best-receipe-area mb-30">
-          <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="" />
-          <div class="receipe-content">
-            <a href="receita.html">
-              <h5>Nome da receita</h5>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Single Best Receipe Area -->
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="single-best-receipe-area mb-30">
-          <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="" />
-          <div class="receipe-content">
-            <a href="receita.html">
-              <h5>Nome da receita</h5>
-            </a>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
-<!-- ##### Best Receipe Area End ##### -->
 {% endblock %}
