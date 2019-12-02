@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 
 namespace Section11.WorkingWithThread
@@ -11,7 +12,21 @@ namespace Section11.WorkingWithThread
 
             Example02();
 
+            Example03();
+
             Console.WriteLine("Application has been finished");
+        }
+
+        private static void Example01()
+        {
+            var thread1 = new Thread(DoWork);
+            thread1.Start("Thread 1");
+
+            var thread2 = new Thread(DoWork);
+            thread2.Start("Thread 2");
+
+            thread1.Join();
+            thread2.Join();
         }
 
         private static void Example02()
@@ -52,16 +67,22 @@ namespace Section11.WorkingWithThread
             spinner.Join();
         }
 
-        private static void Example01()
+        private static void Example03()
         {
-            var thread1 = new Thread(DoWork);
-            thread1.Start("Thread 1");
+            void Work(int item)
+            {
+                Console.WriteLine("Thread Id: {0} ==> Item: {1}", Thread.CurrentThread.ManagedThreadId, item);
+            }
 
-            var thread2 = new Thread(DoWork);
-            thread2.Start("Thread 2");
+            foreach (var item in Enumerable.Range(0, 100))
+            {
+                ThreadPool.QueueUserWorkItem((state) => Work(item));
+            }
 
-            thread1.Join();
-            thread2.Join();
+            while (ThreadPool.PendingWorkItemCount > 0)
+            {
+                Thread.Sleep(250);
+            }
         }
 
         public static void DoWork(object name)
