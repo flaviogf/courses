@@ -16,38 +16,36 @@ namespace Section11.UsingConcurrentCollections
             {
                 foreach (var product in products)
                 {
-                    int update;
-
-                    var current = stock.GetOrAdd(product, 0);
+                    int current;
 
                     do
                     {
-                        update = current + 1;
-                        Console.WriteLine("{0} updating {1} {2}", Thread.CurrentThread.Name, product, update);
-                    } while (!stock.TryUpdate(product, update, current));
+                        current = stock.GetOrAdd(product, 0);
+                        Console.WriteLine("{0} trying update {1} {2}", Thread.CurrentThread.Name, product, current + 1);
+                    } while (!stock.TryUpdate(product, current + 1, current));
                 }
-            });
-
-            thread1.Name = "Thread 1";
+            })
+            {
+                Name = "Thread 1"
+            };
 
             var thread2 = new Thread(() =>
             {
 
                 foreach (var product in products)
                 {
-                    int update;
-
-                    var current = stock.GetOrAdd(product, 0);
+                    int current;
 
                     do
                     {
-                        update = current + 1;
-                        Console.WriteLine("{0} updating {1} {2}", Thread.CurrentThread.Name, product, update);
-                    } while (!stock.TryUpdate(product, update, current));
+                        current = stock.GetOrAdd(product, 0);
+                        Console.WriteLine("{0} trying update {1} {2}", Thread.CurrentThread.Name, product, current + 1);
+                    } while (!stock.TryUpdate(product, current + 1, current));
                 }
-            });
-
-            thread2.Name = "Thread 2";
+            })
+            {
+                Name = "Thread 2"
+            };
 
             thread1.Start();
             thread2.Start();
