@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.ValidateSecurity"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.ChoosingProperCollection", "Section12.ChoosingProperCollection\Section12.ChoosingProperCollection.csproj", "{7444B9C4-0944-485E-8445-2F0D2F73E7B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.ValidatingDataWithRegularExpression", "Section12.ValidatingDataWithRegularExpression\Section12.ValidatingDataWithRegularExpression.csproj", "{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{7444B9C4-0944-485E-8445-2F0D2F73E7B9}.Release|x64.Build.0 = Release|Any CPU
 		{7444B9C4-0944-485E-8445-2F0D2F73E7B9}.Release|x86.ActiveCfg = Release|Any CPU
 		{7444B9C4-0944-485E-8445-2F0D2F73E7B9}.Release|x86.Build.0 = Release|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Debug|x64.Build.0 = Debug|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Debug|x86.Build.0 = Debug|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Release|x64.ActiveCfg = Release|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Release|x64.Build.0 = Release|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Release|x86.ActiveCfg = Release|Any CPU
+		{9EC1E5DF-B833-40DB-89E1-909516EC6EF7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
