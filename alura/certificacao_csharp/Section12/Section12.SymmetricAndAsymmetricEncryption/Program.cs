@@ -8,59 +8,75 @@ namespace Section12.SymmetricAndAsymmetricEncryption
     {
         public static void Main(string[] args)
         {
-            var text = "Nothing is true, everything is permitted";
+            var original = "Nothing is true everything is permmited";
 
-            var encrypted = new byte[0];
+            byte[] encrypted;
 
-            var key = new byte[0];
+            string decrypted;
 
-            using var aes = Aes.Create();
-
-            key = aes.Key;
-
-            using var encryptor = aes.CreateEncryptor();
-
-            using var memoryStream = new MemoryStream();
-
-            using var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-
-            using var streamWriter = new StreamWriter(cryptoStream);
-
-            streamWriter.Write(text);
-
-            streamWriter.Flush();
-
-            encrypted = memoryStream.ToArray();
-
-            Console.WriteLine(new string('*', 100));
-
-            Console.WriteLine("Text");
-
-            Console.WriteLine(text);
-
-            Console.WriteLine(new string('*', 100));
-
-            Console.WriteLine("Key");
-
-            foreach (var b in key)
+            using (var aes = Aes.Create())
             {
-                Console.Write("{0:X} ", b);
+                encrypted = Encrypt(original, aes.Key, aes.IV);
+                decrypted = Decrypt(encrypted, aes.Key, aes.IV);
             }
 
-            Console.WriteLine();
+            Console.WriteLine("Original:\n{0}", original);
+            Console.WriteLine("Encrypted:\n{0}", string.Join(' ', encrypted));
+            Console.WriteLine("Decrypted:\n{0}", decrypted);
+        }
 
-            Console.WriteLine(new string('*', 100));
+        public static byte[] Encrypt(string text, byte[] key, byte[] iv)
+        {
+            byte[] encrypted;
 
-            Console.WriteLine("Encrypted");
-
-            foreach (var b in encrypted)
+            using (var aes = Aes.Create())
             {
-                Console.Write("{0:X}", b);
+                aes.Key = key;
+                aes.IV = iv;
+
+                var encryptor = aes.CreateEncryptor();
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (var streamWriter = new StreamWriter(cryptoStream))
+                        {
+                            streamWriter.Write(text);
+                        }
+
+                        encrypted = memoryStream.ToArray();
+                    }
+                }
             }
 
-            Console.WriteLine();
+            return encrypted;
+        }
 
-            Console.WriteLine(new string('*', 100));
+        public static string Decrypt(byte[] encrypted, byte[] key, byte[] iv)
+        {
+            string decrypted;
+
+            using (var aes = Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+
+                var decryptor = aes.CreateDecryptor();
+
+                using (var memoryStream = new MemoryStream(encrypted))
+                {
+                    using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (var streamReader = new StreamReader(cryptoStream))
+                        {
+                            decrypted = streamReader.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+            return decrypted;
         }
     }
 }
