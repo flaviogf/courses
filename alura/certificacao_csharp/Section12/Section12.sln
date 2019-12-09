@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.InternalFunctions
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.SymmetricAndAsymmetricEncryption", "Section12.SymmetricAndAsymmetricEncryption\Section12.SymmetricAndAsymmetricEncryption.csproj", "{0E008D4E-183E-4428-BBC1-5A4CC838DE0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.ManagingKeys", "Section12.ManagingKeys\Section12.ManagingKeys.csproj", "{6943CFB0-71C7-4DA5-AA84-27719FE24112}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{0E008D4E-183E-4428-BBC1-5A4CC838DE0D}.Release|x64.Build.0 = Release|Any CPU
 		{0E008D4E-183E-4428-BBC1-5A4CC838DE0D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E008D4E-183E-4428-BBC1-5A4CC838DE0D}.Release|x86.Build.0 = Release|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Debug|x64.Build.0 = Debug|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Debug|x86.Build.0 = Debug|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Release|x64.ActiveCfg = Release|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Release|x64.Build.0 = Release|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Release|x86.ActiveCfg = Release|Any CPU
+		{6943CFB0-71C7-4DA5-AA84-27719FE24112}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
