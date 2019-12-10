@@ -1,15 +1,14 @@
-@{
-    Layout = "_Layout";
-}
+﻿@model CasaDoCodigo.Web.ViewModels.CatalogViewModel
 
-<main class="index__container">
-    <ul class="index__list">
-        @foreach(var product in Model)
-        {
-            <li class="index__item">
-                <img src="@product.ImageUrl" />
-                <h2>@product.Name</h2>
-            </li>
-        }
-    </ul>
-</main>
+<h1>Catalog</h1>
+
+<ul>
+    @foreach (var item in Model.Products)
+    {
+        <li>
+            <span>@item.Name</span>
+            <span>@item.Price</span>
+            <a>Comprar</a>
+        </li>
+    }
+</ul>

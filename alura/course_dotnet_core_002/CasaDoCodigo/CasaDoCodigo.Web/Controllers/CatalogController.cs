@@ -1,6 +1,8 @@
-using System.Linq;
-using CasaDoCodigo.Web.Infrastrucutre;
+﻿using CasaDoCodigo.Web.Database;
+using CasaDoCodigo.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Web.Controllers
 {
@@ -14,11 +16,16 @@ namespace CasaDoCodigo.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var products = _context.Products.ToList();
+            var products = await _context.Products.ToListAsync();
 
-            return View(products);
+            var viewModel = new CatalogViewModel
+            {
+                Products = products
+            };
+
+            return View(viewModel);
         }
     }
 }

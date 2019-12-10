@@ -3,14 +3,16 @@ using CasaDoCodigo.Web.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CasaDoCodigo.Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20191210120414_create_table_products")]
+    partial class create_table_products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,26 +38,6 @@ namespace CasaDoCodigo.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "ASP.NET Core MVC",
-                            Price = 3900
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Orientação a Objetos em C#",
-                            Price = 3900
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Programação funcional em .NET",
-                            Price = 3900
-                        });
                 });
 #pragma warning restore 612, 618
         }

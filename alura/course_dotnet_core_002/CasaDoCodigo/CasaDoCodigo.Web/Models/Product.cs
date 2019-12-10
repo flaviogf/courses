@@ -1,15 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace CasaDoCodigo.Web.Models
 {
     public class Product
     {
+        [Key]
+        [Required]
         public int Id { get; set; }
 
-        public string Code { get; set; }
-
+        [StringLength(255)]
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public int Price { get; set; }
-
-        public string ImageUrl { get; set; }
     }
 }
