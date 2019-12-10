@@ -1,10 +1,11 @@
-﻿@model CasaDoCodigo.Web.ViewModels.CatalogViewModel
+﻿@model CasaDoCodigo.Web.ViewModels.ShoppingCartViewModel
 
 @{
     Layout = "_Layout";
 
-    ViewData["Title"] = "Catalog";
+    ViewData["Title"] = "Shopping Cart";
 }
+
 
 <ul>
     @foreach (var item in Model.Products)
@@ -12,7 +13,7 @@
         <li>
             <span>@item.Name</span>
             <span>@item.Price</span>
-            <a asp-controller="ShoppingCart" asp-action="Store" asp-route-id="@item.Id">Buy</a>
+            <span>@item.Quantity</span>
         </li>
     }
 </ul>

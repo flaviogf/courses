@@ -5,6 +5,6 @@ namespace CasaDoCodigo.Web.ViewModels
 {
     public class CatalogViewModel
     {
-        public IList<Product> Products { get; set; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

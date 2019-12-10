@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaDoCodigo.Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20191210121102_adding_initial_product_catalog")]
-    partial class adding_initial_product_catalog
+    [Migration("20191210154203_initial_product_catalog")]
+    partial class initial_product_catalog
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

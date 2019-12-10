@@ -2,7 +2,7 @@
 
 namespace CasaDoCodigo.Web.Migrations
 {
-    public partial class adding_initial_product_catalog : Migration
+    public partial class initial_product_catalog : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

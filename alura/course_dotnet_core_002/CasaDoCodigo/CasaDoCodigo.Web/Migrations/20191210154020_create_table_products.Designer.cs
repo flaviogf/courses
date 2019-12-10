@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaDoCodigo.Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20191210120414_create_table_products")]
+    [Migration("20191210154020_create_table_products")]
     partial class create_table_products
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

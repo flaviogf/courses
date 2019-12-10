@@ -1,4 +1,5 @@
 using CasaDoCodigo.Web.Database;
+using CasaDoCodigo.Web.Lib;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,12 @@ namespace CasaDoCodigo.Web
 
             services.AddHttpContextAccessor();
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+
+            services.AddScoped<IShoppingCart, ShoppingCartSession>();
+
             services.AddMvc(setup => setup.EnableEndpointRouting = false);
         }
 
@@ -34,6 +41,8 @@ namespace CasaDoCodigo.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSession();
 
             app.UseMvc(routes => routes.MapRoute("default", "{controller=Catalog}/{action=Index}/{id?}"));
         }
