@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.ManagingKeys", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.ManageAndCreateCertified", "Section12.ManageAndCreateCertified\Section12.ManageAndCreateCertified.csproj", "{7D5CC7C3-F7F2-4BCE-A307-D47CB38314BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section12.DoingHash", "Section12.DoingHash\Section12.DoingHash.csproj", "{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,5 +130,17 @@ Global
 		{7D5CC7C3-F7F2-4BCE-A307-D47CB38314BF}.Release|x64.Build.0 = Release|Any CPU
 		{7D5CC7C3-F7F2-4BCE-A307-D47CB38314BF}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D5CC7C3-F7F2-4BCE-A307-D47CB38314BF}.Release|x86.Build.0 = Release|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Debug|x64.Build.0 = Debug|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Debug|x86.Build.0 = Debug|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Release|x64.ActiveCfg = Release|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Release|x64.Build.0 = Release|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Release|x86.ActiveCfg = Release|Any CPU
+		{C8D9671C-C14B-4A2F-82B6-4681AA500DB5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
