@@ -1,5 +1,5 @@
 ﻿using CasaDoCodigo.Web.Database;
-using CasaDoCodigo.Web.ViewModels;
+using CasaDoCodigo.Web.ViewModels.Catalog;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -20,7 +20,7 @@ namespace CasaDoCodigo.Web.Controllers
         {
             var products = await _context.Products.ToListAsync();
 
-            var viewModel = new CatalogViewModel
+            var viewModel = new IndexCatalogViewModel
             {
                 Products = products
             };

@@ -1,6 +1,6 @@
-﻿namespace CasaDoCodigo.Web.ViewModels
+﻿namespace CasaDoCodigo.Web.ViewModels.ShoppingCart
 {
-    public class ShoppingCartItemViewModel
+    public class IndexShoppingCartItemViewModel
     {
         public int Id { get; set; }
 

@@ -8,6 +8,15 @@
 </head>
 <body>
     @RenderBody()
-    <span>@TempData["Message"]</span>
+
+    @if (TempData["Message"] != null)
+    {
+        <span>@TempData["Message"]</span>
+    }
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

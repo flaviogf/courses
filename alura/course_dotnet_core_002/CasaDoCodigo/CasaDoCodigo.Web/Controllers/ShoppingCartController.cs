@@ -1,6 +1,6 @@
 ﻿using CasaDoCodigo.Web.Database;
 using CasaDoCodigo.Web.Lib;
-using CasaDoCodigo.Web.ViewModels;
+using CasaDoCodigo.Web.ViewModels.ShoppingCart;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace CasaDoCodigo.Web.Controllers
         {
             var products = from product in await _shoppingCart.Products()
                            group product by product into grouping
-                           select new ShoppingCartItemViewModel
+                           select new IndexShoppingCartItemViewModel
                            {
                                Id = grouping.Key.Id,
                                Name = grouping.Key.Name,
@@ -43,7 +43,7 @@ namespace CasaDoCodigo.Web.Controllers
                                Quantity = grouping.Count()
                            };
 
-            var viewModel = new ShoppingCartViewModel
+            var viewModel = new IndexShoppingCartViewModel
             {
                 Products = products
             };
