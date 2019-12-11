@@ -8,6 +8,10 @@ namespace CasaDoCodigo.Web.Lib
     {
         Task Add(Product product);
 
+        Task Remove(Product product);
+
         Task<IReadOnlyCollection<Product>> Products();
+
+        Task<int> Total();
     }
 }

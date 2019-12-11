@@ -7,12 +7,14 @@
     <title>House of code - @ViewData["Title"]</title>
 </head>
 <body>
-    @RenderBody()
+    <nav>
+        <ul>
+            <li><a asp-controller="Catalog" asp-action="Index">Catalog</a></li>
+            <li><a asp-controller="ShoppingCart" asp-action="Index">Shopping Cart</a></li>
+        </ul>
+    </nav>
 
-    @if (TempData["Message"] != null)
-    {
-        <span>@TempData["Message"]</span>
-    }
+    @RenderBody()
 
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>

@@ -9,8 +9,8 @@
     {
         <li>
             <span>@item.Name</span>
-            <span>@item.Price</span>
-            <a asp-controller="ShoppingCart" asp-action="Store" asp-route-id="@item.Id">Buy</a>
+            <money>@item.Price</money>
+            <a asp-controller="AddProductToShoppingCart" asp-action="Store" asp-route-id="@item.Id">Buy</a>
         </li>
     }
 </ul>

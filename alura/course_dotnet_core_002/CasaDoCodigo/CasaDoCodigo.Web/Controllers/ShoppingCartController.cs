@@ -1,8 +1,6 @@
-﻿using CasaDoCodigo.Web.Database;
-using CasaDoCodigo.Web.Lib;
+﻿using CasaDoCodigo.Web.Lib;
 using CasaDoCodigo.Web.ViewModels.ShoppingCart;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,25 +8,11 @@ namespace CasaDoCodigo.Web.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private readonly ApplicationContext _context;
-
         private readonly IShoppingCart _shoppingCart;
 
-        public ShoppingCartController(ApplicationContext context, IShoppingCart shoppingCart)
+        public ShoppingCartController(IShoppingCart shoppingCart)
         {
-            _context = context;
             _shoppingCart = shoppingCart;
-        }
-
-        public async Task<IActionResult> Store(int id)
-        {
-            var product = await _context.Products.FirstAsync(it => it.Id == id);
-
-            await _shoppingCart.Add(product);
-
-            TempData["Message"] = "Product has been added to shopping cart.";
-
-            return Redirect("/");
         }
 
         public async Task<IActionResult> Index()
@@ -43,9 +27,12 @@ namespace CasaDoCodigo.Web.Controllers
                                Quantity = grouping.Count()
                            };
 
+            var total = await _shoppingCart.Total();
+
             var viewModel = new IndexShoppingCartViewModel
             {
-                Products = products
+                Products = products,
+                Total = total
             };
 
             return View(viewModel);

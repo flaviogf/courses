@@ -4,13 +4,21 @@
     ViewData["Title"] = "Shopping Cart";
 }
 
+<h1>
+    Total: <money>@Model.Total</money>
+</h1>
+
 <ul>
     @foreach (var item in Model.Products)
     {
         <li>
             <span>@item.Name</span>
-            <span>@item.Price</span>
-            <span>@item.Quantity</span>
+            <money>@item.Price</money>
+            <span>
+                <a asp-controller="DecreaseQuantity" asp-action="Store" asp-route-id="@item.Id">Decrease</a>
+                @item.Quantity
+                <a asp-controller="IncreaseQuantity" asp-action="Store" asp-route-id="@item.Id">Increase</a>
+            </span>
         </li>
     }
 </ul>
