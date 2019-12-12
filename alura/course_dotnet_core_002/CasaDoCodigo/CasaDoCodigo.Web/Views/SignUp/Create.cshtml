@@ -1,0 +1,27 @@
+﻿@model CasaDoCodigo.Web.ViewModels.SignUp.StoreSignUpViewModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<form asp-controller="SignUp" asp-action="Store" method="post">
+    <div>
+        <label asp-for="@Model.Name"></label>
+        <input asp-for="@Model.Name" />
+        <span asp-validation-for="@Model.Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.Email"></label>
+        <input asp-for="@Model.Email" />
+        <span asp-validation-for="@Model.Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.Phone"></label>
+        <input asp-for="@Model.Phone" />
+        <span asp-validation-for="@Model.Phone"></span>
+    </div>
+
+    <button type="submit">Register</button>
+</form>

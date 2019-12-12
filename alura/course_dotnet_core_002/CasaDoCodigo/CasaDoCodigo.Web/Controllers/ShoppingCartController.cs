@@ -19,6 +19,7 @@ namespace CasaDoCodigo.Web.Controllers
         {
             var products = from product in await _shoppingCart.Products()
                            group product by product into grouping
+                           orderby grouping.Key.Name ascending
                            select new IndexShoppingCartItemViewModel
                            {
                                Id = grouping.Key.Id,

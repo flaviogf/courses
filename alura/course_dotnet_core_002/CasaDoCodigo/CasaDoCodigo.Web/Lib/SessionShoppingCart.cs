@@ -8,11 +8,11 @@ using System.Xml.Serialization;
 
 namespace CasaDoCodigo.Web.Lib
 {
-    public class ShoppingCartSession : IShoppingCart
+    public class SessionShoppingCart : IShoppingCart
     {
         private readonly ISession _session;
 
-        public ShoppingCartSession(IHttpContextAccessor accessor)
+        public SessionShoppingCart(IHttpContextAccessor accessor)
         {
             _session = accessor.HttpContext.Session;
         }

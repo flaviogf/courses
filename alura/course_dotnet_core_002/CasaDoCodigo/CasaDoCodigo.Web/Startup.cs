@@ -30,7 +30,9 @@ namespace CasaDoCodigo.Web
 
             services.AddSession();
 
-            services.AddScoped<IShoppingCart, ShoppingCartSession>();
+            services.AddScoped<IShoppingCart, SessionShoppingCart>();
+
+            services.AddScoped<IAuth, Session>();
 
             services.AddMvc(setup => setup.EnableEndpointRouting = false);
         }

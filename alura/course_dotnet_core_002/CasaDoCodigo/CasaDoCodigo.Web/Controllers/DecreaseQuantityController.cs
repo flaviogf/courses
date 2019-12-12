@@ -27,7 +27,7 @@ namespace CasaDoCodigo.Web.Controllers
 
             await _shoppingCart.Remove(product);
 
-            return Redirect("/shoppingcart");
+            return RedirectToAction("Index", "ShoppingCart");
         }
     }
 }
