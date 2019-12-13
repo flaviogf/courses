@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CasaDoCodigo.Web.Models
 {
@@ -21,5 +22,17 @@ namespace CasaDoCodigo.Web.Models
         [MaxLength(11)]
         [Required]
         public string Phone { get; set; }
+
+        public Address Address { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is User user && Id == user.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 }

@@ -1,40 +1,39 @@
-﻿using CasaDoCodigo.Web.Models;
+﻿using CasaDoCodigo.Web.Database;
+using CasaDoCodigo.Web.Models;
 using Microsoft.AspNetCore.Http;
-using System.IO;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace CasaDoCodigo.Web.Lib
 {
     public class Session : IAuth
     {
+        private readonly ApplicationContext _context;
+
         private readonly ISession _session;
 
-        public Session(IHttpContextAccessor accessor)
+        public Session(ApplicationContext context, IHttpContextAccessor accessor)
         {
+            _context = context;
             _session = accessor.HttpContext.Session;
         }
 
         public async Task<User> Login(User user)
         {
-            var serializer = new XmlSerializer(typeof(User));
-
-            var writer = new StringWriter();
-
-            serializer.Serialize(writer, user);
-
-            _session.SetString("@user", writer.ToString());
+            _session.SetInt32("@user", user.Id);
 
             return user;
         }
 
         public async Task<User> Logout()
         {
-            var serializer = new XmlSerializer(typeof(User));
+            var id = _session.GetInt32("@user");
 
-            var reader = new StringReader(_session.GetString("@user"));
-
-            var user = (User)serializer.Deserialize(reader);
+            var user = await (from currrent in _context.Users
+                              .Include(it => it.Address)
+                              where currrent.Id == id
+                              select currrent).FirstAsync();
 
             _session.Remove("@user");
 
@@ -43,11 +42,12 @@ namespace CasaDoCodigo.Web.Lib
 
         public async Task<User> User()
         {
-            var serializer = new XmlSerializer(typeof(User));
+            var id = _session.GetInt32("@user");
 
-            var reader = new StringReader(_session.GetString("@user"));
-
-            var user = (User)serializer.Deserialize(reader);
+            var user = await (from currrent in _context.Users
+                              .Include(it => it.Address)
+                              where currrent.Id == id
+                              select currrent).FirstAsync();
 
             return user;
         }

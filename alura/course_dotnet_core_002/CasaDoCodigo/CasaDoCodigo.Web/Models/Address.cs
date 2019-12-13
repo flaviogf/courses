@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CasaDoCodigo.Web.Models
@@ -36,5 +37,15 @@ namespace CasaDoCodigo.Web.Models
         public int UserId { get; set; }
 
         public User User { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Address address && Id == address.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 }

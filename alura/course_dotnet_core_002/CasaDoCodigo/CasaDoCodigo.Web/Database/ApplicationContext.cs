@@ -15,6 +15,8 @@ namespace CasaDoCodigo.Web.Database
 
         public DbSet<Address> Addresses { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(new Product[]
@@ -38,6 +40,8 @@ namespace CasaDoCodigo.Web.Database
                     Price = 3900
                 },
             });
+
+            modelBuilder.Entity<OrderProduct>().HasKey(it => new { it.OrderId, it.ProductId });
         }
     }
 }
