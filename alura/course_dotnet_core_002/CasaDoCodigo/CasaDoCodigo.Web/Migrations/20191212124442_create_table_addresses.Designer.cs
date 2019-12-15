@@ -3,14 +3,16 @@ using CasaDoCodigo.Web.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CasaDoCodigo.Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20191212124442_create_table_addresses")]
+    partial class create_table_addresses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,45 +57,9 @@ namespace CasaDoCodigo.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Web.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Web.Models.OrderProduct", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderProduct");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("CasaDoCodigo.Web.Models.Product", b =>
@@ -166,32 +132,8 @@ namespace CasaDoCodigo.Web.Migrations
             modelBuilder.Entity("CasaDoCodigo.Web.Models.Address", b =>
                 {
                     b.HasOne("CasaDoCodigo.Web.Models.User", "User")
-                        .WithOne("Address")
-                        .HasForeignKey("CasaDoCodigo.Web.Models.Address", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Web.Models.Order", b =>
-                {
-                    b.HasOne("CasaDoCodigo.Web.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CasaDoCodigo.Web.Models.OrderProduct", b =>
-                {
-                    b.HasOne("CasaDoCodigo.Web.Models.Order", "Order")
-                        .WithMany("Products")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CasaDoCodigo.Web.Models.Product", "Product")
-                        .WithMany("Orders")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

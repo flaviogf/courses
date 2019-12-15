@@ -1,0 +1,30 @@
+﻿@model CasaDoCodigo.Web.ViewModels.Order.OrderViewModel
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h2>Details</h2>
+
+<p><strong>Name</strong> @Model.Name</p>
+<p><strong>Email</strong> @Model.Email</p>
+<p><strong>Phone</strong> @Model.Phone</p>
+<p><strong>Zip Code</strong> @Model.ZipCode</p>
+<p><strong>Street</strong> @Model.Street</p>
+<p><strong>District</strong> @Model.District</p>
+<p><strong>City</strong> @Model.City</p>
+<p><strong>State</strong> @Model.State</p>
+
+<h2>Products</h2>
+
+<ul>
+    @foreach (var item in Model.Products)
+    {
+        <li>
+            <span>@item.Name</span>
+            <span>@item.Price</span>
+        </li>
+    }
+</ul>
+
+<a asp-controller="Order" asp-action="Store">Confirm</a>

@@ -1,0 +1,39 @@
+﻿@model CasaDoCodigo.Web.ViewModels.Address.StoreAddressViewModel
+
+@{
+    ViewData["Title"] = "Address";
+}
+
+<form asp-controller="Address" asp-action="Store" method="post">
+    <div>
+        <label asp-for="@Model.ZipCode"></label>
+        <input asp-for="@Model.ZipCode" />
+        <span asp-validation-for="@Model.ZipCode"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.Street"></label>
+        <input asp-for="@Model.Street" />
+        <span asp-validation-for="@Model.Street"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.District"></label>
+        <input asp-for="@Model.District" />
+        <span asp-validation-for="@Model.District"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.City"></label>
+        <input asp-for="@Model.City" />
+        <span asp-validation-for="@Model.City"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.State"></label>
+        <input asp-for="@Model.State" />
+        <span asp-validation-for="@Model.State"></span>
+    </div>
+
+    <button type="submit">Next</button>
+</form>

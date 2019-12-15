@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CasaDoCodigo.Web.Models
 {
-    public class Product
+    public class Order
     {
         [Key]
         [Required]
         public int Id { get; set; }
 
-        [StringLength(255)]
+        [ForeignKey("User")]
         [Required]
-        public string Name { get; set; }
+        public int UserId { get; set; }
 
-        [Required]
-        public int Price { get; set; }
+        public User User { get; set; }
 
-        public List<OrderProduct> Orders { get; set; }
+        public List<OrderProduct> Products { get; set; }
 
         public override bool Equals(object obj)
         {
-            return obj is Product product && Id == product.Id;
+            return obj is Order order && Id == order.Id;
         }
 
         public override int GetHashCode()

@@ -1,15 +1,16 @@
+﻿@model CasaDoCodigo.Web.ViewModels.Catalog.IndexCatalogViewModel
+
 @{
-    Layout = "_Layout";
+    ViewData["Title"] = "Catalog";
 }
 
-<main class="index__container">
-    <ul class="index__list">
-        @foreach(var product in Model)
-        {
-            <li class="index__item">
-                <img src="@product.ImageUrl" />
-                <h2>@product.Name</h2>
-            </li>
-        }
-    </ul>
-</main>
+<ul>
+    @foreach (var item in Model.Products)
+    {
+        <li>
+            <span>@item.Name</span>
+            <money>@item.Price</money>
+            <a asp-controller="AddProductToShoppingCart" asp-action="Store" asp-route-id="@item.Id">Buy</a>
+        </li>
+    }
+</ul>

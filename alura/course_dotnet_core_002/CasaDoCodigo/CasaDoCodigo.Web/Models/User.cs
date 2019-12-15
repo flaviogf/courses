@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CasaDoCodigo.Web.Models
 {
-    public class Product
+    public class User
     {
         [Key]
         [Required]
@@ -14,14 +13,21 @@ namespace CasaDoCodigo.Web.Models
         [Required]
         public string Name { get; set; }
 
+        [EmailAddress]
+        [StringLength(255)]
         [Required]
-        public int Price { get; set; }
+        public string Email { get; set; }
 
-        public List<OrderProduct> Orders { get; set; }
+        [MinLength(10)]
+        [MaxLength(11)]
+        [Required]
+        public string Phone { get; set; }
+
+        public Address Address { get; set; }
 
         public override bool Equals(object obj)
         {
-            return obj is Product product && Id == product.Id;
+            return obj is User user && Id == user.Id;
         }
 
         public override int GetHashCode()
