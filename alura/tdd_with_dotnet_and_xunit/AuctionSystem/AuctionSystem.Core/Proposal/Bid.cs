@@ -1,8 +1,10 @@
-﻿namespace AuctionSystem.Core.Proposal
+﻿using System;
+
+namespace AuctionSystem.Core.Proposal
 {
-    public class Bid
+    public class Bid : Entity
     {
-        public Bid(User user, int value)
+        public Bid(Guid Id, User user, int value) : base(Id)
         {
             User = user;
             Value = value;

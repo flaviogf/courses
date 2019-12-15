@@ -1,20 +1,18 @@
-﻿using System;
+﻿
+using System;
 using System.Threading.Tasks;
 
 namespace AuctionSystem.Core.Proposal
 {
-    public class User
+    public class User : Entity
     {
-        public User(Guid id)
+        public User(Guid id) : base(id)
         {
-            Id = id;
         }
-
-        public Guid Id { get; }
 
         public async Task<Bid> Bid(int value)
         {
-            return new Bid(this, value);
+            return new Bid(Guid.NewGuid(), this, value);
         }
     }
 }
