@@ -14,7 +14,7 @@ namespace Section1.LinqToObjectTests
 
             var useCase = new ListMovieByGenre(movieRepository, genreRepository);
 
-            var movies = await useCase.Execute(1);
+            var movies = await useCase.Execute(genreId: 1);
 
             Assert.Collection(movies,
             (it) =>

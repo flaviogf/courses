@@ -9,10 +9,8 @@
             GenreId = genreId;
         }
 
-        public Movie(int id, string name, Genre genre)
+        public Movie(int id, string name, Genre genre) : this(id, name, genre.Id)
         {
-            Id = id;
-            Name = name;
             Genre = genre;
         }
 
