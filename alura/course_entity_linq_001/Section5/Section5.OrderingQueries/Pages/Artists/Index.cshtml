@@ -1,0 +1,27 @@
+﻿@page
+
+
+@using Section5.OrderingQueries.Pages.Artists
+
+@model IndexModel
+
+<h1>Artists</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var artist in Model.Artists)
+        {
+            <tr>
+                <td>@artist.Id</td>
+                <td>@artist.Name</td>
+                <td><a asp-page="./Show" asp-route-id="@artist.Id">Show</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

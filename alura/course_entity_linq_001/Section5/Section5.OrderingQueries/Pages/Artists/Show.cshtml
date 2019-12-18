@@ -1,0 +1,25 @@
+﻿@page "{id:int}"
+
+@using Section5.OrderingQueries.Pages.Artists
+
+@model ShowModel
+
+<h1>@Model.Artist.Name</h1>
+
+<ul>
+    @foreach (var album in Model.Artist.Albums)
+    {
+        <li>
+            Artist: <strong>@album.Id</strong> @album.Name
+
+            <ul>
+                @foreach(var track in album.Tracks)
+                {
+                    <li>
+                        Track: <strong>@track.Id</strong> @track.Name
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ul>
