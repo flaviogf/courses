@@ -20,14 +20,17 @@ namespace Section2.LinqToXmlTests
             (it) =>
             {
                 Assert.Equal(900, it.Id);
+                Assert.Equal(2, it.Genre.Id);
             },
             (it) =>
             {
                 Assert.Equal(1154, it.Id);
+                Assert.Equal(1, it.Genre.Id);
             },
             (it) =>
             {
                 Assert.Equal(3445, it.Id);
+                Assert.Equal(3, it.Genre.Id);
             });
         }
     }

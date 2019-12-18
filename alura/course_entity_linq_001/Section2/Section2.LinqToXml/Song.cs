@@ -13,6 +13,11 @@
             GenreId = genreId;
         }
 
+        public Song(int id, string name, string author, int miliseconds, int bytes, decimal price, Genre genre):this(id, name, author, miliseconds, bytes, price, genre.Id)
+        {
+            Genre = genre;
+        }
+
         public int Id { get; private set; }
 
         public string Name { get; set; }
@@ -26,5 +31,7 @@
         public decimal Price { get; set; }
 
         public int GenreId { get; set; }
+
+        public Genre Genre { get; set; }
     }
 }

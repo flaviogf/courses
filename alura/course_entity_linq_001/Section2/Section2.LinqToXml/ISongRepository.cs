@@ -5,6 +5,6 @@ namespace Section2.LinqToXml
 {
     public interface ISongRepository
     {
-        Task<IList<Song>> List();
+        Task<IEnumerable<Song>> List();
     }
 }

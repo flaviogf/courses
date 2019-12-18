@@ -5,6 +5,6 @@ namespace Section2.LinqToXml
 {
     public interface IGenreRepository
     {
-        Task<IList<Genre>> List();
+        Task<IEnumerable<Genre>> List();
     }
 }

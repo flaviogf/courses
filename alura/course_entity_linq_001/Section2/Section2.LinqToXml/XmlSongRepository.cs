@@ -7,7 +7,7 @@ namespace Section2.LinqToXml
 {
     public class XmlSongRepository : ISongRepository
     {
-        public async Task<IList<Song>> List()
+        public async Task<IEnumerable<Song>> List()
         {
             var element = XElement.Load(@"C:\Users\flavio\dev\courses\alura\course_entity_linq_001\Section2\Section2.LinqToXml\AluraTunes.xml");
 
@@ -24,7 +24,7 @@ namespace Section2.LinqToXml
                             genreId: int.Parse(item.Element("GenreId").Value)
                         );
 
-            return songs.ToList();
+            return songs;
         }
     }
 }

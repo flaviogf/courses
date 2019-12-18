@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Section2.LinqToXml
@@ -15,9 +16,22 @@ namespace Section2.LinqToXml
             _genreRepository = genreRepository;
         }
 
-        public async Task<IList<Song>> Execute()
+        public async Task<IEnumerable<Song>> Execute()
         {
-            return await _songRepository.List();
+            var songs = from song in await _songRepository.List()
+                        join genre in await _genreRepository.List() on song.GenreId equals genre.Id
+                        select new Song
+                        (
+                            id: song.Id,
+                            name: song.Name,
+                            author: song.Autor,
+                            miliseconds: song.Miliseconds,
+                            bytes: song.Bytes,
+                            price: song.Price,
+                            genre: genre
+                        );
+
+            return songs;
         }
     }
 }
