@@ -1,7 +1,17 @@
+import 'package:bytebank/dao/contact_dao.dart';
+import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(BytebankApp());
+void main() async {
+  runApp(BytebankApp());
+
+  final ContactDao dao = ContactDao();
+
+  final List<Contact> contacts = await dao.findAll();
+
+  debugPrint(contacts.toString());
+}
 
 class BytebankApp extends StatelessWidget {
   @override

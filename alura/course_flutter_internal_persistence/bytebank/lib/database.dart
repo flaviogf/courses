@@ -10,5 +10,6 @@ Future<Database> getDatabase() async {
       );
     },
     version: 1,
+    onDowngrade: onDatabaseDowngradeDelete,
   );
 }

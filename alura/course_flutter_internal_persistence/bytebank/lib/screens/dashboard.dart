@@ -22,11 +22,10 @@ class Dashboard extends StatelessWidget {
               color: Theme.of(context).primaryColor,
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return ContactList();
-                    }),
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ContactList(),
+                    ),
                   );
                 },
                 child: Container(

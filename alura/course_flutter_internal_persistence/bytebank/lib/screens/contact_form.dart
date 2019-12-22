@@ -1,3 +1,4 @@
+import 'package:bytebank/dao/contact_dao.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class ContactFormState extends State<ContactForm> {
       TextEditingController();
   final TextEditingController _accountTextEditingController =
       TextEditingController();
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +55,13 @@ class ContactFormState extends State<ContactForm> {
                   child: Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: RaisedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         final String name = _nameTextEditingController.text;
                         final String account =
                             _accountTextEditingController.text;
                         final Contact contact = Contact(name, account);
-                        Navigator.pop(context, contact);
+                        await _dao.insert(contact);
+                        Navigator.of(context).pop();
                       },
                       child: Text('Confirm'),
                     ),
