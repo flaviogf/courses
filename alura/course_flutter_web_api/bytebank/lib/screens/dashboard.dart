@@ -91,7 +91,7 @@ class Feature extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(8.0),
             height: 100,
-            width: 150,
+            width: 120,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,5 +1,7 @@
 import 'package:bytebank/dao/contact_dao.dart';
+import 'package:bytebank/http/webclient.dart';
 import 'package:bytebank/models/contact.dart';
+import 'package:bytebank/models/transaction.dart';
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,10 @@ void main() async {
   final List<Contact> contacts = await dao.findAll();
 
   debugPrint(contacts.toString());
+
+  final List<Transaction> transactions = await findAll();
+
+  debugPrint(transactions.toString());
 }
 
 class BytebankApp extends StatelessWidget {
