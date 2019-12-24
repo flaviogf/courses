@@ -1,4 +1,4 @@
-namespace Section6.CoutingAndTotaling.Models
+﻿namespace Section6.CountingAndTotalizing
 {
     public class Track
     {
@@ -9,5 +9,7 @@ namespace Section6.CoutingAndTotaling.Models
         public int AlbumId { get; set; }
 
         public Album Album { get; set; }
+
+        public int Price { get; set; }
     }
 }

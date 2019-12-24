@@ -1,4 +1,4 @@
-namespace Section6.CoutingAndTotaling.Models
+﻿namespace Section6.CountingAndTotalizing
 {
     public class Item
     {

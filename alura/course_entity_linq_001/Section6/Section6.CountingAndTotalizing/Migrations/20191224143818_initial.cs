@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Section6.CoutingAndTotaling.Migrations
+namespace Section6.CountingAndTotalizing.Migrations
 {
     public partial class initial : Migration
     {
@@ -25,7 +25,7 @@ namespace Section6.CoutingAndTotaling.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
                     ArtistId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -46,7 +46,8 @@ namespace Section6.CoutingAndTotaling.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    AlbumId = table.Column<int>(nullable: false)
+                    AlbumId = table.Column<int>(nullable: false),
+                    Price = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,35 +60,10 @@ namespace Section6.CoutingAndTotaling.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Items",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    TrackId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Items", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Items_Tracks_TrackId",
-                        column: x => x.TrackId,
-                        principalTable: "Tracks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Albums_ArtistId",
                 table: "Albums",
                 column: "ArtistId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_TrackId",
-                table: "Items",
-                column: "TrackId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tracks_AlbumId",
@@ -97,9 +73,6 @@ namespace Section6.CoutingAndTotaling.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Items");
-
             migrationBuilder.DropTable(
                 name: "Tracks");
 
