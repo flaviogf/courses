@@ -19,7 +19,9 @@ namespace Section6.CountingAndTotalizing
         {
             var loggerFactory = LoggerFactory.Create(configure => configure.AddConsole());
 
-            optionsBuilder.UseSqlite("Data Source=database.sqlite3").UseLoggerFactory(loggerFactory);
+            var connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\flavi\dev\courses\alura\course_entity_linq_001\Section6\Section6.CountingAndTotalizing\database.mdf;Integrated Security=True;Connect Timeout=30";
+
+            optionsBuilder.UseSqlServer(connectionString).UseLoggerFactory(loggerFactory);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,30 +35,31 @@ namespace Section6.CountingAndTotalizing
             modelBuilder.Entity<Artist>().HasData(artists);
 
             var albums = from id in Enumerable.Range(1, 10)
-                          select new Faker<Album>()
-                          .RuleFor(it => it.Id, () => id)
-                          .RuleFor(it => it.Title, (faker) => faker.Lorem.Sentence())
-                          .RuleFor(it => it.ArtistId, (faker) => faker.Random.Int(1, 10))
-                          .Generate();
+                         select new Faker<Album>()
+                         .RuleFor(it => it.Id, () => id)
+                         .RuleFor(it => it.Title, (faker) => faker.Lorem.Sentence())
+                         .RuleFor(it => it.ArtistId, (faker) => faker.Random.Int(1, 10))
+                         .Generate();
 
             modelBuilder.Entity<Album>().HasData(albums);
 
             var tracks = from id in Enumerable.Range(1, 10)
-                          select new Faker<Track>()
-                          .RuleFor(it => it.Id, () => id)
-                          .RuleFor(it => it.Name, (faker) => faker.Lorem.Sentence())
-                          .RuleFor(it => it.AlbumId, (faker) => faker.Random.Int(1, 10))
-                          .RuleFor(it => it.Price, (faker) => faker.Random.Int(10000, 20000))
-                          .Generate();
+                         select new Faker<Track>()
+                         .RuleFor(it => it.Id, () => id)
+                         .RuleFor(it => it.Name, (faker) => faker.Lorem.Sentence())
+                         .RuleFor(it => it.AlbumId, (faker) => faker.Random.Int(1, 10))
+                         .RuleFor(it => it.Price, (faker) => faker.Random.Int(10000, 20000))
+                         .Generate();
 
             modelBuilder.Entity<Track>().HasData(tracks);
 
             var items = from id in Enumerable.Range(1, 10)
-                          select new Faker<Item>()
-                          .RuleFor(it => it.Id, () => id)
-                          .RuleFor(it => it.TrackId, (faker) => faker.Random.Int(1, 10))
-                          .RuleFor(it => it.Quantity, (faker) => faker.Random.Int(100, 200))
-                          .Generate();
+                        select new Faker<Item>()
+                        .RuleFor(it => it.Id, () => id)
+                        .RuleFor(it => it.TrackId, (faker) => faker.Random.Int(1, 10))
+                        .RuleFor(it => it.Quantity, (faker) => faker.Random.Int(100, 200))
+                        .RuleFor(it => it.Price, (faker) => faker.Random.Int(10000, 20000))
+                        .Generate();
 
             modelBuilder.Entity<Item>().HasData(items);
         }
