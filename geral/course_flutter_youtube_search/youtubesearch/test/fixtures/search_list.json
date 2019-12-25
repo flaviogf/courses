@@ -1,0 +1,177 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/m2P387Gw8Z0RzrE8FimJkC0A1ws\"",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "BR",
+  "pageInfo": {
+    "totalResults": 529550,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/o7vjm8stO1Nsvvcm7q9nb5oo7sk\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "4qcf7dcNL7w"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-25T14:36:42.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "&quot;Relaxando&quot; na CCXP! (Esse é o Jovem Nerd 😈)",
+        "description": "Lambda, lambda, lambda, nerds! Hoje, Alexandre Ottoni, o Jovem Nerd, e Deive Pazos, o Azaghal, visitam a CCXP 2019 e dão uma relaxada, mas não ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/4qcf7dcNL7w/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/4qcf7dcNL7w/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/4qcf7dcNL7w/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/UFIbdmPPuQrNTIM3EzSzZQBBBDI\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "lCzCpSu1zU4"
+      },
+      "snippet": {
+        "publishedAt": "2019-08-27T15:22:29.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Jovem Nerd na mão do palhaço DE NOVO!🍺🥴",
+        "description": "Olá bípedes, essa semana Sr. K visita o famoso Café Lamas junto com Alottoni e Azaghal. CONHEÇA A NERDSTORE http://www.nerdstore.com.br EDIÇÃO ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lCzCpSu1zU4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lCzCpSu1zU4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lCzCpSu1zU4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/XeynToKqFyABKrWEhSElhxq0a7U\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "tbTn8LfnqA0"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-23T18:06:43.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Untitled Goose Game - Azaganso!",
+        "description": "Lambda, lambda, lambda nerds! Hoje Alexandre Ottoni o Jovem Nerd, e Deive Pazos, o Azaghal, controlam um ganso!?! Use nosso código: Nerdpower Acesse ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/tbTn8LfnqA0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/tbTn8LfnqA0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/tbTn8LfnqA0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/kCHFWTGKMn4LzZKJXGLAT7jZIoY\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "DSjzKr-V5oQ"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-11T17:35:54.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Chaves Forever",
+        "description": "RUFFLES® Crocrrrunch sabor Ketchup Assista o comercial com referência de Chaves: https://youtu.be/g7NiAP0cz7A Lambda, lambda, lambda, nerds! Hoje ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/DSjzKr-V5oQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/DSjzKr-V5oQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/DSjzKr-V5oQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/bfMsXoACjKwnjPrsxC8uQyABQ58\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "AnpEczdZ7Bc"
+      },
+      "snippet": {
+        "publishedAt": "2018-06-04T14:00:00.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Stick Fight: The Game - AO VIVAÇO!",
+        "description": "Camiseta Crush Your Enemies e Replay Balboa Crossfit! - Lançamentos e reposições exclusivas Nerdstore. - Clique e garanta a sua: https://bit.ly/2LQWkxP ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/AnpEczdZ7Bc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/AnpEczdZ7Bc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/AnpEczdZ7Bc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    }
+  ]
+}
