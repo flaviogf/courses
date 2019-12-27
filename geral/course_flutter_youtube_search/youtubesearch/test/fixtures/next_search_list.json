@@ -1,0 +1,178 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/QUtEoOKPWh8mks7j3sn2Yihpsy4\"",
+  "nextPageToken": "CAoQAA",
+  "prevPageToken": "CAUQAQ",
+  "regionCode": "BR",
+  "pageInfo": {
+    "totalResults": 527984,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/Dq_Fd-DR4rpk9O0ys3_CZXy9xBY\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "75xO564c5rE"
+      },
+      "snippet": {
+        "publishedAt": "2019-12-18T16:27:19.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Entrevista The Witcher e trailer de 007 - Sem Tempo Para Morrer",
+        "description": "Lambda, lambda, lambda, nerds! Hoje, Alexandre Ottoni, o Jovem Nerd, e Deive Pazos, o Azaghal, comentam o novo trailer de 007 - Sem Tempo Para Morrer e ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/75xO564c5rE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/75xO564c5rE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/75xO564c5rE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/NCboV5zc2Lct4HQVj9H4FrapnP4\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "iDwPjPqf3TY"
+      },
+      "snippet": {
+        "publishedAt": "2015-06-15T16:03:21.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Bloodborne - MORREU!",
+        "description": "Lambda lambda lambda, nerds! Jovem Nerd e Sr. K arrancam os cabelos jogando o dificultoso Bloodborne! NERD NEWS -Assine o canal do Nerd News no ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/iDwPjPqf3TY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/iDwPjPqf3TY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/iDwPjPqf3TY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/uEhAyHdWk5MBFBkkea5zGoAIkWo\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "fwUZCBYoBmM"
+      },
+      "snippet": {
+        "publishedAt": "2019-10-02T14:00:07.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Tem que acabar o Fan Service?",
+        "description": "Lambda, lambda, lambda, nerds! Hoje, Alexandre Ottoni, o Jovem Nerd, e Deive Pazos, o Azaghal, vão discutir se o Fan Service tem que acabar. Os Nerds ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/fwUZCBYoBmM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/fwUZCBYoBmM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/fwUZCBYoBmM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/x0N8xL_G-y7IBKKx9W1vxOO0Zcg\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Jo7oC_50M-o"
+      },
+      "snippet": {
+        "publishedAt": "2011-03-10T15:04:13.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "Carnaval na mão do Palhaço",
+        "description": "Pausa de 20 minutinhos de sua ressaca para acompanhar como foi a semana do CarnaNerd 2011! - Mais uma trollagem de Azaghal - Nerdcasters nos blocos ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Jo7oC_50M-o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Jo7oC_50M-o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Jo7oC_50M-o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/62kHKBrhcpc2gWK97hDngNtDs-0\"",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "eBIQlKxCTd0"
+      },
+      "snippet": {
+        "publishedAt": "2019-09-23T17:45:14.000Z",
+        "channelId": "UCmEClzCBDx-vrt0GuSKBd9g",
+        "title": "O melhor de 400 NerdPlayers",
+        "description": "NerdCast Especial RPG Cthulhu Ouça agora: https://jovemnerd.com.br/rpg/cthulhu Lambda, lambda, lambda nerds! Hoje Alexandre Ottoni o Jovem Nerd e ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eBIQlKxCTd0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eBIQlKxCTd0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eBIQlKxCTd0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Jovem Nerd",
+        "liveBroadcastContent": "none"
+      }
+    }
+  ]
+}
