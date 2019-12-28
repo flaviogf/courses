@@ -19,7 +19,7 @@ void main() {
 
         when(client.get(
           argThat(
-            startsWith('https://www.googleapis.com/youtube/v3/search'),
+            startsWith('https://www.googleapis.com/youtube/v3/search?'),
           ),
         )).thenAnswer(
           (_) => Future.value(
@@ -41,6 +41,7 @@ void main() {
           '&quot;Relaxando&quot; na CCXP! (Esse é o Jovem Nerd 😈)',
           videos[0].title,
         );
+        expect('https://i.ytimg.com/vi/4qcf7dcNL7w/hqdefault.jpg', videos[0].thumbnail);
       });
     });
 
@@ -53,7 +54,7 @@ void main() {
 
         when(client.get(
           argThat(
-            startsWith('https://www.googleapis.com/youtube/v3/search'),
+            startsWith('https://www.googleapis.com/youtube/v3/search?'),
           ),
         )).thenAnswer(
           (_) => Future.value(
@@ -86,7 +87,7 @@ void main() {
 
         when(client.get(
           argThat(
-            startsWith('https://www.googleapis.com/youtube/v3/search'),
+            startsWith('https://www.googleapis.com/youtube/v3/search?'),
           ),
         )).thenAnswer(
           (_) => Future.value(
@@ -106,7 +107,7 @@ void main() {
 
         when(client.get(
           argThat(
-            startsWith('https://www.googleapis.com/youtube/v3/search'),
+            startsWith('https://www.googleapis.com/youtube/v3/search?'),
           ),
         )).thenAnswer(
           (_) => Future.value(

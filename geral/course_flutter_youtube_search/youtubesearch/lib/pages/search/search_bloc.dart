@@ -2,20 +2,29 @@ import 'package:bloc/bloc.dart';
 import 'package:youtubesearch/lib/video_repository.dart';
 import 'package:youtubesearch/models/video.dart';
 import 'package:youtubesearch/pages/search/search_event.dart';
+import 'package:youtubesearch/pages/search/search_state.dart';
 
-class SearchBloc extends Bloc<SearchEvent, List<Video>> {
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final VideoRepository _videoRepository;
 
   SearchBloc(this._videoRepository);
 
   @override
-  List<Video> get initialState => List();
+  SearchState get initialState => SearchStateInitial();
 
   @override
-  Stream<List<Video>> mapEventToState(SearchEvent event) async* {
+  Stream<SearchState> mapEventToState(SearchEvent event) async* {
+    yield SearchStateLoading();
+
     if (event is SearchEventFind) {
-      List<Video> videos = await _videoRepository.find(event.name);
-      yield videos;
+      if (event.name.isEmpty) {
+        yield SearchStateInitial();
+      }
+
+      if (event.name.isNotEmpty) {
+        List<Video> videos = await _videoRepository.find(event.name);
+        yield SearchStateSuccess(videos);
+      }
     }
   }
 }

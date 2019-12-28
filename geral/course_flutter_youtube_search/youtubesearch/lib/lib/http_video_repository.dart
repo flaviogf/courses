@@ -13,7 +13,7 @@ class HttpVideoRepository implements VideoRepository {
   HttpVideoRepository(this._client);
 
   @override
-  Future<List<Video>> find(String name, {String page}) async {
+  Future<List<Video>> find(String name, {String page = ''}) async {
     final String url = getUrl(name, page);
 
     final http.Response response = await _client.get(url);
@@ -26,7 +26,11 @@ class HttpVideoRepository implements VideoRepository {
 
     List<Video> videos = items
         .map(
-          (it) => Video(it['id']['videoId'], it['snippet']['title']),
+          (it) => Video(
+            it['id']['videoId'],
+            it['snippet']['title'],
+            it['snippet']['thumbnails']['high']['url'],
+          ),
         )
         .toList();
 
@@ -47,10 +51,10 @@ class HttpVideoRepository implements VideoRepository {
   }
 
   String getUrl(String name, String page) {
-    if (page == null) {
-      return 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=$name&type=video&key=$API_TOKEN';
+    if (page.isEmpty) {
+      return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$name&regionCode=br&type=video&key=$API_TOKEN';
     }
 
-    return 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=$name&type=video&key=$API_TOKEN&pageToken=$page';
+    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$name&regionCode=br&type=video&pageToken=$page&key=$API_TOKEN';
   }
 }
