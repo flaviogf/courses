@@ -14,8 +14,7 @@ class HttpVideoRepository implements VideoRepository {
 
   @override
   Future<List<Video>> find(String name, {String page}) async {
-    final String url =
-        'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=$name&type=video&key=$API_TOKEN${page != null ? '&pageToken=$page' : ''}';
+    final String url = getUrl(name, page);
 
     final http.Response response = await _client.get(url);
 
@@ -45,5 +44,13 @@ class HttpVideoRepository implements VideoRepository {
   @override
   Future<String> previous() async {
     return _previous;
+  }
+
+  String getUrl(String name, String page) {
+    if (page == null) {
+      return 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=$name&type=video&key=$API_TOKEN';
+    }
+
+    return 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=$name&type=video&key=$API_TOKEN&pageToken=$page';
   }
 }
