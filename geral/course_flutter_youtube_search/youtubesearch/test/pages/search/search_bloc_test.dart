@@ -15,6 +15,7 @@ void main() {
       VideoRepository videoRepository = MockVideoRepository();
 
       when(videoRepository.find(any)).thenAnswer((_) => Future.value([]));
+      when(videoRepository.next()).thenAnswer((_) => Future.value('nextPage'));
 
       _bloc = SearchBloc(videoRepository);
     });
@@ -51,7 +52,7 @@ void main() {
           emitsInOrder([
             SearchStateInitial(),
             SearchStateLoading(),
-            SearchStateSuccess([])
+            SearchStateSuccess('Name of video', [])
           ]),
         );
       },
@@ -68,6 +69,30 @@ void main() {
           SearchStateInitial(),
           SearchStateLoading(),
           SearchStateInitial(),
+        ]),
+      );
+    });
+
+    test(
+        'should return state "SearchStateSuccess" when the event "SearchEventFind" is emitted',
+        () async {
+      _bloc.add(SearchEventFind('Name of video'));
+
+      await expectLater(
+        _bloc,
+        emitsInOrder([
+          SearchStateInitial(),
+          SearchStateLoading(),
+          SearchStateSuccess('Name of video', []),
+        ]),
+      );
+
+      _bloc.add(SearchEventNext());
+
+      await expectLater(
+        _bloc,
+        emitsInOrder([
+          SearchStateSuccess('Name of video', []),
         ]),
       );
     });

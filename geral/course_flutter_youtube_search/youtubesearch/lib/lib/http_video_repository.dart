@@ -14,7 +14,7 @@ class HttpVideoRepository implements VideoRepository {
 
   @override
   Future<List<Video>> find(String name, {String page = ''}) async {
-    final String url = getUrl(name, page);
+    final String url = getSearchUrl(name, page);
 
     final http.Response response = await _client.get(url);
 
@@ -41,6 +41,27 @@ class HttpVideoRepository implements VideoRepository {
   }
 
   @override
+  Future<Video> findOne(String id) async {
+    final String url = getVideoUrl(id);
+
+    final http.Response response = await _client.get(url);
+
+    final String json = response.body;
+
+    final Map<String, dynamic> content = jsonDecode(json);
+
+    final List<dynamic> items = content['items'];
+
+    final Video video = Video(
+      items[0]['id'],
+      items[0]['snippet']['title'],
+      items[0]['snippet']['thumbnails']['high']['url'],
+    );
+
+    return video;
+  }
+
+  @override
   Future<String> next() async {
     return _next;
   }
@@ -50,11 +71,15 @@ class HttpVideoRepository implements VideoRepository {
     return _previous;
   }
 
-  String getUrl(String name, String page) {
+  String getSearchUrl(String name, String page) {
     if (page.isEmpty) {
-      return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$name&regionCode=br&type=video&key=$API_TOKEN';
+      return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$name&type=video&key=$API_TOKEN';
     }
 
-    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$name&regionCode=br&type=video&pageToken=$page&key=$API_TOKEN';
+    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=$name&type=video&pageToken=$page&key=$API_TOKEN';
+  }
+
+  String getVideoUrl(String id) {
+    return 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=$id&maxResults=1&key=$API_TOKEN';
   }
 }

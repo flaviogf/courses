@@ -6,7 +6,14 @@ import 'package:youtubesearch/pages/search/search_bloc.dart';
 import 'package:youtubesearch/pages/search/search_event.dart';
 import 'package:youtubesearch/pages/search/search_state.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => SearchPageState();
+}
+
+class SearchPageState extends State<SearchPage> {
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -46,40 +53,63 @@ class SearchPage extends StatelessWidget {
             }
 
             if (state is SearchStateSuccess) {
-              return ListView.builder(
-                itemCount: state.data.length,
-                itemBuilder: (context, index) {
-                  Video video = state.data[index];
-                  return Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          AspectRatio(
-                            aspectRatio: 16 / 9,
-                            child: Image.network(
-                              video.thumbnail,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          Text(
-                            video.title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+              return NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  bool hasReachedOnTheEnd =
+                      notification is ScrollEndNotification &&
+                          _scrollController.position.extentAfter == 0;
+
+                  if (hasReachedOnTheEnd) {
+                    BlocProvider.of<SearchBloc>(context).add(SearchEventNext());
+                  }
+
+                  return false;
                 },
+                child: ListView.builder(
+                  controller: _scrollController,
+                  itemCount: state.data.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index >= state.data.length) {
+                      return Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    }
+
+                    Video video = state.data[index];
+                    return Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.network(
+                                video.thumbnail,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              video.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               );
             }
 
@@ -136,8 +166,8 @@ class SearchTextFieldState extends State<SearchTextField> {
         border: InputBorder.none,
         icon: Icon(Icons.search),
       ),
-      onSubmitted: (name) {
-        BlocProvider.of<SearchBloc>(context).add(SearchEventFind(name));
+      onSubmitted: (title) {
+        BlocProvider.of<SearchBloc>(context).add(SearchEventFind(title));
       },
     );
   }

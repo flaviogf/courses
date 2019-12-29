@@ -14,16 +14,34 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
-    yield SearchStateLoading();
-
     if (event is SearchEventFind) {
-      if (event.name.isEmpty) {
+      yield SearchStateLoading();
+
+      if (event.title.isEmpty) {
         yield SearchStateInitial();
       }
 
-      if (event.name.isNotEmpty) {
-        List<Video> videos = await _videoRepository.find(event.name);
-        yield SearchStateSuccess(videos);
+      if (event.title.isNotEmpty) {
+        List<Video> videos = await _videoRepository.find(event.title);
+        yield SearchStateSuccess(event.title, videos);
+      }
+    }
+
+    if (event is SearchEventNext) {
+      if (state is SearchStateSuccess) {
+        final SearchStateSuccess currentState = state as SearchStateSuccess;
+
+        String nextPageToken = await _videoRepository.next();
+
+        List<Video> videos = await _videoRepository.find(
+          currentState.title,
+          page: nextPageToken,
+        );
+
+        yield SearchStateSuccess(
+          currentState.title,
+          currentState.data + videos,
+        );
       }
     }
   }

@@ -41,7 +41,10 @@ void main() {
           '&quot;Relaxando&quot; na CCXP! (Esse é o Jovem Nerd 😈)',
           videos[0].title,
         );
-        expect('https://i.ytimg.com/vi/4qcf7dcNL7w/hqdefault.jpg', videos[0].thumbnail);
+        expect(
+          'https://i.ytimg.com/vi/4qcf7dcNL7w/hqdefault.jpg',
+          videos[0].thumbnail,
+        );
       });
     });
 
@@ -124,6 +127,43 @@ void main() {
         final String previous = await videoRepository.previous();
 
         expect(previous, 'CAUQAQ');
+      });
+    });
+
+    group('findOne should', () {
+      test('return a video', () async {
+        final String videoList =
+            await File('test/fixtures/video_list.json').readAsString();
+
+        final MockClient client = MockClient();
+
+        when(client.get(
+          argThat(
+            startsWith('https://www.googleapis.com/youtube/v3/videos?'),
+          ),
+        )).thenAnswer(
+          (_) => Future.value(
+            http.Response(
+              videoList,
+              200,
+              headers: {'content-type': 'application/json; charset=utf-8'},
+            ),
+          ),
+        );
+
+        final VideoRepository videoRepository = HttpVideoRepository(client);
+
+        final Video video = await videoRepository.findOne('video id');
+
+        expect('xONMtd4C1Xk', video.id);
+        expect(
+          'como NÃO ser assaltado! - LIFEHACKS INCRÍVEIS que vão salvar sua vida (ou não)',
+          video.title,
+        );
+        expect(
+          'https://i.ytimg.com/vi/xONMtd4C1Xk/hqdefault.jpg',
+          video.thumbnail,
+        );
       });
     });
   });

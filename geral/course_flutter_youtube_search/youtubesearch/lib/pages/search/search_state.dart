@@ -16,9 +16,10 @@ class SearchStateLoading extends SearchState {
 }
 
 class SearchStateSuccess extends SearchState {
+  final String title;
   final List<Video> data;
 
-  SearchStateSuccess(this.data);
+  SearchStateSuccess(this.title, this.data);
 
   @override
   List<Object> get props => [data];
