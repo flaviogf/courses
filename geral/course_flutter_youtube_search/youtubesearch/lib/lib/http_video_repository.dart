@@ -30,6 +30,7 @@ class HttpVideoRepository implements VideoRepository {
             it['id']['videoId'],
             it['snippet']['title'],
             it['snippet']['thumbnails']['high']['url'],
+            it['snippet']['description'],
           ),
         )
         .toList();
@@ -56,6 +57,7 @@ class HttpVideoRepository implements VideoRepository {
       items[0]['id'],
       items[0]['snippet']['title'],
       items[0]['snippet']['thumbnails']['high']['url'],
+      items[0]['snippet']['description'],
     );
 
     return video;
