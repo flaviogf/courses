@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
 import 'package:youtubesearch/models/video.dart';
+import 'package:youtubesearch/pages/detail/detail_page.dart';
 import 'package:youtubesearch/pages/search/search_bloc.dart';
 import 'package:youtubesearch/pages/search/search_event.dart';
 import 'package:youtubesearch/pages/search/search_state.dart';
@@ -12,12 +13,13 @@ class SearchPage extends StatefulWidget {
 }
 
 class SearchPageState extends State<SearchPage> {
+  final SearchBloc _bloc = kiwi.Container().resolve<SearchBloc>();
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => kiwi.Container().resolve<SearchBloc>(),
+      create: (_) => _bloc,
       child: Scaffold(
         appBar: AppBar(
           title: SearchBar(),
@@ -79,32 +81,47 @@ class SearchPageState extends State<SearchPage> {
                     }
 
                     Video video = state.data[index];
-                    return Card(
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Image.network(
-                                video.thumbnail,
-                                fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => DetailPage(id: video.id),
+                          ),
+                        );
+                      },
+                      child: Card(
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Image.network(
+                                  video.thumbnail,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              video.title,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
+                              SizedBox(
+                                height: 8.0,
                               ),
-                            ),
-                          ],
+                              Text(
+                                video.title,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              Text(
+                                video.description,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -118,6 +135,12 @@ class SearchPageState extends State<SearchPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.close();
   }
 }
 

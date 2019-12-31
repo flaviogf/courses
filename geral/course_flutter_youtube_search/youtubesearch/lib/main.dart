@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:kiwi/kiwi.dart' as kiwi;
 import 'package:youtubesearch/lib/http_video_repository.dart';
 import 'package:youtubesearch/lib/video_repository.dart';
+import 'package:youtubesearch/pages/detail/detail_bloc.dart';
 import 'package:youtubesearch/pages/search/search_bloc.dart';
 import 'package:youtubesearch/pages/search/search_page.dart';
 
@@ -18,6 +19,11 @@ void main() async {
     })
     ..registerFactory((it) {
       return SearchBloc(
+        it.resolve(),
+      );
+    })
+    ..registerFactory((it) {
+      return DetailBloc(
         it.resolve(),
       );
     });

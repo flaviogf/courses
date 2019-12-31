@@ -45,6 +45,10 @@ void main() {
           'https://i.ytimg.com/vi/4qcf7dcNL7w/hqdefault.jpg',
           videos[0].thumbnail,
         );
+        expect(
+          'Lambda, lambda, lambda, nerds! Hoje, Alexandre Ottoni, o Jovem Nerd, e Deive Pazos, o Azaghal, visitam a CCXP 2019 e dão uma relaxada, mas não ...',
+          videos[0].description,
+        );
       });
     });
 
@@ -163,6 +167,10 @@ void main() {
         expect(
           'https://i.ytimg.com/vi/xONMtd4C1Xk/hqdefault.jpg',
           video.thumbnail,
+        );
+        expect(
+          'Leon e Nilce reagem a alguns lifehacks. No vídeo de hoje você vai descobrir:\ncomo não ser assaltado!\ncomo evitar sujeira!\ncomo dar remédio pro filho! \ncomo abrir janela de carros (para fins que não sejam maléficos!)\n\nInscreva-se! Vai ter bolo!\r\nCoisa de Nerd: https://www.youtube.com/user/coisadenerd\r\nCadê a Chave: https://www.youtube.com/cadeachave\r\nNosso grupo no FB: https://www.facebook.com/groups/1084252381760423',
+          video.description,
         );
       });
     });
