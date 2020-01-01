@@ -31,6 +31,26 @@ namespace WithoutIdentity.Mvc
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/SignIn/Create";
+                options.LogoutPath = "/SignOut/Create";
+                options.AccessDeniedPath = "/AccessDenied/Show";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5.0);
+                options.SlidingExpiration = true;
+            });
+
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
@@ -41,9 +61,11 @@ namespace WithoutIdentity.Mvc
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
