@@ -12,7 +12,7 @@ namespace WithoutIdentity.Mvc.ViewModels.SignUp
         [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "The {0} field must be max {2} and {1} min characters.", MinimumLength = 8)]
+        [StringLength(100, ErrorMessage = "The {0} field must be max {2} and min {1} characters.", MinimumLength = 8)]
         public string Password { get; set; }
 
         [Required]

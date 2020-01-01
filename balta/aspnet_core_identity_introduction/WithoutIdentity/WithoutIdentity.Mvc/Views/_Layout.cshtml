@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WithoutIdentity</title>
+    <title>WithoutIdentity - @ViewData["Title"]</title>
     <link rel="stylesheet" type="text/css" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
 </head>
 <body>
-    @RenderBody()
+    <nav class="navbar navbar-dark navbar-expand bg-dark">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Show">Home</a>
+
+        <button class="navbar-toggler" type="button" data-target="#navbar" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="SignUp" asp-action="Store">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="SignIn" asp-action="Store">Sign In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
 
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

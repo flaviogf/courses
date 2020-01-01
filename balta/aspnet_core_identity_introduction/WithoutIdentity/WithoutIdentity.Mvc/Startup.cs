@@ -44,8 +44,8 @@ namespace WithoutIdentity.Mvc
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.LoginPath = "/SignIn/Create";
-                options.LogoutPath = "/SignOut/Create";
+                options.LoginPath = "/SignIn/Store";
+                options.LogoutPath = "/SignOut/Store";
                 options.AccessDeniedPath = "/AccessDenied/Show";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5.0);
                 options.SlidingExpiration = true;

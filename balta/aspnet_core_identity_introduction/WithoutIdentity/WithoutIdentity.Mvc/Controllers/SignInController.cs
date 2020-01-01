@@ -2,25 +2,20 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using WithoutIdentity.Mvc.Extensions;
 using WithoutIdentity.Mvc.Models;
-using WithoutIdentity.Mvc.ViewModels.SignUp;
+using WithoutIdentity.Mvc.ViewModels.SignIn;
 
 namespace WithoutIdentity.Mvc.Controllers
 {
-    public class SignUpController : Controller
+    public class SignInController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public SignUpController
+        public SignInController
         (
-            UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager
         )
         {
-            _userManager = userManager;
             _signInManager = signInManager;
         }
 
@@ -34,23 +29,25 @@ namespace WithoutIdentity.Mvc.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Store(SignUpStoreViewModel viewModel)
+        public async Task<IActionResult> Store(SignInStoreViewModel viewModel)
         {
-            var user = new ApplicationUser
-            {
-                UserName = viewModel.Email,
-                Email = viewModel.Email
-            };
-
-            var result = await _userManager.CreateAsync(user, viewModel.Password);
+            var result = await _signInManager.PasswordSignInAsync
+            (
+                viewModel.Email,
+                viewModel.Password,
+                isPersistent: viewModel.Remember,
+                lockoutOnFailure: false
+            );
 
             if (result.Succeeded)
             {
-
                 return RedirectToAction("Show", "Home");
             }
 
-            ModelState.AddErrors(result.Errors);
+            if (result.IsNotAllowed)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid email or password.");
+            }
 
             return View(viewModel);
         }
