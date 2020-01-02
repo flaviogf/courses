@@ -65,7 +65,7 @@ namespace WithoutIdentity.Mvc
 
             app.UseAuthentication();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(options =>options.MapRoute("default", "{controller=Home}/{action=Show}/{id?}"));
         }
     }
 }

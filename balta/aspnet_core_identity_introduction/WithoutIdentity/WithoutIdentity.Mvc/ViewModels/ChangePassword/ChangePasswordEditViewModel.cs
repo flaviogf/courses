@@ -13,7 +13,12 @@ namespace WithoutIdentity.Mvc.ViewModels.ChangePassword
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
-        [Compare(nameof(OldPassword))]
         public string NewPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm new password")]
+        [Compare(nameof(NewPassword))]
+        public string ConfirmNewPassword { get; set; }
     }
 }
