@@ -1,0 +1,30 @@
+﻿@model WithoutIdentity.Mvc.ViewModels.SignUp.SignUpStoreViewModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<form asp-controller="SignUp" asp-action="Store" method="post" class="col-12 col-md-6 offset-md-3 mt-5">
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign up</button>
+
+    <div asp-validation-summary="All" class="mt-3"></div>
+</form>
+
