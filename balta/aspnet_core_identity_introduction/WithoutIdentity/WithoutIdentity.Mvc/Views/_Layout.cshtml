@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<ApplicationUser> SignInManager;
+@inject UserManager<ApplicationUser> UserManager;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,12 +21,24 @@
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="SignUp" asp-action="Store">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="SignIn" asp-action="Store">Sign In</a>
-                </li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Profile" asp-action="Edit">@UserManager.GetUserName(User)</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" asp-controller="SignOut" asp-action="Store">Sign Out</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="SignUp" asp-action="Store">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="SignIn" asp-action="Store">Sign In</a>
+                    </li>
+                }
             </ul>
         </div>
     </nav>
