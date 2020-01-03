@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace ExternalProvider.Mvc
 {
@@ -39,6 +40,13 @@ namespace ExternalProvider.Mvc
                     options.SaveTokens = true;
                 });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/SignIn/Store";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.SlidingExpiration = true;
+            });
+
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
@@ -53,7 +61,7 @@ namespace ExternalProvider.Mvc
 
             app.UseAuthentication();
 
-            app.UseMvc(options => options.MapRoute("default", "{controller=SignIn}/{action=Store}/{id?}"));
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

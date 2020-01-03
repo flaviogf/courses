@@ -1,6 +1,7 @@
 ﻿using ExternalProvider.Mvc.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ExternalProvider.Mvc.Controllers
@@ -9,9 +10,16 @@ namespace ExternalProvider.Mvc.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public SignGoogleController(SignInManager<ApplicationUser> signInManager)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public SignGoogleController
+        (
+            SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager
+        )
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Show()
@@ -26,6 +34,42 @@ namespace ExternalProvider.Mvc.Controllers
         public async Task<IActionResult> Store()
         {
             var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            var signInResult = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+
+            if (signInResult.Succeeded)
+            {
+                return RedirectToAction("Show", "Home");
+            }
+
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+            var user = new ApplicationUser
+            {
+                UserName = email,
+                Email = email
+            };
+
+            var createResult = await _userManager.CreateAsync(user);
+
+            if (!createResult.Succeeded)
+            {
+                return RedirectToAction(nameof(Store));
+            }
+
+            var loginResult = await _userManager.AddLoginAsync(user, info);
+
+            if (!loginResult.Succeeded)
+            {
+                return RedirectToAction(nameof(Store));
+            }
+
+            foreach (var token in info.AuthenticationTokens)
+            {
+                await _userManager.SetAuthenticationTokenAsync(user, info.LoginProvider, token.Name, token.Value);
+            }
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
 
             return RedirectToAction("Show", "Home");
         }
