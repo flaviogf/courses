@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot\\lib\\jquery"
+    },
+    {
+      "library": "minireset.css@0.0.2",
+      "destination": "wwwroot\\lib\\minireset.css"
+    }
+  ]
+}
