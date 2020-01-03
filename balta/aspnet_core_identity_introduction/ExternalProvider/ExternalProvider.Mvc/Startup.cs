@@ -22,23 +22,12 @@ namespace ExternalProvider.Mvc
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = _configuration.GetConnectionString("Default");
-
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(_configuration.GetConnectionString("Default")));
 
             services
                 .AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
-
-            services
-                .AddAuthentication()
-                .AddGoogle(options =>
-                {
-                    options.ClientId = _configuration.GetValue<string>("Providers:Google:ClientId");
-                    options.ClientSecret = _configuration.GetValue<string>("Providers:Google:ClientSecret");
-                    options.SaveTokens = true;
-                });
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -46,6 +35,21 @@ namespace ExternalProvider.Mvc
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
                 options.SlidingExpiration = true;
             });
+
+            services.AddAuthentication()
+                    .AddGoogle(options =>
+                    {
+                        options.ClientId = _configuration["Providers:Google:ClientId"];
+                        options.ClientSecret = _configuration["Providers:Google:ClientSecret"];
+                        options.SaveTokens = true;
+                    })
+                    .AddGitHub(options =>
+                    {
+                        options.ClientId = _configuration["Providers:GitHub:ClientId"];
+                        options.ClientSecret = _configuration["Providers:GitHub:ClientSecret"];
+                        options.SaveTokens = true;
+                        options.Scope.Add("user:email");
+                    });
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }

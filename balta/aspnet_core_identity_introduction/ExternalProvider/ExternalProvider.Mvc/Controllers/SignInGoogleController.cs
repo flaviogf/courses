@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ExternalProvider.Mvc.Controllers
 {
-    public class SignGoogleController : Controller
+    public class SignInGoogleController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public SignGoogleController
+        public SignInGoogleController
         (
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager
@@ -24,7 +24,7 @@ namespace ExternalProvider.Mvc.Controllers
 
         public async Task<IActionResult> Show()
         {
-            var url = Url.Action("Store", "SignGoogle");
+            var url = Url.Action("Store", "SignInGoogle");
 
             var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", url);
 
@@ -54,14 +54,14 @@ namespace ExternalProvider.Mvc.Controllers
 
             if (!createResult.Succeeded)
             {
-                return RedirectToAction(nameof(Store));
+                return RedirectToAction("Store", "SignIn");
             }
 
             var loginResult = await _userManager.AddLoginAsync(user, info);
 
             if (!loginResult.Succeeded)
             {
-                return RedirectToAction(nameof(Store));
+                return RedirectToAction("Store", "SignIn");
             }
 
             foreach (var token in info.AuthenticationTokens)
