@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using TwoFactorAuthentication.Mvc.Data;
 using TwoFactorAuthentication.Mvc.Models;
 
@@ -36,6 +37,13 @@ namespace TwoFactorAuthentication.Mvc
                         options.Scope.Add("user:email");
                     });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/SignIn/Store";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.SlidingExpiration = true;
+            });
+
             services.AddMvc();
         }
 
@@ -51,6 +59,8 @@ namespace TwoFactorAuthentication.Mvc
             app.UseRouting();
 
             app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(options => options.MapControllerRoute("default", "{controller=SignIn}/{action=Store}/{id?}"));
         }

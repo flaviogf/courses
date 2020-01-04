@@ -1,0 +1,6 @@
+﻿.profile__form_group {
+    display: flex;
+    flex-direction: column;
+    margin: 12px 0;
+    width: 280px;
+}

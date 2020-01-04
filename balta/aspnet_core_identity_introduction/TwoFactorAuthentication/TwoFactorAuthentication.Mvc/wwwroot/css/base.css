@@ -1,0 +1,8 @@
+﻿html,
+body {
+    background-color: rgb(11, 10, 13);
+    font-family: Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+}

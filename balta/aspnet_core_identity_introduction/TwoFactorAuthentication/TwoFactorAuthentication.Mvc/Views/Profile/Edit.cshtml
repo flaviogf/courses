@@ -1,0 +1,27 @@
+﻿@model TwoFactorAuthentication.Mvc.ViewModels.Profile.ProfileEditViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<form asp-controller="Profile" asp-action="Edit" method="post" class="profile__form">
+    <div class="profile__form_group">
+        <label asp-for="UserName" class="profile__label"></label>
+        <input asp-for="UserName" class="profile__input" readonly />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="profile__form_group">
+        <label asp-for="Email" class="profile__label"></label>
+        <input asp-for="Email" class="profile__input" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="profile__form_group">
+        <label asp-for="PhoneNumber" class="profile__label"></label>
+        <input asp-for="PhoneNumber" class="profile__input" />
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+
+    <button type="submit" class="button">Edit</button>
+</form>

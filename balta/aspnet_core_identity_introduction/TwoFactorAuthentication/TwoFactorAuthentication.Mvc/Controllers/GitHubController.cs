@@ -1,4 +1,5 @@
 ﻿using AspNet.Security.OAuth.GitHub;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -15,16 +16,11 @@ namespace TwoFactorAuthentication.Mvc.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Store()
         {
-            var info = _signInManager.GetExternalLoginInfoAsync();
-
-            return RedirectToAction("Store", "SignIn");
-        }
-
-        public async Task<IActionResult> Show()
-        {
-            var url = Url.Action("Store", "GitHub");
+            var url = Url.Action("Store", "ExternalSignIn");
 
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(GitHubAuthenticationDefaults.AuthenticationScheme, url);
 
