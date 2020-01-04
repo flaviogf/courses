@@ -1,0 +1,20 @@
+﻿.form__summary-error {
+    width: 100%;
+}
+
+    .form__summary-error ul {
+        list-style: inside;
+    }
+
+    .form__summary-error li {
+        background-color: indianred;
+        border-radius: 4px;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 4px 0px;
+        overflow: hidden;
+        padding: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }

@@ -1,4 +1,4 @@
-﻿.profile__input {
+﻿.form__input {
     background: rgb(25, 24, 31);
     border: 1px solid rgb(40,39,44);
     border-radius: 4px;
@@ -11,6 +11,6 @@
     padding: 8px 12px;
 }
 
-    .profile__input:read-only {
+    .form__input:read-only {
         color: rgb(117,117,117);
     }

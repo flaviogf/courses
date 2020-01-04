@@ -9,6 +9,19 @@
     {
       "library": "minireset.css@0.0.2",
       "destination": "wwwroot\\lib\\minireset.css"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "qrcodejs@1.0.0",
+      "destination": "wwwroot\\lib\\qrcodejs"
+    },
+    {
+      "library": "jquery-validate@1.19.1",
+      "destination": "wwwroot\\lib\\jquery-validate"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot\\lib\\jquery-validation-unobtrusive"
     }
   ]
 }

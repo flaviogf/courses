@@ -22,11 +22,25 @@ namespace TwoFactorAuthentication.Mvc.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
+            var issuer = "2FA";
+
+            var secret = await _userManager.GetAuthenticatorKeyAsync(user);
+
+            if (secret == null)
+            {
+                await _userManager.ResetAuthenticatorKeyAsync(user);
+
+                secret = await _userManager.GetAuthenticatorKeyAsync(user);
+            }
+
+            var key = $"otpauth://totp/{issuer}:{user.UserName}?secret={secret}&issuer={issuer}&digits=6";
+
             var viewModel = new ProfileEditViewModel
             {
                 UserName = user.UserName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                Key = key
             };
 
             return View(viewModel);

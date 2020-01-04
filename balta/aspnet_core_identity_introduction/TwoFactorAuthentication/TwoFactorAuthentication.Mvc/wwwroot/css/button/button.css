@@ -13,9 +13,21 @@
     margin: 12px 0;
     text-decoration: none;
     transition: background-color .2s linear;
-    width: 280px;
+    width: 100%;
 }
 
     .button:hover {
         background-color: rgb(124, 98, 212);
     }
+
+.button--link {
+    background-color: transparent;
+    color: rgb(113, 89, 193);
+    transition: color .2s linear;
+}
+
+    .button--link:hover {
+        background-color: transparent;
+        color: rgb(124, 98, 212);
+    }
+

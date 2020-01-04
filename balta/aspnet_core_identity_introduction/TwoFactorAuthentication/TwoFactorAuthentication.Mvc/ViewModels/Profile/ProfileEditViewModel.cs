@@ -15,5 +15,8 @@ namespace TwoFactorAuthentication.Mvc.ViewModels.Profile
         [Display(Name = "Phone")]
         [Required]
         public string PhoneNumber { get; set; }
+
+        public string Key { get; set; }
     }
 }
+

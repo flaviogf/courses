@@ -1,0 +1,17 @@
+﻿@model TwoFactorAuthentication.Mvc.ViewModels.EnableTwoFactorAuthenticator.EnableTwoFactorAuthenticatorStoreViewModel
+
+@{
+    ViewData["Title"] = "Enable 2FA";
+}
+
+<form asp-controller="EnableTwoFactorAuthenticator" asp-action="Store" method="post" class="form">
+    <div asp-validation-summary="All" class="form__summary-error"></div>
+
+    <div class="form__group">
+        <label asp-for="Code" class="form__label"></label>
+        <input asp-for="Code" class="form__input" />
+        <span asp-validation-for="Code" class="form__input-error"></span>
+    </div>
+
+    <button type="submit" class="button">Send</button>
+</form>

@@ -9,16 +9,24 @@
     <link rel="stylesheet" type="text/css" href="~/lib/minireset.css/minireset.min.css" />
     <link rel="stylesheet" type="text/css" href="~/css/base.css" />
     <link rel="stylesheet" type="text/css" href="~/css/button/button.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/profile/form.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/profile/form_group.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/profile/input.css" />
-    <link rel="stylesheet" type="text/css" href="~/css/profile/label.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form/form.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form/form_group.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form/input.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form/input_error.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form/label.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form/summary_error.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/profile/qrcode.css" />
     <link rel="stylesheet" type="text/css" href="~/css/signin/container.css" />
 </head>
 <body>
     @RenderBody()
 
     <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/qrcodejs/qrcode.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
 

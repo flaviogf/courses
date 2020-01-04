@@ -1,8 +1,12 @@
 ﻿html,
 body {
+    -webkit-font-smoothing: antialiased;
     background-color: rgb(11, 10, 13);
     font-family: Roboto, sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
     height: 100%;
+    margin: 0 auto;
+    max-width: 480px;
+    padding: 12px;
+    text-rendering: optimizeLegibility;
+    width: 100%;
 }
