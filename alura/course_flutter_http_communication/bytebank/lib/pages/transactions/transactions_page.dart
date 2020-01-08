@@ -1,4 +1,3 @@
-import 'package:bytebank/pages/transaction/transaction_page.dart';
 import 'package:flutter/material.dart';
 
 class TransactionsPage extends StatelessWidget {
@@ -6,7 +5,7 @@ class TransactionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transactions'),
+        title: Text('New transaction'),
       ),
       body: ListView(
         children: <Widget>[
@@ -16,21 +15,16 @@ class TransactionsPage extends StatelessWidget {
                 Icons.monetization_on,
                 color: Theme.of(context).primaryColor,
               ),
-              title: Text('\$ 1000.00'),
+              title: Text(
+                '1000.0',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               subtitle: Text('000-0'),
             ),
           )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => TransactionPage(),
-            ),
-          );
-        },
-        child: Icon(Icons.add),
       ),
     );
   }

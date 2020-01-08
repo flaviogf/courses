@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kiwi/kiwi.dart' as kiwi;
-import 'package:bytebank/data/repositories/transaction_repository.dart';
-import 'package:bytebank/models/transaction.dart';
 
 class TransactionPage extends StatefulWidget {
-  final TransactionRepository repository =
-      kiwi.Container().resolve<TransactionRepository>();
-
   @override
   State<StatefulWidget> createState() => TransactionPageState();
 }
 
 class TransactionPageState extends State<TransactionPage> {
-  final TextEditingController _accountController = TextEditingController();
-  final TextEditingController _valueController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,60 +15,49 @@ class TransactionPageState extends State<TransactionPage> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(
-                  top: 8.0,
-                  right: 16.0,
-                  bottom: 8.0,
+                  top: 16.0,
                   left: 16.0,
+                  right: 16.0,
                 ),
-                child: TextField(
-                  controller: _accountController,
-                  decoration: InputDecoration(
-                    labelText: 'Account',
-                    hintText: '000-0',
-                  ),
+                child: Text(
+                  'Flavio',
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 24,
                   ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: 8.0,
-                  right: 16.0,
-                  bottom: 8.0,
+                  top: 16.0,
                   left: 16.0,
+                  right: 16.0,
                 ),
+                child: Text(
+                  '000-0',
+                  style: TextStyle(
+                    fontSize: 42,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.0),
                 child: TextField(
-                  controller: _valueController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    labelText: 'Value',
-                    hintText: '1000.00',
-                    icon: Icon(Icons.monetization_on),
+                    labelText: 'Valor',
+                    hintText: '0000',
+                    icon: Icon(
+                      Icons.monetization_on,
+                    ),
                   ),
                   style: TextStyle(
                     fontSize: 32,
                   ),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(16.0),
-                child: RaisedButton(
-                  onPressed: () async {
-                    final String account = _accountController.text;
-
-                    final int value = int.parse(_valueController.text);
-
-                    final Transaction transaction = Transaction(account, value);
-
-                    await widget.repository.insert(transaction);
-
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('Confirm'),
                 ),
               )
             ],

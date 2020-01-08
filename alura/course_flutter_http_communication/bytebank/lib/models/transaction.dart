@@ -1,6 +1,9 @@
-class Transaction {
-  final String account;
-  final int value;
+import 'package:bytebank/models/contact.dart';
 
-  Transaction(this.account, this.value);
+class Transaction {
+  final int id;
+  final int value;
+  final Contact contact;
+
+  Transaction(this.value, this.contact, {this.id});
 }

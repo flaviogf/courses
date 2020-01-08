@@ -1,9 +1,9 @@
-import 'package:bytebank/data/repositories/transaction_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
 import 'package:sqflite/sqflite.dart' as sqflite;
-import 'package:bytebank/pages/home/home_page.dart';
+import 'package:bytebank/data/repositories/contact_repository.dart';
 import 'package:bytebank/data/database.dart';
+import 'package:bytebank/pages/home/home_page.dart';
 
 void main() async {
   runApp(ByteBankApp());
@@ -12,7 +12,7 @@ void main() async {
 
   kiwi.Container()
     ..registerInstance(database)
-    ..registerFactory((c) => TransactionRepository(c.resolve()));
+    ..registerFactory((c) => ContactRepository(c.resolve()));
 }
 
 class ByteBankApp extends StatelessWidget {

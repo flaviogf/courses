@@ -1,5 +1,5 @@
-import 'package:sqflite/sqflite.dart' as sqflite;
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart' as sqflite;
 
 class DatabaseFactory {
   static Future<sqflite.Database> create() async {
@@ -7,10 +7,10 @@ class DatabaseFactory {
       join(await sqflite.getDatabasesPath(), 'bytebank.db'),
       onCreate: (database, version) {
         return database.execute(
-          'CREATE TABLE transactions (id INTEGER PRIMARY KEY, account TEXT, value INTEGER)',
+          'CREATE TABLE contacts (id INTEGER PRIMARY KEY, name TEXT, account TEXT)',
         );
       },
-      version: 3,
+      version: 1,
       onDowngrade: sqflite.onDatabaseDowngradeDelete,
     );
   }
