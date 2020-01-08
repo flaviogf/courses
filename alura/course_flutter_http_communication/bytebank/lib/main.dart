@@ -1,3 +1,4 @@
+import 'package:bytebank/pages/contact/store_contact_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
 import 'package:sqflite/sqflite.dart' as sqflite;
@@ -12,7 +13,8 @@ void main() async {
 
   kiwi.Container()
     ..registerInstance(database)
-    ..registerFactory((c) => ContactRepository(c.resolve()));
+    ..registerFactory((c) => ContactRepository(c.resolve()))
+    ..registerFactory((c) => StoreContactBloc(c.resolve()));
 }
 
 class ByteBankApp extends StatelessWidget {
