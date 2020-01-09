@@ -31,23 +31,44 @@ namespace Section4.EnjoyParallelProgrammingResourceWithParallelLinq
 
             barcodeWriter.Format = BarcodeFormat.QR_CODE;
 
-            var tracks = from track in context.Tracks.AsParallel() // Without AsParallel: 0.445 and with AsParallel: 0.005
+            // 0.005 seconds
+            var qrcodes = from track in context.Tracks.AsParallel() 
                          select new
                          {
                              Filename = Path.Join("Images", $"{track.Id}.jpg"),
                              Bitmap = barcodeWriter.Write(track.Id.ToString()).ToBitmap()
                          };
 
-            if (!Directory.Exists("Images")) Directory.CreateDirectory("Images");
-
-            foreach (var qrcode in tracks)
-            {
-                qrcode.Bitmap.Save(qrcode.Filename, ImageFormat.Jpeg);
-            }
+            // 0.445 seconds
+            //var qrcodes = from track in context.Tracks
+            //             select new
+            //             {
+            //                 Filename = Path.Join("Images", $"{track.Id}.jpg"),
+            //                 Bitmap = barcodeWriter.Write(track.Id.ToString()).ToBitmap()
+            //             };
 
             stopwatch.Stop();
 
-            Console.WriteLine("It have passed {0:F3} seconds", stopwatch.Elapsed.TotalSeconds);
+            Console.WriteLine("Barcode.Write has delayed {0:F3} seconds", stopwatch.Elapsed.TotalSeconds);
+
+            if (!Directory.Exists("Images")) Directory.CreateDirectory("Images");
+
+            stopwatch.Restart();
+
+            stopwatch.Start();
+
+            // 6.856 seconds
+            qrcodes.ForAll(it => it.Bitmap.Save(it.Filename, ImageFormat.Jpeg));
+
+            // 18.031 seconds
+            //foreach (var it in qrcodes)
+            //{
+            //    it.Bitmap.Save(it.Filename, ImageFormat.Jpeg);
+            //}
+
+            stopwatch.Stop();
+
+            Console.WriteLine("Barcode.Save has delayed {0:F3} seconds", stopwatch.Elapsed.TotalSeconds);
         }
     }
 }
