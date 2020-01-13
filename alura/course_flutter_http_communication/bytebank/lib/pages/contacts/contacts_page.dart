@@ -8,12 +8,24 @@ import 'package:bytebank/pages/transaction/transaction_page.dart';
 import 'package:bytebank/pages/contact/contact_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ContactsPage extends StatelessWidget {
+class ContactsPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => ContactsPageState();
+}
+
+class ContactsPageState extends State<ContactsPage> {
+  final ContactsBloc _contactsBloc = kiwi.Container().resolve<ContactsBloc>();
+
+  @override
+  void initState() {
+    _contactsBloc.add(FindContactsEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ContactsBloc>(
-      create: (_) =>
-          kiwi.Container().resolve<ContactsBloc>()..add(FindContactsEvent()),
+      create: (_) => _contactsBloc,
       child: BlocBuilder<ContactsBloc, ContactsState>(
         builder: (context, state) {
           if (state is FindedContactsState) {
@@ -29,7 +41,9 @@ class ContactsPage extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => TransactionPage(),
+                          builder: (_) => TransactionPage(
+                            contact: contact,
+                          ),
                         ),
                       );
                     },
@@ -54,12 +68,14 @@ class ContactsPage extends StatelessWidget {
                 },
               ),
               floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  Navigator.of(context).push(
+                onPressed: () async {
+                  await Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => ContactPage(),
                     ),
                   );
+
+                  _contactsBloc.add(FindContactsEvent());
                 },
                 child: Icon(Icons.add),
               ),
@@ -79,5 +95,11 @@ class ContactsPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _contactsBloc.close();
+    super.dispose();
   }
 }

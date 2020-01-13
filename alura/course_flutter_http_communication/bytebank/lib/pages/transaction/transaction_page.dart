@@ -1,6 +1,11 @@
+import 'package:bytebank/models/contact.dart';
 import 'package:flutter/material.dart';
 
 class TransactionPage extends StatefulWidget {
+  final Contact contact;
+
+  const TransactionPage({Key key, this.contact}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => TransactionPageState();
 }
@@ -24,7 +29,7 @@ class TransactionPageState extends State<TransactionPage> {
                   right: 16.0,
                 ),
                 child: Text(
-                  'Flavio',
+                  widget.contact.name,
                   style: TextStyle(
                     fontSize: 24,
                   ),
@@ -37,7 +42,7 @@ class TransactionPageState extends State<TransactionPage> {
                   right: 16.0,
                 ),
                 child: Text(
-                  '000-0',
+                  widget.contact.account,
                   style: TextStyle(
                     fontSize: 42,
                     fontWeight: FontWeight.bold,

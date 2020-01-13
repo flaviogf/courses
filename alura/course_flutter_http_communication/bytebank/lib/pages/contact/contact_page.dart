@@ -13,7 +13,6 @@ class ContactPage extends StatefulWidget {
 
 class ContactPageState extends State<ContactPage> {
   final ContactBloc _contactBloc = kiwi.Container().resolve<ContactBloc>();
-
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _accountController = TextEditingController();
 
@@ -45,7 +44,7 @@ class ContactPageState extends State<ContactPage> {
                           left: 16.0,
                         ),
                         child: TextField(
-                          controller: _accountController,
+                          controller: _nameController,
                           decoration: InputDecoration(
                             labelText: 'Name',
                             hintText: 'João',
@@ -63,7 +62,7 @@ class ContactPageState extends State<ContactPage> {
                           left: 16.0,
                         ),
                         child: TextField(
-                          controller: _nameController,
+                          controller: _accountController,
                           decoration: InputDecoration(
                             labelText: 'Account',
                             hintText: '000-0',
@@ -101,7 +100,7 @@ class ContactPageState extends State<ContactPage> {
 
   @override
   void dispose() {
-    super.dispose();
     _contactBloc.close();
+    super.dispose();
   }
 }

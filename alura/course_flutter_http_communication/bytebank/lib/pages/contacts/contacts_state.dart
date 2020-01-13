@@ -16,5 +16,5 @@ class FindedContactsState extends ContactsState {
   FindedContactsState(this.contacts);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [contacts];
 }
