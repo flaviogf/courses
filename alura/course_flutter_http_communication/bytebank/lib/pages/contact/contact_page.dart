@@ -1,9 +1,10 @@
-import 'package:bytebank/pages/contact/store_contact_event.dart';
-import 'package:bytebank/pages/contact/store_contact_state.dart';
+import 'package:bytebank/pages/contact/contact_bloc.dart';
+import 'package:bytebank/pages/contact/contact_event.dart';
+import 'package:bytebank/pages/contact/contact_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
-import 'package:bytebank/pages/contact/store_contact_bloc.dart';
 
 class ContactPage extends StatefulWidget {
   @override
@@ -11,23 +12,22 @@ class ContactPage extends StatefulWidget {
 }
 
 class ContactPageState extends State<ContactPage> {
-  final StoreContactBloc _contactBloc =
-      kiwi.Container().resolve<StoreContactBloc>();
+  final ContactBloc _contactBloc = kiwi.Container().resolve<ContactBloc>();
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _accountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<StoreContactBloc>(
+    return BlocProvider<ContactBloc>(
       create: (_) => _contactBloc,
-      child: BlocListener<StoreContactBloc, StoreContactState>(
+      child: BlocListener<ContactBloc, ContactState>(
         listener: (context, state) {
-          if (state is StoreContactStateStored) {
+          if (state is StoredContactState) {
             Navigator.of(context).pop();
           }
         },
-        child: BlocBuilder<StoreContactBloc, StoreContactState>(
+        child: BlocBuilder<ContactBloc, ContactState>(
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
@@ -80,16 +80,10 @@ class ContactPageState extends State<ContactPage> {
                         padding: EdgeInsets.all(16.0),
                         child: RaisedButton(
                           onPressed: () async {
-                            final String name = _nameController.text;
-
-                            final String account = _accountController.text;
-
-                            final StoreContactEvent contact = StoreContactEvent(
-                              name,
-                              account,
-                            );
-
-                            _contactBloc.add(contact);
+                            _contactBloc.add(StoreContactEvent(
+                              _nameController.text,
+                              _accountController.text,
+                            ));
                           },
                           child: Text('Confirm'),
                         ),

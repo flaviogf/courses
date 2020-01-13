@@ -15,4 +15,13 @@ class ContactRepository {
 
     return Contact(contact.name, contact.account, id: id);
   }
+
+  Future<List<Contact>> find() async {
+    final List<Map<String, dynamic>> contacts =
+        await this._database.query('contacts');
+
+    return contacts
+        .map((it) => Contact(it['name'], it['account'], id: it['id']))
+        .toList();
+  }
 }
