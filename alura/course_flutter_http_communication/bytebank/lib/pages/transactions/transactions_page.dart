@@ -22,7 +22,6 @@ class TransactionsPage extends StatelessWidget {
                 itemCount: state.transactions.length,
                 itemBuilder: (context, index) {
                   final Transaction transaction = state.transactions[index];
-
                   return Card(
                     child: ListTile(
                       leading: Icon(

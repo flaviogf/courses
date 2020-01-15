@@ -1,10 +1,9 @@
-import 'package:bytebank/pages/contact/contact_bloc.dart';
-import 'package:bytebank/pages/contact/contact_event.dart';
-import 'package:bytebank/pages/contact/contact_state.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
+import 'package:bytebank/pages/contact/contact_bloc.dart';
+import 'package:bytebank/pages/contact/contact_event.dart';
+import 'package:bytebank/pages/contact/contact_state.dart';
 
 class ContactPage extends StatefulWidget {
   @override

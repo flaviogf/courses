@@ -1,23 +1,53 @@
 import 'package:bytebank/models/contact.dart';
+import 'package:bytebank/pages/transaction/transaction_event.dart';
+import 'package:bytebank/pages/transaction/transaction_state.dart';
+import 'package:kiwi/kiwi.dart' as kiwi;
+import 'package:bytebank/pages/transaction/transaction_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TransactionPage extends StatefulWidget {
+class TransactionPage extends StatelessWidget {
   final Contact contact;
 
   const TransactionPage({Key key, this.contact}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => TransactionPageState();
+  Widget build(BuildContext context) {
+    return BlocProvider<TransactionBloc>(
+      create: (_) => kiwi.Container().resolve<TransactionBloc>(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('New transaction'),
+        ),
+        body: TransactionForm(
+          contact: contact,
+        ),
+      ),
+    );
+  }
 }
 
-class TransactionPageState extends State<TransactionPage> {
+class TransactionForm extends StatefulWidget {
+  final Contact contact;
+
+  const TransactionForm({Key key, this.contact}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => TransactionFormState();
+}
+
+class TransactionFormState extends State<TransactionForm> {
+  final TextEditingController _valueController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('New transaction'),
-      ),
-      body: SingleChildScrollView(
+    return BlocListener<TransactionBloc, TransactionState>(
+      listener: (context, state) {
+        if (state is StoredTransactionState) {
+          Navigator.of(context).pop();
+        }
+      },
+      child: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,6 +83,7 @@ class TransactionPageState extends State<TransactionPage> {
                 padding: EdgeInsets.all(16.0),
                 child: TextField(
                   keyboardType: TextInputType.number,
+                  controller: _valueController,
                   decoration: InputDecoration(
                     labelText: 'Valor',
                     hintText: '0000',
@@ -63,6 +94,22 @@ class TransactionPageState extends State<TransactionPage> {
                   style: TextStyle(
                     fontSize: 32,
                   ),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.all(16.0),
+                child: RaisedButton(
+                  onPressed: () {
+                    final int value = int.tryParse(_valueController.text) ?? 0;
+                    BlocProvider.of<TransactionBloc>(context).add(
+                      StoreTransactionEvent(
+                        widget.contact,
+                        value,
+                      ),
+                    );
+                  },
+                  child: Text('Confirm'),
                 ),
               )
             ],

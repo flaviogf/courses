@@ -1,23 +1,37 @@
 import 'dart:convert';
-
+import 'package:http/http.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/models/transaction.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class TransactionService {
   final Client _client;
 
   TransactionService(this._client);
 
-  Future<List<Transaction>> findAll() async {
-    final Response response = await _client.get(
-      'http://580a498e.ngrok.io/api/transaction',
+  Future<Transaction> create(Transaction transaction) async {
+    Map<String, dynamic> values = Map();
+
+    values['value'] = transaction.value;
+    values['contactName'] = transaction.contact.name;
+    values['contactAccount'] = transaction.contact.account;
+
+    final String json = jsonEncode(values);
+
+    final Response response = await _client.post(
+      'http://a7d868ac.ngrok.io/api/transaction',
+      headers: {'Content-Type': 'application/json'},
+      body: json,
     );
 
-    debugPrint(response.toString());
+    return transaction;
+  }
 
-    List<Map<String, dynamic>> transactions = jsonDecode(response.body);
+  Future<List<Transaction>> findAll() async {
+    final Response response = await _client.get(
+      'http://a7d868ac.ngrok.io/api/transaction',
+    );
+
+    List<dynamic> transactions = jsonDecode(response.body);
 
     return transactions.map((it) {
       final Contact contact = Contact(
