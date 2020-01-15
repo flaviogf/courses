@@ -1,5 +1,6 @@
 ﻿using ByteBank.Api.Models;
 using ByteBank.Api.ViewModels.Transaction;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace ByteBank.Api.Controllers
 
         [HttpPost]
         [Route("")]
+        [Authorize]
         public async Task<IActionResult> Store(StoreTransactionViewModel viewModel)
         {
             var contact = new Contact

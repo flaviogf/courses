@@ -1,3 +1,4 @@
+import 'package:bytebank/components/authenticate_dialog.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/pages/transaction/transaction_event.dart';
 import 'package:bytebank/pages/transaction/transaction_state.dart';
@@ -101,13 +102,23 @@ class TransactionFormState extends State<TransactionForm> {
                 padding: EdgeInsets.all(16.0),
                 child: RaisedButton(
                   onPressed: () {
-                    final int value = int.tryParse(_valueController.text) ?? 0;
-                    BlocProvider.of<TransactionBloc>(context).add(
-                      StoreTransactionEvent(
-                        widget.contact,
-                        value,
-                      ),
+                    final AuthenticateDialog dialog = AuthenticateDialog(
+                      confirm: (email, password) {
+                        final int value =
+                            int.tryParse(_valueController.text) ?? 0;
+
+                        BlocProvider.of<TransactionBloc>(context).add(
+                          StoreTransactionEvent(
+                            email,
+                            password,
+                            widget.contact,
+                            value,
+                          ),
+                        );
+                      },
                     );
+
+                    showDialog(context: context, builder: (_) => dialog);
                   },
                   child: Text('Confirm'),
                 ),

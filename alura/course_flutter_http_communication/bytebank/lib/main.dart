@@ -2,6 +2,7 @@ import 'package:bytebank/pages/contact/contact_bloc.dart';
 import 'package:bytebank/pages/contacts/contacts_bloc.dart';
 import 'package:bytebank/pages/transaction/transaction_bloc.dart';
 import 'package:bytebank/pages/transactions/transactions_bloc.dart';
+import 'package:bytebank/services/sign_in_service.dart';
 import 'package:bytebank/services/transaction_service.dart';
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
@@ -21,10 +22,11 @@ void main() async {
     ..registerInstance(http.Client())
     ..registerFactory((c) => ContactRepository(c.resolve()))
     ..registerFactory((c) => TransactionService(c.resolve()))
+    ..registerFactory((c) => SignInService(c.resolve()))
     ..registerFactory((c) => ContactBloc(c.resolve()))
     ..registerFactory((c) => ContactsBloc(c.resolve()))
     ..registerFactory((c) => TransactionsBloc(c.resolve()))
-    ..registerFactory((c) => TransactionBloc(c.resolve()));
+    ..registerFactory((c) => TransactionBloc(c.resolve(), c.resolve()));
 }
 
 class ByteBankApp extends StatelessWidget {

@@ -8,7 +8,7 @@ class TransactionService {
 
   TransactionService(this._client);
 
-  Future<Transaction> create(Transaction transaction) async {
+  Future<Transaction> create(Transaction transaction, {String token}) async {
     Map<String, dynamic> values = Map();
 
     values['value'] = transaction.value;
@@ -19,7 +19,10 @@ class TransactionService {
 
     final Response response = await _client.post(
       'http://a7d868ac.ngrok.io/api/transaction',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token'
+      },
       body: json,
     );
 
