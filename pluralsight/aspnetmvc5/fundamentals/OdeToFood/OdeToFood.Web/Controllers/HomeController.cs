@@ -7,9 +7,9 @@ namespace OdeToFood.Web.Controllers
     {
         private readonly IRestaurantData _restaurantData;
 
-        public HomeController()
+        public HomeController(IRestaurantData restaurantData)
         {
-            _restaurantData = new InMemoryRestaurantData();
+            _restaurantData = restaurantData;
         }
 
         public ActionResult Index()
