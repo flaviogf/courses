@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using OdeToFood.Data.Services;
 using System.Web.Mvc;
 
 namespace OdeToFood.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IRestaurantData _restaurantData;
+
+        public HomeController()
+        {
+            _restaurantData = new InMemoryRestaurantData();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var restaurants = _restaurantData.GetAll();
+
+            return View(restaurants);
         }
 
         public ActionResult About()
