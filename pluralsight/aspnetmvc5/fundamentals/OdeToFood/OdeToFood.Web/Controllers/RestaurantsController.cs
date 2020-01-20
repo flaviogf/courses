@@ -23,6 +23,11 @@ namespace OdeToFood.Web.Controllers
         {
             var restaurant = _restaurantData.Get(id);
 
+            if (restaurant == null)
+            {
+                return View("NotFound");
+            }
+
             return View(restaurant);
         }
     }
