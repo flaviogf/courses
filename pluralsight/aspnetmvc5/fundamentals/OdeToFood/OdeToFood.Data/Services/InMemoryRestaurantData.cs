@@ -30,11 +30,28 @@ namespace OdeToFood.Data.Services
 
         public Restaurant Add(Restaurant restaurant)
         {
-            _restaurants.Add(restaurant);
+            var id = _restaurants.Max(it => it.Id) + 1;
 
-            restaurant.Id = _restaurants.Max(it => it.Id) + 1;
+            var created = new Restaurant
+            {
+                Id = id,
+                Name = restaurant.Name,
+                Cuisine = restaurant.Cuisine
+            };
 
-            return restaurant;
+            _restaurants.Add(created);
+
+            return created;
+        }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            var updated = _restaurants.FirstOrDefault(it => it.Id == restaurant.Id);
+
+            updated.Name = restaurant.Name;
+            updated.Cuisine = restaurant.Cuisine;
+
+            return updated;
         }
     }
 }
