@@ -46,7 +46,7 @@ namespace OdeToFood.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(restaurant);
             }
 
             var created = _restaurantData.Add(restaurant);
@@ -59,6 +59,11 @@ namespace OdeToFood.Web.Controllers
         {
             var restaurant = _restaurantData.Get(id);
 
+            if (restaurant == null)
+            {
+                return View("NotFound");
+            }
+
             return View(restaurant);
         }
 
@@ -68,7 +73,7 @@ namespace OdeToFood.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(restaurant);
             }
 
             var updated = _restaurantData.Update(restaurant);
