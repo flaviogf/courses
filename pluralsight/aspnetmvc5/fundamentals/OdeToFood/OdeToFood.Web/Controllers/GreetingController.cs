@@ -6,13 +6,14 @@ namespace OdeToFood.Web.Controllers
 {
     public class GreetingController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
             var message = ConfigurationManager.AppSettings["message"];
 
             var viewModel = new GreetingViewModel
             {
-                Message = message
+                Message = message,
+                Name = name ?? "no name"
             };
 
             return View(viewModel);
