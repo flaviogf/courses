@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingCustomHttpHandler", "BuildingCustomHttpHandler\BuildingCustomHttpHandler.csproj", "{31C8B9A9-07BC-40DB-9771-DB21A0AE81F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatingCustomHttpModule", "CreatingCustomHttpModule\CreatingCustomHttpModule.csproj", "{9423672A-A073-43BB-9B6F-4B871E5BB24E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31C8B9A9-07BC-40DB-9771-DB21A0AE81F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C8B9A9-07BC-40DB-9771-DB21A0AE81F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C8B9A9-07BC-40DB-9771-DB21A0AE81F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C8B9A9-07BC-40DB-9771-DB21A0AE81F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9423672A-A073-43BB-9B6F-4B871E5BB24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9423672A-A073-43BB-9B6F-4B871E5BB24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9423672A-A073-43BB-9B6F-4B871E5BB24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9423672A-A073-43BB-9B6F-4B871E5BB24E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25E4EC58-417B-4EBD-A009-0E78FE8E12EF}
+	EndGlobalSection
+EndGlobal
