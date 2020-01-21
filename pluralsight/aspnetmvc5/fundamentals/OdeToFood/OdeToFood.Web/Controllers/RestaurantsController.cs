@@ -1,5 +1,6 @@
 ﻿using OdeToFood.Data.Models;
 using OdeToFood.Data.Services;
+using System;
 using System.Web.Mvc;
 
 namespace OdeToFood.Web.Controllers
@@ -17,6 +18,8 @@ namespace OdeToFood.Web.Controllers
         public ActionResult Index()
         {
             var restaurants = _restaurantData.GetAll();
+
+            ViewBag.AccessedAt = $"The access was realized at {DateTime.Now:t}";
 
             return View(restaurants);
         }
@@ -77,6 +80,8 @@ namespace OdeToFood.Web.Controllers
             }
 
             var updated = _restaurantData.Update(restaurant);
+
+            TempData["Message"] = "The restaurant has been updated.";
 
             return RedirectToAction("Details", new { id = updated.Id });
         }

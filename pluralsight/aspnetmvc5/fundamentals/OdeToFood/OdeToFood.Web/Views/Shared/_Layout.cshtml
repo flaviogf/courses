@@ -29,9 +29,16 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (TempData.ContainsKey("Message"))
+        {
+            <div class="alert alert-info">
+                @TempData["Message"]
+            </div>
+        }
         @RenderBody()
         <hr />
         <footer>
+            @RenderSection("footer", required: false)
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
