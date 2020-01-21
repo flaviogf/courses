@@ -39,5 +39,13 @@ namespace OdeToFood.Data.Services
             _context.SaveChanges();
             return restaurant;
         }
+
+        public Restaurant Remove(Restaurant restaurant)
+        {
+            var removed = _context.Restaurants.FirstOrDefault(it => it.Id == restaurant.Id);
+            _context.Restaurants.Remove(removed);
+            _context.SaveChanges();
+            return removed;
+        }
     }
 }

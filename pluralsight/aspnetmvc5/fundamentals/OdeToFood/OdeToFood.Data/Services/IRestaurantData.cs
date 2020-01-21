@@ -12,5 +12,7 @@ namespace OdeToFood.Data.Services
         Restaurant Add(Restaurant restaurant);
 
         Restaurant Update(Restaurant restaurant);
+
+        Restaurant Remove(Restaurant restaurant);
     }
 }
