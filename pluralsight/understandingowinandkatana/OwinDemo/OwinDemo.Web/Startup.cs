@@ -8,7 +8,7 @@ namespace OwinDemo.Web
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseDebug(options =>
+            app.UseDebugMiddleware(options =>
             {
                 var stopwatch = new Stopwatch();
 
@@ -31,11 +31,7 @@ namespace OwinDemo.Web
                 };
             });
 
-            app.Use(async (ctx, next) =>
-            {
-                ctx.Response.ContentType = "text/plain";
-                await ctx.Response.WriteAsync("Hello, world.");
-            });
+            app.UseNancy();
         }
     }
 }
