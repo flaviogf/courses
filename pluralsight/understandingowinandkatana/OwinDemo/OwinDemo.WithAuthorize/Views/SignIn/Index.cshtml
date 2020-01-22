@@ -1,0 +1,22 @@
+﻿@model OwinDemo.WithAuthorize.ViewModels.SignInViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using(Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(it => it.Username)
+        @Html.EditorFor(it => it.Username)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Password)
+        @Html.PasswordFor(it => it.Password)
+    </div>
+
+    <div>
+        <button type="submit">Sign In</button>
+    </div>
+}

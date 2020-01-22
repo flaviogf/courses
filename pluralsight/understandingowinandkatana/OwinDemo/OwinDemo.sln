@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.Web", "OwinDemo.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.Hosting", "OwinDemo.Hosting\OwinDemo.Hosting.csproj", "{102D2DD5-B6BA-4C36-8B74-5B2C567B294F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.WithAuthorize", "OwinDemo.WithAuthorize\OwinDemo.WithAuthorize.csproj", "{48572E72-FE56-4753-8FF2-72F0F83DF798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{102D2DD5-B6BA-4C36-8B74-5B2C567B294F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{102D2DD5-B6BA-4C36-8B74-5B2C567B294F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{102D2DD5-B6BA-4C36-8B74-5B2C567B294F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
