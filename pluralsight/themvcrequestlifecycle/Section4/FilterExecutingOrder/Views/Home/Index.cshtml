@@ -1,0 +1,7 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<ul>
+    @Html.Raw(HttpContext.Current.Application["order"])
+</ul>
