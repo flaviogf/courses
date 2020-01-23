@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.Hosting", "OwinDem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.WithAuthorize", "OwinDemo.WithAuthorize\OwinDemo.WithAuthorize.csproj", "{48572E72-FE56-4753-8FF2-72F0F83DF798}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.Pipeline", "OwinDemo.Pipeline\OwinDemo.Pipeline.csproj", "{79FE690E-A9D3-4445-A243-AE15C5670B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinDemo.Pipeline.Test", "OwinDemo.Pipeline.Test\OwinDemo.Pipeline.Test.csproj", "{7E18D673-A784-46A2-9E73-C06F98758AEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48572E72-FE56-4753-8FF2-72F0F83DF798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79FE690E-A9D3-4445-A243-AE15C5670B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79FE690E-A9D3-4445-A243-AE15C5670B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79FE690E-A9D3-4445-A243-AE15C5670B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79FE690E-A9D3-4445-A243-AE15C5670B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E18D673-A784-46A2-9E73-C06F98758AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E18D673-A784-46A2-9E73-C06F98758AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E18D673-A784-46A2-9E73-C06F98758AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E18D673-A784-46A2-9E73-C06F98758AEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
