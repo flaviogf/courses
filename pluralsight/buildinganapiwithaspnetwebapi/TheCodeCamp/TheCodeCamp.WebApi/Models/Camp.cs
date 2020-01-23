@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TheCodeCamp.WebApi.Models
 {
@@ -15,5 +16,7 @@ namespace TheCodeCamp.WebApi.Models
         public DateTime EventDate { get; set; }
 
         public int Length { get; set; }
+
+        public ICollection<Talk> Talks { get; set; }
     }
 }
