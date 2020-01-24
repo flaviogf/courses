@@ -20,25 +20,34 @@ namespace TheCodeCamp.WebApi.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         [Route("")]
         public async Task<IHttpActionResult> Get(bool includeTalks = false)
         {
-            var camps = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsAsync(includeTalks));
+            var campsViewModel = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsAsync(includeTalks));
 
-            return Ok(camps);
+            return Ok(campsViewModel);
         }
 
+        [HttpGet]
         [Route("{moniker}")]
         public async Task<IHttpActionResult> Get(string moniker, bool includeTalks = false)
         {
-            var camp = _mapper.Map<CampViewModel>(await _repository.GetCampAsync(moniker, includeTalks));
+            var campViewModel = _mapper.Map<CampViewModel>(await _repository.GetCampAsync(moniker, includeTalks));
 
-            if (camp == null)
+            if (campViewModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(camp);
+            return Ok(campViewModel);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IHttpActionResult> Post(CampViewModel campViewModel)
+        {
+            return Ok(campViewModel);
         }
     }
 }

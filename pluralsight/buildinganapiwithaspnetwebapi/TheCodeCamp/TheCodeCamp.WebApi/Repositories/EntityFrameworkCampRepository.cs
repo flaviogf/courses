@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,6 +38,18 @@ namespace TheCodeCamp.WebApi.Repositories
             }
 
             return await query.FirstOrDefaultAsync(it => it.Moniker == moniker);
+        }
+
+        public async Task<IEnumerable<Camp>> GetAllCampsByEventDate(DateTime eventDate, bool includeTalks = false)
+        {
+            var query = _context.Camps.Include(it => it.Location);
+
+            if (includeTalks)
+            {
+                query.Include(it => it.Talks.Select(talk => talk.Speaker));
+            }
+
+            return await query.Where(it => it.EventDate == eventDate).ToListAsync();
         }
     }
 }
