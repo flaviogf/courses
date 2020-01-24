@@ -11,7 +11,7 @@ namespace TheCodeCamp.WebApi.Repositories
 
         Task<Camp> GetCampAsync(string moniker, bool includeTalks = false);
 
-        Task<IEnumerable<Camp>> GetAllCampsByEventDate(DateTime eventDate, bool includeTalks = false);
+        Task<IEnumerable<Camp>> GetAllCampsByEventDateAsync(DateTime eventDate, bool includeTalks = false);
 
         Task AddCampAsync(Camp camp);
 
@@ -21,7 +21,11 @@ namespace TheCodeCamp.WebApi.Repositories
 
         Task<IEnumerable<Talk>> GetTalksByMonikerAsync(string moniker, bool includeSpeaker = false);
 
-        Task<Talk> GetTalkByMoniker(string moniker, int id, bool includeSpeaker = false);
+        Task<Talk> GetTalkByMonikerAsync(string moniker, int id, bool includeSpeaker = false);
+
+        Task AddTalkAsync(Talk talk);
+
+        Task<Speaker> GetSpeakerAsync(int id);
 
         Task SaveChangesAsync();
     }

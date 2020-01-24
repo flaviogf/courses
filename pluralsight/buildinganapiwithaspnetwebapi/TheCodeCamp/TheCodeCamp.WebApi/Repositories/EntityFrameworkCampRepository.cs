@@ -44,7 +44,7 @@ namespace TheCodeCamp.WebApi.Repositories
             return await query.FirstOrDefaultAsync(it => it.Moniker == moniker);
         }
 
-        public async Task<IEnumerable<Camp>> GetAllCampsByEventDate(DateTime eventDate, bool includeTalks = false)
+        public async Task<IEnumerable<Camp>> GetAllCampsByEventDateAsync(DateTime eventDate, bool includeTalks = false)
         {
             IQueryable<Camp> query = _context.Camps;
 
@@ -93,7 +93,7 @@ namespace TheCodeCamp.WebApi.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<Talk> GetTalkByMoniker(string moniker, int id, bool includeSpeaker = false)
+        public async Task<Talk> GetTalkByMonikerAsync(string moniker, int id, bool includeSpeaker = false)
         {
             IQueryable<Talk> query = _context.Talks;
 
@@ -103,6 +103,18 @@ namespace TheCodeCamp.WebApi.Repositories
             }
 
             return await query.FirstOrDefaultAsync(it => it.Id == id);
+        }
+
+        public Task AddTalkAsync(Talk talk)
+        {
+            _context.Talks.Add(talk);
+
+            return Task.CompletedTask;
+        }
+
+        public Task<Speaker> GetSpeakerAsync(int id)
+        {
+            return _context.Speakers.Where(it => it.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task SaveChangesAsync()

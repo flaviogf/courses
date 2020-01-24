@@ -24,7 +24,7 @@ namespace TheCodeCamp.WebApi.Controllers
         [Route("")]
         public async Task<IHttpActionResult> Get(DateTime eventDate, bool includeTalks = false)
         {
-            var campsViewModel = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsByEventDate(eventDate, includeTalks));
+            var campsViewModel = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsByEventDateAsync(eventDate, includeTalks));
 
             return Ok(campsViewModel);
         }

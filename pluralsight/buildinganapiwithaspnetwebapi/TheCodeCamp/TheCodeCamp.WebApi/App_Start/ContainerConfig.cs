@@ -25,9 +25,14 @@ namespace TheCodeCamp.WebApi
                    .ForMember(it => it.Venue, mo => mo.MapFrom(it => it.Location.VenueName))
                    .ReverseMap();
 
-                cfg.CreateMap<Talk, TalkViewModel>();
+                cfg.CreateMap<Talk, TalkViewModel>()
+                   .ReverseMap()
+                   .ForMember(it => it.Id, mo => mo.Ignore())
+                   .ForMember(it => it.Speaker, mo => mo.Ignore())
+                   .ForMember(it => it.Camp, mo => mo.Ignore());
 
-                cfg.CreateMap<Speaker, SpeakerViewModel>();
+                cfg.CreateMap<Speaker, SpeakerViewModel>()
+                   .ReverseMap();
             });
 
             var mapper = mapperConfiguration.CreateMapper();
