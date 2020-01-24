@@ -6,8 +6,8 @@ namespace TheCodeCamp.WebApi.Repositories
 {
     public interface ICampRepository
     {
-        Task<IEnumerable<Camp>> GetAllCampsAsync();
+        Task<IEnumerable<Camp>> GetAllCampsAsync(bool includeTalks = false);
 
-        Task<Camp> GetCampAsync(string moniker);
+        Task<Camp> GetCampAsync(string moniker, bool includeTalks = false);
     }
 }

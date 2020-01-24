@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TheCodeCamp.WebApi.ViewModels
 {
@@ -11,5 +12,23 @@ namespace TheCodeCamp.WebApi.ViewModels
         public DateTime EventDate { get; set; }
 
         public int Length { get; set; }
+
+        public string Venue { get; set; }
+
+        public string LocationAddress1 { get; set; }
+
+        public string LocationAddress2 { get; set; }
+
+        public string LocationAddress3 { get; set; }
+
+        public string LocationCityTown { get; set; }
+
+        public string LocationStateProvince { get; set; }
+
+        public string LocationPostalCode { get; set; }
+
+        public string LocationCountry { get; set; }
+
+        public ICollection<TalkViewModel> Talks { get; set; }
     }
 }

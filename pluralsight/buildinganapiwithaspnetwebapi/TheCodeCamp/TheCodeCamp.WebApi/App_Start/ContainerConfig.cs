@@ -21,7 +21,12 @@ namespace TheCodeCamp.WebApi
 
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Camp, CampViewModel>();
+                cfg.CreateMap<Camp, CampViewModel>()
+                   .ForMember(it => it.Venue, mo => mo.MapFrom(it => it.Location.VenueName));
+
+                cfg.CreateMap<Talk, TalkViewModel>();
+
+                cfg.CreateMap<Speaker, SpeakerViewModel>();
             });
 
             var mapper = mapperConfiguration.CreateMapper();

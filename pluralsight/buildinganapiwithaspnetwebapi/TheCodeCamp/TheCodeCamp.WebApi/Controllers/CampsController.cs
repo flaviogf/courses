@@ -21,17 +21,17 @@ namespace TheCodeCamp.WebApi.Controllers
         }
 
         [Route("")]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> Get(bool includeTalks = false)
         {
-            var camps = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsAsync());
+            var camps = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsAsync(includeTalks));
 
             return Ok(camps);
         }
 
         [Route("{moniker}")]
-        public async Task<IHttpActionResult> Get(string moniker)
+        public async Task<IHttpActionResult> Get(string moniker, bool includeTalks = false)
         {
-            var camp = _mapper.Map<CampViewModel>(await _repository.GetCampAsync(moniker));
+            var camp = _mapper.Map<CampViewModel>(await _repository.GetCampAsync(moniker, includeTalks));
 
             if (camp == null)
             {
