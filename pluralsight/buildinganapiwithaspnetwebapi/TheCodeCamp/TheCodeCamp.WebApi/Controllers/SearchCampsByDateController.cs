@@ -8,7 +8,7 @@ using TheCodeCamp.WebApi.ViewModels;
 
 namespace TheCodeCamp.WebApi.Controllers
 {
-    [RoutePrefix("api/camps")]
+    [RoutePrefix("api/camps/searchByDate/{eventDate:datetime}")]
     public class SearchCampsByDateController : ApiController
     {
         private readonly ICampRepository _repository;
@@ -21,7 +21,7 @@ namespace TheCodeCamp.WebApi.Controllers
             _mapper = mapper;
         }
 
-        [Route("searchByDate/{eventDate:datetime}")]
+        [Route("")]
         public async Task<IHttpActionResult> Get(DateTime eventDate, bool includeTalks = false)
         {
             var campsViewModel = _mapper.Map<IEnumerable<CampViewModel>>(await _repository.GetAllCampsByEventDate(eventDate, includeTalks));

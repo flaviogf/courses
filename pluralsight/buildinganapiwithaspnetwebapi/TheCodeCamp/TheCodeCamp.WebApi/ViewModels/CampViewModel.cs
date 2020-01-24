@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TheCodeCamp.WebApi.ViewModels
 {
     public class CampViewModel
     {
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Moniker { get; set; }
 
+        [Required]
         public DateTime EventDate { get; set; }
 
+        [Required]
+        [Range(1, 100)]
         public int Length { get; set; }
 
         public string Venue { get; set; }

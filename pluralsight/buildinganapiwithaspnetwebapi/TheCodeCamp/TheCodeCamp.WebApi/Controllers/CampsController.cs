@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using TheCodeCamp.WebApi.Models;
 using TheCodeCamp.WebApi.Repositories;
 using TheCodeCamp.WebApi.ViewModels;
 
@@ -30,7 +31,7 @@ namespace TheCodeCamp.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{moniker}")]
+        [Route("{moniker}", Name = "GetCamp")]
         public async Task<IHttpActionResult> Get(string moniker, bool includeTalks = false)
         {
             var campViewModel = _mapper.Map<CampViewModel>(await _repository.GetCampAsync(moniker, includeTalks));
@@ -47,7 +48,62 @@ namespace TheCodeCamp.WebApi.Controllers
         [Route("")]
         public async Task<IHttpActionResult> Post(CampViewModel campViewModel)
         {
-            return Ok(campViewModel);
+            if (await _repository.ExistsCampAsync(campViewModel.Moniker))
+            {
+                ModelState.AddModelError("campViewModel.Moniker", "The moniker is already is use, please choose a new one.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var camp = _mapper.Map<Camp>(campViewModel);
+
+            await _repository.AddCampAsync(camp);
+
+            await _repository.SaveChangesAsync();
+
+            var createdCampViewModel = _mapper.Map<CampViewModel>(camp);
+
+            return CreatedAtRoute("GetCamp", new { moniker = createdCampViewModel.Moniker }, createdCampViewModel);
+        }
+
+        [HttpPut]
+        [Route("{moniker}")]
+        public async Task<IHttpActionResult> Put(string moniker, CampViewModel campViewModel)
+        {
+            var camp = await _repository.GetCampAsync(moniker);
+
+            if (camp == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(campViewModel, camp);
+
+            await _repository.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{moniker}")]
+        public async Task<IHttpActionResult> Delete(string moniker)
+        {
+            var camp = await _repository.GetCampAsync(moniker);
+
+            if (camp == null)
+            {
+                return NotFound();
+            }
+
+            await _repository.DeleteCampAsync(camp);
+
+
+            await _repository.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }
