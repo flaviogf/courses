@@ -25,6 +25,8 @@ namespace TheCodeCamp.WebApi.Repositories
 
         Task AddTalkAsync(Talk talk);
 
+        Task DeleteTalkAsync(Talk talk);
+
         Task<Speaker> GetSpeakerAsync(int id);
 
         Task SaveChangesAsync();

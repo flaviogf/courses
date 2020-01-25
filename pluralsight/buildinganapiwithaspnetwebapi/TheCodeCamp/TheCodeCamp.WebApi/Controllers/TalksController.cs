@@ -78,6 +78,11 @@ namespace TheCodeCamp.WebApi.Controllers
         {
             var talk = await _repository.GetTalkByMonikerAsync(moniker, id, includeSpeaker: true);
 
+            if (talk == null)
+            {
+                return NotFound();
+            }
+
             _mapper.Map(viewModel, talk);
 
             if (viewModel.Speaker != null)
@@ -86,6 +91,24 @@ namespace TheCodeCamp.WebApi.Controllers
 
                 talk.Speaker = speaker;
             }
+
+            await _repository.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IHttpActionResult> Delete(string moniker, int id)
+        {
+            var talk = await _repository.GetTalkByMonikerAsync(moniker, id);
+
+            if (talk == null)
+            {
+                return NotFound();
+            }
+
+            await _repository.DeleteTalkAsync(talk);
 
             await _repository.SaveChangesAsync();
 

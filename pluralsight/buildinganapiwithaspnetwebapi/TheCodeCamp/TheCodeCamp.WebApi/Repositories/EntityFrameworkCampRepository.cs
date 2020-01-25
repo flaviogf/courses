@@ -117,6 +117,13 @@ namespace TheCodeCamp.WebApi.Repositories
             return _context.Speakers.Where(it => it.Id == id).FirstOrDefaultAsync();
         }
 
+        public Task DeleteTalkAsync(Talk talk)
+        {
+            _context.Talks.Remove(talk);
+
+            return Task.CompletedTask;
+        }
+
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
