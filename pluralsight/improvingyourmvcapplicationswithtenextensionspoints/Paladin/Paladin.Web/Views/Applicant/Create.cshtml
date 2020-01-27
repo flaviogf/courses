@@ -1,0 +1,86 @@
+﻿@model Paladin.Web.ViewModels.ApplicantViewModel
+
+@{
+    ViewBag.Title = "Personal";
+}
+
+<h2>Personal</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(it => it.FirstName)
+        @Html.TextBoxFor(it => it.FirstName)
+        @Html.ValidationMessageFor(it => it.FirstName)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.LastName)
+        @Html.TextBoxFor(it => it.LastName)
+        @Html.ValidationMessageFor(it => it.LastName)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.DateOfBirth)
+        @Html.TextBoxFor(it => it.DateOfBirth)
+        @Html.ValidationMessageFor(it => it.DateOfBirth)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Phone)
+        @Html.TextBoxFor(it => it.Phone)
+        @Html.ValidationMessageFor(it => it.Phone)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Email)
+        @Html.TextBoxFor(it => it.Email)
+        @Html.ValidationMessageFor(it => it.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.MaritalStatus)
+
+        @{
+            var maritalStatusList = new SelectListItem[] {
+                new SelectListItem { Text = "Single", Value = "Single" },
+                new SelectListItem { Text = "Married", Value = "Married" }
+            };
+        }
+
+        @Html.DropDownListFor(it => it.MaritalStatus, maritalStatusList)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.LicenseStatus)
+
+        @{
+            var licenseStatusList = new SelectListItem[] {
+                new SelectListItem { Text = "Valid", Value = "Valid" },
+                new SelectListItem { Text = "Suspended", Value = "Suspended" },
+                new SelectListItem { Text = "No License", Value = "No License" }
+            };
+        }
+
+        @Html.DropDownListFor(it => it.LicenseStatus, licenseStatusList)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.HighestEducation)
+
+        @{
+            var educationOptions = new SelectListItem[]            {
+                new SelectListItem { Text = "High School Graduate", Value = "1" },
+                new SelectListItem { Text = "Associate's Degree", Value = "2" },
+                new SelectListItem { Text = "Bachelor's Degree", Value = "3" },
+                new SelectListItem { Text = "Master's Degree or Higher", Value = "4" },
+            };
+        }
+
+        @Html.DropDownListFor(it => it.HighestEducation, educationOptions)
+    </div>
+
+    <button>Next</button>
+}
