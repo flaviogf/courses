@@ -68,10 +68,24 @@
     </div>
 
     <div>
+        @Html.LabelFor(it => it.YearLicensed)
+
+        @{
+            var yearLicensedList = new SelectListItem[] {
+                new SelectListItem { Text = "Less than 1", Value = "1" },
+                new SelectListItem { Text = "1 - 5 years", Value = "2" },
+                new SelectListItem { Text = "5+ years", Value = "3" }
+            };
+        }
+
+        @Html.DropDownListFor(it => it.YearLicensed, yearLicensedList)
+    </div>
+
+    <div>
         @Html.LabelFor(it => it.HighestEducation)
 
         @{
-            var educationOptions = new SelectListItem[]            {
+            var educationOptionsList = new SelectListItem[]            {
                 new SelectListItem { Text = "High School Graduate", Value = "1" },
                 new SelectListItem { Text = "Associate's Degree", Value = "2" },
                 new SelectListItem { Text = "Bachelor's Degree", Value = "3" },
@@ -79,7 +93,7 @@
             };
         }
 
-        @Html.DropDownListFor(it => it.HighestEducation, educationOptions)
+        @Html.DropDownListFor(it => it.HighestEducation, educationOptionsList)
     </div>
 
     <button>Next</button>

@@ -16,6 +16,7 @@ namespace Paladin.Web
             var configuration = new MapperConfiguration(it =>
             {
                 it.CreateMap<ApplicantViewModel, Applicant>();
+                it.CreateMap<AddressViewModel, Address>();
             });
 
             var mapper = configuration.CreateMapper();

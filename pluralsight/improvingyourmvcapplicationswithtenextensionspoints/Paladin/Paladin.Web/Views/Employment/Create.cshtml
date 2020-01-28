@@ -1,0 +1,55 @@
+﻿@model Paladin.Web.ViewModels.EmploymentsViewModel
+
+@{
+    ViewBag.Title = "Employement";
+}
+
+<h2>Employement</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div>
+            @Html.LabelFor(it => it.Primary.Type)
+
+            @{
+                var employmentTypeList = new SelectListItem[] {
+                    new SelectListItem { Text = "Full time", Value = "1" },
+                    new SelectListItem { Text = "Part time", Value = "2" },
+                    new SelectListItem { Text = "Unemployed", Value = "3" },
+                    new SelectListItem { Text = "Retired", Value = "4" }
+                };
+            }
+
+            @Html.DropDownListFor(it => it.Primary.Type, employmentTypeList)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Primary.Employer)
+            @Html.TextBoxFor(it => it.Primary.Employer)
+            @Html.ValidationMessageFor(it => it.Primary.Employer)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Primary.Position)
+            @Html.TextBoxFor(it => it.Primary.Position)
+            @Html.ValidationMessageFor(it => it.Primary.Position)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Primary.GrossMonthlyIncome)
+            @Html.TextBoxFor(it => it.Primary.GrossMonthlyIncome)
+            @Html.ValidationMessageFor(it => it.Primary.GrossMonthlyIncome)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Primary.StartDate)
+            @Html.TextBoxFor(it => it.Primary.StartDate)
+            @Html.ValidationMessageFor(it => it.Primary.StartDate)
+        </div>
+
+        <button type="submit">Next</button>
+    </div>
+}

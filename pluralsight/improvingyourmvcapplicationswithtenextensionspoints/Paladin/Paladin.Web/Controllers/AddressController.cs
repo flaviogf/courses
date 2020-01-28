@@ -5,13 +5,13 @@ using System.Web.Mvc;
 
 namespace Paladin.Web.Controllers
 {
-    public class ApplicantController : Controller
+    public class AddressController : Controller
     {
         private readonly PaladinDbContext _context;
 
         private readonly IMapper _mapper;
 
-        public ApplicantController(PaladinDbContext context, IMapper mapper)
+        public AddressController(PaladinDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -25,11 +25,13 @@ namespace Paladin.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ApplicantViewModel viewModel)
+        public ActionResult Create(AddressesViewModel viewModel)
         {
-            var applicant = _mapper.Map<Applicant>(viewModel);
+            var main = _mapper.Map<Address>(viewModel.Main);
 
-            return RedirectToAction("Create", "Address");
+            var mailing = _mapper.Map<Address>(viewModel.Mailing);
+
+            return RedirectToAction("Create");
         }
     }
 }

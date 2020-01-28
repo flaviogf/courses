@@ -1,0 +1,66 @@
+﻿@model Paladin.Web.ViewModels.AddressesViewModel
+
+@{
+    ViewBag.Title = "Address";
+}
+
+<h2>Address</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <div>
+            @Html.LabelFor(it => it.Main.Street)
+            @Html.TextBoxFor(it => it.Main.Street)
+            @Html.ValidationMessageFor(it => it.Main.Street)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Main.City)
+            @Html.TextBoxFor(it => it.Main.City)
+            @Html.ValidationMessageFor(it => it.Main.City)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Main.State)
+            @Html.TextBoxFor(it => it.Main.State)
+            @Html.ValidationMessageFor(it => it.Main.State)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Main.Zip)
+            @Html.TextBoxFor(it => it.Main.Zip)
+            @Html.ValidationMessageFor(it => it.Main.Zip)
+        </div>
+    </div>
+
+    <div>
+        <div>
+            @Html.LabelFor(it => it.Mailing.Street)
+            @Html.TextBoxFor(it => it.Mailing.Street)
+            @Html.ValidationMessageFor(it => it.Mailing.Street)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Mailing.City)
+            @Html.TextBoxFor(it => it.Mailing.City)
+            @Html.ValidationMessageFor(it => it.Mailing.City)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Mailing.State)
+            @Html.TextBoxFor(it => it.Mailing.State)
+            @Html.ValidationMessageFor(it => it.Mailing.State)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Mailing.Zip)
+            @Html.TextBoxFor(it => it.Mailing.Zip)
+            @Html.ValidationMessageFor(it => it.Mailing.Zip)
+        </div>
+
+        <button type="submit">Next</button>
+    </div>
+}
