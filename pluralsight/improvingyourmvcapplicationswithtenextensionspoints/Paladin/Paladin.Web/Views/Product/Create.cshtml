@@ -1,0 +1,70 @@
+﻿@model Paladin.Web.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Product</h2>
+
+@{
+    var deductibles = new SelectListItem[] {
+        new SelectListItem { Text = "100", Value = "100" },
+        new SelectListItem { Text = "250", Value = "250" },
+        new SelectListItem { Text = "500", Value = "500" },
+        new SelectListItem { Text = "1000", Value = "1000" }
+    };
+
+    var amounts = new SelectListItem[] {
+        new SelectListItem { Text = "100000", Value = "100000" },
+        new SelectListItem { Text = "250000", Value = "250000" },
+        new SelectListItem { Text = "500000", Value = "500000" },
+        new SelectListItem { Text = "1000000", Value = "1000000" }
+    };
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(it => it.Collision)
+        @Html.DropDownListFor(it => it.Collision, deductibles)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Comprehensive)
+        @Html.DropDownListFor(it => it.Comprehensive, deductibles)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.PropertyDamage)
+        @Html.DropDownListFor(it => it.PropertyDamage, amounts)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Liability)
+        @Html.DropDownListFor(it => it.Liability, amounts)
+    </div>
+
+    <div>
+        @Html.CheckBoxFor(it => it.Rental)
+        @Html.LabelFor(it => it.Rental)
+    </div>
+
+    <div>
+        @Html.CheckBoxFor(it => it.RoadSideAssistance)
+        @Html.LabelFor(it => it.RoadSideAssistance)
+    </div>
+
+    <div>
+        @Html.CheckBoxFor(it => it.LoanPayoff)
+        @Html.LabelFor(it => it.LoanPayoff)
+    </div>
+
+    <div>
+        @Html.CheckBoxFor(it => it.DriveRewards)
+        @Html.LabelFor(it => it.DriveRewards)
+    </div>
+
+    <button type="submit">Send</button>
+}

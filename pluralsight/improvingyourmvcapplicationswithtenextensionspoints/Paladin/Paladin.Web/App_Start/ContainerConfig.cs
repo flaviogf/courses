@@ -15,8 +15,11 @@ namespace Paladin.Web
 
             var configuration = new MapperConfiguration(it =>
             {
-                it.CreateMap<ApplicantViewModel, Applicant>();
-                it.CreateMap<AddressViewModel, Address>();
+                it.CreateMap<ApplicantViewModel, Applicant>().ReverseMap();
+                it.CreateMap<AddressViewModel, Address>().ReverseMap();
+                it.CreateMap<EmploymentViewModel, Employement>().ReverseMap();
+                it.CreateMap<VehicleViewModel, Vehicle>().ReverseMap();
+                it.CreateMap<ProductViewModel, Product>().ReverseMap();
             });
 
             var mapper = configuration.CreateMapper();

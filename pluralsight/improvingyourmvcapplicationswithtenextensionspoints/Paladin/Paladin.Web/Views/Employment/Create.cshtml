@@ -6,6 +6,15 @@
 
 <h2>Employement</h2>
 
+@{
+    var employmentTypeList = new SelectListItem[] {
+        new SelectListItem { Text = "Full time", Value = "1" },
+        new SelectListItem { Text = "Part time", Value = "2" },
+        new SelectListItem { Text = "Unemployed", Value = "3" },
+        new SelectListItem { Text = "Retired", Value = "4" }
+    };
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -13,16 +22,6 @@
     <div>
         <div>
             @Html.LabelFor(it => it.Primary.Type)
-
-            @{
-                var employmentTypeList = new SelectListItem[] {
-                    new SelectListItem { Text = "Full time", Value = "1" },
-                    new SelectListItem { Text = "Part time", Value = "2" },
-                    new SelectListItem { Text = "Unemployed", Value = "3" },
-                    new SelectListItem { Text = "Retired", Value = "4" }
-                };
-            }
-
             @Html.DropDownListFor(it => it.Primary.Type, employmentTypeList)
         </div>
 
@@ -49,7 +48,38 @@
             @Html.TextBoxFor(it => it.Primary.StartDate)
             @Html.ValidationMessageFor(it => it.Primary.StartDate)
         </div>
-
-        <button type="submit">Next</button>
     </div>
+
+    <div>
+        <div>
+            @Html.LabelFor(it => it.Previous.Type)
+            @Html.DropDownListFor(it => it.Previous.Type, employmentTypeList)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Previous.Employer)
+            @Html.TextBoxFor(it => it.Previous.Employer)
+            @Html.ValidationMessageFor(it => it.Previous.Employer)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Previous.Position)
+            @Html.TextBoxFor(it => it.Previous.Position)
+            @Html.ValidationMessageFor(it => it.Previous.Position)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Previous.GrossMonthlyIncome)
+            @Html.TextBoxFor(it => it.Previous.GrossMonthlyIncome)
+            @Html.ValidationMessageFor(it => it.Previous.GrossMonthlyIncome)
+        </div>
+
+        <div>
+            @Html.LabelFor(it => it.Previous.StartDate)
+            @Html.TextBoxFor(it => it.Previous.StartDate)
+            @Html.ValidationMessageFor(it => it.Previous.StartDate)
+        </div>
+    </div>
+
+    <button type="submit">Next</button>
 }

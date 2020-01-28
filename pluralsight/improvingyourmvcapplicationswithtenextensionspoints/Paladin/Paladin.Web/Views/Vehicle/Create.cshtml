@@ -1,0 +1,65 @@
+﻿@model Paladin.Web.ViewModels.VehicleViewModel
+
+@{
+    ViewBag.Title = "Vehicle";
+}
+
+<h2>Vehicle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(it => it.Year)
+
+        @{
+            var yearsList = new SelectListItem[] {
+                new SelectListItem { Text = "2015", Value = "2015" },
+                new SelectListItem { Text = "2014", Value = "2014" },
+                new SelectListItem { Text = "2013", Value = "2013" },
+                new SelectListItem { Text = "2012", Value = "2012" },
+                new SelectListItem { Text = "2011", Value = "2011" },
+                new SelectListItem { Text = "2010", Value = "2010" },
+                new SelectListItem { Text = "2009", Value = "2009" },
+                new SelectListItem { Text = "2008", Value = "2008" },
+                new SelectListItem { Text = "2007", Value = "2007" },
+            };
+        }
+
+        @Html.DropDownListFor(it => it.Year, yearsList)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Make)
+        @Html.TextBoxFor(it => it.Make)
+        @Html.ValidationMessageFor(it => it.Make)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.Model)
+        @Html.TextBoxFor(it => it.Model)
+        @Html.ValidationMessageFor(it => it.Model)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.PrimaryUse)
+        @Html.TextBoxFor(it => it.PrimaryUse)
+        @Html.ValidationMessageFor(it => it.PrimaryUse)
+    </div>
+
+    <div>
+        @Html.LabelFor(it => it.OwnLease)
+
+        @{
+            var ownLease = new SelectListItem[] {
+                new SelectListItem { Text = "Own", Value = "Own" },
+                new SelectListItem { Text = "Lease", Value = "Lease" }
+            };
+        }
+
+        @Html.DropDownListFor(it => it.OwnLease, ownLease)
+    </div>
+
+    <button type="submit">Next</button>
+}
