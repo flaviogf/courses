@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using AutoMapper;
 using Paladin.Web.Models;
 using Paladin.Web.ViewModels;
+using Serilog;
 using System.Web.Mvc;
 
 namespace Paladin.Web
@@ -22,13 +23,20 @@ namespace Paladin.Web
                 it.CreateMap<ProductViewModel, Product>().ReverseMap();
             });
 
-            var mapper = configuration.CreateMapper();
+            IMapper mapper = configuration.CreateMapper();
+
+            ILogger logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .CreateLogger();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             builder.RegisterType<PaladinDbContext>().InstancePerRequest();
 
             builder.RegisterInstance(mapper);
+
+            builder.RegisterInstance(logger);
 
             var container = builder.Build();
 

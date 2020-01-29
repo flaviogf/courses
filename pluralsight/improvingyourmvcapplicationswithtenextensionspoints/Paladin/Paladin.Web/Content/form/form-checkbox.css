@@ -1,0 +1,9 @@
+﻿.form__checkbox {
+    display: flex;
+    margin: 0.5rem;
+    align-items: center;
+}
+
+    .form__checkbox > input {
+        margin-right: 0.5rem;
+    }

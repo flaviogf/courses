@@ -8,15 +8,16 @@
     @Html.Action("Index", "Progress")
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="content">
+    @using (Html.BeginForm("Create", "Vehicle", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
 
-    <div>
-        @Html.LabelFor(it => it.Year)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Year, new { @class = "form__label" })
 
-        @{
-            var yearsList = new SelectListItem[] {
+            @{
+                var yearsList = new SelectListItem[] {
                 new SelectListItem { Text = "2015", Value = "2015" },
                 new SelectListItem { Text = "2014", Value = "2014" },
                 new SelectListItem { Text = "2013", Value = "2013" },
@@ -27,41 +28,42 @@
                 new SelectListItem { Text = "2008", Value = "2008" },
                 new SelectListItem { Text = "2007", Value = "2007" },
             };
-        }
+            }
 
-        @Html.DropDownListFor(it => it.Year, yearsList)
-    </div>
+            @Html.DropDownListFor(it => it.Year, yearsList, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.Make)
-        @Html.TextBoxFor(it => it.Make)
-        @Html.ValidationMessageFor(it => it.Make)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Make, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Make, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Make)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.Model)
-        @Html.TextBoxFor(it => it.Model)
-        @Html.ValidationMessageFor(it => it.Model)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Model, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Model, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Model)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.PrimaryUse)
-        @Html.TextBoxFor(it => it.PrimaryUse)
-        @Html.ValidationMessageFor(it => it.PrimaryUse)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.PrimaryUse, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.PrimaryUse, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.PrimaryUse)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.OwnLease)
+        <div class="form__group">
+            @Html.LabelFor(it => it.OwnLease, new { @class = "form__label" })
 
-        @{
-            var ownLease = new SelectListItem[] {
+            @{
+                var ownLease = new SelectListItem[] {
                 new SelectListItem { Text = "Own", Value = "Own" },
                 new SelectListItem { Text = "Lease", Value = "Lease" }
             };
-        }
+            }
 
-        @Html.DropDownListFor(it => it.OwnLease, ownLease)
-    </div>
+            @Html.DropDownListFor(it => it.OwnLease, ownLease, new { @class = "form__input" })
+        </div>
 
-    <button type="submit">Next</button>
-}
+        <button class="button" type="submit">Next</button>
+    }
+</div>

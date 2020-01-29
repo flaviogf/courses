@@ -8,8 +8,8 @@
     @Html.Action("Index", "Progress")
 }
 
-<div class="applicant">
-    @using (Html.BeginForm("Create", "Applicante", FormMethod.Post, new { @class = "form" }))
+<div class="content">
+    @using (Html.BeginForm("Create", "Applicant", FormMethod.Post, new { @class = "form" }))
     {
         @Html.AntiForgeryToken()
 

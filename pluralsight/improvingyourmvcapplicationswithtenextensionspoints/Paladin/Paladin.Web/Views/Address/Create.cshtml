@@ -8,61 +8,59 @@
     @Html.Action("Index", "Progress")
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="content">
+    @using (Html.BeginForm("Create", "Address", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
 
-    <div>
-        <div>
-            @Html.LabelFor(it => it.Main.Street)
-            @Html.TextBoxFor(it => it.Main.Street)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Main.Street, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Main.Street, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Main.Street)
         </div>
 
-        <div>
-            @Html.LabelFor(it => it.Main.City)
-            @Html.TextBoxFor(it => it.Main.City)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Main.City, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Main.City, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Main.City)
         </div>
 
-        <div>
-            @Html.LabelFor(it => it.Main.State)
-            @Html.TextBoxFor(it => it.Main.State)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Main.State, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Main.State, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Main.State)
         </div>
 
-        <div>
-            @Html.LabelFor(it => it.Main.Zip)
-            @Html.TextBoxFor(it => it.Main.Zip)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Main.Zip, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Main.Zip, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Main.Zip)
         </div>
-    </div>
 
-    <div>
-        <div>
-            @Html.LabelFor(it => it.Mailing.Street)
-            @Html.TextBoxFor(it => it.Mailing.Street)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Mailing.Street, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Mailing.Street, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Mailing.Street)
         </div>
 
-        <div>
-            @Html.LabelFor(it => it.Mailing.City)
-            @Html.TextBoxFor(it => it.Mailing.City)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Mailing.City, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Mailing.City, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Mailing.City)
         </div>
 
-        <div>
-            @Html.LabelFor(it => it.Mailing.State)
-            @Html.TextBoxFor(it => it.Mailing.State)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Mailing.State, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Mailing.State, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Mailing.State)
         </div>
 
-        <div>
-            @Html.LabelFor(it => it.Mailing.Zip)
-            @Html.TextBoxFor(it => it.Mailing.Zip)
+        <div class="form__group">
+            @Html.LabelFor(it => it.Mailing.Zip, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Mailing.Zip, new { @class = "form__input" })
             @Html.ValidationMessageFor(it => it.Mailing.Zip)
         </div>
 
-        <button type="submit">Next</button>
-    </div>
-}
+        <button class="button" type="submit">Next</button>
+    }
+</div>

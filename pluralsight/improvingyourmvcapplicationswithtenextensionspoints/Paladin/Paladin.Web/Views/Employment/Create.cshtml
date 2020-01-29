@@ -17,67 +17,69 @@
     };
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="content">
+    @using (Html.BeginForm("Create", "Employment", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Primary.Type)
-        @Html.DropDownListFor(it => it.Primary.Type, employmentTypeList)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Primary.Type, new { @class = "form__label" })
+            @Html.DropDownListFor(it => it.Primary.Type, employmentTypeList, new { @class = "form__input" })
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Primary.Employer)
-        @Html.TextBoxFor(it => it.Primary.Employer)
-        @Html.ValidationMessageFor(it => it.Primary.Employer)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Primary.Employer, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Primary.Employer, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Primary.Employer)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Primary.Position)
-        @Html.TextBoxFor(it => it.Primary.Position)
-        @Html.ValidationMessageFor(it => it.Primary.Position)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Primary.Position, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Primary.Position, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Primary.Position)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Primary.GrossMonthlyIncome)
-        @Html.TextBoxFor(it => it.Primary.GrossMonthlyIncome)
-        @Html.ValidationMessageFor(it => it.Primary.GrossMonthlyIncome)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Primary.GrossMonthlyIncome, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Primary.GrossMonthlyIncome, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Primary.GrossMonthlyIncome)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Primary.StartDate)
-        @Html.TextBoxFor(it => it.Primary.StartDate)
-        @Html.ValidationMessageFor(it => it.Primary.StartDate)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Primary.StartDate, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Primary.StartDate, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Primary.StartDate)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Previous.Type)
-        @Html.DropDownListFor(it => it.Previous.Type, employmentTypeList)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Previous.Type, new { @class = "form__label" })
+            @Html.DropDownListFor(it => it.Previous.Type, employmentTypeList, new { @class = "form__input" })
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Previous.Employer)
-        @Html.TextBoxFor(it => it.Previous.Employer)
-        @Html.ValidationMessageFor(it => it.Previous.Employer)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Previous.Employer, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Previous.Employer, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Previous.Employer)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Previous.Position)
-        @Html.TextBoxFor(it => it.Previous.Position)
-        @Html.ValidationMessageFor(it => it.Previous.Position)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Previous.Position, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Previous.Position, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Previous.Position)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Previous.GrossMonthlyIncome)
-        @Html.TextBoxFor(it => it.Previous.GrossMonthlyIncome)
-        @Html.ValidationMessageFor(it => it.Previous.GrossMonthlyIncome)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Previous.GrossMonthlyIncome, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Previous.GrossMonthlyIncome, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Previous.GrossMonthlyIncome)
+        </div>
 
-    <div class="form__group">
-        @Html.LabelFor(it => it.Previous.StartDate)
-        @Html.TextBoxFor(it => it.Previous.StartDate)
-        @Html.ValidationMessageFor(it => it.Previous.StartDate)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Previous.StartDate, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Previous.StartDate, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Previous.StartDate)
+        </div>
 
-    <button type="submit">Next</button>
-}
+        <button class="button" type="submit">Next</button>
+    }
+</div>

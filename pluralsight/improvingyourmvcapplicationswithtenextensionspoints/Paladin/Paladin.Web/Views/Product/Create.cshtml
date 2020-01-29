@@ -24,49 +24,51 @@
     };
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="content">
+    @using (Html.BeginForm("Create", "Vehicle", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
 
-    <div>
-        @Html.LabelFor(it => it.Collision)
-        @Html.DropDownListFor(it => it.Collision, deductibles)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Collision, new { @class = "form__label" })
+            @Html.DropDownListFor(it => it.Collision, deductibles, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.Comprehensive)
-        @Html.DropDownListFor(it => it.Comprehensive, deductibles)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Comprehensive, new { @class = "form__label" })
+            @Html.DropDownListFor(it => it.Comprehensive, deductibles, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.PropertyDamage)
-        @Html.DropDownListFor(it => it.PropertyDamage, amounts)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.PropertyDamage, new { @class = "form__label" })
+            @Html.DropDownListFor(it => it.PropertyDamage, amounts, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.Liability)
-        @Html.DropDownListFor(it => it.Liability, amounts)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Liability, new { @class = "form__label" })
+            @Html.DropDownListFor(it => it.Liability, amounts, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.CheckBoxFor(it => it.Rental)
-        @Html.LabelFor(it => it.Rental)
-    </div>
+        <div class="form__checkbox">
+            @Html.CheckBoxFor(it => it.Rental)
+            @Html.LabelFor(it => it.Rental, new { @class = "form__label" })
+        </div>
 
-    <div>
-        @Html.CheckBoxFor(it => it.RoadSideAssistance)
-        @Html.LabelFor(it => it.RoadSideAssistance)
-    </div>
+        <div class="form__checkbox">
+            @Html.CheckBoxFor(it => it.RoadSideAssistance)
+            @Html.LabelFor(it => it.RoadSideAssistance, new { @class = "form__label" })
+        </div>
 
-    <div>
-        @Html.CheckBoxFor(it => it.LoanPayoff)
-        @Html.LabelFor(it => it.LoanPayoff)
-    </div>
+        <div class="form__checkbox">
+            @Html.CheckBoxFor(it => it.LoanPayoff)
+            @Html.LabelFor(it => it.LoanPayoff, new { @class = "form__label" })
+        </div>
 
-    <div>
-        @Html.CheckBoxFor(it => it.DriveRewards)
-        @Html.LabelFor(it => it.DriveRewards)
-    </div>
+        <div class="form__checkbox">
+            @Html.CheckBoxFor(it => it.DriveRewards)
+            @Html.LabelFor(it => it.DriveRewards, new { @class = "form__label" })
+        </div>
 
-    <button type="submit">Send</button>
-}
+        <button class="button" type="submit">Send</button>
+    }
+</div>

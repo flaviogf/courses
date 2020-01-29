@@ -65,6 +65,15 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=3.1.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.3.1.1\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -165,6 +174,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infra\CSVResult.cs" />
+    <Compile Include="Infra\WorkflowAttribute.cs" />
+    <Compile Include="Infra\WorkflowValues.cs" />
     <Compile Include="Infra\XMLResult.cs" />
     <Compile Include="Migrations\202001271928375_Initial.cs" />
     <Compile Include="Migrations\202001271928375_Initial.designer.cs">
@@ -184,8 +195,9 @@
     <Compile Include="ViewModels\VehicleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\applicant\applicant.css" />
     <Content Include="Content\button\button.css" />
+    <Content Include="Content\content\content.css" />
+    <Content Include="Content\form\form-checkbox.css" />
     <Content Include="Content\form\form-group.css" />
     <Content Include="Content\form\form-input.css" />
     <Content Include="Content\form\form-label.css" />

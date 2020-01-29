@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Paladin.Web.Infra;
 using Paladin.Web.Models;
 using Paladin.Web.ViewModels;
 using System;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Paladin.Web.Controllers
 {
+    [Workflow(Current = (int)WorkflowValues.ProductInfo, Required = (int)WorkflowValues.VehicleInfo)]
     public class ProductController : Controller
     {
         private readonly PaladinDbContext _context;

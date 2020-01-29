@@ -10,8 +10,10 @@ namespace Paladin.Web
             {
                 "~/Content/minireset.css",
                 "~/Content/style.css",
+                "~/Content/content/content.css",
                 "~/Content/button/button.css",
                 "~/Content/form/form.css",
+                "~/Content/form/form-checkbox.css",
                 "~/Content/form/form-group.css",
                 "~/Content/form/form-label.css",
                 "~/Content/form/form-input.css",
@@ -19,7 +21,6 @@ namespace Paladin.Web
                 "~/Content/home/home-link.css",
                 "~/Content/home/home-subtitle.css",
                 "~/Content/home/home-title.css",
-                "~/Content/applicant/applicant.css",
                 "~/Content/progress/progress.css",
                 "~/Content/progress/progress-item.css",
             };
