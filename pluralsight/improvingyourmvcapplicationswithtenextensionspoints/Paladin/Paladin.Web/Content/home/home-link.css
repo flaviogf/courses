@@ -1,0 +1,9 @@
+﻿.home__link {
+    background-color: rgb(113, 89, 193);
+    border-radius: 0.25rem;
+    color: white;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}

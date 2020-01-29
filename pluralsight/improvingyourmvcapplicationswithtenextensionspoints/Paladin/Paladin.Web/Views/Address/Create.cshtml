@@ -4,7 +4,9 @@
     ViewBag.Title = "Address";
 }
 
-<h2>Address</h2>
+@section progress {
+    @Html.Action("Index", "Progress")
+}
 
 @using (Html.BeginForm())
 {

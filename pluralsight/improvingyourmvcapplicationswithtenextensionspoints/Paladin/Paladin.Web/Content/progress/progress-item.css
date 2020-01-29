@@ -1,0 +1,14 @@
+﻿.progress__item {
+    align-items: center;
+    border-bottom: 0.10rem solid rgb(113, 89, 193);
+    display: flex;
+    justify-content: center;
+    margin: 0 0.25rem;
+    padding: 0.25rem 0;
+    text-align: center;
+}
+
+    .progress__item a {
+        color: white;
+        text-decoration: none;
+    }

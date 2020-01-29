@@ -150,15 +150,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DataExportationController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\EmploymentController.cs" />
+    <Compile Include="Controllers\FinalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProgressController.cs" />
+    <Compile Include="Controllers\RemindersController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infra\CSVResult.cs" />
+    <Compile Include="Infra\XMLResult.cs" />
     <Compile Include="Migrations\202001271928375_Initial.cs" />
     <Compile Include="Migrations\202001271928375_Initial.designer.cs">
       <DependentUpon>202001271928375_Initial.cs</DependentUpon>
@@ -177,9 +184,22 @@
     <Compile Include="ViewModels\VehicleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\applicant\applicant.css" />
+    <Content Include="Content\button\button.css" />
+    <Content Include="Content\form\form-group.css" />
+    <Content Include="Content\form\form-input.css" />
+    <Content Include="Content\form\form-label.css" />
+    <Content Include="Content\form\form.css" />
+    <Content Include="Content\home\home-link.css" />
+    <Content Include="Content\home\home-subtitle.css" />
+    <Content Include="Content\home\home-title.css" />
+    <Content Include="Content\home\home.css" />
+    <Content Include="Content\minireset.css" />
+    <Content Include="Content\progress\progress-item.css" />
+    <Content Include="Content\progress\progress.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\style.css" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
@@ -198,8 +218,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="packages.config" />
     <Compile Include="ViewModels\AddressesViewModel.cs" />
     <Compile Include="ViewModels\AddressViewModel.cs" />
@@ -209,6 +231,8 @@
     <Content Include="Views\Employment\Create.cshtml" />
     <Content Include="Views\Vehicle\Create.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Final\Index.cshtml" />
+    <Content Include="Views\Progress\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001271928375_Initial.resx">

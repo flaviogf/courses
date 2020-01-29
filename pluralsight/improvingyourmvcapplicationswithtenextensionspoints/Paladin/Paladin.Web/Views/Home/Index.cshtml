@@ -2,6 +2,10 @@
     ViewBag.Title = "Home";
 }
 
-<h2>Home</h2>
+<div class="home">
+    <h2 class="home__title">Welcome to Paladin!</h2>
 
-@Html.ActionLink("Join the Fight", "Create", "Applicant")
+    <p class="home__subtitle">To get start click on link below.</p>
+
+    @Html.ActionLink("Join the Fight", "Create", "Applicant", null, new { @class = "home__link" })
+</div>

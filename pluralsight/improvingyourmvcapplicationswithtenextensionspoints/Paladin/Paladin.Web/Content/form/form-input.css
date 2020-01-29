@@ -1,0 +1,11 @@
+﻿.form__input {
+    background-color: rgb(25,24,31);
+    border: 0.25rem solid;
+    border-radius: 0.25rem;
+    border-color: rgb(37, 36, 44);
+    color: white;
+    height: 3.5rem;
+    margin: 0.5rem 0;
+    outline: none;
+    padding: 0 1rem;
+}

@@ -1,0 +1,8 @@
+﻿.progress {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0.5rem;
+    width: 100%;
+}

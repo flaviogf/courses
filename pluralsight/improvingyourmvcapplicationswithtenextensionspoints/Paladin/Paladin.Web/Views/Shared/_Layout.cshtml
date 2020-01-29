@@ -4,9 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paladin - @ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @Styles.Render("~/Content")
 </head>
 <body>
+    @RenderSection("progress", required: false)
     @RenderBody()
     @Scripts.Render("~/Scripts")
     @RenderSection("scripts", required: false)

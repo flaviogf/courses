@@ -4,97 +4,101 @@
     ViewBag.Title = "Personal";
 }
 
-<h2>Personal</h2>
+@section progress {
+    @Html.Action("Index", "Progress")
+}
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="applicant">
+    @using (Html.BeginForm("Create", "Applicante", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
 
-    <div>
-        @Html.LabelFor(it => it.FirstName)
-        @Html.TextBoxFor(it => it.FirstName)
-        @Html.ValidationMessageFor(it => it.FirstName)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.FirstName, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.FirstName, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.FirstName)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.LastName)
-        @Html.TextBoxFor(it => it.LastName)
-        @Html.ValidationMessageFor(it => it.LastName)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.LastName, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.LastName, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.LastName)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.DateOfBirth)
-        @Html.TextBoxFor(it => it.DateOfBirth)
-        @Html.ValidationMessageFor(it => it.DateOfBirth)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.DateOfBirth, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.DateOfBirth, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.DateOfBirth)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.Phone)
-        @Html.TextBoxFor(it => it.Phone)
-        @Html.ValidationMessageFor(it => it.Phone)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Phone, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Phone, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Phone)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.Email)
-        @Html.TextBoxFor(it => it.Email)
-        @Html.ValidationMessageFor(it => it.Email)
-    </div>
+        <div class="form__group">
+            @Html.LabelFor(it => it.Email, new { @class = "form__label" })
+            @Html.TextBoxFor(it => it.Email, new { @class = "form__input" })
+            @Html.ValidationMessageFor(it => it.Email)
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.MaritalStatus)
+        <div class="form__group">
+            @Html.LabelFor(it => it.MaritalStatus, new { @class = "form__label" })
 
-        @{
-            var maritalStatusList = new SelectListItem[] {
+            @{
+                var maritalStatusList = new SelectListItem[] {
                 new SelectListItem { Text = "Single", Value = "Single" },
                 new SelectListItem { Text = "Married", Value = "Married" }
             };
-        }
+            }
 
-        @Html.DropDownListFor(it => it.MaritalStatus, maritalStatusList)
-    </div>
+            @Html.DropDownListFor(it => it.MaritalStatus, maritalStatusList, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.LicenseStatus)
+        <div class="form__group">
+            @Html.LabelFor(it => it.LicenseStatus, new { @class = "form__label" })
 
-        @{
-            var licenseStatusList = new SelectListItem[] {
+            @{
+                var licenseStatusList = new SelectListItem[] {
                 new SelectListItem { Text = "Valid", Value = "Valid" },
                 new SelectListItem { Text = "Suspended", Value = "Suspended" },
                 new SelectListItem { Text = "No License", Value = "No License" }
             };
-        }
+            }
 
-        @Html.DropDownListFor(it => it.LicenseStatus, licenseStatusList)
-    </div>
+            @Html.DropDownListFor(it => it.LicenseStatus, licenseStatusList, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.YearLicensed)
+        <div class="form__group">
+            @Html.LabelFor(it => it.YearLicensed, new { @class = "form__label" })
 
-        @{
-            var yearLicensedList = new SelectListItem[] {
+            @{
+                var yearLicensedList = new SelectListItem[] {
                 new SelectListItem { Text = "Less than 1", Value = "1" },
                 new SelectListItem { Text = "1 - 5 years", Value = "2" },
                 new SelectListItem { Text = "5+ years", Value = "3" }
             };
-        }
+            }
 
-        @Html.DropDownListFor(it => it.YearLicensed, yearLicensedList)
-    </div>
+            @Html.DropDownListFor(it => it.YearLicensed, yearLicensedList, new { @class = "form__input" })
+        </div>
 
-    <div>
-        @Html.LabelFor(it => it.HighestEducation)
+        <div class="form__group">
+            @Html.LabelFor(it => it.HighestEducation, new { @class = "form__label" })
 
-        @{
-            var educationOptionsList = new SelectListItem[]            {
+            @{
+                var educationOptionsList = new SelectListItem[]            {
                 new SelectListItem { Text = "High School Graduate", Value = "1" },
                 new SelectListItem { Text = "Associate's Degree", Value = "2" },
                 new SelectListItem { Text = "Bachelor's Degree", Value = "3" },
                 new SelectListItem { Text = "Master's Degree or Higher", Value = "4" },
             };
-        }
+            }
 
-        @Html.DropDownListFor(it => it.HighestEducation, educationOptionsList)
-    </div>
+            @Html.DropDownListFor(it => it.HighestEducation, educationOptionsList, new { @class = "form__input" })
+        </div>
 
-    <button>Next</button>
-}
+        <button class="button" type="submit">Next</button>
+    }
+</div>

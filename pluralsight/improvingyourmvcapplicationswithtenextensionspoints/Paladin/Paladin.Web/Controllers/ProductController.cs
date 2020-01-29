@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Paladin.Web.Models;
 using Paladin.Web.ViewModels;
+using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Paladin.Web.Controllers
@@ -18,18 +21,62 @@ namespace Paladin.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            if (Session["@Tracker"] == null)
+            {
+                return RedirectToAction("Create", "Applicant");
+            }
+
+            var tracker = (Guid)Session["@Tracker"];
+
+            var product = await _context.Products.FirstOrDefaultAsync(it => it.Applicant.Tracker == tracker);
+
+            if (product == null)
+            {
+                return View();
+            }
+
+            var viewModel = _mapper.Map<ProductViewModel>(product);
+
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProductViewModel viewModel)
+        public async Task<ActionResult> Create(ProductViewModel viewModel)
         {
-            var product = _mapper.Map<Product>(viewModel);
+            if (Session["@Tracker"] == null)
+            {
+                return RedirectToAction("Create", "Applicant");
+            }
 
-            return RedirectToAction("Create");
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var tracker = (Guid)Session["@Tracker"];
+
+            var applicant = await _context.Applicant.FirstOrDefaultAsync(it => it.Tracker == tracker);
+
+            var existingProduct = await _context.Products.FirstOrDefaultAsync(it => it.Applicant.Tracker == tracker);
+
+            if (existingProduct != null)
+            {
+                _mapper.Map(viewModel, existingProduct);
+                _context.Entry(existingProduct).State = EntityState.Modified;
+            }
+            else
+            {
+                var product = _mapper.Map<Product>(viewModel);
+                product.Applicant = applicant;
+                _context.Products.Add(product);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Final");
         }
     }
 }

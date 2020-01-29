@@ -6,9 +6,34 @@ namespace Paladin.Web
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/Scripts").Include("~/Scripts/jquery-3.4.1.min.js", "~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js"));
+            var content = new string[]
+            {
+                "~/Content/minireset.css",
+                "~/Content/style.css",
+                "~/Content/button/button.css",
+                "~/Content/form/form.css",
+                "~/Content/form/form-group.css",
+                "~/Content/form/form-label.css",
+                "~/Content/form/form-input.css",
+                "~/Content/home/home.css",
+                "~/Content/home/home-link.css",
+                "~/Content/home/home-subtitle.css",
+                "~/Content/home/home-title.css",
+                "~/Content/applicant/applicant.css",
+                "~/Content/progress/progress.css",
+                "~/Content/progress/progress-item.css",
+            };
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/style.css"));
+            var scripts = new string[]
+            {
+                "~/Scripts/jquery-3.4.1.min.js",
+                "~/Scripts/jquery.validate.min.js",
+                "~/Scripts/jquery.validate.unobtrusive.min.js"
+            };
+
+            bundles.Add(new StyleBundle("~/Content").Include(content));
+
+            bundles.Add(new ScriptBundle("~/Scripts").Include(scripts));
         }
     }
 }
