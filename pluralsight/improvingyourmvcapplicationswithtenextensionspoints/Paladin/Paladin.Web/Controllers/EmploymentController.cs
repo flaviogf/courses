@@ -25,11 +25,6 @@ namespace Paladin.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            if (Session["@Tracker"] == null)
-            {
-                return RedirectToAction("Create", "Applicant");
-            }
-
             var tracker = (Guid)Session["@Tracker"];
 
             var primary = await _context.Employements.FirstOrDefaultAsync(it => it.Applicant.Tracker == tracker && it.IsPrimary);
@@ -59,11 +54,6 @@ namespace Paladin.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(EmploymentsViewModel viewModel)
         {
-            if (Session["@Tracker"] == null)
-            {
-                return RedirectToAction("Create", "Applicant");
-            }
-
             if (!ModelState.IsValid)
             {
                 return View(viewModel);

@@ -3,11 +3,11 @@
     public enum WorkflowValues
     {
         Begin = 0,
-        ApplicantInfo = 3,
-        AddressInfo = 4,
-        EmploymentInfo = 8,
-        VehicleInfo = 16,
-        ProductInfo = 32,
-        Final = 64
+        ApplicantInfo = 10,
+        AddressInfo = 20,
+        EmploymentInfo = 30,
+        VehicleInfo = 40,
+        ProductInfo = 50,
+        Final = 60
     }
 }

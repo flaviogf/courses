@@ -25,11 +25,6 @@ namespace Paladin.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            if (Session["@Tracker"] == null)
-            {
-                return RedirectToAction("Create", "Applicant");
-            }
-
             var tracker = (Guid)Session["@Tracker"];
 
             var vehicle = await _context.Vehicles.FirstOrDefaultAsync(it => it.Applicant.Tracker == tracker);
@@ -48,11 +43,6 @@ namespace Paladin.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(VehicleViewModel viewModel)
         {
-            if (Session["@Tracker"] == null)
-            {
-                return RedirectToAction("Create", "Applicant");
-            }
-
             if (!ModelState.IsValid)
             {
                 return View(viewModel);

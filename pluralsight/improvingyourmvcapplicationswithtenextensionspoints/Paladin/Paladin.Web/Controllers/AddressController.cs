@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Paladin.Web.Controllers
 {
-    [Workflow(Current = (int)WorkflowValues.AddressInfo, Required = (int)WorkflowValues.EmploymentInfo)]
+    [Workflow(Current = (int)WorkflowValues.AddressInfo, Required = (int)WorkflowValues.ApplicantInfo)]
     public class AddressController : Controller
     {
         private readonly PaladinDbContext _context;
@@ -25,11 +25,6 @@ namespace Paladin.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            if (Session["@Tracker"] == null)
-            {
-                return RedirectToAction("Create", "Applicant");
-            }
-
             var tracker = (Guid)Session["@Tracker"];
 
             var main = await _context.Addresses.FirstOrDefaultAsync(it => it.Applicant.Tracker == tracker && !it.IsMailing);
@@ -59,11 +54,6 @@ namespace Paladin.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(AddressesViewModel viewModel)
         {
-            if (Session["@Tracker"] == null)
-            {
-                return RedirectToAction("Create", "Applicant");
-            }
-
             if (!ModelState.IsValid)
             {
                 return View(viewModel);

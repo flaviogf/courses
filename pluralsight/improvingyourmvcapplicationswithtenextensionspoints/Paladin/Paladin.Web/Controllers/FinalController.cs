@@ -7,8 +7,6 @@ namespace Paladin.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            Session.Clear();
-
             return View();
         }
     }
