@@ -1,9 +1,9 @@
 ﻿@model Paladin.Web.ViewModels.ProgressViewModel
 
 <ul class="progress">
-    @Html.ProgressItemActionLink("Create", "Applicant", "person")
-    @Html.ProgressItemActionLink("Create", "Address", "my_location")
-    @Html.ProgressItemActionLink("Create", "Employment", "attach_money")
-    @Html.ProgressItemActionLink("Create", "Vehicle", "directions_car")
-    @Html.ProgressItemActionLink("Create", "Product", "add_shopping_cart")
+    @Html.ProgressItemActionLink("Create", "Applicant", "person", (int)WorkflowValues.ApplicantInfo, Model.Current)
+    @Html.ProgressItemActionLink("Create", "Address", "my_location", (int)WorkflowValues.AddressInfo, Model.Current)
+    @Html.ProgressItemActionLink("Create", "Employment", "attach_money", (int)WorkflowValues.EmploymentInfo, Model.Current)
+    @Html.ProgressItemActionLink("Create", "Vehicle", "directions_car", (int)WorkflowValues.VehicleInfo, Model.Current)
+    @Html.ProgressItemActionLink("Create", "Product", "add_shopping_cart", (int)WorkflowValues.ProductInfo, Model.Current)
 </ul>

@@ -5,11 +5,16 @@ namespace Paladin.Web.Infra
 {
     public static class HtmlHelperWorkflowExtensions
     {
-        public static MvcHtmlString ProgressItemActionLink(this HtmlHelper target, string action, string controller, string icon)
+        public static MvcHtmlString ProgressItemActionLink(this HtmlHelper target, string action, string controller, string icon, int stage, int current)
         {
             var li = new TagBuilder("li");
 
             li.AddCssClass("progress__item");
+
+            if (stage == current)
+            {
+                li.AddCssClass("progress__item--active");
+            }
 
             var a = new TagBuilder("a");
 

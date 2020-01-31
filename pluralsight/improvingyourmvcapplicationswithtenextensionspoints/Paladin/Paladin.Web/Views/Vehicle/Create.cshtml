@@ -5,7 +5,7 @@
 }
 
 @section progress {
-    @Html.Action("Index", "Progress")
+    @Html.Action("Index", "Progress", new { current = (int)WorkflowValues.VehicleInfo })
 }
 
 <div class="content">
