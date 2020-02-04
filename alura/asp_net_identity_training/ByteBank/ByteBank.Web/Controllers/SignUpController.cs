@@ -1,14 +1,13 @@
-﻿using ByteBank.Web.Models;
-using Microsoft.AspNet.Identity;
+﻿using ByteBank.Web.Infra;
 using System.Web.Mvc;
 
 namespace ByteBank.Web.Controllers
 {
     public class SignUpController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationUserManager _userManager;
 
-        public SignUpController(UserManager<ApplicationUser> userManager)
+        public SignUpController(ApplicationUserManager userManager)
         {
             _userManager = userManager;
         }
