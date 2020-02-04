@@ -6,7 +6,9 @@
 
 @using(Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
+
     @Html.EditorForModel();
 
-    <button type="button">Sign Up</button>
+    <button type="submit">Sign Up</button>
 }

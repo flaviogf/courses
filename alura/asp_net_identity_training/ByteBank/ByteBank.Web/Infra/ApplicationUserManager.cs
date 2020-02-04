@@ -7,6 +7,10 @@ namespace ByteBank.Web.Infra
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store) : base(store)
         {
+            UserValidator = new UserValidator<ApplicationUser>(this)
+            {
+                RequireUniqueEmail = true
+            };
         }
     }
 }
