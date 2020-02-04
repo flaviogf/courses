@@ -1,0 +1,12 @@
+﻿@model ByteBank.Web.ViewModels.SignUpShowViewModel
+
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+@using(Html.BeginForm())
+{
+    @Html.EditorForModel();
+
+    <button type="button">Sign Up</button>
+}
