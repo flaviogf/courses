@@ -44,7 +44,7 @@ namespace ByteBank.Web.Controllers
 
                 var userId = user.Id;
 
-                var link = Url.Action("Store", "EmailConfirmation", new { userId, token }, Request.Url.Scheme);
+                var link = Url.Action("Show", "EmailConfirmation", new { userId, token }, Request.Url.Scheme);
 
                 var message = $"Hello for confirm your email click on link bellow\nLink: {link}";
 

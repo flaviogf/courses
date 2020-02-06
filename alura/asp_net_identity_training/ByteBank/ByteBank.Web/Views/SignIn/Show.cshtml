@@ -1,0 +1,16 @@
+﻿@model ByteBank.Web.ViewModels.SignInShowViewModel
+
+@{
+    ViewBag.Title = "Sign In";
+}
+
+@using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary()
+
+    @Html.EditorForModel()
+
+    <button type="submit">Sign In</button>
+}

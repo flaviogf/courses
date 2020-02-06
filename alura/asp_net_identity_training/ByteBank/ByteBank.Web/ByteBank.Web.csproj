@@ -248,11 +248,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ByteBankDbContext.cs" />
+    <Compile Include="Controllers\EmailConfirmationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infra\ApplicationSignInManager.cs" />
     <Compile Include="Infra\ApplicationUserManager.cs" />
     <Compile Include="Infra\ApplicationUserStore.cs" />
     <Compile Include="Infra\EmailIdentityMessageService.cs" />
@@ -264,6 +267,8 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\EmailConfirmationShowViewModel.cs" />
+    <Compile Include="ViewModels\SignInShowViewModel.cs" />
     <Compile Include="ViewModels\SignUpShowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +296,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\SignUp\Show.cshtml" />
+    <Content Include="Views\EmailConfirmation\Show.cshtml" />
+    <Content Include="Views\SignIn\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002040113462_Identity.resx">

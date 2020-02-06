@@ -7,6 +7,12 @@
     @Styles.Render("~/Content")
 </head>
 <body>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Sign Up", "Show", "SignUp")</li>
+            <li>@Html.ActionLink("Sign In", "Show", "SignIn")</li>
+        </ul>
+    </nav>
     @RenderBody()
     @Scripts.Render("~/Scripts")
     @RenderSection("scripts", required: false)
