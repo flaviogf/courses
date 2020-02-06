@@ -40,6 +40,16 @@ namespace ByteBank.Web.Controllers
 
             if (result.Succeeded)
             {
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+                var userId = user.Id;
+
+                var link = Url.Action("Store", "EmailConfirmation", new { userId, token }, Request.Url.Scheme);
+
+                var message = $"Hello for confirm your email click on link bellow\nLink: {link}";
+
+                await _userManager.SendEmailAsync(user.Id, "Confirm your email", message);
+
                 return RedirectToAction("Index", "Home");
             }
 

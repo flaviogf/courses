@@ -4,6 +4,7 @@ using ByteBank.Web.Infra;
 using ByteBank.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using System.Web.Mvc;
 
@@ -20,6 +21,8 @@ namespace ByteBank.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             builder.RegisterType<ByteBankDbContext>().AsSelf().InstancePerRequest();
+
+            builder.Register<IDataProtectionProvider>((c) => app.GetDataProtectionProvider());
 
             builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
 

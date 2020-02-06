@@ -8,6 +8,8 @@
 {
     @Html.AntiForgeryToken()
 
+    @Html.ValidationSummary()
+
     @Html.EditorForModel();
 
     <button type="submit">Sign Up</button>

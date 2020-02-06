@@ -255,6 +255,7 @@
     </Compile>
     <Compile Include="Infra\ApplicationUserManager.cs" />
     <Compile Include="Infra\ApplicationUserStore.cs" />
+    <Compile Include="Infra\EmailIdentityMessageService.cs" />
     <Compile Include="Migrations\202002040113462_Identity.cs" />
     <Compile Include="Migrations\202002040113462_Identity.Designer.cs">
       <DependentUpon>202002040113462_Identity.cs</DependentUpon>
