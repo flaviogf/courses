@@ -5,6 +5,7 @@ using ByteBank.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using System.Web;
@@ -35,6 +36,11 @@ namespace ByteBank.Web
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
 
             var container = builder.Build();
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie
+            });
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

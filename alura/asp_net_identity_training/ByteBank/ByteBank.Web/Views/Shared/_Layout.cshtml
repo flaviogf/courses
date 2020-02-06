@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,8 +11,16 @@
 <body>
     <nav>
         <ul>
-            <li>@Html.ActionLink("Sign Up", "Show", "SignUp")</li>
-            <li>@Html.ActionLink("Sign In", "Show", "SignIn")</li>
+            @if (Request.IsAuthenticated)
+            {
+                <li>@User.Identity.GetUserName()</li>
+                <li>Logout</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Sign Up", "Show", "SignUp")</li>
+                <li>@Html.ActionLink("Sign In", "Show", "SignIn")</li>
+            }
         </ul>
     </nav>
     @RenderBody()
