@@ -1,0 +1,16 @@
+﻿@model ByteBank.Web.ViewModels.ForgotPasswordViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary()
+
+    @Html.EditorForModel()
+
+    <button type="submit">Request</button>
+}

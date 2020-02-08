@@ -1,4 +1,4 @@
-﻿@model ByteBank.Web.ViewModels.SignInShowViewModel
+﻿@model ByteBank.Web.ViewModels.SignInViewModel
 
 @{
     ViewBag.Title = "Sign In";
@@ -13,4 +13,6 @@
     @Html.EditorForModel()
 
     <button type="submit">Sign In</button>
+
+    @Html.ActionLink("Forgot your password?", "Index", "ForgotPassword")
 }

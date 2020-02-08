@@ -1,6 +1,6 @@
 ﻿namespace ByteBank.Web.ViewModels
 {
-    public class EmailConfirmationShowViewModel
+    public class EmailConfirmationViewModel
     {
         public string Message { get; set; }
     }

@@ -9,13 +9,13 @@ namespace ByteBank.Web.Infra
     {
         public Task SendAsync(IdentityMessage message)
         {
-            var host = default(string);
+            var host = "smtp.mailtrap.io";
 
-            var port = default(int);
+            var port = 2525;
 
-            var username = default(string);
+            var username = "505c603ac7db70";
 
-            var password = default(string);
+            var password = "5d35221e336b3b";
 
             var client = new SmtpClient(host, port)
             {

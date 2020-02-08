@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.DataProtection;
+using System;
 
 namespace ByteBank.Web.Infra
 {
@@ -17,6 +18,10 @@ namespace ByteBank.Web.Infra
             EmailService = new EmailIdentityMessageService();
 
             UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(provider.Create("ByteBank"));
+
+            UserLockoutEnabledByDefault = true;
+            MaxFailedAccessAttemptsBeforeLockout = 3;
+            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
         }
     }
 }

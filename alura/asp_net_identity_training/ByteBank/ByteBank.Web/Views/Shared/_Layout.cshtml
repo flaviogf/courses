@@ -14,12 +14,12 @@
             @if (Request.IsAuthenticated)
             {
                 <li>@User.Identity.GetUserName()</li>
-                <li>Logout</li>
+                <li>@Html.ActionLink("Sign Out", "Index", "SignOut")</li>
             }
             else
             {
-                <li>@Html.ActionLink("Sign Up", "Show", "SignUp")</li>
-                <li>@Html.ActionLink("Sign In", "Show", "SignIn")</li>
+                <li>@Html.ActionLink("Sign Up", "Index", "SignUp")</li>
+                <li>@Html.ActionLink("Sign In", "Index", "SignIn")</li>
             }
         </ul>
     </nav>

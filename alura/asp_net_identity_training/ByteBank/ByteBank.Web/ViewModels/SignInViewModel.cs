@@ -2,7 +2,7 @@
 
 namespace ByteBank.Web.ViewModels
 {
-    public class SignInShowViewModel
+    public class SignInViewModel
     {
         [Required]
         public string UserName { get; set; }

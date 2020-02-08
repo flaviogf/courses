@@ -14,11 +14,11 @@ namespace ByteBank.Web.Controllers
             _userManager = userManager;
         }
 
-        public async Task<ActionResult> Show(string userId, string token)
+        public async Task<ActionResult> Index(string userId, string token)
         {
             var result = await _userManager.ConfirmEmailAsync(userId, token);
 
-            var viewModel = new EmailConfirmationShowViewModel();
+            var viewModel = new EmailConfirmationViewModel();
 
             if (result.Succeeded)
             {

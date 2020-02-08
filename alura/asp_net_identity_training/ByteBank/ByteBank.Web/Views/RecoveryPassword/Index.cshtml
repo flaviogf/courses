@@ -1,0 +1,16 @@
+﻿@model ByteBank.Web.ViewModels.RecoveryPasswordViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary()
+
+    @Html.EditorForModel()
+
+    <button type="submit">Recovery</button>
+}

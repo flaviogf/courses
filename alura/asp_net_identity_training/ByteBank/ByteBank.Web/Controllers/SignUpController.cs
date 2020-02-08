@@ -16,14 +16,14 @@ namespace ByteBank.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Show()
+        public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Show(SignUpShowViewModel viewModel)
+        public async Task<ActionResult> Index(SignUpViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -44,7 +44,7 @@ namespace ByteBank.Web.Controllers
 
                 var userId = user.Id;
 
-                var link = Url.Action("Show", "EmailConfirmation", new { userId, token }, Request.Url.Scheme);
+                var link = Url.Action("Index", "EmailConfirmation", new { userId, token }, Request.Url.Scheme);
 
                 var message = $"Hello for confirm your email click on link bellow\nLink: {link}";
 
