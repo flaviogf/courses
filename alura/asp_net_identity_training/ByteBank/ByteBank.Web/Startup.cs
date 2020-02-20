@@ -7,7 +7,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
+using Microsoft.Owin.Security.Google;
 using Owin;
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 
@@ -40,6 +42,16 @@ namespace ByteBank.Web
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie
+            });
+
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = ConfigurationManager.AppSettings["Google:ClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["Google:ClientSecret"],
+                Caption = "Byte Bank",
+                CallbackPath = new PathString("/signin-google")
             });
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
