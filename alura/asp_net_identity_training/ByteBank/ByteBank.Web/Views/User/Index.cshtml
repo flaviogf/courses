@@ -1,0 +1,25 @@
+﻿@model IList<ByteBank.Web.ViewModels.UserViewModel>
+
+@{
+    ViewBag.Title = "users";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(it => it.First().Id)</th>
+            <th>@Html.DisplayNameFor(it => it.First().UserName)</th>
+            <th>@Html.DisplayNameFor(it => it.First().Email)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

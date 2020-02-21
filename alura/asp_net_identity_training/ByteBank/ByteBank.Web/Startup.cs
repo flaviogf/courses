@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
 using ByteBank.Web.Infra;
 using ByteBank.Web.Models;
+using ByteBank.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
@@ -21,6 +23,13 @@ namespace ByteBank.Web
     {
         public void Configuration(IAppBuilder app)
         {
+            var configuration = new MapperConfiguration(it =>
+            {
+                it.CreateMap<ApplicationUser, UserViewModel>();
+            });
+
+            var mapper = configuration.CreateMapper();
+
             var builder = new ContainerBuilder();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -36,6 +45,8 @@ namespace ByteBank.Web
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
 
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+
+            builder.RegisterInstance<IMapper>(mapper);
 
             var container = builder.Build();
 
