@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.MergeSort", "Algorithms.MergeSort\Algorithms.MergeSort.csproj", "{7EB93F39-1763-41FC-B2B4-3AB92249BF18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Pivot", "Algorithms.Pivot\Algorithms.Pivot.csproj", "{F53B1FE1-075B-47DD-B967-50D1E142377F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{7EB93F39-1763-41FC-B2B4-3AB92249BF18}.Release|x64.Build.0 = Release|Any CPU
 		{7EB93F39-1763-41FC-B2B4-3AB92249BF18}.Release|x86.ActiveCfg = Release|Any CPU
 		{7EB93F39-1763-41FC-B2B4-3AB92249BF18}.Release|x86.Build.0 = Release|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Debug|x64.Build.0 = Debug|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Debug|x86.Build.0 = Debug|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x64.ActiveCfg = Release|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x64.Build.0 = Release|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x86.ActiveCfg = Release|Any CPU
+		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
