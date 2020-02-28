@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.MergeSort", "Alg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Pivot", "Algorithms.Pivot\Algorithms.Pivot.csproj", "{F53B1FE1-075B-47DD-B967-50D1E142377F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Search", "Algorithms.Search\Algorithms.Search.csproj", "{E29AA80E-D73A-4C84-950F-2421E694735C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x64.Build.0 = Release|Any CPU
 		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x86.ActiveCfg = Release|Any CPU
 		{F53B1FE1-075B-47DD-B967-50D1E142377F}.Release|x86.Build.0 = Release|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Debug|x64.Build.0 = Debug|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Release|x64.ActiveCfg = Release|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Release|x64.Build.0 = Release|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E29AA80E-D73A-4C84-950F-2421E694735C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
