@@ -63,8 +63,13 @@ namespace Algorithms.Search
             grades[from] = grade2;
         }
 
-        private static int BinarySearch(double[] grades, int from, int to, int search)
+        private static int BinarySearch(double[] grades, int from, int to, double search)
         {
+            if (from > to)
+            {
+                return -1;
+            }
+
             var middle = (from + to) / 2;
 
             var grade = grades[middle];
@@ -76,13 +81,13 @@ namespace Algorithms.Search
 
             if (search < grade)
             {
-                return BinarySearch(grades, from, middle, search);
+                return BinarySearch(grades, from, middle - 1, search);
             }
 
             return BinarySearch(grades, middle + 1, to, search);
         }
 
-        private static int LinearSearch(double[] grades, int from, int to, int search)
+        private static int LinearSearch(double[] grades, int from, int to, double search)
         {
             for (var i = from; i < to; i++)
             {
