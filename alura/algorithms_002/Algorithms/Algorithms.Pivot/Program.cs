@@ -19,7 +19,7 @@ namespace Algorithms.Pivot
                 new Grade("Gui", 7),
             };
 
-            Pivot(grades, 0, 9);
+            Quicksort(grades, 0, grades.Length);
 
             foreach (var item in grades)
             {
@@ -27,7 +27,19 @@ namespace Algorithms.Pivot
             }
         }
 
-        private static void Pivot(Grade[] grades, int begin, int end)
+        private static void Quicksort(Grade[] grades, int begin, int end)
+        {
+            var quantity = end - begin;
+
+            if (quantity > 1)
+            {
+                var pivot = Partition(grades, begin, end);
+                Quicksort(grades, begin, pivot);
+                Quicksort(grades, pivot + 1, end);
+            }
+        }
+
+        private static int Partition(Grade[] grades, int begin, int end)
         {
             var pivot = grades[end - 1];
 
@@ -45,6 +57,8 @@ namespace Algorithms.Pivot
             }
 
             Swipe(grades, end - 1, lowest);
+
+            return lowest;
         }
 
         private static void Swipe(Grade[] grades, int from, int to)
