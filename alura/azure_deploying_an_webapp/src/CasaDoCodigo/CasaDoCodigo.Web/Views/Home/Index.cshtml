@@ -1,5 +1,26 @@
-﻿@{
+﻿@model IList<CasaDoCodigo.Web.ViewModels.BookViewModel>
+
+@{
     ViewData["Title"] = "Home";
 }
 
 <h1>Casa do Código</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(it => it[0].Id)</th>
+            <th>@Html.DisplayNameFor(it => it[0].Name)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(it => item.Id)</td>
+                <td>@Html.DisplayFor(it => item.Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>
