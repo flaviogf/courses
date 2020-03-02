@@ -1,0 +1,2 @@
+$publish = [xml](Get-AzureRmWebAppPublishingProfile -ResourceGroupName "ps-casadocodigo-rg" -Name "ps-casadocodigo-webapp")
+$publish.Save("C:\Users\flavio\AppData\Local\Temp\ps-casadocodigo-webapp.publishsettings")
