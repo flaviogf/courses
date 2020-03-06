@@ -9,7 +9,7 @@ namespace CasaDoCodigo.Web.Models
 
         public string Title { get; set; }
 
-        public ICollection<BookAuthor> Authors { get; set; }
+        public IList<BookAuthor> Authors { get; set; }
 
         public File Image { get; set; }
 

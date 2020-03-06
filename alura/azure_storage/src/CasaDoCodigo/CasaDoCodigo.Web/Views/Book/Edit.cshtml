@@ -1,0 +1,18 @@
+﻿@model CasaDoCodigo.Web.ViewModels.Book.EditBookViewModel
+
+@{
+    ViewData["Title"] = "Book";
+}
+
+@using (Html.BeginForm("Edit", "Book", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+
+    @Html.HiddenFor(it => it.Id)
+
+    @Html.EditorFor(it => it.Title)
+
+    @Html.ListBoxFor(it => it.Authors, Model.AuthorSelectList)
+
+    <button>Edit</button>
+}

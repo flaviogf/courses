@@ -1,3 +1,27 @@
-﻿@{
+﻿@model IList<CasaDoCodigo.Web.ViewModels.BookViewModel>
+
+@{
     ViewData["Title"] = "Book";
 }
+
+@Html.ActionLink("New", "Create", "Book")
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(it => it[0].Id)</th>
+            <th>@Html.DisplayNameFor(it => it[0].Title)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(it => author.Id)</td>
+                <td>@Html.DisplayFor(it => author.Title)</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Book", new { id = author.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

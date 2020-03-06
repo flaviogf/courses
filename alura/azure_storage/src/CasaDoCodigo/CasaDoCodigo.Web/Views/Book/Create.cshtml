@@ -1,3 +1,16 @@
-﻿@{
+﻿@model CasaDoCodigo.Web.ViewModels.Book.CreateBookViewModel
+
+@{
     ViewData["Title"] = "Book";
+}
+
+@using (Html.BeginForm("Create", "Book", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorFor(it => it.Title);
+
+    @Html.ListBoxFor(it => it.Authors, Model.AuthorSelectList);
+
+    <button>Create</button>
 }

@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AutoMapper;
+using System.Reflection;
+using CasaDoCodigo.Web.ViewModels;
+using CasaDoCodigo.Web.Models;
 
 namespace CasaDoCodigo.Web
 {
@@ -21,6 +25,11 @@ namespace CasaDoCodigo.Web
             var connectionString = _configuration.GetConnectionString("Default");
 
             services.AddDbContext<ApplicationContext>(it => it.UseSqlServer(connectionString));
+
+            services.AddAutoMapper(it =>
+            {
+                it.CreateMap<Book, BookViewModel>();
+            }, Assembly.GetExecutingAssembly());
 
             services.AddControllersWithViews();
         }
