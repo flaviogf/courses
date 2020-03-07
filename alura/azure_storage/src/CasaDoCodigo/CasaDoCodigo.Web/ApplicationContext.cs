@@ -1,5 +1,6 @@
 ﻿using CasaDoCodigo.Web.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CasaDoCodigo.Web
 {
@@ -13,9 +14,24 @@ namespace CasaDoCodigo.Web
 
         public DbSet<Book> Books { get; set; }
 
+        public DbSet<File> Files { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BookAuthor>().HasKey(it => new { it.BookId, it.AuthorId });
+
+            modelBuilder.Entity<Author>().HasData(
+                new Author
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Paulo Silveira"
+                },
+                new Author
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Guilherme Silveira"
+                }
+            );
         }
     }
 }

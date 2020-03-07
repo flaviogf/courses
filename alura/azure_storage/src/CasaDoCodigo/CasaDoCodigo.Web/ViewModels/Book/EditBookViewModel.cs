@@ -13,5 +13,7 @@ namespace CasaDoCodigo.Web.ViewModels.Book
         public IEnumerable<Guid> Authors { get; set; }
 
         public IEnumerable<SelectListItem> AuthorSelectList { get; set; }
+
+        public string Cover { get; set; }
     }
 }

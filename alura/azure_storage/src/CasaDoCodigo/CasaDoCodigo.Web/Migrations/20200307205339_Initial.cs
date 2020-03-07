@@ -20,7 +20,7 @@ namespace CasaDoCodigo.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "File",
+                name: "Files",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -29,7 +29,7 @@ namespace CasaDoCodigo.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_File", x => x.Id);
+                    table.PrimaryKey("PK_Files", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -38,22 +38,22 @@ namespace CasaDoCodigo.Web.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(nullable: true),
-                    ImageId = table.Column<Guid>(nullable: true),
+                    CoverId = table.Column<Guid>(nullable: true),
                     FileId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Books_File_FileId",
-                        column: x => x.FileId,
-                        principalTable: "File",
+                        name: "FK_Books_Files_CoverId",
+                        column: x => x.CoverId,
+                        principalTable: "Files",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Books_File_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "File",
+                        name: "FK_Books_Files_FileId",
+                        column: x => x.FileId,
+                        principalTable: "Files",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -82,20 +82,30 @@ namespace CasaDoCodigo.Web.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { new Guid("7faf2529-a613-4d3f-911a-0a30f7fc8155"), "Paulo Silveira" });
+
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { new Guid("cc2a109f-d6a0-46e4-a80e-1904c72d716b"), "Guilherme Silveira" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_BookAuthor_AuthorId",
                 table: "BookAuthor",
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Books_CoverId",
+                table: "Books",
+                column: "CoverId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Books_FileId",
                 table: "Books",
                 column: "FileId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Books_ImageId",
-                table: "Books",
-                column: "ImageId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -110,7 +120,7 @@ namespace CasaDoCodigo.Web.Migrations
                 name: "Books");
 
             migrationBuilder.DropTable(
-                name: "File");
+                name: "Files");
         }
     }
 }

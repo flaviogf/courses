@@ -9,6 +9,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CasaDoCodigo.Web.Models;
 using System;
+using Microsoft.Extensions.Configuration;
+using CasaDoCodigo.Web.Infrastructure;
 
 namespace CasaDoCodigo.Web.Controllers
 {
@@ -16,12 +18,18 @@ namespace CasaDoCodigo.Web.Controllers
     {
         private readonly ApplicationContext _context;
 
+        private readonly IConfiguration _configuration;
+
         private readonly IMapper _mapper;
 
-        public BookController(ApplicationContext context, IMapper mapper)
+        private readonly IFileUpload _fileUpload;
+
+        public BookController(ApplicationContext context, IConfiguration configuration, IMapper mapper, IFileUpload fileUpload)
         {
             _context = context;
+            _configuration = configuration;
             _mapper = mapper;
+            _fileUpload = fileUpload;
         }
 
         [HttpGet]
@@ -77,7 +85,7 @@ namespace CasaDoCodigo.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var book = await _context.Books.Include(it => it.Authors).SingleAsync(it => it.Id.Equals(id));
+            var book = await _context.Books.Include(it => it.Authors).Include(it => it.Cover).SingleAsync(it => it.Id.Equals(id));
 
             var authors = book.Authors.Select(it => it.AuthorId);
 
@@ -88,12 +96,15 @@ namespace CasaDoCodigo.Web.Controllers
                 Text = it.Name
             });
 
+            var cover = _fileUpload.UrlFor(book.Cover?.Path);
+
             var viewModel = new EditBookViewModel
             {
                 Id = book.Id,
                 Title = book.Title,
                 Authors = authors,
-                AuthorSelectList = authorSelectList
+                AuthorSelectList = authorSelectList,
+                Cover = cover
             };
 
             return View(viewModel);

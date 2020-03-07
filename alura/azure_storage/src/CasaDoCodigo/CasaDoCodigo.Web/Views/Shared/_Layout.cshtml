@@ -6,6 +6,12 @@
     <title>Casa do Código - @ViewData["Title"]</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Book", "Index", "Book")</li>
+        </ul>
+    </nav>
+
     @RenderBody()
 </body>
 </html>

@@ -1,3 +1,3 @@
 New-AzureRmResourceGroup `
--Name rgcasadocodigo `
--Location "east us"
+    -Name rgcasadocodigo `
+    -Location "east us"

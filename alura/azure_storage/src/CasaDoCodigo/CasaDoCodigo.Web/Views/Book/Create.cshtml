@@ -8,9 +8,15 @@
 {
     @Html.AntiForgeryToken()
 
-    @Html.EditorFor(it => it.Title);
+    <div>
+        @Html.LabelFor(it => it.Title)
+        @Html.EditorFor(it => it.Title);
+    </div>
 
-    @Html.ListBoxFor(it => it.Authors, Model.AuthorSelectList);
+    <div>
+        @Html.LabelFor(it => it.Authors)
+        @Html.ListBoxFor(it => it.Authors, Model.AuthorSelectList);
+    </div>
 
     <button>Create</button>
 }

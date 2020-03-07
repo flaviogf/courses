@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaDoCodigo.Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200305210728_AddingAuthors")]
-    partial class AddingAuthors
+    [Migration("20200307205339_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,12 +37,12 @@ namespace CasaDoCodigo.Web.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("be69294b-e004-4f44-bdf9-16e0f30b09bc"),
+                            Id = new Guid("7faf2529-a613-4d3f-911a-0a30f7fc8155"),
                             Name = "Paulo Silveira"
                         },
                         new
                         {
-                            Id = new Guid("259c153a-d56f-484b-bc9b-110c8e90b8d3"),
+                            Id = new Guid("cc2a109f-d6a0-46e4-a80e-1904c72d716b"),
                             Name = "Guilherme Silveira"
                         });
                 });
@@ -53,10 +53,10 @@ namespace CasaDoCodigo.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("FileId")
+                    b.Property<Guid?>("CoverId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ImageId")
+                    b.Property<Guid?>("FileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
@@ -64,9 +64,9 @@ namespace CasaDoCodigo.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FileId");
+                    b.HasIndex("CoverId");
 
-                    b.HasIndex("ImageId");
+                    b.HasIndex("FileId");
 
                     b.ToTable("Books");
                 });
@@ -100,18 +100,18 @@ namespace CasaDoCodigo.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("File");
+                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("CasaDoCodigo.Web.Models.Book", b =>
                 {
+                    b.HasOne("CasaDoCodigo.Web.Models.File", "Cover")
+                        .WithMany()
+                        .HasForeignKey("CoverId");
+
                     b.HasOne("CasaDoCodigo.Web.Models.File", "File")
                         .WithMany()
                         .HasForeignKey("FileId");
-
-                    b.HasOne("CasaDoCodigo.Web.Models.File", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId");
                 });
 
             modelBuilder.Entity("CasaDoCodigo.Web.Models.BookAuthor", b =>

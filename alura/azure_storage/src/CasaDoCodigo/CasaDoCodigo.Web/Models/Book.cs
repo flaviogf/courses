@@ -11,7 +11,7 @@ namespace CasaDoCodigo.Web.Models
 
         public IList<BookAuthor> Authors { get; set; }
 
-        public File Image { get; set; }
+        public File Cover { get; set; }
 
         public File File { get; set; }
     }

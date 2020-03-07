@@ -8,6 +8,7 @@ using AutoMapper;
 using System.Reflection;
 using CasaDoCodigo.Web.ViewModels;
 using CasaDoCodigo.Web.Models;
+using CasaDoCodigo.Web.Infrastructure;
 
 namespace CasaDoCodigo.Web
 {
@@ -25,6 +26,8 @@ namespace CasaDoCodigo.Web
             var connectionString = _configuration.GetConnectionString("Default");
 
             services.AddDbContext<ApplicationContext>(it => it.UseSqlServer(connectionString));
+
+            services.AddScoped<IFileUpload, AzureFileUpload>();
 
             services.AddAutoMapper(it =>
             {
