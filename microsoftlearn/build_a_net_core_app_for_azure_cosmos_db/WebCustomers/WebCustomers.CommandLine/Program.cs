@@ -64,6 +64,11 @@ namespace WebCustomers.CommandLine
 
             await ReadUserDocument(client, "Users", "WebCustomers", user);
 
+            await ReplaceUserDocument(client, "Users", "WebCustomers", user);
+
+            await DeleteUserDocument(client, "Users", "WebCustomers", user);
+
+            await CreateUserDocument(client, "Users", "WebCustomers", user);
         }
 
         private static async Task CreateUserDocument(DocumentClient client, string database, string collection, User user)
@@ -87,6 +92,19 @@ namespace WebCustomers.CommandLine
         {
             var response = await client.ReadDocumentAsync<User>(UriFactory.CreateDocumentUri(database, collection, user.Id));
             Console.WriteLine($"Reading informations about the user {response.Document.FirstName}.");
+        }
+
+        private static async Task ReplaceUserDocument(DocumentClient client, string database, string collection, User user)
+        {
+            user.FirstName = "Frank";
+            await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(database, collection, user.Id), user);
+            Console.WriteLine($"Updating informations about the user {user.FirstName}");
+        }
+
+        private static async Task DeleteUserDocument(DocumentClient client, string database, string collection, User user)
+        {
+            await client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(database, collection, user.Id));
+            Console.WriteLine($"The user {user.FirstName} have been deleted.");
         }
     }
 }
