@@ -5,14 +5,14 @@ import java.util.Arrays;
 public class Items<T> {
     private Object[] elements = new Object[5];
     private int current = -1;
-    private int length = 5;
+    private int size = 5;
 
     public void add(T element) {
         current++;
 
-        if (current >= length) {
-            length++;
-            elements = Arrays.copyOf(elements, length);
+        if (current >= size) {
+            size++;
+            elements = Arrays.copyOf(elements, size);
         }
 
         elements[current] = element;
@@ -22,7 +22,7 @@ public class Items<T> {
         return (T) elements[i];
     }
 
-    public int length() {
-        return length;
+    public int size() {
+        return size;
     }
 }

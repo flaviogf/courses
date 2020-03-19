@@ -9,7 +9,7 @@ public class Program {
             items.add(Integer.toString(i));
         }
 
-        for (int i = 0; i < items.length(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             String item = items.get(i);
             System.out.println(item);
         }
