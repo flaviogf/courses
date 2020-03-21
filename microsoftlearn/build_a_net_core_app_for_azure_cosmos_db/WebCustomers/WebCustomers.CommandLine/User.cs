@@ -1,9 +1,14 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
 namespace WebCustomers.CommandLine
 {
     public class User
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
 
+        [JsonProperty("userId")]
         public string UserId { get; set; }
 
         public string FirstName { get; set; }

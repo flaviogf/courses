@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
@@ -69,13 +70,21 @@ namespace WebCustomers.CommandLine
             await DeleteUserDocument(client, "Users", "WebCustomers", user);
 
             await CreateUserDocument(client, "Users", "WebCustomers", user);
+
+            ExecutingQuery(client, "Users", "WebCustomers");
+
+            Console.WriteLine(user.UserId);
+
+            await client.ExecuteStoredProcedureAsync<string>(UriFactory.CreateStoredProcedureUri("Users", "WebCustomers", "UpdateOrderTotal"), new RequestOptions { PartitionKey = new PartitionKey(user.UserId) });
+
+            Console.WriteLine("Store procedure have been executed");
         }
 
         private static async Task CreateUserDocument(DocumentClient client, string database, string collection, User user)
         {
             try
             {
-                await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(database, collection, user.Id));
+                await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(database, collection, user.Id), new RequestOptions { PartitionKey = new PartitionKey(user.UserId) });
                 Console.WriteLine("User already exists.");
             }
             catch (DocumentClientException ex)
@@ -90,7 +99,7 @@ namespace WebCustomers.CommandLine
 
         private static async Task ReadUserDocument(DocumentClient client, string database, string collection, User user)
         {
-            var response = await client.ReadDocumentAsync<User>(UriFactory.CreateDocumentUri(database, collection, user.Id));
+            var response = await client.ReadDocumentAsync<User>(UriFactory.CreateDocumentUri(database, collection, user.Id), new RequestOptions { PartitionKey = new PartitionKey(user.UserId) });
             Console.WriteLine($"Reading informations about the user {response.Document.FirstName}.");
         }
 
@@ -103,8 +112,31 @@ namespace WebCustomers.CommandLine
 
         private static async Task DeleteUserDocument(DocumentClient client, string database, string collection, User user)
         {
-            await client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(database, collection, user.Id));
+            await client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(database, collection, user.Id), new RequestOptions { PartitionKey = new PartitionKey(user.UserId) });
             Console.WriteLine($"The user {user.FirstName} have been deleted.");
+        }
+
+        private static void ExecutingQuery(DocumentClient client, string database, string collection)
+        {
+            var feedOptions = new FeedOptions { MaxItemCount = -1, EnableCrossPartitionQuery = true };
+
+            var linqQuery = client.CreateDocumentQuery<User>(UriFactory.CreateDocumentCollectionUri(database, collection), feedOptions).Where(it => it.Id == "1");
+
+            Console.WriteLine(linqQuery);
+
+            foreach (var it in linqQuery)
+            {
+                Console.WriteLine(it.FirstName);
+            }
+
+            var sqlQuery = client.CreateDocumentQuery<User>(UriFactory.CreateDocumentCollectionUri(database, collection), "SELECT * FROM WebCustomers WHERE WebCustomers.id = '1'", feedOptions);
+
+            Console.WriteLine(sqlQuery);
+
+            foreach (var it in sqlQuery)
+            {
+                Console.WriteLine(it.FirstName);
+            }
         }
     }
 }
