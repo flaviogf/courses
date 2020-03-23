@@ -1,19 +1,28 @@
 package br.com.flaviogf.manager;
 
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class InMemoryCompanyRepository implements CompanyRepository {
-    private static Set<Company> companies = new LinkedHashSet<>();
+    private static Map<String, Company> companyMap = new LinkedHashMap<>();
 
     @Override
     public void add(Company company) {
-        companies.add(company);
+        companyMap.put(company.getId(), company);
     }
 
     @Override
     public Collection<Company> findAll() {
-        return companies;
+        return companyMap.values();
+    }
+
+    @Override
+    public Optional<Company> find(String id) {
+        if (!companyMap.containsKey(id)) {
+            return Optional.empty();
+        }
+
+        Company company = companyMap.get(id);
+
+        return Optional.of(company);
     }
 }
