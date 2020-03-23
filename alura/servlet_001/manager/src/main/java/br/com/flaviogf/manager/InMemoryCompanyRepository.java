@@ -30,4 +30,9 @@ public class InMemoryCompanyRepository implements CompanyRepository {
     public void destroy(String id) {
         companyMap.remove(id);
     }
+
+    @Override
+    public void update(Company company) {
+        companyMap.put(company.getId(), company);
+    }
 }

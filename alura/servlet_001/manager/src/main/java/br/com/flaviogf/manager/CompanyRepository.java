@@ -11,4 +11,6 @@ public interface CompanyRepository {
     Optional<Company> find(String id);
 
     void destroy(String id);
+
+    void update(Company company);
 }

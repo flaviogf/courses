@@ -23,12 +23,14 @@
                                 <c:param name="id" value="${company.id}" />
                             </c:url>
                             <a href="${show}">Show</a>
-                        </td>
-                        <td>
                             <c:url value="destroy" var="destroy">
                                 <c:param name="id" value="${company.id}" />
                             </c:url>
                             <a href="${destroy}">Destroy</a>
+                            <c:url value="update" var="update">
+                                <c:param name="id" value="${company.id}" />
+                            </c:url>
+                            <a href="${update}">Update</a>
                         </td>
                     </tr>
                 </c:forEach>
