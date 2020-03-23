@@ -24,6 +24,12 @@
                             </c:url>
                             <a href="${show}">Show</a>
                         </td>
+                        <td>
+                            <c:url value="destroy" var="destroy">
+                                <c:param name="id" value="${company.id}" />
+                            </c:url>
+                            <a href="${destroy}">Destroy</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>

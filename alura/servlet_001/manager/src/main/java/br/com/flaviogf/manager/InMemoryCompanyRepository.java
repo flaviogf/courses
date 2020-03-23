@@ -6,7 +6,7 @@ public class InMemoryCompanyRepository implements CompanyRepository {
     private static Map<String, Company> companyMap = new LinkedHashMap<>();
 
     @Override
-    public void add(Company company) {
+    public void create(Company company) {
         companyMap.put(company.getId(), company);
     }
 
@@ -24,5 +24,10 @@ public class InMemoryCompanyRepository implements CompanyRepository {
         Company company = companyMap.get(id);
 
         return Optional.of(company);
+    }
+
+    @Override
+    public void destroy(String id) {
+        companyMap.remove(id);
     }
 }

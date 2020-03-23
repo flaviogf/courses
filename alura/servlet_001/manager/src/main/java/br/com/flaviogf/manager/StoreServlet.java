@@ -30,7 +30,7 @@ public class StoreServlet extends HttpServlet {
         Company company = new Company(id, name, date);
 
         CompanyRepository companyRepository = new InMemoryCompanyRepository();
-        companyRepository.add(company);
+        companyRepository.create(company);
 
         resp.sendRedirect("/");
     }
