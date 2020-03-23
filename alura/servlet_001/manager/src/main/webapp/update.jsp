@@ -5,9 +5,9 @@
 <html>
     <body>
         <form method="post">
-            <input name="id" value="${company.id}" hidden />
-            <input name="name" value="${company.name}" />
-            <input name="date" value="${date}" />
+            <input name="id" value="${company.id}" type="hidden" />
+            <input name="name" value="${company.name}" type="text" />
+            <input name="date" value="${date}" type="date" />
             <button>Update</button>
         </form>
     </body>
