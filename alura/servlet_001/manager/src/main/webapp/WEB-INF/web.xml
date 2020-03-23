@@ -3,4 +3,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+         <servlet>
+            <servlet-name>Ping</servlet-name>
+            <servlet-class>br.com.flaviogf.manager.PingServlet</servlet-class>
+         </servlet>
+
+         <servlet-mapping>
+            <servlet-name>Ping</servlet-name>
+            <url-pattern>/ping</url-pattern>
+         </servlet-mapping>
 </web-app>
