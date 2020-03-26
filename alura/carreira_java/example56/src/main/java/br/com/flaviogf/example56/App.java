@@ -31,5 +31,7 @@ public class App {
         LocalTime startHour = LocalTime.of(9, 0);
 
         System.out.println(startHour);
+
+        ZoneId.of("America/Sao_Paulo");
     }
 }
