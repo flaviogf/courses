@@ -27,7 +27,7 @@ public class CompanyController {
     }
 
     public void create(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/company/create.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/company/index.jsp").forward(req, resp);
     }
 
     public void store(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

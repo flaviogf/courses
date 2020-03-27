@@ -2,6 +2,10 @@
 
 <h3>Companies</h3>
 
+<c:if test="${user != null}">
+    <span>${user.username}</span>
+</c:if>
+
 <table>
   <thead>
     <tr>
