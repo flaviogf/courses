@@ -5,12 +5,12 @@ import java.util.Date;
 public class Company {
     private String id;
     private String name;
-    private Date date;
+    private Date foundationDate;
 
-    public Company(String id, String name, Date date) {
+    public Company(String id, String name, Date foundationDate) {
         this.id = id;
         this.name = name;
-        this.date = date;
+        this.foundationDate = foundationDate;
     }
 
     public String getId() {
@@ -21,7 +21,7 @@ public class Company {
         return name;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getFoundationDate() {
+        return foundationDate;
     }
 }

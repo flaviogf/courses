@@ -2,6 +2,10 @@
 
 <h3>Companies</h3>
 
+<c:if test="${user != null}">
+    <span>${user.username}</span>
+</c:if>
+
 <table>
   <thead>
     <tr>
@@ -13,10 +17,14 @@
 
   <tbody>
       <c:forEach items="${companies}" var="company">
+          <c:url value="/company/edit" var="edit">
+            <c:param value="${company.id}" name="id" />
+          </c:url>
+
           <tr>
-              <td>${company.id}</td>
+              <td><a href="${edit}">${company.id}</a></td>
               <td>${company.name}</td>
-              <td>${company.date}</td>
+              <td>${company.foundationDate}</td>
           </tr>
       </c:forEach>
   </tbody>
