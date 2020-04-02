@@ -1,4 +1,4 @@
-package br.com.flaviogf.jpaproject.models;
+package br.com.flaviogf.example1.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,32 +8,32 @@ import javax.persistence.Id;
 public class Account {
     @Id
     @GeneratedValue
-    private Long id;
-    private Integer agency;
-    private Integer number;
+    private Integer id;
+    private String agency;
+    private String number;
     private String holder;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setAgency(Integer agency) {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setAgency(String agency) {
         this.agency = agency;
     }
 
-    public Integer getAgency() {
+    public String getAgency() {
         return agency;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 

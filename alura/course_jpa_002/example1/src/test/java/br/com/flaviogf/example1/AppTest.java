@@ -1,4 +1,4 @@
-package br.com.flaviogf.jpaproject;
+package br.com.flaviogf.example1;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
