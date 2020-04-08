@@ -1,0 +1,12 @@
+@model UploadingBlob.WebApp.ViewModels.FileViewModel;
+
+<h3>Upload your file!</h3>
+
+@using (Html.BeginForm("Store", "File", FormMethod.Post, new { enctype="multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorFor(it => it.File)
+
+    <button type="submit">Go</button>
+}
