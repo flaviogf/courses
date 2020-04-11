@@ -19,6 +19,7 @@ namespace PSStore.Domain.Sales
             Product = products;
             UnitPrice = products.Price;
             Quantity = quantity;
+            TotalPrice = products.Price * quantity;
         }
 
         public Guid Id { get; }

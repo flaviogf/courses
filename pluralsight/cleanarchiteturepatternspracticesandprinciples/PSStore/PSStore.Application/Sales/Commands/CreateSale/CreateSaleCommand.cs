@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PSStore.Domain.Sales;
+﻿using PSStore.Domain.Sales;
 using System;
 using System.Threading.Tasks;
 
@@ -7,26 +6,48 @@ namespace PSStore.Application.Sales.Commands.CreateSale
 {
     public class CreateSaleCommand : ICreateSaleCommand
     {
-        private readonly IDatabaseGateway _databaseGateway;
+        private readonly IUnitOfWork _uow;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly ISaleRepository _saleRepository;
 
-        public CreateSaleCommand(IDatabaseGateway databaseGateway)
+        public CreateSaleCommand
+        (
+            IUnitOfWork uow,
+            ICustomerRepository customerRepository,
+            IEmployeeRepository employeeRepository,
+            IProductRepository productRepository,
+            ISaleRepository saleRepository
+        )
         {
-            _databaseGateway = databaseGateway;
+            _uow = uow;
+            _customerRepository = customerRepository;
+            _employeeRepository = employeeRepository;
+            _productRepository = productRepository;
+            _saleRepository = saleRepository;
         }
 
         public async Task Execute(CreateSaleModel model)
         {
-            var customer = await _databaseGateway.Customers.SingleAsync(it => it.Id == model.CustomerId);
+            var customer = await _customerRepository.Get(model.CustomerId);
 
-            var employee = await _databaseGateway.Employees.SingleAsync(it => it.Id == model.EmplyeeId);
+            var employee = await _employeeRepository.Get(model.EmployeeId);
 
-            var product = await _databaseGateway.Products.SingleAsync(it => it.Id == model.ProductId);
+            var product = await _productRepository.Get(model.ProductId);
 
-            var sale = new Sale(Guid.NewGuid(), customer, employee, product, model.Quantity);
+            var sale = new Sale
+            (
+                Guid.NewGuid(),
+                customer,
+                employee,
+                product,
+                model.Quantity
+            );
 
-            await _databaseGateway.Sales.AddAsync(sale);
+            await _saleRepository.Add(sale);
 
-            await _databaseGateway.Save();
+            await _uow.Save();
         }
     }
 }

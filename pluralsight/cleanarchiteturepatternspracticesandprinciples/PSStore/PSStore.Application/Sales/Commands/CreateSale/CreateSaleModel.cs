@@ -6,7 +6,7 @@ namespace PSStore.Application.Sales.Commands.CreateSale
     {
         public Guid CustomerId { get; set; }
 
-        public Guid EmplyeeId { get; set; }
+        public Guid EmployeeId { get; set; }
 
         public Guid ProductId { get; set; }
 
