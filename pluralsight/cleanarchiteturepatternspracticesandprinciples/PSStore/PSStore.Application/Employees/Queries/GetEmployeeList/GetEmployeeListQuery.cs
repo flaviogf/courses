@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace PSStore.Application.Employees.Queries.GetEmployeeList
 {
-    public class GetEmployeeQuery : IGetEmployeeQuery
+    public class GetEmployeeListQuery : IGetEmployeeListQuery
     {
         private readonly IEmployeeRepository _employeeRepository;
 
-        public GetEmployeeQuery(IEmployeeRepository employeeRepository)
+        public GetEmployeeListQuery(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }

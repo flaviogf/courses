@@ -2,7 +2,7 @@
 
 namespace PSStore.Application.Employees.Queries.GetEmployeeList
 {
-    public interface IGetEmployeeQuery
+    public interface IGetEmployeeListQuery
     {
         IList<GetEmployeeListModel> Execute();
     }

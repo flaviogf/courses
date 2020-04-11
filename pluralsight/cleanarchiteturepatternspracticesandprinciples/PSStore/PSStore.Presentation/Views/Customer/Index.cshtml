@@ -1,0 +1,19 @@
+﻿@model IList<PSStore.Application.Customers.Queries.GetCustomerList.GetCustomerListModel>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(it => it[0].Id)</th>
+            <th>@Html.DisplayNameFor(it => it[0].Name)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(it => customer.Id)</td>
+                <td>@Html.DisplayFor(it => customer.Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>

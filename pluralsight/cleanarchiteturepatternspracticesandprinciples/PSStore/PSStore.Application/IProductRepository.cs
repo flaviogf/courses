@@ -9,6 +9,6 @@ namespace PSStore.Application
     {
         IQueryable<Product> GetAll();
 
-        Task<Product> Get(Guid guid);
+        Task<Product> Get(Guid id);
     }
 }

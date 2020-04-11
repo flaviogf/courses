@@ -1,0 +1,21 @@
+﻿@model IList<PSStore.Application.Products.Queries.GetProductList.GetProductListModel>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(it => it[0].Id)</th>
+            <th>@Html.DisplayNameFor(it => it[0].Name)</th>
+            <th>@Html.DisplayNameFor(it => it[0].Price)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(it => product.Id)</td>
+                <td>@Html.DisplayFor(it => product.Name)</td>
+                <td>@Html.DisplayFor(it => product.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>

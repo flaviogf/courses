@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PSStore</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+            <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+            <li>@Html.ActionLink("Products", "Index", "Product")</li>
+        </ul>
+    </nav>
+
+    @RenderBody()
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@model IList<PSStore.Application.Employees.Queries.GetEmployeeList.GetEmployeeListModel>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(it => it[0].Id)</th>
+            <th>@Html.DisplayNameFor(it => it[0].Name)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(it => employee.Id)</td>
+                <td>@Html.DisplayFor(it => employee.Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>
