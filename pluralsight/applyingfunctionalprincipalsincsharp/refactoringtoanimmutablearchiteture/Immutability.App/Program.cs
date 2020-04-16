@@ -1,12 +1,15 @@
 ﻿using System;
+using Immutability.Core;
 
 namespace Immutability.App
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var manager = new AuditManager(5);
+
+            manager.AddRecord("Audit_1.txt", "flavio", DateTime.Now);
         }
     }
 }
