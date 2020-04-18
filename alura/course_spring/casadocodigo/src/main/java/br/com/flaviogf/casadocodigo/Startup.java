@@ -2,12 +2,12 @@ package br.com.flaviogf.casadocodigo;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 import br.com.flaviogf.casadocodigo.controllers.HomeController;
 import br.com.flaviogf.casadocodigo.repositories.ProductRepository;
@@ -27,6 +28,7 @@ public class Startup {
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
@@ -60,5 +62,14 @@ public class Startup {
     @Bean
     private JpaTransactionManager jpaTransactionManager(EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
+    }
+
+    @Bean
+    private MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource bundle = new ReloadableResourceBundleMessageSource();
+        bundle.setBasename("/WEB-INF/messages");
+        bundle.setDefaultEncoding("UTF-8");
+        bundle.setCacheSeconds(1);
+        return bundle;
     }
 }

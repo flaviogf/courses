@@ -1,4 +1,4 @@
-package br.com.flaviogf.casadocodigo.validator;
+package br.com.flaviogf.casadocodigo.validators;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -15,8 +15,8 @@ public class ProductValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmpty(errors, "name", "Name cannot be empty");
-        ValidationUtils.rejectIfEmpty(errors, "summary", "Summary cannot be empty");
-        ValidationUtils.rejectIfEmpty(errors, "pages", "Pages cannot be empty");
+        ValidationUtils.rejectIfEmpty(errors, "name", "field.required");
+        ValidationUtils.rejectIfEmpty(errors, "summary", "field.required");
+        ValidationUtils.rejectIfEmpty(errors, "pages", "field.required");
     }
 }

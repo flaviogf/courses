@@ -17,10 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.flaviogf.casadocodigo.models.EPriceType;
 import br.com.flaviogf.casadocodigo.models.Product;
 import br.com.flaviogf.casadocodigo.repositories.ProductRepository;
-import br.com.flaviogf.casadocodigo.validator.ProductValidator;
+import br.com.flaviogf.casadocodigo.validators.ProductValidator;
 
 @Controller
-@RequestMapping("product")
+@RequestMapping("/product")
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
