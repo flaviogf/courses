@@ -1,5 +1,8 @@
 package br.com.flaviogf.casadocodigo;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class Program extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -17,5 +20,13 @@ public class Program extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter encoding = new CharacterEncodingFilter();
+        encoding.setEncoding("UTF-8");
+
+        return new Filter[] { encoding };
     }
 }

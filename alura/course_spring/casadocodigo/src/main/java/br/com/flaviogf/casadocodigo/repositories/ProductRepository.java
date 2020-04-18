@@ -1,5 +1,7 @@
 package br.com.flaviogf.casadocodigo.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,5 +18,9 @@ public class ProductRepository {
 
     public void add(Product product) {
         em.persist(product);
+    }
+
+    public List<Product> all() {
+        return em.createQuery("select p from Product p", Product.class).getResultList();
     }
 }
