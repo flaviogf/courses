@@ -1,5 +1,6 @@
 package br.com.flaviogf.casadocodigo.models;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -7,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Product {
@@ -18,6 +23,10 @@ public class Product {
     private Integer pages;
     @ElementCollection
     private List<Price> prices;
+    @DateTimeFormat
+    @Temporal(TemporalType.DATE)
+    private Calendar releaseDate;
+    private String cover;
 
     @Deprecated
     public Product() {
@@ -61,6 +70,22 @@ public class Product {
 
     public List<Price> getPrices() {
         return prices;
+    }
+
+    public void setReleaseDate(Calendar releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Calendar getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getCover() {
+        return cover;
     }
 
     @Override

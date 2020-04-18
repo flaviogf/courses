@@ -10,33 +10,38 @@
     <title>Casa do Código</title>
   </head>
   <body>
-    <form:form action="${s:mvcUrl('PC#store').build()}" method="POST" commandName="product">
+    <form:form action="${s:mvcUrl('PC#store').build()}" method="POST" commandName="product" enctype="multipart/form-data" >
       <div>
         <label for="name">Name</label>
-        <input id="name" name="name" type="text" />
+        <form:input path="name" />
         <form:errors path="name" />
       </div>
       <div>
         <label for="summary">Summary</label>
-        <textarea id="summary" name="summary"></textarea>
+        <form:textarea path="summary"></form:textarea>
         <form:errors path="summary" />
       </div>
       <div>
         <label for="pages">Pages</label>
-        <input id="pages" name="pages" type="number" />
+        <form:input path="pages" />
         <form:errors path="pages" />
+      </div>
+      <div>
+        <label for="releaseDate">Release date</label>
+        <form:input path="releaseDate" />
+        <form:errors path="releaseDate" />
       </div>
       <c:forEach items="${priceTypes}" var="priceType" varStatus="status">
         <div>
           <label>${priceType}</label>
-          <input name="prices[${status.index}].value" />
-          <input
-            hidden
-            name="prices[${status.index}].type"
-            value="${priceType}"
-          />
+          <form:input path="prices[${status.index}].value" />
+          <form:hidden path="prices[${status.index}].type" value="${priceType}" />
         </div>
       </c:forEach>
+      <div>
+        <label>Cover</label>
+        <input id="file" name="file" type="file" />
+      </div>
       <div>
         <button type="submit">Submit</button>
       </div>

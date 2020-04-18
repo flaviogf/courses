@@ -18,5 +18,6 @@ public class ProductValidator implements Validator {
         ValidationUtils.rejectIfEmpty(errors, "name", "field.required");
         ValidationUtils.rejectIfEmpty(errors, "summary", "field.required");
         ValidationUtils.rejectIfEmpty(errors, "pages", "field.required");
+        ValidationUtils.rejectIfEmpty(errors, "releaseDate", "field.required");
     }
 }
