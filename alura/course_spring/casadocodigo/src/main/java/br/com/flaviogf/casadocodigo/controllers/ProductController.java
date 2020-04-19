@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +44,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create(Product product) {
         ModelAndView modelAndView = new ModelAndView("product/create");
         modelAndView.addObject("priceTypes", EPriceType.values());
@@ -51,7 +52,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "store", method = RequestMethod.POST)
+    @RequestMapping(value = "/store", method = RequestMethod.POST)
     public ModelAndView store(MultipartFile file, @Valid Product product, BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -66,5 +67,13 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("info", "Product has been created.");
 
         return new ModelAndView("redirect:/product");
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ModelAndView show(@PathVariable("id") Integer id) {
+        ModelAndView modelAndView = new ModelAndView("product/show");
+        Product product = productRepository.get(id);
+        modelAndView.addObject("product", product);
+        return modelAndView;
     }
 }

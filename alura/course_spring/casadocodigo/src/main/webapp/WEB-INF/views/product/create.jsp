@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
     <title>Casa do Código</title>
   </head>
   <body>
-    <form:form action="${s:mvcUrl('PC#store').build()}" method="POST" commandName="product" enctype="multipart/form-data" >
+    <form:form action="${spring:mvcUrl('PC#store').build()}" method="POST" commandName="product" enctype="multipart/form-data" >
       <div>
         <label for="name">Name</label>
         <form:input path="name" />

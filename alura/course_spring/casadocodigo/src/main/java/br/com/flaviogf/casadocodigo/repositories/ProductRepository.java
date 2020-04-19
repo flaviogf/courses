@@ -23,4 +23,9 @@ public class ProductRepository {
     public List<Product> all() {
         return em.createQuery("select p from Product p", Product.class).getResultList();
     }
+
+    public Product get(Integer id) {
+        return em.createQuery("select p from Product p join fetch p.prices where id = :id", Product.class)
+                .setParameter("id", id).getSingleResult();
+    }
 }

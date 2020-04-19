@@ -92,4 +92,15 @@ public class Product {
     public String toString() {
         return String.format("Product=[%d, %s, %s, %d, %s]", id, name, summary, pages, prices);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Product product = (Product) obj;
+        return product.id.equals(id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

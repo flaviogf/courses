@@ -27,10 +27,12 @@ import org.springframework.web.servlet.view.JstlView;
 import br.com.flaviogf.casadocodigo.controllers.HomeController;
 import br.com.flaviogf.casadocodigo.infrastructure.FileSaver;
 import br.com.flaviogf.casadocodigo.repositories.ProductRepository;
+import br.com.flaviogf.casadocodigo.services.BasketService;
 
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = { HomeController.class, ProductRepository.class, FileSaver.class })
+@ComponentScan(basePackageClasses = { HomeController.class, ProductRepository.class, FileSaver.class,
+        BasketService.class })
 public class Startup {
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
@@ -38,6 +40,7 @@ public class Startup {
         resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
+        resolver.setExposedContextBeanNames("basketService");
         return resolver;
     }
 
