@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +32,7 @@ public class CategoryResource {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> store(@RequestBody Category category, HttpServletResponse response) {
+    public ResponseEntity<Category> store(@Valid @RequestBody Category category) {
         Category created = categoryRepository.save(category);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(created.getId()).toUri();
@@ -41,7 +41,7 @@ public class CategoryResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> show(@PathVariable("id") Long id) {
+    public ResponseEntity<Category> show(@PathVariable Long id) {
         Optional<Category> category = categoryRepository.findById(id);
 
         return category.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
