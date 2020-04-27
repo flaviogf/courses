@@ -8,7 +8,7 @@ public class Address {
     private String number;
     private String complement;
     private String neighborhood;
-    private String zipCode;
+    private String zipcode;
     private String city;
     private String state;
 
@@ -44,12 +44,12 @@ public class Address {
         this.neighborhood = neighborhood;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 
     public String getCity() {

@@ -6,7 +6,7 @@ CREATE TABLE people (
     number VARCHAR(255) NULL,
     complement VARCHAR(255) NULL,
     neighborhood VARCHAR(255) NULL,
-    zipCode VARCHAR(255) NULL,
+    zipcode VARCHAR(255) NULL,
     city VARCHAR(255) NULL,
     state VARCHAR(255) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

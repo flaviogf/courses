@@ -2,7 +2,9 @@ package br.com.flaviogf.algamoneyapi.resources;
 
 import br.com.flaviogf.algamoneyapi.models.Person;
 import br.com.flaviogf.algamoneyapi.repositories.PersonRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.util.BeanDefinitionUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -42,5 +44,35 @@ public class PeopleResource {
         Optional<Person> person = personRepository.findById(id);
 
         return person.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> destroy(@PathVariable Long id) {
+        Optional<Person> person = personRepository.findById(id);
+
+        if (!person.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        personRepository.delete(person.get());
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person) {
+        Optional<Person> optional = personRepository.findById(id);
+
+        if (!optional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Person registered = optional.get();
+
+        BeanUtils.copyProperties(person, registered, "id");
+
+        personRepository.save(registered);
+
+        return ResponseEntity.ok(person);
     }
 }

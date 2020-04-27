@@ -9,6 +9,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @Embedded
     private Address address;
     private Boolean active;
