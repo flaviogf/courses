@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/people/activate/{id}")
+@RequestMapping("/people/{id}/activate")
 public class ActivatePersonResource {
     private final PersonRepository personRepository;
 

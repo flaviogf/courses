@@ -1,6 +1,7 @@
 package br.com.flaviogf.algamoneyapi.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -10,23 +11,31 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private String description;
 
     @Column(name = "due_date")
+    @NotNull
     private LocalDate dueDate;
 
     @Column(name = "pay_date")
     private LocalDate payDate;
+
+    @NotNull
     private BigDecimal amount;
     private String note;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private TransactionType type;
 
     @ManyToOne
+    @NotNull
     private Category category;
 
     @ManyToOne
+    @NotNull
     private Person person;
 
     public Long getId() {

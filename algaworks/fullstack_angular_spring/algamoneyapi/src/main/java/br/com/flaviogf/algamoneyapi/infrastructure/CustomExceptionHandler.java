@@ -1,6 +1,8 @@
 package br.com.flaviogf.algamoneyapi.infrastructure;
 
+import br.com.flaviogf.algamoneyapi.exceptions.AlgaMoneyException;
 import org.springframework.context.MessageSource;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +10,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -23,6 +26,24 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     public CustomExceptionHandler(MessageSource messageSource) {
         this.messageSource = messageSource;
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest request) {
+        String message = messageSource.getMessage("message.error.default", null, Locale.getDefault());
+
+        List<Error> errors = Collections.singletonList(new Error(message, ex.getMessage()));
+
+        return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(AlgaMoneyException.class)
+    public ResponseEntity<Object> handleAlgaMoneyException(AlgaMoneyException ex, WebRequest request) {
+        String message = messageSource.getMessage(ex.getMessageSource(), null, Locale.getDefault());
+
+        List<Error> errors = Collections.singletonList(new Error(message, ex.getMessage()));
+
+        return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
     @Override

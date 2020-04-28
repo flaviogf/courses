@@ -4,7 +4,6 @@ import br.com.flaviogf.algamoneyapi.models.Person;
 import br.com.flaviogf.algamoneyapi.repositories.PersonRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.util.BeanDefinitionUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

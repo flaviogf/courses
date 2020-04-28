@@ -1,5 +1,7 @@
 package br.com.flaviogf.algamoneyapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -38,8 +40,14 @@ public class Person {
         this.name = name;
     }
 
-    public Boolean getActive() {
+    public Boolean isActive() {
         return active;
+    }
+
+    @JsonIgnore
+    @Transient
+    public Boolean isInactive() {
+        return !active;
     }
 
     public void setActive(Boolean active) {
