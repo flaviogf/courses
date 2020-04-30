@@ -5,11 +5,14 @@ import br.com.flaviogf.algamoneyapi.models.Person;
 import br.com.flaviogf.algamoneyapi.models.Transaction;
 import br.com.flaviogf.algamoneyapi.repositories.PersonRepository;
 import br.com.flaviogf.algamoneyapi.repositories.TransactionRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @RestController
@@ -24,9 +27,23 @@ public class TransactionResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Transaction>> index() {
-        List<Transaction> transactions = transactionRepository.findAll();
+    public ResponseEntity<Page<Transaction>> index(
+            @RequestParam(value = "description", required = false) String description,
+            @RequestParam(value = "from", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate from,
+            @RequestParam(value = "to", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate to,
+            Pageable pageable
+    ) {
+        if (description != null) {
+            Page<Transaction> transactions = transactionRepository.findAllByDescription(description, pageable);
+            return ResponseEntity.ok(transactions);
+        }
 
+        if (from != null && to != null) {
+            Page<Transaction> transactions = transactionRepository.findAllByPeriod(from, to, pageable);
+            return ResponseEntity.ok(transactions);
+        }
+
+        Page<Transaction> transactions = transactionRepository.findAll(pageable);
         return ResponseEntity.ok(transactions);
     }
 
