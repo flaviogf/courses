@@ -1,6 +1,8 @@
 package br.com.flaviogf.algamoneyapi.models;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -11,6 +13,13 @@ public class User {
     private String name;
     private String email;
     private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_permissions",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private List<Permission> permissions = Collections.emptyList();
 
     public Long getId() {
         return id;
@@ -42,5 +51,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
+
+    public List<Permission> getPermissions() {
+        return permissions;
     }
 }
