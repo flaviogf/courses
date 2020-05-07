@@ -5,6 +5,7 @@ import br.com.flaviogf.algamoneyapi.repositories.PersonRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -23,6 +24,7 @@ public class PeopleResource {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('READ_PERSON')")
     public ResponseEntity<List<Person>> index() {
         List<Person> people = personRepository.findAll();
 
@@ -30,6 +32,7 @@ public class PeopleResource {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('CREATE_PERSON')")
     public ResponseEntity<Person> store(@RequestBody Person person) {
         Person created = personRepository.save(person);
 
@@ -39,6 +42,7 @@ public class PeopleResource {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('READ_PERSON')")
     public ResponseEntity<Person> show(@PathVariable Long id) {
         Optional<Person> person = personRepository.findById(id);
 
@@ -46,6 +50,7 @@ public class PeopleResource {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('DELETE_PERSON')")
     public ResponseEntity<Void> destroy(@PathVariable Long id) {
         Optional<Person> person = personRepository.findById(id);
 
@@ -59,6 +64,7 @@ public class PeopleResource {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('CREATE_PERSON')")
     public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person) {
         Optional<Person> optional = personRepository.findById(id);
 

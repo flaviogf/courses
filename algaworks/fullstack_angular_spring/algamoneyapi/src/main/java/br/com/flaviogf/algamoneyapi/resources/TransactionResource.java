@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -27,6 +28,7 @@ public class TransactionResource {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('READ_TRANSACTION')")
     public ResponseEntity<Page<Transaction>> index(
             @RequestParam(value = "description", required = false) String description,
             @RequestParam(value = "from", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate from,
@@ -48,6 +50,7 @@ public class TransactionResource {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('READ_TRANSACTION')")
     public ResponseEntity<Transaction> show(@PathVariable Long id) {
         Optional<Transaction> optional = transactionRepository.findById(id);
 
@@ -61,6 +64,7 @@ public class TransactionResource {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('CREATE_TRANSACTION')")
     public ResponseEntity<Transaction> store(@Valid @RequestBody Transaction transaction) {
         Optional<Person> person = personRepository.findById(transaction.getPerson().getId());
 

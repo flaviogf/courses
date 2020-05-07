@@ -4,6 +4,7 @@ import br.com.flaviogf.algamoneyapi.models.Person;
 import br.com.flaviogf.algamoneyapi.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,6 +20,7 @@ public class ActivatePersonResource {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('CREATE_PERSON')")
     public ResponseEntity<Void> store(@PathVariable Long id) {
         Optional<Person> optional = personRepository.findById(id);
 
@@ -36,6 +38,7 @@ public class ActivatePersonResource {
     }
 
     @DeleteMapping
+    @PreAuthorize("hasRole('CREATE_PERSON')")
     public ResponseEntity<Void> destroy(@PathVariable Long id) {
         Optional<Person> optional = personRepository.findById(id);
 
