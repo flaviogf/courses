@@ -1,9 +1,21 @@
-System.register(["../models/Negotiation", "../models/Negotiations", "../views/MessageView", "../views/NegotiationsView"], function (exports_1, context_1) {
+System.register(["../helpers/decorators/inject", "../helpers/decorators/duration", "../models/Negotiation", "../models/Negotiations", "../views/MessageView", "../views/NegotiationsView"], function (exports_1, context_1) {
     "use strict";
-    var Negotiation_1, Negotiations_1, MessageView_1, NegotiationsView_1, NegotiationController, WeekDays;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var inject_1, duration_1, Negotiation_1, Negotiations_1, MessageView_1, NegotiationsView_1, NegotiationController, WeekDays;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
+            function (inject_1_1) {
+                inject_1 = inject_1_1;
+            },
+            function (duration_1_1) {
+                duration_1 = duration_1_1;
+            },
             function (Negotiation_1_1) {
                 Negotiation_1 = Negotiation_1_1;
             },
@@ -23,9 +35,6 @@ System.register(["../models/Negotiation", "../models/Negotiations", "../views/Me
                     this._negotiations = new Negotiations_1.Negotiations();
                     this._negotiationsView = new NegotiationsView_1.NegotiationsView("#negotiations");
                     this._messageView = new MessageView_1.MessageView("#message");
-                    this._dateInput = $("#date");
-                    this._amountInput = $("#amount");
-                    this._valueInput = $("#value");
                     this._negotiationsView.update(this._negotiations);
                 }
                 add(event) {
@@ -68,6 +77,18 @@ System.register(["../models/Negotiation", "../models/Negotiations", "../views/Me
                     return (date.getDay() !== WeekDays.Sunday && date.getDay() !== WeekDays.Saturday);
                 }
             };
+            __decorate([
+                inject_1.inject("#date")
+            ], NegotiationController.prototype, "_dateInput", void 0);
+            __decorate([
+                inject_1.inject("#amount")
+            ], NegotiationController.prototype, "_amountInput", void 0);
+            __decorate([
+                inject_1.inject("#value")
+            ], NegotiationController.prototype, "_valueInput", void 0);
+            __decorate([
+                duration_1.duration()
+            ], NegotiationController.prototype, "add", null);
             exports_1("NegotiationController", NegotiationController);
             (function (WeekDays) {
                 WeekDays[WeekDays["Sunday"] = 0] = "Sunday";

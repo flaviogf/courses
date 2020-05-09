@@ -1,12 +1,20 @@
+import { inject } from "../helpers/decorators/inject";
+import { duration } from "../helpers/decorators/duration";
 import { Negotiation } from "../models/Negotiation";
 import { Negotiations } from "../models/Negotiations";
 import { MessageView } from "../views/MessageView";
 import { NegotiationsView } from "../views/NegotiationsView";
 
 export class NegotiationController {
+  @inject("#date")
   private _dateInput: JQuery<HTMLElement>;
+
+  @inject("#amount")
   private _amountInput: JQuery<HTMLElement>;
+
+  @inject("#value")
   private _valueInput: JQuery<HTMLElement>;
+
   private _negotiations: Negotiations = new Negotiations();
   private _negotiationsView: NegotiationsView = new NegotiationsView(
     "#negotiations"
@@ -14,12 +22,10 @@ export class NegotiationController {
   private _messageView: MessageView = new MessageView("#message");
 
   constructor() {
-    this._dateInput = $("#date");
-    this._amountInput = $("#amount");
-    this._valueInput = $("#value");
     this._negotiationsView.update(this._negotiations);
   }
 
+  @duration()
   add(event: Event): void {
     event.preventDefault();
 
