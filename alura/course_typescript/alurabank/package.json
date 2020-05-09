@@ -4,9 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/jquery": "3.3.38",
+    "concurrently": "5.2.0",
+    "del": "5.1.0",
+    "gulp": "4.0.2",
+    "gulp-cli": "2.2.0",
+    "lite-server": "2.5.4",
     "typescript": "3.8.3"
   },
   "scripts": {
-    "start": "tsc --watch"
+    "server": "lite-server --baseDir=app",
+    "start": "concurrently \"yarn watch\" \"yarn server\"",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "jquery": "3.5.1",
+    "systemjs": "0.21"
   }
 }

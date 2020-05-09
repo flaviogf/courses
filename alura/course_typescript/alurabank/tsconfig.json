@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
+    "module": "System",
     "noEmitOnError": true,
     "noImplicitAny": true,
     "outDir": "app/js",
+    "sourceMap": true,
+    "strictNullChecks": true,
     "target": "ES6"
   },
   "include": ["app/ts/**/*"]

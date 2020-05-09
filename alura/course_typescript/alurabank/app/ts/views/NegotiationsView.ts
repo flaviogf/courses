@@ -1,15 +1,8 @@
-class NegotiationsView {
-  private _element: HTMLElement;
+import { View } from "./View";
+import { Negotiations } from "../models/Negotiations";
 
-  constructor(selector: string) {
-    this._element = document.querySelector(selector);
-  }
-
-  update(negotiations: Negotiations): void {
-    this._element.innerHTML = this.template(negotiations);
-  }
-
-  template(negotiations: Negotiations): string {
+export class NegotiationsView extends View<Negotiations> {
+  template(model: Negotiations): string {
     const dateFormatter = new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "long",
@@ -21,7 +14,7 @@ class NegotiationsView {
       currency: "USD",
     });
 
-    return negotiations
+    return model
       .toArray()
       .map((it) => {
         const date = dateFormatter.format(it.date);
