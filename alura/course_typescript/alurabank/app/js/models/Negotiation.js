@@ -1,19 +1,19 @@
 class Negotiation {
-    constructor(_date, _quantity, _value) {
+    constructor(_date, _amount, _value) {
         this._date = _date;
-        this._quantity = _quantity;
+        this._amount = _amount;
         this._value = _value;
     }
     get date() {
         return this._date;
     }
-    get quantity() {
-        return this._quantity;
+    get amount() {
+        return this._amount;
     }
     get value() {
         return this._value;
     }
     get volume() {
-        return this._value * this._quantity;
+        return this._amount * this._value;
     }
 }

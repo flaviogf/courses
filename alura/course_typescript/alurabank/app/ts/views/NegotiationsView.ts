@@ -1,45 +1,37 @@
 class NegotiationsView {
-  private _element: Element;
+  private _element: HTMLElement;
 
   constructor(selector: string) {
     this._element = document.querySelector(selector);
   }
 
-  update(model: Negotiations): void {
-    this._element.innerHTML = this.template(model);
+  update(negotiations: Negotiations): void {
+    this._element.innerHTML = this.template(negotiations);
   }
 
-  template(model: Negotiations): string {
-    return `
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                <th>DATA</th>
-                <th>QUANTIDADE</th>
-                <th>VALOR</th>
-                <th>VOLUME</th>
-                </tr>
-            </thead>
+  template(negotiations: Negotiations): string {
+    const dateFormatter = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
 
-            <tbody>
-            ${model
-              .toArray()
-              .map(
-                it =>
-                  `
-                    <tr>
-                        <td>${it.date.getFullYear()}-${it.date.getMonth() + 1}-${it.date.getDate()}</td>
-                        <td>${it.quantity}</td>
-                        <td>${it.value}</td>
-                        <td>${it.volume}</td>
-                    </tr>
-                `
-              )
-              .join("")}
-            </tbody>
+    const numberFormatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
 
-            <tfoot></tfoot>
-        </table>
-    `;
+    return negotiations
+      .toArray()
+      .map((it) => {
+        const date = dateFormatter.format(it.date);
+        const volume = numberFormatter.format(it.volume);
+        return `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            ${date}
+            <span class="badge badge-primary badge-pill">${volume}</span>
+        </li>`;
+      })
+      .join("");
   }
 }

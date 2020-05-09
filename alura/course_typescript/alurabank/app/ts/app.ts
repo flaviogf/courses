@@ -1,5 +1,5 @@
 const controller = new NegotiationController();
 
 document
-  .querySelector(".form")
+  .querySelector("form")
   .addEventListener("submit", controller.add.bind(controller));

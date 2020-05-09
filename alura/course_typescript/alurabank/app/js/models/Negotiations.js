@@ -2,7 +2,7 @@ class Negotiations {
     constructor() {
         this._negotiations = [];
     }
-    add(negotiation) {
+    adiciona(negotiation) {
         this._negotiations.push(negotiation);
     }
     toArray() {
