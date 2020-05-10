@@ -1,7 +1,9 @@
 import { inject } from "../helpers/decorators/inject";
-import { duration } from "../helpers/decorators/duration";
+import { throttle } from "../helpers/decorators/throttle";
+import { print } from "../helpers/utils/print";
 import { Negotiation } from "../models/Negotiation";
 import { Negotiations } from "../models/Negotiations";
+import { NegotiationService } from "../services/NegotiationService";
 import { MessageView } from "../views/MessageView";
 import { NegotiationsView } from "../views/NegotiationsView";
 
@@ -16,19 +18,21 @@ export class NegotiationController {
   private _valueInput: JQuery<HTMLElement>;
 
   private _negotiations: Negotiations = new Negotiations();
+
   private _negotiationsView: NegotiationsView = new NegotiationsView(
     "#negotiations"
   );
+
   private _messageView: MessageView = new MessageView("#message");
+
+  private _negotiationService: NegotiationService = new NegotiationService();
 
   constructor() {
     this._negotiationsView.update(this._negotiations);
   }
 
-  @duration()
-  add(event: Event): void {
-    event.preventDefault();
-
+  @throttle()
+  add(): void {
     const date = this._getDate();
     const amount = this._getAmount();
     const value = this._getValue();
@@ -42,11 +46,41 @@ export class NegotiationController {
 
     const negotiation = new Negotiation(date, amount, value);
 
-    this._negotiations.adiciona(negotiation);
+    this._negotiations.add(negotiation);
 
     this._negotiationsView.update(this._negotiations);
 
     this._messageView.update("Negotiation has been added successfully!");
+
+    print(negotiation, this._negotiations);
+  }
+
+  @throttle()
+  import() {
+    this._negotiationService
+      .getNegotiations((res) => {
+        if (res.ok) {
+          return res;
+        }
+
+        throw new Error("It wasn't able to complete");
+      })
+      .then((negotiations) => {
+        const notRepeated = negotiations.filter(
+          (negotiation) =>
+            !this._negotiations.toArray().some((it) => it.isEqual(negotiation))
+        );
+        return notRepeated;
+      })
+      .then((negotiations) => {
+        negotiations.forEach((it) => this._negotiations.add(it));
+      })
+      .then(() => {
+        this._negotiationsView.update(this._negotiations);
+      })
+      .catch((err: Error) => {
+        this._messageView.update(err.message);
+      });
   }
 
   private _getDate(): Date {

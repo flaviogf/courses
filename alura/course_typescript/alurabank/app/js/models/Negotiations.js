@@ -9,11 +9,14 @@ System.register([], function (exports_1, context_1) {
                 constructor() {
                     this._negotiations = [];
                 }
-                adiciona(negotiation) {
+                add(negotiation) {
                     this._negotiations.push(negotiation);
                 }
                 toArray() {
                     return [].concat(this._negotiations);
+                }
+                print() {
+                    console.log(JSON.stringify(this));
                 }
             };
             exports_1("Negotiations", Negotiations);
