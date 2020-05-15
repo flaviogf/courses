@@ -2,17 +2,6 @@
 
 namespace Bank\Models;
 
-class Holder
+class Holder extends Person
 {
-    private string $name;
-
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
 }
