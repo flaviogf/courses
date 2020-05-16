@@ -8,6 +8,7 @@ use Bank\Models\Document;
 use Bank\Models\Employee;
 use Bank\Models\Holder;
 use Bank\Models\Manager;
+use Bank\Services\Authenticator;
 use Bank\Services\BonusCalculator;
 
 $account = new Account(new Holder("Frank", new Document("123")));
@@ -16,15 +17,27 @@ $account->deposit(1500);
 $account->deposit(1500);
 $account->withdraw(500);
 
-echo $account->getBalance();
+$result = $account->getBalance();
 
-echo "\n";
+var_dump($result);
 
 $calculator = new BonusCalculator();
 
-echo $calculator->execute(
-    new Developer("Frank", new Document("123"), 1000),
-    new Manager("Tank", new Document("456"), 1000),
-);
+$employees = [new Developer("Frank", new Document("123"), 1000), new Manager("Tank", new Document("456"), 1000)];
 
-echo "\n";
+$result = $calculator->execute(...$employees);
+
+var_dump($result);
+
+$authenticator = new Authenticator();
+
+$result = $authenticator->attempt(new Manager("Tank", new Document("456"), 1000), "1234");
+
+var_dump($result);
+
+$manager = new Manager("Tank", new Document("456"), 1000);
+
+var_dump($manager->name);
+var_dump($manager->document);
+var_dump($manager->salary);
+var_dump($manger->bonus);
