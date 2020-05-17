@@ -1,5 +1,7 @@
 <?php
 
+namespace HandlingCollections;
+
 class Calculator
 {
     public function average(float ...$grades): float
