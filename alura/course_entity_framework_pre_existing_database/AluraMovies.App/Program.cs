@@ -14,6 +14,14 @@ namespace AluraMovies.App
                     Console.WriteLine(actor);
                 }
             }
+
+            using (var context = new Context())
+            {
+                foreach (var movie in context.Movies)
+                {
+                    Console.WriteLine(movie);
+                }
+            }
         }
     }
 }
