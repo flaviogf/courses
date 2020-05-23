@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace AluraMovies.App.Models
 {
@@ -9,6 +9,8 @@ namespace AluraMovies.App.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public IList<MovieActor> Movies { get; set; }
 
         public override string ToString()
         {

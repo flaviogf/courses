@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace AluraMovies.App.Models
 {
     public class Movie
@@ -13,6 +15,8 @@ namespace AluraMovies.App.Models
         public short Length { get; set; }
 
         public string Rating { get; set; }
+
+        public IList<MovieActor> Actors { get; set; }
 
         public override string ToString()
         {
