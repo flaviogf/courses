@@ -11,14 +11,16 @@ public class FakeStudentService implements StudentService {
     private final static List<Student> students = new ArrayList<>();
 
     @Override
-    public Result<Void> add(Student student) {
+    public Result<Void> create(Student student) {
         students.add(student);
 
         return Result.ok();
     }
 
     @Override
-    public List<Student> fetch() {
-        return Collections.unmodifiableList(students);
+    public Result<List<Student>> fetch() {
+        List<Student> unmodifiableStudents = Collections.unmodifiableList(students);
+
+        return Result.ok(unmodifiableStudents);
     }
 }

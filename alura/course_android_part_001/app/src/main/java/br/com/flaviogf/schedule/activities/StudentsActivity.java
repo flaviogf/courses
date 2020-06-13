@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import br.com.flaviogf.schedule.R;
+import br.com.flaviogf.schedule.infrastructure.Result;
 import br.com.flaviogf.schedule.models.Student;
 import br.com.flaviogf.schedule.services.FakeStudentService;
 import br.com.flaviogf.schedule.services.StudentService;
@@ -47,7 +49,14 @@ public class StudentsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        List<Student> students = studentService.fetch();
+        Result<List<Student>> result = studentService.fetch();
+
+        if (result.isFailure()) {
+            Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        List<Student> students = result.getValue();
 
         studentsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, students));
     }

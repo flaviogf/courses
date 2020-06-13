@@ -39,7 +39,7 @@ public class StudentActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Maybe<Student> maybeStudent = createStudent();
+                Maybe<Student> maybeStudent = getStudent();
 
                 if (!maybeStudent.hasValue()) {
                     Toast.makeText(StudentActivity.this, "Enter all data", Toast.LENGTH_SHORT).show();
@@ -48,7 +48,7 @@ public class StudentActivity extends AppCompatActivity {
 
                 Student student = maybeStudent.getValue();
 
-                Result<Void> result = studentService.add(student);
+                Result<Void> result = studentService.create(student);
 
                 if (result.isFailure()) {
                     Toast.makeText(StudentActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
@@ -60,7 +60,7 @@ public class StudentActivity extends AppCompatActivity {
         });
     }
 
-    private Maybe<Student> createStudent() {
+    private Maybe<Student> getStudent() {
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String phone = phoneEditText.getText().toString();

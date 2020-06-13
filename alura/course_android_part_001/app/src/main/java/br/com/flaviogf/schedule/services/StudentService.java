@@ -6,7 +6,7 @@ import br.com.flaviogf.schedule.infrastructure.Result;
 import br.com.flaviogf.schedule.models.Student;
 
 public interface StudentService {
-    Result<Void> add(Student student);
+    Result<Void> create(Student student);
 
-    List<Student> fetch();
+    Result<List<Student>> fetch();
 }
