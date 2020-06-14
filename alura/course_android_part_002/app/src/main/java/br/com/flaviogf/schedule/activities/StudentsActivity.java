@@ -43,7 +43,8 @@ public class StudentsActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StudentsActivity.this, StudentActivity.class));
+                Intent intent = new Intent(StudentsActivity.this, StudentActivity.class);
+                startActivity(intent);
             }
         });
 
