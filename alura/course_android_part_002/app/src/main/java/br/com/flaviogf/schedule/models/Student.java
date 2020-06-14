@@ -18,6 +18,22 @@ public class Student {
         this.phone = phone;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

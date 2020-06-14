@@ -1,11 +1,12 @@
 package br.com.flaviogf.schedule.activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,16 +14,17 @@ import java.util.UUID;
 
 import br.com.flaviogf.schedule.R;
 import br.com.flaviogf.schedule.infrastructure.Maybe;
+import br.com.flaviogf.schedule.infrastructure.Result;
 import br.com.flaviogf.schedule.models.Student;
 import br.com.flaviogf.schedule.services.MemoryStudentService;
 import br.com.flaviogf.schedule.services.StudentService;
 
 public class StudentActivity extends AppCompatActivity {
     private StudentService studentService = new MemoryStudentService();
+    private EditText idEditText;
     private EditText nameEditText;
     private EditText emailEditText;
     private EditText phoneEditText;
-    private Button saveButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,17 +32,53 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
         setTitle("Student");
 
+        idEditText = findViewById(R.id.activity_student_id_edit_text);
         nameEditText = findViewById(R.id.activity_student_name_edit_text);
         emailEditText = findViewById(R.id.activity_student_email_edit_text);
         phoneEditText = findViewById(R.id.activity_student_phone_edit_text);
-        saveButton = findViewById(R.id.activity_student_save_button);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fillFields();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_student_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.activity_student_menu_done:
                 saveStudent();
-            }
-        });
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void fillFields() {
+        UUID id = (UUID) getIntent().getSerializableExtra("@student-id");
+
+        if (id == null) {
+            idEditText.setText(UUID.randomUUID().toString());
+            return;
+        }
+
+        Result<Student> result = studentService.fetchOne(id);
+
+        if (result.isFailure()) {
+            Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
+            idEditText.setText(UUID.randomUUID().toString());
+            return;
+        }
+
+        Student student = result.getValue();
+
+        idEditText.setText(student.getId().toString());
+        nameEditText.setText(student.getName());
+        emailEditText.setText(student.getEmail());
+        phoneEditText.setText(student.getPhone());
     }
 
     private void saveStudent() {
@@ -59,9 +97,14 @@ public class StudentActivity extends AppCompatActivity {
     }
 
     private Maybe<Student> getStudent() {
+        String id = idEditText.getText().toString();
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String phone = phoneEditText.getText().toString();
+
+        if (id.isEmpty()) {
+            return Maybe.empty();
+        }
 
         if (name.isEmpty()) {
             return Maybe.empty();
@@ -75,7 +118,7 @@ public class StudentActivity extends AppCompatActivity {
             return Maybe.empty();
         }
 
-        Student student = new Student(UUID.randomUUID(), name, email, phone);
+        Student student = new Student(UUID.fromString(id), name, email, phone);
 
         return Maybe.of(student);
     }

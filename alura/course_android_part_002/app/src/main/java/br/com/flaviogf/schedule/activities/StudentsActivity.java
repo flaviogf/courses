@@ -16,7 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import br.com.flaviogf.schedule.R;
 import br.com.flaviogf.schedule.infrastructure.Result;
@@ -49,6 +53,16 @@ public class StudentsActivity extends AppCompatActivity {
         });
 
         listView.setAdapter(studentsArrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Student student = (Student) listView.getItemAtPosition(position);
+                Intent intent = new Intent(StudentsActivity.this, StudentActivity.class);
+                intent.putExtra("@student-id", student.getId());
+                startActivity(intent);
+            }
+        });
 
         registerForContextMenu(listView);
     }
@@ -86,9 +100,18 @@ public class StudentsActivity extends AppCompatActivity {
             return;
         }
 
+        List<Student> students = new ArrayList<>(result.getValue());
+
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student first, Student second) {
+                return first.getName().compareTo(second.getName());
+            }
+        });
+
         studentsArrayAdapter.clear();
 
-        studentsArrayAdapter.addAll(result.getValue());
+        studentsArrayAdapter.addAll(students);
     }
 
     private void removeStudent(Student student) {
