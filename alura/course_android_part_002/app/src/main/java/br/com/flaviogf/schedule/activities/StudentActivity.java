@@ -58,12 +58,14 @@ public class StudentActivity extends AppCompatActivity {
     }
 
     private void fillFields() {
-        UUID id = (UUID) getIntent().getSerializableExtra("@student-id");
+        Maybe<UUID> maybeId = Maybe.of((UUID) getIntent().getSerializableExtra("@student-id"));
 
-        if (id == null) {
+        if (!maybeId.hasValue()) {
             idEditText.setText(UUID.randomUUID().toString());
             return;
         }
+
+        UUID id = maybeId.getValue();
 
         Result<Student> result = studentService.fetchOne(id);
 
