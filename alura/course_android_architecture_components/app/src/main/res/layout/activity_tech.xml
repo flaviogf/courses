@@ -6,6 +6,15 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <EditText
+        android:id="@+id/activity_tech_id_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/activity_tech_id_edit_text"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:visibility="gone" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/activity_tech_title_text_input_layout"
         android:layout_width="match_parent"

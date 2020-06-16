@@ -14,7 +14,7 @@ import br.com.flaviogf.technews.models.News;
 import br.com.flaviogf.technews.service.NewsService;
 
 public class TechsViewModel extends ViewModel {
-    private final MutableLiveData<Result<List<News>>> liveData = new MutableLiveData<>();
+    private final MutableLiveData<Result<List<News>>> newsListLiveData = new MutableLiveData<>();
 
     private final NewsService newsService;
 
@@ -26,16 +26,26 @@ public class TechsViewModel extends ViewModel {
         Result<Collection<News>> result = newsService.fetch();
 
         if (result.isFailure()) {
-            liveData.setValue(Result.fail(result.getMessage()));
+            newsListLiveData.setValue(Result.fail(result.getMessage()));
 
-            return liveData;
+            return newsListLiveData;
         }
 
         List<News> news = new ArrayList<>(result.getValue());
 
         Collections.sort(news, (first, second) -> first.getTitle().compareTo(second.getTitle()));
 
-        liveData.setValue(Result.ok(news));
+        newsListLiveData.setValue(Result.ok(news));
+
+        return newsListLiveData;
+    }
+
+    public LiveData<Result<Void>> remove(News news) {
+        MutableLiveData<Result<Void>> liveData = new MutableLiveData<>();
+
+        Result<Void> result = newsService.remove(news);
+
+        liveData.setValue(result);
 
         return liveData;
     }

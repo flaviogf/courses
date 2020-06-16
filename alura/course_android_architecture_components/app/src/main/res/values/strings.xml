@@ -3,4 +3,6 @@
     <string name="activity_tech_title_text_input_layout_hint">Title</string>
     <string name="activity_tech_content_text_input_layout_hint">Content</string>
     <string name="activity_tech_options_menu_save">Save</string>
+    <string name="activity_tech_id_edit_text">Id</string>
+    <string name="activity_techs_context_menu_remove">Remove</string>
 </resources>

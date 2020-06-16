@@ -9,6 +9,8 @@ import br.com.flaviogf.technews.models.News;
 public interface NewsService {
     Result<Void> save(News news);
 
+    Result<Void> remove(News news);
+
     Result<Collection<News>> fetch();
 
     Result<News> fetchOne(UUID id);

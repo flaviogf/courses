@@ -22,6 +22,13 @@ public class MemoryNewsService implements NewsService {
     }
 
     @Override
+    public Result<Void> remove(News news) {
+        MemoryNewsService.news.remove(news.getId());
+
+        return Result.ok();
+    }
+
+    @Override
     public Result<Collection<News>> fetch() {
         Collection<News> unmodifiableNews = Collections.unmodifiableCollection(news.values());
 

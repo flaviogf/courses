@@ -56,4 +56,9 @@ public class NewsListAdapter extends BaseAdapter {
         this.news.addAll(news);
         notifyDataSetChanged();
     }
+
+    public void remove(News news) {
+        this.news.remove(news);
+        notifyDataSetChanged();
+    }
 }
