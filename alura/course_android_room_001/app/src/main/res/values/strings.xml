@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Schedule</string>
+    <string name="activity_student_name_edit_text">Name</string>
+    <string name="activity_student_email_edit_text">Email</string>
+    <string name="activity_student_phone_edit_text">Phone</string>
+    <string name="activity_student_id_edit_text">Id</string>
+    <string name="activity_student_options_menu_done">Done</string>
+</resources>
