@@ -5,4 +5,5 @@
     <string name="activity_student_phone_edit_text">Phone</string>
     <string name="activity_student_id_edit_text">Id</string>
     <string name="activity_student_options_menu_done">Done</string>
+    <string name="activity_students_context_menu_remove">Remove</string>
 </resources>

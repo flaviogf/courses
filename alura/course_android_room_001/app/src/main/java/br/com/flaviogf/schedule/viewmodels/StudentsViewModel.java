@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.flaviogf.schedule.infrastructure.Result;
@@ -17,12 +20,26 @@ public class StudentsViewModel extends ViewModel {
         this.studentRepository = studentRepository;
     }
 
+    public LiveData<Result<Void>> remove(Student student) {
+        MutableLiveData<Result<Void>> liveData = new MutableLiveData<>();
+
+        Result<Void> result = studentRepository.remove(student);
+
+        liveData.setValue(result);
+
+        return liveData;
+    }
+
     public LiveData<Result<List<Student>>> fetch() {
         MutableLiveData<Result<List<Student>>> liveData = new MutableLiveData<>();
 
-        Result<List<Student>> result = studentRepository.fetch();
+        Result<Collection<Student>> result = studentRepository.fetch();
 
-        liveData.setValue(result);
+        List<Student> students = new ArrayList<>(result.getValue());
+
+        Collections.sort(students, (first, second) -> first.getName().compareToIgnoreCase(second.getName()));
+
+        liveData.setValue(Result.ok(students));
 
         return liveData;
     }

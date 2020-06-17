@@ -27,6 +27,10 @@ public class Result<T> {
         return message;
     }
 
+    public static <T> Result<T> ok() {
+        return new Result<>(null, true, null);
+    }
+
     public static <T> Result<T> ok(T value) {
         return new Result<>(value, true, null);
     }

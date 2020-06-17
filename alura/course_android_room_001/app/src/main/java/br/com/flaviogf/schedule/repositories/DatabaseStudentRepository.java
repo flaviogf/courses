@@ -1,44 +1,47 @@
 package br.com.flaviogf.schedule.repositories;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import br.com.flaviogf.schedule.database.StudentDao;
 import br.com.flaviogf.schedule.infrastructure.Result;
 import br.com.flaviogf.schedule.models.Student;
 
-public class MemoryStudentRepository implements StudentRepository {
-    private final static Map<String, Student> students = new HashMap<>();
+public class DatabaseStudentRepository implements StudentRepository {
+    private final StudentDao studentDao;
+
+    public DatabaseStudentRepository(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 
     @Override
     public Result<Void> save(Student student) {
-        students.put(student.getId(), student);
+        studentDao.save(student);
 
         return Result.ok();
     }
 
     @Override
     public Result<Void> remove(Student student) {
-        students.remove(student.getId());
+        studentDao.remove(student);
 
         return Result.ok();
     }
 
     @Override
     public Result<Collection<Student>> fetch() {
-        Collection<Student> unmodifiableList = Collections.unmodifiableCollection(students.values());
+        List<Student> students = studentDao.findAll();
 
-        return Result.ok(unmodifiableList);
+        return Result.ok(students);
     }
 
     @Override
     public Result<Student> fetchOne(String id) {
-        if (!students.containsKey(id)) {
+        Student student = studentDao.findOne(id);
+
+        if (student == null) {
             return Result.fail("Student does not exist");
         }
-
-        Student student = students.get(id);
 
         return Result.ok(student);
     }

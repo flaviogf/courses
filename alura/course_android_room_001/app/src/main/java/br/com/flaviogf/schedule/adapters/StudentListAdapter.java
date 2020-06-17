@@ -56,4 +56,9 @@ public class StudentListAdapter extends BaseAdapter {
         this.students.addAll(students);
         notifyDataSetChanged();
     }
+
+    public void remove(Student student) {
+        students.remove(student);
+        notifyDataSetChanged();
+    }
 }
