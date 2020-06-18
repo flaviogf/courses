@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import br.com.flaviogf.technews.R;
 import br.com.flaviogf.technews.fragments.NewsFragment;
 import br.com.flaviogf.technews.fragments.NewsListFragment;
+import br.com.flaviogf.technews.infrastructure.Maybe;
 import br.com.flaviogf.technews.models.News;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        Maybe<Fragment> maybeFragment = findFragmentByTag("@news");
 
-        Fragment fragment = fragmentManager.findFragmentByTag("@news");
-
-        if (fragment == null) {
+        if (!maybeFragment.hasValue()) {
             return;
         }
+
+        Fragment fragment = maybeFragment.getValue();
 
         removeFragment(fragment);
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle bundle = fragment.getArguments();
         setFragment(newsListFragment(), R.id.main_activity_news_list_container, "@news-list", false, null);
-        setFragment(newsFragment(), R.id.main_activity_news_container, "@news", false, bundle);
+        setFragment(newsFragment(), R.id.main_activity_news_container, "@news", true, bundle);
     }
 
     @Override
@@ -110,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         fragmentManager.popBackStack();
+    }
+
+    private Maybe<Fragment> findFragmentByTag(String tag) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        Fragment fragment = fragmentManager.findFragmentByTag(tag);
+
+        return Maybe.of(fragment);
     }
 
     private MainActivityListener getMainActivityListener() {
