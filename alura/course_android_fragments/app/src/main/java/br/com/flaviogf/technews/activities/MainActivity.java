@@ -107,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.remove(fragment);
 
-        fragmentManager.popBackStack();
-
         fragmentTransaction.commit();
+
+        fragmentManager.popBackStack();
     }
 
     private MainActivityListener getMainActivityListener() {
@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSelect() {
             mainActivity.setFragment(mainActivity.newsListFragment(), R.id.main_activity_news_list_container, "@news-list", false, null);
+            mainActivity.popFragment();
         }
 
         @Override
