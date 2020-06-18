@@ -9,5 +9,9 @@ public class BaristaTestDrive {
         System.out.println("Coffee");
         CaffeineBeverage coffee = new Coffee();
         coffee.prepare();
+
+        System.out.println("Coffee with hook");
+        CaffeineBeverageWithHook coffeeWithHook = new CoffeeWithHook();
+        coffeeWithHook.prepare();
     }
 }
