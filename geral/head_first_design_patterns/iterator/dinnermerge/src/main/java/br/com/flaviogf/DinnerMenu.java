@@ -11,6 +11,7 @@ public class DinnerMenu implements Menu {
 
     public DinnerMenu() {
         addItem("Vegetarian BLT", "(Fakin´) Bacon with lettuce & tomato on whole wheat", true, new BigDecimal("2.99"));
+        addItem("BLT", "Bacon with lettuce & tomato on whole wheat", false, new BigDecimal("2.99"));
     }
 
     private void addItem(String name, String description, Boolean isVegetarian, BigDecimal price) {

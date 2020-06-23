@@ -9,6 +9,7 @@ public class PancakeHouseMenu implements Menu {
 
     public PancakeHouseMenu() {
         addItem("'K&B's Pancake Breakfast", "Pancake with scrambled eggs", true, new BigDecimal("2.99"));
+        addItem("Regular Pancake Breakfast", "Pancakes with fried eggs, sausage", false, new BigDecimal("2.99"));
     }
 
     private void addItem(String name, String description, Boolean isVegetarian, BigDecimal price) {
