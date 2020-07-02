@@ -5,42 +5,52 @@ import java.awt.*;
 import java.net.URL;
 
 public class IconProxy implements Icon {
+    private final IconState loaded;
+    private final IconState notLoaded;
     private final URL url;
+    private IconState state;
     private Icon icon;
 
     public IconProxy(URL url) {
         this.url = url;
+        loaded = new Loaded(this);
+        notLoaded = new NotLoaded(this);
+        state = notLoaded;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setState(IconState state) {
+        this.state = state;
+    }
+
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
     }
 
     public void paintIcon(Component c, Graphics g, int x, int y) {
-        if (icon != null) {
-            icon.paintIcon(c, g, x, y);
-            return;
-        }
-
-        g.drawString("Loading CD Cover please wait ...", x + 300, y + 190);
-
-        Thread thread = new Thread(() -> {
-            icon = new ImageIcon(url, "CD Cover");
-            c.repaint();
-        });
-
-        thread.start();
+        state.paintIcon(c, g, x, y);
     }
 
     public int getIconWidth() {
-        if (icon != null) {
-            return icon.getIconWidth();
-        }
-
-        return 800;
+        return state.getIconWidth();
     }
 
     public int getIconHeight() {
-        if (icon != null) {
-            return icon.getIconHeight();
-        }
+        return state.getIconHeight();
+    }
 
-        return 600;
+    public IconState getLoaded() {
+        return loaded;
+    }
+
+    public IconState getNotLoaded() {
+        return notLoaded;
     }
 }
