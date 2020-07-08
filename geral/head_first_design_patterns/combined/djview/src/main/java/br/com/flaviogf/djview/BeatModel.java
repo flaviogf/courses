@@ -65,7 +65,9 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 
     @Override
     public void meta(MetaMessage meta) {
-        if (meta.getType() != 47) return;
+        if (meta.getType() != 47) {
+            return;
+        }
 
         notifyBeatObservers();
         sequencer.start();
