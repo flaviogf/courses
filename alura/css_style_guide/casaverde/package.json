@@ -1,0 +1,14 @@
+{
+  "name": "casaverde",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "minireset.css": "0.0.6"
+  },
+  "devDependencies": {
+    "parcel-bundler": "1.12.4"
+  },
+  "scripts": {
+    "start": "parcel -p 1234 watch ./src/index.html"
+  }
+}

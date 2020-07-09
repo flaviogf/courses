@@ -1,0 +1,10 @@
+.button {
+  background-color: var(--yellow);
+  border: none;
+  box-shadow: 10px 10px 30px var(--yellow-transparent);
+  color: var(--white);
+  font-weight: 700;
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+}

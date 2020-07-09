@@ -1,0 +1,15 @@
+@import url(./_variables.css);
+
+* {
+  font-family: var(--montserrat);
+  font-size: 1rem;
+}
+
+body {
+  background: url(../img/fundo-textura.png), url(../img/fundo-linhas.png);
+  background-position: center;
+}
+
+.container {
+  padding: 0 1rem;
+}
