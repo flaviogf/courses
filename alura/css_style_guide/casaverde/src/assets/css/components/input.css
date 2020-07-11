@@ -1,0 +1,18 @@
+.input {
+  background-color: var(--white);
+  border: none;
+  box-shadow: 10px 10px 30px var(--black-transparent);
+  margin-bottom: 1rem;
+  padding: 1.75rem;
+  width: 100%;
+}
+
+.input--icon {
+  background-position: left 1.75rem center;
+  background-repeat: no-repeat;
+  padding-left: 4.25rem;
+}
+
+.input--mail {
+  background-image: url("../../img/icons/mail.svg");
+}

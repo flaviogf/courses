@@ -3,6 +3,7 @@
 * {
   font-family: var(--montserrat);
   font-size: 1rem;
+  color: var(--gray);
 }
 
 body {
@@ -12,4 +13,22 @@ body {
 
 .container {
   padding: 0 1rem;
+}
+
+.title {
+  font-size: 1.375rem;
+}
+
+.title--highlighted {
+  color: var(--black);
+  display: block;
+  font-family: var(--elsie);
+  font-size: 2rem;
+  font-weight: 900;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.align-center {
+  text-align: center;
 }

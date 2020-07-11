@@ -1,0 +1,16 @@
+.header {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  width: 100%;
+}
+
+.header__logo {
+  width: 11.125rem;
+}
+
+.header__cart {
+  width: 1.75rem;
+}

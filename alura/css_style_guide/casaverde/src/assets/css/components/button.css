@@ -8,3 +8,10 @@
   text-align: center;
   width: 100%;
 }
+
+.button--secondary {
+  background-color: unset;
+  border: 1px solid var(--yellow);
+  box-shadow: unset;
+  color: var(--yellow);
+}

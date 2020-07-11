@@ -1,0 +1,36 @@
+.list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+  width: 15rem;
+}
+
+.item__icon {
+  background-color: var(--yellow);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.375rem;
+  border-radius: 50%;
+  display: block;
+  height: 3.25rem;
+  margin-right: 1rem;
+  width: 3.25rem;
+}
+
+.item__icon--cursor {
+  background-image: url("../../img/icons/mouse.svg");
+}
+
+.item__icon--cart {
+  background-image: url("../../img/icons/cart.svg");
+}
+
+.item__icon--truck {
+  background-image: url("../../img/icons/truck.svg");
+}

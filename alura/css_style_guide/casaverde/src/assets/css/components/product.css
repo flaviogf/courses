@@ -1,0 +1,47 @@
+.product {
+  background-color: var(--white);
+  box-shadow: 10px 10px 30px var(--black-transparent);
+  margin-bottom: 1rem;
+  min-height: 12.5rem;
+  overflow: hidden;
+  padding: 2rem 0 2rem 50%;
+  position: relative;
+}
+
+.product__image {
+  left: -8rem;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  width: 18.75rem;
+  z-index: 1;
+}
+
+.product__content {
+  position: relative;
+  z-index: 2;
+}
+
+.product__title {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.product__price {
+  margin-bottom: 1.5rem;
+}
+
+.product__buy {
+  align-items: center;
+  color: var(--yellow);
+  display: flex;
+}
+
+.product__buy--icon {
+  background-image: url(../../img/icons/seta.svg);
+  background-size: contain;
+  display: inline-block;
+  height: 0.875rem;
+  margin-left: 1.75rem;
+  width: 0.875rem;
+}

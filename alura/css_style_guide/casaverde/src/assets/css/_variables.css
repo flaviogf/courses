@@ -1,9 +1,11 @@
 :root {
   --gray: #909090;
-  --yellow: #FFCB47;
-  --yellow-transparent: #FFCB473D;
-  --white: #FFFFFF;
+  --yellow: #ffcb47;
+  --yellow-transparent: #ffcb473d;
+  --white: #ffffff;
+  --black: #202020;
+  --black-transparent: #0000000f;
 
-  --montserrat: 'Montserrat', sans-serif;
-  --elsie: 'Elsie Swash Caps', serif;
+  --montserrat: "Montserrat", sans-serif;
+  --elsie: "Elsie Swash Caps", serif;
 }
