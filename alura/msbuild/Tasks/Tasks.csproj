@@ -1,0 +1,6 @@
+<Project>
+    <Target Name="Compile">
+        <MakeDir Directories="bin" />
+        <Csc Sources=".\src\Program.cs; .\src\Task.cs;" OutputAssembly=".\bin\Program.exe" />
+    </Target>
+</Project>
