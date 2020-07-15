@@ -1,0 +1,23 @@
+<Project>
+    <Target Name="Compile">
+        <RemoveDir Directories="bin" />
+        <MakeDir Directories="bin" />
+        <Csc Sources="@(Item)" OutputAssembly="$(Artifact)" />
+    </Target>
+
+    <Target Name="Setup" BeforeTargets="Compile">
+        <Message Text="Building..." />
+    </Target>
+
+    <Target Name="Teardown" AfterTargets="Compile">
+        <Message Text="Finishing..." />
+    </Target>
+
+    <ItemGroup>
+        <Item Include="src\**\*.cs" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <Artifact>bin\Program.exe</Artifact>
+    </PropertyGroup>
+</Project>
