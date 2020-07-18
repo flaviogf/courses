@@ -1,7 +1,7 @@
 (ns example004.core
   (:gen-class))
 
-(defn is-greater-than-100
+(defn is-greater-than-100?
   [value]
   (> value 100))
 
@@ -21,9 +21,9 @@
 
 (defn -main
   [& args]
-  (println (discount is-greater-than-100 discount-of-10-percent 1000))
-  (println (discount is-greater-than-100 discount-of-10-percent 100))
-  (println (discount is-greater-than-100 discount-of-50-percent 1000))
-  (println (discount is-greater-than-100 discount-of-50-percent 100))
+  (println (discount is-greater-than-100? discount-of-10-percent 1000))
+  (println (discount is-greater-than-100? discount-of-10-percent 100))
+  (println (discount is-greater-than-100? discount-of-50-percent 1000))
+  (println (discount is-greater-than-100? discount-of-50-percent 100))
   (println (discount #(> % 100) #(* % (- 1 0.3)) 1000))
   (println (discount #(> % 100) #(* % (- 1 0.3)) 100)))
