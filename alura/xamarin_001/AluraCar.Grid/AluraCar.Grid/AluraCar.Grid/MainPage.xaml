@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AluraCar.Grid.MainPage">
+
+    <Grid VerticalOptions="Start">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Text="Azera V6" />
+        <Label Grid.Column="1" Grid.Row="0" Text="$60.000" />
+        <Label Grid.Column="0" Grid.Row="1" Text="Fiesta 2.0" />
+        <Label Grid.Column="1" Grid.Row="1" Text="$50.000" />
+        <Label Grid.Column="0" Grid.Row="2" Text="HB20 S" />
+        <Label Grid.Column="1" Grid.Row="2" Text="$40.000" />
+    </Grid>
+
+</ContentPage>
