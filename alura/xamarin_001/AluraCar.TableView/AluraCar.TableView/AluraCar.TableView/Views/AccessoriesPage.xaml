@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AluraCar.TableView.Views.AccessoriesPage"
+             Title="{Binding Vehicle.Name}">
+
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="Acessories">
+                    <SwitchCell x:Name="BrakeSwitchCell" Text="Brake - $800" />
+                    <SwitchCell x:Name="AirConditionerSwitchCell" Text="Air conditioner - $1.000" />
+                    <SwitchCell x:Name="MP3PlayerSwitchCell" Text="MP3 Player - $500" />
+                    <TextCell Text="{Binding Vehicle.Price, StringFormat='Total: {0:C}'}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+
+</ContentPage>
