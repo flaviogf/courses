@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AluraCar.TestDrive.Views.AccessoriesPage"
+             Title="{Binding Vehicle.Name}">
+
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="Accessories">
+                    <SwitchCell Text="Brake $800" />
+                    <SwitchCell Text="Air Conditioner" />
+                    <SwitchCell Text="MP3 Player" />
+                    <TextCell Text="{Binding Vehicle.Price, StringFormat='Total {0:C}'}"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+
+</ContentPage>
