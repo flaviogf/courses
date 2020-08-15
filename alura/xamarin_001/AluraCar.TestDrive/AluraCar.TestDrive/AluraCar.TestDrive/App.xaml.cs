@@ -26,6 +26,7 @@ namespace AluraCar.TestDrive
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<AccessoriesPage>();
+            containerRegistry.RegisterForNavigation<SchedulePage>();
         }
     }
 }

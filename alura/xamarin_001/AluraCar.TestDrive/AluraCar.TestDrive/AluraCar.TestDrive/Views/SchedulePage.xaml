@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AluraCar.TestDrive.Views.SchedulePage"
+             Title="{Binding Vehicle.Name}">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" VerticalOptions="StartAndExpand" HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection Title="Personal info">
+                        <EntryCell Label="Name:" Text="{Binding Name}" />
+                        <EntryCell Label="Phone:" Text="{Binding Phone}" />
+                        <EntryCell Label="Email:" Text="{Binding Email}" />
+                    </TableSection>
+                    <TableSection Title="Schedule">
+                        <ViewCell>
+                            <StackLayout Padding="16, 8, 4, 8" Orientation="Horizontal" HeightRequest="45">
+                                <Label Text="Day" VerticalOptions="Center" />
+                                <DatePicker VerticalOptions="Center" Date="{Binding Day}" MaximumDate="{Binding MaximumDate}" MinimumDate="{Binding MinimumDate}" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Padding="16, 8, 4, 8" Orientation="Horizontal" HeightRequest="45">
+                                <Label Text="Hour" VerticalOptions="Center" />
+                                <TimePicker VerticalOptions="Center" Time="{Binding Hour}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Command="{Binding BookCommand}" Text="Book" VerticalOptions="End" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

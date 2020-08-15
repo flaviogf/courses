@@ -14,7 +14,9 @@ namespace AluraCar.TestDrive.ViewModels
 
             Vehicles = new List<Vehicle>
             {
-                new Azera()
+                new Azera(),
+                new Fiesta(),
+                new HB20()
             };
 
             TappedVehicleCommand = new DelegateCommand<Vehicle>(TappedVehicle);

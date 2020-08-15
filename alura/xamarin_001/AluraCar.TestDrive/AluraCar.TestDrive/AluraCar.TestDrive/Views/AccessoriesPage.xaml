@@ -7,16 +7,19 @@
              Title="{Binding Vehicle.Name}">
 
     <ContentPage.Content>
-        <TableView Intent="Settings">
-            <TableRoot>
-                <TableSection Title="Accessories">
-                    <SwitchCell Text="Brake $800" />
-                    <SwitchCell Text="Air Conditioner" />
-                    <SwitchCell Text="MP3 Player" />
-                    <TextCell Text="{Binding Vehicle.Price, StringFormat='Total {0:C}'}"/>
-                </TableSection>
-            </TableRoot>
-        </TableView>
+        <StackLayout>
+            <TableView Intent="Settings" VerticalOptions="StartAndExpand">
+                <TableRoot>
+                    <TableSection Title="Accessories">
+                        <SwitchCell On="{Binding BrakeOn}" Text="Brake $800" />
+                        <SwitchCell On="{Binding AirConditionerOn}" Text="Air Conditioner $1.000" />
+                        <SwitchCell On="{Binding MP3PlayerOn}" Text="MP3 Player $500" />
+                        <TextCell Text="{Binding Vehicle.Price, StringFormat='Total {0:C}'}"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button VerticalOptions="End" Text="Next step" Command="{Binding NextStepCommand}" />
+        </StackLayout>
     </ContentPage.Content>
 
 </ContentPage>
