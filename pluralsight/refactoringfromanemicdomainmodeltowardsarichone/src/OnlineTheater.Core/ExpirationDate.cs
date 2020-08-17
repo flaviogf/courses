@@ -14,6 +14,8 @@ namespace OnlineTheater.Core
             _value = value;
         }
 
+        public bool IsExpired => this != Infinite && _value < DateTime.UtcNow;
+
         public static Result<ExpirationDate> Of(DateTime? value)
         {
             return Result.Success(new ExpirationDate(value));

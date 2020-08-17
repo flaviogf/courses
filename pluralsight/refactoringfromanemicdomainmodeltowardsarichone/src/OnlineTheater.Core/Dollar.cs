@@ -39,5 +39,15 @@ namespace OnlineTheater.Core
         {
             return Of(value).Value;
         }
+
+        public static Dollar operator *(Dollar first, decimal second)
+        {
+            return new Dollar(first._value * second);
+        }
+
+        public static Dollar operator +(Dollar first, Dollar second)
+        {
+            return new Dollar(first._value + second._value);
+        }
     }
 }

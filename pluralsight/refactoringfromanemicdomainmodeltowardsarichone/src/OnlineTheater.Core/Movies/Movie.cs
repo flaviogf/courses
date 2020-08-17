@@ -15,5 +15,12 @@
         public abstract ExpirationDate ExpirationDate { get; }
 
         public abstract Dollar Price { get; }
+
+        public Dollar CalculatePrice(CustomerStatus customerStatus)
+        {
+            var modifier = 1 - customerStatus.Discount;
+
+            return Price * modifier;
+        }
     }
 }
