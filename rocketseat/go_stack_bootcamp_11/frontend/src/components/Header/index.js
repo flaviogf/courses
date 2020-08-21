@@ -1,7 +1,12 @@
 import React from "react";
 
-function Header() {
-  return <h1>React.js</h1>;
+function Header({ children, title }) {
+  return (
+    <header>
+      <h1>{title}</h1>
+      {children}
+    </header>
+  );
 }
 
 export default Header;
