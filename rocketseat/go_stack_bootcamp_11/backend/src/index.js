@@ -1,9 +1,19 @@
+const debug = require("debug")("backend");
 const express = require("express");
 const { v4: uuid } = require("uuid");
+
+function log(req, res, next) {
+  const { method, url } = req;
+
+  debug(`${method} |> ${url}`);
+
+  next();
+}
 
 const app = express();
 
 app.use(express.json());
+app.use(log);
 
 const projects = [];
 
@@ -63,4 +73,4 @@ app.delete("/projects/:id", (req, res) => {
   return res.json(project);
 });
 
-app.listen(3333, () => console.log("🚀 It is running"));
+app.listen(3333, () => debug("🚀 It is running"));
