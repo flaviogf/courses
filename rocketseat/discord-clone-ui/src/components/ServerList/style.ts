@@ -9,8 +9,14 @@ export const Container = styled.div`
   max-height: 100vh;
   overflow-y: auto;
   padding: 11px 0;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
-export const ServerName = styled.div``;
-
-export const Separator = styled.div``;
+export const Separator = styled.div`
+  border-bottom: 2px solid var(--quaternary);
+  margin-bottom: 8px;
+  width: 32px;
+`;

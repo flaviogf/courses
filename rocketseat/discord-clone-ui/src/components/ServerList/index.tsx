@@ -1,14 +1,23 @@
 import React from "react";
-
-import { Container, ServerName, Separator } from "./style";
+import { Container, Separator } from "./style";
+import ServerButton from "../ServerButton";
 
 const ServerList: React.FC = () => {
   return (
     <Container>
-      <ServerName />
+      <ServerButton isHome />
       <Separator />
-      <ServerName />
-      <ServerName />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
+      <ServerButton />
     </Container>
   );
 };
