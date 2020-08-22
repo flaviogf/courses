@@ -1,12 +1,11 @@
 import React from "react";
-
+import Layout from "./components/Layout";
 import Style from "./style";
 
 function App() {
   return (
     <>
-      <h1>Rocketseat</h1>
-
+      <Layout />
       <Style />
     </>
   );
