@@ -1,3 +1,4 @@
+const cors = require("cors");
 const debug = require("debug")("backend");
 const express = require("express");
 const { v4: uuid } = require("uuid");
@@ -12,6 +13,7 @@ function log(req, res, next) {
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(log);
 

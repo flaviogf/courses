@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "./components/Header";
+import api from "./services/api";
+
+import "./App.css";
 
 function App() {
-  const [projects, setProjects] = useState(["Study English", "Study Go Stack"]);
+  const [projects, setProjects] = useState([]);
 
-  function addProject() {
-    const project = `Project ${Date.now()}`;
+  useEffect(() => {
+    api.get("/projects").then((response) => setProjects(response.data));
+  }, []);
 
-    setProjects([...projects, project]);
-  }
+  function addProject() {}
 
   return (
     <>
       <Header title="Projects">
         <ul>
           {projects.map((it) => (
-            <li key={it}>{it}</li>
+            <li key={it.id}>{it.title}</li>
           ))}
         </ul>
       </Header>
