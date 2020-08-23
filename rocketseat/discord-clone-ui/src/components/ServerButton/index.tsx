@@ -17,7 +17,7 @@ const ServerButton: React.FC<Props> = ({
 }) => {
   return (
     <Button
-      selected={selected}
+      className={selected ? "active" : ""}
       isHome={isHome}
       hasNotification={hasNotification}
       mentions={mentions}

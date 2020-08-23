@@ -21,7 +21,7 @@ export const Button = styled.button<Props>`
     width: 24px;
   }
 
-  &:active,
+  &.active,
   &:hover {
     background-color: ${(props) =>
       props.isHome ? "var(--rocketseat)" : "var(--discord)"};
