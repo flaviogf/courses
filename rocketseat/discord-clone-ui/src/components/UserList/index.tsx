@@ -21,7 +21,7 @@ export interface UserRowProps {
 const UserRow: React.FC<UserRowProps> = ({ username, isBot }) => {
   return (
     <User>
-      <Avatar />
+      <Avatar className={isBot ? "bot" : ""} />
       <strong>{username}</strong>
       {isBot && <span>Bot</span>}
     </User>

@@ -67,4 +67,14 @@ export const User = styled.div`
   }
 `;
 
-export const Avatar = styled.div``;
+export const Avatar = styled.div`
+  background-color: var(--primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 32px;
+  width: 32px;
+
+  &.bot {
+    background-color: var(--mention-detail);
+  }
+`;
