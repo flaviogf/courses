@@ -51,7 +51,7 @@ export const Input = styled.input`
   ~ svg {
     left: 14px;
     position: relative;
-    top: -50%;
+    top: -35px;
     transition: 180ms ease-in-out;
   }
 `;
