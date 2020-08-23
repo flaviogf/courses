@@ -40,10 +40,50 @@ export const UserData = styled.div`
   }
 `;
 
-export const Icons = styled.div``;
+export const Icons = styled.div`
+  align-items: center;
+  display: flex;
 
-export const MicIcon = styled(Mic)``;
+  & > svg:not(:first-child) {
+    margin-left: 7px;
+  }
+`;
 
-export const HeadphoneIcon = styled(Headset)``;
+export const MicIcon = styled(Mic)`
+  color: var(--white);
+  cursor: pointer;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  width: 20px;
 
-export const SettingsIcon = styled(Settings)``;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const HeadphoneIcon = styled(Headset)`
+  color: var(--white);
+  cursor: pointer;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  width: 20px;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const SettingsIcon = styled(Settings)`
+  color: var(--white);
+  cursor: pointer;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  width: 20px;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
