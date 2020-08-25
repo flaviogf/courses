@@ -1,11 +1,8 @@
 import express from "express";
+import { greeting } from "./routes";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  return res.json({ ok: true });
-});
+app.get("/", greeting);
 
-app.listen(3333, () => {
-  console.log("🚀 It is running on port 3333");
-});
+app.listen(3333, () => console.log("🚀 It is running on port 3333"));
