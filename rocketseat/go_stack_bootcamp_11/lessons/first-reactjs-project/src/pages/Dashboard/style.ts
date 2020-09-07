@@ -9,7 +9,7 @@ export const Title = styled.h1`
   max-width: 450px;
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: flex;
   margin-top: 40px;
   max-width: 700px;
@@ -70,7 +70,8 @@ export const Repositories = styled.ul`
     }
 
     div {
-      margin-left: 16px;
+      flex: 1;
+      margin: 0 16px;
 
       strong {
         color: #3d3d4d;
