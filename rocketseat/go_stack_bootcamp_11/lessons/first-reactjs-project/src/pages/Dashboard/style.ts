@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { shade } from 'polished'
 
 export const Title = styled.h1`
@@ -9,7 +9,7 @@ export const Title = styled.h1`
   max-width: 450px;
 `
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
   display: flex;
   margin-top: 40px;
   max-width: 700px;
@@ -20,6 +20,14 @@ export const Form = styled.form`
     flex: 1;
     height: 70px;
     padding: 0 24px;
+    border: 2px solid #fff;
+    border-right: 0;
+
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
 
     &::placeholder {
       color: #a8a8b3;
@@ -41,6 +49,10 @@ export const Form = styled.form`
     }
   }
 `
+
+interface FormProps {
+  hasError: boolean
+}
 
 export const Repositories = styled.ul`
   margin-top: 80px;
@@ -90,4 +102,10 @@ export const Repositories = styled.ul`
       margin-left: auto;
     }
   }
+`
+
+export const Error = styled.span`
+  color: #c53030;
+  display: block;
+  margin-top: 8px;
 `
