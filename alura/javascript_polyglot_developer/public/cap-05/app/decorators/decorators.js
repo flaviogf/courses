@@ -8,12 +8,12 @@ export function logExecutionTime(method, property, args) {
 export function inspectMethod(excludeReturn = false) {
   return (method, property, args) => {
     console.log(`Invoking the method ${property}`);
-    console.log(`Args: ${JSON.stringify(args)}`)
+    console.log(`Args: ${JSON.stringify(args)}`);
     const result = method(...args);
-    if(!excludeReturn) {
-      console.log(`Result ${result}`)
+    if (!excludeReturn) {
+      console.log(`Result ${result}`);
     }
-    console.log(`The method ${property} was executed`)
+    console.log(`The method ${property} was executed`);
     return result;
-  }
+  };
 }

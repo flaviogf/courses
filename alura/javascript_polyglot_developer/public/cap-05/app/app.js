@@ -6,7 +6,7 @@ const method = Person.prototype.getFullName;
 
 const person = new Person("Flávio", "Fernandes");
 person.getFullName();
-person.speak('Hi');
+person.speak("Hi");
 
 decorator(Person, {
   getFullName: [logExecutionTime, inspectMethod(true)],
@@ -14,4 +14,4 @@ decorator(Person, {
 });
 
 person.getFullName();
-person.speak('Hi, how are you doing?');
+person.speak("Hi, how are you doing?");
