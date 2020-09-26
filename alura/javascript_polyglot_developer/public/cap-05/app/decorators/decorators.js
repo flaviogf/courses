@@ -1,9 +1,19 @@
 export function logExecutionTime(method, property, args) {
-  console.log(`Executing method ${property}`);
-  console.log(`Executing method with args: ${JSON.stringify(args)}`);
   console.time(property);
   const result = method(...args);
   console.timeEnd(property);
-  console.log("Execution has finished");
   return result;
+}
+
+export function inspectMethod(excludeReturn = false) {
+  return (method, property, args) => {
+    console.log(`Invoking the method ${property}`);
+    console.log(`Args: ${JSON.stringify(args)}`)
+    const result = method(...args);
+    if(!excludeReturn) {
+      console.log(`Result ${result}`)
+    }
+    console.log(`The method ${property} was executed`)
+    return result;
+  }
 }
