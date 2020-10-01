@@ -1,0 +1,5 @@
+GET catalogo/_search/?q=futebol
+
+GET catalogo/_search/?q=estado:SP
+
+GET catalogo/_search/?q=futebol&size=10&from=0
