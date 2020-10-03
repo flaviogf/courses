@@ -1,5 +1,5 @@
 using System;
-using School.Domain;
+using School.Domain.Students;
 using Xunit;
 
 namespace School.Test

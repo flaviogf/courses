@@ -1,10 +1,10 @@
 using System;
 
-namespace School.Domain
+namespace School.Domain.Students
 {
-    public class Cpf
+    public class Email
     {
-        public Cpf(string value)
+        public Email(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {

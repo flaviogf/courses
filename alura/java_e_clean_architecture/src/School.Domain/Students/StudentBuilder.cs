@@ -1,4 +1,4 @@
-namespace School.Domain
+namespace School.Domain.Students
 {
     public class StudentBuilder
     {

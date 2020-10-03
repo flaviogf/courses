@@ -1,6 +1,7 @@
 using System;
+using School.Domain.Students;
 
-namespace School.Domain
+namespace School.Domain.Recommendations
 {
     public class Recommendation
     {

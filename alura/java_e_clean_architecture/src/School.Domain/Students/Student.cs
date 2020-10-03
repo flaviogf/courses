@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace School.Domain
+namespace School.Domain.Students
 {
     public class Student
     {
