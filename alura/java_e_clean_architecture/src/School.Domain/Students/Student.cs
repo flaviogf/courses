@@ -4,11 +4,12 @@ namespace School.Domain.Students
 {
     public class Student
     {
-        public Student(Cpf cpf, string name, Email email)
+        public Student(Cpf cpf, string name, Email email, string passwordHash)
         {
             Cpf = cpf;
             Name = name;
             Email = email;
+            PasswordHash = passwordHash;
         }
 
         public Cpf Cpf { get; }
@@ -16,6 +17,8 @@ namespace School.Domain.Students
         public string Name { get; }
 
         public Email Email { get; }
+
+        public string PasswordHash { get; }
 
         public IList<Phone> Phones = new List<Phone>();
 

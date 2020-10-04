@@ -37,14 +37,31 @@ namespace School.Infra.Students
             await Task.WhenAll(phones);
         }
 
-        public Task<IEnumerable<Student>> FindAll()
+        public async Task<IEnumerable<Student>> FindAll()
         {
-            throw new System.NotImplementedException();
+            var students = await _connection.QueryAsync<Student>("SELECT * FROM Students");
+
+            return students;
         }
 
-        public Task<Student> FindByCpf(string cpf)
+        public async Task<Student> FindByCpf(string cpf)
         {
-            throw new System.NotImplementedException();
+            var student = await _connection.QueryFirstOrDefaultAsync<Student>("SELECT * FROM Students WHERE Cpf = @Cpf", param: new
+            {
+                Cpf = cpf
+            });
+
+            var phones = await _connection.QueryAsync<Phone>("SELECT * FROM Phone WHERE StudentCpf = @Cpf", new
+            {
+                Cpf = cpf
+            });
+
+            foreach (var phone in phones)
+            {
+                student.AddPhone(phone.DDD, phone.Number);
+            }
+
+            return student;
         }
     }
 }

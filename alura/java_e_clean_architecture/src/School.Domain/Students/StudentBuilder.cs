@@ -4,9 +4,9 @@ namespace School.Domain.Students
     {
         private Student _student;
 
-        public StudentBuilder WithCpfNameEmail(string cpf, string name, string email)
+        public StudentBuilder WithCpfNameEmailPasswordHash(string cpf, string name, string email, string passwordHash)
         {
-            _student = new Student(new Cpf(cpf), name, new Email(email));
+            _student = new Student(new Cpf(cpf), name, new Email(email), passwordHash);
 
             return this;
         }
