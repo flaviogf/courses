@@ -18,11 +18,12 @@ namespace School.Infra.Students
 
         public async Task Add(Student student)
         {
-            await _connection.ExecuteAsync("INSERT INTO Students VALUES (@Cpf, @Name, @Email)", param: new
+            await _connection.ExecuteAsync("INSERT INTO Students VALUES (@Cpf, @Name, @Email, @PasswordHash)", param: new
             {
-                Cpf = student.Cpf,
+                Cpf = (string)student.Cpf,
                 Name = student.Name,
-                Email = student.Email,
+                Email = (string)student.Email,
+                PasswordHash = student.PasswordHash
             });
 
             var phones = student.Phones.Select(it =>

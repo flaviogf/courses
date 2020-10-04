@@ -15,5 +15,15 @@ namespace School.Domain.Students
         }
 
         public string Value { get; }
+
+        public static implicit operator string(Email email)
+        {
+            return email.Value;
+        }
+
+        public static explicit operator Email(string value)
+        {
+            return new Email(value);
+        }
     }
 }

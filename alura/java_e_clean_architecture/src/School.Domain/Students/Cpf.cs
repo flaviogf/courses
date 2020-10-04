@@ -15,5 +15,15 @@ namespace School.Domain.Students
         }
 
         public string Value { get; }
+
+        public static implicit operator string(Cpf cpf)
+        {
+            return cpf.Value;
+        }
+
+        public static explicit operator Cpf(string value)
+        {
+            return new Cpf(value);
+        }
     }
 }
