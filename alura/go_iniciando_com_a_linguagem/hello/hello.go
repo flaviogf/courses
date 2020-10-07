@@ -2,25 +2,44 @@ package main
 
 import (
 	"fmt"
-	"reflect"
+	"net/http"
 )
 
 func main() {
-	// var name string = "Frank"
-	// var age int = 2
-	// var version float32 = 1.1
+	showPresentation("Frank", 1.1)
 
-	// var name = "Frank"
-	// var age = 2
-	// var version = 1.1
+	fmt.Println("1- Begin monitoring")
+	fmt.Println("2- Show logs")
+	fmt.Println("0- Exit")
 
-	name := "Frank"
-	age := 2
-	version := 1.1
+	option := readOption()
 
-	fmt.Println("My name is ", name)
-	fmt.Println("I'm ", age)
-	fmt.Println("Hello World!")
-	fmt.Println("My first application in Go! Version: ", version)
-	fmt.Println("The typo of version variable is: ", reflect.TypeOf(version))
+	switch option {
+	case 1:
+		beginMonitoring()
+	case 2:
+		fmt.Println("Displaying logs...")
+	case 0:
+		fmt.Println("Exiting...")
+	default:
+		fmt.Println("Command wasn't recognized")
+	}
+}
+
+func showPresentation(name string, version float64) {
+	fmt.Println("Hello ", name)
+	fmt.Println("This application is version ", version)
+}
+
+func readOption() int {
+	var result int
+	fmt.Scan(&result)
+	return result
+}
+
+func beginMonitoring() {
+	fmt.Println("Monitoring...")
+	url := "https://www.alura.com.br"
+	resp, _ := http.Get(url)
+	fmt.Println(resp)
 }
