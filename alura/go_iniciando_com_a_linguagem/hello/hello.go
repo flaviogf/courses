@@ -4,9 +4,16 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 )
 
+const monitors = 5
+
+const delay = 5
+
 func main() {
+	urls := []string{"https://alura.com.br", "https://caelum.com.br", "https://random-status-code.herokuapp.com"}
+
 	showPresentation("Frank", 1.1)
 
 	for {
@@ -18,7 +25,7 @@ func main() {
 
 		switch option {
 		case 1:
-			beginMonitoring()
+			beginMonitor(urls)
 		case 2:
 			fmt.Println("Displaying logs...")
 		case 0:
@@ -42,15 +49,25 @@ func readOption() int {
 	return result
 }
 
-func beginMonitoring() {
+func beginMonitor(urls []string) {
 	fmt.Println("Monitoring...")
-	url := "http://random-status-code.herokuapp.com/"
+
+	for i := 0; i < monitors; i++ {
+		for _, url := range urls {
+			monitor(url)
+		}
+
+		time.Sleep(delay * time.Second)
+	}
+}
+
+func monitor(url string) {
 	resp, _ := http.Get(url)
 
 	if resp.StatusCode == 200 {
-		fmt.Println("website: ", url, "is running 🚀")
+		fmt.Println("url: ", url, "is running 🚀")
 		return
 	}
 
-	fmt.Println("website: ", url, "isn't available 🧨")
+	fmt.Println("url: ", url, "isn't available 🧨")
 }
