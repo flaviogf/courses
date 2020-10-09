@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net/http"
 	"os"
@@ -15,6 +16,8 @@ func main() {
 	urls := []string{"https://alura.com.br", "https://caelum.com.br", "https://random-status-code.herokuapp.com"}
 
 	showPresentation("Frank", 1.1)
+
+	readFile()
 
 	for {
 		fmt.Println("1- Begin monitoring")
@@ -70,4 +73,16 @@ func monitor(url string) {
 	}
 
 	fmt.Println("url: ", url, "isn't available 🧨")
+}
+
+func readFile() {
+	file, _ := os.Open("urls.txt")
+
+	reader := bufio.NewReader(file)
+
+	line, _, _ := reader.ReadLine()
+
+	text := string(line)
+
+	fmt.Println(text)
 }
