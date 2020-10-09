@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"time"
@@ -13,11 +14,11 @@ const monitors = 5
 const delay = 5
 
 func main() {
-	urls := []string{"https://alura.com.br", "https://caelum.com.br", "https://random-status-code.herokuapp.com"}
-
 	showPresentation("Frank", 1.1)
 
-	readFile()
+	urls, _ := readFile()
+
+	fmt.Println(urls)
 
 	for {
 		fmt.Println("1- Begin monitoring")
@@ -65,24 +66,41 @@ func beginMonitor(urls []string) {
 }
 
 func monitor(url string) {
-	resp, _ := http.Get(url)
+	resp, err := http.Get(url)
 
-	if resp.StatusCode == 200 {
-		fmt.Println("url: ", url, "is running 🚀")
+	if err != nil {
+		fmt.Println("url: ", url, "isn't available 🧨")
 		return
 	}
 
-	fmt.Println("url: ", url, "isn't available 🧨")
+	if resp.StatusCode != 200 {
+		fmt.Println("url: ", url, "isn't available 🧨")
+		return
+	}
+
+	fmt.Println("url: ", url, "is running 🚀")
 }
 
-func readFile() {
+func readFile() ([]string, error) {
 	file, _ := os.Open("urls.txt")
 
 	reader := bufio.NewReader(file)
 
-	line, _, _ := reader.ReadLine()
+	var urls []string
 
-	text := string(line)
+	var err error
 
-	fmt.Println(text)
+	for {
+		line, _, err := reader.ReadLine()
+
+		url := string(line)
+
+		if err == io.EOF {
+			break
+		}
+
+		urls = append(urls, url)
+	}
+
+	return urls, err
 }
