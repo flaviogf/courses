@@ -1,0 +1,6 @@
+url: https://alura.com.br is running 🚀 online: true
+url: https://caelum.com.br is running 🚀 online: true
+url: https://random-status-code.herokuapp.com is running 🚀 online: true
+url: https://alura.com.br is running 🚀 online: true
+url: https://caelum.com.br is running 🚀 online: true
+url: https://random-status-code.herokuapp.com is running 🚀 online: true

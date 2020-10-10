@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -16,7 +17,7 @@ const delay = 5
 func main() {
 	showPresentation("Frank", 1.1)
 
-	urls, _ := readFile()
+	urls := readFile()
 
 	fmt.Println(urls)
 
@@ -44,12 +45,15 @@ func main() {
 
 func showPresentation(name string, version float64) {
 	fmt.Println("Hello ", name)
+
 	fmt.Println("This application is version ", version)
 }
 
 func readOption() int {
 	var result int
+
 	fmt.Scan(&result)
+
 	return result
 }
 
@@ -69,38 +73,60 @@ func monitor(url string) {
 	resp, err := http.Get(url)
 
 	if err != nil {
-		fmt.Println("url: ", url, "isn't available 🧨")
+		text := "url: " + url + " isn't available 🧨"
+
+		fmt.Println(text)
+
+		registerLog(text, false)
+
 		return
 	}
 
 	if resp.StatusCode != 200 {
-		fmt.Println("url: ", url, "isn't available 🧨")
+		text := "url: " + url + " isn't available 🧨"
+
+		fmt.Println(text)
+
+		registerLog(text, false)
+
 		return
 	}
 
-	fmt.Println("url: ", url, "is running 🚀")
+	text := "url: " + url + " is running 🚀"
+
+	fmt.Println(text)
+
+	registerLog(text, true)
 }
 
-func readFile() ([]string, error) {
+func readFile() []string {
 	file, _ := os.Open("urls.txt")
 
 	reader := bufio.NewReader(file)
 
 	var urls []string
 
-	var err error
-
 	for {
 		line, _, err := reader.ReadLine()
-
-		url := string(line)
 
 		if err == io.EOF {
 			break
 		}
 
+		url := string(line)
+
 		urls = append(urls, url)
 	}
 
-	return urls, err
+	file.Close()
+
+	return urls
+}
+
+func registerLog(text string, online bool) {
+	file, _ := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+
+	file.WriteString(text + " online: " + strconv.FormatBool(online) + "\n")
+
+	file.Close()
 }
