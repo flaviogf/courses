@@ -1,6 +1,9 @@
-url: https://alura.com.br is running 🚀 online: true
-url: https://caelum.com.br is running 🚀 online: true
-url: https://random-status-code.herokuapp.com is running 🚀 online: true
-url: https://alura.com.br is running 🚀 online: true
-url: https://caelum.com.br is running 🚀 online: true
-url: https://random-status-code.herokuapp.com is running 🚀 online: true
+10-09-2020 09:40:27 PM - url: https://alura.com.br is running 🚀 - online: true
+10-09-2020 09:40:28 PM - url: https://caelum.com.br is running 🚀 - online: true
+10-09-2020 09:40:29 PM - url: https://random-status-code.herokuapp.com is running 🚀 - online: true
+10-09-2020 09:40:34 PM - url: https://alura.com.br is running 🚀 - online: true
+10-09-2020 09:40:35 PM - url: https://caelum.com.br is running 🚀 - online: true
+10-09-2020 09:40:35 PM - url: https://random-status-code.herokuapp.com is running 🚀 - online: true
+10-09-2020 09:55:47 PM - url: https://alura.com.br is running 🚀 - online: true
+10-09-2020 09:55:48 PM - url: https://caelum.com.br is running 🚀 - online: true
+10-09-2020 09:55:49 PM - url: https://random-status-code.herokuapp.com isn't available 🧨 - online: false
