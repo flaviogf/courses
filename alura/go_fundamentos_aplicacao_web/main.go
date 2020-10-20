@@ -1,8 +1,12 @@
 package main
 
 import (
+	"database/sql"
+	"log"
 	"net/http"
 	"text/template"
+
+	_ "github.com/lib/pq"
 )
 
 type Product struct {
@@ -15,6 +19,14 @@ type Product struct {
 var t = template.Must(template.ParseGlob("templates/*.html"))
 
 func main() {
+	db, err := openConnection()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer db.Close()
+
 	http.HandleFunc("/", index)
 
 	http.ListenAndServe(":8000", nil)
@@ -26,4 +38,12 @@ func index(wr http.ResponseWriter, r *http.Request) {
 	}
 
 	t.ExecuteTemplate(wr, "Index", products)
+}
+
+func openConnection() (*sql.DB, error) {
+	connectionString := "postgres://postgres:postgres@localhost/alura_loja"
+
+	db, err := sql.Open("postgres", connectionString)
+
+	return db, err
 }
