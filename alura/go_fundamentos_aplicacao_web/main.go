@@ -10,6 +10,7 @@ import (
 )
 
 type Product struct {
+	Id          int32
 	Name        string
 	Description string
 	Price       float64
@@ -33,15 +34,33 @@ func main() {
 }
 
 func index(wr http.ResponseWriter, r *http.Request) {
-	products := []Product{
-		{Name: "Camiseta", Description: "Bem bonita", Price: 39.99, Quantity: 100},
+	db, err := openConnection()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var product Product
+
+	var products []Product
+
+	row, err := db.Query("SELECT * FROM products")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for row.Next() {
+		row.Scan(&product.Id, &product.Name, &product.Description, &product.Price, &product.Quantity)
+
+		products = append(products, product)
 	}
 
 	t.ExecuteTemplate(wr, "Index", products)
 }
 
 func openConnection() (*sql.DB, error) {
-	connectionString := "postgres://postgres:postgres@localhost/alura_loja"
+	connectionString := "postgres://postgres:postgres@localhost/alura_loja?sslmode=disable"
 
 	db, err := sql.Open("postgres", connectionString)
 
