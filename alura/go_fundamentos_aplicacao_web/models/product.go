@@ -40,14 +40,20 @@ func Find() []Product {
 	return products
 }
 
-func Create(name string, description string, price float64, quantity int) Product {
-	product := Product{
-		0,
-		name,
-		description,
-		price,
-		quantity,
+func Create(name string, description string, price float64, quantity int) {
+	db, err := database.OpenConnection()
+
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	return product
+	stmt, err := db.Prepare("INSERT INTO products (name, description, price, quantity) VALUES ($1, $2, $3, $4)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	stmt.Exec(name, description, price, quantity)
+
+	defer db.Close()
 }

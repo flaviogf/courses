@@ -39,9 +39,7 @@ func Insert(wr http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	product := models.Create(name, description, price, quantity)
-
-	log.Print(product)
+	models.Create(name, description, price, quantity)
 
 	http.Redirect(wr, r, "/", 301)
 }
