@@ -34,7 +34,7 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Preço</th>
-            <th>Quantidade</th>
+            <th colspan="2">Quantidade</th>
           </tr>
         </thead>
 
@@ -45,6 +45,7 @@
             <td>{{.Description}}</td>
             <td>{{.Price}}</td>
             <td>{{.Quantity}}</td>
+            <td><a class="btn btn-danger" href="/delete/{{.Id}}">Deletar</a></td>
           </tr>
           {{end}}
         </tbody>

@@ -57,3 +57,19 @@ func Create(name string, description string, price float64, quantity int) {
 
 	defer db.Close()
 }
+
+func Delete(id int) {
+	db, err := database.OpenConnection()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	stmt, err := db.Prepare("DELETE FROM products WHERE id = $1")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	stmt.Exec(id)
+}

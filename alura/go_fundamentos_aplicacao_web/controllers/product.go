@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/flaviogf/go_fundamentos_aplicacao_web/models"
 )
@@ -40,6 +41,20 @@ func Insert(wr http.ResponseWriter, r *http.Request) {
 	}
 
 	models.Create(name, description, price, quantity)
+
+	http.Redirect(wr, r, "/", 301)
+}
+
+func Delete(wr http.ResponseWriter, r *http.Request) {
+	idString := strings.TrimPrefix(r.URL.Path, "/delete/")
+
+	id, err := strconv.Atoi(idString)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	models.Delete(id)
 
 	http.Redirect(wr, r, "/", 301)
 }
