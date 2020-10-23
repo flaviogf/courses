@@ -73,3 +73,29 @@ func Delete(id int) {
 
 	stmt.Exec(id)
 }
+
+func FindOne(id int) Product {
+	db, err := database.OpenConnection()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rows, err := db.Query("SELECT * FROM products WHERE id = $1", id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rows.Next()
+
+	var product Product
+
+	err = rows.Scan(&product.Id, &product.Name, &product.Description, &product.Price, &product.Quantity)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return product
+}

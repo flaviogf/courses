@@ -58,3 +58,17 @@ func Delete(wr http.ResponseWriter, r *http.Request) {
 
 	http.Redirect(wr, r, "/", 301)
 }
+
+func Edit(wr http.ResponseWriter, r *http.Request) {
+	idString := strings.TrimPrefix(r.URL.Path, "/edit/")
+
+	id, err := strconv.Atoi(idString)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	product := models.FindOne(id)
+
+	t.ExecuteTemplate(wr, "Edit", product)
+}

@@ -10,7 +10,7 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Preço</th>
-            <th colspan="2">Quantidade</th>
+            <th colspan="3">Quantidade</th>
           </tr>
         </thead>
 
@@ -21,7 +21,10 @@
             <td>{{.Description}}</td>
             <td>{{.Price}}</td>
             <td>{{.Quantity}}</td>
-            <td>
+            <td align="center">
+              <a class="btn btn-primary" href="/edit/{{.Id}}">Editar</a>
+            </td>
+            <td align="center">
               <button class="btn btn-danger" data-delete data-id="{{.Id}}">
                 Deletar
               </button>

@@ -1,0 +1,41 @@
+{{define "Edit"}}
+{{template "_Head"}}
+  <body>
+    {{template "_Navbar"}}
+
+    <main class="container">
+      <form method="POST" action="insert">
+        <input hidden value="{{.Id}}" />
+
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input class="form-control" id="name" name="name" value="{{.Name}}" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descrição</label>
+          <input class="form-control" id="description" name="description" value="{{.Description}}" />
+        </div>
+
+        <div class="form-group">
+          <label for="price">Preço</label>
+          <input class="form-control" id="price" name="price" type="number" value="{{.Price}}" />
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantidade</label>
+          <input
+            class="form-control"
+            id="quantity"
+            name="quantity"
+            type="number"
+            value="{{.Quantity}}"
+          />
+        </div>
+
+        <button class="btn btn-success" type="submit">Salvar</button>
+      </form>
+    </main>
+  </body>
+{{template "_Footer"}}
+{{end}}
