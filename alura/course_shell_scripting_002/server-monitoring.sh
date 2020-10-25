@@ -2,12 +2,11 @@
 
 status=$(curl -w %{http_code} --output /dev/null --silent localhost)
 
-if [ $status -eq 200 ]
+if [ $status -ne 200 ]
 then
-	echo "It's everything ok"
-else
-	echo "Something is wrong"
+	mail -s "ERRO" flaviogf6@outlook.com<<d
+Something is wrong with your server, we will try to restart it
+d
 	docker start httpd
-	echo "Apache was started"
 fi
 
