@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"io/ioutil"
 	"net/http"
@@ -47,13 +46,11 @@ func FinishHandler(w http.ResponseWriter, r *http.Request) {
 	order.Phone = r.FormValue("phone")
 	order.ProductID = r.FormValue("product_id")
 
-	bytes, _ := json.Marshal(order)
-
-	fmt.Println(string(bytes))
-
 	channel, _ := queue.Connect()
 
-	fmt.Println(channel)
+	body, _ := json.Marshal(order)
+
+	queue.Notify("checkout_ex", body, channel)
 
 	w.Write([]byte("Processed"))
 }

@@ -21,3 +21,14 @@ func Connect() (*amqp.Channel, error) {
 
 	return channel, nil
 }
+
+func Notify(exchange string, body []byte, channel *amqp.Channel) error {
+	message := amqp.Publishing{
+		ContentType: "application/json",
+		Body:        body,
+	}
+
+	err := channel.Publish(exchange, "", false, false, message)
+
+	return err
+}
