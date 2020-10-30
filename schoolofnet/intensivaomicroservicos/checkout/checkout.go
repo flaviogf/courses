@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/flaviogf/checkout/queue"
 	"github.com/gorilla/mux"
 )
 
@@ -49,6 +50,10 @@ func FinishHandler(w http.ResponseWriter, r *http.Request) {
 	bytes, _ := json.Marshal(order)
 
 	fmt.Println(string(bytes))
+
+	channel, _ := queue.Connect()
+
+	fmt.Println(channel)
 
 	w.Write([]byte("Processed"))
 }
