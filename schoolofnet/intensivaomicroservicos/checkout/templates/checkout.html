@@ -8,8 +8,31 @@
   </head>
   <body>
     <h1>Finalizar Pedido</h1>
+    <h2>Produto: {{.Product}}</h2>
+    <h3>Preço: {{.Price}}</h3>
 
-    <p>Produto: {{.Product}}</p>
+    <form action="/finish" method="POST">
+      <input type="hidden" value="{{.UUID}}" name="product_id" />
+
+      <div>
+        <label for="name">Nome:</label>
+        <input id="name" name="name" />
+      </div>
+
+      <div>
+        <label for="email">E-mail:</label>
+        <input id="email" name="email" />
+      </div>
+
+      <div>
+        <label for="phone">Telefone:</label>
+        <input id="phone" name="phone" />
+      </div>
+
+      <div>
+        <button>Finalizar Compra</button>
+      </div>
+    </form>
   </body>
 </html>
 {{end}}
