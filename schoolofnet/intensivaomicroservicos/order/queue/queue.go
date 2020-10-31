@@ -1,6 +1,7 @@
 package queue
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/streadway/amqp"
@@ -26,12 +27,14 @@ func Consuming(in chan []byte, channel *amqp.Channel) error {
 	queue, err := channel.QueueDeclare("checkout_queue", true, false, false, false, nil)
 
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 
 	messages, err := channel.Consume(queue.Name, "checkout", true, false, false, false, nil)
 
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 

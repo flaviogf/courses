@@ -1,11 +1,20 @@
 package main
 
 import (
-	"fmt"
+	"context"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+	"os"
 	"time"
 
+	uuid "github.com/satori/go.uuid"
+
+	"github.com/flaviogf/order/db"
 	"github.com/flaviogf/order/queue"
 )
+
+var ctx = context.Background()
 
 func main() {
 	in := make(chan []byte)
@@ -15,8 +24,38 @@ func main() {
 	queue.Consuming(in, connection)
 
 	for message := range in {
-		fmt.Println(string(message))
+		var order Order
+
+		json.Unmarshal(message, &order)
+
+		order.UUID = uuid.NewV4().String()
+		order.Status = "Pendente"
+		order.CreatedAt = time.Now()
+
+		saveOrder(order)
 	}
+}
+
+func getProductById(id string) (Product, error) {
+	url := os.Getenv("PRODUCT_URL")
+
+	resp, _ := http.Get(url + "/products/" + id)
+
+	item, _ := ioutil.ReadAll(resp.Body)
+
+	var product Product
+
+	json.Unmarshal(item, &product)
+
+	return product, nil
+}
+
+func saveOrder(order Order) {
+	bytes, _ := json.Marshal(order)
+
+	client := db.Connect()
+
+	client.Set(ctx, order.UUID, string(bytes), 0)
 }
 
 type Product struct {
