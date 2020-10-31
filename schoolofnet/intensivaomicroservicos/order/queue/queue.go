@@ -23,8 +23,8 @@ func Connect() (*amqp.Channel, error) {
 	return channel, nil
 }
 
-func Consuming(in chan []byte, channel *amqp.Channel) error {
-	queue, err := channel.QueueDeclare("checkout_queue", true, false, false, false, nil)
+func Consuming(name string, in chan []byte, channel *amqp.Channel) error {
+	queue, err := channel.QueueDeclare(name, true, false, false, false, nil)
 
 	if err != nil {
 		fmt.Println(err)
@@ -45,4 +45,13 @@ func Consuming(in chan []byte, channel *amqp.Channel) error {
 	}()
 
 	return nil
+}
+
+func Notify(exchange string, body []byte, channel *amqp.Channel) error {
+	err := channel.Publish(exchange, "", false, false, amqp.Publishing{
+		ContentType: "application/json",
+		Body:        body,
+	})
+
+	return err
 }

@@ -21,7 +21,7 @@ func main() {
 
 	connection, _ := queue.Connect()
 
-	queue.Consuming(in, connection)
+	queue.Consuming("checkout_queue", in, connection)
 
 	for message := range in {
 		var order Order
@@ -33,6 +33,8 @@ func main() {
 		order.CreatedAt = time.Now()
 
 		saveOrder(order)
+
+		notifyOrder(order)
 	}
 }
 
@@ -56,6 +58,14 @@ func saveOrder(order Order) {
 	client := db.Connect()
 
 	client.Set(ctx, order.UUID, string(bytes), 0)
+}
+
+func notifyOrder(order Order) {
+	bytes, _ := json.Marshal(order)
+
+	channel, _ := queue.Connect()
+
+	queue.Notify("order_ex", bytes, channel)
 }
 
 type Product struct {
