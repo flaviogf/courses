@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"flag"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -17,25 +18,45 @@ import (
 var ctx = context.Background()
 
 func main() {
+	var option string
+
+	flag.StringVar(&option, "o", "", "Usage")
+
+	flag.Parse()
+
 	in := make(chan []byte)
 
 	connection, _ := queue.Connect()
 
-	queue.Consuming("checkout_queue", in, connection)
+	switch option {
+	case "checkout":
+		queue.Consuming("checkout_queue", in, connection)
 
-	for message := range in {
-		var order Order
+		for message := range in {
+			var order Order
 
-		json.Unmarshal(message, &order)
+			json.Unmarshal(message, &order)
 
-		order.UUID = uuid.NewV4().String()
-		order.Status = "Pendente"
-		order.CreatedAt = time.Now()
+			order.UUID = uuid.NewV4().String()
+			order.Status = "Pendente"
+			order.CreatedAt = time.Now()
 
-		saveOrder(order)
+			saveOrder(order)
 
-		notifyOrder(order)
+			notifyOrder(order)
+		}
+	case "payment":
+		queue.Consuming("payment_queue", in, connection)
+
+		for message := range in {
+			var order Order
+
+			json.Unmarshal(message, &order)
+
+			saveOrder(order)
+		}
 	}
+
 }
 
 func getProductById(id string) (Product, error) {
