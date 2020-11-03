@@ -6,4 +6,4 @@ COPY . .
 
 RUN GOOS=linux go build payment.go
 
-ENTRYPOINT [ "./payment.go" ]
+ENTRYPOINT [ "./payment" ]

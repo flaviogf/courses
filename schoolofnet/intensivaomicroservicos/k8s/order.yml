@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deployment
+  labels:
+    app: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order
+          image: flaviogf/intensivao-microservicos-order
+          env:
+            - name: AMQP_URL
+              value: "amqp://rabbitmq:rabbitmq@rabbitmq-service:5672"
+            - name: REDIS_URL
+              value: redis-service:6379
+          command: ["./order"]
+          args: ["-o", "checkout"]
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  type: ClusterIP
+  selector:
+    app: order
+  ports:
+    - port: 5672
