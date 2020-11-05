@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: portal-noticias-replica-set
+  name: portal-noticias-deployment
 spec:
   selector:
     matchLabels:
@@ -19,4 +19,4 @@ spec:
           envFrom:
             - configMapRef:
                 name: portal-noticias-config-map
-  replicas: 3
+  replicas: 2
