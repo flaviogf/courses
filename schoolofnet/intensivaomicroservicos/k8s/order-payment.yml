@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: order-deployment
+  name: order-payment-deployment
   labels:
-    app: order
+    app: order-payment
 spec:
   selector:
     matchLabels:
-      app: order
+      app: order-payment
   template:
     metadata:
       labels:
-        app: order
+        app: order-payment
     spec:
       containers:
-        - name: order
+        - name: order-payment
           image: flaviogf/intensivao-microservicos-order
           env:
             - name: AMQP_URL
@@ -22,4 +22,4 @@ spec:
             - name: REDIS_URL
               value: redis-service:6379
           command: ["./order"]
-          args: ["-o", "checkout"]
+          args: ["-o", "payment"]

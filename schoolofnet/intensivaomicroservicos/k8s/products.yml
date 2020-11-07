@@ -5,7 +5,6 @@ metadata:
   labels:
     app: products
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: products
@@ -27,7 +26,7 @@ kind: Service
 metadata:
   name: products-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: products
   ports:

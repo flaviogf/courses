@@ -5,7 +5,6 @@ metadata:
   labels:
     app: checkout
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: checkout
@@ -32,7 +31,7 @@ kind: Service
 metadata:
   name: checkout-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: checkout
   ports:

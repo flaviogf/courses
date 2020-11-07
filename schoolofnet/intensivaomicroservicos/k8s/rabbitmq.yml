@@ -5,7 +5,6 @@ metadata:
   labels:
     app: rabbitmq
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: rabbitmq
@@ -37,13 +36,11 @@ kind: Service
 metadata:
   name: rabbitmq-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: rabbitmq
   ports:
     - name: http
       port: 15672
-      targetPort: 15672
     - name: amqp
       port: 5672
-      targetPort: 5672

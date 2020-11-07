@@ -5,7 +5,6 @@ metadata:
   labels:
     app: redis
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: redis
@@ -27,9 +26,8 @@ kind: Service
 metadata:
   name: redis-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: redis
   ports:
     - port: 6379
-      targetPort: 6379
