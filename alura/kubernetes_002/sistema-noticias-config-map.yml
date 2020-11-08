@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: sistema-noticias-config-map
 data:
-  HOST_DB: 10.103.236.54:3306
+  HOST_DB: db-noticias-service:3306
   USER_DB: root
   PASS_DB: q1w2e3r4
   DATABASE_DB: empresa

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sistema-noticias-statefulset
+spec:
+  selector:
+    matchLabels:
+      app: sistema-noticias
+  template:
+    metadata:
+      name: sistema-noticias
+      labels:
+        app: sistema-noticias
+    spec:
+      containers:
+        - name: sistema-noticias
+          image: aluracursos/sistema-noticias:1
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: sistema-noticias-config-map
+  serviceName: sistema-noticias-service
