@@ -20,4 +20,16 @@ spec:
           envFrom:
             - configMapRef:
                 name: sistema-noticias-config-map
+          volumeMounts:
+            - mountPath: /var/www/html/uploads
+              name: imagens-pvc
+            - mountPath: /tmp
+              name: sessao-pvc
+      volumes:
+        - name: imagens-pvc
+          persistentVolumeClaim:
+            claimName: imagens-pvc
+        - name: sessao-pvc
+          persistentVolumeClaim:
+            claimName: sessao-pvc
   serviceName: sistema-noticias-service
