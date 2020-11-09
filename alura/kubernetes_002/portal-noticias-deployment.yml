@@ -19,4 +19,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: portal-noticias-config-map
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
   replicas: 2
