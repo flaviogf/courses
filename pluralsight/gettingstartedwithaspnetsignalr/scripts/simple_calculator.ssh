@@ -1,0 +1,17 @@
+#!/bin/bash
+
+declare -i number1
+declare -i number2
+declare -i result
+
+echo What is your favorite number?
+
+read number1
+
+echo What number do you really hate?
+
+read number2
+
+result=$number1*$number2
+
+echo "Aha! They equal $result"
