@@ -20,7 +20,7 @@ namespace CourseLibrary.Api.Controllers
         {
             var authors = _courseLibraryRepository.GetAuthors();
 
-            return new JsonResult(authors);
+            return Ok(authors);
         }
 
         [HttpGet("{authorId}")]
@@ -29,7 +29,12 @@ namespace CourseLibrary.Api.Controllers
         {
             var author = _courseLibraryRepository.GetAuthor(authorId);
 
-            return new JsonResult(author);
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(author);
         }
     }
 }
