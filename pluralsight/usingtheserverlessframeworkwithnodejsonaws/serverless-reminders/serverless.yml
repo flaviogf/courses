@@ -1,0 +1,17 @@
+service: serverless-reminders
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ses:*"
+      Resource:
+        - "*"
+
+functions:
+  dailyReminder:
+    handler: handler.sendReminderDaily
+    events:
+      - schedule: rate(1 day)
