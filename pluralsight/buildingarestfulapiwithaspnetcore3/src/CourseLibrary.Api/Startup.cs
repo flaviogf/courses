@@ -25,7 +25,12 @@ namespace CourseLibrary.Api
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
-            services.AddControllers();
+            services
+                .AddControllers(it =>
+                {
+                    it.ReturnHttpNotAcceptable = true;
+                })
+                .AddXmlDataContractSerializerFormatters();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
