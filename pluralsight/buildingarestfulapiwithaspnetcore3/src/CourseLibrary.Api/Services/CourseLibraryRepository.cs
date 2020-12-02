@@ -23,5 +23,15 @@ namespace CourseLibrary.Api.Services
         {
             return _context.Authors.FirstOrDefault(it => it.Id == authorId);
         }
+
+        public bool AuthorExists(Guid authorId)
+        {
+            return _context.Authors.Any(it => it.Id == authorId);
+        }
+
+        public IEnumerable<Course> GetCourses(Guid authorId)
+        {
+            return _context.Courses.Where(it => it.AuthorId == authorId);
+        }
     }
 }
