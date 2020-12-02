@@ -13,5 +13,7 @@ namespace CourseLibrary.Api.Services
         bool AuthorExists(Guid authorId);
 
         IEnumerable<Course> GetCourses(Guid authorId);
+
+        Course GetCourse(Guid authorId, Guid courseId);
     }
 }

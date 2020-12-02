@@ -33,5 +33,10 @@ namespace CourseLibrary.Api.Services
         {
             return _context.Courses.Where(it => it.AuthorId == authorId);
         }
+
+        public Course GetCourse(Guid authorId, Guid courseId)
+        {
+            return _context.Courses.FirstOrDefault(it => it.AuthorId == authorId && it.Id == courseId);
+        }
     }
 }
