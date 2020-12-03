@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CourseLibrary.Api.Entities;
+using CourseLibrary.Api.ResourcesParameters;
 
 namespace CourseLibrary.Api.Services
 {
@@ -14,18 +15,22 @@ namespace CourseLibrary.Api.Services
             _context = context;
         }
 
-        public IEnumerable<Author> GetAuthors(string mainCategory, string searchQuery)
+        public IEnumerable<Author> GetAuthors(AuthorsResourceParameter authorsResourceParameter)
         {
             var result = _context.Authors as IQueryable<Author>;
 
-            if (!string.IsNullOrEmpty(mainCategory))
+            if (!string.IsNullOrEmpty(authorsResourceParameter.MainCategory))
             {
-                result = result.Where(it => it.MainCategory == mainCategory);
+                result = result.Where(it => it.MainCategory == authorsResourceParameter.MainCategory);
             }
 
-            if (!string.IsNullOrEmpty(searchQuery))
+            if (!string.IsNullOrEmpty(authorsResourceParameter.SearchQuery))
             {
-                result = result.Where(it => it.MainCategory.Contains(searchQuery) || it.FirstName.Contains(searchQuery) || it.LastName.Contains(searchQuery));
+                result = result.Where(it =>
+                    it.MainCategory.Contains(authorsResourceParameter.SearchQuery) ||
+                    it.FirstName.Contains(authorsResourceParameter.SearchQuery) ||
+                    it.LastName.Contains(authorsResourceParameter.SearchQuery)
+                );
             }
 
             return result;

@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using CourseLibrary.Api.Entities;
+using CourseLibrary.Api.ResourcesParameters;
 
 namespace CourseLibrary.Api.Services
 {
     public interface ICourseLibraryRepository
     {
-        IEnumerable<Author> GetAuthors(string mainCategory, string searchQuery);
+        IEnumerable<Author> GetAuthors(AuthorsResourceParameter authorsResourceParameter);
 
         Author GetAuthor(Guid authorId);
 

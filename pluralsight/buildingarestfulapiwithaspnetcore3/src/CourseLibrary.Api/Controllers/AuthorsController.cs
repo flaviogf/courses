@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using CourseLibrary.Api.Models;
+using CourseLibrary.Api.ResourcesParameters;
 using CourseLibrary.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +23,9 @@ namespace CourseLibrary.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery] string mainCategory, [FromQuery] string searchQuery)
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery] AuthorsResourceParameter authorsResourceParameter)
         {
-            var authors = _courseLibraryRepository.GetAuthors(mainCategory, searchQuery);
+            var authors = _courseLibraryRepository.GetAuthors(authorsResourceParameter);
 
             var result = _mapper.Map<IEnumerable<AuthorDto>>(authors);
 
