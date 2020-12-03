@@ -14,9 +14,21 @@ namespace CourseLibrary.Api.Services
             _context = context;
         }
 
-        public IEnumerable<Author> GetAuthors()
+        public IEnumerable<Author> GetAuthors(string mainCategory, string searchQuery)
         {
-            return _context.Authors;
+            var result = _context.Authors as IQueryable<Author>;
+
+            if (!string.IsNullOrEmpty(mainCategory))
+            {
+                result = result.Where(it => it.MainCategory == mainCategory);
+            }
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                result = result.Where(it => it.MainCategory.Contains(searchQuery) || it.FirstName.Contains(searchQuery) || it.LastName.Contains(searchQuery));
+            }
+
+            return result;
         }
 
         public Author GetAuthor(Guid authorId)

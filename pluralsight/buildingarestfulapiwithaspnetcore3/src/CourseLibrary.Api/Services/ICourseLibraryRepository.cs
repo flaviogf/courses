@@ -6,7 +6,7 @@ namespace CourseLibrary.Api.Services
 {
     public interface ICourseLibraryRepository
     {
-        IEnumerable<Author> GetAuthors();
+        IEnumerable<Author> GetAuthors(string mainCategory, string searchQuery);
 
         Author GetAuthor(Guid authorId);
 
