@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Text Message</title>
+  </head>
+  <body>
+    <form id="form">
+      <label for="phone"></label>
+      <input id="phone" name="phone" type="tel" />
+      <button>send</button>
+    </form>
+
+    <script>
+      (function () {
+        var API_URL = "";
+
+        document.querySelector("#form").onsubmit = function (e) {
+          e.preventDefault();
+
+          var phone = document.querySelector("#phone").value;
+
+          var data = { phone };
+
+          fetch(API_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then(() => alert("Thank you"))
+            .catch((err) => alert("Ops something goes wrong"));
+        };
+      })();
+    </script>
+  </body>
+</html>

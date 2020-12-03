@@ -1,0 +1,25 @@
+service: serverless-node-text-message
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  get:
+    handler: handler.get
+    events:
+      - http:
+          method: get
+          path: node-text-message
+  post:
+    handler: handler.post
+    events:
+      - http:
+          method: post
+          cors: true
+          path: node-text-message
+          integration: lambda
