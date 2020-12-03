@@ -55,5 +55,15 @@ namespace CourseLibrary.Api.Services
         {
             return _context.Courses.FirstOrDefault(it => it.AuthorId == authorId && it.Id == courseId);
         }
+
+        public void AddAuthor(Author author)
+        {
+            _context.Authors.Add(author);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }
