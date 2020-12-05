@@ -58,6 +58,13 @@ namespace CourseLibrary.Api.Services
 
         public void AddAuthor(Author author)
         {
+            author.Id = Guid.NewGuid();
+
+            foreach (var it in author.Courses)
+            {
+                it.AuthorId = author.Id;
+            }
+
             _context.Authors.Add(author);
         }
 
