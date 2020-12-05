@@ -19,6 +19,8 @@ namespace CourseLibrary.Api.Services
 
         void AddAuthor(Author author);
 
+        void AddCourse(Guid authorId, Course course);
+
         void Save();
     }
 }

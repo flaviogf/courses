@@ -68,6 +68,13 @@ namespace CourseLibrary.Api.Services
             _context.Authors.Add(author);
         }
 
+        public void AddCourse(Guid authorId, Course course)
+        {
+            course.AuthorId = authorId;
+
+            _context.Courses.Add(course);
+        }
+
         public void Save()
         {
             _context.SaveChanges();
