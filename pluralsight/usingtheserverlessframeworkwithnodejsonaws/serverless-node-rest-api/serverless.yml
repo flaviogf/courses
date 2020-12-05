@@ -1,0 +1,47 @@
+service: serverless-node-rest-api
+
+frameworkVersion: '2'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  apiGateway:
+    shouldStartNameWithService: true
+
+functions:
+  createAuthor:
+    handler: authors/create.create
+    events:
+      - http:
+          path: authors
+          method: post
+          cors: true
+  listAuthors:
+    handler: authors/list.list
+    events:
+      - http:
+          path: authors
+          method: get
+          cors: true
+  getAuthor:
+    handler: authors/get.get
+    events:
+      - http:
+          path: authors/{id}
+          method: get
+          cors: true
+  updateAuthor:
+    handler: authors/update.update
+    events:
+      - http:
+          path: authors/{id}
+          method: put
+          cors: true
+  deleteAuthor:
+    handler: authors/delete.delete
+    events:
+      - http:
+          path: authors/{id}
+          method: delete
+          cors: true
