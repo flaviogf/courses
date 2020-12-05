@@ -36,6 +36,11 @@ namespace CourseLibrary.Api.Services
             return result;
         }
 
+        public IEnumerable<Author> GetAuthors(IEnumerable<Guid> ids)
+        {
+            return _context.Authors.Where(it => ids.Contains(it.Id));
+        }
+
         public Author GetAuthor(Guid authorId)
         {
             return _context.Authors.FirstOrDefault(it => it.Id == authorId);
