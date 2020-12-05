@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CourseLibrary.Api.ValidationAttributes;
 
 namespace CourseLibrary.Api.Models
 {
+    [CourseTitleMustBeDifferentFromDescription]
     public class CourseForCreationDto : IValidatableObject
     {
         [Required]
