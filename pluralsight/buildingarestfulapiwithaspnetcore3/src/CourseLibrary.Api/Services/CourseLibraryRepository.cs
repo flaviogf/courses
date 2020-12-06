@@ -85,6 +85,11 @@ namespace CourseLibrary.Api.Services
 
         }
 
+        public void DeleteCourse(Course course)
+        {
+            _context.Courses.Remove(course);
+        }
+
         public void Save()
         {
             _context.SaveChanges();

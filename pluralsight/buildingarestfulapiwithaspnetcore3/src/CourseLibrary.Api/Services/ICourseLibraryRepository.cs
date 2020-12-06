@@ -25,6 +25,8 @@ namespace CourseLibrary.Api.Services
 
         void UpdateCourse(Course course);
 
+        void DeleteCourse(Course course);
+
         void Save();
     }
 }
