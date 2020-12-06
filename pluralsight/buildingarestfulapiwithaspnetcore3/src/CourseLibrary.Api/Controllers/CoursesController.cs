@@ -4,6 +4,7 @@ using AutoMapper;
 using CourseLibrary.Api.Entities;
 using CourseLibrary.Api.Models;
 using CourseLibrary.Api.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourseLibrary.Api.Controllers
@@ -100,6 +101,34 @@ namespace CourseLibrary.Api.Controllers
 
                 return CreatedAtRoute("GetAuthorCourse", new { authorId = authorId, courseId = courseForCreation.Id }, result);
             }
+
+            _mapper.Map(courseForUpdate, course);
+
+            _courseLibraryRepository.UpdateCourse(course);
+
+            _courseLibraryRepository.Save();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{courseId}")]
+        public ActionResult PartiallyUpdateCourseForAuthor(Guid authorId, Guid courseId, JsonPatchDocument<CourseForUpdateDto> patchDocument)
+        {
+            if (!_courseLibraryRepository.AuthorExists(authorId))
+            {
+                return NotFound();
+            }
+
+            var course = _courseLibraryRepository.GetCourse(authorId, courseId);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            var courseForUpdate = _mapper.Map<CourseForUpdateDto>(course);
+
+            patchDocument.ApplyTo(courseForUpdate);
 
             _mapper.Map(courseForUpdate, course);
 
