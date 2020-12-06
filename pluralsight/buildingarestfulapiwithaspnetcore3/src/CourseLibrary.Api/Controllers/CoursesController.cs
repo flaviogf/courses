@@ -123,7 +123,26 @@ namespace CourseLibrary.Api.Controllers
 
             if (course == null)
             {
-                return NotFound();
+                var courseForCreationDto = new CourseForUpdateDto();
+
+                patchDocument.ApplyTo(courseForCreationDto, ModelState);
+
+                if (!TryValidateModel(courseForCreationDto))
+                {
+                    return ValidationProblem(ModelState);
+                }
+
+                var courseForCreation = _mapper.Map<Course>(courseForCreationDto);
+
+                courseForCreation.Id = courseId;
+
+                _courseLibraryRepository.AddCourse(authorId, courseForCreation);
+
+                _courseLibraryRepository.Save();
+
+                var result = _mapper.Map<CourseDto>(courseForCreation);
+
+                return CreatedAtRoute("GetAuthorCourse", new { authorId = authorId, courseId = courseForCreation.Id }, result);
             }
 
             var courseForUpdate = _mapper.Map<CourseForUpdateDto>(course);
