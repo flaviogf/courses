@@ -63,6 +63,11 @@ namespace CourseLibrary.Api.Services
             _context.Authors.Add(author);
         }
 
+        public void DeleteAuthor(Author author)
+        {
+            _context.Authors.Remove(author);
+        }
+
         public IEnumerable<Course> GetCourses(Guid authorId)
         {
             return _context.Courses.Where(it => it.AuthorId == authorId);

@@ -69,5 +69,22 @@ namespace CourseLibrary.Api.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{authorId}")]
+        public ActionResult DeleteAuthor(Guid authorId)
+        {
+            var author = _courseLibraryRepository.GetAuthor(authorId);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            _courseLibraryRepository.DeleteAuthor(author);
+
+            _courseLibraryRepository.Save();
+
+            return NoContent();
+        }
     }
 }

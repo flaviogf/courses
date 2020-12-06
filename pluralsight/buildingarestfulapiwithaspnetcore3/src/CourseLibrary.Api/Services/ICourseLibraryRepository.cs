@@ -17,6 +17,8 @@ namespace CourseLibrary.Api.Services
 
         void AddAuthor(Author author);
 
+        void DeleteAuthor(Author author);
+
         IEnumerable<Course> GetCourses(Guid authorId);
 
         Course GetCourse(Guid authorId, Guid courseId);
