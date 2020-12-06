@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using CourseLibrary.Api.Models;
 
 namespace CourseLibrary.Api.ValidationAttributes
 {
@@ -13,9 +11,13 @@ namespace CourseLibrary.Api.ValidationAttributes
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var course = (CourseForCreationDto)validationContext.ObjectInstance;
+            var target = validationContext.ObjectInstance;
 
-            if (course.Title.Equals(course.Description, StringComparison.InvariantCultureIgnoreCase))
+            var title = target.GetType().GetProperty("Title")?.GetValue(target)?.ToString()?.ToLower();
+
+            var description = target.GetType().GetProperty("Description")?.GetValue(target)?.ToString()?.ToLower();
+
+            if (title == description)
             {
                 return new ValidationResult(ErrorMessage, new string[] { nameof(CourseTitleMustBeDifferentFromDescriptionAttribute) });
             }

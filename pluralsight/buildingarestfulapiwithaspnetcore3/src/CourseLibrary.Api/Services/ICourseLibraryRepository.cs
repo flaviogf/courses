@@ -15,13 +15,15 @@ namespace CourseLibrary.Api.Services
 
         bool AuthorExists(Guid authorId);
 
+        void AddAuthor(Author author);
+
         IEnumerable<Course> GetCourses(Guid authorId);
 
         Course GetCourse(Guid authorId, Guid courseId);
 
-        void AddAuthor(Author author);
-
         void AddCourse(Guid authorId, Course course);
+
+        void UpdateCourse(Course course);
 
         void Save();
     }

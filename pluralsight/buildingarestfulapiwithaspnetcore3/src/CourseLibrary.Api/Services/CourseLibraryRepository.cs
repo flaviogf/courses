@@ -51,16 +51,6 @@ namespace CourseLibrary.Api.Services
             return _context.Authors.Any(it => it.Id == authorId);
         }
 
-        public IEnumerable<Course> GetCourses(Guid authorId)
-        {
-            return _context.Courses.Where(it => it.AuthorId == authorId);
-        }
-
-        public Course GetCourse(Guid authorId, Guid courseId)
-        {
-            return _context.Courses.FirstOrDefault(it => it.AuthorId == authorId && it.Id == courseId);
-        }
-
         public void AddAuthor(Author author)
         {
             author.Id = Guid.NewGuid();
@@ -73,11 +63,26 @@ namespace CourseLibrary.Api.Services
             _context.Authors.Add(author);
         }
 
+        public IEnumerable<Course> GetCourses(Guid authorId)
+        {
+            return _context.Courses.Where(it => it.AuthorId == authorId);
+        }
+
+        public Course GetCourse(Guid authorId, Guid courseId)
+        {
+            return _context.Courses.FirstOrDefault(it => it.AuthorId == authorId && it.Id == courseId);
+        }
+
         public void AddCourse(Guid authorId, Course course)
         {
             course.AuthorId = authorId;
 
             _context.Courses.Add(course);
+        }
+
+        public void UpdateCourse(Course course)
+        {
+
         }
 
         public void Save()
