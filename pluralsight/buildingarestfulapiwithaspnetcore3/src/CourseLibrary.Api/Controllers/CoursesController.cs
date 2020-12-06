@@ -88,7 +88,17 @@ namespace CourseLibrary.Api.Controllers
 
             if (course == null)
             {
-                return NotFound();
+                var courseForCreation = _mapper.Map<Course>(courseForUpdate);
+
+                courseForCreation.Id = courseId;
+
+                _courseLibraryRepository.AddCourse(authorId, courseForCreation);
+
+                _courseLibraryRepository.Save();
+
+                var result = _mapper.Map<CourseDto>(courseForCreation);
+
+                return CreatedAtRoute("GetAuthorCourse", new { authorId = authorId, courseId = courseForCreation.Id }, result);
             }
 
             _mapper.Map(courseForUpdate, course);
