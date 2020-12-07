@@ -28,7 +28,10 @@ namespace CourseLibrary.Api.Services
                 query = query.Where(it => it.FirstName.Contains(authorResourceParameter.SearchQuery) || it.LastName.Contains(authorResourceParameter.SearchQuery) || it.MainCategory.Contains(authorResourceParameter.SearchQuery));
             }
 
-            return query.ToList();
+            return query
+                .Skip((authorResourceParameter.PageNumber - 1) * authorResourceParameter.PageSize)
+                .Take(authorResourceParameter.PageSize)
+                .ToList();
         }
     }
 }
