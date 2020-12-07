@@ -1,3 +1,6 @@
+using System.Reflection;
+using AutoMapper;
+using CourseLibrary.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +22,10 @@ namespace CourseLibrary.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(it => it.UseSqlite(_configuration.GetConnectionString("Default")));
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
             services.AddControllers();
         }
