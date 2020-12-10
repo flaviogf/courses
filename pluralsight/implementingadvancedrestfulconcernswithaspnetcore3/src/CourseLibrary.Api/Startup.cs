@@ -25,6 +25,8 @@ namespace CourseLibrary.Api
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            services.AddTransient<IPropertyMappingService, PropertyMappingService>();
+
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
             services.AddControllers();

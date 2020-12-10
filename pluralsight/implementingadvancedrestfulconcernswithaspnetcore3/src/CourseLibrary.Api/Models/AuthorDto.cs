@@ -6,6 +6,6 @@ namespace CourseLibrary.Api.Models
 
         public string MainCategory { get; set; }
 
-        public int Year { get; set; }
+        public int Age { get; set; }
     }
 }
