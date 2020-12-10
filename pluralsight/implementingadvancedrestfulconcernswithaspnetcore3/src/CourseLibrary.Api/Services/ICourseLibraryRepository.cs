@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using CourseLibrary.Api.Entities;
+using CourseLibrary.Api.Helpers;
 using CourseLibrary.Api.ResourceParameters;
 
 namespace CourseLibrary.Api.Services
 {
     public interface ICourseLibraryRepository
     {
-        IEnumerable<Author> GetAuthors(AuthorResourceParameter authorResourceParameter);
+        PagedList<Author> GetAuthors(AuthorResourceParameter authorResourceParameter);
     }
 }

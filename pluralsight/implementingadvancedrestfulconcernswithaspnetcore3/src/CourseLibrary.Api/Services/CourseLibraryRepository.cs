@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 using CourseLibrary.Api.Entities;
+using CourseLibrary.Api.Helpers;
 using CourseLibrary.Api.ResourceParameters;
 
 namespace CourseLibrary.Api.Services
@@ -14,7 +14,7 @@ namespace CourseLibrary.Api.Services
             _context = context;
         }
 
-        public IEnumerable<Author> GetAuthors(AuthorResourceParameter authorResourceParameter)
+        public PagedList<Author> GetAuthors(AuthorResourceParameter authorResourceParameter)
         {
             var query = _context.Authors as IQueryable<Author>;
 
@@ -28,10 +28,7 @@ namespace CourseLibrary.Api.Services
                 query = query.Where(it => it.FirstName.Contains(authorResourceParameter.SearchQuery) || it.LastName.Contains(authorResourceParameter.SearchQuery) || it.MainCategory.Contains(authorResourceParameter.SearchQuery));
             }
 
-            return query
-                .Skip((authorResourceParameter.PageNumber - 1) * authorResourceParameter.PageSize)
-                .Take(authorResourceParameter.PageSize)
-                .ToList();
+            return new PagedList<Author>(query, authorResourceParameter.PageNumber, authorResourceParameter.PageSize);
         }
     }
 }

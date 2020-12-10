@@ -4,6 +4,8 @@ using CourseLibrary.Api.Models;
 using CourseLibrary.Api.ResourceParameters;
 using CourseLibrary.Api.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace CourseLibrary.Api.Controllers
 {
@@ -27,6 +29,18 @@ namespace CourseLibrary.Api.Controllers
             var authors = _courseLibraryRepository.GetAuthors(authorResourceParameter);
 
             var result = _mapper.Map<IEnumerable<AuthorDto>>(authors);
+
+            var pagination = new
+            {
+                authors.TotalCount,
+                authors.PageSize,
+                authors.CurrentPage,
+                authors.TotalPages
+            };
+
+            var metadata = JsonConvert.SerializeObject(pagination, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+
+            Response.Headers.Add("X-Pagination", metadata);
 
             return Ok(result);
         }
