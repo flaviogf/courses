@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AutoMapper;
+using CourseLibrary.Api.Helpers;
 using CourseLibrary.Api.Models;
 using CourseLibrary.Api.ResourceParameters;
 using CourseLibrary.Api.Services;
@@ -23,19 +24,25 @@ namespace CourseLibrary.Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetAuthors")]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery] AuthorResourceParameter authorResourceParameter)
         {
             var authors = _courseLibraryRepository.GetAuthors(authorResourceParameter);
 
             var result = _mapper.Map<IEnumerable<AuthorDto>>(authors);
 
+            var previousPageLink = authors.HasPrevious ? CreateAuthorsResourceUri(authorResourceParameter, ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = authors.HasNext ? CreateAuthorsResourceUri(authorResourceParameter, ResourceUriType.NextPage) : null;
+
             var pagination = new
             {
                 authors.TotalCount,
                 authors.PageSize,
                 authors.CurrentPage,
-                authors.TotalPages
+                authors.TotalPages,
+                previousPageLink,
+                nextPageLink,
             };
 
             var metadata = JsonConvert.SerializeObject(pagination, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
@@ -44,5 +51,31 @@ namespace CourseLibrary.Api.Controllers
 
             return Ok(result);
         }
+
+        private string CreateAuthorsResourceUri(AuthorResourceParameter authorResourceParameter, ResourceUriType resourceUriType) => resourceUriType switch
+        {
+            ResourceUriType.PreviousPage => Url.Link("GetAuthors", new
+            {
+                authorResourceParameter.MainCategory,
+                authorResourceParameter.SearchQuery,
+                PageNumber = authorResourceParameter.PageNumber - 1,
+                authorResourceParameter.PageSize
+            }),
+            ResourceUriType.NextPage => Url.Link("GetAuthors", new
+            {
+                authorResourceParameter.MainCategory,
+                authorResourceParameter.SearchQuery,
+                PageNumber = authorResourceParameter.PageNumber + 1,
+                authorResourceParameter.PageSize
+            }),
+            _ => Url.Link("GetAuthors", new
+            {
+                authorResourceParameter.MainCategory,
+                authorResourceParameter.SearchQuery,
+                authorResourceParameter.PageNumber,
+                authorResourceParameter.PageSize
+            })
+        };
+
     }
 }
