@@ -20,6 +20,25 @@ namespace CourseLibrary.Api.Services
             }));
         }
 
+        public bool ValidMappingExistsFor<TSource, TDestination>(string fields)
+        {
+            if (string.IsNullOrWhiteSpace(fields))
+            {
+                return true;
+            }
+
+            var propertyMapping = GetPropertyMapping<TSource, TDestination>();
+
+            return fields.Split(',').Select(it => it.Trim()).All(it =>
+            {
+                var indexFirstWhiteSpace = it.IndexOf(" ");
+
+                var propertyName = indexFirstWhiteSpace == -1 ? it : it.Remove(indexFirstWhiteSpace);
+
+                return propertyMapping.ContainsKey(propertyName);
+            });
+        }
+
         public IDictionary<string, PropertyMappingValue> GetPropertyMapping<TSource, TDestination>()
         {
             return _propertyMappings.OfType<PropertyMapping<TSource, TDestination>>().First().MappingDictionary;

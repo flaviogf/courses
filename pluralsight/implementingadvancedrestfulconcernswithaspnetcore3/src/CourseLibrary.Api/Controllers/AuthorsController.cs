@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AutoMapper;
+using CourseLibrary.Api.Entities;
 using CourseLibrary.Api.Helpers;
 using CourseLibrary.Api.Models;
 using CourseLibrary.Api.ResourceParameters;
@@ -19,15 +20,23 @@ namespace CourseLibrary.Api.Controllers
 
         private readonly IMapper _mapper;
 
-        public AuthorsController(ICourseLibraryRepository courseLibraryRepository, IMapper mapper)
+        private readonly IPropertyMappingService _propertyMappingService;
+
+        public AuthorsController(ICourseLibraryRepository courseLibraryRepository, IMapper mapper, IPropertyMappingService propertyMappingService)
         {
             _courseLibraryRepository = courseLibraryRepository;
             _mapper = mapper;
+            _propertyMappingService = propertyMappingService;
         }
 
         [HttpGet(Name = "GetAuthors")]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery] AuthorResourceParameter authorResourceParameter)
         {
+            if (!_propertyMappingService.ValidMappingExistsFor<AuthorDto, Author>(authorResourceParameter.OrderBy))
+            {
+                return BadRequest();
+            }
+
             var authors = _courseLibraryRepository.GetAuthors(authorResourceParameter);
 
             var result = _mapper.Map<IEnumerable<AuthorDto>>(authors).ShapeData(authorResourceParameter.Fields);
