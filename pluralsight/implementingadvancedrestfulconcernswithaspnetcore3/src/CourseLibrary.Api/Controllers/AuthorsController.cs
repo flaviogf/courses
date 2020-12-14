@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using CourseLibrary.Api.Helpers;
@@ -48,6 +49,21 @@ namespace CourseLibrary.Api.Controllers
             var metadata = JsonConvert.SerializeObject(pagination, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
 
             Response.Headers.Add("X-Pagination", metadata);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{authorId}")]
+        public ActionResult<AuthorDto> GetAuthor(Guid authorId, string fields)
+        {
+            var author = _courseLibraryRepository.GetAuthor(authorId);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            var result = _mapper.Map<AuthorDto>(author).ShapeData(fields);
 
             return Ok(result);
         }

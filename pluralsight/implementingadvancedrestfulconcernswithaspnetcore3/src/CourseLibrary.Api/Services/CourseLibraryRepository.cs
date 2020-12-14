@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using CourseLibrary.Api.Entities;
 using CourseLibrary.Api.Helpers;
@@ -40,6 +41,11 @@ namespace CourseLibrary.Api.Services
             }
 
             return new PagedList<Author>(query, authorResourceParameter.PageNumber, authorResourceParameter.PageSize);
+        }
+
+        public Author GetAuthor(Guid authorId)
+        {
+            return _context.Authors.FirstOrDefault(it => it.Id == authorId);
         }
     }
 }
