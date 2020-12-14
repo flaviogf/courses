@@ -22,17 +22,25 @@ namespace CourseLibrary.Api.Controllers
 
         private readonly IPropertyMappingService _propertyMappingService;
 
-        public AuthorsController(ICourseLibraryRepository courseLibraryRepository, IMapper mapper, IPropertyMappingService propertyMappingService)
+        private readonly IPropertyCheckerService _propertyCheckerService;
+
+        public AuthorsController(ICourseLibraryRepository courseLibraryRepository, IMapper mapper, IPropertyMappingService propertyMappingService, IPropertyCheckerService propertyCheckerService)
         {
             _courseLibraryRepository = courseLibraryRepository;
             _mapper = mapper;
             _propertyMappingService = propertyMappingService;
+            _propertyCheckerService = propertyCheckerService;
         }
 
         [HttpGet(Name = "GetAuthors")]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery] AuthorResourceParameter authorResourceParameter)
         {
             if (!_propertyMappingService.ValidMappingExistsFor<AuthorDto, Author>(authorResourceParameter.OrderBy))
+            {
+                return BadRequest();
+            }
+
+            if (!_propertyCheckerService.TypeHasProperties<AuthorDto>(authorResourceParameter.Fields))
             {
                 return BadRequest();
             }

@@ -27,6 +27,8 @@ namespace CourseLibrary.Api
 
             services.AddTransient<IPropertyMappingService, PropertyMappingService>();
 
+            services.AddTransient<IPropertyCheckerService, PropertyCheckerService>();
+
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
             services.AddControllers();
