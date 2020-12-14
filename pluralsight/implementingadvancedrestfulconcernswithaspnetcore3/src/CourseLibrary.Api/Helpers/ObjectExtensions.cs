@@ -21,7 +21,7 @@ namespace CourseLibrary.Api.Helpers
             return source.ShapeData(filteredPropertyInfos);
         }
 
-        public static ExpandoObject ShapeData(this object source, IEnumerable<PropertyInfo> propertyInfos)
+        public static ExpandoObject ShapeData<T>(this T source, IEnumerable<PropertyInfo> propertyInfos)
         {
             var result = new ExpandoObject();
 
