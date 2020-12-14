@@ -29,7 +29,7 @@ namespace CourseLibrary.Api.Controllers
         {
             var authors = _courseLibraryRepository.GetAuthors(authorResourceParameter);
 
-            var result = _mapper.Map<IEnumerable<AuthorDto>>(authors);
+            var result = _mapper.Map<IEnumerable<AuthorDto>>(authors).ShapeData(authorResourceParameter.Fields);
 
             var previousPageLink = authors.HasPrevious ? CreateAuthorsResourceUri(authorResourceParameter, ResourceUriType.PreviousPage) : null;
 
