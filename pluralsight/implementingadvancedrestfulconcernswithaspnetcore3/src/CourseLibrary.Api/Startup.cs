@@ -21,6 +21,8 @@ namespace CourseLibrary.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCaching();
+
             services.AddDbContext<ApplicationContext>(it => it.UseSqlite(_configuration.GetConnectionString("Default")));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -40,6 +42,8 @@ namespace CourseLibrary.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseResponseCaching();
 
             app.UseRouting();
 

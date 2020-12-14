@@ -13,6 +13,7 @@ using Newtonsoft.Json.Serialization;
 namespace CourseLibrary.Api.Controllers
 {
     [ApiController]
+    [ResponseCache(Duration = 120)]
     [Route("api/authors")]
     public class AuthorsController : ControllerBase
     {
