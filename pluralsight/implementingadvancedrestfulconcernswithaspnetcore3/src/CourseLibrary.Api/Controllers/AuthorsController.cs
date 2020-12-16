@@ -13,7 +13,6 @@ using Newtonsoft.Json.Serialization;
 namespace CourseLibrary.Api.Controllers
 {
     [ApiController]
-    [ResponseCache(Duration = 120)]
     [Route("api/authors")]
     public class AuthorsController : ControllerBase
     {
@@ -34,6 +33,7 @@ namespace CourseLibrary.Api.Controllers
         }
 
         [HttpGet(Name = "GetAuthors")]
+        [ResponseCache(Duration = 120)]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery] AuthorResourceParameter authorResourceParameter)
         {
             if (!_propertyMappingService.ValidMappingExistsFor<AuthorDto, Author>(authorResourceParameter.OrderBy))
