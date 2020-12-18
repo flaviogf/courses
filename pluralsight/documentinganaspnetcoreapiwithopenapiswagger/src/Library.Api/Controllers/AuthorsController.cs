@@ -48,5 +48,30 @@ namespace Library.Api.Controllers
 
             return Ok(_mapper.Map<AuthorDto>(author));
         }
+
+        /// <summary>
+        /// Update an author
+        ///</summary>
+        /// <param name="authorId">The id of the author to update</param>
+        /// <param name="authorForUpdate">The author with the updated values</param>
+        /// <returns>An ActionResult of type AuthorDto</returns>
+        [HttpPut("{authorId}")]
+        public ActionResult<AuthorDto> UpdateAuthor(Guid authorId, AuthorForUpdateDto authorForUpdate)
+        {
+            var author = _authorRepository.GetAuthor(authorId);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(authorForUpdate, author);
+
+            _authorRepository.UpdateAuthor(author);
+
+            _authorRepository.SaveChanges();
+
+            return Ok(_mapper.Map<AuthorDto>(author));
+        }
     }
 }

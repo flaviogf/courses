@@ -9,6 +9,8 @@ namespace Library.Api.Profiles
         public AuthorProfile()
         {
             CreateMap<Author, AuthorDto>();
+
+            CreateMap<AuthorForUpdateDto, Author>();
         }
     }
 }

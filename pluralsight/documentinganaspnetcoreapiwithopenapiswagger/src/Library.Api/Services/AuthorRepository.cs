@@ -23,5 +23,15 @@ namespace Library.Api.Services
         {
             return _context.Authors.FirstOrDefault(it => it.Id == authorId);
         }
+
+        public void UpdateAuthor(Author author)
+        {
+
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

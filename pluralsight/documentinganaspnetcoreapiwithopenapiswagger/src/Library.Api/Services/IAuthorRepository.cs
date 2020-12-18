@@ -9,5 +9,9 @@ namespace Library.Api.Services
         IEnumerable<Author> GetAuthors();
 
         Author GetAuthor(Guid authorId);
+
+        void UpdateAuthor(Author author);
+
+        void SaveChanges();
     }
 }
