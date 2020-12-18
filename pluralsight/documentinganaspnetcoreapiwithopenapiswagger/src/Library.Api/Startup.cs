@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Library.Api
 {
@@ -28,6 +29,15 @@ namespace Library.Api
             services.AddScoped<IAuthorRepository, AuthorRepository>();
 
             services.AddControllers();
+
+            services.AddSwaggerGen(it =>
+            {
+                it.SwaggerDoc("LibraryOpenApiSpecification", new OpenApiInfo
+                {
+                    Title = "Library API",
+                    Version = "1"
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,6 +48,8 @@ namespace Library.Api
             }
 
             app.UseRouting();
+
+            app.UseSwagger();
 
             app.UseEndpoints(it => it.MapControllers());
         }
