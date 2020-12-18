@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Library.Api.Entities;
 
 namespace Library.Api.Services
@@ -15,6 +17,11 @@ namespace Library.Api.Services
         public IEnumerable<Author> GetAuthors()
         {
             return _context.Authors;
+        }
+
+        public Author GetAuthor(Guid authorId)
+        {
+            return _context.Authors.FirstOrDefault(it => it.Id == authorId);
         }
     }
 }

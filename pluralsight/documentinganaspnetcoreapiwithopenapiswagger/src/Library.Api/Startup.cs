@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Reflection;
 using AutoMapper;
 using Library.Api.Services;
@@ -37,6 +39,8 @@ namespace Library.Api
                     Title = "Library API",
                     Version = "1"
                 });
+
+                it.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             });
         }
 
@@ -50,6 +54,12 @@ namespace Library.Api
             app.UseRouting();
 
             app.UseSwagger();
+
+            app.UseSwaggerUI(it =>
+            {
+                it.SwaggerEndpoint("/swagger/LibraryOpenApiSpecification/swagger.json", "Library API");
+                it.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(it => it.MapControllers());
         }

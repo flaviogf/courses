@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Library.Api.Models;
@@ -20,10 +21,32 @@ namespace Library.Api.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Get a list of authors
+        /// </summary>
+        /// <returns>An ActionResult of type IEnumerable of AuthorDto</returns>
         [HttpGet]
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
             return Ok(_mapper.Map<IEnumerable<AuthorDto>>(_authorRepository.GetAuthors()));
+        }
+
+        /// <summary>
+        /// Get an author by his/her id
+        /// </summary>
+        /// <param name="authorId">The id of the author you want to get</param>
+        /// <returns>An ActionResult of type AuthorDto</returns>
+        [HttpGet("{authorId}")]
+        public ActionResult<AuthorDto> GetAuthor(Guid authorId)
+        {
+            var author = _authorRepository.GetAuthor(authorId);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(_mapper.Map<AuthorDto>(author));
         }
     }
 }
