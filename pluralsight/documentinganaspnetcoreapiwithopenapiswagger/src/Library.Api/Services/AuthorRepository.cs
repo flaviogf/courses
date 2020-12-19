@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Library.Api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Api.Services
 {
@@ -27,6 +28,11 @@ namespace Library.Api.Services
         public void UpdateAuthor(Author author)
         {
 
+        }
+
+        public Book GetBook(Guid authorId, Guid bookId)
+        {
+            return _context.Books.Include(it => it.Author).FirstOrDefault(it => it.AuthorId == authorId && it.Id == bookId);
         }
 
         public void SaveChanges()

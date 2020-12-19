@@ -12,6 +12,8 @@ namespace Library.Api.Services
 
         void UpdateAuthor(Author author);
 
+        Book GetBook(Guid authorId, Guid bookId);
+
         void SaveChanges();
     }
 }
