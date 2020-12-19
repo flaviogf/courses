@@ -12,6 +12,10 @@ namespace Library.Api.Services
 
         void UpdateAuthor(Author author);
 
+        bool AuthorExists(Guid authorId);
+
+        IEnumerable<Book> GetBooks(Guid authorId);
+
         Book GetBook(Guid authorId, Guid bookId);
 
         void SaveChanges();

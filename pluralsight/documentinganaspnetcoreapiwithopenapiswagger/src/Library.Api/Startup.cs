@@ -5,6 +5,8 @@ using AutoMapper;
 using Library.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +32,12 @@ namespace Library.Api
 
             services.AddScoped<IAuthorRepository, AuthorRepository>();
 
-            services.AddControllers();
+            services.AddControllers(it =>
+            {
+                it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status400BadRequest));
+                it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status406NotAcceptable));
+                it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status500InternalServerError));
+            });
 
             services.AddSwaggerGen(it =>
             {

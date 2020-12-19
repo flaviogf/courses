@@ -30,6 +30,16 @@ namespace Library.Api.Services
 
         }
 
+        public bool AuthorExists(Guid authorId)
+        {
+            return _context.Authors.Any(it => it.Id == authorId);
+        }
+
+        public IEnumerable<Book> GetBooks(Guid authorId)
+        {
+            return _context.Books.Include(it => it.Author).Where(it => it.AuthorId == authorId);
+        }
+
         public Book GetBook(Guid authorId, Guid bookId)
         {
             return _context.Books.Include(it => it.Author).FirstOrDefault(it => it.AuthorId == authorId && it.Id == bookId);

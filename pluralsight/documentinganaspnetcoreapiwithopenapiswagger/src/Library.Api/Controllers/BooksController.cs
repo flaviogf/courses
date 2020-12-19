@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AutoMapper;
 using Library.Api.Models;
 using Library.Api.Services;
@@ -19,6 +20,26 @@ namespace Library.Api.Controllers
         {
             _authorRepository = authorRepository;
             _mapper = mapper;
+        }
+
+        /// <summary>
+        /// Get the books for a specific author
+        /// </summary>
+        /// <param name="authorId">The id of the book author</param>
+        /// <returns>An ActionResult of type IEnumerable of Book</returns>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<BookDto>> GetBooks(Guid authorId)
+        {
+            if (!_authorRepository.AuthorExists(authorId))
+            {
+                return NotFound();
+            }
+
+            var books = _authorRepository.GetBooks(authorId);
+
+            return Ok(_mapper.Map<IEnumerable<BookDto>>(books));
         }
 
         /// <summary>
