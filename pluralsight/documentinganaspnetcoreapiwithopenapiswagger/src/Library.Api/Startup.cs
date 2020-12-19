@@ -37,7 +37,19 @@ namespace Library.Api
                 it.SwaggerDoc("LibraryOpenApiSpecification", new OpenApiInfo
                 {
                     Title = "Library API",
-                    Version = "1"
+                    Version = "1",
+                    Description = "Through this api you can access authors and their books.",
+                    Contact = new OpenApiContact
+                    {
+                        Email = "flavio@flaviogf.com.br",
+                        Name = "Flavio",
+                        Url = new Uri("https://flaviogf.com.br")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "MIT",
+                        Url = new Uri("https://opensource.org/licenses/MIT")
+                    }
                 });
 
                 it.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
