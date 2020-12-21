@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,10 @@ namespace Library.Api
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status400BadRequest));
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status406NotAcceptable));
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status500InternalServerError));
+
+                it.ReturnHttpNotAcceptable = true;
+
+                it.OutputFormatters.Add(new XmlSerializerOutputFormatter());
             });
 
             services.AddSwaggerGen(it =>

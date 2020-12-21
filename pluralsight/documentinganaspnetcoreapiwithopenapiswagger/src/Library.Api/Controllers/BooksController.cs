@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Library.Api.Controllers
 {
     [ApiController]
+    [Produces("application/json", "application/xml")]
     [Route("api/authors/{authorId}/books")]
     public class BooksController : ControllerBase
     {
