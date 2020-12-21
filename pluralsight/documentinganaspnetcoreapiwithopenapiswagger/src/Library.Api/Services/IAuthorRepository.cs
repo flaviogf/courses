@@ -14,6 +14,8 @@ namespace Library.Api.Services
 
         bool AuthorExists(Guid authorId);
 
+        void CreateBook(Guid authorId, Book book);
+
         IEnumerable<Book> GetBooks(Guid authorId);
 
         Book GetBook(Guid authorId, Guid bookId);

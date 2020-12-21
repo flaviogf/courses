@@ -35,6 +35,13 @@ namespace Library.Api.Services
             return _context.Authors.Any(it => it.Id == authorId);
         }
 
+        public void CreateBook(Guid authorId, Book book)
+        {
+            book.AuthorId = authorId;
+
+            _context.Books.Add(book);
+        }
+
         public IEnumerable<Book> GetBooks(Guid authorId)
         {
             return _context.Books.Include(it => it.Author).Where(it => it.AuthorId == authorId);

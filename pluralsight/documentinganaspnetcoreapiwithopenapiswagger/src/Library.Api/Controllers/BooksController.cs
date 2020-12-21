@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using AutoMapper;
+using Library.Api.Entities;
 using Library.Api.Models;
 using Library.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Library.Api.Controllers
 {
@@ -63,6 +65,34 @@ namespace Library.Api.Controllers
             }
 
             return Ok(_mapper.Map<BookDto>(book));
+        }
+
+        /// <summary>
+        /// Create a book for a specific author
+        /// </summary>
+        /// <param name="authorId">The id of the book author</param>
+        /// <param name="bookForCreation">The book to create</param>
+        /// <returns>An ActionResult of type BookDto</returns>
+        /// <responses code="422">Validation error</responses>
+        [HttpPost]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        public ActionResult<BookDto> CreateBook(Guid authorId, BookForCreationDto bookForCreation)
+        {
+            if (!_authorRepository.AuthorExists(authorId))
+            {
+                return NotFound();
+            }
+
+            var book = _mapper.Map<Book>(bookForCreation);
+
+            _authorRepository.CreateBook(authorId, book);
+
+            _authorRepository.SaveChanges();
+
+            return CreatedAtAction(nameof(GetBook), new { authorId, bookId = book.Id }, _mapper.Map<BookDto>(book));
         }
     }
 }
