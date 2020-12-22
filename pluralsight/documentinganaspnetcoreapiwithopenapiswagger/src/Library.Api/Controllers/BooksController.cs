@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using AutoMapper;
+using Library.Api.Attributes;
 using Library.Api.Entities;
 using Library.Api.Models;
 using Library.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Net.Http.Headers;
 
 namespace Library.Api.Controllers
 {
@@ -53,8 +54,10 @@ namespace Library.Api.Controllers
         /// <returns>An ActionResult of type Book</returns>
         /// <response code="200">Returns the requested book</response>
         [HttpGet("{bookId}")]
+        [Produces("application/vnd.marvin.book+json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [RequestHeaderMatchesMediaType(nameof(HeaderNames.Accept), "application/json", "application/vnd.marvin.book+json")]
         public ActionResult<BookDto> GetBook(Guid authorId, Guid bookId)
         {
             var book = _authorRepository.GetBook(authorId, bookId);
@@ -65,6 +68,29 @@ namespace Library.Api.Controllers
             }
 
             return Ok(_mapper.Map<BookDto>(book));
+        }
+
+        /// <summary>
+        /// Get a book by id for a specific author
+        /// </summary>
+        /// <param name="authorId">The id of the book author</param>
+        /// <param name="bookId">The id of the book</param>
+        /// <returns>An ActionResult of type BookWithConcatenatedAuthorNameDto</returns>
+        [HttpGet("{bookId}")]
+        [Produces("application/vnd.marvin.bookwithconcatenatedauthorname+json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [RequestHeaderMatchesMediaType(nameof(HeaderNames.Accept), "application/json", "application/vnd.marvin.bookwithconcatenatedauthorname+json")]
+        public ActionResult<BookWithConcatenatedAuthorNameDto> GetBookWithConcatenatedAuthorName(Guid authorId, Guid bookId)
+        {
+            var book = _authorRepository.GetBook(authorId, bookId);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(_mapper.Map<BookWithConcatenatedAuthorNameDto>(book));
         }
 
         /// <summary>

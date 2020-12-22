@@ -13,6 +13,9 @@ namespace Library.Api.Profiles
                 .ForMember((it) => it.AuthorLastName, (it) => it.MapFrom(x => x.Author.LastName));
 
             CreateMap<BookForCreationDto, Book>();
+
+            CreateMap<Book, BookWithConcatenatedAuthorNameDto>()
+                .ForMember((it) => it.Author, (it) => it.MapFrom(x => $"{x.Author.FirstName} {x.Author.LastName}"));
         }
     }
 }
