@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using AutoMapper;
+using Library.Api.OperationFilters;
 using Library.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -65,6 +66,8 @@ namespace Library.Api
                 });
 
                 it.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+
+                it.OperationFilter<GetBookOperationFilter>();
             });
         }
 

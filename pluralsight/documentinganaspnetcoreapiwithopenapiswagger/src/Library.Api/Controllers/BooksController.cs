@@ -53,7 +53,7 @@ namespace Library.Api.Controllers
         /// <param name="bookId">The id of the book</param>
         /// <returns>An ActionResult of type Book</returns>
         /// <response code="200">Returns the requested book</response>
-        [HttpGet("{bookId}")]
+        [HttpGet("{bookId}", Name = "GetBook")]
         [Produces("application/vnd.marvin.book+json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -81,6 +81,7 @@ namespace Library.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [RequestHeaderMatchesMediaType(nameof(HeaderNames.Accept), "application/json", "application/vnd.marvin.bookwithconcatenatedauthorname+json")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public ActionResult<BookWithConcatenatedAuthorNameDto> GetBookWithConcatenatedAuthorName(Guid authorId, Guid bookId)
         {
             var book = _authorRepository.GetBook(authorId, bookId);

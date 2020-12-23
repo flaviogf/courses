@@ -23,7 +23,7 @@ namespace Library.Api.Attributes
 
             foreach (var it in otherMediaTypes)
             {
-                if (MediaTypeHeaderValue.TryParse(mediaType, out var otherParsedMediaType)) _mediaTypeCollection.Add(otherParsedMediaType);
+                if (MediaTypeHeaderValue.TryParse(it, out var otherParsedMediaType)) _mediaTypeCollection.Add(otherParsedMediaType);
             }
         }
 
