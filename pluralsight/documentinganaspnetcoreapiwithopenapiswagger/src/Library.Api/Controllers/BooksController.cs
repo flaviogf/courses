@@ -14,7 +14,6 @@ namespace Library.Api.Controllers
     [ApiController]
     [Produces("application/json", "application/xml")]
     [Route("api/v{version:apiVersion}/authors/{authorId}/books")]
-    [ApiExplorerSettings(GroupName = "LibraryOpenApiSpecification")]
     public class BooksController : ControllerBase
     {
         private readonly IAuthorRepository _authorRepository;
