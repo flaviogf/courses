@@ -34,6 +34,13 @@ namespace Library.Api
 
             services.AddScoped<IAuthorRepository, AuthorRepository>();
 
+            services.AddApiVersioning(it =>
+            {
+                it.AssumeDefaultVersionWhenUnspecified = true;
+                it.DefaultApiVersion = new ApiVersion(1, 0);
+                it.ReportApiVersions = true;
+            });
+
             services.AddControllers(it =>
             {
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status400BadRequest));
@@ -47,29 +54,11 @@ namespace Library.Api
 
             services.AddSwaggerGen(it =>
             {
-                it.SwaggerDoc("LibraryOpenApiSpecificationAuthors", new OpenApiInfo
+                it.SwaggerDoc("LibraryOpenApiSpecification", new OpenApiInfo
                 {
-                    Title = "Library API (Authors)",
+                    Title = "Library API",
                     Version = "1",
-                    Description = "Through this api you can access authors.",
-                    Contact = new OpenApiContact
-                    {
-                        Email = "flavio@flaviogf.com.br",
-                        Name = "Flavio",
-                        Url = new Uri("https://flaviogf.com.br")
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "MIT",
-                        Url = new Uri("https://opensource.org/licenses/MIT")
-                    }
-                });
-
-                it.SwaggerDoc("LibraryOpenApiSpecificationBooks", new OpenApiInfo
-                {
-                    Title = "Library API (Books)",
-                    Version = "1",
-                    Description = "Through this api you can access books.",
+                    Description = "Through this api you can access authors and bookx.",
                     Contact = new OpenApiContact
                     {
                         Email = "flavio@flaviogf.com.br",
@@ -102,8 +91,7 @@ namespace Library.Api
 
             app.UseSwaggerUI(it =>
             {
-                it.SwaggerEndpoint("/swagger/LibraryOpenApiSpecificationAuthors/swagger.json", "Library API (Authors)");
-                it.SwaggerEndpoint("/swagger/LibraryOpenApiSpecificationBooks/swagger.json", "Library API (Books)");
+                it.SwaggerEndpoint("/swagger/LibraryOpenApiSpecification/swagger.json", "Library API");
                 it.RoutePrefix = string.Empty;
             });
 

@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Library.Api.Controllers
 {
     [ApiController]
-    [Route("api/authors")]
-    [ApiExplorerSettings(GroupName = "LibraryOpenApiSpecificationAuthors")]
+    [Route("api/v{version:apiVersion}/authors")]
+    [ApiExplorerSettings(GroupName = "LibraryOpenApiSpecification")]
     public class AuthorsController : ControllerBase
     {
         private readonly IAuthorRepository _authorRepository;
