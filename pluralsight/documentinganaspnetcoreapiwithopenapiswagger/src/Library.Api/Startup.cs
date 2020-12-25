@@ -3,14 +3,17 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using AutoMapper;
+using Library.Api.Authentication;
 using Library.Api.OperationFilters;
 using Library.Api.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +58,9 @@ namespace Library.Api
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status400BadRequest));
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status406NotAcceptable));
                 it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status500InternalServerError));
+                it.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status401Unauthorized));
+
+                it.Filters.Add(new AuthorizeFilter());
 
                 it.ReturnHttpNotAcceptable = true;
 
@@ -86,6 +92,28 @@ namespace Library.Api
                     });
                 }
 
+                it.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    Description = "Input your username and password to access this API"
+                });
+
+                it.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id =  "basicAuth"
+                            }
+                        },
+                        new string[] { }
+                    },
+                });
+
                 it.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 
                 it.OperationFilter<GetBookOperationFilter>();
@@ -107,6 +135,10 @@ namespace Library.Api
                     return model.ImplementedApiVersions.Any(v => $"LibraryOpenApiSpecificationv{v.ToString()}" == name);
                 });
             });
+
+            services
+                .AddAuthentication("Basic")
+                .AddScheme<AuthenticationSchemeOptions, BaseAuthenticationHandler>("Basic", null);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider apiVersionDescriptionProvider)
@@ -129,6 +161,8 @@ namespace Library.Api
 
                 it.RoutePrefix = string.Empty;
             });
+
+            app.UseAuthentication();
 
             app.UseEndpoints(it => it.MapControllers());
         }
