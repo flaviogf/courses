@@ -1,4 +1,5 @@
 using Books.Api.Contexts;
+using Books.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ namespace Books.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BooksContext>(it => it.UseSqlite(_configuration.GetConnectionString("Default")));
+
+            services.AddScoped<IBooksRepository, BooksRepository>();
 
             services.AddControllers();
         }
