@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Books.Api.Contexts;
 using Books.Api.Entities;
@@ -14,6 +15,22 @@ namespace Books.Api.Services
         public BooksRepository(BooksContext context)
         {
             _context = context;
+        }
+
+        public IEnumerable<Book> GetBooks()
+        {
+            return _context
+                .Books
+                .Include(it => it.Author)
+                .ToList();
+        }
+
+        public Book GetBook(Guid id)
+        {
+            return _context
+                .Books
+                .Include(it => it.Author)
+                .FirstOrDefault(it => it.Id == id);
         }
 
         public async Task<IEnumerable<Book>> GetBooksAsync()
