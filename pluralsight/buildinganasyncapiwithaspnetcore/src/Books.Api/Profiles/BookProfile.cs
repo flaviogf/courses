@@ -10,6 +10,8 @@ namespace Books.Api.Profiles
         {
             CreateMap<Book, BookDto>()
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => $"{src.Author.FirstName} {src.Author.LastName}"));
+
+            CreateMap<BookForCreationDto, Book>();
         }
     }
 }

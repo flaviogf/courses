@@ -48,5 +48,19 @@ namespace Books.Api.Services
                 .Include(it => it.Author)
                 .FirstOrDefaultAsync(it => it.Id == id);
         }
+
+        public void AddBook(Book book)
+        {
+            book.Id = Guid.NewGuid();
+
+            _context.Add(book);
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            var result = await _context.SaveChangesAsync();
+
+            return result > 0;
+        }
     }
 }
