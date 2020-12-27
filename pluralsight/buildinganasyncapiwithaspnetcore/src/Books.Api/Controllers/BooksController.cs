@@ -17,6 +17,7 @@ namespace Books.Api.Controllers
             _booksRepository = booksRepository;
         }
 
+        [BooksResultFilter]
         [HttpGet]
         public async Task<IActionResult> GetBooks()
         {

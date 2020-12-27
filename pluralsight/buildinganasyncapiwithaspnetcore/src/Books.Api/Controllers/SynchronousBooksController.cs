@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Books.Api.Entities;
+using Books.Api.Filters;
 using Books.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace Books.Api.Controllers
             _booksRepository = booksRepository;
         }
 
+        [BooksResultFilter]
         [HttpGet]
         public ActionResult<IEnumerable<Book>> GetBooks()
         {
