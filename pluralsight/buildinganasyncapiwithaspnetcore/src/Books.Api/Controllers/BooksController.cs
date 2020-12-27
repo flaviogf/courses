@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Books.Api.Filters;
 using Books.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace Books.Api.Controllers
             return Ok(books);
         }
 
+        [BookResultFilter]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBook(Guid id)
         {

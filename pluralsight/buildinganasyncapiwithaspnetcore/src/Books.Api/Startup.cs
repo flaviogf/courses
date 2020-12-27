@@ -1,3 +1,5 @@
+using System.Reflection;
+using AutoMapper;
 using Books.Api.Contexts;
 using Books.Api.Services;
 using Microsoft.AspNetCore.Builder;
@@ -23,6 +25,8 @@ namespace Books.Api
             services.AddDbContext<BooksContext>(it => it.UseSqlite(_configuration.GetConnectionString("Default")));
 
             services.AddScoped<IBooksRepository, BooksRepository>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddControllers();
         }
