@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Books.Api.Entities;
+using Books.Api.Filters;
 using Books.Api.Models;
 using Books.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +13,7 @@ namespace Books.Api.Controllers
 {
     [ApiController]
     [Route("api/bookcollections")]
+    [BooksResultFilter]
     public class BookCollectionsController : ControllerBase
     {
         private readonly IBooksRepository _booksRepository;
@@ -19,6 +23,19 @@ namespace Books.Api.Controllers
         {
             _booksRepository = booksRepository;
             _mapper = mapper;
+        }
+
+        [HttpGet("({booksId})")]
+        public async Task<IActionResult> GetBookCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> booksId)
+        {
+            var books = await _booksRepository.GetBooksAsync(booksId);
+
+            if (books.Count() != booksId.Count())
+            {
+                return NotFound();
+            }
+
+            return Ok(books);
         }
 
         [HttpPost]
