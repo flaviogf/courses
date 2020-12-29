@@ -85,6 +85,34 @@ namespace Books.Api.Services
             return JsonConvert.DeserializeObject<BookCover>(await response.Content.ReadAsStringAsync());
         }
 
+        public async Task<IEnumerable<BookCover>> GetBookCoversAsync(Guid bookId)
+        {
+            var urls = new string[]
+            {
+                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-1",
+                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-2",
+                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-3",
+                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-4",
+                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-5",
+            };
+
+            var httpClient = _httpClientFactory.CreateClient();
+
+            var tasks = urls.Select(async it =>
+            {
+                var response = await httpClient.GetAsync(it);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                return JsonConvert.DeserializeObject<BookCover>(await response.Content.ReadAsStringAsync());
+            });
+
+            return await Task.WhenAll(tasks);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             var result = await _context.SaveChangesAsync();

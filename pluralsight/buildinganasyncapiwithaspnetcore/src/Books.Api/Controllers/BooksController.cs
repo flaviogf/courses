@@ -32,7 +32,7 @@ namespace Books.Api.Controllers
             return Ok(books);
         }
 
-        [BookResultFilter]
+        [BookWithCoversResultFilter]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBook(Guid id)
         {
@@ -43,9 +43,9 @@ namespace Books.Api.Controllers
                 return NotFound();
             }
 
-            var bookCovers = await _booksRepository.GetBookCoverAsync("dummy");
+            var bookCovers = await _booksRepository.GetBookCoversAsync(book.Id);
 
-            return Ok(book);
+            return Ok((book, bookCovers));
         }
 
         [HttpPost]
