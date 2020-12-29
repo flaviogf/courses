@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Books.Api.Entities;
+using Books.Api.ExternalModels;
 
 namespace Books.Api.Services
 {
@@ -18,6 +19,8 @@ namespace Books.Api.Services
         Task<Book> GetBookAsync(Guid id);
 
         void AddBook(Book book);
+
+        Task<BookCover> GetBookCoverAsync(string coverId);
 
         Task<bool> SaveChangesAsync();
     }

@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Books.Api.Contexts;
 using Books.Api.Entities;
+using Books.Api.ExternalModels;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Books.Api.Services
 {
@@ -12,9 +15,12 @@ namespace Books.Api.Services
     {
         private readonly BooksContext _context;
 
-        public BooksRepository(BooksContext context)
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public BooksRepository(BooksContext context, IHttpClientFactory httpClientFactory)
         {
             _context = context;
+            _httpClientFactory = httpClientFactory;
         }
 
         public IEnumerable<Book> GetBooks()
@@ -63,6 +69,20 @@ namespace Books.Api.Services
             book.Id = Guid.NewGuid();
 
             _context.Add(book);
+        }
+
+        public async Task<BookCover> GetBookCoverAsync(string coverId)
+        {
+            var httpClient = _httpClientFactory.CreateClient();
+
+            var response = await httpClient.GetAsync($"http://localhost:5002/api/bookcovers/{coverId}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            return JsonConvert.DeserializeObject<BookCover>(await response.Content.ReadAsStringAsync());
         }
 
         public async Task<bool> SaveChangesAsync()

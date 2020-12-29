@@ -28,6 +28,8 @@ namespace Books.Api
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            services.AddHttpClient();
+
             services.AddControllers();
         }
 
