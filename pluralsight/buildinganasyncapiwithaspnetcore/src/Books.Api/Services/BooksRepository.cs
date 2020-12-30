@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Books.Api.Contexts;
 using Books.Api.Entities;
 using Books.Api.ExternalModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace Books.Api.Services
@@ -17,10 +19,13 @@ namespace Books.Api.Services
 
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public BooksRepository(BooksContext context, IHttpClientFactory httpClientFactory)
+        private readonly ILogger<BooksRepository> _logger;
+
+        public BooksRepository(BooksContext context, IHttpClientFactory httpClientFactory, ILogger<BooksRepository> logger)
         {
             _context = context;
             _httpClientFactory = httpClientFactory;
+            _logger = logger;
         }
 
         public IEnumerable<Book> GetBooks()
@@ -90,7 +95,7 @@ namespace Books.Api.Services
             var urls = new string[]
             {
                 $"http://localhost:5002/api/bookcovers/{bookId}-dummy-1",
-                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-2",
+                $"http://localhost:5002/api/bookcovers/{bookId}-dummy-2?returnFault=true",
                 $"http://localhost:5002/api/bookcovers/{bookId}-dummy-3",
                 $"http://localhost:5002/api/bookcovers/{bookId}-dummy-4",
                 $"http://localhost:5002/api/bookcovers/{bookId}-dummy-5",
@@ -98,19 +103,34 @@ namespace Books.Api.Services
 
             var httpClient = _httpClientFactory.CreateClient();
 
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            var token = cancellationTokenSource.Token;
+
             var tasks = urls.Select(async it =>
             {
-                var response = await httpClient.GetAsync(it);
+                var response = await httpClient.GetAsync(it, token);
 
                 if (!response.IsSuccessStatusCode)
                 {
+                    cancellationTokenSource.Cancel();
+
                     return null;
                 }
 
                 return JsonConvert.DeserializeObject<BookCover>(await response.Content.ReadAsStringAsync());
             });
 
-            return await Task.WhenAll(tasks);
+            try
+            {
+                return await Task.WhenAll(tasks);
+            }
+            catch (OperationCanceledException ex)
+            {
+                _logger.LogError(ex, "Something goes wrong");
+
+                return Array.Empty<BookCover>();
+            }
         }
 
         public async Task<bool> SaveChangesAsync()
