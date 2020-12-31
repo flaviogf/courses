@@ -38,4 +38,6 @@ ls -a
 ls -aF
 
 ls -lrlt /etc
+
+ls -lhrlt /etc
 ````
