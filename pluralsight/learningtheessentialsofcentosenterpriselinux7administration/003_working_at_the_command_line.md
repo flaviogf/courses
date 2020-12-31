@@ -36,4 +36,6 @@ ls --color=auto
 ls -a
 
 ls -aF
+
+ls -lrlt /etc
 ````
