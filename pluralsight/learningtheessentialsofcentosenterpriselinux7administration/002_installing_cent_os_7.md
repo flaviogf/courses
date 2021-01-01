@@ -17,4 +17,14 @@ systemctl set-default graphical.target
 systemctl isolate graphical.target
 
 su -
+
+nmcli c show
+
+nmcli c up <network-device-name>
+
+nmcli c show
+
+ip a show
+
+sed -t s/ONBOOT=no/ONBOOT=true /etc/sysconfig/network-scripts/<network-device-name>
 ````
