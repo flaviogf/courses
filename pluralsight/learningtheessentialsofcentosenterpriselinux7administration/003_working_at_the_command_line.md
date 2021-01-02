@@ -40,4 +40,34 @@ ls -aF
 ls -lrlt /etc
 
 ls -lhrlt /etc
+
+tty
+
+ls -l /dev/pts/1
+
+ls -l $(tty)
+
+lsblk
+
+ls /dev/sda
+
+ls /dev/sda*
+
+ls /dev/sda?
+
+ls /dev/sda[12]
+
+ls -l /etc/sytem-release
+
+ls -l /etc/centos-release /etc/system-release /etc/redhat-release
+
+lsb_release -d
+
+ls -l $(which lsb_release)
+
+ls -lF $(which lsb_release)
+
+rpm -qf /usr/bin/lsb_release
+
+rpm -qf $(which lsb_release)
 ````
