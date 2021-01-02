@@ -70,4 +70,22 @@ ls -lF $(which lsb_release)
 rpm -qf /usr/bin/lsb_release
 
 rpm -qf $(which lsb_release)
+
+pwd
+
+cd Documents
+
+cp /etc/hosts .
+
+cp /etc/passwd .
+
+cp /etc/hosts ./passwd
+
+cp -i /etc/hosts ./passwd
+
+mv ./hosts ./localhosts
+
+cp ./localhosts ./hosts
+
+rm -i *
 ````
