@@ -116,4 +116,50 @@ mkdir -m 777 d1
 mkdir -m 700 d2
 
 ls -ld d1 d2
+
+ls -ld /etc
+
+ls -ldi /etc
+
+ls -ldi /etc/.
+
+mkdir t1
+
+ls -ld t1
+
+ls -l t1
+
+ls -la t1
+
+ls -ldi t1/.
+
+ls -ldi t1/..
+
+mkdir t1/s1
+
+ls -ldi t1
+
+mkdir t1/s2
+
+ls -ldi t1
+
+echo hello > f1
+
+cat f1
+
+ls -l f1
+
+ln f1 f2
+
+ls -li f1 f2
+
+cat f1
+
+cat f2
+
+ln -s f1 f3
+
+ls -li f1 f2 f3
+
+cat f3
 ````
