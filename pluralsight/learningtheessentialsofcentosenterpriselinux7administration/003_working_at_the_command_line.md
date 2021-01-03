@@ -88,4 +88,32 @@ mv ./hosts ./localhosts
 cp ./localhosts ./hosts
 
 rm -i *
+
+mkdir test
+
+mkdir -p sales/test
+
+rmdir test
+
+rmdir sales
+
+!rm
+
+rm -rf sales
+
+mkdir one two
+
+touch one/file{1..5}
+
+cp -R one two
+
+yum install tree
+
+tree two
+
+mkdir -m 777 d1
+
+mkdir -m 700 d2
+
+ls -ld d1 d2
 ````
