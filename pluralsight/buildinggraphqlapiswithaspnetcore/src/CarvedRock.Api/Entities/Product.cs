@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CarvedRock.Api.Entities
 {
@@ -21,5 +22,7 @@ namespace CarvedRock.Api.Entities
         public DateTimeOffset IntroducedAt { get; set; }
 
         public string PhotoFileName { get; set; }
+
+        public IList<ProductReview> Reviews { get; set; }
     }
 }
