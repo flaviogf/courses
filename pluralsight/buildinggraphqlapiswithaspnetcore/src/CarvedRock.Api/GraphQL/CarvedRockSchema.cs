@@ -1,12 +1,14 @@
+using System;
 using GraphQL.Types;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CarvedRock.Api.GraphQL
 {
     public class CarvedRockSchema : Schema
     {
-        public CarvedRockSchema(CarvedRockQuery query)
+        public CarvedRockSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            Query = query;
+            Query = serviceProvider.GetRequiredService<CarvedRockQuery>();
         }
     }
 }

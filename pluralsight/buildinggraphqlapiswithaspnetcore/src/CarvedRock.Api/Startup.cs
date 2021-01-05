@@ -1,6 +1,8 @@
 using CarvedRock.Api.GraphQL;
+using CarvedRock.Api.GraphQL.Types;
 using CarvedRock.Api.Repositories;
 using GraphQL.Server;
+using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,13 +23,21 @@ namespace CarvedRock.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CarvedRockDbContext>(it => it.UseSqlite(_configuration.GetConnectionString("Default")));
+            services.AddDbContext<CarvedRockDbContext>(it => it.UseSqlite(_configuration.GetConnectionString("Default")), ServiceLifetime.Singleton);
 
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
 
-            services.AddScoped<CarvedRockQuery>();
+            services.AddSingleton<IProductReviewRepository, ProductReviewRepository>();
 
-            services.AddScoped<CarvedRockSchema>();
+            services.AddSingleton<ProductType>();
+
+            services.AddSingleton<ProductTypeEnumType>();
+
+            services.AddSingleton<ProductReviewType>();
+
+            services.AddSingleton<CarvedRockQuery>();
+
+            services.AddSingleton<ISchema, CarvedRockSchema>();
 
             services.AddHttpContextAccessor();
 
@@ -36,8 +46,9 @@ namespace CarvedRock.Api
                 {
                     it.EnableMetrics = true;
                 })
+                .AddErrorInfoProvider(it => it.ExposeExceptionStackTrace = true)
                 .AddSystemTextJson()
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Singleton);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,7 +58,7 @@ namespace CarvedRock.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseGraphQL<CarvedRockSchema>();
+            app.UseGraphQL<ISchema>();
 
             app.UseGraphQLPlayground();
         }
