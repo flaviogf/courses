@@ -15,6 +15,7 @@ namespace CarvedRock.Api.GraphQL.Types
             Field(it => it.Price);
             Field(it => it.Rating);
             Field(it => it.Stock);
+            Field<ProductTypeEnumType>("Type", "The type of product");
         }
     }
 }
