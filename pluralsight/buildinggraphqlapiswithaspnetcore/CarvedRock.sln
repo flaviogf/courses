@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1AE8FFBB-6ED
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.Api", "src\CarvedRock.Api\CarvedRock.Api.csproj", "{6A87FB81-A5DE-472D-9ED7-06FE92FB571B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.Web", "src\CarvedRock.Web\CarvedRock.Web.csproj", "{F88EE804-799A-43EC-AB6F-E3B68EBA2557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +34,21 @@ Global
 		{6A87FB81-A5DE-472D-9ED7-06FE92FB571B}.Release|x64.Build.0 = Release|Any CPU
 		{6A87FB81-A5DE-472D-9ED7-06FE92FB571B}.Release|x86.ActiveCfg = Release|Any CPU
 		{6A87FB81-A5DE-472D-9ED7-06FE92FB571B}.Release|x86.Build.0 = Release|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Debug|x64.Build.0 = Debug|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Debug|x86.Build.0 = Debug|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Release|x64.ActiveCfg = Release|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Release|x64.Build.0 = Release|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Release|x86.ActiveCfg = Release|Any CPU
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A87FB81-A5DE-472D-9ED7-06FE92FB571B} = {1AE8FFBB-6EDE-4CC7-B42B-A890C9E4199D}
+		{F88EE804-799A-43EC-AB6F-E3B68EBA2557} = {1AE8FFBB-6EDE-4CC7-B42B-A890C9E4199D}
 	EndGlobalSection
 EndGlobal

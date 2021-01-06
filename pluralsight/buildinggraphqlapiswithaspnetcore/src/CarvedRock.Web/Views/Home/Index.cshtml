@@ -1,0 +1,14 @@
+@model IEnumerable<CarvedRock.Web.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>CarvedRock</h1>
+
+<ul>
+    @foreach(var it in Model)
+    {
+        <li>@it.Id @it.Name</li>
+    }
+</ul>
