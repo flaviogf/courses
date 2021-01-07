@@ -5,14 +5,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarvedRock.Web.Controllers
 {
     [Route("")]
-    [Route("home")]
     public class HomeController : Controller
     {
         private readonly ProductHttpClient _productHttpClient;
 
-        public HomeController(ProductHttpClient productHttpClient)
+        private readonly ProductGraphQLClient _productGraphQLCLient;
+
+        public HomeController(ProductHttpClient productHttpClient, ProductGraphQLClient productGraphQLClient)
         {
             _productHttpClient = productHttpClient;
+            _productGraphQLCLient = productGraphQLClient;
         }
 
         [HttpGet]
@@ -21,6 +23,14 @@ namespace CarvedRock.Web.Controllers
             var products = await _productHttpClient.GetAll();
 
             return View(products);
+        }
+
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> Detail(int productId)
+        {
+            var product = await _productGraphQLCLient.Get(productId);
+
+            return View(product);
         }
     }
 }
