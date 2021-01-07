@@ -7,5 +7,7 @@ namespace CarvedRock.Api.Repositories
     public interface IProductReviewRepository
     {
         Task<IEnumerable<ProductReview>> GetAll(int productId);
+
+        Task<ProductReview> Add(ProductReview review);
     }
 }

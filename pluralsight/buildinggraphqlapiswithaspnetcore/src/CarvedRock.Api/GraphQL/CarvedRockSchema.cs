@@ -9,6 +9,7 @@ namespace CarvedRock.Api.GraphQL
         public CarvedRockSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<CarvedRockQuery>();
+            Mutation = serviceProvider.GetRequiredService<CarvedRockMutation>();
         }
     }
 }

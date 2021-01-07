@@ -37,6 +37,8 @@ namespace CarvedRock.Api
 
             services.AddSingleton<CarvedRockQuery>();
 
+            services.AddSingleton<CarvedRockMutation>();
+
             services.AddSingleton<ISchema, CarvedRockSchema>();
 
             services.AddHttpContextAccessor();
