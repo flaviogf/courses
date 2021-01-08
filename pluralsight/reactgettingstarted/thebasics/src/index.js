@@ -1,24 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import Sample1 from "./Sample1";
+import Sample2 from "./Sample2";
+import Sample3 from "./Sample3";
+import Sample4 from "./Sample4";
+import Sample5 from "./Sample5";
 
-ReactDOM.render(<Sample4 />, document.getElementById("root"));
-
-function Sample1() {
-  return <h1>Hello World!</h1>;
-}
-
-function Sample2() {
-  return React.createElement("h1", null, "Hello World!!!");
-}
-
-function Sample3() {
-  const [counter, setCounter] = useState(0);
-
-  return <button onClick={() => setCounter(counter + 1)}>{counter}</button>;
-}
-
-function Sample4() {
-  const [counter, setCounter] = useState(5);
-
-  return <button onClick={() => setCounter(counter * 2)}>{counter}</button>;
-}
+ReactDOM.render(<Sample5 />, document.getElementById("root"));
