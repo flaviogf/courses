@@ -64,4 +64,18 @@ sed '/^#/d ; /^$/d' ntp.conf
 function clean_file {
   sed -i '/^#/d ; /^$/d' $1
 }
+
+cp ntp.conf ntp.new
+
+echo new >> ntp.new
+
+diff ntp.conf ntp.new
+
+vi ntp.new
+
+sudo rmp -V ntp
+
+md5sum /usr/bin/passwd
+
+md5sum /usr/bin/passwd > server1
 ```
