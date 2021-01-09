@@ -78,4 +78,22 @@ sudo rmp -V ntp
 md5sum /usr/bin/passwd
 
 md5sum /usr/bin/passwd > server1
+
+find /usr/share/doc -name '*.pdf'
+
+find /usr/share/doc -name '*.pdf' -print
+
+find /usr/share/doc -name '*.pdf' -exec cp {} . \;
+
+find -name '*.pdf' -delete
+
+find /etc -type l
+
+find /etc -maxdepth 1 -type l
+
+df -h /boot
+
+find /boot -maxdepth 1 -size +20000k -type f
+
+find /boot -maxdepth 1 -size +10000k -type f -exec du -h {} \;
 ```
