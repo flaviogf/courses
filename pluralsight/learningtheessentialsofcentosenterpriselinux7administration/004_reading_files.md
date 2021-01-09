@@ -54,4 +54,14 @@ grep -E '^po..ute$' /usr/share/dict/words
 grep -E '[aeiou]{5}' /usr/share/dict/words
 
 grep -E '[aeiou]{6}' /usr/share/dict/words
+
+sed '/^#/d' ntp.conf
+
+sed '/^$/d' ntp.conf
+
+sed '/^#/d ; /^$/d' ntp.conf
+
+function clean_file {
+  sed -i '/^#/d ; /^$/d' $1
+}
 ```
