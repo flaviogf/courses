@@ -39,3 +39,25 @@ vi
 - L right
 - :q
 - :q!
+- ~/.vimrc
+
+```vim
+set showmode
+set number
+set nonumber
+set invnumber
+set nohlsearch
+set ai
+set ts=4
+set expandtab
+abbr _sh #!/bin/bash
+nmap <C-N> :set invnumber<CR>
+```
+
+```sh
+vi ~/.vimrc
+```
+
+- SHIFT+O to insert above
+- :e! to revert to the last save changes
+- CTRL+] to autocomplete using abbr
