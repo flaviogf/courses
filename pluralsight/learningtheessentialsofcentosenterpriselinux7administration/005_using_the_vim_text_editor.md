@@ -58,6 +58,14 @@ nmap <C-N> :set invnumber<CR>
 vi ~/.vimrc
 ```
 
-- SHIFT+O to insert above
-- :e! to revert to the last save changes
-- CTRL+] to autocomplete using abbr
+- **SHIFT+O** to insert above
+- **:e!** to revert to the last save changes
+- **CTRL+]** to autocomplete using abbr
+- **SHIFT+G** to go to the first line
+- **o** to insert bellow
+- **I** insert to end of the line
+- **A** append to begin of the line
+- **dd** delete one line
+- **u** undo
+- **^** begin of the line
+- **$** end of the line
