@@ -1,0 +1,52 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.App__container {
+  margin: 0 auto;
+  max-width: 640px;
+  width: 100%;
+}
+
+.Form__container {
+}
+
+.Form__input {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  height: 35px;
+  outline: none;
+  padding: 6px 8px;
+  width: 100%;
+}
+
+.Card__container {
+  align-items: center;
+  display: flex;
+  margin-top: 8px;
+}
+
+.Card__container:first-child {
+  margin-top: 0;
+}
+
+.Card__image {
+  border-radius: 100%;
+  height: 56px;
+  margin-right: 8px;
+  width: 56px;
+}
+
+.Card__summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.Card__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Card__subtitle {
+  font-size: 12px;
+}
