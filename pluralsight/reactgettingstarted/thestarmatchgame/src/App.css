@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.App__container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.App__help {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.App__game {
+  border: 1px solid #d3d3d3;
+  display: flex;
+  margin-top: 16px;
+  position: relative;
+}
+
+.App__game::before {
+  background-color: #d3d3d3;
+  content: "";
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.App__left {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+
+.App__right {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.App__star {
+  align-items: center;
+  color: #2d2d2d;
+  display: flex;
+  font-size: 56px;
+  font-weight: bold;
+  height: 100px;
+  justify-content: center;
+  width: 100px;
+}
+
+.App__star::before {
+  content: "\2605";
+}
+
+.App__number {
+  align-items: center;
+  background-color: #d3d3d3;
+  border: 1px solid #2d2d2d;
+  color: #2d2d2d;
+  cursor: pointer;
+  display: flex;
+  font-size: 40px;
+  font-weight: bold;
+  height: 95px;
+  justify-content: center;
+  margin: 4px;
+  outline: none;
+  width: 95px;
+}
