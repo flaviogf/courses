@@ -12,20 +12,26 @@ export default function App() {
 
       <div className="App__game">
         <div className="App__left">
-          {utils.range(1, stars).map((starId) => (
-            <div key={starId} className="App__star"></div>
-          ))}
+          <StarDisplay stars={stars} />
         </div>
         <div className="App__right">
           {utils.range(1, 9).map((number) => (
-            <button key={number} className="App__number">
-              {number}
-            </button>
+            <PlayNumber key={number} number={number} />
           ))}
         </div>
       </div>
     </div>
   );
+}
+
+function StarDisplay({ stars }) {
+  return utils
+    .range(1, stars)
+    .map((starId) => <div key={starId} className="App__star"></div>);
+}
+
+function PlayNumber({ number }) {
+  return <button className="App__number">{number}</button>;
 }
 
 const utils = {
