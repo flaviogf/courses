@@ -20,6 +20,33 @@ export default function App() {
     return "available";
   };
 
+  const onClickNumber = (number, currentStatus) => {
+    if (currentStatus === "used") {
+      return;
+    }
+
+    const newCandidateNumbers =
+      currentStatus === "available"
+        ? candidateNumbers.concat(number)
+        : candidateNumbers.filter((cn) => cn !== number);
+
+    if (utils.sum(newCandidateNumbers) !== stars) {
+      setCandidateNumbers(newCandidateNumbers);
+
+      return;
+    }
+
+    const newAvailableNumbers = availableNumbers.filter(
+      (n) => !newCandidateNumbers.includes(n)
+    );
+
+    setStars(utils.randomSumIn(newAvailableNumbers, 9));
+
+    setAvailableNumbers(newAvailableNumbers);
+
+    setCandidateNumbers([]);
+  };
+
   return (
     <div className="App__container">
       <div className="App__help">
@@ -36,6 +63,7 @@ export default function App() {
               key={number}
               number={number}
               status={numberStatus(number)}
+              onClick={onClickNumber}
             />
           ))}
         </div>
@@ -50,9 +78,13 @@ function StarDisplay({ stars }) {
     .map((starId) => <div key={starId} className="App__star"></div>);
 }
 
-function PlayNumber({ number, status }) {
+function PlayNumber({ number, status, onClick }) {
   return (
-    <button className="App__number" style={{ backgroundColor: colors[status] }}>
+    <button
+      className="App__number"
+      style={{ backgroundColor: colors[status] }}
+      onClick={() => onClick(number, status)}
+    >
       {number}
     </button>
   );
@@ -62,6 +94,21 @@ const utils = {
   sum: (arr) => arr.reduce((acc, curr) => acc + curr, 0),
   range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
   random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+  randomSumIn: (arr, max) => {
+    const sets = [[]];
+    const sums = [];
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0, len = sets.length; j < len; j++) {
+        const candidateSet = sets[j].concat(arr[i]);
+        const candidateSum = utils.sum(candidateSet);
+        if (candidateSum <= max) {
+          sets.push(candidateSet);
+          sums.push(candidateSum);
+        }
+      }
+    }
+    return sums[utils.random(0, sums.length - 1)];
+  },
 };
 
 const colors = {
