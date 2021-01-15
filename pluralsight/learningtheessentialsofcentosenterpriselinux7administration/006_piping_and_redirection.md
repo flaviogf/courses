@@ -29,4 +29,12 @@ date +%F 1>| newfile2
 date +%F 1>> newfile2
 
 set +o noclobber
+
+cat /etcw 2> newfile3
+
+find /etc -type l
+
+find /etc -type l 2> /dev/null
+
+find /etc -type l &> err.txt
 ```
