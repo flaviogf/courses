@@ -2,6 +2,7 @@
 
 - noclobber
 - CTRL+r
+- unnamed pipe |
 
 ```sh
 > newfile
@@ -47,4 +48,16 @@ this is little
 file that we can create
 even with scripts
 END
+
+ls | wc -l
+
+head -n1 /etc/passwd
+
+cut -f7 -d: /etc/passwd
+
+cut -f7 -d: /etc/passwd | sort
+
+cut -f7 -d: /etc/passwd | sort | uniq
+
+cut -f7 -d: /etc/passwd | sort | uniq | wc -l
 ```
