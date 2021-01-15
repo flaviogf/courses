@@ -41,4 +41,10 @@ find /etc -type l &> err.txt
 df -hlT > diskfree
 
 mail -s "Disk Free" tux < diskfree
+
+cat > newfile4 <<END
+this is little
+file that we can create
+even with scripts
+END
 ```
