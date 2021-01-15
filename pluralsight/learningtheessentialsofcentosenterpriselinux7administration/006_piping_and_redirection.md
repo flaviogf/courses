@@ -37,4 +37,8 @@ find /etc -type l
 find /etc -type l 2> /dev/null
 
 find /etc -type l &> err.txt
+
+df -hlT > diskfree
+
+mail -s "Disk Free" tux < diskfree
 ```
