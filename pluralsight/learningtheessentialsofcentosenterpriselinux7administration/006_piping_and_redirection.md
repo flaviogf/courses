@@ -1,5 +1,8 @@
 # Piping and Redirection
 
+- noclobber
+- CTRL+r
+
 ```sh
 > newfile
 
@@ -14,4 +17,16 @@ df -h 1>> newfile
 less newfile
 
 cat newfile
+
+set -o
+
+set -o noclobber
+
+date +%F 1> newfile2
+
+date +%F 1>| newfile2
+
+date +%F 1>> newfile2
+
+set +o noclobber
 ```
