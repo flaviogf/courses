@@ -3,6 +3,7 @@
 - noclobber
 - CTRL+r
 - unnamed pipe |
+- named pipe
 
 ```sh
 > newfile
@@ -60,4 +61,16 @@ cut -f7 -d: /etc/passwd | sort
 cut -f7 -d: /etc/passwd | sort | uniq
 
 cut -f7 -d: /etc/passwd | sort | uniq | wc -l
+
+ls -l $(tty)
+
+ls -l /dev/sda
+
+mkfifo mypipe
+
+ls -F mypipe
+
+ls > mypipe
+
+wc -l < mypipe
 ```
