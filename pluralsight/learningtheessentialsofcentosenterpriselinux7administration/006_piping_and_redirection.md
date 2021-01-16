@@ -4,6 +4,7 @@
 - CTRL+r
 - unnamed pipe |
 - named pipe
+- HERE documents
 
 ```sh
 > newfile
