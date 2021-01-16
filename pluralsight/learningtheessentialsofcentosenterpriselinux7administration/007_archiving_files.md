@@ -56,4 +56,26 @@ tar -xvf my0.tar -g /dev/null
 tar -xvf my1.tar -g /dev/null
 
 tar -xvf my2.tar -g /dev/null
+
+gzip tux.tar
+
+gunzip tux.tar.gz
+
+file tux.tar
+
+bzip2 tux.tar
+
+file tux.tar.bz2
+
+bunzip2 tux.tar.bz2
+
+time tar -cvf tux.tar $HOME
+
+time tar -cvzf tux.tar.gz $HOME
+
+time tar -cvjf tux.tar.bz2 $HOME
+
+tar -xzf tux.tar.gz
+
+tar -xjf tux.tar.bz2
 ```
