@@ -73,4 +73,12 @@ ls -F mypipe
 ls > mypipe
 
 wc -l < mypipe
+
+ls | tee f89
+
+sudo echo '127.0.0.1 bob' >> /etc/hosts
+
+# Permission denied
+
+echo '127.0.0.1' | sudo tee -a /etc/hosts
 ```
