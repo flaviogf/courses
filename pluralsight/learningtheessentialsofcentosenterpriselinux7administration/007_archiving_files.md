@@ -78,4 +78,42 @@ time tar -cvjf tux.tar.bz2 $HOME
 tar -xzf tux.tar.gz
 
 tar -xjf tux.tar.bz2
+
+find /usr/share/doc -name '*.pdf'
+
+cd /usr/share/doc
+
+find -name '*.pdf'
+
+find -name '*.pdf' | cpio -o > /tmp/pdf.cpio
+
+cd
+
+mkdir pdf
+
+cd !$
+
+pwd
+
+cpio -id < /tmp/pdf.cpio
+
+ls
+
+cd /tmp
+
+sudo cp /boot/initramfs.img .
+
+ls
+
+file initramfs.img
+
+mkdir work
+
+cd work
+
+cpio -id < ../initramfs-*.img
+
+ls
+
+tree
 ```
