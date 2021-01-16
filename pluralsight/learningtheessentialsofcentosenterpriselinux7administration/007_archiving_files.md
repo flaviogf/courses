@@ -116,4 +116,16 @@ cpio -id < ../initramfs-*.img
 ls
 
 tree
+
+dd if=/dev/sro of=netinstall.iso
+
+ls -lh
+
+sudo dd if=/dev/sda1 of=boot.img
+
+sudo su -
+
+fdisk -l
+
+dd if=/dev/sda of=sda.mbr count=1 bs=512
 ```
