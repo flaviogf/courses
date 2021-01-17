@@ -72,4 +72,56 @@ umask u=rwx,go=
 touch file7
 
 ls -l
+
+vi file1
+
+cat file 1
+
+chmod 467 file1
+
+chmod u=r,g=rw,o=rwx file1
+
+cat file1
+
+ls -l file1
+
+chmod a+x file2
+
+ls -l file2
+
+chmod a-x file2
+
+ls -l file2
+
+chmod o= file2
+
+ls -l file2
+
+chmod 777 file2
+
+ls -l file2
+
+chmod go= file2
+
+ls -l file2
+
+umask
+
+# stick bit
+
+ls -ld /tmp
+
+mkdir -m 1777 test
+
+ls -ld test
+
+chmod o-t test
+
+ls -l test
+
+# user id bit
+
+ls -l $(which wall)
+
+ls -l $(which passwd)
 ```
