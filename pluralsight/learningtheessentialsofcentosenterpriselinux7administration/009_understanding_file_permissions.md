@@ -124,4 +124,46 @@ ls -l test
 ls -l $(which wall)
 
 ls -l $(which passwd)
+
+ls -l file2
+
+id -u
+
+id -un
+
+id -gn
+
+id -Gn
+
+chgrp wheel file2
+
+ls -l file2
+
+newgrp wheel
+
+id -gn
+
+touch newgroup
+
+ls -l newgroup
+
+su
+
+ls -l file2
+
+chown root file2
+
+ls -l file2
+
+chown tux.tux file2
+
+ls -l file2
+
+cp file2 /root/file2na
+
+ls -l !$
+
+cp -a file2 /root/file2a
+
+ls -l !$
 ```
