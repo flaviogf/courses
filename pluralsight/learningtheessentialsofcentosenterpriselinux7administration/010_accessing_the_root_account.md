@@ -20,4 +20,12 @@ pwd
 echo $USER
 
 exit
+
+id
+
+sudo cat /etc/sudoers
+
+sudo visudo
+
+sudo sudo -V
 ```
