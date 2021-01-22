@@ -28,4 +28,16 @@ sudo cat /etc/sudoers
 sudo visudo
 
 sudo sudo -V
+
+ssh -l root <ip-address>
+
+vi /etc/sshd_config
+
+# PermitRootLogin no
+
+systemctl restart sshd
+
+ssh <username>@<ip-address>
+
+su -
 ```
