@@ -26,5 +26,5 @@ nmcli c show
 
 ip a show
 
-sed -t s/ONBOOT=no/ONBOOT=true /etc/sysconfig/network-scripts/<network-device-name>
+sed -i "s/ONBOOT=no/ONBOOT=true/" /etc/sysconfig/network-scripts/<network-device-name>
 ````
