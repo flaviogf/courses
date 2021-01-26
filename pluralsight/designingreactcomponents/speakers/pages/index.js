@@ -13,6 +13,7 @@ export default function Index() {
       <SpeakerSearchBar />
       <Speakers />
       <Footer />
+      <button className="btn-blue">Don't press</button>
     </>
   );
 }
