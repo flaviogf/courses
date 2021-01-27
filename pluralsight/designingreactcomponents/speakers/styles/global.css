@@ -2,4 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './button.css'
+@import "./button.css";
+
+.heartredbutton {
+  background-image: url("/heart-red.png");
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  float: right;
+}
+
+.heartdarkbutton {
+  background-image: url("/heart-dark.png");
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  float: right;
+}
