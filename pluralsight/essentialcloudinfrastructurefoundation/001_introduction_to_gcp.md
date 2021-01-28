@@ -29,3 +29,9 @@ echo $INFRACLASS_REGION
 
 echo $INFRACLASS_PROJECT_ID
 ```
+
+```sh
+sudo /opt/bitnami/ctlscript.sh stop
+
+sudo /opt/bitnami/ctlscript.sh restart
+```
