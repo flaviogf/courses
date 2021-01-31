@@ -9,7 +9,7 @@ namespace CodeLuau
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int? Exp { get; set; }
+        public int? YearsExperience { get; set; }
         public bool HasBlog { get; set; }
         public string BlogURL { get; set; }
         public WebBrowser Browser { get; set; }
@@ -29,94 +29,126 @@ namespace CodeLuau
                 return new RegisterResponse(error);
             }
 
-            var emps = new List<string>() { "Pluralsight", "Microsoft", "Google" };
+            bool speakerAppearsQualified = AppearsExceptional() || !HasObviousRedFlags();
 
-            bool good = Exp > 10 || HasBlog || Certifications.Count() > 3 || emps.Contains(Employer);
-
-            if (!good)
-            {
-                var domains = new List<string>() { "aol.com", "prodigy.com", "compuserve.com" };
-
-                string emailDomain = Email.Split('@').Last();
-
-                if (!domains.Contains(emailDomain) && (!(Browser.Name == WebBrowser.BrowserName.InternetExplorer && Browser.MajorVersion < 9)))
-                {
-                    good = true;
-                }
-            }
-
-            if (good)
-            {
-                bool appr = false;
-
-                if (Sessions.Count() != 0)
-                {
-                    foreach (var session in Sessions)
-                    {
-                        var ot = new List<string>() { "Cobol", "Punch Cards", "Commodore", "VBScript" };
-
-                        foreach (var tech in ot)
-                        {
-                            if (session.Title.Contains(tech) || session.Description.Contains(tech))
-                            {
-                                session.Approved = false;
-                                break;
-                            }
-                            else
-                            {
-                                session.Approved = true;
-                                appr = true;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    return new RegisterResponse(RegisterError.NoSessionsProvided);
-                }
-
-                if (appr)
-                {
-                    if (Exp <= 1)
-                    {
-                        RegistrationFee = 500;
-                    }
-                    else if (Exp >= 2 && Exp <= 3)
-                    {
-                        RegistrationFee = 250;
-                    }
-                    else if (Exp >= 4 && Exp <= 5)
-                    {
-                        RegistrationFee = 100;
-                    }
-                    else if (Exp >= 6 && Exp <= 9)
-                    {
-                        RegistrationFee = 50;
-                    }
-                    else
-                    {
-                        RegistrationFee = 0;
-                    }
-
-                    try
-                    {
-                        speakerId = repository.SaveSpeaker(this);
-                    }
-                    catch (Exception e)
-                    {
-                    }
-                }
-                else
-                {
-                    return new RegisterResponse(RegisterError.NoSessionsApproved);
-                }
-            }
-            else
+            if (!speakerAppearsQualified)
             {
                 return new RegisterResponse(RegisterError.SpeakerDoesNotMeetStandards);
             }
 
+            bool approved = false;
+
+            if (Sessions.Count() != 0)
+            {
+                foreach (var session in Sessions)
+                {
+                    var ot = new List<string>() { "Cobol", "Punch Cards", "Commodore", "VBScript" };
+
+                    foreach (var tech in ot)
+                    {
+                        if (session.Title.Contains(tech) || session.Description.Contains(tech))
+                        {
+                            session.Approved = false;
+                            break;
+                        }
+                        else
+                        {
+                            session.Approved = true;
+                            approved = true;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return new RegisterResponse(RegisterError.NoSessionsProvided);
+            }
+
+            if (approved)
+            {
+                if (YearsExperience <= 1)
+                {
+                    RegistrationFee = 500;
+                }
+                else if (YearsExperience >= 2 && YearsExperience <= 3)
+                {
+                    RegistrationFee = 250;
+                }
+                else if (YearsExperience >= 4 && YearsExperience <= 5)
+                {
+                    RegistrationFee = 100;
+                }
+                else if (YearsExperience >= 6 && YearsExperience <= 9)
+                {
+                    RegistrationFee = 50;
+                }
+                else
+                {
+                    RegistrationFee = 0;
+                }
+
+                try
+                {
+                    speakerId = repository.SaveSpeaker(this);
+                }
+                catch (Exception e)
+                {
+                }
+            }
+            else
+            {
+                return new RegisterResponse(RegisterError.NoSessionsApproved);
+            }
+
+
             return new RegisterResponse((int)speakerId);
+        }
+
+        private bool HasObviousRedFlags()
+        {
+            var ancientEmailDomains = new List<string>() { "aol.com", "prodigy.com", "compuserve.com" };
+
+            string emailDomain = Email.Split('@').Last();
+
+            if (ancientEmailDomains.Contains(emailDomain))
+            {
+                return true;
+            }
+
+            if (Browser.Name == WebBrowser.BrowserName.InternetExplorer && Browser.MajorVersion < 9)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool AppearsExceptional()
+        {
+            if (YearsExperience > 10)
+            {
+                return true;
+            }
+
+            if (HasBlog)
+            {
+                return true;
+            }
+
+            if (Certifications.Count() > 3)
+            {
+                return true;
+            }
+
+            var preferredEmployers = new List<string>() { "Pluralsight", "Microsoft", "Google" };
+
+            if (preferredEmployers.Contains(Employer))
+
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private RegisterError? ValidateData()
