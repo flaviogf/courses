@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace CodeLuau
@@ -20,62 +19,42 @@ namespace CodeLuau
 
         public RegisterResponse Register(IRepository repository)
         {
-            int? speakerId = null;
-
-            var error = ValidateData();
+            var error = ValidateRegistration();
 
             if (error != null)
             {
                 return new RegisterResponse(error);
             }
 
+            var speakerId = repository.SaveSpeaker(this);
+
+            return new RegisterResponse((int)speakerId);
+        }
+
+        private RegisterError? ValidateRegistration()
+        {
+            var error = ValidateData();
+
+            if (error != null)
+            {
+                return error;
+            }
+
             bool speakerAppearsQualified = AppearsExceptional() || !HasObviousRedFlags();
 
             if (!speakerAppearsQualified)
             {
-                return new RegisterResponse(RegisterError.SpeakerDoesNotMeetStandards);
+                return RegisterError.SpeakerDoesNotMeetStandards;
             }
 
             bool atLeastOneSessionApproved = ApproveSessions();
 
-            if (atLeastOneSessionApproved)
+            if (!atLeastOneSessionApproved)
             {
-                if (YearsExperience <= 1)
-                {
-                    RegistrationFee = 500;
-                }
-                else if (YearsExperience >= 2 && YearsExperience <= 3)
-                {
-                    RegistrationFee = 250;
-                }
-                else if (YearsExperience >= 4 && YearsExperience <= 5)
-                {
-                    RegistrationFee = 100;
-                }
-                else if (YearsExperience >= 6 && YearsExperience <= 9)
-                {
-                    RegistrationFee = 50;
-                }
-                else
-                {
-                    RegistrationFee = 0;
-                }
-
-                try
-                {
-                    speakerId = repository.SaveSpeaker(this);
-                }
-                catch (Exception e)
-                {
-                }
-            }
-            else
-            {
-                return new RegisterResponse(RegisterError.NoSessionsApproved);
+                return RegisterError.NoSessionsApproved;
             }
 
-
-            return new RegisterResponse((int)speakerId);
+            return null;
         }
 
         private RegisterError? ValidateData()
