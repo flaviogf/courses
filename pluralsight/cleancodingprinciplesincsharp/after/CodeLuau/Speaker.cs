@@ -36,35 +36,9 @@ namespace CodeLuau
                 return new RegisterResponse(RegisterError.SpeakerDoesNotMeetStandards);
             }
 
-            bool approved = false;
+            bool atLeastOneSessionApproved = ApproveSessions();
 
-            if (Sessions.Count() != 0)
-            {
-                foreach (var session in Sessions)
-                {
-                    var ot = new List<string>() { "Cobol", "Punch Cards", "Commodore", "VBScript" };
-
-                    foreach (var tech in ot)
-                    {
-                        if (session.Title.Contains(tech) || session.Description.Contains(tech))
-                        {
-                            session.Approved = false;
-                            break;
-                        }
-                        else
-                        {
-                            session.Approved = true;
-                            approved = true;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                return new RegisterResponse(RegisterError.NoSessionsProvided);
-            }
-
-            if (approved)
+            if (atLeastOneSessionApproved)
             {
                 if (YearsExperience <= 1)
                 {
@@ -104,23 +78,29 @@ namespace CodeLuau
             return new RegisterResponse((int)speakerId);
         }
 
-        private bool HasObviousRedFlags()
+        private RegisterError? ValidateData()
         {
-            var ancientEmailDomains = new List<string>() { "aol.com", "prodigy.com", "compuserve.com" };
-
-            string emailDomain = Email.Split('@').Last();
-
-            if (ancientEmailDomains.Contains(emailDomain))
+            if (string.IsNullOrWhiteSpace(FirstName))
             {
-                return true;
+                return RegisterError.FirstNameRequired;
             }
 
-            if (Browser.Name == WebBrowser.BrowserName.InternetExplorer && Browser.MajorVersion < 9)
+            if (string.IsNullOrWhiteSpace(LastName))
             {
-                return true;
+                return RegisterError.LastNameRequired;
             }
 
-            return false;
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                return RegisterError.EmailRequired;
+            }
+
+            if (!Sessions.Any())
+            {
+                return RegisterError.NoSessionsProvided;
+            }
+
+            return null;
         }
 
         private bool AppearsExceptional()
@@ -151,24 +131,48 @@ namespace CodeLuau
             return false;
         }
 
-        private RegisterError? ValidateData()
+        private bool HasObviousRedFlags()
         {
-            if (string.IsNullOrWhiteSpace(FirstName))
+            var ancientEmailDomains = new List<string>() { "aol.com", "prodigy.com", "compuserve.com" };
+
+            string emailDomain = Email.Split('@').Last();
+
+            if (ancientEmailDomains.Contains(emailDomain))
             {
-                return RegisterError.FirstNameRequired;
+                return true;
             }
 
-            if (string.IsNullOrWhiteSpace(LastName))
+            if (Browser.Name == WebBrowser.BrowserName.InternetExplorer && Browser.MajorVersion < 9)
             {
-                return RegisterError.LastNameRequired;
+                return true;
             }
 
-            if (string.IsNullOrWhiteSpace(Email))
+            return false;
+        }
+
+        private bool ApproveSessions()
+        {
+            foreach (var session in Sessions)
             {
-                return RegisterError.EmailRequired;
+                session.Approved = !SessionIsAboutOldTechnology(session);
             }
 
-            return null;
+            return Sessions.Any(it => it.Approved);
+        }
+
+        private bool SessionIsAboutOldTechnology(Session session)
+        {
+            var oldTechnologies = new List<string>() { "Cobol", "Punch Cards", "Commodore", "VBScript" };
+
+            foreach (var tech in oldTechnologies)
+            {
+                if (session.Title.Contains(tech) || session.Description.Contains(tech))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
