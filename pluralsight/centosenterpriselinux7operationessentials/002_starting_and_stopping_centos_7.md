@@ -29,4 +29,26 @@ ls /run
 ls /run/nologin
 
 cat /run/nologin
+
+who
+
+who -r
+
+runlevel
+
+systemctl get-default
+
+systemctl set-default multi-user.target
+
+ls /etc/systemd/system
+
+ls /usr/lib/systemd/system
+
+systemctl isolate multi-user.target
+
+who -r
+
+systemctl isolate rescue.target
+
+telinit 0
 ```
