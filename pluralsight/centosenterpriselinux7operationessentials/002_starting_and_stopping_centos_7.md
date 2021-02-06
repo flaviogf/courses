@@ -51,10 +51,4 @@ who -r
 systemctl isolate rescue.target
 
 telinit 0
-
-vim /etc/default/grub
-
-grub2-mkconfi -o /boot/grub2/grub.cfg
-
-reboot
 ```
