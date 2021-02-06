@@ -1,0 +1,4 @@
+# The Boot Process
+
+```sh
+```
