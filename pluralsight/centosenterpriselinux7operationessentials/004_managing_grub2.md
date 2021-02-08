@@ -22,4 +22,13 @@ grubby --info /boot/vmlinuz
 grubby --remove-args="rhgb quiet"
 
 reboot
+
+vi /etc/grub.d/01_users
+
+cat << EOF
+    set superusers="flaviogf"
+    password flaviogf test123
+EFO
+
+vi /etc/grub.d/40_custom
 ```
