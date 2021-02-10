@@ -11,7 +11,7 @@ export default function Menu() {
           </a>
         </Link>
 
-        <Link href="speakers">
+        <Link href="/speakers">
           <a className="block md:inline-block text-gray-300 hover:text-white mr-4">
             Speakers
           </a>

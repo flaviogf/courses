@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SpeakersSearchBar() {
+export default function SpeakersSearchBar({ searchQuery, setSearchQuery }) {
   return (
     <div className="mb-6">
       <input
@@ -8,6 +8,8 @@ export default function SpeakersSearchBar() {
         type="text"
         id="username"
         placeholder="Search by name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
     </div>
   );
