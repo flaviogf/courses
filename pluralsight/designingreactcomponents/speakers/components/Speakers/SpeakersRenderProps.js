@@ -1,40 +1,25 @@
 import React from "react";
+import Speaker from "../Speaker";
+import SpeakersSearchBar from "../SpeakersSearchBar";
 
 export default function Speakers() {
   return (
     <SpeakersRenderProps>
       {(speakers) => (
         <>
-          <div className="mb-6">
-            <input
-              className="shadow appearence-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text"
-              id="username"
-              placeholder="Search by name"
-            />
-          </div>
+          <SpeakersSearchBar />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-12">
             {speakers.map(
               ({ id, firstName, lastName, bio, avatar, isFavorite }) => (
-                <div className="rounded overflow-hidden shadow-lg p-6" key={id}>
-                  <div className="grid grid-cols-4 mb-6">
-                    <div className="font-bold text-lg col-span-3">{`${firstName} ${lastName}`}</div>
-                    <div className="flex justify-end">
-                      <div
-                        className={
-                          isFavorite ? "heartredbutton" : "heartdarkbutton"
-                        }
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="mb-6">
-                    <img src={avatar} alt={`${firstName} ${lastName}`} />
-                  </div>
-                  <div className="text-gray-600">
-                    {bio.substr(0, 70) + "..."}
-                  </div>
-                </div>
+                <Speaker
+                  key={String(id)}
+                  firstName={firstName}
+                  lastName={lastName}
+                  bio={bio}
+                  avatar={avatar}
+                  isFavorite={isFavorite}
+                />
               )
             )}
           </div>
