@@ -9,6 +9,7 @@
     "postcss": "8.2.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-simple-img": "2.3.9",
     "tailwindcss": "2.0.2"
   },
   "scripts": {
