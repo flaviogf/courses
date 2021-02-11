@@ -3,7 +3,7 @@ import Speaker from "../Speaker";
 import SpeakersSearchBar from "../SpeakersSearchBar";
 
 export default function Speakers() {
-  const speakers = [
+  const data = [
     {
       id: 1,
       firstName: "Vladimir",
@@ -32,6 +32,25 @@ export default function Speakers() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [speakers, setSpeakers] = useState(data);
+
+  function onFavoriteToggleHandler(speaker) {
+    const index = speakers.indexOf(speaker);
+
+    const newSpeakers = [...speakers];
+
+    newSpeakers[index] = toggleSpeakerFavorite(speaker);
+
+    setSpeakers(newSpeakers);
+  }
+
+  function toggleSpeakerFavorite(speaker) {
+    return {
+      ...speaker,
+      isFavorite: !speaker.isFavorite,
+    };
+  }
+
   return (
     <>
       <SpeakersSearchBar
@@ -45,19 +64,20 @@ export default function Speakers() {
             if (!searchQuery.length) {
               return true;
             }
-            
+
             const target = `${it.firstName} ${it.lastName}`.toLocaleLowerCase();
 
             return target.includes(searchQuery.toLocaleLowerCase());
           })
-          .map(({ id, firstName, lastName, bio, avatar, isFavorite }) => (
+          .map((it) => (
             <Speaker
-              key={String(id)}
-              firstName={firstName}
-              lastName={lastName}
-              bio={bio}
-              avatar={avatar}
-              isFavorite={isFavorite}
+              key={String(it.id)}
+              firstName={it.firstName}
+              lastName={it.lastName}
+              bio={it.bio}
+              avatar={it.avatar}
+              isFavorite={it.isFavorite}
+              onFavoriteToggle={() => onFavoriteToggleHandler(it)}
             />
           ))}
       </div>
