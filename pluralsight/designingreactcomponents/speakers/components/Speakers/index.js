@@ -4,15 +4,33 @@ import Speaker from "../Speaker";
 import SpeakersSearchBar from "../SpeakersSearchBar";
 
 export default function Speakers() {
+  const REQUEST_STATUS = {
+    loading: "loading",
+    success: "success",
+    error: "error",
+  };
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const [speakers, setSpeakers] = useState([]);
 
+  const [status, setStatus] = useState(REQUEST_STATUS.loading);
+
+  const [error, setError] = useState({});
+
   useEffect(() => {
     async function fetchSpeakers() {
-      const response = await axios.get("http://localhost:4000/speakers");
+      try {
+        const response = await axios.get("http://localhost:4000/speakers");
 
-      setSpeakers(response.data);
+        setSpeakers(response.data);
+
+        setStatus(REQUEST_STATUS.success);
+      } catch (e) {
+        setStatus(REQUEST_STATUS.error);
+
+        setError(e);
+      }
     }
 
     fetchSpeakers();
@@ -39,6 +57,10 @@ export default function Speakers() {
     };
   }
 
+  const isLoading = status === REQUEST_STATUS.loading;
+  const hasError = status === REQUEST_STATUS.error;
+  const success = status === REQUEST_STATUS.success;
+
   return (
     <>
       <SpeakersSearchBar
@@ -46,29 +68,41 @@ export default function Speakers() {
         setSearchQuery={setSearchQuery}
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-12">
-        {speakers
-          .filter((it) => {
-            if (!searchQuery.length) {
-              return true;
-            }
+      {isLoading && <div>Loading...</div>}
 
-            const target = `${it.firstName} ${it.lastName}`.toLocaleLowerCase();
+      {hasError && (
+        <div>
+          Loading error... Is the json-server running?
+          <br />
+          <b>ERROR: {error.message}</b>
+        </div>
+      )}
 
-            return target.includes(searchQuery.toLocaleLowerCase());
-          })
-          .map((it) => (
-            <Speaker
-              key={String(it.id)}
-              firstName={it.firstName}
-              lastName={it.lastName}
-              bio={it.bio}
-              avatar={it.avatar}
-              isFavorite={it.isFavorite}
-              onFavoriteToggle={() => onFavoriteToggleHandler(it)}
-            />
-          ))}
-      </div>
+      {success && (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-12">
+          {speakers
+            .filter((it) => {
+              if (!searchQuery.length) {
+                return true;
+              }
+
+              const target = `${it.firstName} ${it.lastName}`.toLocaleLowerCase();
+
+              return target.includes(searchQuery.toLocaleLowerCase());
+            })
+            .map((it) => (
+              <Speaker
+                key={String(it.id)}
+                firstName={it.firstName}
+                lastName={it.lastName}
+                bio={it.bio}
+                avatar={it.avatar}
+                isFavorite={it.isFavorite}
+                onFavoriteToggle={() => onFavoriteToggleHandler(it)}
+              />
+            ))}
+        </div>
+      )}
     </>
   );
 }
