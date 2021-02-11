@@ -1,45 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Speaker from "../Speaker";
 import SpeakersSearchBar from "../SpeakersSearchBar";
 
 export default function Speakers() {
-  const data = [
-    {
-      id: 1,
-      firstName: "Vladimir",
-      lastName: "Khorikov",
-      bio: "",
-      avatar: "https://via.placeholder.com/150",
-      isFavorite: true,
-    },
-    {
-      id: 2,
-      firstName: "Kevin",
-      lastName: "House",
-      bio: "",
-      avatar: "https://via.placeholder.com/150",
-      isFavorite: false,
-    },
-    {
-      id: 3,
-      firstName: "Cory",
-      lastName: "House",
-      bio: "",
-      avatar: "https://via.placeholder.com/150",
-      isFavorite: true,
-    },
-  ];
-
   const [searchQuery, setSearchQuery] = useState("");
 
-  const [speakers, setSpeakers] = useState(data);
+  const [speakers, setSpeakers] = useState([]);
 
-  function onFavoriteToggleHandler(speaker) {
+  useEffect(() => {
+    async function fetchSpeakers() {
+      const response = await axios.get("http://localhost:4000/speakers");
+
+      setSpeakers(response.data);
+    }
+
+    fetchSpeakers();
+  }, []);
+
+  async function onFavoriteToggleHandler(speaker) {
     const index = speakers.indexOf(speaker);
 
     const newSpeakers = [...speakers];
 
-    newSpeakers[index] = toggleSpeakerFavorite(speaker);
+    const newSpeaker = toggleSpeakerFavorite(speaker);
+
+    await axios.put(`http://localhost:4000/speakers/${speaker.id}`, newSpeaker);
+
+    newSpeakers[index] = newSpeaker;
 
     setSpeakers(newSpeakers);
   }

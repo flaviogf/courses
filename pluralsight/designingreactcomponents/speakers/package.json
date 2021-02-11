@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "10.2.3",
+    "axios": "0.21.1",
     "next": "10.0.5",
     "postcss": "8.2.4",
     "react": "17.0.1",
@@ -13,8 +14,12 @@
     "tailwindcss": "2.0.2"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "concurrently \"next\" \"json-server --watch db.json --port 4000 --delay 500\"",
     "build": "next build",
     "start": "next start"
+  },
+  "devDependencies": {
+    "concurrently": "5.3.0",
+    "json-server": "0.16.3"
   }
 }
