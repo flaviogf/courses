@@ -29,6 +29,7 @@
 - Express
 - Flask
 - Flutter
+- Go
 - HTML
 - Java
 - JS
