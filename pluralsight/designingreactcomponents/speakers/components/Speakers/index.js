@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import Speaker from "../Speaker";
 import SpeakersSearchBar from "../SpeakersSearchBar";
@@ -10,26 +10,65 @@ export default function Speakers() {
     error: "error",
   };
 
+  function reducer(state, action) {
+    switch (action.type) {
+      case "GET_ALL_SUCCESS":
+        return {
+          ...state,
+          speakers: action.payload,
+          status: REQUEST_STATUS.success,
+        };
+      case "GET_ALL_FAILURE":
+        return {
+          ...state,
+          error: action.payload,
+          status: REQUEST_STATUS.error,
+        };
+      case "PUT_SUCCESS":
+        const index = state.speakers
+          .map((it) => it.id)
+          .indexOf(action.payload.id);
+
+        const newSpeakers = [...state.speakers];
+
+        newSpeakers[index] = action.payload;
+
+        return {
+          ...state,
+          speakers: newSpeakers,
+        };
+      case "PUT_FAILURE":
+        return {
+          ...state,
+          error: action.payload,
+        };
+      default:
+        return state;
+    }
+  }
+
   const [searchQuery, setSearchQuery] = useState("");
 
-  const [speakers, setSpeakers] = useState([]);
-
-  const [status, setStatus] = useState(REQUEST_STATUS.loading);
-
-  const [error, setError] = useState({});
+  const [{ speakers, status, error }, dispatch] = useReducer(reducer, {
+    speakers: [],
+    status: REQUEST_STATUS.loading,
+    error: {},
+  });
 
   useEffect(() => {
     async function fetchSpeakers() {
       try {
         const response = await axios.get("http://localhost:4000/speakers");
 
-        setSpeakers(response.data);
-
-        setStatus(REQUEST_STATUS.success);
+        dispatch({
+          type: "GET_ALL_SUCCESS",
+          payload: response.data,
+        });
       } catch (e) {
-        setStatus(REQUEST_STATUS.error);
-
-        setError(e);
+        dispatch({
+          type: "GET_ALL_FAILURE",
+          payload: e,
+        });
       }
     }
 
@@ -37,17 +76,24 @@ export default function Speakers() {
   }, []);
 
   async function onFavoriteToggleHandler(speaker) {
-    const index = speakers.indexOf(speaker);
+    try {
+      const newSpeaker = toggleSpeakerFavorite(speaker);
 
-    const newSpeakers = [...speakers];
+      await axios.put(
+        `http://localhost:4000/speakers/${speaker.id}`,
+        newSpeaker
+      );
 
-    const newSpeaker = toggleSpeakerFavorite(speaker);
-
-    await axios.put(`http://localhost:4000/speakers/${speaker.id}`, newSpeaker);
-
-    newSpeakers[index] = newSpeaker;
-
-    setSpeakers(newSpeakers);
+      dispatch({
+        type: "PUT_SUCCESS",
+        payload: newSpeaker,
+      });
+    } catch (e) {
+      dispatch({
+        type: "PUT_FAILURE",
+        payload: e,
+      });
+    }
   }
 
   function toggleSpeakerFavorite(speaker) {
