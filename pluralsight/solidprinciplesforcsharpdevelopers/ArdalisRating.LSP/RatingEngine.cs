@@ -1,4 +1,4 @@
-namespace ArdalisRating.OCP
+namespace ArdalisRating.LSP
 {
     public class RatingEngine
     {
@@ -24,7 +24,7 @@ namespace ArdalisRating.OCP
 
             var rater = factory.Create(this, policy);
 
-            rater?.Rate(policy);
+            rater.Rate(policy);
 
             Logger.Log("Rating completed.");
         }

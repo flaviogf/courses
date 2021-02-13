@@ -1,4 +1,4 @@
-namespace ArdalisRating.OCP
+namespace ArdalisRating.LSP
 {
     public class RaterFactory
     {
@@ -6,7 +6,7 @@ namespace ArdalisRating.OCP
         {
             PolicyType.Auto => new AutoPolicyRater(engine, engine.Logger),
             PolicyType.Land => new LandPolicyRater(engine, engine.Logger),
-            _ => null
+            _ => new UnknownPolicyRater(engine, engine.Logger)
         };
     }
 }
