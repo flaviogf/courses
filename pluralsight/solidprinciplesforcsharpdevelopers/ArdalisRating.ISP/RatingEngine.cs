@@ -2,7 +2,14 @@ namespace ArdalisRating.ISP
 {
     public class RatingEngine
     {
-        public IRatingContext Context { get; set; }
+        public RatingEngine()
+        {
+            Context.Engine = this;
+        }
+
+        public IRatingContext Context { get; set; } = new DefaultRatingContext();
+
+        public decimal Rating { get; set; }
 
         public void Rate()
         {
