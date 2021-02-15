@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArdalisRating.LSP", "Ardali
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArdalisRating.ISP", "ArdalisRating.ISP\ArdalisRating.ISP.csproj", "{BD1F33B5-E5E2-453B-870D-4CDA80B676A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArdalisRating.DIP", "ArdalisRating.DIP\ArdalisRating.DIP.csproj", "{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{BD1F33B5-E5E2-453B-870D-4CDA80B676A5}.Release|x64.Build.0 = Release|Any CPU
 		{BD1F33B5-E5E2-453B-870D-4CDA80B676A5}.Release|x86.ActiveCfg = Release|Any CPU
 		{BD1F33B5-E5E2-453B-870D-4CDA80B676A5}.Release|x86.Build.0 = Release|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Debug|x64.Build.0 = Debug|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Debug|x86.Build.0 = Debug|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Release|x64.ActiveCfg = Release|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Release|x64.Build.0 = Release|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{B879898E-EB4C-424D-A4AC-C4F6DC4B16D1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
