@@ -1,5 +1,4 @@
-﻿using System;
-using ArdalisRating.DIP.Core;
+﻿using ArdalisRating.DIP.Core;
 using ArdalisRating.DIP.Core.Raters;
 using ArdalisRating.DIP.Infrastructure.Loggers;
 using ArdalisRating.DIP.Infrastructure.PolicySources;
@@ -11,7 +10,7 @@ namespace ArdalisRating.DIP.UI
     {
         public static void Main(string[] args)
         {
-            var logger = new ConsoleLogger();
+            var logger = new FileLogger();
 
             var engine = new RatingEngine(
                 logger,
@@ -24,12 +23,12 @@ namespace ArdalisRating.DIP.UI
 
             if (engine.Rating > 0)
             {
-                Console.WriteLine($"Rating: {engine.Rating}");
+                logger.Log($"Rating: {engine.Rating}");
 
                 return;
             }
 
-            Console.WriteLine("No rating produced");
+            logger.Log("No rating produced");
         }
     }
 }
