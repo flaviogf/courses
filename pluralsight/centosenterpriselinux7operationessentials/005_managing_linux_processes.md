@@ -30,4 +30,22 @@ cd $$
 ls -l cwd
 
 ls -l exe
+
+stty -a
+
+kill -l
+
+kill 8537
+
+kill -15 8537
+
+kill -term 8537
+
+kill -sigterm 8537
+
+kill -9 8537
+
+kill -kill 8537
+
+kill -sigkill 8537
 ```
