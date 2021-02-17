@@ -48,4 +48,22 @@ kill -9 8537
 kill -kill 8537
 
 kill -sigkill 8537
+
+psgrep sshd
+
+ps -F -p $(psgrep sshd)
+
+sleep 100&
+
+psgrep sleep
+
+pkill sleep
+
+top
+
+ps --forest
+
+pstree
+
+cd /proc/$$
 ```
