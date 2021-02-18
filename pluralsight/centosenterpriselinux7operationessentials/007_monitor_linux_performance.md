@@ -48,5 +48,22 @@ watch -n 4 uptime
 tload
 
 tar -cJvf doc.tar.xz /usr/share/doc
-```
 
+top
+
+top -b -n 1
+
+top -b -n 1 > file1
+
+less file1
+
+vmstat
+
+vmstat -S K
+
+vmstat -S k
+
+vmstat -S m
+
+vmstat 5 3
+```
