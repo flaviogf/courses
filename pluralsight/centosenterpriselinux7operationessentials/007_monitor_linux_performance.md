@@ -8,4 +8,28 @@ rpm -qf /usr/bin/top
 rpm -ql procps-ng | grep '^/usr/bin'
 
 rpm -ql procps-ng | grep '^/usr/bin' | wc -l
+
+free
+
+free -m
+
+free -g
+
+pgrep sshd
+
+pmap $$
+
+echo $$
+
+pwdx $$
+
+pwdx $(pgrep sshd)
+
+sudo pwdx $(pgrep sshd)
+
+cd /proc/$$
+
+pwd
+
+ls
 ```
