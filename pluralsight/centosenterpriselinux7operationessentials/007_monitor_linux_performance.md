@@ -32,4 +32,21 @@ cd /proc/$$
 pwd
 
 ls
+
+uptime
+
+lscpu
+
+cat /proc/uptime
+
+cat /proc/loadavg
+
+watch uptime
+
+watch -n 4 uptime
+
+tload
+
+tar -cJvf doc.tar.xz /usr/share/doc
 ```
+
