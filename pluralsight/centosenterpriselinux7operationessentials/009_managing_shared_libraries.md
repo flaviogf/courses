@@ -22,4 +22,8 @@ cp /root/libdisplayuid.so !$
 chmod 777 !$
 
 echo $LD_LIBRARY_PATH
+
+ldconfig -p
+
+ldconfig
 ```
