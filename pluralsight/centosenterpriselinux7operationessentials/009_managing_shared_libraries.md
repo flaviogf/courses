@@ -26,4 +26,6 @@ echo $LD_LIBRARY_PATH
 ldconfig -p
 
 ldconfig
+
+pmap $$
 ```
