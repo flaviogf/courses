@@ -28,4 +28,6 @@ ldconfig -p
 ldconfig
 
 pmap $$
+
+cat /etc/ld.so.cache
 ```
