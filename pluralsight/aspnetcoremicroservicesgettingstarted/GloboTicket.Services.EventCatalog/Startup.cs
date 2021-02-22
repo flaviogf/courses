@@ -26,6 +26,8 @@ namespace GloboTicket.Services.EventCatalog
 
             services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 
+            services.AddScoped<IEventRepository, EFEventRepository>();
+
             services.AddSwaggerGen();
 
             services.AddControllers();

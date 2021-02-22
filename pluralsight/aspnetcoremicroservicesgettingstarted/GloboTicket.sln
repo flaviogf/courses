@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Services.EventCatalog", "GloboTicket.Services.EventCatalog\GloboTicket.Services.EventCatalog.csproj", "{97C2C588-1A18-42F1-B31A-8B99A1FF5F63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Client", "GloboTicket.Client\GloboTicket.Client.csproj", "{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{97C2C588-1A18-42F1-B31A-8B99A1FF5F63}.Release|x64.Build.0 = Release|Any CPU
 		{97C2C588-1A18-42F1-B31A-8B99A1FF5F63}.Release|x86.ActiveCfg = Release|Any CPU
 		{97C2C588-1A18-42F1-B31A-8B99A1FF5F63}.Release|x86.Build.0 = Release|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Debug|x64.Build.0 = Debug|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x64.Build.0 = Release|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
