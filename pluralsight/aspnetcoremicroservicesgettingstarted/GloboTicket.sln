@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Services.EventC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Client", "GloboTicket.Client\GloboTicket.Client.csproj", "{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboTicket.Services.ShoppingBasket", "GloboTicket.Services.ShoppingBasket\GloboTicket.Services.ShoppingBasket.csproj", "{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x64.Build.0 = Release|Any CPU
 		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x86.ActiveCfg = Release|Any CPU
 		{F2D29A36-716E-4ADE-99DB-CAC55497ECB1}.Release|x86.Build.0 = Release|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Debug|x64.Build.0 = Debug|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Debug|x86.Build.0 = Debug|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Release|x64.ActiveCfg = Release|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Release|x64.Build.0 = Release|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Release|x86.ActiveCfg = Release|Any CPU
+		{966751ED-0899-4C9A-9BAA-6C5FB1449CC6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
