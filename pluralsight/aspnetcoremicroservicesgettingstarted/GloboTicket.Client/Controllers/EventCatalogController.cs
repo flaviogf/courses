@@ -16,7 +16,7 @@ namespace GloboTicket.Client.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Index(Guid? categoryId = null)
+        public async Task<IActionResult> Index([FromQuery] Guid? categoryId = null)
         {
             var categories = _eventCatalogService.GetAllCategories();
 
@@ -30,6 +30,13 @@ namespace GloboTicket.Client.Controllers
                 Categories = categories.Result,
                 CategoryId = categoryId
             });
+        }
+
+        public async Task<IActionResult> Detail(Guid eventId)
+        {
+            var @event = await _eventCatalogService.GetEvent(eventId);
+
+            return View(@event);
         }
     }
 }

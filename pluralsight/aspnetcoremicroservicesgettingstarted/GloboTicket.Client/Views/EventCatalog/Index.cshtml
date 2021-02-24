@@ -32,6 +32,9 @@
                 <td>@it.Name</td>
                 <td>@it.Artist</td>
                 <td>@it.Price</td>
+                <td>
+                    <a asp-controller="EventCatalog" asp-action="Detail" asp-route-eventId="@it.Id">PURCHASE DETAIL</a>
+                </td>
             </tr>
         }
     </tbody>
