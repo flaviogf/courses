@@ -15,8 +15,7 @@ namespace GloboTicket.Client.Controllers
             _eventCatalogService = eventCatalogService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index([FromQuery] Guid? categoryId = null)
+        public async Task<IActionResult> Index(Guid? categoryId = null)
         {
             var categories = _eventCatalogService.GetAllCategories();
 
