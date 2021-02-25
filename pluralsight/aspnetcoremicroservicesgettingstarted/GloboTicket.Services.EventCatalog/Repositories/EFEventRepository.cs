@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GloboTicket.Services.EventCatalog.DbContexts;
 using GloboTicket.Services.EventCatalog.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,23 +17,14 @@ namespace GloboTicket.Services.EventCatalog.Repositories
             _eventCatalogDbContext = eventCatalogDbContext;
         }
 
-        public async Task<IEnumerable<Event>> GetAll(Guid? categoryId = null)
+        public async Task<IEnumerable<Event>> GetAll(Guid categoryId)
         {
-            var events = await _eventCatalogDbContext.Events
-                .Include(it => it.Category)
-                .Where(it => categoryId == null || it.CategoryId == categoryId)
-                .ToListAsync();
-
-            return events;
+            return await _eventCatalogDbContext.Events.Include(it => it.Category).Where(it => categoryId == Guid.Empty || it.CategoryId == categoryId).ToListAsync();
         }
 
-        public async Task<Event> Get(Guid id)
+        public Task<Event> Get(Guid eventId)
         {
-            var @event = await _eventCatalogDbContext.Events
-                .Include(it => it.Category)
-                .FirstOrDefaultAsync(it => it.Id == id);
-
-            return @event;
+            return _eventCatalogDbContext.Events.Include(it => it.Category).FirstOrDefaultAsync(it => it.EventId == eventId);
         }
     }
 }

@@ -22,23 +22,29 @@ namespace GloboTicket.Services.EventCatalog.Controllers
             _eventRepository = eventRepository;
         }
 
+        /// <summary>
+        /// Get all Events
+        /// </summary>
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<EventDto>>> GetAll(Guid? categoryId = null)
+        public async Task<ActionResult<IEnumerable<EventDto>>> GetAll(Guid categoryId)
         {
             var events = await _eventRepository.GetAll(categoryId);
 
             return Ok(_mapper.Map<IEnumerable<EventDto>>(events));
         }
 
-        [HttpGet("{id}")]
+        /// <summary>
+        /// Get an Event
+        /// </summary>
+        [HttpGet("{eventId}")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<EventDto>> Get(Guid id)
+        public async Task<ActionResult<EventDto>> Get(Guid eventId)
         {
-            var @event = await _eventRepository.Get(id);
+            var @event = await _eventRepository.Get(eventId);
 
             if (@event == null)
             {

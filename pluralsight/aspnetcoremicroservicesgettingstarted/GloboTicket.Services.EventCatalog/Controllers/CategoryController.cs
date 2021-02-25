@@ -21,6 +21,9 @@ namespace GloboTicket.Services.EventCatalog.Controllers
             _categoryRepository = categoryRepository;
         }
 
+        /// <summary>
+        /// Get all Categories
+        /// </summary>
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

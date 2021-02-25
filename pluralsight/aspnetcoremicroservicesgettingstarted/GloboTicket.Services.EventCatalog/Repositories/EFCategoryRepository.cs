@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GloboTicket.Services.EventCatalog.DbContexts;
 using GloboTicket.Services.EventCatalog.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,7 @@ namespace GloboTicket.Services.EventCatalog.Repositories
 
         public async Task<IEnumerable<Category>> GetAll()
         {
-            var categories = await _eventCatalogDbContext.Categories.ToListAsync();
-
-            return categories;
+            return await _eventCatalogDbContext.Categories.ToListAsync();
         }
     }
 }
