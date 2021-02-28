@@ -16,6 +16,14 @@ crontab -e
 sudo apt install anacron
 
 sudo vim /etc/anacrontab
+
+sudo apt install at
+
+at 09:46
+
+atq
+
+atrm 1
 ```
 
 ```txt
