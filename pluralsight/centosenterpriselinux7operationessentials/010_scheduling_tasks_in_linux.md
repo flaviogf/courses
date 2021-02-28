@@ -12,10 +12,20 @@ rm df.txt
 sudo vim /etc/crontab
 
 crontab -e
+
+sudo apt install anacron
+
+sudo vim /etc/anacrontab
 ```
 
 ```txt
 # /etc/crontab
 
 */1 * * * * root df -h >> /tmp/df.log
+```
+
+```txt
+# /etc/anacrontab
+
+1 5 update apt update &> update.log
 ```
