@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using GloboTicket.Services.ShoppingBasket.Entities;
@@ -34,18 +35,18 @@ namespace GloboTicket.Services.ShoppingBasket.Controllers
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task Post(Guid basketId, BasketLineForCreationDto basketLineForCreationDto)
+        public async Task<ActionResult<BasketLineDto>> Post(Guid basketId, BasketLineForCreationDto basketLineForCreationDto)
         {
             if (!(await _basketRepository.Exists(basketId)))
             {
-                return;
+                return BadRequest();
             }
 
             var @event = await _eventCatalogService.GetEvent(basketLineForCreationDto.EventId);
 
             if (@event == null)
             {
-                return;
+                return BadRequest();
             }
 
             if (!(await _eventRepository.Exists(basketLineForCreationDto.EventId)))
@@ -59,7 +60,7 @@ namespace GloboTicket.Services.ShoppingBasket.Controllers
 
                 await _basketRepository.AddBasketLine(basketId, basketLine);
 
-                return;
+                return CreatedAtAction(nameof(Get), new { basketId = basketLine.BasketId, eventId = basketLine.EventId }, _mapper.Map<BasketLineDto>(basketLine));
             }
 
             var existingBasketLine = await _basketRepository.GetBasketLine(basketId, basketLineForCreationDto.EventId);
@@ -67,6 +68,27 @@ namespace GloboTicket.Services.ShoppingBasket.Controllers
             existingBasketLine.TicketAmount += basketLineForCreationDto.TicketAmount;
 
             await _basketRepository.UpdateBasketLine(basketId, existingBasketLine);
+
+            return CreatedAtAction(nameof(Get), new { basketId = existingBasketLine.BasketId, eventId = existingBasketLine.EventId }, _mapper.Map<BasketLineDto>(existingBasketLine));
+        }
+
+        /// <summary>
+        /// Get all Basket Lines
+        /// </summary>
+        [HttpGet]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<BasketLineDto>>> Get(Guid basketId)
+        {
+            if (!(await _basketRepository.Exists(basketId)))
+            {
+                return NotFound();
+            }
+
+            var basketLines = await _basketRepository.GetAllBasketLines(basketId);
+
+            return Ok(_mapper.Map<IEnumerable<BasketLineDto>>(basketLines));
         }
 
         /// <summary>
@@ -86,6 +108,50 @@ namespace GloboTicket.Services.ShoppingBasket.Controllers
             }
 
             return Ok(_mapper.Map<BasketLineDto>(basketLine));
+        }
+
+        /// <summary>
+        /// Update a Basket Line
+        /// </summary>
+        [HttpPut("{eventId}")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Update(Guid basketId, Guid eventId, BasketLineForUpdateDto basketLineForUpdateDto)
+        {
+            var basketLine = await _basketRepository.GetBasketLine(basketId, eventId);
+
+            if (basketLine == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(basketLineForUpdateDto, basketLine);
+
+            await _basketRepository.UpdateBasketLine(basketId, basketLine);
+
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Delete a Basket Line
+        /// </summary>
+        [HttpDelete("{eventId}")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Delete(Guid basketId, Guid eventId)
+        {
+            var basketLine = await _basketRepository.GetBasketLine(basketId, eventId);
+
+            if (basketLine == null)
+            {
+                return NotFound();
+            }
+
+            await _basketRepository.RemoveBasketLine(basketId, basketLine);
+
+            return NoContent();
         }
     }
 }

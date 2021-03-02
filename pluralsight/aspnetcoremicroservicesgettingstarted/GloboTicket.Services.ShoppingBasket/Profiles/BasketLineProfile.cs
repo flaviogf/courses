@@ -11,6 +11,8 @@ namespace GloboTicket.Services.ShoppingBasket.Profiles
             CreateMap<BasketLine, BasketLineDto>();
 
             CreateMap<BasketLineForCreationDto, BasketLine>();
+
+            CreateMap<BasketLineForUpdateDto, BasketLine>();
         }
     }
 }
