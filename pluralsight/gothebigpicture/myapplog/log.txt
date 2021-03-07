@@ -1,0 +1,9 @@
+2006-08-16 12:03:10,237 - INFO - Attempting to connect to data sources
+2006-08-16 12:03:10,762 - WARNING - Failed to connect to datasource "mydatasource"
+2006-08-16 12:03:11,003 - INFO - Retrying to connect to "mydatasource"
+2006-08-16 12:07:47,994 - ERROR - Unable to process login request for user "user"
+2006-08-16 12:07:10,278 - ERROR - Unable to process login request for user "user"
+2006-08-16 12:08:13,348 - ERROR - Unable to process login request for user "user"
+2006-08-16 12:09:00,741 - ERROR - Unable to process login request for user "user"
+2006-08-16 12:10:10,357 - INFO - User with ID "user27" logged
+2006-08-16 12:12:10,856 - INFO - User with ID "user42" logged
