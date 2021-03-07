@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GameEngine
 {
@@ -8,6 +9,7 @@ namespace GameEngine
         {
             IsNoob = true;
             Health = 100;
+            Weapons = new string[] { "Long Bow", "Short Bow", "Short Sword" };
         }
 
         public string FirstName { get; set; }
@@ -19,6 +21,10 @@ namespace GameEngine
         public bool IsNoob { get; set; }
 
         public int Health { get; set; }
+
+        public string Nickname { get; set; }
+
+        public IEnumerable<string> Weapons { get; set; }
 
         public void Sleep()
         {

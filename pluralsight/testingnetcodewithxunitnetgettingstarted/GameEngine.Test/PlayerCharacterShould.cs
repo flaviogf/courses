@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace GameEngine.Test
@@ -102,6 +103,58 @@ namespace GameEngine.Test
             sut.Sleep();
 
             Assert.InRange(sut.Health, 101, 200);
+        }
+
+        [Fact]
+        public void NotHaveNicknameByDefault()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.Null(sut.Nickname);
+        }
+
+        [Fact]
+        public void HaveALongBow()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.Contains("Long Bow", sut.Weapons);
+        }
+
+        [Fact]
+        public void NotHaveAStaffOfWonder()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.DoesNotContain("Staff of Wonder", sut.Weapons);
+        }
+
+        [Fact]
+        public void HaveAtLeastOneKindOfSword()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.Contains(sut.Weapons, it => it.Contains("Sword"));
+        }
+
+        [Fact]
+        public void HaveAllExpectedWeapons()
+        {
+            PlayerCharacter sut = new();
+
+            var expectedWeapons = new string[] { "Long Bow", "Short Bow", "Short Sword" };
+
+            Assert.Equal(expectedWeapons, sut.Weapons);
+        }
+
+        [Fact]
+        public void NotHaveDefaultEmptyWeapons()
+        {
+            PlayerCharacter sut = new();
+
+            Action<string> isNotEmpty = it => Assert.False(string.IsNullOrWhiteSpace(it));
+
+            Assert.All(sut.Weapons, isNotEmpty);
         }
     }
 }
