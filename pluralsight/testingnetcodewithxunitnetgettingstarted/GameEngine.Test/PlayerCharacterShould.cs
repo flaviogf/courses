@@ -77,5 +77,31 @@ namespace GameEngine.Test
 
             Assert.EndsWith("Smith", sut.LastName);
         }
+
+        [Fact]
+        public void StartWithDefaultHealth()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.Equal(100, sut.Health);
+        }
+
+        [Fact]
+        public void StartWithDefaultHealth_NotEqualExample()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.NotEqual(0, sut.Health);
+        }
+
+        [Fact]
+        public void IncreaseHealthAfterSleep()
+        {
+            PlayerCharacter sut = new();
+
+            sut.Sleep();
+
+            Assert.InRange(sut.Health, 101, 200);
+        }
     }
 }
