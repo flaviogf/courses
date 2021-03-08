@@ -156,5 +156,21 @@ namespace GameEngine.Test
 
             Assert.All(sut.Weapons, isNotEmpty);
         }
+
+        [Fact]
+        public void RaiseSleptEvent()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.Raises<EventArgs>(handler => sut.PlayerSlept += handler, handler => sut.PlayerSlept -= handler, () => sut.Sleep());
+        }
+
+        [Fact]
+        public void RaisePropertyChanged()
+        {
+            PlayerCharacter sut = new();
+
+            Assert.PropertyChanged(sut, "Health", () => sut.TakeDamage(10));
+        }
     }
 }
