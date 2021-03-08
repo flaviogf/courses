@@ -56,5 +56,33 @@ namespace GameEngine.Test
 
             Assert.IsAssignableFrom<Enemy>(enemy);
         }
+
+        [Fact]
+        public void CreateSeparateInstances()
+        {
+            EnemyFactory sut = new();
+
+            Enemy enemy1 = sut.Create("Zombie");
+
+            Enemy enemy2 = sut.Create("Zombie");
+
+            Assert.NotSame(enemy1, enemy2);
+        }
+
+        [Fact]
+        public void NotAllowNullNames()
+        {
+            EnemyFactory sut = new();
+
+            Assert.Throws<ArgumentNullException>(() => sut.Create(null));
+        }
+
+        [Fact]
+        public void OnlyAllowKingOrQueenBossEnemies()
+        {
+            EnemyFactory sut = new();
+
+            Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", isBoss: true));
+        }
     }
 }
