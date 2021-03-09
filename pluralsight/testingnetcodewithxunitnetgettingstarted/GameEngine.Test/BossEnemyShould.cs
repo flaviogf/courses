@@ -2,6 +2,7 @@ using Xunit;
 
 namespace GameEngine.Test
 {
+    [Trait("Category", "Boss")]
     public class BossEnemyShould
     {
         [Fact]
