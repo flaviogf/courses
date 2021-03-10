@@ -55,7 +55,7 @@ namespace GameEngine
 
         public void TakeDamage(int damage)
         {
-            Health -= Math.Max(1, Health -= damage);
+            Health = Math.Max(1, Health -= damage);
         }
 
         private int CalulateHealthIncrease()
