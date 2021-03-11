@@ -6,7 +6,7 @@ namespace GameEngine.Test
     public class NonPlayerCharacterShould
     {
         [Theory]
-        [MemberData(nameof(InternalHealthDamageTestData.TestData), MemberType = typeof(InternalHealthDamageTestData))]
+        [MemberData(nameof(ExternalHealthDamageTestData.TestData), MemberType = typeof(ExternalHealthDamageTestData))]
         public void TakeDamage(int damage, int expectedHealth)
         {
             NonPlayerCharacter sut = new();
