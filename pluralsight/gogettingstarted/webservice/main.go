@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/flaviogf/webservice/models"
+)
 
 func main() {
-	fmt.Println("Hello, Gophers!")
+	frank := models.User{
+		ID:        1,
+		FirstName: "Frank",
+		LastName:  "Castle",
+	}
+
+	fmt.Println(frank)
 }
