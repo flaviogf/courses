@@ -1,17 +1,13 @@
 package main
 
 import (
-	"fmt"
+	"net/http"
 
-	"github.com/flaviogf/webservice/models"
+	"github.com/flaviogf/webservice/controllers"
 )
 
 func main() {
-	frank := models.User{
-		ID:        1,
-		FirstName: "Frank",
-		LastName:  "Castle",
-	}
+	controllers.RegisterControllers()
 
-	fmt.Println(frank)
+	http.ListenAndServe(":3000", nil)
 }
