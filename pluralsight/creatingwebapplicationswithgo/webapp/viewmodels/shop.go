@@ -1,4 +1,4 @@
-package viewmodel
+package viewmodels
 
 type ShopViewModel struct {
 	Title      string
