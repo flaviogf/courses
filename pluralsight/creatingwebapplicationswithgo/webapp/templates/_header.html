@@ -1,0 +1,30 @@
+{{define "_header.html"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <style>
+      body {
+        background-color: #ffffff;
+      }
+      .main.container {
+        margin-top: 7em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <a href="/" class="header item">Web App</a>
+        <a href="/" class="item">Home</a>
+        <a href="/shop" class="item">Shop</a>
+      </div>
+    </div>
+{{end}}
