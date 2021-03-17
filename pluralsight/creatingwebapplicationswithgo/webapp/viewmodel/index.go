@@ -1,9 +1,10 @@
 package viewmodel
 
 type IndexViewModel struct {
-	Title string
+	Title  string
+	Active string
 }
 
 func NewIndexViewModel() *IndexViewModel {
-	return &IndexViewModel{Title: "Home"}
+	return &IndexViewModel{"Home", "home"}
 }

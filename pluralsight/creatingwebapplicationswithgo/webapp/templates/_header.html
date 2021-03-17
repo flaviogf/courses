@@ -23,8 +23,8 @@
     <div class="ui fixed inverted menu">
       <div class="ui container">
         <a href="/" class="header item">Web App</a>
-        <a href="/" class="item">Home</a>
-        <a href="/shop" class="item">Shop</a>
+        <a href="/" class='item {{if eq .Active "home"}} active {{end}}'>Home</a>
+        <a href="/shop" class='item {{if eq .Active "shop"}} active {{end}}'>Shop</a>
       </div>
     </div>
 {{end}}

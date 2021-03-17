@@ -1,7 +1,7 @@
 {{define "index.html"}}
-{{template "_header.html"}}
+{{template "_header.html" .}}
     <div class="ui main text container">
         <h1 class="ui header">{{.Title}}</h1>
     </div>
-{{template "_footer.html"}}
+{{template "_footer.html" .}}
 {{end}}
