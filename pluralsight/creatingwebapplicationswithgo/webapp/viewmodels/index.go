@@ -5,6 +5,6 @@ type IndexViewModel struct {
 	Active string
 }
 
-func NewIndexViewModel() *IndexViewModel {
-	return &IndexViewModel{"Home", "home"}
+func NewIndexViewModel() IndexViewModel {
+	return IndexViewModel{"Home", "home"}
 }

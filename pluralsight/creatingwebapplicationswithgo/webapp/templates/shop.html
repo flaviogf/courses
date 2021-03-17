@@ -6,8 +6,10 @@
         <div class="ui list">
             {{range .Categories}}
             <div class="item">
-                <div class="header">{{.Name}}</div>
-                {{.Description}}
+                <a href="/category/{{.ID}}" class="header">{{.Name}}</a>
+                <div class="description">
+                    {{.Description}}
+                </div>
             </div>
             {{end}}
         </div>
