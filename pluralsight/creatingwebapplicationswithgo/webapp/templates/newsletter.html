@@ -1,0 +1,14 @@
+{{define "newsletter.html"}}
+{{template "_header.html" .}}
+    <div class="ui main text container">
+        <h1 class="ui header">Newsletter</h1>
+
+        <form class="ui form" action="/newsletter" method="POST">
+            <div class="ui field fluid large input">
+                <input type="email" placeholder="Your best email..." id="email" name="email">
+            </div>
+            <button class="ui button" type="submit">Subscribe</button>
+        </form>
+    </div>
+{{template "_footer.html" .}}
+{{end}}

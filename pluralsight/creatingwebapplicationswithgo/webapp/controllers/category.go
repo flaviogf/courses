@@ -14,11 +14,11 @@ type CategoryController struct {
 	t *template.Template
 }
 
-func NewCategoryController(t *template.Template) CategoryController {
-	return CategoryController{t}
+func NewCategoryController(t *template.Template) *CategoryController {
+	return &CategoryController{t}
 }
 
-func (c CategoryController) Get(wr http.ResponseWriter, r *http.Request) {
+func (c *CategoryController) Get(wr http.ResponseWriter, r *http.Request) {
 	regex, _ := regexp.Compile(`/category/(\d+)`)
 
 	matches := regex.FindStringSubmatch(r.URL.Path)

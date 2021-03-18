@@ -17,7 +17,9 @@ func main() {
 
 	categoryController := controllers.NewCategoryController(t)
 
-	routes.RegisterRoutes(indexController, shopController, categoryController)
+	newsletterController := controllers.NewNewsletterController(t)
+
+	routes.RegisterRoutes(indexController, shopController, categoryController, newsletterController)
 
 	http.ListenAndServe(":8080", nil)
 }

@@ -13,11 +13,11 @@ type ShopController struct {
 	t *template.Template
 }
 
-func NewShopController(t *template.Template) ShopController {
-	return ShopController{t}
+func NewShopController(t *template.Template) *ShopController {
+	return &ShopController{t}
 }
 
-func (s ShopController) Get(wr http.ResponseWriter, r *http.Request) {
+func (s *ShopController) Get(wr http.ResponseWriter, r *http.Request) {
 	categories, err := models.GetCategories()
 
 	if err != nil {
