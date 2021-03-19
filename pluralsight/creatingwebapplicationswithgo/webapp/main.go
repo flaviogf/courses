@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/flaviogf/webapp/controllers"
+	"github.com/flaviogf/webapp/middlewares"
 	"github.com/flaviogf/webapp/routes"
 )
 
@@ -21,5 +22,5 @@ func main() {
 
 	routes.RegisterRoutes(indexController, shopController, categoryController, newsletterController)
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", middlewares.NewTimeoutMiddleware(middlewares.NewGzipMiddleware(http.DefaultServeMux)))
 }

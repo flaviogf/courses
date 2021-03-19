@@ -18,13 +18,13 @@ func NewCategoryController(t *template.Template) *CategoryController {
 	return &CategoryController{t}
 }
 
-func (c *CategoryController) Get(wr http.ResponseWriter, r *http.Request) {
+func (c *CategoryController) Get(w http.ResponseWriter, r *http.Request) {
 	regex, _ := regexp.Compile(`/category/(\d+)`)
 
 	matches := regex.FindStringSubmatch(r.URL.Path)
 
 	if len(matches) <= 0 {
-		wr.WriteHeader(http.StatusNotFound)
+		w.WriteHeader(http.StatusNotFound)
 
 		return
 	}
@@ -34,10 +34,12 @@ func (c *CategoryController) Get(wr http.ResponseWriter, r *http.Request) {
 	category, err := models.GetCategory(id)
 
 	if err != nil {
-		wr.WriteHeader(http.StatusNotFound)
+		w.WriteHeader(http.StatusNotFound)
 
 		return
 	}
 
-	c.t.ExecuteTemplate(wr, "category.html", viewmodels.NewCategoryViewModel(category))
+	w.Header().Add("Content-Type", "text/html")
+
+	c.t.ExecuteTemplate(w, "category.html", viewmodels.NewCategoryViewModel(category))
 }

@@ -17,16 +17,18 @@ func NewShopController(t *template.Template) *ShopController {
 	return &ShopController{t}
 }
 
-func (s *ShopController) Get(wr http.ResponseWriter, r *http.Request) {
+func (s *ShopController) Get(w http.ResponseWriter, r *http.Request) {
 	categories, err := models.GetCategories()
 
 	if err != nil {
-		wr.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
 
 		log.Println(err)
 
 		return
 	}
 
-	s.t.ExecuteTemplate(wr, "shop.html", viewmodels.NewShopViewModel(categories))
+	w.Header().Add("Content-Type", "text/html")
+
+	s.t.ExecuteTemplate(w, "shop.html", viewmodels.NewShopViewModel(categories))
 }
