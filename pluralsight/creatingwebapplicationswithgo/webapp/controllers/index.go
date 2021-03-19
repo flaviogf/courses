@@ -3,7 +3,6 @@ package controllers
 import (
 	"html/template"
 	"net/http"
-	"time"
 
 	"github.com/flaviogf/webapp/viewmodels"
 )
@@ -17,8 +16,6 @@ func NewIndexController(t *template.Template) *IndexController {
 }
 
 func (i *IndexController) Get(w http.ResponseWriter, r *http.Request) {
-	time.Sleep(4 * time.Second)
-
 	w.Header().Add("Content-Type", "text/html")
 
 	i.t.ExecuteTemplate(w, "index.html", viewmodels.NewIndexViewModel())

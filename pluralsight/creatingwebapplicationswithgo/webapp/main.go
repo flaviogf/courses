@@ -37,5 +37,5 @@ func main() {
 
 	routes.RegisterRoutes(indexController, shopController, categoryController, newsletterController)
 
-	http.ListenAndServe(":8080", middlewares.NewTimeoutMiddleware(middlewares.NewGzipMiddleware(http.DefaultServeMux)))
+	http.ListenAndServeTLS(":8080", "cert.pem", "key.pem", middlewares.NewTimeoutMiddleware(middlewares.NewGzipMiddleware(http.DefaultServeMux)))
 }
