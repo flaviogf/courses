@@ -1,12 +1,5 @@
 package models
 
-import (
-	"encoding/json"
-	"errors"
-	"io/ioutil"
-	"os"
-)
-
 type Category struct {
 	ID          int
 	Name        string
@@ -14,37 +7,43 @@ type Category struct {
 }
 
 func GetCategory(id int) (Category, error) {
-	categories, err := GetCategories()
+	var category Category
+
+	row := db.QueryRow("select id, name, description from category where id = $1", id)
+
+	if err := row.Err(); err != nil {
+		return category, err
+	}
+
+	err := row.Scan(&category.ID, &category.Name, &category.Description)
 
 	if err != nil {
-		return Category{}, err
+		return category, err
 	}
 
-	for _, it := range categories {
-		if it.ID == id {
-			return it, nil
-		}
-	}
-
-	return Category{}, errors.New("Category not found")
+	return category, nil
 }
 
 func GetCategories() ([]Category, error) {
 	var categories []Category
 
-	file, err := os.Open("categories.json")
+	rows, err := db.Query("select id, name, description from category")
 
 	if err != nil {
 		return categories, err
 	}
 
-	bytes, err := ioutil.ReadAll(file)
+	for rows.Next() {
+		var category Category
 
-	if err != nil {
-		return categories, err
+		err = rows.Scan(&category.ID, &category.Name, &category.Description)
+
+		if err != nil {
+			return categories, err
+		}
+
+		categories = append(categories, category)
 	}
-
-	json.Unmarshal(bytes, &categories)
 
 	return categories, nil
 }
