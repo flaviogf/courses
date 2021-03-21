@@ -1,0 +1,3 @@
+INFO: 2021/03/21 18:35:19 this is an info message
+WARNING: 2021/03/21 18:35:19 this is a waning message
+ERROR: 2021/03/21 18:35:19 this is an error message
