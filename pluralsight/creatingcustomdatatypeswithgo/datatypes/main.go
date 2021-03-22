@@ -8,9 +8,11 @@ import (
 )
 
 func main() {
-	frank := organization.NewPerson("Frank", "Castle", organization.NewSocialSecurityNumber("123"))
+	frank := organization.NewPerson("Frank", "Castle", organization.NewEuropeanUnionNumber("123", "England"))
 
 	fmt.Println(frank.ID())
+
+	fmt.Println(frank.Country())
 
 	fmt.Println(frank.FullName())
 

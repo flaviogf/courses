@@ -9,14 +9,40 @@ type Identifiable interface {
 	ID() string
 }
 
+type Citizen interface {
+	Identifiable
+	Country() string
+}
+
 type socialSecurityNumber string
 
-func NewSocialSecurityNumber(value string) Identifiable {
+func NewSocialSecurityNumber(value string) Citizen {
 	return socialSecurityNumber(value)
 }
 
 func (s socialSecurityNumber) ID() string {
 	return string(s)
+}
+
+func (s socialSecurityNumber) Country() string {
+	return "United State of America"
+}
+
+type europeanUnionNumber struct {
+	id      string
+	country string
+}
+
+func NewEuropeanUnionNumber(id, country string) Citizen {
+	return europeanUnionNumber{id, country}
+}
+
+func (e europeanUnionNumber) ID() string {
+	return e.id
+}
+
+func (e europeanUnionNumber) Country() string {
+	return e.country
 }
 
 type Name struct {
@@ -40,17 +66,17 @@ func (t Twitter) IsNotValid() bool {
 
 type Person struct {
 	Name
-	Identifiable
+	Citizen
 	twitter Twitter
 }
 
-func NewPerson(firstName, lastName string, identifiable Identifiable) *Person {
+func NewPerson(firstName, lastName string, citizen Citizen) *Person {
 	return &Person{
 		Name: Name{
 			firstName,
 			lastName,
 		},
-		Identifiable: identifiable,
+		Citizen: citizen,
 	}
 }
 
