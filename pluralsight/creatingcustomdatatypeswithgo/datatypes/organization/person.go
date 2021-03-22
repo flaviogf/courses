@@ -9,34 +9,63 @@ type Identifiable interface {
 	ID() string
 }
 
+type socialSecurityNumber string
+
+func NewSocialSecurityNumber(value string) Identifiable {
+	return socialSecurityNumber(value)
+}
+
+func (s socialSecurityNumber) ID() string {
+	return string(s)
+}
+
+type Name struct {
+	first string
+	last  string
+}
+
+func (n *Name) FullName() string {
+	return fmt.Sprintf("%s %s", n.first, n.last)
+}
+
+type Twitter string
+
+func (t Twitter) RedirectUrl() string {
+	return fmt.Sprintf("https://twitter.com/%s", strings.Replace(string(t), "@", "", -1))
+}
+
+func (t Twitter) IsNotValid() bool {
+	return !strings.HasPrefix(string(t), "@")
+}
+
 type Person struct {
-	firstName string
-	lastName  string
-	twitter   string
+	Name
+	Identifiable
+	twitter Twitter
 }
 
-func NewPerson(firstName, lastName string) *Person {
-	return &Person{firstName: firstName, lastName: lastName}
+func NewPerson(firstName, lastName string, identifiable Identifiable) *Person {
+	return &Person{
+		Name: Name{
+			firstName,
+			lastName,
+		},
+		Identifiable: identifiable,
+	}
 }
 
-func (p *Person) ID() string {
-	return "12345"
-}
+func (p *Person) SetTwitter(twitter Twitter) error {
+	if twitter.IsNotValid() {
+		err := fmt.Errorf("%s is not a valid argument", twitter)
 
-func (p *Person) FullName() string {
-	return fmt.Sprintf("%s %s", p.firstName, p.lastName)
-}
-
-func (p *Person) SetTwitter(twitter string) error {
-	if strings.HasPrefix(twitter, "@") {
-		p.twitter = twitter
-
-		return nil
+		return err
 	}
 
-	return fmt.Errorf("%s is not a valid argument", twitter)
+	p.twitter = twitter
+
+	return nil
 }
 
-func (p *Person) Twitter() string {
+func (p *Person) Twitter() Twitter {
 	return p.twitter
 }

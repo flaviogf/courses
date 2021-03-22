@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	frank := organization.NewPerson("Frank", "Castle")
+	frank := organization.NewPerson("Frank", "Castle", organization.NewSocialSecurityNumber("123"))
 
 	fmt.Println(frank.ID())
 
@@ -21,4 +21,6 @@ func main() {
 	}
 
 	fmt.Println(frank.Twitter())
+
+	fmt.Println(frank.Twitter().RedirectUrl())
 }
