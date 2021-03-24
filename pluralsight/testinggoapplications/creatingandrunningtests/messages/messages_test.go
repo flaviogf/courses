@@ -12,6 +12,24 @@ func TestGreet(t *testing.T) {
 	}
 }
 
+func TestGreetTableDriven(t *testing.T) {
+	scenarios := []struct {
+		input    string
+		expected string
+	}{
+		{"Gopher", "Hello, Gopher!\n"},
+		{"", "Hello, !\n"},
+	}
+
+	for _, it := range scenarios {
+		got := Greet(it.input)
+
+		if got != it.expected {
+			t.Errorf("Did not get expected result for input %v. Got: %v, Want: %v", it.input, got, it.expected)
+		}
+	}
+}
+
 func TestDepart(t *testing.T) {
 	got := depart("Gopher")
 
