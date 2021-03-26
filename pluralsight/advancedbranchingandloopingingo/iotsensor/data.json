@@ -1,0 +1,6008 @@
+{
+  "name": "IOTSensor1",
+  "tempMin": 20,
+  "tempMax": 30,
+  "interval": 60,
+  "values": [
+    {
+      "messageId": 1,
+      "temperature": 23.977993,
+      "enqueuedTime": "2019-12-08 20:17:54"
+    },
+    {
+      "messageId": 2,
+      "temperature": 24.110191,
+      "enqueuedTime": "2019-12-08 20:18:24"
+    },
+    {
+      "messageId": 3,
+      "temperature": 20.824223,
+      "enqueuedTime": "2019-12-08 20:18:46"
+    },
+    {
+      "messageId": 4,
+      "temperature": 25.781685,
+      "enqueuedTime": "2019-12-08 20:19:18"
+    },
+    {
+      "messageId": 5,
+      "temperature": 20.494951,
+      "enqueuedTime": "2019-12-08 20:19:50"
+    },
+    {
+      "messageId": 6,
+      "temperature": 24.67929,
+      "enqueuedTime": "2019-12-08 20:20:28"
+    },
+    {
+      "messageId": 7,
+      "temperature": 28.080898,
+      "enqueuedTime": "2019-12-08 20:21:05"
+    },
+    {
+      "messageId": 8,
+      "temperature": 20.020452,
+      "enqueuedTime": "2019-12-08 20:21:26"
+    },
+    {
+      "messageId": 9,
+      "temperature": 22.46704,
+      "enqueuedTime": "2019-12-08 20:21:46"
+    },
+    {
+      "messageId": 10,
+      "temperature": 36.332367,
+      "enqueuedTime": "2019-12-08 20:22:25"
+    },
+    {
+      "messageId": 11,
+      "temperature": 27.644867,
+      "enqueuedTime": "2019-12-08 20:23:02"
+    },
+    {
+      "messageId": 12,
+      "temperature": 28.135506,
+      "enqueuedTime": "2019-12-08 20:23:32"
+    },
+    {
+      "messageId": 13,
+      "temperature": 22.2677,
+      "enqueuedTime": "2019-12-08 20:23:53"
+    },
+    {
+      "messageId": 14,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:24:26"
+    },
+    {
+      "messageId": 15,
+      "temperature": 22.390266,
+      "enqueuedTime": "2019-12-08 20:24:49"
+    },
+    {
+      "messageId": 16,
+      "temperature": 21.217268,
+      "enqueuedTime": "2019-12-08 20:25:20"
+    },
+    {
+      "messageId": 17,
+      "temperature": 23.834044,
+      "enqueuedTime": "2019-12-08 20:25:41"
+    },
+    {
+      "messageId": 18,
+      "temperature": 21.203295,
+      "enqueuedTime": "2019-12-08 20:26:12"
+    },
+    {
+      "messageId": 19,
+      "temperature": 20.121561,
+      "enqueuedTime": "2019-12-08 20:26:51"
+    },
+    {
+      "messageId": 20,
+      "temperature": 22.928097,
+      "enqueuedTime": "2019-12-08 20:27:15"
+    },
+    {
+      "messageId": 21,
+      "temperature": 31.914038,
+      "enqueuedTime": "2019-12-08 20:27:46"
+    },
+    {
+      "messageId": 22,
+      "temperature": 30.757761,
+      "enqueuedTime": "2019-12-08 20:28:09"
+    },
+    {
+      "messageId": 23,
+      "temperature": 23.058748,
+      "enqueuedTime": "2019-12-08 20:28:40"
+    },
+    {
+      "messageId": 24,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:29:02"
+    },
+    {
+      "messageId": 25,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:29:33"
+    },
+    {
+      "messageId": 26,
+      "temperature": 24.410652,
+      "enqueuedTime": "2019-12-08 20:29:59"
+    },
+    {
+      "messageId": 27,
+      "temperature": 20.898922,
+      "enqueuedTime": "2019-12-08 20:30:29"
+    },
+    {
+      "messageId": 28,
+      "temperature": 22.734549,
+      "enqueuedTime": "2019-12-08 20:30:50"
+    },
+    {
+      "messageId": 29,
+      "temperature": 21.484241,
+      "enqueuedTime": "2019-12-08 20:31:18"
+    },
+    {
+      "messageId": 30,
+      "temperature": 20.45721,
+      "enqueuedTime": "2019-12-08 20:31:50"
+    },
+    {
+      "messageId": 31,
+      "temperature": 24.77954,
+      "enqueuedTime": "2019-12-08 20:32:13"
+    },
+    {
+      "messageId": 32,
+      "temperature": 20.608492,
+      "enqueuedTime": "2019-12-08 20:32:45"
+    },
+    {
+      "messageId": 33,
+      "temperature": 22.400623,
+      "enqueuedTime": "2019-12-08 20:33:20"
+    },
+    {
+      "messageId": 34,
+      "temperature": 24.648186,
+      "enqueuedTime": "2019-12-08 20:33:43"
+    },
+    {
+      "messageId": 35,
+      "temperature": 26.342512,
+      "enqueuedTime": "2019-12-08 20:34:14"
+    },
+    {
+      "messageId": 36,
+      "temperature": 31.76662,
+      "enqueuedTime": "2019-12-08 20:34:47"
+    },
+    {
+      "messageId": 37,
+      "temperature": 23.18356,
+      "enqueuedTime": "2019-12-08 20:35:22"
+    },
+    {
+      "messageId": 38,
+      "temperature": 32.40461,
+      "enqueuedTime": "2019-12-08 20:35:48"
+    },
+    {
+      "messageId": 39,
+      "temperature": 33.62654,
+      "enqueuedTime": "2019-12-08 20:36:13"
+    },
+    {
+      "messageId": 40,
+      "temperature": 20.13929,
+      "enqueuedTime": "2019-12-08 20:36:52"
+    },
+    {
+      "messageId": 41,
+      "temperature": 28.750355,
+      "enqueuedTime": "2019-12-08 20:37:19"
+    },
+    {
+      "messageId": 42,
+      "temperature": 21.372986,
+      "enqueuedTime": "2019-12-08 20:37:44"
+    },
+    {
+      "messageId": 43,
+      "temperature": 26.095623,
+      "enqueuedTime": "2019-12-08 20:38:05"
+    },
+    {
+      "messageId": 44,
+      "temperature": 21.094738,
+      "enqueuedTime": "2019-12-08 20:38:29"
+    },
+    {
+      "messageId": 45,
+      "temperature": 30.86256,
+      "enqueuedTime": "2019-12-08 20:39:02"
+    },
+    {
+      "messageId": 46,
+      "temperature": 31.008467,
+      "enqueuedTime": "2019-12-08 20:39:22"
+    },
+    {
+      "messageId": 47,
+      "temperature": 31.419548,
+      "enqueuedTime": "2019-12-08 20:39:56"
+    },
+    {
+      "messageId": 48,
+      "temperature": 25.709368,
+      "enqueuedTime": "2019-12-08 20:40:17"
+    },
+    {
+      "messageId": 49,
+      "temperature": 24.541285,
+      "enqueuedTime": "2019-12-08 20:40:44"
+    },
+    {
+      "messageId": 50,
+      "temperature": 31.346945,
+      "enqueuedTime": "2019-12-08 20:41:04"
+    },
+    {
+      "messageId": 51,
+      "temperature": 29.327156,
+      "enqueuedTime": "2019-12-08 20:41:32"
+    },
+    {
+      "messageId": 52,
+      "temperature": 20.2935,
+      "enqueuedTime": "2019-12-08 20:42:10"
+    },
+    {
+      "messageId": 53,
+      "temperature": 26.036129,
+      "enqueuedTime": "2019-12-08 20:42:34"
+    },
+    {
+      "messageId": 54,
+      "temperature": 26.60554,
+      "enqueuedTime": "2019-12-08 20:42:57"
+    },
+    {
+      "messageId": 55,
+      "temperature": 20.04459,
+      "enqueuedTime": "2019-12-08 20:43:31"
+    },
+    {
+      "messageId": 56,
+      "temperature": 20.761301,
+      "enqueuedTime": "2019-12-08 20:43:57"
+    },
+    {
+      "messageId": 57,
+      "temperature": 26.052452,
+      "enqueuedTime": "2019-12-08 20:44:24"
+    },
+    {
+      "messageId": 58,
+      "temperature": 25.658836,
+      "enqueuedTime": "2019-12-08 20:44:55"
+    },
+    {
+      "messageId": 59,
+      "temperature": 29.031868,
+      "enqueuedTime": "2019-12-08 20:45:27"
+    },
+    {
+      "messageId": 60,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:45:58"
+    },
+    {
+      "messageId": 61,
+      "temperature": 31.276245,
+      "enqueuedTime": "2019-12-08 20:46:33"
+    },
+    {
+      "messageId": 62,
+      "temperature": 27.243336,
+      "enqueuedTime": "2019-12-08 20:47:07"
+    },
+    {
+      "messageId": 63,
+      "temperature": 23.753252,
+      "enqueuedTime": "2019-12-08 20:47:36"
+    },
+    {
+      "messageId": 64,
+      "temperature": 23.082577,
+      "enqueuedTime": "2019-12-08 20:48:13"
+    },
+    {
+      "messageId": 65,
+      "temperature": 25.48338,
+      "enqueuedTime": "2019-12-08 20:48:48"
+    },
+    {
+      "messageId": 66,
+      "temperature": 24.510786,
+      "enqueuedTime": "2019-12-08 20:49:20"
+    },
+    {
+      "messageId": 67,
+      "temperature": 30.408236,
+      "enqueuedTime": "2019-12-08 20:49:56"
+    },
+    {
+      "messageId": 68,
+      "temperature": 35.162857,
+      "enqueuedTime": "2019-12-08 20:50:32"
+    },
+    {
+      "messageId": 69,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:51:06"
+    },
+    {
+      "messageId": 70,
+      "temperature": 26.525131,
+      "enqueuedTime": "2019-12-08 20:51:36"
+    },
+    {
+      "messageId": 71,
+      "temperature": 22.311855,
+      "enqueuedTime": "2019-12-08 20:52:00"
+    },
+    {
+      "messageId": 72,
+      "temperature": 20.714975,
+      "enqueuedTime": "2019-12-08 20:52:30"
+    },
+    {
+      "messageId": 73,
+      "temperature": 32.144493,
+      "enqueuedTime": "2019-12-08 20:53:08"
+    },
+    {
+      "messageId": 74,
+      "temperature": 27.33158,
+      "enqueuedTime": "2019-12-08 20:53:39"
+    },
+    {
+      "messageId": 75,
+      "temperature": 29.709265,
+      "enqueuedTime": "2019-12-08 20:54:16"
+    },
+    {
+      "messageId": 76,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:54:41"
+    },
+    {
+      "messageId": 77,
+      "temperature": 22.862143,
+      "enqueuedTime": "2019-12-08 20:55:20"
+    },
+    {
+      "messageId": 78,
+      "temperature": 21.15486,
+      "enqueuedTime": "2019-12-08 20:55:50"
+    },
+    {
+      "messageId": 79,
+      "temperature": 21.887226,
+      "enqueuedTime": "2019-12-08 20:56:16"
+    },
+    {
+      "messageId": 80,
+      "temperature": 28.108501,
+      "enqueuedTime": "2019-12-08 20:56:37"
+    },
+    {
+      "messageId": 81,
+      "temperature": 21.112999,
+      "enqueuedTime": "2019-12-08 20:57:06"
+    },
+    {
+      "messageId": 82,
+      "temperature": 22.619522,
+      "enqueuedTime": "2019-12-08 20:57:43"
+    },
+    {
+      "messageId": 83,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 20:58:14"
+    },
+    {
+      "messageId": 84,
+      "temperature": 25.646902,
+      "enqueuedTime": "2019-12-08 20:58:50"
+    },
+    {
+      "messageId": 85,
+      "temperature": 30.90099,
+      "enqueuedTime": "2019-12-08 20:59:29"
+    },
+    {
+      "messageId": 86,
+      "temperature": 23.516565,
+      "enqueuedTime": "2019-12-08 21:00:05"
+    },
+    {
+      "messageId": 87,
+      "temperature": 32.168938,
+      "enqueuedTime": "2019-12-08 21:00:33"
+    },
+    {
+      "messageId": 88,
+      "temperature": 22.32631,
+      "enqueuedTime": "2019-12-08 21:00:53"
+    },
+    {
+      "messageId": 89,
+      "temperature": 29.72858,
+      "enqueuedTime": "2019-12-08 21:01:17"
+    },
+    {
+      "messageId": 90,
+      "temperature": 22.433586,
+      "enqueuedTime": "2019-12-08 21:01:49"
+    },
+    {
+      "messageId": 91,
+      "temperature": 25.772453,
+      "enqueuedTime": "2019-12-08 21:02:14"
+    },
+    {
+      "messageId": 92,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 21:02:50"
+    },
+    {
+      "messageId": 93,
+      "temperature": 27.252407,
+      "enqueuedTime": "2019-12-08 21:03:28"
+    },
+    {
+      "messageId": 94,
+      "temperature": 25.400192,
+      "enqueuedTime": "2019-12-08 21:04:02"
+    },
+    {
+      "messageId": 95,
+      "temperature": 24.654493,
+      "enqueuedTime": "2019-12-08 21:04:27"
+    },
+    {
+      "messageId": 96,
+      "temperature": 21.24506,
+      "enqueuedTime": "2019-12-08 21:05:01"
+    },
+    {
+      "messageId": 97,
+      "temperature": 21.234333,
+      "enqueuedTime": "2019-12-08 21:05:29"
+    },
+    {
+      "messageId": 98,
+      "temperature": 20.376545,
+      "enqueuedTime": "2019-12-08 21:05:51"
+    },
+    {
+      "messageId": 99,
+      "temperature": 20.651144,
+      "enqueuedTime": "2019-12-08 21:06:16"
+    },
+    {
+      "messageId": 100,
+      "temperature": 22.503561,
+      "enqueuedTime": "2019-12-08 21:06:48"
+    },
+    {
+      "messageId": 101,
+      "temperature": 23.659893,
+      "enqueuedTime": "2019-12-08 21:07:11"
+    },
+    {
+      "messageId": 102,
+      "temperature": 21.765516,
+      "enqueuedTime": "2019-12-08 21:07:36"
+    },
+    {
+      "messageId": 103,
+      "temperature": 20.120691,
+      "enqueuedTime": "2019-12-08 21:08:02"
+    },
+    {
+      "messageId": 104,
+      "temperature": 27.8611,
+      "enqueuedTime": "2019-12-08 21:08:24"
+    },
+    {
+      "messageId": 105,
+      "temperature": 33.369236,
+      "enqueuedTime": "2019-12-08 21:08:55"
+    },
+    {
+      "messageId": 106,
+      "temperature": 28.117596,
+      "enqueuedTime": "2019-12-08 21:09:29"
+    },
+    {
+      "messageId": 107,
+      "temperature": 28.35011,
+      "enqueuedTime": "2019-12-08 21:09:53"
+    },
+    {
+      "messageId": 108,
+      "temperature": 20.589369,
+      "enqueuedTime": "2019-12-08 21:10:24"
+    },
+    {
+      "messageId": 109,
+      "temperature": 21.573921,
+      "enqueuedTime": "2019-12-08 21:10:49"
+    },
+    {
+      "messageId": 110,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 21:11:22"
+    },
+    {
+      "messageId": 111,
+      "temperature": 22.638597,
+      "enqueuedTime": "2019-12-08 21:11:50"
+    },
+    {
+      "messageId": 112,
+      "temperature": 21.350235,
+      "enqueuedTime": "2019-12-08 21:12:29"
+    },
+    {
+      "messageId": 113,
+      "temperature": 33.61297,
+      "enqueuedTime": "2019-12-08 21:12:50"
+    },
+    {
+      "messageId": 114,
+      "temperature": 29.25622,
+      "enqueuedTime": "2019-12-08 21:13:24"
+    },
+    {
+      "messageId": 115,
+      "temperature": 20.524717,
+      "enqueuedTime": "2019-12-08 21:13:55"
+    },
+    {
+      "messageId": 116,
+      "temperature": 23.355621,
+      "enqueuedTime": "2019-12-08 21:14:29"
+    },
+    {
+      "messageId": 117,
+      "temperature": 29.08376,
+      "enqueuedTime": "2019-12-08 21:15:01"
+    },
+    {
+      "messageId": 118,
+      "temperature": 22.332054,
+      "enqueuedTime": "2019-12-08 21:15:26"
+    },
+    {
+      "messageId": 119,
+      "temperature": 24.474117,
+      "enqueuedTime": "2019-12-08 21:16:05"
+    },
+    {
+      "messageId": 120,
+      "temperature": 20.638206,
+      "enqueuedTime": "2019-12-08 21:16:41"
+    },
+    {
+      "messageId": 121,
+      "temperature": 26.695189,
+      "enqueuedTime": "2019-12-08 21:17:09"
+    },
+    {
+      "messageId": 122,
+      "temperature": 32.15,
+      "enqueuedTime": "2019-12-08 21:17:36"
+    },
+    {
+      "messageId": 123,
+      "temperature": 25.039097,
+      "enqueuedTime": "2019-12-08 21:18:14"
+    },
+    {
+      "messageId": 124,
+      "temperature": 24.270206,
+      "enqueuedTime": "2019-12-08 21:18:41"
+    },
+    {
+      "messageId": 125,
+      "temperature": 22.452885,
+      "enqueuedTime": "2019-12-08 21:19:18"
+    },
+    {
+      "messageId": 126,
+      "temperature": 20.901546,
+      "enqueuedTime": "2019-12-08 21:19:45"
+    },
+    {
+      "messageId": 127,
+      "temperature": 28.654053,
+      "enqueuedTime": "2019-12-08 21:20:07"
+    },
+    {
+      "messageId": 128,
+      "temperature": 29.337626,
+      "enqueuedTime": "2019-12-08 21:20:29"
+    },
+    {
+      "messageId": 129,
+      "temperature": 28.961594,
+      "enqueuedTime": "2019-12-08 21:21:05"
+    },
+    {
+      "messageId": 130,
+      "temperature": 22.316776,
+      "enqueuedTime": "2019-12-08 21:21:31"
+    },
+    {
+      "messageId": 131,
+      "temperature": 21.57747,
+      "enqueuedTime": "2019-12-08 21:21:54"
+    },
+    {
+      "messageId": 132,
+      "temperature": 24.675356,
+      "enqueuedTime": "2019-12-08 21:22:21"
+    },
+    {
+      "messageId": 133,
+      "temperature": 23.464638,
+      "enqueuedTime": "2019-12-08 21:22:44"
+    },
+    {
+      "messageId": 134,
+      "temperature": 33.313736,
+      "enqueuedTime": "2019-12-08 21:23:17"
+    },
+    {
+      "messageId": 135,
+      "temperature": 20.316437,
+      "enqueuedTime": "2019-12-08 21:23:45"
+    },
+    {
+      "messageId": 136,
+      "temperature": 35.52035,
+      "enqueuedTime": "2019-12-08 21:24:10"
+    },
+    {
+      "messageId": 137,
+      "temperature": 21.875927,
+      "enqueuedTime": "2019-12-08 21:24:45"
+    },
+    {
+      "messageId": 138,
+      "temperature": 37.5002,
+      "enqueuedTime": "2019-12-08 21:25:14"
+    },
+    {
+      "messageId": 139,
+      "temperature": 32.108097,
+      "enqueuedTime": "2019-12-08 21:25:39"
+    },
+    {
+      "messageId": 140,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 21:26:15"
+    },
+    {
+      "messageId": 141,
+      "temperature": 26.394505,
+      "enqueuedTime": "2019-12-08 21:26:38"
+    },
+    {
+      "messageId": 142,
+      "temperature": 26.474396,
+      "enqueuedTime": "2019-12-08 21:27:11"
+    },
+    {
+      "messageId": 143,
+      "temperature": 22.888933,
+      "enqueuedTime": "2019-12-08 21:27:39"
+    },
+    {
+      "messageId": 144,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 21:27:59"
+    },
+    {
+      "messageId": 145,
+      "temperature": 25.447659,
+      "enqueuedTime": "2019-12-08 21:28:36"
+    },
+    {
+      "messageId": 146,
+      "temperature": 29.337812,
+      "enqueuedTime": "2019-12-08 21:29:05"
+    },
+    {
+      "messageId": 147,
+      "temperature": 25.767286,
+      "enqueuedTime": "2019-12-08 21:29:26"
+    },
+    {
+      "messageId": 148,
+      "temperature": 20.179995,
+      "enqueuedTime": "2019-12-08 21:29:55"
+    },
+    {
+      "messageId": 149,
+      "temperature": 24.740318,
+      "enqueuedTime": "2019-12-08 21:30:26"
+    },
+    {
+      "messageId": 150,
+      "temperature": 27.318188,
+      "enqueuedTime": "2019-12-08 21:30:57"
+    },
+    {
+      "messageId": 151,
+      "temperature": 25.580181,
+      "enqueuedTime": "2019-12-08 21:31:33"
+    },
+    {
+      "messageId": 152,
+      "temperature": 23.207043,
+      "enqueuedTime": "2019-12-08 21:31:53"
+    },
+    {
+      "messageId": 153,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 21:32:31"
+    },
+    {
+      "messageId": 154,
+      "temperature": 28.419666,
+      "enqueuedTime": "2019-12-08 21:32:51"
+    },
+    {
+      "messageId": 155,
+      "temperature": 25.98533,
+      "enqueuedTime": "2019-12-08 21:33:14"
+    },
+    {
+      "messageId": 156,
+      "temperature": 26.041582,
+      "enqueuedTime": "2019-12-08 21:33:48"
+    },
+    {
+      "messageId": 157,
+      "temperature": 24.357985,
+      "enqueuedTime": "2019-12-08 21:34:25"
+    },
+    {
+      "messageId": 158,
+      "temperature": 31.18786,
+      "enqueuedTime": "2019-12-08 21:34:52"
+    },
+    {
+      "messageId": 159,
+      "temperature": 25.475046,
+      "enqueuedTime": "2019-12-08 21:35:19"
+    },
+    {
+      "messageId": 160,
+      "temperature": 20.99102,
+      "enqueuedTime": "2019-12-08 21:35:53"
+    },
+    {
+      "messageId": 161,
+      "temperature": 22.682673,
+      "enqueuedTime": "2019-12-08 21:36:15"
+    },
+    {
+      "messageId": 162,
+      "temperature": 21.354286,
+      "enqueuedTime": "2019-12-08 21:36:54"
+    },
+    {
+      "messageId": 163,
+      "temperature": 20.215199,
+      "enqueuedTime": "2019-12-08 21:37:27"
+    },
+    {
+      "messageId": 164,
+      "temperature": 27.089108,
+      "enqueuedTime": "2019-12-08 21:37:49"
+    },
+    {
+      "messageId": 165,
+      "temperature": 22.672035,
+      "enqueuedTime": "2019-12-08 21:38:14"
+    },
+    {
+      "messageId": 166,
+      "temperature": 22.922564,
+      "enqueuedTime": "2019-12-08 21:38:46"
+    },
+    {
+      "messageId": 167,
+      "temperature": 20.083818,
+      "enqueuedTime": "2019-12-08 21:39:17"
+    },
+    {
+      "messageId": 168,
+      "temperature": 30.818666,
+      "enqueuedTime": "2019-12-08 21:39:45"
+    },
+    {
+      "messageId": 169,
+      "temperature": 34.079826,
+      "enqueuedTime": "2019-12-08 21:40:20"
+    },
+    {
+      "messageId": 170,
+      "temperature": 21.01996,
+      "enqueuedTime": "2019-12-08 21:40:50"
+    },
+    {
+      "messageId": 171,
+      "temperature": 24.987198,
+      "enqueuedTime": "2019-12-08 21:41:25"
+    },
+    {
+      "messageId": 172,
+      "temperature": 22.045738,
+      "enqueuedTime": "2019-12-08 21:41:56"
+    },
+    {
+      "messageId": 173,
+      "temperature": 25.321747,
+      "enqueuedTime": "2019-12-08 21:42:25"
+    },
+    {
+      "messageId": 174,
+      "temperature": 24.631897,
+      "enqueuedTime": "2019-12-08 21:42:48"
+    },
+    {
+      "messageId": 175,
+      "temperature": 20.72072,
+      "enqueuedTime": "2019-12-08 21:43:14"
+    },
+    {
+      "messageId": 176,
+      "temperature": 31.015228,
+      "enqueuedTime": "2019-12-08 21:43:39"
+    },
+    {
+      "messageId": 177,
+      "temperature": 21.043243,
+      "enqueuedTime": "2019-12-08 21:44:11"
+    },
+    {
+      "messageId": 178,
+      "temperature": 20.283043,
+      "enqueuedTime": "2019-12-08 21:44:32"
+    },
+    {
+      "messageId": 179,
+      "temperature": 36.28016,
+      "enqueuedTime": "2019-12-08 21:45:05"
+    },
+    {
+      "messageId": 180,
+      "temperature": 24.717213,
+      "enqueuedTime": "2019-12-08 21:45:40"
+    },
+    {
+      "messageId": 181,
+      "temperature": 29.400398,
+      "enqueuedTime": "2019-12-08 21:46:15"
+    },
+    {
+      "messageId": 182,
+      "temperature": 21.803999,
+      "enqueuedTime": "2019-12-08 21:46:41"
+    },
+    {
+      "messageId": 183,
+      "temperature": 35.784157,
+      "enqueuedTime": "2019-12-08 21:47:01"
+    },
+    {
+      "messageId": 184,
+      "temperature": 20.717571,
+      "enqueuedTime": "2019-12-08 21:47:38"
+    },
+    {
+      "messageId": 185,
+      "temperature": 21.606348,
+      "enqueuedTime": "2019-12-08 21:47:59"
+    },
+    {
+      "messageId": 186,
+      "temperature": 22.390434,
+      "enqueuedTime": "2019-12-08 21:48:31"
+    },
+    {
+      "messageId": 187,
+      "temperature": 25.191658,
+      "enqueuedTime": "2019-12-08 21:49:04"
+    },
+    {
+      "messageId": 188,
+      "temperature": 22.553093,
+      "enqueuedTime": "2019-12-08 21:49:30"
+    },
+    {
+      "messageId": 189,
+      "temperature": 34.614216,
+      "enqueuedTime": "2019-12-08 21:49:58"
+    },
+    {
+      "messageId": 190,
+      "temperature": 26.233627,
+      "enqueuedTime": "2019-12-08 21:50:21"
+    },
+    {
+      "messageId": 191,
+      "temperature": 25.23581,
+      "enqueuedTime": "2019-12-08 21:50:41"
+    },
+    {
+      "messageId": 192,
+      "temperature": 34.11022,
+      "enqueuedTime": "2019-12-08 21:51:16"
+    },
+    {
+      "messageId": 193,
+      "temperature": 24.008886,
+      "enqueuedTime": "2019-12-08 21:51:54"
+    },
+    {
+      "messageId": 194,
+      "temperature": 22.190874,
+      "enqueuedTime": "2019-12-08 21:52:22"
+    },
+    {
+      "messageId": 195,
+      "temperature": 32.758163,
+      "enqueuedTime": "2019-12-08 21:52:55"
+    },
+    {
+      "messageId": 196,
+      "temperature": 29.977928,
+      "enqueuedTime": "2019-12-08 21:53:30"
+    },
+    {
+      "messageId": 197,
+      "temperature": 24.52354,
+      "enqueuedTime": "2019-12-08 21:54:00"
+    },
+    {
+      "messageId": 198,
+      "temperature": 31.887585,
+      "enqueuedTime": "2019-12-08 21:54:23"
+    },
+    {
+      "messageId": 199,
+      "temperature": 20.350683,
+      "enqueuedTime": "2019-12-08 21:54:50"
+    },
+    {
+      "messageId": 200,
+      "temperature": 20.935905,
+      "enqueuedTime": "2019-12-08 21:55:10"
+    },
+    {
+      "messageId": 201,
+      "temperature": 25.211168,
+      "enqueuedTime": "2019-12-08 21:55:44"
+    },
+    {
+      "messageId": 202,
+      "temperature": 34.286247,
+      "enqueuedTime": "2019-12-08 21:56:14"
+    },
+    {
+      "messageId": 203,
+      "temperature": 23.26205,
+      "enqueuedTime": "2019-12-08 21:56:37"
+    },
+    {
+      "messageId": 204,
+      "temperature": 21.292358,
+      "enqueuedTime": "2019-12-08 21:56:59"
+    },
+    {
+      "messageId": 205,
+      "temperature": 27.465748,
+      "enqueuedTime": "2019-12-08 21:57:30"
+    },
+    {
+      "messageId": 206,
+      "temperature": 20.925367,
+      "enqueuedTime": "2019-12-08 21:58:01"
+    },
+    {
+      "messageId": 207,
+      "temperature": 24.13304,
+      "enqueuedTime": "2019-12-08 21:58:35"
+    },
+    {
+      "messageId": 208,
+      "temperature": 23.525509,
+      "enqueuedTime": "2019-12-08 21:59:05"
+    },
+    {
+      "messageId": 209,
+      "temperature": 24.571434,
+      "enqueuedTime": "2019-12-08 21:59:39"
+    },
+    {
+      "messageId": 210,
+      "temperature": 26.404161,
+      "enqueuedTime": "2019-12-08 22:00:13"
+    },
+    {
+      "messageId": 211,
+      "temperature": 20.172169,
+      "enqueuedTime": "2019-12-08 22:00:52"
+    },
+    {
+      "messageId": 212,
+      "temperature": 25.876862,
+      "enqueuedTime": "2019-12-08 22:01:27"
+    },
+    {
+      "messageId": 213,
+      "temperature": 22.974358,
+      "enqueuedTime": "2019-12-08 22:02:00"
+    },
+    {
+      "messageId": 214,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:02:36"
+    },
+    {
+      "messageId": 215,
+      "temperature": 27.181719,
+      "enqueuedTime": "2019-12-08 22:03:07"
+    },
+    {
+      "messageId": 216,
+      "temperature": 26.326004,
+      "enqueuedTime": "2019-12-08 22:03:41"
+    },
+    {
+      "messageId": 217,
+      "temperature": 26.442968,
+      "enqueuedTime": "2019-12-08 22:04:14"
+    },
+    {
+      "messageId": 218,
+      "temperature": 27.257107,
+      "enqueuedTime": "2019-12-08 22:04:44"
+    },
+    {
+      "messageId": 219,
+      "temperature": 29.712917,
+      "enqueuedTime": "2019-12-08 22:05:21"
+    },
+    {
+      "messageId": 220,
+      "temperature": 24.394022,
+      "enqueuedTime": "2019-12-08 22:05:57"
+    },
+    {
+      "messageId": 221,
+      "temperature": 22.496532,
+      "enqueuedTime": "2019-12-08 22:06:33"
+    },
+    {
+      "messageId": 222,
+      "temperature": 30.729145,
+      "enqueuedTime": "2019-12-08 22:07:02"
+    },
+    {
+      "messageId": 223,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:07:33"
+    },
+    {
+      "messageId": 224,
+      "temperature": 35.164284,
+      "enqueuedTime": "2019-12-08 22:08:12"
+    },
+    {
+      "messageId": 225,
+      "temperature": 25.36028,
+      "enqueuedTime": "2019-12-08 22:08:33"
+    },
+    {
+      "messageId": 226,
+      "temperature": 21.845781,
+      "enqueuedTime": "2019-12-08 22:08:54"
+    },
+    {
+      "messageId": 227,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:09:17"
+    },
+    {
+      "messageId": 228,
+      "temperature": 20.109297,
+      "enqueuedTime": "2019-12-08 22:09:53"
+    },
+    {
+      "messageId": 229,
+      "temperature": 22.337019,
+      "enqueuedTime": "2019-12-08 22:10:32"
+    },
+    {
+      "messageId": 230,
+      "temperature": 24.287773,
+      "enqueuedTime": "2019-12-08 22:11:06"
+    },
+    {
+      "messageId": 231,
+      "temperature": 25.573875,
+      "enqueuedTime": "2019-12-08 22:11:33"
+    },
+    {
+      "messageId": 232,
+      "temperature": 30.30268,
+      "enqueuedTime": "2019-12-08 22:12:08"
+    },
+    {
+      "messageId": 233,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:12:28"
+    },
+    {
+      "messageId": 234,
+      "temperature": 20.640089,
+      "enqueuedTime": "2019-12-08 22:13:06"
+    },
+    {
+      "messageId": 235,
+      "temperature": 27.69492,
+      "enqueuedTime": "2019-12-08 22:13:42"
+    },
+    {
+      "messageId": 236,
+      "temperature": 28.394445,
+      "enqueuedTime": "2019-12-08 22:14:02"
+    },
+    {
+      "messageId": 237,
+      "temperature": 33.885696,
+      "enqueuedTime": "2019-12-08 22:14:40"
+    },
+    {
+      "messageId": 238,
+      "temperature": 22.704592,
+      "enqueuedTime": "2019-12-08 22:15:04"
+    },
+    {
+      "messageId": 239,
+      "temperature": 27.340408,
+      "enqueuedTime": "2019-12-08 22:15:25"
+    },
+    {
+      "messageId": 240,
+      "temperature": 28.81023,
+      "enqueuedTime": "2019-12-08 22:15:47"
+    },
+    {
+      "messageId": 241,
+      "temperature": 20.278036,
+      "enqueuedTime": "2019-12-08 22:16:15"
+    },
+    {
+      "messageId": 242,
+      "temperature": 21.297464,
+      "enqueuedTime": "2019-12-08 22:16:45"
+    },
+    {
+      "messageId": 243,
+      "temperature": 23.308216,
+      "enqueuedTime": "2019-12-08 22:17:13"
+    },
+    {
+      "messageId": 244,
+      "temperature": 23.792418,
+      "enqueuedTime": "2019-12-08 22:17:41"
+    },
+    {
+      "messageId": 245,
+      "temperature": 23.44098,
+      "enqueuedTime": "2019-12-08 22:18:06"
+    },
+    {
+      "messageId": 246,
+      "temperature": 22.314072,
+      "enqueuedTime": "2019-12-08 22:18:27"
+    },
+    {
+      "messageId": 247,
+      "temperature": 26.78653,
+      "enqueuedTime": "2019-12-08 22:19:03"
+    },
+    {
+      "messageId": 248,
+      "temperature": 35.7314,
+      "enqueuedTime": "2019-12-08 22:19:27"
+    },
+    {
+      "messageId": 249,
+      "temperature": 20.553741,
+      "enqueuedTime": "2019-12-08 22:19:53"
+    },
+    {
+      "messageId": 250,
+      "temperature": 35.19185,
+      "enqueuedTime": "2019-12-08 22:20:14"
+    },
+    {
+      "messageId": 251,
+      "temperature": 25.633944,
+      "enqueuedTime": "2019-12-08 22:20:41"
+    },
+    {
+      "messageId": 252,
+      "temperature": 22.903435,
+      "enqueuedTime": "2019-12-08 22:21:16"
+    },
+    {
+      "messageId": 253,
+      "temperature": 21.75307,
+      "enqueuedTime": "2019-12-08 22:21:45"
+    },
+    {
+      "messageId": 254,
+      "temperature": 27.911125,
+      "enqueuedTime": "2019-12-08 22:22:09"
+    },
+    {
+      "messageId": 255,
+      "temperature": 21.55857,
+      "enqueuedTime": "2019-12-08 22:22:33"
+    },
+    {
+      "messageId": 256,
+      "temperature": 20.505983,
+      "enqueuedTime": "2019-12-08 22:23:01"
+    },
+    {
+      "messageId": 257,
+      "temperature": 20.036623,
+      "enqueuedTime": "2019-12-08 22:23:35"
+    },
+    {
+      "messageId": 258,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:24:10"
+    },
+    {
+      "messageId": 259,
+      "temperature": 30.731712,
+      "enqueuedTime": "2019-12-08 22:24:36"
+    },
+    {
+      "messageId": 260,
+      "temperature": 20.417704,
+      "enqueuedTime": "2019-12-08 22:24:58"
+    },
+    {
+      "messageId": 261,
+      "temperature": 21.4712,
+      "enqueuedTime": "2019-12-08 22:25:25"
+    },
+    {
+      "messageId": 262,
+      "temperature": 23.289959,
+      "enqueuedTime": "2019-12-08 22:26:00"
+    },
+    {
+      "messageId": 263,
+      "temperature": 22.960773,
+      "enqueuedTime": "2019-12-08 22:26:20"
+    },
+    {
+      "messageId": 264,
+      "temperature": 20.142788,
+      "enqueuedTime": "2019-12-08 22:26:40"
+    },
+    {
+      "messageId": 265,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:27:05"
+    },
+    {
+      "messageId": 266,
+      "temperature": 21.765722,
+      "enqueuedTime": "2019-12-08 22:27:41"
+    },
+    {
+      "messageId": 267,
+      "temperature": 22.607285,
+      "enqueuedTime": "2019-12-08 22:28:17"
+    },
+    {
+      "messageId": 268,
+      "temperature": 25.783287,
+      "enqueuedTime": "2019-12-08 22:28:54"
+    },
+    {
+      "messageId": 269,
+      "temperature": 22.705313,
+      "enqueuedTime": "2019-12-08 22:29:14"
+    },
+    {
+      "messageId": 270,
+      "temperature": 29.475277,
+      "enqueuedTime": "2019-12-08 22:29:46"
+    },
+    {
+      "messageId": 271,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:30:14"
+    },
+    {
+      "messageId": 272,
+      "temperature": 20.376099,
+      "enqueuedTime": "2019-12-08 22:30:51"
+    },
+    {
+      "messageId": 273,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:31:21"
+    },
+    {
+      "messageId": 274,
+      "temperature": 38.72439,
+      "enqueuedTime": "2019-12-08 22:31:51"
+    },
+    {
+      "messageId": 275,
+      "temperature": 28.645256,
+      "enqueuedTime": "2019-12-08 22:32:27"
+    },
+    {
+      "messageId": 276,
+      "temperature": 31.069778,
+      "enqueuedTime": "2019-12-08 22:33:02"
+    },
+    {
+      "messageId": 277,
+      "temperature": 26.838758,
+      "enqueuedTime": "2019-12-08 22:33:31"
+    },
+    {
+      "messageId": 278,
+      "temperature": 22.210253,
+      "enqueuedTime": "2019-12-08 22:34:06"
+    },
+    {
+      "messageId": 279,
+      "temperature": 20.503376,
+      "enqueuedTime": "2019-12-08 22:34:26"
+    },
+    {
+      "messageId": 280,
+      "temperature": 25.160183,
+      "enqueuedTime": "2019-12-08 22:34:46"
+    },
+    {
+      "messageId": 281,
+      "temperature": 20.19135,
+      "enqueuedTime": "2019-12-08 22:35:12"
+    },
+    {
+      "messageId": 282,
+      "temperature": 23.535896,
+      "enqueuedTime": "2019-12-08 22:35:35"
+    },
+    {
+      "messageId": 283,
+      "temperature": 29.820469,
+      "enqueuedTime": "2019-12-08 22:36:12"
+    },
+    {
+      "messageId": 284,
+      "temperature": 20.112612,
+      "enqueuedTime": "2019-12-08 22:36:43"
+    },
+    {
+      "messageId": 285,
+      "temperature": 34.647903,
+      "enqueuedTime": "2019-12-08 22:37:12"
+    },
+    {
+      "messageId": 286,
+      "temperature": 24.855812,
+      "enqueuedTime": "2019-12-08 22:37:42"
+    },
+    {
+      "messageId": 287,
+      "temperature": 28.723015,
+      "enqueuedTime": "2019-12-08 22:38:08"
+    },
+    {
+      "messageId": 288,
+      "temperature": 24.979181,
+      "enqueuedTime": "2019-12-08 22:38:38"
+    },
+    {
+      "messageId": 289,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 22:39:06"
+    },
+    {
+      "messageId": 290,
+      "temperature": 25.851555,
+      "enqueuedTime": "2019-12-08 22:39:44"
+    },
+    {
+      "messageId": 291,
+      "temperature": 31.148926,
+      "enqueuedTime": "2019-12-08 22:40:18"
+    },
+    {
+      "messageId": 292,
+      "temperature": 25.17136,
+      "enqueuedTime": "2019-12-08 22:40:55"
+    },
+    {
+      "messageId": 293,
+      "temperature": 28.69104,
+      "enqueuedTime": "2019-12-08 22:41:34"
+    },
+    {
+      "messageId": 294,
+      "temperature": 20.447304,
+      "enqueuedTime": "2019-12-08 22:41:56"
+    },
+    {
+      "messageId": 295,
+      "temperature": 24.12371,
+      "enqueuedTime": "2019-12-08 22:42:25"
+    },
+    {
+      "messageId": 296,
+      "temperature": 21.337172,
+      "enqueuedTime": "2019-12-08 22:42:48"
+    },
+    {
+      "messageId": 297,
+      "temperature": 20.632086,
+      "enqueuedTime": "2019-12-08 22:43:12"
+    },
+    {
+      "messageId": 298,
+      "temperature": 24.463284,
+      "enqueuedTime": "2019-12-08 22:43:34"
+    },
+    {
+      "messageId": 299,
+      "temperature": 23.263723,
+      "enqueuedTime": "2019-12-08 22:44:10"
+    },
+    {
+      "messageId": 300,
+      "temperature": 33.424656,
+      "enqueuedTime": "2019-12-08 22:44:46"
+    },
+    {
+      "messageId": 301,
+      "temperature": 31.329672,
+      "enqueuedTime": "2019-12-08 22:45:25"
+    },
+    {
+      "messageId": 302,
+      "temperature": 26.361124,
+      "enqueuedTime": "2019-12-08 22:46:04"
+    },
+    {
+      "messageId": 303,
+      "temperature": 23.845514,
+      "enqueuedTime": "2019-12-08 22:46:42"
+    },
+    {
+      "messageId": 304,
+      "temperature": 21.630821,
+      "enqueuedTime": "2019-12-08 22:47:20"
+    },
+    {
+      "messageId": 305,
+      "temperature": 24.89969,
+      "enqueuedTime": "2019-12-08 22:47:42"
+    },
+    {
+      "messageId": 306,
+      "temperature": 23.13482,
+      "enqueuedTime": "2019-12-08 22:48:12"
+    },
+    {
+      "messageId": 307,
+      "temperature": 21.35234,
+      "enqueuedTime": "2019-12-08 22:48:50"
+    },
+    {
+      "messageId": 308,
+      "temperature": 21.763462,
+      "enqueuedTime": "2019-12-08 22:49:22"
+    },
+    {
+      "messageId": 309,
+      "temperature": 27.720337,
+      "enqueuedTime": "2019-12-08 22:49:43"
+    },
+    {
+      "messageId": 310,
+      "temperature": 20.837648,
+      "enqueuedTime": "2019-12-08 22:50:22"
+    },
+    {
+      "messageId": 311,
+      "temperature": 32.602245,
+      "enqueuedTime": "2019-12-08 22:50:55"
+    },
+    {
+      "messageId": 312,
+      "temperature": 20.058735,
+      "enqueuedTime": "2019-12-08 22:51:21"
+    },
+    {
+      "messageId": 313,
+      "temperature": 22.48682,
+      "enqueuedTime": "2019-12-08 22:51:59"
+    },
+    {
+      "messageId": 314,
+      "temperature": 22.428396,
+      "enqueuedTime": "2019-12-08 22:52:22"
+    },
+    {
+      "messageId": 315,
+      "temperature": 36.294174,
+      "enqueuedTime": "2019-12-08 22:52:48"
+    },
+    {
+      "messageId": 316,
+      "temperature": 21.306612,
+      "enqueuedTime": "2019-12-08 22:53:14"
+    },
+    {
+      "messageId": 317,
+      "temperature": 28.608976,
+      "enqueuedTime": "2019-12-08 22:53:51"
+    },
+    {
+      "messageId": 318,
+      "temperature": 27.824743,
+      "enqueuedTime": "2019-12-08 22:54:20"
+    },
+    {
+      "messageId": 319,
+      "temperature": 31.872816,
+      "enqueuedTime": "2019-12-08 22:54:47"
+    },
+    {
+      "messageId": 320,
+      "temperature": 32.90556,
+      "enqueuedTime": "2019-12-08 22:55:21"
+    },
+    {
+      "messageId": 321,
+      "temperature": 36.332214,
+      "enqueuedTime": "2019-12-08 22:55:42"
+    },
+    {
+      "messageId": 322,
+      "temperature": 24.081335,
+      "enqueuedTime": "2019-12-08 22:56:10"
+    },
+    {
+      "messageId": 323,
+      "temperature": 20.506016,
+      "enqueuedTime": "2019-12-08 22:56:43"
+    },
+    {
+      "messageId": 324,
+      "temperature": 21.532997,
+      "enqueuedTime": "2019-12-08 22:57:10"
+    },
+    {
+      "messageId": 325,
+      "temperature": 20.198837,
+      "enqueuedTime": "2019-12-08 22:57:37"
+    },
+    {
+      "messageId": 326,
+      "temperature": 26.438751,
+      "enqueuedTime": "2019-12-08 22:58:02"
+    },
+    {
+      "messageId": 327,
+      "temperature": 23.678072,
+      "enqueuedTime": "2019-12-08 22:58:35"
+    },
+    {
+      "messageId": 328,
+      "temperature": 29.695452,
+      "enqueuedTime": "2019-12-08 22:59:00"
+    },
+    {
+      "messageId": 329,
+      "temperature": 32.61045,
+      "enqueuedTime": "2019-12-08 22:59:31"
+    },
+    {
+      "messageId": 330,
+      "temperature": 30.71294,
+      "enqueuedTime": "2019-12-08 23:00:02"
+    },
+    {
+      "messageId": 331,
+      "temperature": 33.10934,
+      "enqueuedTime": "2019-12-08 23:00:23"
+    },
+    {
+      "messageId": 332,
+      "temperature": 33.593193,
+      "enqueuedTime": "2019-12-08 23:00:57"
+    },
+    {
+      "messageId": 333,
+      "temperature": 20.027994,
+      "enqueuedTime": "2019-12-08 23:01:32"
+    },
+    {
+      "messageId": 334,
+      "temperature": 23.315048,
+      "enqueuedTime": "2019-12-08 23:02:01"
+    },
+    {
+      "messageId": 335,
+      "temperature": 26.87804,
+      "enqueuedTime": "2019-12-08 23:02:40"
+    },
+    {
+      "messageId": 336,
+      "temperature": 20.548565,
+      "enqueuedTime": "2019-12-08 23:03:10"
+    },
+    {
+      "messageId": 337,
+      "temperature": 20.537088,
+      "enqueuedTime": "2019-12-08 23:03:48"
+    },
+    {
+      "messageId": 338,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 23:04:22"
+    },
+    {
+      "messageId": 339,
+      "temperature": 22.12933,
+      "enqueuedTime": "2019-12-08 23:04:45"
+    },
+    {
+      "messageId": 340,
+      "temperature": 22.058798,
+      "enqueuedTime": "2019-12-08 23:05:06"
+    },
+    {
+      "messageId": 341,
+      "temperature": 23.227802,
+      "enqueuedTime": "2019-12-08 23:05:30"
+    },
+    {
+      "messageId": 342,
+      "temperature": 20.120813,
+      "enqueuedTime": "2019-12-08 23:05:57"
+    },
+    {
+      "messageId": 343,
+      "temperature": 35.312336,
+      "enqueuedTime": "2019-12-08 23:06:29"
+    },
+    {
+      "messageId": 344,
+      "temperature": 33.343147,
+      "enqueuedTime": "2019-12-08 23:07:06"
+    },
+    {
+      "messageId": 345,
+      "temperature": 26.429693,
+      "enqueuedTime": "2019-12-08 23:07:40"
+    },
+    {
+      "messageId": 346,
+      "temperature": 27.320875,
+      "enqueuedTime": "2019-12-08 23:08:05"
+    },
+    {
+      "messageId": 347,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 23:08:27"
+    },
+    {
+      "messageId": 348,
+      "temperature": 25.154879,
+      "enqueuedTime": "2019-12-08 23:08:50"
+    },
+    {
+      "messageId": 349,
+      "temperature": 20.594788,
+      "enqueuedTime": "2019-12-08 23:09:15"
+    },
+    {
+      "messageId": 350,
+      "temperature": 20.35361,
+      "enqueuedTime": "2019-12-08 23:09:39"
+    },
+    {
+      "messageId": 351,
+      "temperature": 26.743046,
+      "enqueuedTime": "2019-12-08 23:10:16"
+    },
+    {
+      "messageId": 352,
+      "temperature": 22.578932,
+      "enqueuedTime": "2019-12-08 23:10:42"
+    },
+    {
+      "messageId": 353,
+      "temperature": 24.588198,
+      "enqueuedTime": "2019-12-08 23:11:20"
+    },
+    {
+      "messageId": 354,
+      "temperature": 20.61141,
+      "enqueuedTime": "2019-12-08 23:11:40"
+    },
+    {
+      "messageId": 355,
+      "temperature": 20.516293,
+      "enqueuedTime": "2019-12-08 23:12:15"
+    },
+    {
+      "messageId": 356,
+      "temperature": 23.711586,
+      "enqueuedTime": "2019-12-08 23:12:49"
+    },
+    {
+      "messageId": 357,
+      "temperature": 22.086761,
+      "enqueuedTime": "2019-12-08 23:13:23"
+    },
+    {
+      "messageId": 358,
+      "temperature": 22.502161,
+      "enqueuedTime": "2019-12-08 23:13:51"
+    },
+    {
+      "messageId": 359,
+      "temperature": 21.508501,
+      "enqueuedTime": "2019-12-08 23:14:11"
+    },
+    {
+      "messageId": 360,
+      "temperature": 35.980827,
+      "enqueuedTime": "2019-12-08 23:14:32"
+    },
+    {
+      "messageId": 361,
+      "temperature": 30.687569,
+      "enqueuedTime": "2019-12-08 23:15:05"
+    },
+    {
+      "messageId": 362,
+      "temperature": 23.749126,
+      "enqueuedTime": "2019-12-08 23:15:33"
+    },
+    {
+      "messageId": 363,
+      "temperature": 29.607359,
+      "enqueuedTime": "2019-12-08 23:16:05"
+    },
+    {
+      "messageId": 364,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 23:16:33"
+    },
+    {
+      "messageId": 365,
+      "temperature": 21.223179,
+      "enqueuedTime": "2019-12-08 23:17:01"
+    },
+    {
+      "messageId": 366,
+      "temperature": 25.60394,
+      "enqueuedTime": "2019-12-08 23:17:24"
+    },
+    {
+      "messageId": 367,
+      "temperature": 27.569704,
+      "enqueuedTime": "2019-12-08 23:18:02"
+    },
+    {
+      "messageId": 368,
+      "temperature": 20.079296,
+      "enqueuedTime": "2019-12-08 23:18:39"
+    },
+    {
+      "messageId": 369,
+      "temperature": 27.946516,
+      "enqueuedTime": "2019-12-08 23:19:18"
+    },
+    {
+      "messageId": 370,
+      "temperature": 20.131712,
+      "enqueuedTime": "2019-12-08 23:19:45"
+    },
+    {
+      "messageId": 371,
+      "temperature": 23.658741,
+      "enqueuedTime": "2019-12-08 23:20:24"
+    },
+    {
+      "messageId": 372,
+      "temperature": 21.593016,
+      "enqueuedTime": "2019-12-08 23:20:47"
+    },
+    {
+      "messageId": 373,
+      "temperature": 21.947203,
+      "enqueuedTime": "2019-12-08 23:21:20"
+    },
+    {
+      "messageId": 374,
+      "temperature": 22.39111,
+      "enqueuedTime": "2019-12-08 23:21:56"
+    },
+    {
+      "messageId": 375,
+      "temperature": 22.553171,
+      "enqueuedTime": "2019-12-08 23:22:25"
+    },
+    {
+      "messageId": 376,
+      "temperature": 22.946848,
+      "enqueuedTime": "2019-12-08 23:22:57"
+    },
+    {
+      "messageId": 377,
+      "temperature": 23.427456,
+      "enqueuedTime": "2019-12-08 23:23:34"
+    },
+    {
+      "messageId": 378,
+      "temperature": 23.237448,
+      "enqueuedTime": "2019-12-08 23:24:00"
+    },
+    {
+      "messageId": 379,
+      "temperature": 35.585567,
+      "enqueuedTime": "2019-12-08 23:24:35"
+    },
+    {
+      "messageId": 380,
+      "temperature": 29.260368,
+      "enqueuedTime": "2019-12-08 23:24:58"
+    },
+    {
+      "messageId": 381,
+      "temperature": 24.956886,
+      "enqueuedTime": "2019-12-08 23:25:19"
+    },
+    {
+      "messageId": 382,
+      "temperature": 20.389643,
+      "enqueuedTime": "2019-12-08 23:25:42"
+    },
+    {
+      "messageId": 383,
+      "temperature": 21.17698,
+      "enqueuedTime": "2019-12-08 23:26:18"
+    },
+    {
+      "messageId": 384,
+      "temperature": 24.497995,
+      "enqueuedTime": "2019-12-08 23:26:48"
+    },
+    {
+      "messageId": 385,
+      "temperature": 33.067825,
+      "enqueuedTime": "2019-12-08 23:27:17"
+    },
+    {
+      "messageId": 386,
+      "temperature": 20.78188,
+      "enqueuedTime": "2019-12-08 23:27:43"
+    },
+    {
+      "messageId": 387,
+      "temperature": 21.85443,
+      "enqueuedTime": "2019-12-08 23:28:07"
+    },
+    {
+      "messageId": 388,
+      "temperature": 21.796438,
+      "enqueuedTime": "2019-12-08 23:28:46"
+    },
+    {
+      "messageId": 389,
+      "temperature": 30.088394,
+      "enqueuedTime": "2019-12-08 23:29:10"
+    },
+    {
+      "messageId": 390,
+      "temperature": 23.7394,
+      "enqueuedTime": "2019-12-08 23:29:42"
+    },
+    {
+      "messageId": 391,
+      "temperature": 28.137915,
+      "enqueuedTime": "2019-12-08 23:30:21"
+    },
+    {
+      "messageId": 392,
+      "temperature": 30.706173,
+      "enqueuedTime": "2019-12-08 23:30:42"
+    },
+    {
+      "messageId": 393,
+      "temperature": 29.573105,
+      "enqueuedTime": "2019-12-08 23:31:07"
+    },
+    {
+      "messageId": 394,
+      "temperature": 37.74429,
+      "enqueuedTime": "2019-12-08 23:31:45"
+    },
+    {
+      "messageId": 395,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 23:32:07"
+    },
+    {
+      "messageId": 396,
+      "temperature": 33.755817,
+      "enqueuedTime": "2019-12-08 23:32:28"
+    },
+    {
+      "messageId": 397,
+      "temperature": 23.689669,
+      "enqueuedTime": "2019-12-08 23:33:04"
+    },
+    {
+      "messageId": 398,
+      "temperature": 35.680298,
+      "enqueuedTime": "2019-12-08 23:33:40"
+    },
+    {
+      "messageId": 399,
+      "temperature": 31.278214,
+      "enqueuedTime": "2019-12-08 23:34:07"
+    },
+    {
+      "messageId": 400,
+      "temperature": 23.63992,
+      "enqueuedTime": "2019-12-08 23:34:35"
+    },
+    {
+      "messageId": 401,
+      "temperature": 22.566523,
+      "enqueuedTime": "2019-12-08 23:34:57"
+    },
+    {
+      "messageId": 402,
+      "temperature": 28.524136,
+      "enqueuedTime": "2019-12-08 23:35:17"
+    },
+    {
+      "messageId": 403,
+      "temperature": 24.647335,
+      "enqueuedTime": "2019-12-08 23:35:40"
+    },
+    {
+      "messageId": 404,
+      "temperature": 21.73577,
+      "enqueuedTime": "2019-12-08 23:36:06"
+    },
+    {
+      "messageId": 405,
+      "temperature": 21.912722,
+      "enqueuedTime": "2019-12-08 23:36:29"
+    },
+    {
+      "messageId": 406,
+      "temperature": 20.995771,
+      "enqueuedTime": "2019-12-08 23:36:50"
+    },
+    {
+      "messageId": 407,
+      "temperature": 33.87123,
+      "enqueuedTime": "2019-12-08 23:37:21"
+    },
+    {
+      "messageId": 408,
+      "temperature": 31.087404,
+      "enqueuedTime": "2019-12-08 23:37:43"
+    },
+    {
+      "messageId": 409,
+      "temperature": 21.362507,
+      "enqueuedTime": "2019-12-08 23:38:05"
+    },
+    {
+      "messageId": 410,
+      "temperature": 21.242523,
+      "enqueuedTime": "2019-12-08 23:38:30"
+    },
+    {
+      "messageId": 411,
+      "temperature": 20.173243,
+      "enqueuedTime": "2019-12-08 23:39:09"
+    },
+    {
+      "messageId": 412,
+      "temperature": 25.235497,
+      "enqueuedTime": "2019-12-08 23:39:35"
+    },
+    {
+      "messageId": 413,
+      "temperature": 24.94333,
+      "enqueuedTime": "2019-12-08 23:40:02"
+    },
+    {
+      "messageId": 414,
+      "temperature": 33.704742,
+      "enqueuedTime": "2019-12-08 23:40:31"
+    },
+    {
+      "messageId": 415,
+      "temperature": 24.175938,
+      "enqueuedTime": "2019-12-08 23:41:03"
+    },
+    {
+      "messageId": 416,
+      "temperature": 22.706589,
+      "enqueuedTime": "2019-12-08 23:41:38"
+    },
+    {
+      "messageId": 417,
+      "temperature": 25.29953,
+      "enqueuedTime": "2019-12-08 23:42:16"
+    },
+    {
+      "messageId": 418,
+      "temperature": 23.21555,
+      "enqueuedTime": "2019-12-08 23:42:42"
+    },
+    {
+      "messageId": 419,
+      "temperature": 20.92233,
+      "enqueuedTime": "2019-12-08 23:43:21"
+    },
+    {
+      "messageId": 420,
+      "temperature": 20.882744,
+      "enqueuedTime": "2019-12-08 23:43:58"
+    },
+    {
+      "messageId": 421,
+      "temperature": 25.42366,
+      "enqueuedTime": "2019-12-08 23:44:35"
+    },
+    {
+      "messageId": 422,
+      "temperature": 26.655064,
+      "enqueuedTime": "2019-12-08 23:45:11"
+    },
+    {
+      "messageId": 423,
+      "temperature": 22.01266,
+      "enqueuedTime": "2019-12-08 23:45:40"
+    },
+    {
+      "messageId": 424,
+      "temperature": 20.753633,
+      "enqueuedTime": "2019-12-08 23:46:04"
+    },
+    {
+      "messageId": 425,
+      "temperature": 20.335354,
+      "enqueuedTime": "2019-12-08 23:46:42"
+    },
+    {
+      "messageId": 426,
+      "temperature": 20.390661,
+      "enqueuedTime": "2019-12-08 23:47:11"
+    },
+    {
+      "messageId": 427,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 23:47:33"
+    },
+    {
+      "messageId": 428,
+      "temperature": 20.253555,
+      "enqueuedTime": "2019-12-08 23:47:54"
+    },
+    {
+      "messageId": 429,
+      "temperature": 26.755327,
+      "enqueuedTime": "2019-12-08 23:48:19"
+    },
+    {
+      "messageId": 430,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-08 23:48:41"
+    },
+    {
+      "messageId": 431,
+      "temperature": 20.877916,
+      "enqueuedTime": "2019-12-08 23:49:14"
+    },
+    {
+      "messageId": 432,
+      "temperature": 21.828325,
+      "enqueuedTime": "2019-12-08 23:49:43"
+    },
+    {
+      "messageId": 433,
+      "temperature": 23.28447,
+      "enqueuedTime": "2019-12-08 23:50:12"
+    },
+    {
+      "messageId": 434,
+      "temperature": 32.919266,
+      "enqueuedTime": "2019-12-08 23:50:38"
+    },
+    {
+      "messageId": 435,
+      "temperature": 26.145609,
+      "enqueuedTime": "2019-12-08 23:51:16"
+    },
+    {
+      "messageId": 436,
+      "temperature": 21.731504,
+      "enqueuedTime": "2019-12-08 23:51:47"
+    },
+    {
+      "messageId": 437,
+      "temperature": 24.240711,
+      "enqueuedTime": "2019-12-08 23:52:23"
+    },
+    {
+      "messageId": 438,
+      "temperature": 26.687302,
+      "enqueuedTime": "2019-12-08 23:52:46"
+    },
+    {
+      "messageId": 439,
+      "temperature": 23.540546,
+      "enqueuedTime": "2019-12-08 23:53:25"
+    },
+    {
+      "messageId": 440,
+      "temperature": 36.971413,
+      "enqueuedTime": "2019-12-08 23:53:54"
+    },
+    {
+      "messageId": 441,
+      "temperature": 26.607607,
+      "enqueuedTime": "2019-12-08 23:54:22"
+    },
+    {
+      "messageId": 442,
+      "temperature": 25.331839,
+      "enqueuedTime": "2019-12-08 23:54:53"
+    },
+    {
+      "messageId": 443,
+      "temperature": 22.204416,
+      "enqueuedTime": "2019-12-08 23:55:23"
+    },
+    {
+      "messageId": 444,
+      "temperature": 26.061125,
+      "enqueuedTime": "2019-12-08 23:55:44"
+    },
+    {
+      "messageId": 445,
+      "temperature": 30.380814,
+      "enqueuedTime": "2019-12-08 23:56:07"
+    },
+    {
+      "messageId": 446,
+      "temperature": 21.401392,
+      "enqueuedTime": "2019-12-08 23:56:46"
+    },
+    {
+      "messageId": 447,
+      "temperature": 34.579964,
+      "enqueuedTime": "2019-12-08 23:57:13"
+    },
+    {
+      "messageId": 448,
+      "temperature": 35.10702,
+      "enqueuedTime": "2019-12-08 23:57:41"
+    },
+    {
+      "messageId": 449,
+      "temperature": 22.650122,
+      "enqueuedTime": "2019-12-08 23:58:16"
+    },
+    {
+      "messageId": 450,
+      "temperature": 23.949995,
+      "enqueuedTime": "2019-12-08 23:58:41"
+    },
+    {
+      "messageId": 451,
+      "temperature": 37.59234,
+      "enqueuedTime": "2019-12-08 23:59:20"
+    },
+    {
+      "messageId": 452,
+      "temperature": 28.593779,
+      "enqueuedTime": "2019-12-08 23:59:42"
+    },
+    {
+      "messageId": 453,
+      "temperature": 33.464962,
+      "enqueuedTime": "2019-12-09 00:00:18"
+    },
+    {
+      "messageId": 454,
+      "temperature": 25.990263,
+      "enqueuedTime": "2019-12-09 00:00:43"
+    },
+    {
+      "messageId": 455,
+      "temperature": 20.99555,
+      "enqueuedTime": "2019-12-09 00:01:05"
+    },
+    {
+      "messageId": 456,
+      "temperature": 28.52587,
+      "enqueuedTime": "2019-12-09 00:01:44"
+    },
+    {
+      "messageId": 457,
+      "temperature": 31.10044,
+      "enqueuedTime": "2019-12-09 00:02:15"
+    },
+    {
+      "messageId": 458,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:02:35"
+    },
+    {
+      "messageId": 459,
+      "temperature": 32.948753,
+      "enqueuedTime": "2019-12-09 00:03:03"
+    },
+    {
+      "messageId": 460,
+      "temperature": 26.801258,
+      "enqueuedTime": "2019-12-09 00:03:36"
+    },
+    {
+      "messageId": 461,
+      "temperature": 29.160517,
+      "enqueuedTime": "2019-12-09 00:03:58"
+    },
+    {
+      "messageId": 462,
+      "temperature": 21.101982,
+      "enqueuedTime": "2019-12-09 00:04:27"
+    },
+    {
+      "messageId": 463,
+      "temperature": 30.116928,
+      "enqueuedTime": "2019-12-09 00:04:58"
+    },
+    {
+      "messageId": 464,
+      "temperature": 27.944618,
+      "enqueuedTime": "2019-12-09 00:05:20"
+    },
+    {
+      "messageId": 465,
+      "temperature": 20.801163,
+      "enqueuedTime": "2019-12-09 00:05:57"
+    },
+    {
+      "messageId": 466,
+      "temperature": 24.326544,
+      "enqueuedTime": "2019-12-09 00:06:17"
+    },
+    {
+      "messageId": 467,
+      "temperature": 20.381887,
+      "enqueuedTime": "2019-12-09 00:06:46"
+    },
+    {
+      "messageId": 468,
+      "temperature": 20.77152,
+      "enqueuedTime": "2019-12-09 00:07:08"
+    },
+    {
+      "messageId": 469,
+      "temperature": 23.189734,
+      "enqueuedTime": "2019-12-09 00:07:45"
+    },
+    {
+      "messageId": 470,
+      "temperature": 26.094872,
+      "enqueuedTime": "2019-12-09 00:08:23"
+    },
+    {
+      "messageId": 471,
+      "temperature": 24.117382,
+      "enqueuedTime": "2019-12-09 00:09:01"
+    },
+    {
+      "messageId": 472,
+      "temperature": 26.664637,
+      "enqueuedTime": "2019-12-09 00:09:22"
+    },
+    {
+      "messageId": 473,
+      "temperature": 20.899292,
+      "enqueuedTime": "2019-12-09 00:09:50"
+    },
+    {
+      "messageId": 474,
+      "temperature": 22.106934,
+      "enqueuedTime": "2019-12-09 00:10:18"
+    },
+    {
+      "messageId": 475,
+      "temperature": 20.360117,
+      "enqueuedTime": "2019-12-09 00:10:51"
+    },
+    {
+      "messageId": 476,
+      "temperature": 21.50602,
+      "enqueuedTime": "2019-12-09 00:11:12"
+    },
+    {
+      "messageId": 477,
+      "temperature": 20.444265,
+      "enqueuedTime": "2019-12-09 00:11:34"
+    },
+    {
+      "messageId": 478,
+      "temperature": 26.618519,
+      "enqueuedTime": "2019-12-09 00:12:05"
+    },
+    {
+      "messageId": 479,
+      "temperature": 20.11319,
+      "enqueuedTime": "2019-12-09 00:12:29"
+    },
+    {
+      "messageId": 480,
+      "temperature": 24.469059,
+      "enqueuedTime": "2019-12-09 00:12:53"
+    },
+    {
+      "messageId": 481,
+      "temperature": 21.414852,
+      "enqueuedTime": "2019-12-09 00:13:22"
+    },
+    {
+      "messageId": 482,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:13:47"
+    },
+    {
+      "messageId": 483,
+      "temperature": 20.220882,
+      "enqueuedTime": "2019-12-09 00:14:14"
+    },
+    {
+      "messageId": 484,
+      "temperature": 36.043594,
+      "enqueuedTime": "2019-12-09 00:14:46"
+    },
+    {
+      "messageId": 485,
+      "temperature": 24.422592,
+      "enqueuedTime": "2019-12-09 00:15:22"
+    },
+    {
+      "messageId": 486,
+      "temperature": 20.493752,
+      "enqueuedTime": "2019-12-09 00:15:52"
+    },
+    {
+      "messageId": 487,
+      "temperature": 25.556242,
+      "enqueuedTime": "2019-12-09 00:16:27"
+    },
+    {
+      "messageId": 488,
+      "temperature": 20.88138,
+      "enqueuedTime": "2019-12-09 00:17:01"
+    },
+    {
+      "messageId": 489,
+      "temperature": 32.68339,
+      "enqueuedTime": "2019-12-09 00:17:22"
+    },
+    {
+      "messageId": 490,
+      "temperature": 32.754604,
+      "enqueuedTime": "2019-12-09 00:17:48"
+    },
+    {
+      "messageId": 491,
+      "temperature": 25.38827,
+      "enqueuedTime": "2019-12-09 00:18:20"
+    },
+    {
+      "messageId": 492,
+      "temperature": 21.780842,
+      "enqueuedTime": "2019-12-09 00:18:53"
+    },
+    {
+      "messageId": 493,
+      "temperature": 26.398636,
+      "enqueuedTime": "2019-12-09 00:19:27"
+    },
+    {
+      "messageId": 494,
+      "temperature": 22.66656,
+      "enqueuedTime": "2019-12-09 00:19:53"
+    },
+    {
+      "messageId": 495,
+      "temperature": 20.816431,
+      "enqueuedTime": "2019-12-09 00:20:17"
+    },
+    {
+      "messageId": 496,
+      "temperature": 21.320692,
+      "enqueuedTime": "2019-12-09 00:20:45"
+    },
+    {
+      "messageId": 497,
+      "temperature": 28.042435,
+      "enqueuedTime": "2019-12-09 00:21:14"
+    },
+    {
+      "messageId": 498,
+      "temperature": 24.622992,
+      "enqueuedTime": "2019-12-09 00:21:52"
+    },
+    {
+      "messageId": 499,
+      "temperature": 22.560358,
+      "enqueuedTime": "2019-12-09 00:22:26"
+    },
+    {
+      "messageId": 500,
+      "temperature": 24.461475,
+      "enqueuedTime": "2019-12-09 00:22:47"
+    },
+    {
+      "messageId": 501,
+      "temperature": 28.476753,
+      "enqueuedTime": "2019-12-09 00:23:25"
+    },
+    {
+      "messageId": 502,
+      "temperature": 25.404564,
+      "enqueuedTime": "2019-12-09 00:23:59"
+    },
+    {
+      "messageId": 503,
+      "temperature": 22.529413,
+      "enqueuedTime": "2019-12-09 00:24:26"
+    },
+    {
+      "messageId": 504,
+      "temperature": 25.751083,
+      "enqueuedTime": "2019-12-09 00:25:01"
+    },
+    {
+      "messageId": 505,
+      "temperature": 31.374783,
+      "enqueuedTime": "2019-12-09 00:25:38"
+    },
+    {
+      "messageId": 506,
+      "temperature": 21.00429,
+      "enqueuedTime": "2019-12-09 00:25:59"
+    },
+    {
+      "messageId": 507,
+      "temperature": 26.020115,
+      "enqueuedTime": "2019-12-09 00:26:22"
+    },
+    {
+      "messageId": 508,
+      "temperature": 21.79842,
+      "enqueuedTime": "2019-12-09 00:26:52"
+    },
+    {
+      "messageId": 509,
+      "temperature": 36.907993,
+      "enqueuedTime": "2019-12-09 00:27:20"
+    },
+    {
+      "messageId": 510,
+      "temperature": 31.710835,
+      "enqueuedTime": "2019-12-09 00:27:57"
+    },
+    {
+      "messageId": 511,
+      "temperature": 21.990973,
+      "enqueuedTime": "2019-12-09 00:28:29"
+    },
+    {
+      "messageId": 512,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:28:59"
+    },
+    {
+      "messageId": 513,
+      "temperature": 26.735622,
+      "enqueuedTime": "2019-12-09 00:29:32"
+    },
+    {
+      "messageId": 514,
+      "temperature": 24.776798,
+      "enqueuedTime": "2019-12-09 00:30:01"
+    },
+    {
+      "messageId": 515,
+      "temperature": 20.069963,
+      "enqueuedTime": "2019-12-09 00:30:26"
+    },
+    {
+      "messageId": 516,
+      "temperature": 21.507544,
+      "enqueuedTime": "2019-12-09 00:31:02"
+    },
+    {
+      "messageId": 517,
+      "temperature": 24.987743,
+      "enqueuedTime": "2019-12-09 00:31:26"
+    },
+    {
+      "messageId": 518,
+      "temperature": 21.743307,
+      "enqueuedTime": "2019-12-09 00:31:57"
+    },
+    {
+      "messageId": 519,
+      "temperature": 31.096317,
+      "enqueuedTime": "2019-12-09 00:32:35"
+    },
+    {
+      "messageId": 520,
+      "temperature": 22.511028,
+      "enqueuedTime": "2019-12-09 00:33:11"
+    },
+    {
+      "messageId": 521,
+      "temperature": 38.2621,
+      "enqueuedTime": "2019-12-09 00:33:32"
+    },
+    {
+      "messageId": 522,
+      "temperature": 26.14521,
+      "enqueuedTime": "2019-12-09 00:34:07"
+    },
+    {
+      "messageId": 523,
+      "temperature": 22.000885,
+      "enqueuedTime": "2019-12-09 00:34:40"
+    },
+    {
+      "messageId": 524,
+      "temperature": 28.753067,
+      "enqueuedTime": "2019-12-09 00:35:05"
+    },
+    {
+      "messageId": 525,
+      "temperature": 20.473066,
+      "enqueuedTime": "2019-12-09 00:35:28"
+    },
+    {
+      "messageId": 526,
+      "temperature": 34.475525,
+      "enqueuedTime": "2019-12-09 00:36:03"
+    },
+    {
+      "messageId": 527,
+      "temperature": 24.937538,
+      "enqueuedTime": "2019-12-09 00:36:38"
+    },
+    {
+      "messageId": 528,
+      "temperature": 30.177446,
+      "enqueuedTime": "2019-12-09 00:37:15"
+    },
+    {
+      "messageId": 529,
+      "temperature": 20.230547,
+      "enqueuedTime": "2019-12-09 00:37:39"
+    },
+    {
+      "messageId": 530,
+      "temperature": 21.821735,
+      "enqueuedTime": "2019-12-09 00:38:03"
+    },
+    {
+      "messageId": 531,
+      "temperature": 21.30731,
+      "enqueuedTime": "2019-12-09 00:38:30"
+    },
+    {
+      "messageId": 532,
+      "temperature": 26.846865,
+      "enqueuedTime": "2019-12-09 00:39:06"
+    },
+    {
+      "messageId": 533,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:39:29"
+    },
+    {
+      "messageId": 534,
+      "temperature": 20.994076,
+      "enqueuedTime": "2019-12-09 00:39:51"
+    },
+    {
+      "messageId": 535,
+      "temperature": 21.798914,
+      "enqueuedTime": "2019-12-09 00:40:30"
+    },
+    {
+      "messageId": 536,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:40:50"
+    },
+    {
+      "messageId": 537,
+      "temperature": 24.99764,
+      "enqueuedTime": "2019-12-09 00:41:11"
+    },
+    {
+      "messageId": 538,
+      "temperature": 28.290047,
+      "enqueuedTime": "2019-12-09 00:41:36"
+    },
+    {
+      "messageId": 539,
+      "temperature": 26.050634,
+      "enqueuedTime": "2019-12-09 00:42:14"
+    },
+    {
+      "messageId": 540,
+      "temperature": 22.194551,
+      "enqueuedTime": "2019-12-09 00:42:39"
+    },
+    {
+      "messageId": 541,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:43:05"
+    },
+    {
+      "messageId": 542,
+      "temperature": 34.131516,
+      "enqueuedTime": "2019-12-09 00:43:26"
+    },
+    {
+      "messageId": 543,
+      "temperature": 23.991213,
+      "enqueuedTime": "2019-12-09 00:43:55"
+    },
+    {
+      "messageId": 544,
+      "temperature": 27.993301,
+      "enqueuedTime": "2019-12-09 00:44:15"
+    },
+    {
+      "messageId": 545,
+      "temperature": 24.048946,
+      "enqueuedTime": "2019-12-09 00:44:46"
+    },
+    {
+      "messageId": 546,
+      "temperature": 30.413729,
+      "enqueuedTime": "2019-12-09 00:45:21"
+    },
+    {
+      "messageId": 547,
+      "temperature": 20.30029,
+      "enqueuedTime": "2019-12-09 00:45:57"
+    },
+    {
+      "messageId": 548,
+      "temperature": 31.946684,
+      "enqueuedTime": "2019-12-09 00:46:25"
+    },
+    {
+      "messageId": 549,
+      "temperature": 24.288774,
+      "enqueuedTime": "2019-12-09 00:47:00"
+    },
+    {
+      "messageId": 550,
+      "temperature": 22.130716,
+      "enqueuedTime": "2019-12-09 00:47:23"
+    },
+    {
+      "messageId": 551,
+      "temperature": 23.875322,
+      "enqueuedTime": "2019-12-09 00:47:54"
+    },
+    {
+      "messageId": 552,
+      "temperature": 20.957375,
+      "enqueuedTime": "2019-12-09 00:48:23"
+    },
+    {
+      "messageId": 553,
+      "temperature": 20.264622,
+      "enqueuedTime": "2019-12-09 00:48:44"
+    },
+    {
+      "messageId": 554,
+      "temperature": 20.951586,
+      "enqueuedTime": "2019-12-09 00:49:23"
+    },
+    {
+      "messageId": 555,
+      "temperature": 32.047523,
+      "enqueuedTime": "2019-12-09 00:49:53"
+    },
+    {
+      "messageId": 556,
+      "temperature": 27.753183,
+      "enqueuedTime": "2019-12-09 00:50:29"
+    },
+    {
+      "messageId": 557,
+      "temperature": 21.82093,
+      "enqueuedTime": "2019-12-09 00:50:49"
+    },
+    {
+      "messageId": 558,
+      "temperature": 23.651783,
+      "enqueuedTime": "2019-12-09 00:51:15"
+    },
+    {
+      "messageId": 559,
+      "temperature": 22.957308,
+      "enqueuedTime": "2019-12-09 00:51:43"
+    },
+    {
+      "messageId": 560,
+      "temperature": 25.927353,
+      "enqueuedTime": "2019-12-09 00:52:20"
+    },
+    {
+      "messageId": 561,
+      "temperature": 21.348427,
+      "enqueuedTime": "2019-12-09 00:52:52"
+    },
+    {
+      "messageId": 562,
+      "temperature": 23.307066,
+      "enqueuedTime": "2019-12-09 00:53:21"
+    },
+    {
+      "messageId": 563,
+      "temperature": 26.648182,
+      "enqueuedTime": "2019-12-09 00:53:49"
+    },
+    {
+      "messageId": 564,
+      "temperature": 21.071913,
+      "enqueuedTime": "2019-12-09 00:54:13"
+    },
+    {
+      "messageId": 565,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 00:54:42"
+    },
+    {
+      "messageId": 566,
+      "temperature": 21.182535,
+      "enqueuedTime": "2019-12-09 00:55:09"
+    },
+    {
+      "messageId": 567,
+      "temperature": 22.187553,
+      "enqueuedTime": "2019-12-09 00:55:39"
+    },
+    {
+      "messageId": 568,
+      "temperature": 21.186092,
+      "enqueuedTime": "2019-12-09 00:56:00"
+    },
+    {
+      "messageId": 569,
+      "temperature": 26.607605,
+      "enqueuedTime": "2019-12-09 00:56:24"
+    },
+    {
+      "messageId": 570,
+      "temperature": 21.338573,
+      "enqueuedTime": "2019-12-09 00:57:02"
+    },
+    {
+      "messageId": 571,
+      "temperature": 23.842705,
+      "enqueuedTime": "2019-12-09 00:57:28"
+    },
+    {
+      "messageId": 572,
+      "temperature": 22.880508,
+      "enqueuedTime": "2019-12-09 00:58:07"
+    },
+    {
+      "messageId": 573,
+      "temperature": 22.096737,
+      "enqueuedTime": "2019-12-09 00:58:42"
+    },
+    {
+      "messageId": 574,
+      "temperature": 27.225224,
+      "enqueuedTime": "2019-12-09 00:59:04"
+    },
+    {
+      "messageId": 575,
+      "temperature": 22.042162,
+      "enqueuedTime": "2019-12-09 00:59:34"
+    },
+    {
+      "messageId": 576,
+      "temperature": 20.64005,
+      "enqueuedTime": "2019-12-09 01:00:06"
+    },
+    {
+      "messageId": 577,
+      "temperature": 21.054108,
+      "enqueuedTime": "2019-12-09 01:00:38"
+    },
+    {
+      "messageId": 578,
+      "temperature": 25.617851,
+      "enqueuedTime": "2019-12-09 01:01:00"
+    },
+    {
+      "messageId": 579,
+      "temperature": 22.798698,
+      "enqueuedTime": "2019-12-09 01:01:22"
+    },
+    {
+      "messageId": 580,
+      "temperature": 32.935577,
+      "enqueuedTime": "2019-12-09 01:01:49"
+    },
+    {
+      "messageId": 581,
+      "temperature": 22.869038,
+      "enqueuedTime": "2019-12-09 01:02:11"
+    },
+    {
+      "messageId": 582,
+      "temperature": 27.046722,
+      "enqueuedTime": "2019-12-09 01:02:32"
+    },
+    {
+      "messageId": 583,
+      "temperature": 27.286045,
+      "enqueuedTime": "2019-12-09 01:02:59"
+    },
+    {
+      "messageId": 584,
+      "temperature": 20.66703,
+      "enqueuedTime": "2019-12-09 01:03:27"
+    },
+    {
+      "messageId": 585,
+      "temperature": 22.074371,
+      "enqueuedTime": "2019-12-09 01:04:01"
+    },
+    {
+      "messageId": 586,
+      "temperature": 28.9161,
+      "enqueuedTime": "2019-12-09 01:04:22"
+    },
+    {
+      "messageId": 587,
+      "temperature": 21.98608,
+      "enqueuedTime": "2019-12-09 01:05:00"
+    },
+    {
+      "messageId": 588,
+      "temperature": 22.01253,
+      "enqueuedTime": "2019-12-09 01:05:25"
+    },
+    {
+      "messageId": 589,
+      "temperature": 20.654886,
+      "enqueuedTime": "2019-12-09 01:05:53"
+    },
+    {
+      "messageId": 590,
+      "temperature": 21.541668,
+      "enqueuedTime": "2019-12-09 01:06:22"
+    },
+    {
+      "messageId": 591,
+      "temperature": 20.88312,
+      "enqueuedTime": "2019-12-09 01:06:49"
+    },
+    {
+      "messageId": 592,
+      "temperature": 20.137022,
+      "enqueuedTime": "2019-12-09 01:07:15"
+    },
+    {
+      "messageId": 593,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 01:07:50"
+    },
+    {
+      "messageId": 594,
+      "temperature": 25.715042,
+      "enqueuedTime": "2019-12-09 01:08:13"
+    },
+    {
+      "messageId": 595,
+      "temperature": 20.866428,
+      "enqueuedTime": "2019-12-09 01:08:43"
+    },
+    {
+      "messageId": 596,
+      "temperature": 22.652523,
+      "enqueuedTime": "2019-12-09 01:09:06"
+    },
+    {
+      "messageId": 597,
+      "temperature": 30.5598,
+      "enqueuedTime": "2019-12-09 01:09:45"
+    },
+    {
+      "messageId": 598,
+      "temperature": 23.337465,
+      "enqueuedTime": "2019-12-09 01:10:23"
+    },
+    {
+      "messageId": 599,
+      "temperature": 29.195932,
+      "enqueuedTime": "2019-12-09 01:10:45"
+    },
+    {
+      "messageId": 600,
+      "temperature": 23.837543,
+      "enqueuedTime": "2019-12-09 01:11:13"
+    },
+    {
+      "messageId": 601,
+      "temperature": 20.66425,
+      "enqueuedTime": "2019-12-09 01:11:41"
+    },
+    {
+      "messageId": 602,
+      "temperature": 23.936878,
+      "enqueuedTime": "2019-12-09 01:12:16"
+    },
+    {
+      "messageId": 603,
+      "temperature": 20.53639,
+      "enqueuedTime": "2019-12-09 01:12:52"
+    },
+    {
+      "messageId": 604,
+      "temperature": 24.124746,
+      "enqueuedTime": "2019-12-09 01:13:16"
+    },
+    {
+      "messageId": 605,
+      "temperature": 20.51892,
+      "enqueuedTime": "2019-12-09 01:13:38"
+    },
+    {
+      "messageId": 606,
+      "temperature": 33.829277,
+      "enqueuedTime": "2019-12-09 01:14:06"
+    },
+    {
+      "messageId": 607,
+      "temperature": 23.269781,
+      "enqueuedTime": "2019-12-09 01:14:35"
+    },
+    {
+      "messageId": 608,
+      "temperature": 27.481245,
+      "enqueuedTime": "2019-12-09 01:14:59"
+    },
+    {
+      "messageId": 609,
+      "temperature": 23.25301,
+      "enqueuedTime": "2019-12-09 01:15:28"
+    },
+    {
+      "messageId": 610,
+      "temperature": 28.396244,
+      "enqueuedTime": "2019-12-09 01:15:51"
+    },
+    {
+      "messageId": 611,
+      "temperature": 20.31048,
+      "enqueuedTime": "2019-12-09 01:16:25"
+    },
+    {
+      "messageId": 612,
+      "temperature": 23.036537,
+      "enqueuedTime": "2019-12-09 01:16:57"
+    },
+    {
+      "messageId": 613,
+      "temperature": 22.775526,
+      "enqueuedTime": "2019-12-09 01:17:22"
+    },
+    {
+      "messageId": 614,
+      "temperature": 21.056948,
+      "enqueuedTime": "2019-12-09 01:17:56"
+    },
+    {
+      "messageId": 615,
+      "temperature": 27.030342,
+      "enqueuedTime": "2019-12-09 01:18:31"
+    },
+    {
+      "messageId": 616,
+      "temperature": 21.481298,
+      "enqueuedTime": "2019-12-09 01:18:55"
+    },
+    {
+      "messageId": 617,
+      "temperature": 20.43509,
+      "enqueuedTime": "2019-12-09 01:19:26"
+    },
+    {
+      "messageId": 618,
+      "temperature": 24.698397,
+      "enqueuedTime": "2019-12-09 01:19:49"
+    },
+    {
+      "messageId": 619,
+      "temperature": 27.973394,
+      "enqueuedTime": "2019-12-09 01:20:19"
+    },
+    {
+      "messageId": 620,
+      "temperature": 24.402458,
+      "enqueuedTime": "2019-12-09 01:20:56"
+    },
+    {
+      "messageId": 621,
+      "temperature": 21.643469,
+      "enqueuedTime": "2019-12-09 01:21:25"
+    },
+    {
+      "messageId": 622,
+      "temperature": 22.038425,
+      "enqueuedTime": "2019-12-09 01:21:47"
+    },
+    {
+      "messageId": 623,
+      "temperature": 21.26548,
+      "enqueuedTime": "2019-12-09 01:22:12"
+    },
+    {
+      "messageId": 624,
+      "temperature": 34.3507,
+      "enqueuedTime": "2019-12-09 01:22:33"
+    },
+    {
+      "messageId": 625,
+      "temperature": 24.267365,
+      "enqueuedTime": "2019-12-09 01:23:08"
+    },
+    {
+      "messageId": 626,
+      "temperature": 22.186184,
+      "enqueuedTime": "2019-12-09 01:23:33"
+    },
+    {
+      "messageId": 627,
+      "temperature": 28.27991,
+      "enqueuedTime": "2019-12-09 01:24:00"
+    },
+    {
+      "messageId": 628,
+      "temperature": 21.936481,
+      "enqueuedTime": "2019-12-09 01:24:35"
+    },
+    {
+      "messageId": 629,
+      "temperature": 21.233196,
+      "enqueuedTime": "2019-12-09 01:24:55"
+    },
+    {
+      "messageId": 630,
+      "temperature": 20.85991,
+      "enqueuedTime": "2019-12-09 01:25:20"
+    },
+    {
+      "messageId": 631,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 01:25:52"
+    },
+    {
+      "messageId": 632,
+      "temperature": 22.205097,
+      "enqueuedTime": "2019-12-09 01:26:20"
+    },
+    {
+      "messageId": 633,
+      "temperature": 21.599127,
+      "enqueuedTime": "2019-12-09 01:26:55"
+    },
+    {
+      "messageId": 634,
+      "temperature": 24.687656,
+      "enqueuedTime": "2019-12-09 01:27:32"
+    },
+    {
+      "messageId": 635,
+      "temperature": 29.668404,
+      "enqueuedTime": "2019-12-09 01:28:08"
+    },
+    {
+      "messageId": 636,
+      "temperature": 20.375265,
+      "enqueuedTime": "2019-12-09 01:28:45"
+    },
+    {
+      "messageId": 637,
+      "temperature": 37.9887,
+      "enqueuedTime": "2019-12-09 01:29:08"
+    },
+    {
+      "messageId": 638,
+      "temperature": 24.759064,
+      "enqueuedTime": "2019-12-09 01:29:45"
+    },
+    {
+      "messageId": 639,
+      "temperature": 20.587767,
+      "enqueuedTime": "2019-12-09 01:30:11"
+    },
+    {
+      "messageId": 640,
+      "temperature": 24.224056,
+      "enqueuedTime": "2019-12-09 01:30:37"
+    },
+    {
+      "messageId": 641,
+      "temperature": 20.148232,
+      "enqueuedTime": "2019-12-09 01:30:58"
+    },
+    {
+      "messageId": 642,
+      "temperature": 25.770079,
+      "enqueuedTime": "2019-12-09 01:31:24"
+    },
+    {
+      "messageId": 643,
+      "temperature": 29.360188,
+      "enqueuedTime": "2019-12-09 01:31:46"
+    },
+    {
+      "messageId": 644,
+      "temperature": 34.34533,
+      "enqueuedTime": "2019-12-09 01:32:08"
+    },
+    {
+      "messageId": 645,
+      "temperature": 20.572977,
+      "enqueuedTime": "2019-12-09 01:32:44"
+    },
+    {
+      "messageId": 646,
+      "temperature": 21.850027,
+      "enqueuedTime": "2019-12-09 01:33:13"
+    },
+    {
+      "messageId": 647,
+      "temperature": 26.033953,
+      "enqueuedTime": "2019-12-09 01:33:45"
+    },
+    {
+      "messageId": 648,
+      "temperature": 28.307201,
+      "enqueuedTime": "2019-12-09 01:34:22"
+    },
+    {
+      "messageId": 649,
+      "temperature": 20.74218,
+      "enqueuedTime": "2019-12-09 01:34:53"
+    },
+    {
+      "messageId": 650,
+      "temperature": 22.341085,
+      "enqueuedTime": "2019-12-09 01:35:31"
+    },
+    {
+      "messageId": 651,
+      "temperature": 20.479847,
+      "enqueuedTime": "2019-12-09 01:36:03"
+    },
+    {
+      "messageId": 652,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 01:36:24"
+    },
+    {
+      "messageId": 653,
+      "temperature": 25.240158,
+      "enqueuedTime": "2019-12-09 01:36:52"
+    },
+    {
+      "messageId": 654,
+      "temperature": 35.675194,
+      "enqueuedTime": "2019-12-09 01:37:28"
+    },
+    {
+      "messageId": 655,
+      "temperature": 25.342346,
+      "enqueuedTime": "2019-12-09 01:37:48"
+    },
+    {
+      "messageId": 656,
+      "temperature": 33.408512,
+      "enqueuedTime": "2019-12-09 01:38:19"
+    },
+    {
+      "messageId": 657,
+      "temperature": 21.339178,
+      "enqueuedTime": "2019-12-09 01:38:48"
+    },
+    {
+      "messageId": 658,
+      "temperature": 20.868029,
+      "enqueuedTime": "2019-12-09 01:39:12"
+    },
+    {
+      "messageId": 659,
+      "temperature": 21.871115,
+      "enqueuedTime": "2019-12-09 01:39:40"
+    },
+    {
+      "messageId": 660,
+      "temperature": 21.973038,
+      "enqueuedTime": "2019-12-09 01:40:15"
+    },
+    {
+      "messageId": 661,
+      "temperature": 20.36467,
+      "enqueuedTime": "2019-12-09 01:40:42"
+    },
+    {
+      "messageId": 662,
+      "temperature": 25.956154,
+      "enqueuedTime": "2019-12-09 01:41:07"
+    },
+    {
+      "messageId": 663,
+      "temperature": 20.940022,
+      "enqueuedTime": "2019-12-09 01:41:44"
+    },
+    {
+      "messageId": 664,
+      "temperature": 32.176563,
+      "enqueuedTime": "2019-12-09 01:42:11"
+    },
+    {
+      "messageId": 665,
+      "temperature": 20.269274,
+      "enqueuedTime": "2019-12-09 01:42:42"
+    },
+    {
+      "messageId": 666,
+      "temperature": 20.082249,
+      "enqueuedTime": "2019-12-09 01:43:05"
+    },
+    {
+      "messageId": 667,
+      "temperature": 20.815195,
+      "enqueuedTime": "2019-12-09 01:43:30"
+    },
+    {
+      "messageId": 668,
+      "temperature": 20.035635,
+      "enqueuedTime": "2019-12-09 01:44:07"
+    },
+    {
+      "messageId": 669,
+      "temperature": 21.204084,
+      "enqueuedTime": "2019-12-09 01:44:37"
+    },
+    {
+      "messageId": 670,
+      "temperature": 21.041374,
+      "enqueuedTime": "2019-12-09 01:45:00"
+    },
+    {
+      "messageId": 671,
+      "temperature": 29.343971,
+      "enqueuedTime": "2019-12-09 01:45:36"
+    },
+    {
+      "messageId": 672,
+      "temperature": 20.128445,
+      "enqueuedTime": "2019-12-09 01:45:59"
+    },
+    {
+      "messageId": 673,
+      "temperature": 29.303715,
+      "enqueuedTime": "2019-12-09 01:46:19"
+    },
+    {
+      "messageId": 674,
+      "temperature": 28.538746,
+      "enqueuedTime": "2019-12-09 01:46:44"
+    },
+    {
+      "messageId": 675,
+      "temperature": 30.451063,
+      "enqueuedTime": "2019-12-09 01:47:23"
+    },
+    {
+      "messageId": 676,
+      "temperature": 31.992355,
+      "enqueuedTime": "2019-12-09 01:47:59"
+    },
+    {
+      "messageId": 677,
+      "temperature": 21.825739,
+      "enqueuedTime": "2019-12-09 01:48:19"
+    },
+    {
+      "messageId": 678,
+      "temperature": 26.87937,
+      "enqueuedTime": "2019-12-09 01:48:39"
+    },
+    {
+      "messageId": 679,
+      "temperature": 22.301447,
+      "enqueuedTime": "2019-12-09 01:49:01"
+    },
+    {
+      "messageId": 680,
+      "temperature": 22.572844,
+      "enqueuedTime": "2019-12-09 01:49:34"
+    },
+    {
+      "messageId": 681,
+      "temperature": 24.292265,
+      "enqueuedTime": "2019-12-09 01:49:57"
+    },
+    {
+      "messageId": 682,
+      "temperature": 27.241165,
+      "enqueuedTime": "2019-12-09 01:50:17"
+    },
+    {
+      "messageId": 683,
+      "temperature": 21.602474,
+      "enqueuedTime": "2019-12-09 01:50:53"
+    },
+    {
+      "messageId": 684,
+      "temperature": 24.468843,
+      "enqueuedTime": "2019-12-09 01:51:25"
+    },
+    {
+      "messageId": 685,
+      "temperature": 27.979517,
+      "enqueuedTime": "2019-12-09 01:51:55"
+    },
+    {
+      "messageId": 686,
+      "temperature": 22.719433,
+      "enqueuedTime": "2019-12-09 01:52:21"
+    },
+    {
+      "messageId": 687,
+      "temperature": 21.154469,
+      "enqueuedTime": "2019-12-09 01:52:57"
+    },
+    {
+      "messageId": 688,
+      "temperature": 34.29458,
+      "enqueuedTime": "2019-12-09 01:53:31"
+    },
+    {
+      "messageId": 689,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 01:54:00"
+    },
+    {
+      "messageId": 690,
+      "temperature": 22.025143,
+      "enqueuedTime": "2019-12-09 01:54:27"
+    },
+    {
+      "messageId": 691,
+      "temperature": 24.775024,
+      "enqueuedTime": "2019-12-09 01:54:54"
+    },
+    {
+      "messageId": 692,
+      "temperature": 22.77576,
+      "enqueuedTime": "2019-12-09 01:55:25"
+    },
+    {
+      "messageId": 693,
+      "temperature": 31.577124,
+      "enqueuedTime": "2019-12-09 01:55:48"
+    },
+    {
+      "messageId": 694,
+      "temperature": 34.89054,
+      "enqueuedTime": "2019-12-09 01:56:14"
+    },
+    {
+      "messageId": 695,
+      "temperature": 20.90024,
+      "enqueuedTime": "2019-12-09 01:56:42"
+    },
+    {
+      "messageId": 696,
+      "temperature": 21.6339,
+      "enqueuedTime": "2019-12-09 01:57:03"
+    },
+    {
+      "messageId": 697,
+      "temperature": 23.024376,
+      "enqueuedTime": "2019-12-09 01:57:27"
+    },
+    {
+      "messageId": 698,
+      "temperature": 26.058622,
+      "enqueuedTime": "2019-12-09 01:57:54"
+    },
+    {
+      "messageId": 699,
+      "temperature": 25.00172,
+      "enqueuedTime": "2019-12-09 01:58:21"
+    },
+    {
+      "messageId": 700,
+      "temperature": 21.331823,
+      "enqueuedTime": "2019-12-09 01:58:53"
+    },
+    {
+      "messageId": 701,
+      "temperature": 20.056042,
+      "enqueuedTime": "2019-12-09 01:59:24"
+    },
+    {
+      "messageId": 702,
+      "temperature": 26.15587,
+      "enqueuedTime": "2019-12-09 01:59:46"
+    },
+    {
+      "messageId": 703,
+      "temperature": 26.717121,
+      "enqueuedTime": "2019-12-09 02:00:15"
+    },
+    {
+      "messageId": 704,
+      "temperature": 33.561752,
+      "enqueuedTime": "2019-12-09 02:00:50"
+    },
+    {
+      "messageId": 705,
+      "temperature": 21.435747,
+      "enqueuedTime": "2019-12-09 02:01:17"
+    },
+    {
+      "messageId": 706,
+      "temperature": 21.46936,
+      "enqueuedTime": "2019-12-09 02:01:54"
+    },
+    {
+      "messageId": 707,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 02:02:15"
+    },
+    {
+      "messageId": 708,
+      "temperature": 23.078321,
+      "enqueuedTime": "2019-12-09 02:02:44"
+    },
+    {
+      "messageId": 709,
+      "temperature": 24.24184,
+      "enqueuedTime": "2019-12-09 02:03:15"
+    },
+    {
+      "messageId": 710,
+      "temperature": 20.507711,
+      "enqueuedTime": "2019-12-09 02:03:45"
+    },
+    {
+      "messageId": 711,
+      "temperature": 28.89718,
+      "enqueuedTime": "2019-12-09 02:04:20"
+    },
+    {
+      "messageId": 712,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 02:04:49"
+    },
+    {
+      "messageId": 713,
+      "temperature": 29.919575,
+      "enqueuedTime": "2019-12-09 02:05:09"
+    },
+    {
+      "messageId": 714,
+      "temperature": 26.517017,
+      "enqueuedTime": "2019-12-09 02:05:47"
+    },
+    {
+      "messageId": 715,
+      "temperature": 21.960104,
+      "enqueuedTime": "2019-12-09 02:06:12"
+    },
+    {
+      "messageId": 716,
+      "temperature": 28.472477,
+      "enqueuedTime": "2019-12-09 02:06:33"
+    },
+    {
+      "messageId": 717,
+      "temperature": 23.376072,
+      "enqueuedTime": "2019-12-09 02:07:04"
+    },
+    {
+      "messageId": 718,
+      "temperature": 25.987543,
+      "enqueuedTime": "2019-12-09 02:07:27"
+    },
+    {
+      "messageId": 719,
+      "temperature": 20.61046,
+      "enqueuedTime": "2019-12-09 02:07:48"
+    },
+    {
+      "messageId": 720,
+      "temperature": 21.209124,
+      "enqueuedTime": "2019-12-09 02:08:15"
+    },
+    {
+      "messageId": 721,
+      "temperature": 23.640867,
+      "enqueuedTime": "2019-12-09 02:08:52"
+    },
+    {
+      "messageId": 722,
+      "temperature": 34.74453,
+      "enqueuedTime": "2019-12-09 02:09:13"
+    },
+    {
+      "messageId": 723,
+      "temperature": 25.930134,
+      "enqueuedTime": "2019-12-09 02:09:43"
+    },
+    {
+      "messageId": 724,
+      "temperature": 29.115139,
+      "enqueuedTime": "2019-12-09 02:10:06"
+    },
+    {
+      "messageId": 725,
+      "temperature": 20.171345,
+      "enqueuedTime": "2019-12-09 02:10:37"
+    },
+    {
+      "messageId": 726,
+      "temperature": 20.405922,
+      "enqueuedTime": "2019-12-09 02:10:57"
+    },
+    {
+      "messageId": 727,
+      "temperature": 22.552065,
+      "enqueuedTime": "2019-12-09 02:11:18"
+    },
+    {
+      "messageId": 728,
+      "temperature": 24.77444,
+      "enqueuedTime": "2019-12-09 02:11:41"
+    },
+    {
+      "messageId": 729,
+      "temperature": 20.83963,
+      "enqueuedTime": "2019-12-09 02:12:18"
+    },
+    {
+      "messageId": 730,
+      "temperature": 26.988415,
+      "enqueuedTime": "2019-12-09 02:12:47"
+    },
+    {
+      "messageId": 731,
+      "temperature": 27.527798,
+      "enqueuedTime": "2019-12-09 02:13:10"
+    },
+    {
+      "messageId": 732,
+      "temperature": 20.92801,
+      "enqueuedTime": "2019-12-09 02:13:33"
+    },
+    {
+      "messageId": 733,
+      "temperature": 33.506855,
+      "enqueuedTime": "2019-12-09 02:14:00"
+    },
+    {
+      "messageId": 734,
+      "temperature": 22.951992,
+      "enqueuedTime": "2019-12-09 02:14:34"
+    },
+    {
+      "messageId": 735,
+      "temperature": 20.316967,
+      "enqueuedTime": "2019-12-09 02:14:56"
+    },
+    {
+      "messageId": 736,
+      "temperature": 20.642502,
+      "enqueuedTime": "2019-12-09 02:15:24"
+    },
+    {
+      "messageId": 737,
+      "temperature": 30.83908,
+      "enqueuedTime": "2019-12-09 02:16:03"
+    },
+    {
+      "messageId": 738,
+      "temperature": 20.507471,
+      "enqueuedTime": "2019-12-09 02:16:25"
+    },
+    {
+      "messageId": 739,
+      "temperature": 28.43963,
+      "enqueuedTime": "2019-12-09 02:16:55"
+    },
+    {
+      "messageId": 740,
+      "temperature": 20.4175,
+      "enqueuedTime": "2019-12-09 02:17:31"
+    },
+    {
+      "messageId": 741,
+      "temperature": 25.364223,
+      "enqueuedTime": "2019-12-09 02:17:59"
+    },
+    {
+      "messageId": 742,
+      "temperature": 23.121552,
+      "enqueuedTime": "2019-12-09 02:18:32"
+    },
+    {
+      "messageId": 743,
+      "temperature": 34.557777,
+      "enqueuedTime": "2019-12-09 02:18:55"
+    },
+    {
+      "messageId": 744,
+      "temperature": 20.531794,
+      "enqueuedTime": "2019-12-09 02:19:26"
+    },
+    {
+      "messageId": 745,
+      "temperature": 27.039452,
+      "enqueuedTime": "2019-12-09 02:19:53"
+    },
+    {
+      "messageId": 746,
+      "temperature": 20.513483,
+      "enqueuedTime": "2019-12-09 02:20:14"
+    },
+    {
+      "messageId": 747,
+      "temperature": 20.807352,
+      "enqueuedTime": "2019-12-09 02:20:44"
+    },
+    {
+      "messageId": 748,
+      "temperature": 29.708628,
+      "enqueuedTime": "2019-12-09 02:21:15"
+    },
+    {
+      "messageId": 749,
+      "temperature": 33.609222,
+      "enqueuedTime": "2019-12-09 02:21:51"
+    },
+    {
+      "messageId": 750,
+      "temperature": 30.021214,
+      "enqueuedTime": "2019-12-09 02:22:14"
+    },
+    {
+      "messageId": 751,
+      "temperature": 21.380854,
+      "enqueuedTime": "2019-12-09 02:22:36"
+    },
+    {
+      "messageId": 752,
+      "temperature": 20.107061,
+      "enqueuedTime": "2019-12-09 02:23:13"
+    },
+    {
+      "messageId": 753,
+      "temperature": 20.358921,
+      "enqueuedTime": "2019-12-09 02:23:44"
+    },
+    {
+      "messageId": 754,
+      "temperature": 21.003448,
+      "enqueuedTime": "2019-12-09 02:24:05"
+    },
+    {
+      "messageId": 755,
+      "temperature": 21.707401,
+      "enqueuedTime": "2019-12-09 02:24:38"
+    },
+    {
+      "messageId": 756,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 02:25:02"
+    },
+    {
+      "messageId": 757,
+      "temperature": 28.379974,
+      "enqueuedTime": "2019-12-09 02:25:24"
+    },
+    {
+      "messageId": 758,
+      "temperature": 21.713774,
+      "enqueuedTime": "2019-12-09 02:25:59"
+    },
+    {
+      "messageId": 759,
+      "temperature": 20.65832,
+      "enqueuedTime": "2019-12-09 02:26:24"
+    },
+    {
+      "messageId": 760,
+      "temperature": 20.248762,
+      "enqueuedTime": "2019-12-09 02:26:49"
+    },
+    {
+      "messageId": 761,
+      "temperature": 31.221794,
+      "enqueuedTime": "2019-12-09 02:27:18"
+    },
+    {
+      "messageId": 762,
+      "temperature": 21.049616,
+      "enqueuedTime": "2019-12-09 02:27:50"
+    },
+    {
+      "messageId": 763,
+      "temperature": 33.786457,
+      "enqueuedTime": "2019-12-09 02:28:25"
+    },
+    {
+      "messageId": 764,
+      "temperature": 29.435013,
+      "enqueuedTime": "2019-12-09 02:28:45"
+    },
+    {
+      "messageId": 765,
+      "temperature": 22.095087,
+      "enqueuedTime": "2019-12-09 02:29:07"
+    },
+    {
+      "messageId": 766,
+      "temperature": 20.845499,
+      "enqueuedTime": "2019-12-09 02:29:37"
+    },
+    {
+      "messageId": 767,
+      "temperature": 28.555439,
+      "enqueuedTime": "2019-12-09 02:30:01"
+    },
+    {
+      "messageId": 768,
+      "temperature": 29.61889,
+      "enqueuedTime": "2019-12-09 02:30:35"
+    },
+    {
+      "messageId": 769,
+      "temperature": 22.200964,
+      "enqueuedTime": "2019-12-09 02:30:57"
+    },
+    {
+      "messageId": 770,
+      "temperature": 24.051418,
+      "enqueuedTime": "2019-12-09 02:31:33"
+    },
+    {
+      "messageId": 771,
+      "temperature": 20.191677,
+      "enqueuedTime": "2019-12-09 02:31:59"
+    },
+    {
+      "messageId": 772,
+      "temperature": 20.342346,
+      "enqueuedTime": "2019-12-09 02:32:36"
+    },
+    {
+      "messageId": 773,
+      "temperature": 23.450651,
+      "enqueuedTime": "2019-12-09 02:33:11"
+    },
+    {
+      "messageId": 774,
+      "temperature": 22.443422,
+      "enqueuedTime": "2019-12-09 02:33:32"
+    },
+    {
+      "messageId": 775,
+      "temperature": 25.192284,
+      "enqueuedTime": "2019-12-09 02:33:58"
+    },
+    {
+      "messageId": 776,
+      "temperature": 24.581343,
+      "enqueuedTime": "2019-12-09 02:34:28"
+    },
+    {
+      "messageId": 777,
+      "temperature": 23.549877,
+      "enqueuedTime": "2019-12-09 02:35:07"
+    },
+    {
+      "messageId": 778,
+      "temperature": 24.08775,
+      "enqueuedTime": "2019-12-09 02:35:41"
+    },
+    {
+      "messageId": 779,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 02:36:03"
+    },
+    {
+      "messageId": 780,
+      "temperature": 30.058249,
+      "enqueuedTime": "2019-12-09 02:36:30"
+    },
+    {
+      "messageId": 781,
+      "temperature": 23.819866,
+      "enqueuedTime": "2019-12-09 02:36:57"
+    },
+    {
+      "messageId": 782,
+      "temperature": 24.801771,
+      "enqueuedTime": "2019-12-09 02:37:28"
+    },
+    {
+      "messageId": 783,
+      "temperature": 26.710873,
+      "enqueuedTime": "2019-12-09 02:38:04"
+    },
+    {
+      "messageId": 784,
+      "temperature": 21.536097,
+      "enqueuedTime": "2019-12-09 02:38:31"
+    },
+    {
+      "messageId": 785,
+      "temperature": 25.270042,
+      "enqueuedTime": "2019-12-09 02:39:10"
+    },
+    {
+      "messageId": 786,
+      "temperature": 22.926437,
+      "enqueuedTime": "2019-12-09 02:39:30"
+    },
+    {
+      "messageId": 787,
+      "temperature": 29.57428,
+      "enqueuedTime": "2019-12-09 02:40:07"
+    },
+    {
+      "messageId": 788,
+      "temperature": 24.061518,
+      "enqueuedTime": "2019-12-09 02:40:30"
+    },
+    {
+      "messageId": 789,
+      "temperature": 25.385035,
+      "enqueuedTime": "2019-12-09 02:40:53"
+    },
+    {
+      "messageId": 790,
+      "temperature": 21.025644,
+      "enqueuedTime": "2019-12-09 02:41:18"
+    },
+    {
+      "messageId": 791,
+      "temperature": 20.258982,
+      "enqueuedTime": "2019-12-09 02:41:54"
+    },
+    {
+      "messageId": 792,
+      "temperature": 30.52726,
+      "enqueuedTime": "2019-12-09 02:42:30"
+    },
+    {
+      "messageId": 793,
+      "temperature": 24.925179,
+      "enqueuedTime": "2019-12-09 02:42:56"
+    },
+    {
+      "messageId": 794,
+      "temperature": 25.545052,
+      "enqueuedTime": "2019-12-09 02:43:33"
+    },
+    {
+      "messageId": 795,
+      "temperature": 28.958136,
+      "enqueuedTime": "2019-12-09 02:43:54"
+    },
+    {
+      "messageId": 796,
+      "temperature": 21.288757,
+      "enqueuedTime": "2019-12-09 02:44:14"
+    },
+    {
+      "messageId": 797,
+      "temperature": 29.610275,
+      "enqueuedTime": "2019-12-09 02:44:40"
+    },
+    {
+      "messageId": 798,
+      "temperature": 22.441008,
+      "enqueuedTime": "2019-12-09 02:45:06"
+    },
+    {
+      "messageId": 799,
+      "temperature": 26.415749,
+      "enqueuedTime": "2019-12-09 02:45:31"
+    },
+    {
+      "messageId": 800,
+      "temperature": 22.713053,
+      "enqueuedTime": "2019-12-09 02:46:03"
+    },
+    {
+      "messageId": 801,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 02:46:23"
+    },
+    {
+      "messageId": 802,
+      "temperature": 21.24815,
+      "enqueuedTime": "2019-12-09 02:47:00"
+    },
+    {
+      "messageId": 803,
+      "temperature": 26.619972,
+      "enqueuedTime": "2019-12-09 02:47:39"
+    },
+    {
+      "messageId": 804,
+      "temperature": 21.848198,
+      "enqueuedTime": "2019-12-09 02:48:10"
+    },
+    {
+      "messageId": 805,
+      "temperature": 25.89577,
+      "enqueuedTime": "2019-12-09 02:48:30"
+    },
+    {
+      "messageId": 806,
+      "temperature": 26.729063,
+      "enqueuedTime": "2019-12-09 02:49:02"
+    },
+    {
+      "messageId": 807,
+      "temperature": 33.44626,
+      "enqueuedTime": "2019-12-09 02:49:34"
+    },
+    {
+      "messageId": 808,
+      "temperature": 24.156319,
+      "enqueuedTime": "2019-12-09 02:50:01"
+    },
+    {
+      "messageId": 809,
+      "temperature": 33.2349,
+      "enqueuedTime": "2019-12-09 02:50:28"
+    },
+    {
+      "messageId": 810,
+      "temperature": 25.444738,
+      "enqueuedTime": "2019-12-09 02:50:51"
+    },
+    {
+      "messageId": 811,
+      "temperature": 20.45747,
+      "enqueuedTime": "2019-12-09 02:51:25"
+    },
+    {
+      "messageId": 812,
+      "temperature": 20.714785,
+      "enqueuedTime": "2019-12-09 02:52:02"
+    },
+    {
+      "messageId": 813,
+      "temperature": 21.107622,
+      "enqueuedTime": "2019-12-09 02:52:24"
+    },
+    {
+      "messageId": 814,
+      "temperature": 21.637577,
+      "enqueuedTime": "2019-12-09 02:52:58"
+    },
+    {
+      "messageId": 815,
+      "temperature": 26.789436,
+      "enqueuedTime": "2019-12-09 02:53:24"
+    },
+    {
+      "messageId": 816,
+      "temperature": 24.688112,
+      "enqueuedTime": "2019-12-09 02:53:51"
+    },
+    {
+      "messageId": 817,
+      "temperature": 23.466625,
+      "enqueuedTime": "2019-12-09 02:54:21"
+    },
+    {
+      "messageId": 818,
+      "temperature": 22.660946,
+      "enqueuedTime": "2019-12-09 02:54:51"
+    },
+    {
+      "messageId": 819,
+      "temperature": 35.58342,
+      "enqueuedTime": "2019-12-09 02:55:12"
+    },
+    {
+      "messageId": 820,
+      "temperature": 22.1871,
+      "enqueuedTime": "2019-12-09 02:55:43"
+    },
+    {
+      "messageId": 821,
+      "temperature": 20.454805,
+      "enqueuedTime": "2019-12-09 02:56:11"
+    },
+    {
+      "messageId": 822,
+      "temperature": 20.708578,
+      "enqueuedTime": "2019-12-09 02:56:50"
+    },
+    {
+      "messageId": 823,
+      "temperature": 33.253872,
+      "enqueuedTime": "2019-12-09 02:57:14"
+    },
+    {
+      "messageId": 824,
+      "temperature": 30.17862,
+      "enqueuedTime": "2019-12-09 02:57:44"
+    },
+    {
+      "messageId": 825,
+      "temperature": 20.10351,
+      "enqueuedTime": "2019-12-09 02:58:12"
+    },
+    {
+      "messageId": 826,
+      "temperature": 23.159332,
+      "enqueuedTime": "2019-12-09 02:58:35"
+    },
+    {
+      "messageId": 827,
+      "temperature": 20.040194,
+      "enqueuedTime": "2019-12-09 02:58:59"
+    },
+    {
+      "messageId": 828,
+      "temperature": 30.552711,
+      "enqueuedTime": "2019-12-09 02:59:28"
+    },
+    {
+      "messageId": 829,
+      "temperature": 20.709278,
+      "enqueuedTime": "2019-12-09 02:59:55"
+    },
+    {
+      "messageId": 830,
+      "temperature": 23.873337,
+      "enqueuedTime": "2019-12-09 03:00:26"
+    },
+    {
+      "messageId": 831,
+      "temperature": 21.42294,
+      "enqueuedTime": "2019-12-09 03:00:57"
+    },
+    {
+      "messageId": 832,
+      "temperature": 31.56108,
+      "enqueuedTime": "2019-12-09 03:01:35"
+    },
+    {
+      "messageId": 833,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:02:05"
+    },
+    {
+      "messageId": 834,
+      "temperature": 20.121693,
+      "enqueuedTime": "2019-12-09 03:02:37"
+    },
+    {
+      "messageId": 835,
+      "temperature": 26.213146,
+      "enqueuedTime": "2019-12-09 03:03:03"
+    },
+    {
+      "messageId": 836,
+      "temperature": 34.67903,
+      "enqueuedTime": "2019-12-09 03:03:23"
+    },
+    {
+      "messageId": 837,
+      "temperature": 22.25104,
+      "enqueuedTime": "2019-12-09 03:04:01"
+    },
+    {
+      "messageId": 838,
+      "temperature": 25.25933,
+      "enqueuedTime": "2019-12-09 03:04:23"
+    },
+    {
+      "messageId": 839,
+      "temperature": 25.00312,
+      "enqueuedTime": "2019-12-09 03:04:44"
+    },
+    {
+      "messageId": 840,
+      "temperature": 20.976034,
+      "enqueuedTime": "2019-12-09 03:05:14"
+    },
+    {
+      "messageId": 841,
+      "temperature": 26.289013,
+      "enqueuedTime": "2019-12-09 03:05:41"
+    },
+    {
+      "messageId": 842,
+      "temperature": 24.919798,
+      "enqueuedTime": "2019-12-09 03:06:09"
+    },
+    {
+      "messageId": 843,
+      "temperature": 34.176846,
+      "enqueuedTime": "2019-12-09 03:06:40"
+    },
+    {
+      "messageId": 844,
+      "temperature": 22.706125,
+      "enqueuedTime": "2019-12-09 03:07:15"
+    },
+    {
+      "messageId": 845,
+      "temperature": 25.278316,
+      "enqueuedTime": "2019-12-09 03:07:46"
+    },
+    {
+      "messageId": 846,
+      "temperature": 24.99744,
+      "enqueuedTime": "2019-12-09 03:08:12"
+    },
+    {
+      "messageId": 847,
+      "temperature": 26.203274,
+      "enqueuedTime": "2019-12-09 03:08:49"
+    },
+    {
+      "messageId": 848,
+      "temperature": 37.868385,
+      "enqueuedTime": "2019-12-09 03:09:16"
+    },
+    {
+      "messageId": 849,
+      "temperature": 20.724009,
+      "enqueuedTime": "2019-12-09 03:09:38"
+    },
+    {
+      "messageId": 850,
+      "temperature": 20.943333,
+      "enqueuedTime": "2019-12-09 03:10:02"
+    },
+    {
+      "messageId": 851,
+      "temperature": 24.64861,
+      "enqueuedTime": "2019-12-09 03:10:22"
+    },
+    {
+      "messageId": 852,
+      "temperature": 23.417356,
+      "enqueuedTime": "2019-12-09 03:10:55"
+    },
+    {
+      "messageId": 853,
+      "temperature": 21.444138,
+      "enqueuedTime": "2019-12-09 03:11:21"
+    },
+    {
+      "messageId": 854,
+      "temperature": 26.843803,
+      "enqueuedTime": "2019-12-09 03:11:49"
+    },
+    {
+      "messageId": 855,
+      "temperature": 26.126518,
+      "enqueuedTime": "2019-12-09 03:12:26"
+    },
+    {
+      "messageId": 856,
+      "temperature": 23.072306,
+      "enqueuedTime": "2019-12-09 03:12:56"
+    },
+    {
+      "messageId": 857,
+      "temperature": 25.025188,
+      "enqueuedTime": "2019-12-09 03:13:35"
+    },
+    {
+      "messageId": 858,
+      "temperature": 20.986929,
+      "enqueuedTime": "2019-12-09 03:14:05"
+    },
+    {
+      "messageId": 859,
+      "temperature": 20.106596,
+      "enqueuedTime": "2019-12-09 03:14:36"
+    },
+    {
+      "messageId": 860,
+      "temperature": 28.055573,
+      "enqueuedTime": "2019-12-09 03:15:02"
+    },
+    {
+      "messageId": 861,
+      "temperature": 31.924517,
+      "enqueuedTime": "2019-12-09 03:15:22"
+    },
+    {
+      "messageId": 862,
+      "temperature": 30.834503,
+      "enqueuedTime": "2019-12-09 03:15:46"
+    },
+    {
+      "messageId": 863,
+      "temperature": 21.316359,
+      "enqueuedTime": "2019-12-09 03:16:22"
+    },
+    {
+      "messageId": 864,
+      "temperature": 23.659864,
+      "enqueuedTime": "2019-12-09 03:16:47"
+    },
+    {
+      "messageId": 865,
+      "temperature": 27.07248,
+      "enqueuedTime": "2019-12-09 03:17:24"
+    },
+    {
+      "messageId": 866,
+      "temperature": 20.745754,
+      "enqueuedTime": "2019-12-09 03:17:55"
+    },
+    {
+      "messageId": 867,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:18:34"
+    },
+    {
+      "messageId": 868,
+      "temperature": 30.894983,
+      "enqueuedTime": "2019-12-09 03:18:57"
+    },
+    {
+      "messageId": 869,
+      "temperature": 22.796474,
+      "enqueuedTime": "2019-12-09 03:19:19"
+    },
+    {
+      "messageId": 870,
+      "temperature": 28.478077,
+      "enqueuedTime": "2019-12-09 03:19:57"
+    },
+    {
+      "messageId": 871,
+      "temperature": 37.650993,
+      "enqueuedTime": "2019-12-09 03:20:21"
+    },
+    {
+      "messageId": 872,
+      "temperature": 21.132792,
+      "enqueuedTime": "2019-12-09 03:20:53"
+    },
+    {
+      "messageId": 873,
+      "temperature": 33.179623,
+      "enqueuedTime": "2019-12-09 03:21:22"
+    },
+    {
+      "messageId": 874,
+      "temperature": 20.932207,
+      "enqueuedTime": "2019-12-09 03:22:01"
+    },
+    {
+      "messageId": 875,
+      "temperature": 26.629133,
+      "enqueuedTime": "2019-12-09 03:22:27"
+    },
+    {
+      "messageId": 876,
+      "temperature": 25.837763,
+      "enqueuedTime": "2019-12-09 03:22:59"
+    },
+    {
+      "messageId": 877,
+      "temperature": 30.019863,
+      "enqueuedTime": "2019-12-09 03:23:35"
+    },
+    {
+      "messageId": 878,
+      "temperature": 23.337019,
+      "enqueuedTime": "2019-12-09 03:24:10"
+    },
+    {
+      "messageId": 879,
+      "temperature": 35.59577,
+      "enqueuedTime": "2019-12-09 03:24:40"
+    },
+    {
+      "messageId": 880,
+      "temperature": 21.496048,
+      "enqueuedTime": "2019-12-09 03:25:13"
+    },
+    {
+      "messageId": 881,
+      "temperature": 26.929714,
+      "enqueuedTime": "2019-12-09 03:25:34"
+    },
+    {
+      "messageId": 882,
+      "temperature": 24.538189,
+      "enqueuedTime": "2019-12-09 03:26:07"
+    },
+    {
+      "messageId": 883,
+      "temperature": 31.709427,
+      "enqueuedTime": "2019-12-09 03:26:39"
+    },
+    {
+      "messageId": 884,
+      "temperature": 20.261196,
+      "enqueuedTime": "2019-12-09 03:27:06"
+    },
+    {
+      "messageId": 885,
+      "temperature": 28.962698,
+      "enqueuedTime": "2019-12-09 03:27:39"
+    },
+    {
+      "messageId": 886,
+      "temperature": 28.432245,
+      "enqueuedTime": "2019-12-09 03:28:13"
+    },
+    {
+      "messageId": 887,
+      "temperature": 21.678535,
+      "enqueuedTime": "2019-12-09 03:28:38"
+    },
+    {
+      "messageId": 888,
+      "temperature": 20.244558,
+      "enqueuedTime": "2019-12-09 03:29:07"
+    },
+    {
+      "messageId": 889,
+      "temperature": 30.883633,
+      "enqueuedTime": "2019-12-09 03:29:39"
+    },
+    {
+      "messageId": 890,
+      "temperature": 21.378862,
+      "enqueuedTime": "2019-12-09 03:30:08"
+    },
+    {
+      "messageId": 891,
+      "temperature": 23.59073,
+      "enqueuedTime": "2019-12-09 03:30:45"
+    },
+    {
+      "messageId": 892,
+      "temperature": 22.442402,
+      "enqueuedTime": "2019-12-09 03:31:24"
+    },
+    {
+      "messageId": 893,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:31:45"
+    },
+    {
+      "messageId": 894,
+      "temperature": 25.288841,
+      "enqueuedTime": "2019-12-09 03:32:10"
+    },
+    {
+      "messageId": 895,
+      "temperature": 21.585764,
+      "enqueuedTime": "2019-12-09 03:32:33"
+    },
+    {
+      "messageId": 896,
+      "temperature": 30.268658,
+      "enqueuedTime": "2019-12-09 03:33:03"
+    },
+    {
+      "messageId": 897,
+      "temperature": 23.570112,
+      "enqueuedTime": "2019-12-09 03:33:37"
+    },
+    {
+      "messageId": 898,
+      "temperature": 25.225769,
+      "enqueuedTime": "2019-12-09 03:34:13"
+    },
+    {
+      "messageId": 899,
+      "temperature": 20.299685,
+      "enqueuedTime": "2019-12-09 03:34:51"
+    },
+    {
+      "messageId": 900,
+      "temperature": 21.286898,
+      "enqueuedTime": "2019-12-09 03:35:15"
+    },
+    {
+      "messageId": 901,
+      "temperature": 35.543938,
+      "enqueuedTime": "2019-12-09 03:35:38"
+    },
+    {
+      "messageId": 902,
+      "temperature": 21.79665,
+      "enqueuedTime": "2019-12-09 03:36:12"
+    },
+    {
+      "messageId": 903,
+      "temperature": 23.756327,
+      "enqueuedTime": "2019-12-09 03:36:48"
+    },
+    {
+      "messageId": 904,
+      "temperature": 20.261366,
+      "enqueuedTime": "2019-12-09 03:37:11"
+    },
+    {
+      "messageId": 905,
+      "temperature": 23.632208,
+      "enqueuedTime": "2019-12-09 03:37:46"
+    },
+    {
+      "messageId": 906,
+      "temperature": 27.698408,
+      "enqueuedTime": "2019-12-09 03:38:07"
+    },
+    {
+      "messageId": 907,
+      "temperature": 21.948391,
+      "enqueuedTime": "2019-12-09 03:38:31"
+    },
+    {
+      "messageId": 908,
+      "temperature": 24.80751,
+      "enqueuedTime": "2019-12-09 03:38:58"
+    },
+    {
+      "messageId": 909,
+      "temperature": 21.881891,
+      "enqueuedTime": "2019-12-09 03:39:37"
+    },
+    {
+      "messageId": 910,
+      "temperature": 25.227028,
+      "enqueuedTime": "2019-12-09 03:40:03"
+    },
+    {
+      "messageId": 911,
+      "temperature": 20.601944,
+      "enqueuedTime": "2019-12-09 03:40:31"
+    },
+    {
+      "messageId": 912,
+      "temperature": 22.934736,
+      "enqueuedTime": "2019-12-09 03:41:02"
+    },
+    {
+      "messageId": 913,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:41:27"
+    },
+    {
+      "messageId": 914,
+      "temperature": 33.00674,
+      "enqueuedTime": "2019-12-09 03:42:01"
+    },
+    {
+      "messageId": 915,
+      "temperature": 29.653358,
+      "enqueuedTime": "2019-12-09 03:42:27"
+    },
+    {
+      "messageId": 916,
+      "temperature": 27.576626,
+      "enqueuedTime": "2019-12-09 03:43:05"
+    },
+    {
+      "messageId": 917,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:43:41"
+    },
+    {
+      "messageId": 918,
+      "temperature": 25.19449,
+      "enqueuedTime": "2019-12-09 03:44:17"
+    },
+    {
+      "messageId": 919,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:44:49"
+    },
+    {
+      "messageId": 920,
+      "temperature": 22.036999,
+      "enqueuedTime": "2019-12-09 03:45:10"
+    },
+    {
+      "messageId": 921,
+      "temperature": 20.787565,
+      "enqueuedTime": "2019-12-09 03:45:33"
+    },
+    {
+      "messageId": 922,
+      "temperature": 29.396095,
+      "enqueuedTime": "2019-12-09 03:46:05"
+    },
+    {
+      "messageId": 923,
+      "temperature": 21.362259,
+      "enqueuedTime": "2019-12-09 03:46:31"
+    },
+    {
+      "messageId": 924,
+      "temperature": 20.783922,
+      "enqueuedTime": "2019-12-09 03:47:06"
+    },
+    {
+      "messageId": 925,
+      "temperature": 32.31176,
+      "enqueuedTime": "2019-12-09 03:47:34"
+    },
+    {
+      "messageId": 926,
+      "temperature": 24.360806,
+      "enqueuedTime": "2019-12-09 03:48:06"
+    },
+    {
+      "messageId": 927,
+      "temperature": 24.981922,
+      "enqueuedTime": "2019-12-09 03:48:39"
+    },
+    {
+      "messageId": 928,
+      "temperature": 26.867546,
+      "enqueuedTime": "2019-12-09 03:49:07"
+    },
+    {
+      "messageId": 929,
+      "temperature": 32.604134,
+      "enqueuedTime": "2019-12-09 03:49:39"
+    },
+    {
+      "messageId": 930,
+      "temperature": 27.871277,
+      "enqueuedTime": "2019-12-09 03:50:03"
+    },
+    {
+      "messageId": 931,
+      "temperature": 20.575285,
+      "enqueuedTime": "2019-12-09 03:50:38"
+    },
+    {
+      "messageId": 932,
+      "temperature": 22.038307,
+      "enqueuedTime": "2019-12-09 03:51:07"
+    },
+    {
+      "messageId": 933,
+      "temperature": 26.57909,
+      "enqueuedTime": "2019-12-09 03:51:31"
+    },
+    {
+      "messageId": 934,
+      "temperature": 21.326105,
+      "enqueuedTime": "2019-12-09 03:52:04"
+    },
+    {
+      "messageId": 935,
+      "temperature": 26.578568,
+      "enqueuedTime": "2019-12-09 03:52:24"
+    },
+    {
+      "messageId": 936,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 03:52:48"
+    },
+    {
+      "messageId": 937,
+      "temperature": 24.780245,
+      "enqueuedTime": "2019-12-09 03:53:26"
+    },
+    {
+      "messageId": 938,
+      "temperature": 27.196,
+      "enqueuedTime": "2019-12-09 03:53:56"
+    },
+    {
+      "messageId": 939,
+      "temperature": 27.949257,
+      "enqueuedTime": "2019-12-09 03:54:29"
+    },
+    {
+      "messageId": 940,
+      "temperature": 25.727133,
+      "enqueuedTime": "2019-12-09 03:55:02"
+    },
+    {
+      "messageId": 941,
+      "temperature": 22.93779,
+      "enqueuedTime": "2019-12-09 03:55:25"
+    },
+    {
+      "messageId": 942,
+      "temperature": 23.481081,
+      "enqueuedTime": "2019-12-09 03:55:46"
+    },
+    {
+      "messageId": 943,
+      "temperature": 29.832222,
+      "enqueuedTime": "2019-12-09 03:56:23"
+    },
+    {
+      "messageId": 944,
+      "temperature": 20.337523,
+      "enqueuedTime": "2019-12-09 03:56:48"
+    },
+    {
+      "messageId": 945,
+      "temperature": 20.387136,
+      "enqueuedTime": "2019-12-09 03:57:12"
+    },
+    {
+      "messageId": 946,
+      "temperature": 21.177544,
+      "enqueuedTime": "2019-12-09 03:57:46"
+    },
+    {
+      "messageId": 947,
+      "temperature": 24.782417,
+      "enqueuedTime": "2019-12-09 03:58:14"
+    },
+    {
+      "messageId": 948,
+      "temperature": 20.127018,
+      "enqueuedTime": "2019-12-09 03:58:40"
+    },
+    {
+      "messageId": 949,
+      "temperature": 22.55067,
+      "enqueuedTime": "2019-12-09 03:59:11"
+    },
+    {
+      "messageId": 950,
+      "temperature": 21.467583,
+      "enqueuedTime": "2019-12-09 03:59:35"
+    },
+    {
+      "messageId": 951,
+      "temperature": 30.37761,
+      "enqueuedTime": "2019-12-09 03:59:57"
+    },
+    {
+      "messageId": 952,
+      "temperature": 31.900585,
+      "enqueuedTime": "2019-12-09 04:00:17"
+    },
+    {
+      "messageId": 953,
+      "temperature": 27.333746,
+      "enqueuedTime": "2019-12-09 04:00:49"
+    },
+    {
+      "messageId": 954,
+      "temperature": 22.42342,
+      "enqueuedTime": "2019-12-09 04:01:18"
+    },
+    {
+      "messageId": 955,
+      "temperature": 22.534142,
+      "enqueuedTime": "2019-12-09 04:01:45"
+    },
+    {
+      "messageId": 956,
+      "temperature": 34.581497,
+      "enqueuedTime": "2019-12-09 04:02:18"
+    },
+    {
+      "messageId": 957,
+      "temperature": 25.67735,
+      "enqueuedTime": "2019-12-09 04:02:40"
+    },
+    {
+      "messageId": 958,
+      "temperature": 25.466457,
+      "enqueuedTime": "2019-12-09 04:03:14"
+    },
+    {
+      "messageId": 959,
+      "temperature": 20.163015,
+      "enqueuedTime": "2019-12-09 04:03:53"
+    },
+    {
+      "messageId": 960,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:04:13"
+    },
+    {
+      "messageId": 961,
+      "temperature": 23.130266,
+      "enqueuedTime": "2019-12-09 04:04:45"
+    },
+    {
+      "messageId": 962,
+      "temperature": 28.64098,
+      "enqueuedTime": "2019-12-09 04:05:20"
+    },
+    {
+      "messageId": 963,
+      "temperature": 22.940458,
+      "enqueuedTime": "2019-12-09 04:05:45"
+    },
+    {
+      "messageId": 964,
+      "temperature": 22.577478,
+      "enqueuedTime": "2019-12-09 04:06:12"
+    },
+    {
+      "messageId": 965,
+      "temperature": 31.88513,
+      "enqueuedTime": "2019-12-09 04:06:41"
+    },
+    {
+      "messageId": 966,
+      "temperature": 26.927769,
+      "enqueuedTime": "2019-12-09 04:07:13"
+    },
+    {
+      "messageId": 967,
+      "temperature": 23.58847,
+      "enqueuedTime": "2019-12-09 04:07:37"
+    },
+    {
+      "messageId": 968,
+      "temperature": 22.301596,
+      "enqueuedTime": "2019-12-09 04:08:06"
+    },
+    {
+      "messageId": 969,
+      "temperature": 25.770323,
+      "enqueuedTime": "2019-12-09 04:08:41"
+    },
+    {
+      "messageId": 970,
+      "temperature": 24.825607,
+      "enqueuedTime": "2019-12-09 04:09:11"
+    },
+    {
+      "messageId": 971,
+      "temperature": 20.049099,
+      "enqueuedTime": "2019-12-09 04:09:36"
+    },
+    {
+      "messageId": 972,
+      "temperature": 27.915232,
+      "enqueuedTime": "2019-12-09 04:09:59"
+    },
+    {
+      "messageId": 973,
+      "temperature": 20.070152,
+      "enqueuedTime": "2019-12-09 04:10:20"
+    },
+    {
+      "messageId": 974,
+      "temperature": 22.063025,
+      "enqueuedTime": "2019-12-09 04:10:42"
+    },
+    {
+      "messageId": 975,
+      "temperature": 32.277824,
+      "enqueuedTime": "2019-12-09 04:11:12"
+    },
+    {
+      "messageId": 976,
+      "temperature": 25.095179,
+      "enqueuedTime": "2019-12-09 04:11:39"
+    },
+    {
+      "messageId": 977,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:12:05"
+    },
+    {
+      "messageId": 978,
+      "temperature": 22.407616,
+      "enqueuedTime": "2019-12-09 04:12:26"
+    },
+    {
+      "messageId": 979,
+      "temperature": 26.534311,
+      "enqueuedTime": "2019-12-09 04:12:55"
+    },
+    {
+      "messageId": 980,
+      "temperature": 25.732693,
+      "enqueuedTime": "2019-12-09 04:13:30"
+    },
+    {
+      "messageId": 981,
+      "temperature": 23.73524,
+      "enqueuedTime": "2019-12-09 04:13:59"
+    },
+    {
+      "messageId": 982,
+      "temperature": 21.888493,
+      "enqueuedTime": "2019-12-09 04:14:33"
+    },
+    {
+      "messageId": 983,
+      "temperature": 20.372026,
+      "enqueuedTime": "2019-12-09 04:14:56"
+    },
+    {
+      "messageId": 984,
+      "temperature": 22.035635,
+      "enqueuedTime": "2019-12-09 04:15:32"
+    },
+    {
+      "messageId": 985,
+      "temperature": 28.875137,
+      "enqueuedTime": "2019-12-09 04:15:59"
+    },
+    {
+      "messageId": 986,
+      "temperature": 24.624374,
+      "enqueuedTime": "2019-12-09 04:16:37"
+    },
+    {
+      "messageId": 987,
+      "temperature": 22.226587,
+      "enqueuedTime": "2019-12-09 04:17:09"
+    },
+    {
+      "messageId": 988,
+      "temperature": 24.146534,
+      "enqueuedTime": "2019-12-09 04:17:42"
+    },
+    {
+      "messageId": 989,
+      "temperature": 24.3926,
+      "enqueuedTime": "2019-12-09 04:18:13"
+    },
+    {
+      "messageId": 990,
+      "temperature": 24.491896,
+      "enqueuedTime": "2019-12-09 04:18:39"
+    },
+    {
+      "messageId": 991,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:19:05"
+    },
+    {
+      "messageId": 992,
+      "temperature": 32.899807,
+      "enqueuedTime": "2019-12-09 04:19:35"
+    },
+    {
+      "messageId": 993,
+      "temperature": 22.311544,
+      "enqueuedTime": "2019-12-09 04:20:10"
+    },
+    {
+      "messageId": 994,
+      "temperature": 20.455757,
+      "enqueuedTime": "2019-12-09 04:20:34"
+    },
+    {
+      "messageId": 995,
+      "temperature": 22.06134,
+      "enqueuedTime": "2019-12-09 04:20:58"
+    },
+    {
+      "messageId": 996,
+      "temperature": 23.487724,
+      "enqueuedTime": "2019-12-09 04:21:20"
+    },
+    {
+      "messageId": 997,
+      "temperature": 21.992134,
+      "enqueuedTime": "2019-12-09 04:21:46"
+    },
+    {
+      "messageId": 998,
+      "temperature": 24.578075,
+      "enqueuedTime": "2019-12-09 04:22:08"
+    },
+    {
+      "messageId": 999,
+      "temperature": 30.689049,
+      "enqueuedTime": "2019-12-09 04:22:39"
+    },
+    {
+      "messageId": 1000,
+      "temperature": 20.40129,
+      "enqueuedTime": "2019-12-09 04:23:10"
+    },
+    {
+      "messageId": 1001,
+      "temperature": 21.35837,
+      "enqueuedTime": "2019-12-09 04:23:47"
+    },
+    {
+      "messageId": 1002,
+      "temperature": 21.673307,
+      "enqueuedTime": "2019-12-09 04:24:25"
+    },
+    {
+      "messageId": 1003,
+      "temperature": 29.294369,
+      "enqueuedTime": "2019-12-09 04:25:03"
+    },
+    {
+      "messageId": 1004,
+      "temperature": 29.568378,
+      "enqueuedTime": "2019-12-09 04:25:32"
+    },
+    {
+      "messageId": 1005,
+      "temperature": 32.634422,
+      "enqueuedTime": "2019-12-09 04:26:02"
+    },
+    {
+      "messageId": 1006,
+      "temperature": 21.822609,
+      "enqueuedTime": "2019-12-09 04:26:37"
+    },
+    {
+      "messageId": 1007,
+      "temperature": 31.333136,
+      "enqueuedTime": "2019-12-09 04:27:09"
+    },
+    {
+      "messageId": 1008,
+      "temperature": 21.614996,
+      "enqueuedTime": "2019-12-09 04:27:42"
+    },
+    {
+      "messageId": 1009,
+      "temperature": 36.719837,
+      "enqueuedTime": "2019-12-09 04:28:19"
+    },
+    {
+      "messageId": 1010,
+      "temperature": 29.962418,
+      "enqueuedTime": "2019-12-09 04:28:49"
+    },
+    {
+      "messageId": 1011,
+      "temperature": 26.004496,
+      "enqueuedTime": "2019-12-09 04:29:16"
+    },
+    {
+      "messageId": 1012,
+      "temperature": 20.39131,
+      "enqueuedTime": "2019-12-09 04:29:41"
+    },
+    {
+      "messageId": 1013,
+      "temperature": 22.673756,
+      "enqueuedTime": "2019-12-09 04:30:15"
+    },
+    {
+      "messageId": 1014,
+      "temperature": 38.466198,
+      "enqueuedTime": "2019-12-09 04:30:50"
+    },
+    {
+      "messageId": 1015,
+      "temperature": 31.946012,
+      "enqueuedTime": "2019-12-09 04:31:18"
+    },
+    {
+      "messageId": 1016,
+      "temperature": 22.442114,
+      "enqueuedTime": "2019-12-09 04:31:51"
+    },
+    {
+      "messageId": 1017,
+      "temperature": 28.053488,
+      "enqueuedTime": "2019-12-09 04:32:15"
+    },
+    {
+      "messageId": 1018,
+      "temperature": 24.544277,
+      "enqueuedTime": "2019-12-09 04:32:49"
+    },
+    {
+      "messageId": 1019,
+      "temperature": 23.99147,
+      "enqueuedTime": "2019-12-09 04:33:18"
+    },
+    {
+      "messageId": 1020,
+      "temperature": 33.113655,
+      "enqueuedTime": "2019-12-09 04:33:41"
+    },
+    {
+      "messageId": 1021,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:34:19"
+    },
+    {
+      "messageId": 1022,
+      "temperature": 30.136696,
+      "enqueuedTime": "2019-12-09 04:34:41"
+    },
+    {
+      "messageId": 1023,
+      "temperature": 33.005066,
+      "enqueuedTime": "2019-12-09 04:35:01"
+    },
+    {
+      "messageId": 1024,
+      "temperature": 29.854263,
+      "enqueuedTime": "2019-12-09 04:35:36"
+    },
+    {
+      "messageId": 1025,
+      "temperature": 25.85289,
+      "enqueuedTime": "2019-12-09 04:35:59"
+    },
+    {
+      "messageId": 1026,
+      "temperature": 26.308949,
+      "enqueuedTime": "2019-12-09 04:36:20"
+    },
+    {
+      "messageId": 1027,
+      "temperature": 23.202362,
+      "enqueuedTime": "2019-12-09 04:36:55"
+    },
+    {
+      "messageId": 1028,
+      "temperature": 23.918331,
+      "enqueuedTime": "2019-12-09 04:37:32"
+    },
+    {
+      "messageId": 1029,
+      "temperature": 25.283915,
+      "enqueuedTime": "2019-12-09 04:37:57"
+    },
+    {
+      "messageId": 1030,
+      "temperature": 34.859604,
+      "enqueuedTime": "2019-12-09 04:38:19"
+    },
+    {
+      "messageId": 1031,
+      "temperature": 21.665182,
+      "enqueuedTime": "2019-12-09 04:38:43"
+    },
+    {
+      "messageId": 1032,
+      "temperature": 20.47793,
+      "enqueuedTime": "2019-12-09 04:39:16"
+    },
+    {
+      "messageId": 1033,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:39:40"
+    },
+    {
+      "messageId": 1034,
+      "temperature": 21.089817,
+      "enqueuedTime": "2019-12-09 04:40:06"
+    },
+    {
+      "messageId": 1035,
+      "temperature": 28.381054,
+      "enqueuedTime": "2019-12-09 04:40:39"
+    },
+    {
+      "messageId": 1036,
+      "temperature": 20.819021,
+      "enqueuedTime": "2019-12-09 04:41:11"
+    },
+    {
+      "messageId": 1037,
+      "temperature": 24.170979,
+      "enqueuedTime": "2019-12-09 04:41:36"
+    },
+    {
+      "messageId": 1038,
+      "temperature": 22.897768,
+      "enqueuedTime": "2019-12-09 04:42:15"
+    },
+    {
+      "messageId": 1039,
+      "temperature": 21.335802,
+      "enqueuedTime": "2019-12-09 04:42:36"
+    },
+    {
+      "messageId": 1040,
+      "temperature": 20.7024,
+      "enqueuedTime": "2019-12-09 04:43:04"
+    },
+    {
+      "messageId": 1041,
+      "temperature": 22.695084,
+      "enqueuedTime": "2019-12-09 04:43:24"
+    },
+    {
+      "messageId": 1042,
+      "temperature": 29.991646,
+      "enqueuedTime": "2019-12-09 04:43:59"
+    },
+    {
+      "messageId": 1043,
+      "temperature": 26.494926,
+      "enqueuedTime": "2019-12-09 04:44:28"
+    },
+    {
+      "messageId": 1044,
+      "temperature": 20.320137,
+      "enqueuedTime": "2019-12-09 04:44:57"
+    },
+    {
+      "messageId": 1045,
+      "temperature": 21.073355,
+      "enqueuedTime": "2019-12-09 04:45:23"
+    },
+    {
+      "messageId": 1046,
+      "temperature": 25.285662,
+      "enqueuedTime": "2019-12-09 04:45:55"
+    },
+    {
+      "messageId": 1047,
+      "temperature": 32.35076,
+      "enqueuedTime": "2019-12-09 04:46:26"
+    },
+    {
+      "messageId": 1048,
+      "temperature": 20.874462,
+      "enqueuedTime": "2019-12-09 04:46:54"
+    },
+    {
+      "messageId": 1049,
+      "temperature": 33.96792,
+      "enqueuedTime": "2019-12-09 04:47:33"
+    },
+    {
+      "messageId": 1050,
+      "temperature": 29.582134,
+      "enqueuedTime": "2019-12-09 04:48:00"
+    },
+    {
+      "messageId": 1051,
+      "temperature": 20.025457,
+      "enqueuedTime": "2019-12-09 04:48:30"
+    },
+    {
+      "messageId": 1052,
+      "temperature": 37.753014,
+      "enqueuedTime": "2019-12-09 04:48:53"
+    },
+    {
+      "messageId": 1053,
+      "temperature": 29.85669,
+      "enqueuedTime": "2019-12-09 04:49:25"
+    },
+    {
+      "messageId": 1054,
+      "temperature": 28.790382,
+      "enqueuedTime": "2019-12-09 04:49:49"
+    },
+    {
+      "messageId": 1055,
+      "temperature": 20.323866,
+      "enqueuedTime": "2019-12-09 04:50:22"
+    },
+    {
+      "messageId": 1056,
+      "temperature": 20.349045,
+      "enqueuedTime": "2019-12-09 04:50:55"
+    },
+    {
+      "messageId": 1057,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:51:26"
+    },
+    {
+      "messageId": 1058,
+      "temperature": 29.978004,
+      "enqueuedTime": "2019-12-09 04:51:50"
+    },
+    {
+      "messageId": 1059,
+      "temperature": 33.672462,
+      "enqueuedTime": "2019-12-09 04:52:24"
+    },
+    {
+      "messageId": 1060,
+      "temperature": 22.933418,
+      "enqueuedTime": "2019-12-09 04:52:58"
+    },
+    {
+      "messageId": 1061,
+      "temperature": 28.280914,
+      "enqueuedTime": "2019-12-09 04:53:25"
+    },
+    {
+      "messageId": 1062,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:53:46"
+    },
+    {
+      "messageId": 1063,
+      "temperature": 24.548569,
+      "enqueuedTime": "2019-12-09 04:54:10"
+    },
+    {
+      "messageId": 1064,
+      "temperature": 27.055979,
+      "enqueuedTime": "2019-12-09 04:54:41"
+    },
+    {
+      "messageId": 1065,
+      "temperature": 28.625889,
+      "enqueuedTime": "2019-12-09 04:55:17"
+    },
+    {
+      "messageId": 1066,
+      "temperature": 33.00591,
+      "enqueuedTime": "2019-12-09 04:55:53"
+    },
+    {
+      "messageId": 1067,
+      "temperature": 20.691654,
+      "enqueuedTime": "2019-12-09 04:56:17"
+    },
+    {
+      "messageId": 1068,
+      "temperature": 26.8635,
+      "enqueuedTime": "2019-12-09 04:56:46"
+    },
+    {
+      "messageId": 1069,
+      "temperature": 26.537027,
+      "enqueuedTime": "2019-12-09 04:57:10"
+    },
+    {
+      "messageId": 1070,
+      "temperature": 22.633467,
+      "enqueuedTime": "2019-12-09 04:57:41"
+    },
+    {
+      "messageId": 1071,
+      "temperature": 20.74954,
+      "enqueuedTime": "2019-12-09 04:58:06"
+    },
+    {
+      "messageId": 1072,
+      "temperature": 34.029247,
+      "enqueuedTime": "2019-12-09 04:58:36"
+    },
+    {
+      "messageId": 1073,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:59:12"
+    },
+    {
+      "messageId": 1074,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 04:59:41"
+    },
+    {
+      "messageId": 1075,
+      "temperature": 25.803223,
+      "enqueuedTime": "2019-12-09 05:00:09"
+    },
+    {
+      "messageId": 1076,
+      "temperature": 23.18045,
+      "enqueuedTime": "2019-12-09 05:00:30"
+    },
+    {
+      "messageId": 1077,
+      "temperature": 25.664352,
+      "enqueuedTime": "2019-12-09 05:01:04"
+    },
+    {
+      "messageId": 1078,
+      "temperature": 29.130482,
+      "enqueuedTime": "2019-12-09 05:01:29"
+    },
+    {
+      "messageId": 1079,
+      "temperature": 21.632395,
+      "enqueuedTime": "2019-12-09 05:02:01"
+    },
+    {
+      "messageId": 1080,
+      "temperature": 20.535637,
+      "enqueuedTime": "2019-12-09 05:02:33"
+    },
+    {
+      "messageId": 1081,
+      "temperature": 27.128403,
+      "enqueuedTime": "2019-12-09 05:03:00"
+    },
+    {
+      "messageId": 1082,
+      "temperature": 21.890162,
+      "enqueuedTime": "2019-12-09 05:03:24"
+    },
+    {
+      "messageId": 1083,
+      "temperature": 33.157566,
+      "enqueuedTime": "2019-12-09 05:04:01"
+    },
+    {
+      "messageId": 1084,
+      "temperature": 28.605541,
+      "enqueuedTime": "2019-12-09 05:04:33"
+    },
+    {
+      "messageId": 1085,
+      "temperature": 22.149714,
+      "enqueuedTime": "2019-12-09 05:05:03"
+    },
+    {
+      "messageId": 1086,
+      "temperature": 28.653595,
+      "enqueuedTime": "2019-12-09 05:05:33"
+    },
+    {
+      "messageId": 1087,
+      "temperature": 21.652784,
+      "enqueuedTime": "2019-12-09 05:06:00"
+    },
+    {
+      "messageId": 1088,
+      "temperature": 29.86854,
+      "enqueuedTime": "2019-12-09 05:06:36"
+    },
+    {
+      "messageId": 1089,
+      "temperature": 24.553581,
+      "enqueuedTime": "2019-12-09 05:07:14"
+    },
+    {
+      "messageId": 1090,
+      "temperature": 24.05012,
+      "enqueuedTime": "2019-12-09 05:07:43"
+    },
+    {
+      "messageId": 1091,
+      "temperature": 26.313805,
+      "enqueuedTime": "2019-12-09 05:08:12"
+    },
+    {
+      "messageId": 1092,
+      "temperature": 24.718267,
+      "enqueuedTime": "2019-12-09 05:08:35"
+    },
+    {
+      "messageId": 1093,
+      "temperature": 22.871338,
+      "enqueuedTime": "2019-12-09 05:09:12"
+    },
+    {
+      "messageId": 1094,
+      "temperature": 21.217363,
+      "enqueuedTime": "2019-12-09 05:09:51"
+    },
+    {
+      "messageId": 1095,
+      "temperature": 24.702744,
+      "enqueuedTime": "2019-12-09 05:10:28"
+    },
+    {
+      "messageId": 1096,
+      "temperature": 28.330631,
+      "enqueuedTime": "2019-12-09 05:10:53"
+    },
+    {
+      "messageId": 1097,
+      "temperature": 23.409304,
+      "enqueuedTime": "2019-12-09 05:11:16"
+    },
+    {
+      "messageId": 1098,
+      "temperature": 28.48555,
+      "enqueuedTime": "2019-12-09 05:11:51"
+    },
+    {
+      "messageId": 1099,
+      "temperature": 24.47017,
+      "enqueuedTime": "2019-12-09 05:12:16"
+    },
+    {
+      "messageId": 1100,
+      "temperature": 25.920467,
+      "enqueuedTime": "2019-12-09 05:12:39"
+    },
+    {
+      "messageId": 1101,
+      "temperature": 27.399755,
+      "enqueuedTime": "2019-12-09 05:13:07"
+    },
+    {
+      "messageId": 1102,
+      "temperature": 27.89708,
+      "enqueuedTime": "2019-12-09 05:13:45"
+    },
+    {
+      "messageId": 1103,
+      "temperature": 20.443441,
+      "enqueuedTime": "2019-12-09 05:14:20"
+    },
+    {
+      "messageId": 1104,
+      "temperature": 31.488571,
+      "enqueuedTime": "2019-12-09 05:14:46"
+    },
+    {
+      "messageId": 1105,
+      "temperature": 21.265032,
+      "enqueuedTime": "2019-12-09 05:15:06"
+    },
+    {
+      "messageId": 1106,
+      "temperature": 26.31871,
+      "enqueuedTime": "2019-12-09 05:15:39"
+    },
+    {
+      "messageId": 1107,
+      "temperature": 37.836178,
+      "enqueuedTime": "2019-12-09 05:15:59"
+    },
+    {
+      "messageId": 1108,
+      "temperature": 22.8391,
+      "enqueuedTime": "2019-12-09 05:16:30"
+    },
+    {
+      "messageId": 1109,
+      "temperature": 27.244892,
+      "enqueuedTime": "2019-12-09 05:16:51"
+    },
+    {
+      "messageId": 1110,
+      "temperature": 32.859756,
+      "enqueuedTime": "2019-12-09 05:17:23"
+    },
+    {
+      "messageId": 1111,
+      "temperature": 25.255016,
+      "enqueuedTime": "2019-12-09 05:17:49"
+    },
+    {
+      "messageId": 1112,
+      "temperature": 30.876564,
+      "enqueuedTime": "2019-12-09 05:18:14"
+    },
+    {
+      "messageId": 1113,
+      "temperature": 30.314354,
+      "enqueuedTime": "2019-12-09 05:18:40"
+    },
+    {
+      "messageId": 1114,
+      "temperature": 21.815556,
+      "enqueuedTime": "2019-12-09 05:19:18"
+    },
+    {
+      "messageId": 1115,
+      "temperature": 31.404665,
+      "enqueuedTime": "2019-12-09 05:19:42"
+    },
+    {
+      "messageId": 1116,
+      "temperature": 28.784351,
+      "enqueuedTime": "2019-12-09 05:20:09"
+    },
+    {
+      "messageId": 1117,
+      "temperature": 25.85896,
+      "enqueuedTime": "2019-12-09 05:20:42"
+    },
+    {
+      "messageId": 1118,
+      "temperature": 31.897139,
+      "enqueuedTime": "2019-12-09 05:21:21"
+    },
+    {
+      "messageId": 1119,
+      "temperature": 20.057276,
+      "enqueuedTime": "2019-12-09 05:21:56"
+    },
+    {
+      "messageId": 1120,
+      "temperature": 28.30741,
+      "enqueuedTime": "2019-12-09 05:22:27"
+    },
+    {
+      "messageId": 1121,
+      "temperature": 22.792204,
+      "enqueuedTime": "2019-12-09 05:22:49"
+    },
+    {
+      "messageId": 1122,
+      "temperature": 20.396324,
+      "enqueuedTime": "2019-12-09 05:23:09"
+    },
+    {
+      "messageId": 1123,
+      "temperature": 20.599045,
+      "enqueuedTime": "2019-12-09 05:23:39"
+    },
+    {
+      "messageId": 1124,
+      "temperature": 20.538942,
+      "enqueuedTime": "2019-12-09 05:24:11"
+    },
+    {
+      "messageId": 1125,
+      "temperature": 21.04482,
+      "enqueuedTime": "2019-12-09 05:24:33"
+    },
+    {
+      "messageId": 1126,
+      "temperature": 23.97031,
+      "enqueuedTime": "2019-12-09 05:25:00"
+    },
+    {
+      "messageId": 1127,
+      "temperature": 23.91716,
+      "enqueuedTime": "2019-12-09 05:25:30"
+    },
+    {
+      "messageId": 1128,
+      "temperature": 20.494465,
+      "enqueuedTime": "2019-12-09 05:26:04"
+    },
+    {
+      "messageId": 1129,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 05:26:37"
+    },
+    {
+      "messageId": 1130,
+      "temperature": 26.017813,
+      "enqueuedTime": "2019-12-09 05:27:07"
+    },
+    {
+      "messageId": 1131,
+      "temperature": 24.842773,
+      "enqueuedTime": "2019-12-09 05:27:45"
+    },
+    {
+      "messageId": 1132,
+      "temperature": 24.877052,
+      "enqueuedTime": "2019-12-09 05:28:18"
+    },
+    {
+      "messageId": 1133,
+      "temperature": 21.775797,
+      "enqueuedTime": "2019-12-09 05:28:44"
+    },
+    {
+      "messageId": 1134,
+      "temperature": 21.938236,
+      "enqueuedTime": "2019-12-09 05:29:17"
+    },
+    {
+      "messageId": 1135,
+      "temperature": 37.371857,
+      "enqueuedTime": "2019-12-09 05:29:53"
+    },
+    {
+      "messageId": 1136,
+      "temperature": 20.667273,
+      "enqueuedTime": "2019-12-09 05:30:30"
+    },
+    {
+      "messageId": 1137,
+      "temperature": 20.749899,
+      "enqueuedTime": "2019-12-09 05:30:53"
+    },
+    {
+      "messageId": 1138,
+      "temperature": 32.77996,
+      "enqueuedTime": "2019-12-09 05:31:26"
+    },
+    {
+      "messageId": 1139,
+      "temperature": 22.684355,
+      "enqueuedTime": "2019-12-09 05:31:56"
+    },
+    {
+      "messageId": 1140,
+      "temperature": 29.589766,
+      "enqueuedTime": "2019-12-09 05:32:20"
+    },
+    {
+      "messageId": 1141,
+      "temperature": 20.222216,
+      "enqueuedTime": "2019-12-09 05:32:52"
+    },
+    {
+      "messageId": 1142,
+      "temperature": 25.485607,
+      "enqueuedTime": "2019-12-09 05:33:15"
+    },
+    {
+      "messageId": 1143,
+      "temperature": 22.589157,
+      "enqueuedTime": "2019-12-09 05:33:50"
+    },
+    {
+      "messageId": 1144,
+      "temperature": 28.439312,
+      "enqueuedTime": "2019-12-09 05:34:16"
+    },
+    {
+      "messageId": 1145,
+      "temperature": 22.00259,
+      "enqueuedTime": "2019-12-09 05:34:44"
+    },
+    {
+      "messageId": 1146,
+      "temperature": 23.78064,
+      "enqueuedTime": "2019-12-09 05:35:10"
+    },
+    {
+      "messageId": 1147,
+      "temperature": 28.19374,
+      "enqueuedTime": "2019-12-09 05:35:35"
+    },
+    {
+      "messageId": 1148,
+      "temperature": 32.5809,
+      "enqueuedTime": "2019-12-09 05:36:04"
+    },
+    {
+      "messageId": 1149,
+      "temperature": 21.64025,
+      "enqueuedTime": "2019-12-09 05:36:42"
+    },
+    {
+      "messageId": 1150,
+      "temperature": 21.66932,
+      "enqueuedTime": "2019-12-09 05:37:10"
+    },
+    {
+      "messageId": 1151,
+      "temperature": 20.890223,
+      "enqueuedTime": "2019-12-09 05:37:46"
+    },
+    {
+      "messageId": 1152,
+      "temperature": 30.3177,
+      "enqueuedTime": "2019-12-09 05:38:12"
+    },
+    {
+      "messageId": 1153,
+      "temperature": 21.606165,
+      "enqueuedTime": "2019-12-09 05:38:41"
+    },
+    {
+      "messageId": 1154,
+      "temperature": 22.004402,
+      "enqueuedTime": "2019-12-09 05:39:20"
+    },
+    {
+      "messageId": 1155,
+      "temperature": 21.072077,
+      "enqueuedTime": "2019-12-09 05:39:46"
+    },
+    {
+      "messageId": 1156,
+      "temperature": 32.665607,
+      "enqueuedTime": "2019-12-09 05:40:06"
+    },
+    {
+      "messageId": 1157,
+      "temperature": 31.15697,
+      "enqueuedTime": "2019-12-09 05:40:38"
+    },
+    {
+      "messageId": 1158,
+      "temperature": 21.757378,
+      "enqueuedTime": "2019-12-09 05:41:10"
+    },
+    {
+      "messageId": 1159,
+      "temperature": 20.143818,
+      "enqueuedTime": "2019-12-09 05:41:44"
+    },
+    {
+      "messageId": 1160,
+      "temperature": 23.035316,
+      "enqueuedTime": "2019-12-09 05:42:19"
+    },
+    {
+      "messageId": 1161,
+      "temperature": 21.05386,
+      "enqueuedTime": "2019-12-09 05:42:56"
+    },
+    {
+      "messageId": 1162,
+      "temperature": 20.99792,
+      "enqueuedTime": "2019-12-09 05:43:22"
+    },
+    {
+      "messageId": 1163,
+      "temperature": 22.321987,
+      "enqueuedTime": "2019-12-09 05:43:55"
+    },
+    {
+      "messageId": 1164,
+      "temperature": 26.279366,
+      "enqueuedTime": "2019-12-09 05:44:20"
+    },
+    {
+      "messageId": 1165,
+      "temperature": 23.486298,
+      "enqueuedTime": "2019-12-09 05:44:55"
+    },
+    {
+      "messageId": 1166,
+      "temperature": 27.882887,
+      "enqueuedTime": "2019-12-09 05:45:30"
+    },
+    {
+      "messageId": 1167,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 05:45:55"
+    },
+    {
+      "messageId": 1168,
+      "temperature": 20.619596,
+      "enqueuedTime": "2019-12-09 05:46:32"
+    },
+    {
+      "messageId": 1169,
+      "temperature": 26.221664,
+      "enqueuedTime": "2019-12-09 05:46:52"
+    },
+    {
+      "messageId": 1170,
+      "temperature": 21.790537,
+      "enqueuedTime": "2019-12-09 05:47:22"
+    },
+    {
+      "messageId": 1171,
+      "temperature": 22.728945,
+      "enqueuedTime": "2019-12-09 05:47:51"
+    },
+    {
+      "messageId": 1172,
+      "temperature": 38.42646,
+      "enqueuedTime": "2019-12-09 05:48:25"
+    },
+    {
+      "messageId": 1173,
+      "temperature": 23.695099,
+      "enqueuedTime": "2019-12-09 05:49:03"
+    },
+    {
+      "messageId": 1174,
+      "temperature": 21.608315,
+      "enqueuedTime": "2019-12-09 05:49:39"
+    },
+    {
+      "messageId": 1175,
+      "temperature": 25.892221,
+      "enqueuedTime": "2019-12-09 05:50:15"
+    },
+    {
+      "messageId": 1176,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 05:50:47"
+    },
+    {
+      "messageId": 1177,
+      "temperature": 21.071253,
+      "enqueuedTime": "2019-12-09 05:51:07"
+    },
+    {
+      "messageId": 1178,
+      "temperature": 31.168427,
+      "enqueuedTime": "2019-12-09 05:51:27"
+    },
+    {
+      "messageId": 1179,
+      "temperature": 29.885145,
+      "enqueuedTime": "2019-12-09 05:51:59"
+    },
+    {
+      "messageId": 1180,
+      "temperature": 25.266273,
+      "enqueuedTime": "2019-12-09 05:52:34"
+    },
+    {
+      "messageId": 1181,
+      "temperature": 20.802094,
+      "enqueuedTime": "2019-12-09 05:53:04"
+    },
+    {
+      "messageId": 1182,
+      "temperature": 22.855068,
+      "enqueuedTime": "2019-12-09 05:53:27"
+    },
+    {
+      "messageId": 1183,
+      "temperature": 27.213484,
+      "enqueuedTime": "2019-12-09 05:54:04"
+    },
+    {
+      "messageId": 1184,
+      "temperature": 23.737822,
+      "enqueuedTime": "2019-12-09 05:54:40"
+    },
+    {
+      "messageId": 1185,
+      "temperature": 23.109144,
+      "enqueuedTime": "2019-12-09 05:55:14"
+    },
+    {
+      "messageId": 1186,
+      "temperature": 20.122559,
+      "enqueuedTime": "2019-12-09 05:55:38"
+    },
+    {
+      "messageId": 1187,
+      "temperature": 20.25119,
+      "enqueuedTime": "2019-12-09 05:56:05"
+    },
+    {
+      "messageId": 1188,
+      "temperature": 31.841156,
+      "enqueuedTime": "2019-12-09 05:56:26"
+    },
+    {
+      "messageId": 1189,
+      "temperature": 20.15691,
+      "enqueuedTime": "2019-12-09 05:56:53"
+    },
+    {
+      "messageId": 1190,
+      "temperature": 22.569147,
+      "enqueuedTime": "2019-12-09 05:57:29"
+    },
+    {
+      "messageId": 1191,
+      "temperature": 20.354597,
+      "enqueuedTime": "2019-12-09 05:58:03"
+    },
+    {
+      "messageId": 1192,
+      "temperature": 29.731342,
+      "enqueuedTime": "2019-12-09 05:58:23"
+    },
+    {
+      "messageId": 1193,
+      "temperature": 24.473715,
+      "enqueuedTime": "2019-12-09 05:58:50"
+    },
+    {
+      "messageId": 1194,
+      "temperature": 23.26833,
+      "enqueuedTime": "2019-12-09 05:59:25"
+    },
+    {
+      "messageId": 1195,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 05:59:51"
+    },
+    {
+      "messageId": 1196,
+      "temperature": 20,
+      "enqueuedTime": "2019-12-09 06:00:12"
+    },
+    {
+      "messageId": 1197,
+      "temperature": 29.802395,
+      "enqueuedTime": "2019-12-09 06:00:47"
+    },
+    {
+      "messageId": 1198,
+      "temperature": 28.287905,
+      "enqueuedTime": "2019-12-09 06:01:15"
+    },
+    {
+      "messageId": 1199,
+      "temperature": 21.439705,
+      "enqueuedTime": "2019-12-09 06:01:40"
+    },
+    {
+      "messageId": 1200,
+      "temperature": 23.677757,
+      "enqueuedTime": "2019-12-09 06:02:18"
+    }
+  ]
+}
