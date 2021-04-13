@@ -26,7 +26,7 @@ var reg = registry{registrations: []Registration{}, mutex: &sync.Mutex{}}
 
 type RegistryService struct{}
 
-func (rs *RegistryService) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
+func (rs RegistryService) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	log.Println("Request received")
 
 	switch r.Method {

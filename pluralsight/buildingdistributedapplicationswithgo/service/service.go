@@ -5,17 +5,25 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/flaviogf/gradebook/registry"
 )
 
-func Start(ctx context.Context, name, host, port string, registerHandlers func()) (context.Context, error) {
+func Start(ctx context.Context, registration registry.Registration, host, port string, registerHandlers func()) (context.Context, error) {
 	registerHandlers()
 
-	ctx = startService(ctx, name, host, port)
+	ctx = startService(ctx, registration.ServiceName, host, port)
+
+	err := registry.RegisterService(registration)
+
+	if err != nil {
+		return ctx, err
+	}
 
 	return ctx, nil
 }
 
-func startService(ctx context.Context, name, host, port string) context.Context {
+func startService(ctx context.Context, name registry.ServiceName, host, port string) context.Context {
 	ctx, cancel := context.WithCancel(ctx)
 
 	srv := http.Server{Addr: ":" + port}
