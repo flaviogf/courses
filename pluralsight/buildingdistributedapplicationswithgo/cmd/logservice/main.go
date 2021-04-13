@@ -11,7 +11,7 @@ import (
 func main() {
 	log.Run("./app.log")
 
-	ctx, err := service.Start(context.Background(), "Log Service", "localhost", "4000", log.RegisterHandlers)
+	ctx, err := service.Start(context.Background(), "LogService", "localhost", "4000", log.RegisterHandlers)
 
 	if err != nil {
 		stdlog.Fatal(err)
