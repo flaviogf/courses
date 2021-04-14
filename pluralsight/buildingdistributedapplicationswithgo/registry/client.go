@@ -18,7 +18,7 @@ func RegisterService(r Registration) error {
 		return err
 	}
 
-	resp, err := http.Post(ServicesUrl, "application/json", buffer)
+	resp, err := http.Post(ServicesURL, "application/json", buffer)
 
 	if err != nil {
 		return err
@@ -26,6 +26,28 @@ func RegisterService(r Registration) error {
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("could not register the new registration, status returned: %v", resp.StatusCode)
+	}
+
+	return nil
+}
+
+func ShutdownService(serviceURL string) error {
+	buffer := bytes.NewBuffer([]byte(serviceURL))
+
+	req, err := http.NewRequest(http.MethodDelete, ServicesURL, buffer)
+
+	if err != nil {
+		return err
+	}
+
+	resp, err := http.DefaultClient.Do(req)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.StatusCode != 200 {
+		return fmt.Errorf("could not shutdown the service, status returned: %v", resp.StatusCode)
 	}
 
 	return nil
