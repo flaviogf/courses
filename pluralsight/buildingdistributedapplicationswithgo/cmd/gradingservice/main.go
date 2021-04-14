@@ -6,6 +6,7 @@ import (
 	stdlog "log"
 
 	"github.com/flaviogf/gradebook/grades"
+	"github.com/flaviogf/gradebook/log"
 	"github.com/flaviogf/gradebook/registry"
 	"github.com/flaviogf/gradebook/service"
 )
@@ -26,6 +27,12 @@ func main() {
 
 	if err != nil {
 		stdlog.Fatal(err)
+	}
+
+	if logProvider, err := registry.GetProvider(registry.LogService); err == nil {
+		fmt.Printf("Logging service found at: %v\n", logProvider)
+
+		log.SetClientLogger(logProvider, registration.ServiceName)
 	}
 
 	<-ctx.Done()

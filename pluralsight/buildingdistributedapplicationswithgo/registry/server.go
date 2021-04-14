@@ -39,10 +39,10 @@ func (r *registry) sendRequiredService(registration Registration) error {
 
 	var p patch
 
-	for _, registration := range r.registrations {
+	for _, reg := range r.registrations {
 		for _, serviceName := range registration.RequiredServices {
-			if registration.ServiceName == serviceName {
-				p.Added = append(p.Added, patchEntry{Name: registration.ServiceName, URL: registration.ServiceURL})
+			if reg.ServiceName == serviceName {
+				p.Added = append(p.Added, patchEntry{Name: reg.ServiceName, URL: reg.ServiceURL})
 			}
 		}
 	}
