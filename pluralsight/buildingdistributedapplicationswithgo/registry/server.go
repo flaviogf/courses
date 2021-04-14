@@ -14,7 +14,7 @@ const ServicesURL = "http://localhost" + ServerPort + "/services"
 
 type registry struct {
 	registrations []Registration
-	mutex         *sync.Mutex
+	mutex         sync.Mutex
 }
 
 func (r *registry) add(registration Registration) error {
@@ -43,7 +43,7 @@ func (r *registry) remove(serviceURL string) error {
 	return fmt.Errorf("could not find the registration")
 }
 
-var reg = registry{registrations: []Registration{}, mutex: &sync.Mutex{}}
+var reg = registry{registrations: []Registration{}, mutex: sync.Mutex{}}
 
 type RegistryService struct{}
 
