@@ -15,7 +15,12 @@ func main() {
 
 	serviceURL := fmt.Sprintf("http://%v:%v", host, port)
 
-	registration := registry.Registration{ServiceName: registry.GradingService, ServiceURL: serviceURL}
+	registration := registry.Registration{
+		ServiceName:      registry.GradingService,
+		ServiceURL:       serviceURL,
+		RequiredServices: []registry.ServiceName{registry.LogService},
+		ServiceUpdateURL: serviceURL + "/services",
+	}
 
 	ctx, err := service.Start(context.Background(), registration, host, port, grades.RegisterHandlers)
 
