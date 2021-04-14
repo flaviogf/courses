@@ -1,6 +1,7 @@
 package registry
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -14,15 +15,63 @@ const ServicesURL = "http://localhost" + ServerPort + "/services"
 
 type registry struct {
 	registrations []Registration
-	mutex         sync.Mutex
+	mutex         sync.RWMutex
 }
 
 func (r *registry) add(registration Registration) error {
 	r.mutex.Lock()
-
-	defer r.mutex.Unlock()
-
 	r.registrations = append(r.registrations, registration)
+	r.mutex.Unlock()
+
+	err := r.sendRequiredService(registration)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *registry) sendRequiredService(registration Registration) error {
+	r.mutex.RLock()
+
+	defer r.mutex.RUnlock()
+
+	var p patch
+
+	for _, registration := range r.registrations {
+		for _, serviceName := range registration.RequiredServices {
+			if registration.ServiceName == serviceName {
+				p.Added = append(p.Added, patchEntry{Name: registration.ServiceName, URL: registration.ServiceURL})
+			}
+		}
+	}
+
+	err := r.sendPatch(p, registration.ServiceUpdateURL)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *registry) sendPatch(p patch, url string) error {
+	buffer := &bytes.Buffer{}
+
+	enc := json.NewEncoder(buffer)
+
+	err := enc.Encode(p)
+
+	if err != nil {
+		return err
+	}
+
+	_, err = http.Post(url, "application/json", buffer)
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -43,7 +92,7 @@ func (r *registry) remove(serviceURL string) error {
 	return fmt.Errorf("could not find the registration")
 }
 
-var reg = registry{registrations: []Registration{}, mutex: sync.Mutex{}}
+var reg = registry{registrations: []Registration{}, mutex: sync.RWMutex{}}
 
 type RegistryService struct{}
 
