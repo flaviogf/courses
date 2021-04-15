@@ -135,7 +135,7 @@ func (s *serviceUpdateHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request
 		return
 	}
 
-	fmt.Printf("Update received: %v\n", p)
+	fmt.Printf("Update received: %+v\n", p)
 
 	prov.Update(p)
 }

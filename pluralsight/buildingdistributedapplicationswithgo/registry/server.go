@@ -90,13 +90,20 @@ func (r *registry) sendPatch(p patch, url string) error {
 }
 
 func (r *registry) remove(serviceURL string) error {
-	r.mutex.Lock()
-
-	defer r.mutex.Unlock()
-
 	for index, registration := range r.registrations {
 		if serviceURL == registration.ServiceURL {
+			r.notify(patch{
+				Removed: []patchEntry{
+					{
+						Name: registration.ServiceName,
+						URL:  registration.ServiceURL,
+					},
+				},
+			})
+
+			r.mutex.Lock()
 			r.registrations = append(r.registrations[:index], r.registrations[index+1:]...)
+			r.mutex.Unlock()
 
 			return nil
 		}
