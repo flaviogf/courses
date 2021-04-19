@@ -1,0 +1,3 @@
+go test -covermode count -coverprofile cover.out ./mylib/...
+
+go tool cover -html ./cover.out
