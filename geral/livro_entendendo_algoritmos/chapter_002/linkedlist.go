@@ -38,9 +38,14 @@ func (ll *LinkedList) Add(value int) {
 }
 
 func (ll *LinkedList) Remove() {
-	if ll.Tail != nil {
-		ll.Tail = ll.Tail.Prev
-		ll.Tail.Next = nil
+	if ll.Tail != nil && ll.Tail.Prev != nil {
+		ll.Tail.Prev.Next = nil
+	}
+
+	ll.Tail = ll.Tail.Prev
+
+	if ll.Tail == nil {
+		ll.Head = nil
 	}
 }
 
@@ -83,6 +88,22 @@ func main() {
 	list.Remove()
 
 	fmt.Printf("Elements: O(n)\n")
-
 	list.Print()
+
+	fmt.Printf("Head: %+v O(1)\n", list.Head)
+
+	fmt.Printf("Tail: %+v O(1)\n", list.Tail)
+
+	fmt.Println("Removing last O(1)")
+	list.Remove()
+
+	fmt.Println("Removing last O(1)")
+	list.Remove()
+
+	fmt.Printf("Elements: O(n)\n")
+	list.Print()
+
+	fmt.Printf("Head: %+v O(1)\n", list.Head)
+
+	fmt.Printf("Tail: %+v O(1)\n", list.Tail)
 }
