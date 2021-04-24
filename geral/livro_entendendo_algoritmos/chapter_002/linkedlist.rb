@@ -1,39 +1,16 @@
 class Node
+    attr_accessor :value, :before, :after
+
     def initialize(value, before, after)
         @value = value
         @before = before
         @after = after
     end
 
-    def value
-        @value
-    end
-
-    def before
-        @before
-    end
-
-    def before= value
-        @before = value
-    end
-
-    def after
-        @after
-    end
-
-    def after= value
-        @after = value
-    end
 end
 
 class LinkedList
-    def head
-        @head
-    end
-
-    def tail
-        @tail
-    end
+    attr_accessor :head, :tail
 
     def add(value)
         if @head == nil
