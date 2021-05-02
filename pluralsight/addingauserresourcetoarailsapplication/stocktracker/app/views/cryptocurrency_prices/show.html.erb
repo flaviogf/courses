@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @cryptocurrency_price.price %>
+</p>
+
+<p>
+  <strong>Captured at:</strong>
+  <%= @cryptocurrency_price.captured_at %>
+</p>
+
+<p>
+  <strong>Cryptocurrency:</strong>
+  <%= @cryptocurrency_price.cryptocurrency.name %>
+</p>
+
+<%= link_to 'Edit', edit_cryptocurrency_price_path(@cryptocurrency_price) %> |
+<%= link_to 'Back', cryptocurrency_prices_path %>

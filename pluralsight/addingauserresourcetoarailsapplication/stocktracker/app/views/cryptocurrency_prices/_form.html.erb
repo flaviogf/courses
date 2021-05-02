@@ -1,0 +1,32 @@
+<%= form_with(model: cryptocurrency_price) do |form| %>
+  <% if cryptocurrency_price.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cryptocurrency_price.errors.count, "error") %> prohibited this cryptocurrency_price from being saved:</h2>
+
+      <ul>
+        <% cryptocurrency_price.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :captured_at %>
+    <%= form.datetime_select :captured_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cryptocurrency_id %>
+    <%= form.collection_select :cryptocurrency_id, Cryptocurrency.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

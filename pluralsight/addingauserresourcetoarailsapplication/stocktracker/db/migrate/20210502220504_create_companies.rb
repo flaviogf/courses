@@ -3,6 +3,7 @@ class CreateCompanies < ActiveRecord::Migration[6.1]
     create_table :companies do |t|
       t.string :name
       t.string :ticker_symbol
+      t.string :rate_risk
 
       t.timestamps
     end

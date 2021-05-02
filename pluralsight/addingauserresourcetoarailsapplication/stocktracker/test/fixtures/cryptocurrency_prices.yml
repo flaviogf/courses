@@ -2,10 +2,10 @@
 
 one:
   price: 9.99
-  captured_at: 2021-05-02 22:06:01
-  company: one
+  captured_at: 2021-05-02 22:34:38
+  cryptocurrency: one
 
 two:
   price: 9.99
-  captured_at: 2021-05-02 22:06:01
-  company: two
+  captured_at: 2021-05-02 22:34:38
+  cryptocurrency: two

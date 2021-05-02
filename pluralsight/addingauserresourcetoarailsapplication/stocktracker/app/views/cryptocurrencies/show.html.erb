@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cryptocurrency.name %>
+</p>
+
+<p>
+  <strong>Ticker symbol:</strong>
+  <%= @cryptocurrency.ticker_symbol %>
+</p>
+
+<hr />
+
+<ul>
+  <% @cryptocurrency.cryptocurrency_prices.each do |p| %>
+  <li><%= p.price %> | <%= p.captured_at.strftime("%Y-%m-%d") %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_cryptocurrency_path(@cryptocurrency) %> |
+<%= link_to 'Back', cryptocurrencies_path %>

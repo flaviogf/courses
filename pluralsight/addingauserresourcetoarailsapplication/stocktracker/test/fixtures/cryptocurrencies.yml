@@ -3,9 +3,7 @@
 one:
   name: MyString
   ticker_symbol: MyString
-  rate_risk: MyString
 
 two:
   name: MyString
   ticker_symbol: MyString
-  rate_risk: MyString
