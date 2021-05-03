@@ -8,8 +8,6 @@ module Factorial
     end
 
     def self.iterative(n)
-        binding.irb
-
         result = 1
 
         (2..n).each do |i|
