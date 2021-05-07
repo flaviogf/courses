@@ -1,12 +1,8 @@
 class UserController < ApplicationController
   def create
-    user = User.create user_params
+    @user = User.create user_params
 
-    if user.valid?
-      render json: user
-    else
-      render json: user.errors.messages
-    end
+    return render json: { errors: @user.errors} if not @user.valid?
   end
 
   private
