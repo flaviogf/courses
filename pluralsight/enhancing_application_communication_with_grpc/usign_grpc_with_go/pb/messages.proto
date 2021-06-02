@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/flaviogf/using_grpc_with_go/pb";
+
+message GetAllRequest {
+}
+
+message EmployeeResponse {
+  int32 id = 1;
+  int32 badgeNumber = 2;
+  string firstName = 3;
+  string lastName = 4;
+}
+
+service EmployeeService {
+  rpc GetAll(GetAllRequest) returns (stream EmployeeResponse);
+}
