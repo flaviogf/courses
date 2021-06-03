@@ -21,3 +21,17 @@ winners = [
   puts "In #{place.name} place, #{winners[place]}!"
   puts "You win: #{place.prize}"
 end
+
+class VimConfigFile
+  def initialize
+    @filename = "#{ENV['HOME']}/.vimrc"
+  end
+
+  def to_path
+    @filename
+  end
+end
+
+vim_config_file = VimConfigFile.new
+
+puts IO.readlines(vim_config_file).count
