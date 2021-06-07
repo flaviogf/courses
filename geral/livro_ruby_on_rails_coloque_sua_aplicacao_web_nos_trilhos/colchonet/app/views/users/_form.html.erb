@@ -1,0 +1,47 @@
+<% if user.errors.any? %>
+<div id="error_explanation">
+  <h2>Infelizmente não foi possível completar a ação pois o formulário possui os seguintes erros:</h2>
+
+  <% user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  <ul>
+</div>
+<ul>
+<% end %>
+
+<%= form_for user do |form| %>
+  <p>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </p>
+
+  <p>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </p>
+
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </p>
+
+  <p>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= form.label :bio %>
+    <%= form.text_area :bio %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
