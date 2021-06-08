@@ -6,10 +6,3 @@ one:
   password: MyString
   location: MyString
   bio: MyText
-
-two:
-  full_name: MyString
-  email: MyString
-  password: MyString
-  location: MyString
-  bio: MyText

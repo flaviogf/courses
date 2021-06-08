@@ -4,8 +4,3 @@ one:
   title: MyString
   location: MyString
   description: MyText
-
-two:
-  title: MyString
-  location: MyString
-  description: MyText
