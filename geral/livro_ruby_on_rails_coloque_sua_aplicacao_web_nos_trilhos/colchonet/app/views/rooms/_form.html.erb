@@ -14,16 +14,19 @@
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
+    <%= error_tag room, :title %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
     <%= form.text_field :location %>
+    <%= error_tag room, :location %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
+    <%= error_tag room, :description %>
   </div>
 
   <div class="actions">
