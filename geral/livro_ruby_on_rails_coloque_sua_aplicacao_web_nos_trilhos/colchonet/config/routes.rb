@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   scope "/(:locale)", locale: LOCALES do
     resources :rooms
     resources :users
+    resource :confirmations, only: [:show]
+    resources :user_sessions, only: [:create, :new, :destroy]
   end
 
   get '/:locale' => 'home#index', locale: LOCALES
