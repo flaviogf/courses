@@ -3,6 +3,11 @@ class Rating < ApplicationRecord
 
   validates :score, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
 
+  after_create do
+    person.score = score
+    person.save!
+  end
+
   def promoter?
     score >= 9 && score <= 10
   end
