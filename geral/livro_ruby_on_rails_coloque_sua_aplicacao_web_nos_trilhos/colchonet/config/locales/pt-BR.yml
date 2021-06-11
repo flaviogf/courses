@@ -199,6 +199,8 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+      user_session:
+        create: Entrar
   number:
     currency:
       format:
@@ -269,3 +271,14 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ""
+  activemodel:
+    attributes:
+      user_session:
+        email: Email
+        password: Password
+    errors:
+      messages:
+        invalid_login: Usuário ou senha inválidos
+  flash:
+    notice:
+      signed_in: Login efetuado com sucesso!

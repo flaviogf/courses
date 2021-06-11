@@ -1,0 +1,31 @@
+<h1><%= t '.title' %></h1>
+
+<% if @user_session.errors.has_key? :base %>
+<div id="error_explanation">
+  <ul>
+    <% @user_session.errors.full_messages_for(:base).each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for @user_session do |form| %>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+    <%= error_tag @user_session, :email %>
+  </p>
+
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+    <%= error_tag @user_session, :password %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<p><%= link_to t('.signup'), new_user_path %></p>

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
+
   EMAIL_REGEX = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
   validates_presence_of :full_name, :email, :location
@@ -11,6 +13,10 @@ class User < ApplicationRecord
 
   before_create do |user|
     user.confirmation_token = SecureRandom.urlsafe_base64
+  end
+
+  def self.authenticate(email, password)
+    confirmed.find_by(email: email)&.authenticate(password)
   end
 
   def confirm!
