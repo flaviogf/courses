@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   EMAIL_REGEX = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  has_many :rooms
+
   validates_presence_of :full_name, :email, :location
 
   validates_length_of :bio, minimum: 30, allow_blank: true

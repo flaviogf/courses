@@ -1,3 +1,5 @@
+@import "shadow";
+
 $header-height: 55px;
 $content-width: 700px;
 
@@ -14,12 +16,6 @@ $success-text-color: #468847;
 
 body {
   background-color: #f5f5f5;
-}
-
-@mixin shadow($color, $x, $y, $radius) {
-  -moz-box-shadow: $color $x $y $radius;
-  -webkit-box-shadow: $color $x $y $radius;
-  box-shadow: $color $x $y $radius;
 }
 
 header {

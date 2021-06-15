@@ -31,6 +31,9 @@ pt-BR:
   layout:
     rooms: Quartos
     signup: Cadastro
+    my_profile: Meu Perfil
+    signout: Logout
+    new_room: Cadastre seu quarto!
   general:
     form_error: Há erros no formulário, por favor verifique
   activerecord:
@@ -286,3 +289,12 @@ pt-BR:
       signed_in: Login efetuado com sucesso!
       signed_out: Logout efetuado com sucesso. Até logo!
       already_logged_in: Você já está logado.
+  dialogs:
+    destroy: Você tem certeza que quer remover?
+  rooms:
+    index:
+      title: Quarto disponíveis
+    room:
+      owner_html: '&mdash; %{owner} (%{when})'
+      edit: Editar
+      destroy: Remover

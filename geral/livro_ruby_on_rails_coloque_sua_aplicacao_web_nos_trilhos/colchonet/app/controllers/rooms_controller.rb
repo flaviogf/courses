@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms or /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.most_recent
   end
 
   # GET /rooms/1 or /rooms/1.json
@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/new
   def new
-    @room = Room.new
+    @room = current_user.rooms.build
   end
 
   # GET /rooms/1/edit
@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.build(room_params)
 
     respond_to do |format|
       if @room.save
@@ -60,7 +60,7 @@ class RoomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
-      @room = Room.find(params[:id])
+      @room = current_user.rooms.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
