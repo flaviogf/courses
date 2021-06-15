@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_no_authentication, only: [:new, :create]
+  before_action :can_change, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -36,5 +39,13 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:full_name, :location, :email, :password, :password_confirmation, :bio)
+  end
+
+  def can_change
+    redirect_to user_path(params[:id]) unless user_signed_in? && current_user == user
+  end
+
+  def user
+    @user ||= User.find(params[:id])
   end
 end
