@@ -1,0 +1,6 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+today:
+  location: new-york
+  temp: 32
+  status: cloudy 
