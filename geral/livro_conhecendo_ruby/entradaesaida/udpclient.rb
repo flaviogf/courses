@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+require 'socket'
+
+client = UDPSocket.open
+client.connect 'localhost', 1234
+
+loop do
+  puts 'Digite sua mensagem (quit termina, kill finaliza servidor):'
+  msg = gets
+  client.send msg, 0
+  break if 'kill,quit'.include? msg.chomp
+end
+
+client.close
