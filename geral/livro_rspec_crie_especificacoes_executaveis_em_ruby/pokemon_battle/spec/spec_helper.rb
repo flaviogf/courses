@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'vcr'
+require 'webmock/rspec'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.syntax = :expect
@@ -11,4 +14,10 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.configure_rspec_metadata!
+  c.hook_into :webmock
 end
