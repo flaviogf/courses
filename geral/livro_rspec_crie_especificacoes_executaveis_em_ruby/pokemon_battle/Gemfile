@@ -22,6 +22,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webmock'
