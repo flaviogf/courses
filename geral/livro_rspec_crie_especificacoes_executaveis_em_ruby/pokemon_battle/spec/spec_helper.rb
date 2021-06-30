@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+if ENV['coverage'] == 'on'
+  require 'simplecov'
+  SimpleCov.start :rails
+end
+
 require 'vcr'
 require 'webmock/rspec'
 
