@@ -1,2 +1,8 @@
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
 Style/Documentation:
   Enabled: false

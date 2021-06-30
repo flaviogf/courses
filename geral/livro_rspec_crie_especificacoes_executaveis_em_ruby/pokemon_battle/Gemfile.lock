@@ -208,6 +208,7 @@ GEM
     sqlite3 (1.4.2)
     thor (1.1.0)
     tilt (2.0.10)
+    timecop (0.9.4)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -261,6 +262,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   sqlite3 (~> 1.4)
+  timecop
   turbolinks (~> 5)
   tzinfo-data
   vcr
