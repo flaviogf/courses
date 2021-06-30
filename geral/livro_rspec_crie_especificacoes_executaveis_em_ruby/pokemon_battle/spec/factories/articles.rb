@@ -9,6 +9,7 @@ FactoryGirl.define do
     title
     content { "Content of the article #{title}. Approved: #{approved}" }
     created_at { 2.days.ago }
+    user
 
     factory :approved_article do
       approved true

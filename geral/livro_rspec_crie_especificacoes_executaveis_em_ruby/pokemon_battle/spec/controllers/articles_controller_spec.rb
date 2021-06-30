@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
+  let!(:user) do
+    create(:user)
+  end
+
   let!(:article) do
     create(:article)
   end
@@ -18,7 +22,7 @@ RSpec.describe ArticlesController, type: :controller do
   describe 'POST #create' do
     let(:params) do
       {
-        article: attributes_for(:article)
+        article: attributes_for(:article).merge(user_id: user.id)
       }
     end
 
