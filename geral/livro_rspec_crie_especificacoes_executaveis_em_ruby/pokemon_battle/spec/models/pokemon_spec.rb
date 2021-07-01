@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Pokemon, type: :model do
+  include_examples 'must have', Pokemon, :name
+
   describe '.chose_yesterday' do
     before do
       Timecop.freeze(Time.zone.local(2014, 3, 7, 12))
