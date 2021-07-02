@@ -8,4 +8,8 @@ class Pokemon < ApplicationRecord
   def full_name
     "#{name} - #{national_id}" if name && national_id
   end
+
+  def critical_attack
+    Random.rand(60..80)
+  end
 end

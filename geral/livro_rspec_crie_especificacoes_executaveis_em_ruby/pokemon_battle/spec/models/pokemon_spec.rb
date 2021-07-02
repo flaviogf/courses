@@ -52,4 +52,12 @@ RSpec.describe Pokemon, type: :model do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#critical_attack' do
+    it 'is a random value' do
+      allow(Random).to receive(:rand).with(60..80).and_return(75)
+      pokemon = Pokemon.new
+      expect(pokemon.critical_attack).to eq(75)
+    end
+  end
 end
