@@ -7,3 +7,5 @@ services:
       - 3000:3000
     volumes:
       - .:/usr/local/app
+  redis:
+    image: redis
