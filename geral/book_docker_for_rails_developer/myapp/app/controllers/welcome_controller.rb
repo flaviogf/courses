@@ -2,7 +2,7 @@
 
 class WelcomeController < ApplicationController
   def index
-    redis.incr :page_hits 
+    redis.incr :page_hits
 
     @page_hits = redis.get :page_hits
   end

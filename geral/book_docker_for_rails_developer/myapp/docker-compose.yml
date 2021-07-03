@@ -9,3 +9,9 @@ services:
       - .:/usr/local/app
   redis:
     image: redis
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: some-long-secure-password
+      POSTGRES_DB: myapp_development
