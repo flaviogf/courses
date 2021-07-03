@@ -1,10 +1,16 @@
 FROM ruby:2.6
 
-RUN apt-get update -yqq
-RUN apt-get install nodejs -yqq --no-install-recommends
+LABEL maintainer="flavio.fernandes6@gmail.com"
+
+RUN apt-get update && apt-get install -yqq --no-install-recommends \
+    nodejs
 
 WORKDIR /usr/local/app
 
-COPY . .
+COPY Gemfile* ./
 
 RUN bundle install
+
+COPY . ./
+
+CMD [ "bin/rails", "s", "-b", "0.0.0.0" ]
