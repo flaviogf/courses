@@ -1,8 +1,8 @@
 FROM ruby:2.6
 
-LABEL maintainer="flavio.fernandes6@gmail.com"
+LABEL maintainer=flavio.fernandes6@gmail.com
 
-RUN apt-get update && apt-get install -yqq --no-install-recommends \
+RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
     nodejs
 
 WORKDIR /usr/local/app
