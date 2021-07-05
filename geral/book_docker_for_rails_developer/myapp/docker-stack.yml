@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  web:
+    image: flaviogf/railsapp
+    ports:
+      - 3000:3000
+    env_file:
+      - .env/production/database
+      - .env/production/web
+  redis:
+    image: redis
+  database:
+    image: postgres
+    env_file:
+      - .env/production/database
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  db-migrator:
+    image: flaviogf/railsapp
+    command: [ "./wait-for.sh", "--timeout=300", "database:5432", "--", "bin/rails", "db:migrate" ]
+    env_file:
+      - .env/production/database
+      - .env/production/web
+    deploy:
+      restart_policy:
+        condition: none
+
+volumes:
+  db_data:

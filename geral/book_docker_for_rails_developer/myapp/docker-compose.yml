@@ -10,9 +10,6 @@ services:
     env_file:
       - .env/development/database
       - .env/development/web
-    depends_on:
-      - redis
-      - database
   redis:
     image: redis
   database:
