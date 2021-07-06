@@ -1,4 +1,5 @@
 <h1>This page has been viewed <%= pluralize(@page_hits, 'time') %></h1>
+<p>Request handled by host: <b><%= @hostname %></b></p>
 
 <%= javascript_pack_tag 'hello_react' %>
 
