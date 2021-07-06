@@ -1,0 +1,9 @@
+# x  - delete one char
+# dd - delete one line
+# >G - increases the indentation from the current line until the end of the file
+# .  - repeate the last command
+
+Line one
+Line two
+Line three
+Line four
