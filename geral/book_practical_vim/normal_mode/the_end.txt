@@ -1,0 +1,4 @@
+# db  - delete backward
+# dw  - delete forward
+# daw - delete an entire word
+The end is nigh
