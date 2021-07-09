@@ -1,0 +1,5 @@
+POST logs-my_app-default/_bulk
+{ "create": {} }
+{ "@timestamp": "2099-05-06T16:24:32.000Z", "event": { "original": "192.0.2.42 - - [06/May/2099:16:24:32 +0000] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0" } }
+{ "create": {} }
+{ "@timestamp": "2099-05-06T16:25:42.000Z", "event": { "original": "192.0.2.42 - - [06/May/2099:16:25:42 +0000] \"GET /images/favicon.ico HTTP/1.0\" 200 3638" } }

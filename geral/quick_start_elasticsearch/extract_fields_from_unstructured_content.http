@@ -1,0 +1,30 @@
+GET logs-my_app-default/_search
+{
+  "runtime_mappings": {
+    "source.ip": {
+      "type": "ip",
+      "script": """
+        String sourceip=grok('%{IPORHOST:sourceip} .*').extract(doc["event.original"].value)?.sourceip;
+        if (sourceip != null) emit(sourceip);
+      """
+    }
+  },
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "2099-05-06T16:20:00.000Z",
+        "lt": "2099-05-06T16:25:00.000Z"
+      }
+    }
+  },
+  "_source": false,
+  "fields": [
+    "@timestamp",
+    "source.ip"
+  ],
+  "sort": [
+    {
+      "@timestamp": "desc"
+    }
+  ]
+}

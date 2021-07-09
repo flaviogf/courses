@@ -1,0 +1,20 @@
+GET logs-my_app-default/_search
+{
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "2099-05-06T16:20:00.000Z",
+        "lt": "2099-05-06T16:25:00.000Z"
+      }
+    }
+  },
+  "fields": [
+    "@timestamp"
+  ],
+  "_source": false,
+  "sort": [
+    {
+      "@timestamp": "desc"
+    }
+  ]
+}
