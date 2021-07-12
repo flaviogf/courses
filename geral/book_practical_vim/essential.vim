@@ -8,3 +8,4 @@ set expandtab
 set wildmenu
 set wildmode=full
 set history=200
+set mouse=a
