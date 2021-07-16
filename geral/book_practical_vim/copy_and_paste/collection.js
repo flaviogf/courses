@@ -1,2 +1,2 @@
 collection = getCollection();
-process(collection, target);
+process(somethingInTheWay, target);
