@@ -11,3 +11,5 @@ set mouse=a
 set nocompatible
 filetype plugin on
 set incsearch
+
+autocmd BufWritePost * call system("ctags -R")
