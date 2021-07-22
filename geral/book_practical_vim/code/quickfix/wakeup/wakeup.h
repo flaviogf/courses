@@ -1,0 +1,1 @@
+void generatePacket(char *, char *);
