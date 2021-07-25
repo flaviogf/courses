@@ -1,0 +1,7 @@
+#!/usr/env/bin ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/crash_course_elastic_stack_part_1'
+
+CrashCourseElasticStackPart1.stats
