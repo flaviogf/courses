@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+task :health do
+  ruby 'bin/health'
+end
+
+task :stats do
+  ruby 'bin/stats'
+end
