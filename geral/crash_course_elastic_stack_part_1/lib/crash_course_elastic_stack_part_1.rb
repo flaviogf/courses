@@ -47,6 +47,10 @@ module CrashCourseElasticStackPart1
       client.update(index: 'favorite_candy', id: 1, body: query)
     end
 
+    def delete_document
+      client.delete(index: 'favorite_candy', id: 1)
+    end
+
     private
 
     def client

@@ -23,3 +23,7 @@ end
 task :update_document do
   ruby 'bin/update_document'
 end
+
+task :delete_document do
+  ruby 'bin/delete_document'
+end
