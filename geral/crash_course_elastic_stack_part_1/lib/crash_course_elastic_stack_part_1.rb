@@ -33,6 +33,10 @@ module CrashCourseElasticStackPart1
       client.index(index: 'favorite_candy', body: query, id: 1)
     end
 
+    def read_document
+      client.get(index: 'favorite_candy', id: 1)
+    end
+
     private
 
     def client

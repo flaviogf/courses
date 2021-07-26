@@ -15,3 +15,7 @@ end
 task :index_document do
   ruby 'bin/index_document'
 end
+
+task :read_document do
+  ruby 'bin/read_document'
+end
