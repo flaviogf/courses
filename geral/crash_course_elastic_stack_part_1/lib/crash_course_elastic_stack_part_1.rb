@@ -24,6 +24,13 @@ module CrashCourseElasticStackPart1
       end
 
       client.index(index: 'favorite_candy', body: query)
+
+      query = Jbuilder.encode do |json|
+        json.first_name 'John'
+        json.candy 'Starburst'
+      end
+
+      client.index(index: 'favorite_candy', body: query, id: 1)
     end
 
     private
