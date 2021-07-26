@@ -12,6 +12,10 @@ module CrashCourseElasticStackPart1
       client.nodes.stats
     end
 
+    def create_favorite_candy_index
+      client.indices.create(index: 'favorite_candy')
+    end
+
     private
 
     def client

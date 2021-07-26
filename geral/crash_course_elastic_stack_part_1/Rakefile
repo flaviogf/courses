@@ -7,3 +7,7 @@ end
 task :stats do
   ruby 'bin/stats'
 end
+
+task :create_favorite_candy_index do
+  ruby 'bin/create_favorite_candy_index'
+end
