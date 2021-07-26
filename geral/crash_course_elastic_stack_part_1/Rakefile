@@ -11,3 +11,7 @@ end
 task :create_favorite_candy_index do
   ruby 'bin/create_favorite_candy_index'
 end
+
+task :index_document do
+  ruby 'bin/index_document'
+end
