@@ -37,6 +37,16 @@ module CrashCourseElasticStackPart1
       client.get(index: 'favorite_candy', id: 1)
     end
 
+    def update_document
+      query = Jbuilder.encode do |json|
+        json.doc do
+          json.candy "M&M's"
+        end
+      end
+
+      client.update(index: 'favorite_candy', id: 1, body: query)
+    end
+
     private
 
     def client

@@ -19,3 +19,7 @@ end
 task :read_document do
   ruby 'bin/read_document'
 end
+
+task :update_document do
+  ruby 'bin/update_document'
+end
