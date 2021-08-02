@@ -1,0 +1,12 @@
+curl -XGET 'localhost:9200/news_headlines/_search' -H 'Content-Type: application/json' -d '{
+  "query": {
+    "match": {
+      "category": "ENTERTAINMENT"
+    }
+  },
+  "aggs": {
+    "popular_in_entertainment": {
+      "significant_text": { "field": "headline" }
+    }
+  }
+}'
