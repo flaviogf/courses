@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  es01:
+    image: elasticsearch:7.13.4
+    environment:
+      discovery.type: 'single-node'
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    image: kibana:7.13.4
+    environment:
+      ELASTICSEARCH_HOSTS: 'http://es01:9200'
+    ports:
+      - 5601:5601
