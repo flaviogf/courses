@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+task :analyze_the_data_to_show_the_categories_of_news_headlines_in_our_dataset do
+  ruby 'bin/analyze_the_data_to_show_the_categories_of_news_headlines_in_our_dataset'
+end
