@@ -48,6 +48,19 @@ module CrashCourseElasticStackPart3
       client.search(index: 'news_headlines', body: query)
     end
 
+    def match_query_against_multi_fields
+      query = Jbuilder.encode do |json|
+        json.query do
+          json.multi_match do
+            json.query 'Michelle Obama'
+            json.fields %w[headline short_description authors]
+          end
+        end
+      end
+
+      client.search(index: 'news_headlines', body: query)
+    end
+
     private
 
     def client

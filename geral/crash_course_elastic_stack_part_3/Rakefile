@@ -11,3 +11,7 @@ end
 task :search_for_phrase_using_match_phrase do
   ruby 'bin/search_for_phrase_using_match_phrase'
 end
+
+task :match_query_against_multi_fields do
+  ruby 'bin/match_query_against_multi_fields'
+end

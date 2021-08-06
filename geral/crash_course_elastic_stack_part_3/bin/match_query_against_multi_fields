@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/crash_course_elastic_stack_part_3'
+
+result = CrashCourseElasticStackPart3.match_query_against_multi_fields
+
+puts result.to_json
