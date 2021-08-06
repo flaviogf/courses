@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/crash_course_elastic_stack_part_3'
+
+result = CrashCourseElasticStackPart3.by_category_aggregation
+
+puts result.to_json
