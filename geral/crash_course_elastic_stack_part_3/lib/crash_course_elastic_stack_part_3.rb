@@ -19,11 +19,25 @@ module CrashCourseElasticStackPart3
 
       client.search(index: 'news_headlines', body: query)
     end
-    
+
     def search_for_phrase_using_match_query
       query = Jbuilder.encode do |json|
         json.query do
           json.match do
+            json.headline do
+              json.query 'Shape of you'
+            end
+          end
+        end
+      end
+
+      client.search(index: 'news_headlines', body: query)
+    end
+
+    def search_for_phrase_using_match_phrase
+      query = Jbuilder.encode do |json|
+        json.query do
+          json.match_phrase do
             json.headline do
               json.query 'Shape of you'
             end

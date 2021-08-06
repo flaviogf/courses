@@ -7,3 +7,7 @@ end
 task :search_for_phrase_using_match_query do
   ruby 'bin/search_for_phrase_using_match_query'
 end
+
+task :search_for_phrase_using_match_phrase do
+  ruby 'bin/search_for_phrase_using_match_phrase'
+end
