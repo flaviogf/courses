@@ -13,3 +13,8 @@ another = gets.chomp.to_i
 smaller = another / 100
 
 puts "A smaller number is #{smaller}"
+
+print 'Give me a number to calculate 10% of it: '
+number = gets.chomp.to_f
+
+puts "10% of #{number} is #{number * 0.10}"
