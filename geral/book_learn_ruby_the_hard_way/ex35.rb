@@ -7,7 +7,7 @@ def gold_room
 
   choice = $stdin.gets.chomp
 
-  if %w[0 1].include?(choice)
+  if /\d/.match?(choice)
     how_much = choice.to_i
   else
     dead('Man, learn to type a number')
