@@ -13,6 +13,16 @@ module Dict
     result
   end
 
+  def get_slot(dict, key, default=nil)
+    bucket = get_bucket(dict, key)
+
+    bucket.each_with_index do |(k, v), i|
+      return i, k, v if key == k
+    end
+
+    [-1, key, default]
+  end
+
   def get_bucket(dict, key)
     bucket_id = hash_key(dict, key)
     dict[bucket_id]
