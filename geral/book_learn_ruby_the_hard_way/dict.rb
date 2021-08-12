@@ -15,12 +15,25 @@ module Dict
 
   def set(dict, key, value)
     bucket = get_bucket(dict, key)
-    i, _, _ = get_slot(dict, key)
+    i, = get_slot(dict, key)
 
     if i >= 0
       bucket[i] = [key, value]
     else
       bucket.push([key, value])
+    end
+  end
+
+  def delete(dict, key)
+    bucket = get_bucket(dict, key)
+
+    (0...bucket.length).each do |i|
+      k, = bucket[i]
+
+      if key == k
+        bucket.delete_at(i)
+        break
+      end
     end
   end
 
