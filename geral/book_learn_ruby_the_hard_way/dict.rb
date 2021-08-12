@@ -13,7 +13,13 @@ module Dict
     result
   end
 
-  def get_slot(dict, key, default=nil)
+  def get(dict, key, default = nil)
+    _, _, v = get_slot(dict, key, default = default)
+
+    v
+  end
+
+  def get_slot(dict, key, default = nil)
     bucket = get_bucket(dict, key)
 
     bucket.each_with_index do |(k, v), i|
