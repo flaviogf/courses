@@ -13,6 +13,12 @@ module Dict
     result
   end
 
+  def list(dict)
+    dict.each do |bucket|
+      bucket&.each { |k, v| puts k, v }
+    end
+  end
+
   def set(dict, key, value)
     bucket = get_bucket(dict, key)
     i, = get_slot(dict, key)
