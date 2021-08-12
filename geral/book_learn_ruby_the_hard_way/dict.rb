@@ -13,6 +13,17 @@ module Dict
     result
   end
 
+  def set(dict, key, value)
+    bucket = get_bucket(dict, key)
+    i, _, _ = get_slot(dict, key)
+
+    if i >= 0
+      bucket[i] = [key, value]
+    else
+      bucket.push([key, value])
+    end
+  end
+
   def get(dict, key, default = nil)
     _, _, v = get_slot(dict, key, default = default)
 
