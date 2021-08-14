@@ -77,7 +77,7 @@ class CentralCorridor < Scene
       puts 'The Gothon stops, tries not to laugh, then busts out laughing and can\'t move'
       puts 'While he\'s laughing you run up and shoot him square in the head'
       puts 'putting him down, then jump through the Weapon Armory door.'
-      'finished'
+      'laser_weapon_armory'
     else
       puts 'DOES NOT COMPUTE'
       'central_corridor'
@@ -95,7 +95,10 @@ class LaserWeaponArmory < Scene
     puts 'wrong 10 time then the lock closes forever and you can\'t'
     puts 'get the bomb. The code is 3 digits.'
 
-    code "#{rand(1..9)}#{rand(1..9)}#{rand(1..9)}"
+    code = "#{rand(1..9)}#{rand(1..9)}#{rand(1..9)}"
+
+    puts code
+
     print '[keypad]> '
     guess = $stdin.gets.chomp
     guesses = 0
@@ -159,3 +162,71 @@ class TheBridge < Scene
     end
   end
 end
+
+class EscapePod < Scene
+  def enter
+    puts 'You rush through the ship desperately trying to make it to'
+    puts 'the escape pod before the whole ship explodes. It seems like'
+    puts 'hardly any Gothons are on the ship, so your run is clear of'
+    puts 'interference. You get to the chamber with the escape pods, and'
+    puts 'Now need to pick one to take. Some of them could be damaged'
+    puts 'but you don\'t have time to look. There\'s 5 pods. which one'
+    puts 'do you take?'
+
+    good_pod = rand(1..5)
+
+    puts good_pod
+
+    print '[pod #]> '
+    guess = $stdin.gets.chomp.to_i
+
+    if guess != good_pod
+      puts "You jump into pod #{guess} and hit the eject button."
+      puts 'The pod escapes out into the void of space, then'
+      puts 'implodes as the hull ruptures, crushing your body'
+      puts 'into jam jelly'
+      'death'
+    else
+      puts "You jump into pod #{guess} and hit the eject button"
+      puts 'The pod easily slides out into space heading to'
+      puts 'the planet below. As it flies to the planet, you look'
+      puts 'back and see your ship implode then explode like a'
+      puts 'bright star, taking out the Gothon ship at the same'
+      puts 'time. You won!'
+      'finished'
+    end
+  end
+end
+
+class Finished < Scene
+  def enter
+    puts 'You won! Good job.'
+  end
+end
+
+class Map
+  @@scenes = {
+    'central_corridor' => CentralCorridor.new,
+    'laser_weapon_armory' => LaserWeaponArmory.new,
+    'the_bridge' => TheBridge.new,
+    'escape_pod' => EscapePod.new,
+    'death' => Death.new,
+    'finished' => Finished.new
+  }
+
+  def initialize(start_scene)
+    @start_scene = start_scene
+  end
+
+  def opening_scene
+    next_scene(@start_scene)
+  end
+
+  def next_scene(scene_name)
+    @@scenes[scene_name]
+  end
+end
+
+a_map = Map.new('central_corridor')
+a_game = Engine.new(a_map)
+a_game.play
