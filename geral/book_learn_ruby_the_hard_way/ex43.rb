@@ -121,3 +121,41 @@ class LaserWeaponArmory < Scene
     end
   end
 end
+
+class TheBridge < Scene
+  def enter
+    puts 'You burst onto the Bridge with the neutron destruct bomb'
+    puts 'under your arm and surpirse 5 Gothons who are trying to'
+    puts 'take control of the ship. Each of them has an even'
+    puts 'clown costume than the last. They haven\'t pulled their'
+    puts 'weapons out yet, as they see the active bomb under your'
+    puts 'arm an don\'t want to set it off'
+
+    print '> '
+
+    action = $stdin.gets.chomp
+
+    if action == 'throw the bomb'
+      puts 'In a panic you throw the bomb at the group of Gothons'
+      puts 'and make a leap for the door. Right as you drop it a'
+      puts 'Gothon shoots you rith in the back killing you.'
+      puts 'As you die you see another Gothon frantically try to disarm'
+      puts 'the bom. You die knowing the will probably blow up when'
+      puts 'it goes off.'
+      'death'
+    elsif action == 'slowly place the bomb'
+      puts 'You point your blaster at the bomb under your arm'
+      puts 'and the Gothons put theri hands up and start to sweat.'
+      puts 'You inch backward to the door, open it, and the carefully'
+      puts 'place the bomb on the floor, pointin your blaster at it.'
+      puts 'You then jump back through the door, punch the close button'
+      puts 'and blast the lock so the Gothons can\'t get out.'
+      puts 'Now that the bomb is placed you run to the escape pod to'
+      puts 'get off this tin can'
+      'escape_pod'
+    else
+      puts 'DOES NOT COMPUTE!'
+      'the_bridge'
+    end
+  end
+end
