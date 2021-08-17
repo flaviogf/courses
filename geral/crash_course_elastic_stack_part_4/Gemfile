@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+gem 'elasticsearch'
+gem 'jbuilder'
+gem 'pry'
+gem 'pry-byebug'
+gem 'rake'

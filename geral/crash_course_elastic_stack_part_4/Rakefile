@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+task :create_new_index do
+  ruby './bin/create_new_index'
+end
