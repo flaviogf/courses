@@ -19,11 +19,27 @@ module CrashCourseElasticStackPart4
             json.Description do
               json.type 'text'
             end
+            json.InvoiceDate do
+              json.type 'date'
+              json.format 'M/d/yyyy H:m'
+            end
+            json.InvoiceNo do
+              json.type 'keyword'
+            end
+            json.Quantity do
+              json.type 'long'
+            end
+            json.StockCode do
+              json.type 'keyword'
+            end
+            json.UnitPrice do
+              json.type 'double'
+            end
           end
         end
       end
 
-      puts body
+      @client.indices.create(index: 'ecommerce_data', body: body)
     end
   end
 end
