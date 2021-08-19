@@ -19,3 +19,7 @@ end
 task :get_information_about_documents do
   ruby './bin/get_information_about_documents'
 end
+
+task :unit_price_sum do
+  ruby './bin/unit_price_sum'
+end
