@@ -7,6 +7,7 @@ require_relative 'crash_course_elastic_stack_part_4/create_new_index'
 require_relative 'crash_course_elastic_stack_part_4/reindex'
 require_relative 'crash_course_elastic_stack_part_4/remove_negative_values'
 require_relative 'crash_course_elastic_stack_part_4/remove_values_greater_than_500'
+require_relative 'crash_course_elastic_stack_part_4/get_information_about_documents'
 
 module CrashCourseElasticStackPart4
   module_function
@@ -25,6 +26,10 @@ module CrashCourseElasticStackPart4
 
   def remove_values_greater_than_500
     RemoveValuesGreaterThan500.new(client).execute
+  end
+
+  def get_information_about_documents
+    GetInformationAboutDocuments.new(client).execute
   end
 
   def client

@@ -15,3 +15,7 @@ end
 task :remove_values_greater_than_500 do
   ruby './bin/remove_values_greater_than_500'
 end
+
+task :get_information_about_documents do
+  ruby './bin/get_information_about_documents'
+end
