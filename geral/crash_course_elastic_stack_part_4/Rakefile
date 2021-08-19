@@ -11,3 +11,7 @@ end
 task :remove_negative_values do
   ruby './bin/remove_negative_values'
 end
+
+task :remove_values_greater_than_500 do
+  ruby './bin/remove_values_greater_than_500'
+end
