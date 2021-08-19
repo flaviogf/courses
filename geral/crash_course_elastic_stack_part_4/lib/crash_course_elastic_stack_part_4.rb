@@ -5,6 +5,7 @@ require 'jbuilder'
 
 require_relative 'crash_course_elastic_stack_part_4/create_new_index'
 require_relative 'crash_course_elastic_stack_part_4/reindex'
+require_relative 'crash_course_elastic_stack_part_4/remove_negative_values'
 
 module CrashCourseElasticStackPart4
   module_function
@@ -18,7 +19,7 @@ module CrashCourseElasticStackPart4
   end
 
   def remove_negative_values
-    'removing negative values'
+    RemoveNegativeValues.new(client).execute
   end
 
   def client

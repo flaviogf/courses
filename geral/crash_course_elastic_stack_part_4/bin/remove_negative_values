@@ -2,4 +2,6 @@
 
 # frozen_string_literal: true
 
-puts 'removing negative values'
+require_relative '../lib/crash_course_elastic_stack_part_4'
+
+pp CrashCourseElasticStackPart4.remove_negative_values
