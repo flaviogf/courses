@@ -7,3 +7,7 @@ end
 task :reindex do
   ruby './bin/reindex'
 end
+
+task :remove_negative_values do
+  ruby './bin/remove_negative_values'
+end

@@ -17,6 +17,10 @@ module CrashCourseElasticStackPart4
     Reindex.new(client).execute
   end
 
+  def remove_negative_values
+    'removing negative values'
+  end
+
   def client
     @client ||= Elasticsearch::Client.new(host: 'http://elasticsearch:9200')
   end
