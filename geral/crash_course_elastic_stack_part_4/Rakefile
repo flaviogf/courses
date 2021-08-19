@@ -3,3 +3,7 @@
 task :create_new_index do
   ruby './bin/create_new_index'
 end
+
+task :reindex do
+  ruby './bin/reindex'
+end
