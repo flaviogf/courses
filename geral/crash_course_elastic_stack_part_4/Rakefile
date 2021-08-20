@@ -27,3 +27,7 @@ end
 task :lowest_unit_price do
   ruby './bin/lowest_unit_price'
 end
+
+task :highest_unit_price do
+  ruby './bin/highest_unit_price'
+end
