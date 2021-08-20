@@ -9,6 +9,7 @@ require_relative 'crash_course_elastic_stack_part_4/remove_negative_values'
 require_relative 'crash_course_elastic_stack_part_4/remove_values_greater_than_500'
 require_relative 'crash_course_elastic_stack_part_4/get_information_about_documents'
 require_relative 'crash_course_elastic_stack_part_4/unit_price_sum'
+require_relative 'crash_course_elastic_stack_part_4/lowest_unit_price'
 
 module CrashCourseElasticStackPart4
   module_function
@@ -35,6 +36,10 @@ module CrashCourseElasticStackPart4
 
   def unit_price_sum
     UnitPriceSum.new(client).execute
+  end
+
+  def lowest_unit_price
+    LowestUnitPrice.new(client).execute
   end
 
   def client

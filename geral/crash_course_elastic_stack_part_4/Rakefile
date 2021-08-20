@@ -23,3 +23,7 @@ end
 task :unit_price_sum do
   ruby './bin/unit_price_sum'
 end
+
+task :lowest_unit_price do
+  ruby './bin/lowest_unit_price'
+end
