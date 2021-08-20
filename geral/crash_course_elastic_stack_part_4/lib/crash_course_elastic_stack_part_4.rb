@@ -11,6 +11,7 @@ require_relative 'crash_course_elastic_stack_part_4/get_information_about_docume
 require_relative 'crash_course_elastic_stack_part_4/unit_price_sum'
 require_relative 'crash_course_elastic_stack_part_4/lowest_unit_price'
 require_relative 'crash_course_elastic_stack_part_4/highest_unit_price'
+require_relative 'crash_course_elastic_stack_part_4/unit_price_avg'
 
 module CrashCourseElasticStackPart4
   module_function
@@ -45,6 +46,10 @@ module CrashCourseElasticStackPart4
 
   def highest_unit_price
     HighestUnitPrice.new(client).execute
+  end
+
+  def unit_price_avg
+    UnitPriceAvg.new(client).execute
   end
 
   def client

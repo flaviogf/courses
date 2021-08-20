@@ -31,3 +31,7 @@ end
 task :highest_unit_price do
   ruby './bin/highest_unit_price'
 end
+
+task :unit_price_avg do
+  ruby './bin/unit_price_avg'
+end
