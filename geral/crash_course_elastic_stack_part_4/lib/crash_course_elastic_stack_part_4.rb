@@ -13,6 +13,7 @@ require_relative 'crash_course_elastic_stack_part_4/lowest_unit_price'
 require_relative 'crash_course_elastic_stack_part_4/highest_unit_price'
 require_relative 'crash_course_elastic_stack_part_4/unit_price_avg'
 require_relative 'crash_course_elastic_stack_part_4/unit_price_stats'
+require_relative 'crash_course_elastic_stack_part_4/cardinality'
 
 module CrashCourseElasticStackPart4
   module_function
@@ -55,6 +56,10 @@ module CrashCourseElasticStackPart4
 
   def unit_price_stats
     UnitPriceStats.new(client).execute
+  end
+
+  def cardinality
+    Cardinality.new(client).execute
   end
 
   def client

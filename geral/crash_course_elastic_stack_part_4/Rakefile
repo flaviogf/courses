@@ -39,3 +39,7 @@ end
 task :unit_price_stats do
   ruby './bin/unit_price_stats'
 end
+
+task :cardinality do
+  ruby './bin/cardinality'
+end
