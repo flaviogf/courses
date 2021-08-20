@@ -35,3 +35,7 @@ end
 task :unit_price_avg do
   ruby './bin/unit_price_avg'
 end
+
+task :unit_price_stats do
+  ruby './bin/unit_price_stats'
+end
