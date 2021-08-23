@@ -43,3 +43,7 @@ end
 task :cardinality do
   ruby './bin/cardinality'
 end
+
+task :unit_price_avg_in_germany do
+  ruby './bin/unit_price_avg_in_germany'
+end
