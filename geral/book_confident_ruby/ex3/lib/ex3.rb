@@ -15,3 +15,38 @@ def seconds_in_days(num_days)
 end
 
 puts seconds_in_days(2)
+
+class TimeCalc
+  SECONDS_IN_DAY = 24 * 60 * 60
+
+  def seconds_in_week
+    seconds_in_days(7)
+  end
+
+  def seconds_in_days(num_days)
+    num_days * SECONDS_IN_DAY
+  end
+end
+
+puts TimeCalc.new.seconds_in_days(2)
+
+puts TimeCalc.new.seconds_in_week
+
+class TimeCalc
+  def initialize
+    @start_date = Time.now
+  end
+
+  def time_n_days_from_now(num_days)
+    @start_date + num_days * 24 * 60 * 60
+  end
+end
+
+puts TimeCalc.new.time_n_days_from_now(2)
+
+def format_time
+  format = ENV.fetch('TIME_FORMAT', '%D %r')
+  Time.now.strftime(format)
+end
+
+puts format_time
