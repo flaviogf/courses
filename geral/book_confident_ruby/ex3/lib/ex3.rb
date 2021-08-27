@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'yaml'
+
 def seconds_in_day
   24 * 60 * 60
 end
@@ -46,6 +48,14 @@ puts TimeCalc.new.time_n_days_from_now(2)
 
 def format_time
   format = ENV.fetch('TIME_FORMAT', '%D %r')
+  Time.now.strftime(format)
+end
+
+puts format_time
+
+def format_time
+  prefs = YAML.load_file('time-prefs.yml')
+  format = prefs.fetch('format')
   Time.now.strftime(format)
 end
 
