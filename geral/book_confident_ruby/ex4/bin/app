@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/ex4'
+
+winners = [
+  Ex4::Place.new(0, 'first', 'Peasant\'s Quest game'),
+  Ex4::Place.new(1, 'second', 'Limozeen Album'),
+  Ex4::Place.new(2, 'third', 'Butter-da')
+]
+
+winners.each do |place|
+  puts "In #{place.name} place, #{winners[place.index]}!"
+  puts "You win: #{place.prize}!"
+end

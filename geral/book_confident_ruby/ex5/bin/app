@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/ex5'
+
+vim_config = Ex5::VimConfigFile.new
+
+puts File.open(vim_config).read
