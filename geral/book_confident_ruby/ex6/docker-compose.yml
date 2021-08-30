@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    volumes:
+      - ./:/usr/local/app
+    command:
+      - ./bin/app
