@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/ex6'
+
+include Ex6
+
+article = Article.new('A Modest Proposal')
+
+puts "Today's Feature: " + article
