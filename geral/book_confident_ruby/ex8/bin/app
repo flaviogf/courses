@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/ex8'
+
+start = Ex8::Point.new(23, 37)
+endpoint = [45, 89]
+
+Ex8.draw_line(start, endpoint)
