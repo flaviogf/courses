@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/ex9'
+
+current = Ex9::Meters.new(10)
+previous = Ex9::Feet.new(9)
+
+puts Ex9.report_altitude_change(current, previous)
