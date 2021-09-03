@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+task :default do
+  Dir[File.join(__dir__, 'test', '*_test.rb')].sort.each { |f| require f }
+end
