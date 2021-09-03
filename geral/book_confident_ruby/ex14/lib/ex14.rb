@@ -43,7 +43,15 @@ module Ex14
     end
 
     def change_to(state)
-      State(state)
+      @state = State(state)
+    end
+
+    def turn_on_lamp(color)
+      "Turning on #{color} lamp"
+    end
+
+    def ring_warning_bell
+      'Ring ring ring'
     end
 
     private
