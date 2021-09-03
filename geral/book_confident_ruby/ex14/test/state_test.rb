@@ -3,7 +3,7 @@
 require_relative 'test_helper'
 
 module Ex14
-  class TraficLight
+  class TrafficLight
     class StopTest < MiniTest::Test
       def setup
         @stop = Stop.new

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Ex14
-  class TraficLight
+  class TrafficLight
     class State
       def to_s
         name
@@ -39,6 +39,19 @@ module Ex14
 
       def next_state
         Caution.new
+      end
+    end
+
+    def change_to(state)
+      State(state)
+    end
+
+    private
+
+    def State(state)
+      case state
+      when State then state
+      else self.class.const_get(state.to_s.capitalize).new
       end
     end
   end
