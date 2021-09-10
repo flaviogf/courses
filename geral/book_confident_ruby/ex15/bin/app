@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require_relative '../lib/ex15'
+
+sink = Ex15::Bot.new
+logger = Ex15::BenchmarkedLogger.new(sink)
+
+logger.info('Random Work') do
+  puts 'Doing some work'
+  sleep(5)
+  puts 'Ending some work'
+end
