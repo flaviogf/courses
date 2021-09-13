@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+lib_path = File.join(File.expand_path(__dir__), '..', 'lib')
+
+$LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
+
+require 'ex17'
+
+include Ex17
+
+pp add_user(login: 'bob', password: '12345', dry_run: true)
+pp (add_user(login: 'bob', dry_run: true) rescue 'oops')
+pp add_user(login: 'bob', password: false, dry_run: true)
