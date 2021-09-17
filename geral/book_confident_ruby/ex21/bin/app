@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+lib_path = File.join(File.expand_path(__dir__), '..', 'lib')
+
+$LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
+
+require 'ex21'
+
+current_user = if ARGV.empty?
+                 Ex21::GuestUser.new
+               else
+                 Ex21::User.new(ARGV.first)
+               end
+
+pp Ex21.greeting(current_user)
+pp Ex21.button(current_user)
+pp Ex21.admin?(current_user)
