@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
 module Ex21
-  class User
-    attr_reader :name
-
-    def initialize(name)
-      @name = name
+  class GuestUser
+    def name
+      'anonymous'
     end
 
     def authenticated?
-      true
+      false
     end
 
     def role?(_role)
-      true
+      false
     end
   end
 end
