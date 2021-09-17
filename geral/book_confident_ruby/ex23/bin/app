@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+lib_path = File.join(File.expand_path(__dir__), '..', 'lib')
+
+$LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
+
+require 'ex23'
+
+include Ex23
+
+result = execute
+pp result
+pp result.something
+pp result.other_thing
+pp Actual(result)
