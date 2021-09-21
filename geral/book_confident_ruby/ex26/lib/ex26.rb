@@ -11,5 +11,10 @@ module Ex26
     def draw_point(point)
       point.draw_on(self)
     end
+
+    def draw_line(point_x, point_y)
+      point_x.draw_on(self)
+      point_y.draw_on(self)
+    end
   end
 end
