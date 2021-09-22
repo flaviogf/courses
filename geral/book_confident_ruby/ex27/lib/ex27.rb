@@ -5,6 +5,8 @@ module Ex27
 
   class Map
     def draw_point(point)
+      yield(point) if block_given?
+
       point.draw_on(self)
     end
   end
