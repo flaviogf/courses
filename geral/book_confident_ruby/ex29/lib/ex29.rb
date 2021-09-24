@@ -2,7 +2,8 @@
 
 module Ex29
   class << self
-    def find_words
+    def find_words(prefix)
+      []
     end
   end
 end
