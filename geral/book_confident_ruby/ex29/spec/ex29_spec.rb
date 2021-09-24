@@ -28,7 +28,7 @@ RSpec.describe Ex29 do
       end
     end
 
-    context 'when prefix is empty' do
+    context 'when received prefix is empty' do
       let(:words) { [] }
 
       before { allow(described_class).to receive(:words).and_return(words) }
