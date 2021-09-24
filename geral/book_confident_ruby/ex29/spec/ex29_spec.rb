@@ -27,5 +27,17 @@ RSpec.describe Ex29 do
         expect(result).to include('GNU')
       end
     end
+
+    context 'when prefix is empty' do
+      let(:words) { [] }
+
+      before { allow(described_class).to receive(:words).and_return(words) }
+
+      it 'returns an array' do
+        result = described_class.find_words('g')
+
+        expect(result).to be_an(Array)
+      end
+    end
   end
 end
