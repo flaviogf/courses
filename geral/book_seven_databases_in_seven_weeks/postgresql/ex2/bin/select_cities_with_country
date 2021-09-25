@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT cities.*, country_name
+  FROM cities JOIN countries ON cities.country_code = countries.country_code;
+SQL
+
+rows = conn.exec(sql)
+
+rows.each { |row| pp row }
