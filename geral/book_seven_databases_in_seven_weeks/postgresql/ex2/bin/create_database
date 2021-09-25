@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', user: 'postgres', password: 'postgres')
+
+sql = 'CREATE DATABASE seven_dbs'
+
+pp conn.exec(sql)

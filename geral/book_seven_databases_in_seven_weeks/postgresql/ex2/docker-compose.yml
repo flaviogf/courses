@@ -5,3 +5,8 @@ services:
     build: .
     volumes:
       - ./:/usr/local/app
+  db:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
