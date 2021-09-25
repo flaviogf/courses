@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  CREATE TABLE cities (
+    name text NOT NULL,
+    postal_code char(9) CHECK(postal_code <> ''),
+    country_code char(2) REFERENCES countries,
+    PRIMARY KEY(country_code, postal_code)
+  )
+SQL
+
+pp conn.exec(sql)
