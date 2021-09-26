@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'csv'
+require 'pg'
+
+filename = File.join(File.expand_path(__dir__), '..', 'venues.csv')
+
+row = ->((name, postal_code, country_code)) { "('#{name}', '#{postal_code}', '#{country_code}')" }
+
+rows = CSV.readlines(filename).map(&row)
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = "INSERT INTO venues (name, postal_code, country_code) VALUES #{rows.join(',')}"
+
+pp conn.exec(sql)

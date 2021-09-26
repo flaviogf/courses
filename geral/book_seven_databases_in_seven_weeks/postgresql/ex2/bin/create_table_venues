@@ -12,7 +12,7 @@ sql = <<~SQL
     name varchar(255),
     street_address text,
     type char(7) CHECK(type in ('public', 'private')) DEFAULT 'public',
-    postal_code char(2),
+    postal_code char(9),
     country_code char(2),
     FOREIGN KEY(country_code, postal_code) REFERENCES cities (country_code, postal_code) MATCH FULL
   );
