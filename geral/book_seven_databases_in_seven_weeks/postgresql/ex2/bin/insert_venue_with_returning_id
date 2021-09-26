@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+venue = {
+  name: 'Voodoo Doughnut',
+  postal_code: '97206',
+  country_code: 'us'
+}
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = 'INSERT INTO venues (name, postal_code, country_code) VALUES ($1, $2, $3) RETURNING venue_id'
+
+result = conn.exec_params(sql, [venue.fetch(:name), venue.fetch(:postal_code), venue.fetch(:country_code)])
+
+pp result[0]
