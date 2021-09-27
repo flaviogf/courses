@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT e.title, v.name
+  FROM events e LEFT JOIN venues v
+  ON e.venue_id = v.venue_id
+SQL
+
+results = conn.exec(sql)
+
+results.each { |row| pp row }
