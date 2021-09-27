@@ -1,23 +1,54 @@
 #!/usr/bin/env ruby
 
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'csv'
-require 'date'
 require 'pg'
 
 root_dir = File.join(File.expand_path(__dir__), '..')
 
 countries = []
 cities = []
+venues = []
 events = []
 
 [
-  Thread.new { CSV.readlines(File.join(root_dir, 'countries.csv')).map { |row| countries << row } },
-  Thread.new { CSV.readlines(File.join(root_dir, 'cities.csv')).map { |row| cities << row } },
-  Thread.new { CSV.readlines(File.join(root_dir, 'events.csv')).map { |row| events << row } }
+  Thread.new do
+    CSV.readlines(File.join(root_dir, 'countries.csv')).each do |(country_code, country_name)|
+      countries << "('#{country_code}', '#{country_name}')"
+    end
+  end,
+  Thread.new do
+    CSV.readlines(File.join(root_dir, 'cities.csv')).map do |(name, postal_code, country_code)|
+      cities << "('#{name}', '#{postal_code}', '#{country_code}')"
+    end
+  end,
+  Thread.new do
+    CSV.readlines(File.join(root_dir, 'venues.csv')).each do |(name, postal_code, country_code)|
+      venues << "('#{name}', '#{postal_code}', '#{country_code}')"
+    end
+  end,
+  Thread.new do
+    CSV.readlines(File.join(root_dir, 'events.csv')).map do |(title, starts, ends, venue_id)|
+      next events << "('#{title}', '#{starts}', '#{ends}', NULL)" if venue_id.nil?
+
+      events << "('#{title}', '#{starts}', '#{ends}', '#{venue_id}')"
+    end
+  end
 ].each(&:join)
 
-pp countries
-pp cities
-pp events
+countries_statement = "INSERT INTO countries VALUES #{countries.join(',')}"
+cities_statement = "INSERT INTO cities VALUES #{cities.join(',')}"
+venues_statement = "INSERT INTO venues (name, postal_code, country_code) VALUES #{venues.join(',')}"
+events_statement = "INSERT INTO events (title, starts, ends, venue_id) VALUES #{events.join(',')}"
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+pp conn
+
+conn.transaction do
+  pp conn.exec(countries_statement)
+  pp conn.exec(cities_statement)
+  pp conn.exec(venues_statement)
+  pp conn.exec(events_statement)
+end
