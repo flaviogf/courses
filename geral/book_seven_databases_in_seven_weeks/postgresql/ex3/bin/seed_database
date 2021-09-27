@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'csv'
+require 'date'
+require 'pg'
+
+root_dir = File.join(File.expand_path(__dir__), '..')
+
+countries = []
+cities = []
+events = []
+
+[
+  Thread.new { CSV.readlines(File.join(root_dir, 'countries.csv')).map { |row| countries << row } },
+  Thread.new { CSV.readlines(File.join(root_dir, 'cities.csv')).map { |row| cities << row } },
+  Thread.new { CSV.readlines(File.join(root_dir, 'events.csv')).map { |row| events << row } }
+].each(&:join)
+
+pp countries
+pp cities
+pp events
