@@ -45,4 +45,7 @@ INSERT INTO venues (name, postal_code, country_code) VALUES
 INSERT INTO events (title, starts, ends, venue_id) VALUES
 ('Fight Club', '2018-02-15 17:30:00', '2018-02-15 19:30:00', 1),
 ('April Fools Day', '2018-04-01 00:00:00', '2018-04-01 23:59:00', NULL),
-('Christmas Day', '2018-02-15 19:30:00', '2018-12-25 23:59:00', NULL);
+('Christmas Day', '2018-02-15 19:30:00', '2018-12-25 23:59:00', NULL),
+('Wedding', '2018-02-26 21:00:00', '2018-02-26 23:00:00', 1),
+('Dinner with Mom', '2018-02-26 18:00:00', '2018-02-26 20:30:00', 1),
+(E'Valentine\'s Day', '2018-02-14 00:00:00', '2018-02-14 23:59:00', NULL);
