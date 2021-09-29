@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = 'SELECT add_event($1, $2, $3, $4, $5, $6)'
+
+event = {
+  title: 'House Party',
+  starts: '2018-05-03 23:00:00',
+  ends: '2018-05-04 02:00:00',
+  venue: "Run's House",
+  postal: '97206',
+  country: 'us'
+}
+
+pp conn.exec_params(sql, event.values)
