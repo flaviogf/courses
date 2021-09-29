@@ -12,6 +12,13 @@ sql = <<~SQL
   WHERE title LIKE '%Day%';
 SQL
 
-results = conn.exec(sql)
+conn.exec(sql).each { |row| pp row }
 
-results.each { |row| pp row }
+sql = <<~SQL
+  SELECT min(starts), max(ends)
+  FROM events JOIN venues
+  ON events.venue_id = venues.venue_id
+  WHERE venues.name = 'Voodoo Doughnut'
+SQL
+
+conn.exec(sql).each { |row| pp row }
