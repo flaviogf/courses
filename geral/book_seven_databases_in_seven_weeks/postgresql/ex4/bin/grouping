@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT venue_id, count(*)
+  FROM events
+  GROUP BY venue_id;
+SQL
+
+conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT venue_id
+  FROM events
+  GROUP BY venue_id
+  HAVING count(*) >= 2 AND venue_id IS NOT NULL;
+SQL
+
+conn.exec(sql).each { |row| pp row }
