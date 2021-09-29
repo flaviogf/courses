@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+class Transactions
+  class << self
+    def delete_all
+      conn.transaction(&method(:delete))
+    end
+
+    def delete
+      conn.exec('DELETE FROM events;')
+      raise ArgumentError, 'oops'
+    end
+
+    def select
+      conn.exec('SELECT * FROM events;').each { |row| pp row }
+    end
+
+    def conn
+      @conn ||= PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+    end
+  end
+end
+
+begin
+  Transactions.delete_all
+rescue ArgumentError
+  Transactions.select
+end
