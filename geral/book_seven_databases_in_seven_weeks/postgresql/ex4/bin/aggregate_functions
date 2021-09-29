@@ -22,3 +22,21 @@ sql = <<~SQL
 SQL
 
 conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT count(*) FROM events WHERE venue_id = 1;
+SQL
+
+conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT count(*) FROM events WHERE venue_id = 2;
+SQL
+
+conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT count(*) FROM events WHERE venue_id IS NULL;
+SQL
+
+conn.exec(sql).each { |row| pp row }
