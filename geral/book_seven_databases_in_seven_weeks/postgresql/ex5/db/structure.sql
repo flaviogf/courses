@@ -8,3 +8,9 @@ CREATE TABLE genres (
   name text UNIQUE,
   position integer
 );
+
+CREATE TABLE movies (
+  movie_id SERIAL PRIMARY KEY,
+  title text,
+  genre cube
+);
