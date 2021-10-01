@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT * FROM movies NATURAL JOIN movies_actors NATURAL JOIN actors
+  WHERE metaphone(name, 6) = metaphone('Broos Wils', 6);
+SQL
+
+conn.exec(sql).each { |row| pp row }
