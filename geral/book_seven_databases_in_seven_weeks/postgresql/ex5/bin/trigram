@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT show_trgm('Avatar');
+SQL
+
+conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT title FROM movies WHERE title % 'Avatre';
+SQL
+
+conn.exec(sql).each { |row| pp row }
