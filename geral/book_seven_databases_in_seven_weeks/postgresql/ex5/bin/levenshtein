@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT levenshtein('bat', 'fads') fad,
+         levenshtein('bat', 'fat') fat,
+         levenshtein('bat', 'bat') bat;
+SQL
+
+conn.exec(sql).each { |row| pp row }
