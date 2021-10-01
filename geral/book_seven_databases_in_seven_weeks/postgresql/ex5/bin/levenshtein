@@ -13,3 +13,9 @@ sql = <<~SQL
 SQL
 
 conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT movie_id, title FROM movies WHERE levenshtein(lower(title), lower('a hard day nght')) <= 3
+SQL
+
+conn.exec(sql).each { |row| pp row }
