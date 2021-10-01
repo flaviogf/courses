@@ -17,3 +17,10 @@ sql = <<~SQL
 SQL
 
 conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT to_tsvector('A Hard Days"s Night'),
+         to_tsquery('english', 'night & day')
+SQL
+
+conn.exec(sql).each { |row| pp row }
