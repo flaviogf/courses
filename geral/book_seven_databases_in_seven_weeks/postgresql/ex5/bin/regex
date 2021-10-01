@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'pg'
+
+conn = PG.connect(host: 'db', dbname: 'seven_dbs', user: 'postgres', password: 'postgres')
+
+sql = <<~SQL
+  SELECT count(*) FROM movies WHERE title !~*'^the.*';
+SQL
+
+conn.exec(sql).each { |row| pp row }
