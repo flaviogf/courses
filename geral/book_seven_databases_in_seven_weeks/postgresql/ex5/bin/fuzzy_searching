@@ -11,3 +11,9 @@ sql = <<~SQL
 SQL
 
 conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT title FROM movies WHERE title ILIKE 'stardust_%';
+SQL
+
+conn.exec(sql).each { |row| pp row }
