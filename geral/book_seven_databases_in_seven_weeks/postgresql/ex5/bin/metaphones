@@ -12,3 +12,11 @@ sql = <<~SQL
 SQL
 
 conn.exec(sql).each { |row| pp row }
+
+sql = <<~SQL
+  SELECT * FROM actors
+  WHERE metaphone(name, 8) % metaphone('Robin Williams', 8)
+  ORDER BY levenshtein(lower('Robin Williams'), lower(name));
+SQL
+
+conn.exec(sql).each { |row| pp row }
