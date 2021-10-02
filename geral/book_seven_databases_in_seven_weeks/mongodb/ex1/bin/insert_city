@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'date'
+require 'mongo'
+
+def insert_city(**attr)
+  name = attr.fetch(:name)
+  population = Integer(attr.fetch(:population))
+  last_census = Date.parse(attr.fetch(:last_census))
+  famous_for = Array(attr.fetch(:famous_for))
+  mayor_info = attr.fetch(:mayor_info)
+
+  doc = { name: name, population: population, last_census: last_census, famous_for: famous_for, mayor_info: mayor_info }
+
+  db[:towns].insert_one(doc)
+end
+
+def db
+  Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 'mongodb', auth_source: 'admin').database
+end
+
+pp insert_city(
+  name: 'Punxsutawney',
+  population: 6200,
+  last_census: '2016-01-31',
+  famous_for: ['Punxsutawney Phil'],
+  mayor_info: { name: 'Richard Alexander' }
+)
+
+pp insert_city(
+  name: 'Portland',
+  population: 582_000,
+  last_census: '2016-09-20',
+  famous_for: %w[beer food Portlandia],
+  mayor_info: { name: 'Ted Wheeler', party: 'D' }
+)
