@@ -20,3 +20,7 @@ doc = {
 }
 
 pp db[:towns].insert_one(doc)
+
+pp db.collections
+
+db[:towns].find.each { |row| pp row }
