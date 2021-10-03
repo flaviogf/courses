@@ -19,12 +19,16 @@ doc = {
   mayor: { name: 'Richard Alexander' }
 }
 
-pp db[:town].insert_one(doc)
+pp db[:towns].insert_one(doc)
 
-db[:town].find(_id: doc[:_id]).each { |t| pp t }
+db[:towns].find(_id: doc[:_id]).each { |t| pp t }
 
-db[:town].find(_id: doc[:_id]).projection(name: 1).each { |t| pp t }
+db[:towns].find(_id: doc[:_id]).projection(name: 1).each { |t| pp t }
 
-db[:town].find(_id: doc[:_id]).projection(name: 0).each { |t| pp t }
+db[:towns].find(_id: doc[:_id]).projection(name: 0).each { |t| pp t }
 
-db[:town].find(name: /^P/, population: { '$lt' => 10_000 }).projection(_id: 0, name: 1).each { |t| pp t }
+db[:towns].find(name: /^P/, population: { '$lt' => 10_000 }).projection(_id: 0, name: 1).each { |t| pp t }
+
+population_range = { '$lt' => 1_000_000, '$gt' => 10_000 }
+
+db[:towns].find(name: /^P/, population: population_range).projection(name: 1).each { |t| pp t }
