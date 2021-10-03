@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'bson'
+require 'date'
+require 'mongo'
+
+client = Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 'mongodb', auth_source: 'admin')
+
+db = client.database
+
+doc = {
+  _id: BSON::ObjectId.new,
+  name: 'Punxsutawney',
+  population: 6200,
+  last_census: Date.parse('2016-01-31'),
+  famous_for: ['Punxsutawney Phil'],
+  mayor: { name: 'Richard Alexander' }
+}
+
+pp db[:town].insert_one(doc)
+
+db[:town].find(_id: doc[:_id]).each { |t| pp t }
+
+db[:town].find(_id: doc[:_id]).projection(name: 1).each { |t| pp t }
+
+db[:town].find(_id: doc[:_id]).projection(name: 0).each { |t| pp t }
