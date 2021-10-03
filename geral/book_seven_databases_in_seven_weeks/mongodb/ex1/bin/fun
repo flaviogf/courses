@@ -11,8 +11,8 @@ db = client.database
 doc = {
   name: 'New York',
   population: 22_200_000,
-  lastCensus: Time.now.getutc,
-  famousFor: ['the MOMA', 'food', 'Derek Jeter'],
+  last_census: Time.now.getutc,
+  famous_for: ['the MOMA', 'food', 'Derek Jeter'],
   mayor: {
     name: 'Bill de Blasio',
     party: 'D'

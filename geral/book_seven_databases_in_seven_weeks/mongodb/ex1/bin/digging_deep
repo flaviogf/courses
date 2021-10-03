@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'mongo'
+
+client = Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 'mongodb', auth_source: 'admin')
+
+db = client.database
+
+db[:towns].find(famous_for: 'food').projection(_id: 0, name: 1, famous_for: 1).each { |t| pp t }
+
+db[:towns].find(famous_for: /moma/).projection(_id: 0, name: 1, famous_for: 1).each { |t| pp t }
