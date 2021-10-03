@@ -26,3 +26,5 @@ db[:town].find(_id: doc[:_id]).each { |t| pp t }
 db[:town].find(_id: doc[:_id]).projection(name: 1).each { |t| pp t }
 
 db[:town].find(_id: doc[:_id]).projection(name: 0).each { |t| pp t }
+
+db[:town].find(name: /^P/, population: { '$lt' => 10_000 }).projection(_id: 0, name: 1).each { |t| pp t }
