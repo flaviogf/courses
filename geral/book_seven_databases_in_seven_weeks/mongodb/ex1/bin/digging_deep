@@ -15,3 +15,5 @@ db[:towns].find(famous_for: /moma/).projection(_id: 0, name: 1, famous_for: 1).e
 db[:towns].find(famous_for: { '$all' => %w[food beer] }).projection(_id: 0, name: 1, famous_for: 1).each { |t| pp t }
 
 db[:towns].find(famous_for: { '$nin' => %w[food beer] }).projection(_id: 0, name: 1, famous_for: 1).each { |t| pp t }
+
+db[:towns].find('mayor.party' => 'D').projection(_id: 0, name: 1, mayor: 1).each { |t| pp t }
