@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'mongo'
+
+client = Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 'mongodb', auth_source: 'admin')
+
+db = client.database
+
+pp db[:countries].insert_one(
+  _id: 'us',
+  name: 'United States',
+  exports: {
+    foods: [
+      { name: 'bacon', tasty: true },
+      { name: 'burgers' }
+    ]
+  }
+)
+
+pp db[:countries].insert_one(
+  _id: 'ca',
+  name: 'Canada',
+  exports: {
+    foods: [
+      { name: 'bacon', tasty: false },
+      { name: 'syrup', tasty: true }
+    ]
+  }
+)
+
+pp db[:countries].insert_one(
+  _id: 'mx',
+  name: 'Mexico',
+  exports: {
+    foods: [
+      { name: 'salsa', tasty: true, condiment: true }
+    ]
+  }
+)
+
+pp db[:countries].count_documents
