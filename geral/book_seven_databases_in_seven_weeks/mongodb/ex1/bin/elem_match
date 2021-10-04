@@ -41,3 +41,6 @@ pp db[:countries].insert_one(
 )
 
 pp db[:countries].count_documents
+
+db[:countries].find('exports.foods.name' => 'bacon', 'exports.foods.tasty' => true)
+              .projection(_id: 0, name: 1).each { |t| pp t }
