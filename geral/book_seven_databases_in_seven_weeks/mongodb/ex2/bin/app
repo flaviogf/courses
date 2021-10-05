@@ -2,7 +2,25 @@
 
 # frozen_string_literal: true
 
+require 'csv'
+require 'json'
 require 'mongo'
+
+countries = IO.readlines(File.join(File.expand_path(__dir__), '..', 'countries.csv')).collect do |row|
+  id, name, foods = row.split(';')
+
+  {
+    insert_one: {
+      _id: String(id),
+      name: String(name),
+      exports: {
+        foods: JSON.parse(foods)
+      }
+    }
+  }
+end
+
+pp countries
 
 client = Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 'mongodb', auth_source: 'admin')
 
