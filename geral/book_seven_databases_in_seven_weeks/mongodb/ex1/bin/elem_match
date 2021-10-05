@@ -44,3 +44,6 @@ pp db[:countries].count_documents
 
 db[:countries].find('exports.foods.name' => 'bacon', 'exports.foods.tasty' => true)
               .projection(_id: 0, name: 1).each { |t| pp t }
+
+db[:countries].find('exports.foods' => { '$elemMatch' => { name: 'bacon', tasty: true } })
+              .projection(_id: 0, name: 1).each { |t| pp t }
