@@ -26,4 +26,10 @@ client = Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 
 
 db = client.database
 
-pp db
+db[:countries].bulk_write(countries)
+
+pp db[:countries].count_documents
+
+db[:countries].find(_id: 'mx', name: 'United States').projection(_id: 1).each { |c| pp c }
+
+db[:countries].find('$or' => [{ _id: 'mx' }, { name: 'United States' }]).projection(_id: 1).each { |c| pp c }

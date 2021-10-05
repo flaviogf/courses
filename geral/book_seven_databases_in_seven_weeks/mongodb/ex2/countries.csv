@@ -1,2 +1,3 @@
 us;United States;{ "foods": [{ "name": "bacon", "tasty": true }, { "name": "burgers" }] }
-ca;Canada;{ "foods": [{ "name": "bacon", "tasty": false }] }
+ca;Canada;{ "foods": [{ "name": "bacon", "tasty": false }, { "name": "syrup", "tasty": true }] }
+mx;Mexico;{ "foods": [{ "name": "salsa", "tasty": true, "condiment": true }] }
