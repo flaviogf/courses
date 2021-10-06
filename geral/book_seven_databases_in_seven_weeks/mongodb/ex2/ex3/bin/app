@@ -8,9 +8,10 @@ require 'mongo'
 
 filename = File.join(File.expand_path(__dir__), '..', 'cities.csv')
 
-cities = CSV.readlines(filename).collect do |(name, population, last_census, famous_for, mayor_name, mayor_party)| 
+cities = CSV.readlines(filename).collect do |(name, population, last_census, famous_for, mayor_name, mayor_party)|
   {
     insert_one: {
+      _id: BSON::ObjectId.new,
       name: name,
       population: Integer(population),
       last_census: Date.parse(last_census),
@@ -30,3 +31,5 @@ db = client.database
 collection = db[:towns]
 
 collection.bulk_write(cities)
+
+pp collection.count_documents
