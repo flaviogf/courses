@@ -33,6 +33,7 @@ cities = IO.readlines(filename, chomp: true).drop(1).collect do |row|
 
   {
     insert_one: {
+      _id: BSON::ObjectId.new,
       name: name,
       population: Integer(population),
       last_census: Date.parse(last_census),
