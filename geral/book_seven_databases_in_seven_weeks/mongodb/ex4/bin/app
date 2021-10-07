@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'date'
+require 'json'
+require 'mongo'
+
+filename = File.join(File.expand_path(__dir__), '..', 'countries.csv')
+
+countries = IO.readlines(filename, chomp: true).drop(1).collect do |row|
+  id, name, foods = row.to_s.split(';')
+
+  {
+    insert_one: {
+      _id: id,
+      name: name,
+      exports: {
+        foods: JSON.parse(foods)
+      }
+    }
+  }
+end
+
+pp countries
+
+filename = File.join(File.expand_path(__dir__), '..', 'cities.csv')
+
+cities = IO.readlines(filename, chomp: true).drop(1).collect do |row|
+  name, population, last_census, famous_for, mayor_name, mayor_party = row.split(';')
+
+  famous_for = famous_for.split(',')
+
+  {
+    insert_one: {
+      name: name,
+      population: Integer(population),
+      last_census: Date.parse(last_census),
+      famous_for: Array(famous_for),
+      mayor: {
+        name: mayor_name,
+        party: mayor_party
+      }
+    }
+  }
+end
+
+pp cities
+
+client = Mongo::Client.new(['db'], database: 'book', user: 'mongodb', password: 'mongodb', auth_source: 'admin')
+
+db = client.database
+
+pp db[:countries].bulk_write(countries)
+
+pp db[:towns].bulk_write(cities)
