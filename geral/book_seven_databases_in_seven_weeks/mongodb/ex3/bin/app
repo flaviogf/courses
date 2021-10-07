@@ -37,3 +37,7 @@ pp collection.count_documents
 collection.update_one({ _id: cities.first.dig(:insert_one, :_id) }, { '$set' => { state: 'OR' } })
 
 collection.find(_id: cities.first.dig(:insert_one, :_id)).each { |c| pp c }
+
+collection.update_one({ _id: cities.first.dig(:insert_one, :_id) }, { '$inc' => { population: 1000 } })
+
+collection.find(_id: cities.first.dig(:insert_one, :_id)).each { |c| pp c }
