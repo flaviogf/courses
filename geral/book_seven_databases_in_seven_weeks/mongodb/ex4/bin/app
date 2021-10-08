@@ -55,3 +55,14 @@ db = client.database
 pp db[:countries].bulk_write(countries)
 
 pp db[:towns].bulk_write(cities)
+
+db[:towns].update_one(
+  { _id: cities.first.dig(:insert_one, :_id) },
+  { '$set' => { country: { '$ref' => 'countries', '$id' => countries.first.dig(:insert_one, :_id) } } }
+)
+
+new_york = db[:towns].find(_id: cities.first.dig(:insert_one, :_id)).first
+
+pp db[:countries].find(_id: new_york.dig('country', '$id')).first
+
+pp db[new_york.dig('country', '$ref').to_sym].find(_id: new_york.dig('country', '$id')).first
