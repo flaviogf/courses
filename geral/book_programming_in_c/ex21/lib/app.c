@@ -11,7 +11,7 @@ main(int argc, char **argv)
 
   for(int n = 1; n <= 10; ++n) {
     triangularNumber += n;
-    printf("%i %i\n", n, triangularNumber);
+    printf("%2i %i\n", n, triangularNumber);
   }
 
   return 0;
