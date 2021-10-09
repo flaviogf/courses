@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int
-main()
+main(int argc, char **argv)
 {
   printf("TABLE OF TRIANGULAR NUMBERS\n\n");
   printf("n SUM from 1 to n\n");
