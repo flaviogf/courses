@@ -12,9 +12,8 @@ factorial(int n)
 int
 main(int argc, char **argv)
 {
-  for(int i = 1; i <= 10; ++i) {
+  for(int i = 1; i <= 10; ++i)
     printf("%i! = %i\n", i, factorial(i));
-  }
 
   return 0;
 }
