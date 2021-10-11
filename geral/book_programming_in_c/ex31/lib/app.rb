@@ -8,4 +8,4 @@ def factorial(number)
   number * factorial(number - 1)
 end
 
-pp factorial(5)
+(1..10).each { |n| puts "#{n}! = #{factorial(n)}" }
