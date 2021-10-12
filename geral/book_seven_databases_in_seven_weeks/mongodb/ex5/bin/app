@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+lib_path = File.join(File.expand_path(__dir__), '..', 'lib')
+
+$LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
+
+require 'ex5'
+
+Ex5.import_countries
+Ex5.remove_country

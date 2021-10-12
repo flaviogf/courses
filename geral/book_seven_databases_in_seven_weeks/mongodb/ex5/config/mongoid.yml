@@ -1,0 +1,10 @@
+development:
+  clients:
+    default:
+      database: book
+      hosts:
+        - db
+      options:
+        user: mongodb
+        password: mongodb
+        auth_source: admin

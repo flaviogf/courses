@@ -1,6 +1,12 @@
 version: '3.9'
 
 services:
+  app:
+    build: .
+    volumes:
+      - ./:/usr/local/app
+    environment:
+      MONGOID_ENV: development
   db:
     image: mongo:3.2.20
     environment:

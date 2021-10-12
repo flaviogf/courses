@@ -1,0 +1,3 @@
+id;name;foods
+us;United States;[{"name": "bacon", "tasty": true},{"name": "burgers"}]
+ca;Canada;[{"name": "bacon", "tasty": false},{"name": "syrup", "tasty": true}]
