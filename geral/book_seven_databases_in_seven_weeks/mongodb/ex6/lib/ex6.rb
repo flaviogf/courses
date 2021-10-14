@@ -11,7 +11,11 @@ module Ex6
 
       db[:phones].bulk_write(phones)
 
-      puts 'Well done'
+      :cool
+    end
+
+    def head
+      Array(db[:phones].find.limit(2))
     end
 
     private

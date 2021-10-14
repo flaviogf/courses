@@ -8,4 +8,6 @@ $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
 
 require 'ex6'
 
-Ex6.populate_phones
+puts Ex6.populate_phones
+
+puts Ex6.head
