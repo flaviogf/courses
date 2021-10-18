@@ -16,12 +16,11 @@ void printContentOf(float);
 
 int main()
 {
-
   float accumulator = 0;
-  float number;
   char operator;
 
   do {
+    float number;
     printf("Begin Calculations\n");
     scanf("%f %c", &number, &operator);
 
