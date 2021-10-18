@@ -1,13 +1,21 @@
 #include <stdio.h>
 
+void accumulatorOperation(float *, float);
+
+void endOperation(float *, float);
+
+void sumOperation(float *, float);
+
+void subtractionOperation(float *, float);
+
+void multiplicationOperation(float *, float);
+
+void divisionOperation(float *, float);
+
+void printContentOf(float);
+
 int main()
 {
-  void accumulatorOperation(float *, float);
-  void endOperation(float *, float);
-  void sumOperation(float *, float);
-  void subtractionOperation(float *, float);
-  void multiplicationOperation(
-  void printContentOf(float);
 
   float accumulator = 0;
   float number;
@@ -31,12 +39,10 @@ int main()
         subtractionOperation(&accumulator, number);
         break;
       case '*':
-        accumulator *= number;
-        printContentOf(accumulator);
+        multiplicationOperation(&accumulator, number);
         break;
       case '/':
-        accumulator /= number;
-        printContentOf(accumulator);
+        divisionOperation(&accumulator, number);
         break;
     }
   } while(operator != 'E');
@@ -47,32 +53,31 @@ int main()
 }
 
 void accumulatorOperation(float *accumulator, float value) {
-  void printContentOf(float);
-
   *accumulator = value;
-
   printContentOf(*accumulator);
 }
 
 void endOperation(float *accumulator, float value) {
-  void printContentOf(float);
-
   printContentOf(*accumulator);
 }
 
 void sumOperation(float *accumulator, float value) {
-  void printContentOf(float);
-
   *accumulator += value;
-
   printContentOf(*accumulator);
 }
 
 void subtractionOperation(float *accumulator, float value) {
-  void printContentOf(float);
-
   *accumulator -= value;
+  printContentOf(*accumulator);
+}
 
+void multiplicationOperation(float *accumulator, float value) {
+  *accumulator *= value;
+  printContentOf(*accumulator);
+}
+
+void divisionOperation(float *accumulator, float value) {
+  *accumulator /= value;
   printContentOf(*accumulator);
 }
 
