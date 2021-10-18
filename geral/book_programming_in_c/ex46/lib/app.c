@@ -19,9 +19,10 @@ int main()
   float accumulator = 0;
   char operator;
 
+  printf("Begin Calculations\n");
+
   do {
     float number;
-    printf("Begin Calculations\n");
     scanf("%f %c", &number, &operator);
 
     switch(operator) {
