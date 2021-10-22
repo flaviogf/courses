@@ -2,13 +2,30 @@
 
 int main()
 {
-  int numbers[50];
+  int n = 150;
+  int i, j;
 
-  for(int i = 1, j = 2; i < 50; ++i, ++j)
-    numbers[i] = j;
+  int P[n];
+  for(i = 0; i < n; i++)
+    P[i] = 0;
 
-  for(int i = 0; i < 50; ++i)
-    printf("%i ", numbers[i]);
+  i = 2;
+  j = 2;
+
+  while(i < n) {
+    while(i * j <= n) {
+      P[i * j] = 1;
+      ++j;
+    }
+
+    ++i;
+    j = i;
+  }
+
+  for(i = 2; i < n; i++) {
+    if(P[i] == 0)
+      printf("%d ", i);
+  }
 
   printf("\n");
 
