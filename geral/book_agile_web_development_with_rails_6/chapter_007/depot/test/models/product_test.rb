@@ -23,4 +23,18 @@ class ProductTest < ActiveSupport::TestCase
     product.price = 1
     assert product.valid?
   end
+
+  test 'image url' do
+    ok = %w[fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg https://a.b.c/x/y/z/fred.gif]
+
+    ok.each { |image_url| assert new_product(image_url).valid? }
+
+    bad = %w[fred.doc fred.gif/more fred.gif.more]
+
+    bad.each { |image_url| assert new_product(image_url).invalid? }
+  end
+
+  def new_product(image_url)
+    Product.new(title: 'My book title', description: 'yyy', price: 1, image_url: image_url)
+  end
 end
