@@ -31,4 +31,16 @@ class ProductTest < ActiveSupport::TestCase
     product.valid?
     assert product.errors[:title].any?
   end
+
+  test 'when image_url does not match the pattern expect to has an error' do
+    product = Product.new(image_url: 'test')
+    product.valid?
+    assert product.errors[:image_url].any?
+  end
+
+  test 'when image_url matches the pattern expect to not has error' do
+    product = Product.new(image_url: 'test.jpg')
+    product.valid?
+    assert product.errors[:image_url].empty?
+  end
 end
