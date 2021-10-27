@@ -3,6 +3,7 @@ require 'test_helper'
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @product = products(:ruby)
+    @product_title = "Book #{rand(1000)}"
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create product" do
     assert_difference('Product.count') do
-      post products_url, params: { product: { description: @product.description, image_url: @product.image_url, price: @product.price, title: @product.title } }
+      post products_url, params: { product: { description: @product.description, image_url: @product.image_url, price: @product.price, title: @product_title } }
     end
 
     assert_redirected_to product_url(Product.last)
