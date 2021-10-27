@@ -25,7 +25,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:price].any?
   end
 
-  test 'when title is not unique' do
+  test 'when title is not unique expect to has an error' do
     ruby = products(:ruby)
     product = Product.new(title: ruby.title)
     product.valid?
