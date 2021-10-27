@@ -24,4 +24,11 @@ class ProductTest < ActiveSupport::TestCase
     product.valid?
     assert product.errors[:price].any?
   end
+
+  test 'when title is not unique' do
+    ruby = products(:ruby)
+    product = Product.new(title: ruby.title)
+    product.valid?
+    assert product.errors[:title].any?
+  end
 end
