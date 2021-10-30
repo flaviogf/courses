@@ -1,4 +1,5 @@
 CC = gcc
+CFLAGS = -I ./
 
 TARGET = app
 OBJS = app.o helper.o
