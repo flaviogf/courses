@@ -1,16 +1,16 @@
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -I lib
 
 BUILD_DIR = bin
-TARGET = bin/app
-OBJS = lib/app.o
+TARGET = app
+OBJS = lib/helper.o lib/app.o
 
-$(TARGET): $(OBJS)
-	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -o $@ $<
+$(BUILD_DIR)/$(TARGET): $(OBJS) 
+	mkdir -p $(dir $@)
+	$(CC) $(OBJS) $(CFLAGS) -o $@
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) $< -o $@
 
 .PHONY:
 clean:
