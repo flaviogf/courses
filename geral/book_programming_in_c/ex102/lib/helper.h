@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 struct date
 {
   int month;
