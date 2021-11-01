@@ -1,8 +1,8 @@
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -I lib
 
 TARGET = bin/app
-OBJS = lib/app.o
+OBJS = lib/helper.o lib/app.o
 
 $(TARGET): $(OBJS)
 	mkdir -p $(dir $@)
