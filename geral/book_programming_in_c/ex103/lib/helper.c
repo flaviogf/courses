@@ -3,21 +3,11 @@
 
 struct date updateDate(struct date d)
 {
-  if(d.day != numberOfDays(d)) {
-    struct date result = { .day = d.day + 1, .month = d.month, .year = d.year, };
+  if(d.day != numberOfDays(d)) return (struct date) { .day = d.day + 1, .month = d.month, .year = d.year, };
 
-    return result;
-  }
+  if(d.month == 12) return (struct date) { .day = 1, .month = 1, .year = d.year + 1, };
 
-  if(d.month == 12) {
-    struct date result = { .day = 1, .month = 1, .year = d.year + 1, };
-
-    return result;
-  }
-
-  struct date result = { .day = 1, .month = d.month + 1, .year = d.year };
-
-  return result;
+  return (struct date) { .day = 1, .month = d.month + 1, .year = d.year };
 }
 
 int numberOfDays(struct date d)
