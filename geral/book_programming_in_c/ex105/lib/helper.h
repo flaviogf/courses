@@ -4,3 +4,5 @@ struct time
   int minutes;
   int seconds;
 };
+
+struct time timeUpdate(struct time now);

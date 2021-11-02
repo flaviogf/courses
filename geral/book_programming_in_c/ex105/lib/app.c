@@ -13,7 +13,9 @@ int main(int argc, char **argv)
   };
 
   for(int i = 0; i < 5; ++i) {
-    printf("Time is %.2i:%.2i:%.2i\n", times[i].hour, times[i].minutes, times[i].seconds);
+    printf("Time is %.2i:%.2i:%.2i", times[i].hour, times[i].minutes, times[i].seconds);
+    times[i] = timeUpdate(times[i]);
+    printf(" ...one second later it's %.2i:%.2i:%.2i\n", times[i].hour, times[i].minutes, times[i].seconds);
   }
 
   return EXIT_SUCCESS;
