@@ -12,18 +12,10 @@ int n(struct date d)
 
 int f(int year, int month)
 {
-  if (month <= 2) {
-    return year - 1;
-  }
-
-  return year;
+  return month <= 2 ? year - 1 : year;
 }
 
 int g(int month)
 {
-  if (month <= 2) {
-    return month + 13;
-  }
-
-  return month + 1;
+  return month <= 2 ? month + 13 : month + 1;
 }
