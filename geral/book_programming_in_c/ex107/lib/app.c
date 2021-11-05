@@ -4,8 +4,13 @@
 
 int main(int argc, char **argv)
 {
-  struct date d1 = { .month = 12, .day = 12, .year = 2020 };
-  struct date d2 = { .month = 12, .day = 12, .year = 2021 };
+  printf("Enter the first date (mm/dd/yyyy): ");
+  struct date d1;
+  scanf("%i/%i/%i", &d1.month, &d1.day, &d1.year);
+
+  printf("Enter the second date (mm/dd/yyyy): ");
+  struct date d2;
+  scanf("%i/%i/%i", &d2.month, &d2.day, &d2.year);
 
   int result = difference_between(d1, d2);
 
