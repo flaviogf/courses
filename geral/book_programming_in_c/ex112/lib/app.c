@@ -10,6 +10,8 @@ int main(int argc, char **argv)
   char result[11];
   concat(result, str1, 5, str2, 6);
 
+  printf("%s\n", result);
+
   for(int i = 0; i < 11; ++i) printf("%c", result[i]);
 
   printf("\n");
