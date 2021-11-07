@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv)
 {
-  const char str1[] = { 'T', 'e', 's', 't' };
+  const char str1[] = { 'T', 'e', 's', 't', ' ' };
   const char str2[] = { 'w', 'o', 'r', 'k', 's', '.' };
 
   char result[11];
