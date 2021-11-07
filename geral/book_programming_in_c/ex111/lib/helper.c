@@ -2,5 +2,9 @@
 
 int len(const char value[])
 {
-  return 1;
+  int i = 0;
+
+  while(value[i] != '\0') ++i;
+
+  return i;
 }
