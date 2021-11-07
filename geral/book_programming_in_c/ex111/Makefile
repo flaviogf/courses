@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -g
 
 TARGET = bin/app
-OBJS = lib/app.o
+OBJS = lib/helper.o lib/app.o
 
 $(TARGET): $(OBJS)
 	mkdir -p $(dir $@)
