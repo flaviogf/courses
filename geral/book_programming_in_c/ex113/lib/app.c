@@ -8,6 +8,8 @@ int main(int argc, char **argv)
   char str2[] = "string";
 
   printf("%i\n", equals(str1, str2));
+  printf("%i\n", equals(str1, str1));
+  printf("%i\n", equals(str2, "string"));
 
   return EXIT_SUCCESS;
 }
