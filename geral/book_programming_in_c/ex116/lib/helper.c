@@ -3,5 +3,5 @@
 
 bool alphabetic(const char c)
 {
-  return true;
+  return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
