@@ -3,7 +3,22 @@
 
 int count_words(const char str[])
 {
-  return 1;
+  bool looking_for_word = true;
+  int word_count = 0;
+
+  for(int i = 0; str[i] != '\0'; ++i) {
+    if(!alphabetic(str[i])) {
+      looking_for_word = true;
+      continue;
+    }
+
+    if(looking_for_word) {
+      ++word_count;
+      looking_for_word = false;
+    }
+  }
+
+  return word_count;
 }
 
 bool alphabetic(const char c)
