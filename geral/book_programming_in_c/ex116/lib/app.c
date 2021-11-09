@@ -4,7 +4,11 @@
 
 int main(int argc, char **argv)
 {
-  printf("%i\n", alphabetic('a'));
-  printf("%i\n", alphabetic('9'));
+  const char word1[] = "Well, here goes.";
+  const char word2[] = "And here we go... again.";
+
+  printf("%i\n", count_words(word1));
+  printf("%i\n", count_words(word2));
+
   return EXIT_SUCCESS;
 }
