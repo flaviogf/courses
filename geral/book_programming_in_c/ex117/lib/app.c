@@ -4,7 +4,8 @@
 
 int main(int argc, char **argv)
 {
-  printf("%i\n", alphabetic('a'));
-  printf("%i\n", alphabetic('0'));
+  char input[81];
+  read_line(input);
+  printf("%s\n", input);
   return EXIT_SUCCESS;
 }
