@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -g
 
 TARGET = bin/app
-OBJS = lib/app.o
+OBJS = lib/helper.o lib/app.o
 
 $(TARGET): $(OBJS)
 	mkdir -p $(dir $@)
@@ -10,3 +10,7 @@ $(TARGET): $(OBJS)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
+
+.PHONY:
+clean:
+	rm -rf $(TARGET) $(OBJS)
