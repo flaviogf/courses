@@ -3,5 +3,8 @@ version: '3.9'
 services:
   web:
     build: .
+    command: ['bin/rails', 's', '-b', '0.0.0.0']
+    ports:
+      - 3001:3000
     volumes:
       - ./:/www
