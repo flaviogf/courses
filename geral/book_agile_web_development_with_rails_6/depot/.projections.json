@@ -1,0 +1,6 @@
+{
+  "test/*_test.rb": {
+    "test.runner": "rails",
+    "test.executable": "docker-compose exec web rails test"
+  }
+}
