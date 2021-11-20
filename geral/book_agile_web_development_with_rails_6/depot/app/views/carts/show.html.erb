@@ -4,10 +4,20 @@
 
 <h2>Your Pragmatic Cart</h2>
 
-<ul>
-  <% @cart.line_items.each do |item| %>
-    <li><%= item.quantity %> &times; <%= item.product.title %></li>
+<table>
+  <% @cart.line_items.each do |line_item| %>
+    <tr>
+      <td class="quantity"><%= line_item.quantity %></td>
+      <td><%= line_item.product.title %></td>
+      <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+    </tr>
   <% end %>
-</ul>
+  <tfoot>
+    <tr>
+      <th colspan="2">Total:</th>
+      <th class="price"><%= number_to_currency(@cart.total_price) %></th>
+    </tr>
+  </tfoot>
+</table>
 
 <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
