@@ -101,12 +101,13 @@ header.main {
     h2 {
       margin-top: 0;
     }
+
+    padding: 1.414em;
   }
 
   background: white;
   border-radius: 0.5em;
   margin: 1em;
-  padding: 1.414em;
 
   @media(min-width: 30em) {
     margin: 0;
