@@ -18,7 +18,7 @@
     <section class="content">
       <nav class="side_nav">
         <div id="cart" class="carts">
-          <%= render_if(@cart) { @cart.line_items.any? } %>
+          <%= render_if(@cart) { @cart.try(:line_items).try(:any?) } %>
         </div>
         <ul>
           <li><a href="/">Home</a></li>
