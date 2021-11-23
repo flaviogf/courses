@@ -4,7 +4,7 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
-<% if session[:counter].present? %>
+<% if session[:counter].present? && session[:counter] > 5 %>
   <span>You entered in this page <%= pluralize(session[:counter], 'time') %></span>
 <% end %>
 
