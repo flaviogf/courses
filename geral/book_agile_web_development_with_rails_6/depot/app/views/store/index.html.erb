@@ -4,6 +4,10 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
+<% if session[:counter].present? %>
+  <span>You entered in this page <%= pluralize(session[:counter], 'time') %></span>
+<% end %>
+
 <ul class="catalog">
   <% cache @products do %>
     <% @products.each do |product| %>
