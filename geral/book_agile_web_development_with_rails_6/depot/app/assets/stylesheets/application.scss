@@ -23,7 +23,9 @@ header.main {
   text-align: center;
 
   @media(min-width: 30em) {
-    text-align: left;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
   }
 
   background: #282;
@@ -31,6 +33,12 @@ header.main {
 
   h1 {
     display: none;
+  }
+
+  span {
+    color: #fff;
+    font-size: 32px;
+    margin-right: 32px;
   }
 }
 

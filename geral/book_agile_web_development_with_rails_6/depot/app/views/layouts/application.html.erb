@@ -13,6 +13,7 @@
     <header class="main">
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <h1><%= @page_title %></h1>
+      <span><%= Time.zone.now.to_formatted_s(:short) %></span>
     </header>
 
     <section class="content">
