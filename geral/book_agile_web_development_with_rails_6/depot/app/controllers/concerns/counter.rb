@@ -1,4 +1,6 @@
 module Counter
+  private
+
   def increment
     session[:counter] ||= 0
     session[:counter] += 1
