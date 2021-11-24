@@ -3,7 +3,7 @@ require 'test_helper'
 class CartTest < ActiveSupport::TestCase
   fixtures :products
 
-  test 'add cart' do
+  test 'add_product' do
     cart = Cart.new
 
     2.times do
