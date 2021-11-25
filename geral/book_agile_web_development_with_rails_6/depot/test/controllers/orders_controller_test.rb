@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class OrdersControllerTest < ActionDispatch::IntegrationTest
+  fixtures :products
+
   setup do
     @order = orders(:one)
   end
@@ -11,6 +13,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    post line_items_url, params: { product_id: products(:ruby).id }
+
     get new_order_url
     assert_response :success
   end
