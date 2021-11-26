@@ -5,6 +5,7 @@ atom_feed do |feed|
   @product.orders.each do |order|
     feed.entry(order) do |entry|
       entry.title = "Order #{order.id}"
+
       entry.summary type: 'xhtml' do |xhtml|
         xhtml.p "Shipped to #{order.address}"
 
@@ -30,6 +31,11 @@ atom_feed do |feed|
         end
 
         xhtml.p "Paid by #{order.pay_type}"
+      end
+
+      entry.author do |author|
+        author.name order.name
+        author.email order.email
       end
     end
   end
