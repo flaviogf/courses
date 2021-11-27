@@ -10,3 +10,8 @@ services:
       - ./:/www
     tty: true
     stdin_open: true
+  chrome:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - 5900:5900
+    shm_size: 2gb
