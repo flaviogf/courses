@@ -26,10 +26,7 @@
     <%= form.text_field :email, size: 40 %>
   </div>
 
-  <div class="field">
-    <%= form.label :pay_type %>
-    <%= form.select :pay_type, Order.pay_types.keys %>
-  </div>
+  <div id="pay-type-component"></div>
 
   <div class="actions">
     <%= form.submit %>
