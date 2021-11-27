@@ -64,17 +64,27 @@ class OrdersController < ApplicationController
   end
 
   private
-    def ensure_cart_isnt_empty
-      redirect_to store_index_url, notice: 'Your cart is empty' if @cart.line_items.empty?
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  def ensure_cart_isnt_empty
+    redirect_to store_index_url, notice: 'Your cart is empty' if @cart.line_items.empty?
+  end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
-    end
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def pay_type_params
+    types = {
+      '' => ->() { {} },
+      'Credit Card' => ->() { params.require(:order).permit(:credit_card_number, :expiration_date) },
+      'Check' => ->() { params.require(:order).permit(:routing_number, :account_number) },
+      'Purchase order' => ->() { params.require(:order).permit(:po_number) },
+    }
+
+    types[order_params[:pay_type]].call
+  end
+
+  def order_params
+    params.require(:order).permit(:name, :address, :email, :pay_type)
+  end
 end
