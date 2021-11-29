@@ -16,4 +16,22 @@ class Order < ApplicationRecord
       line_items << item
     end
   end
+
+  def charge!(pay_type_params)
+    payment_details = {}
+    payment_method = nil
+
+    case pay_type
+    when 'Check'
+      payment_method = :check
+      payment_details[:routing] = pay_type_params[:routing_number]
+      payment_details[:account] = pay_type_params[:account_number]
+    end
+
+    payment_result = Pago.make_payment(order_id: id, payment_method: payment_method, payment_details: payment_details)
+
+    raise payment_result.error unless payment_result.succeed?
+
+    OrderMailer.received(self).deliver_late
+  end
 end
