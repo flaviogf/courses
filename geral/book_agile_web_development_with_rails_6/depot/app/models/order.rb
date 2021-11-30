@@ -41,6 +41,6 @@ class Order < ApplicationRecord
 
     raise payment_result.error unless payment_result.succeed?
 
-    OrderMailer.received(self).deliver_later!
+    OrderMailer.received(self).deliver_later
   end
 end
