@@ -47,5 +47,16 @@ class OrdersTest < ApplicationSystemTestCase
     perform_enqueued_jobs do
       click_button 'Create Order'
     end
+
+    orders = Order.all
+    assert_equal 1, orders.size
+
+    order = orders.first
+    
+    assert_equal 'Dave Thomas', order.name
+    assert_equal '123 Main Street', order.address
+    assert_equal 'dave@example.org', order.email
+    assert_equal 'Check', order.pay_type
+    assert_equal 1, order.line_items.size
   end
 end
