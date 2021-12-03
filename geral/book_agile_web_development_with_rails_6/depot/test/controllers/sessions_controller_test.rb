@@ -18,4 +18,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     post login_url, params: { name: dave.name, password: 'wrong' }
     assert_redirected_to login_url
   end
+
+  test 'should logout' do
+    delete logout_url
+    assert_redirected_to store_index_url
+  end
 end
