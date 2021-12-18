@@ -26,6 +26,7 @@ func lissajous(out io.Writer) {
 		whiteIndex = 0
 		blackIndex = 1
 	)
+
 	const (
 		cycles  = 5
 		res     = 0.001
