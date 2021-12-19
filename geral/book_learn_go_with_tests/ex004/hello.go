@@ -1,6 +1,11 @@
 package main
 
+import "fmt"
+
 func main() {
+	fmt.Println(Hello("", ""))
+	fmt.Println(Hello("Frank", ""))
+	fmt.Println(Hello("Frank", "Spanish"))
 }
 
 var prefixes = map[string]string{
