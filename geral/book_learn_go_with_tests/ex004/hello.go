@@ -1,9 +1,27 @@
 package main
 
-func Hello(name string) string {
+func main() {
+}
+
+var prefixes = map[string]string{
+	"English": "Hello, ",
+	"Spanish": "Hola, ",
+}
+
+func Hello(name, language string) string {
+	prefix := getPrefix(language)
+
 	if name != "" {
-		return "Hello, " + name
+		return prefix + name
 	}
 
-	return "Hello, world"
+	return prefix + "world"
+}
+
+func getPrefix(language string) string {
+	if language == "" {
+		language = "English"
+	}
+
+	return prefixes[language]
 }
