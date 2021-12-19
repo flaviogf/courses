@@ -6,11 +6,14 @@ func main() {
 	fmt.Println(Hello("", ""))
 	fmt.Println(Hello("Frank", ""))
 	fmt.Println(Hello("Frank", "Spanish"))
+	fmt.Println(Hello("Frank", "French"))
 }
 
+const defaultPrefix = "Hello, "
+
 var prefixes = map[string]string{
-	"English": "Hello, ",
 	"Spanish": "Hola, ",
+	"French":  "Bonjour, ",
 }
 
 func Hello(name, language string) string {
@@ -24,9 +27,11 @@ func Hello(name, language string) string {
 }
 
 func getPrefix(language string) string {
-	if language == "" {
-		language = "English"
+	prefix := prefixes[language]
+
+	if prefix != "" {
+		return prefix
 	}
 
-	return prefixes[language]
+	return defaultPrefix
 }
