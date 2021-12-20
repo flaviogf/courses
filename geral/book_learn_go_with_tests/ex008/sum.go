@@ -1,6 +1,6 @@
 package main
 
-func Sum(values [5]int) int {
+func Sum(values []int) int {
 	sum := 0
 
 	for _, value := range values {
