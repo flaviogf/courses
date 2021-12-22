@@ -1,11 +1,21 @@
 package sum
 
-func Sum(values []int) int {
-	sum := 0
+func SumAll(values ...[]int) []int {
+	result := make([]int, len(values))
 
-	for _, value := range values {
-		sum += value
+	for i, value := range values {
+		result[i] = Sum(value)
 	}
 
-	return sum
+	return result
+}
+
+func Sum(values []int) int {
+	result := 0
+
+	for _, value := range values {
+		result += value
+	}
+
+	return result
 }
