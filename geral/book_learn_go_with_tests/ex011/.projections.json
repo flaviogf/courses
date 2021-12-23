@@ -1,0 +1,6 @@
+{
+  "*_test.go": {
+    "test.runner": "delve",
+    "test.executable": "dlv test"
+  }
+}
