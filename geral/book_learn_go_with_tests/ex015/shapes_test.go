@@ -1,0 +1,23 @@
+package shapes
+
+import "testing"
+
+func TestArea(t *testing.T) {
+	areaTests := []struct {
+		name    string
+		shape   Shape
+		hasArea float64
+	}{
+		{name: "Rectangle", shape: Rectangle{Height: 10.0, Width: 10.0}, hasArea: 100.0},
+	}
+
+	for _, tt := range areaTests {
+		got := tt.shape.Area()
+
+		if got != tt.hasArea {
+			t.Run(tt.name, func(t *testing.T) {
+				t.Errorf("#%v, got: %g, want: %g", tt.shape, got, tt.hasArea)
+			})
+		}
+	}
+}
