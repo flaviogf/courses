@@ -49,3 +49,7 @@ func (d Dictionary) Search(word string) (string, error) {
 
 	return definition, nil
 }
+
+func (d Dictionary) Delete(word string) {
+	delete(d, word)
+}

@@ -42,6 +42,13 @@ func TestSearch(t *testing.T) {
 	})
 }
 
+func TestDelete(t *testing.T) {
+	dictionary := Dictionary{"test": "it is just a test"}
+	dictionary.Delete("test")
+	_, err := dictionary.Search("test")
+	assertError(t, err, ErrNotFound)
+}
+
 func assertDefinition(t testing.TB, got, want string) {
 	t.Helper()
 
