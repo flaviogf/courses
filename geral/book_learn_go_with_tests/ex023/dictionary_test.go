@@ -2,6 +2,13 @@ package dictionary
 
 import "testing"
 
+func TestAdd(t *testing.T) {
+	dictionary := Dictionary{}
+	dictionary.Add("test", "it is just a test")
+	got, _ := dictionary.Search("test")
+	assertDefinition(t, got, "it is just a test")
+}
+
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "it is just a test"}
 	got, _ := dictionary.Search("test")
