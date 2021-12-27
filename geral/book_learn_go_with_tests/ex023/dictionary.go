@@ -2,8 +2,10 @@ package dictionary
 
 import "errors"
 
-var ErrNotFound = errors.New("could not find the word you were looking for")
-var ErrWordExists = errors.New("cannot add word because it already exists")
+var (
+	ErrNotFound   = errors.New("could not find the word you were looking for")
+	ErrWordExists = errors.New("cannot add word because it already exists")
+)
 
 type Dictionary map[string]string
 
