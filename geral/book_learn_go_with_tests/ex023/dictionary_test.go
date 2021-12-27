@@ -22,6 +22,12 @@ func TestUpdate(t *testing.T) {
 	dictionary.Update("test", "it works")
 	got, _ := dictionary.Search("test")
 	assertDefinition(t, got, "it works")
+
+	t.Run("when word does not exist", func(t *testing.T) {
+		dictionary := Dictionary{}
+		err := dictionary.Update("test", "it will not work")
+		assertError(t, err, ErrWordDoesNotExist)
+	})
 }
 
 func TestSearch(t *testing.T) {
