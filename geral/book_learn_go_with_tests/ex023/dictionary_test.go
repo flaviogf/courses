@@ -17,6 +17,13 @@ func TestAdd(t *testing.T) {
 	})
 }
 
+func TestUpdate(t *testing.T) {
+	dictionary := Dictionary{"test": "it is just a test"}
+	dictionary.Update("test", "it works")
+	got, _ := dictionary.Search("test")
+	assertDefinition(t, got, "it works")
+}
+
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "it is just a test"}
 	got, _ := dictionary.Search("test")
