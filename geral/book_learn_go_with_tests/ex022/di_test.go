@@ -12,7 +12,6 @@ func TestGreet(t *testing.T) {
 }
 
 func assertEqual(t testing.TB, got, want string) {
-
 	if got != want {
 		t.Errorf("got: %s, want: %s", got, want)
 	}
