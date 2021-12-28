@@ -12,16 +12,27 @@ const (
 	finalWord      = "GO!"
 )
 
-func main() {
-	Countdown(os.Stdout)
+type Sleeper interface {
+	Sleep()
 }
 
-func Countdown(b io.Writer) {
+type DefaultSleeper struct{}
+
+func (d *DefaultSleeper) Sleep() {
+	time.Sleep(1 * time.Second)
+}
+
+func main() {
+	s := &DefaultSleeper{}
+	Countdown(os.Stdout, s)
+}
+
+func Countdown(w io.Writer, s Sleeper) {
 	for i := countdownStart; i > 0; i-- {
-		time.Sleep(1 * time.Second)
-		fmt.Fprintf(b, "%d\n", i)
+		s.Sleep()
+		fmt.Fprintf(w, "%d\n", i)
 	}
 
-	time.Sleep(1 * time.Second)
-	fmt.Fprintln(b, finalWord)
+	s.Sleep()
+	fmt.Fprintln(w, finalWord)
 }
