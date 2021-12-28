@@ -5,10 +5,15 @@ import (
 	"io"
 )
 
+const (
+	countdownStart = 3
+	finalWord      = "GO!"
+)
+
 func Countdown(b io.Writer) {
-	for i := 3; i > 0; i-- {
+	for i := countdownStart; i > 0; i-- {
 		fmt.Fprintf(b, "%d\n", i)
 	}
 
-	fmt.Fprintln(b, "GO!")
+	fmt.Fprintln(b, finalWord)
 }
