@@ -11,7 +11,11 @@ func TestCountdown(t *testing.T) {
 	Countdown(b)
 
 	got := b.String()
-	want := "3"
+	want := `3
+2
+1
+GO!
+`
 
 	if got != want {
 		t.Errorf("got: %s, want: %s", got, want)
