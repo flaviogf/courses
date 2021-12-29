@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var urls string
+var urlStringVar string
 
 type Checker interface {
 	Check(url string) bool
@@ -27,19 +27,25 @@ func (hc *HttpChecker) Check(url string) bool {
 }
 
 func init() {
-	flag.StringVar(&urls, "urls", "", "a separate list of URLs by comma")
+	flag.StringVar(&urlStringVar, "url", "", "a comma-separate list of URLs")
 }
 
 func main() {
 	flag.Parse()
 
-	if urls == "" {
+	if urlStringVar == "" {
+		log.Fatal("you must specify at least one url")
+	}
+
+	urls := strings.Split(urlStringVar, ",")
+
+	if len(urls) == 0 {
 		log.Fatal("you must specify at least one url")
 	}
 
 	c := &HttpChecker{}
 
-	result := CheckWebsites(c, strings.Split(urls, ","))
+	result := CheckWebsites(c, urls)
 
 	fmt.Printf("%v\n", result)
 }
