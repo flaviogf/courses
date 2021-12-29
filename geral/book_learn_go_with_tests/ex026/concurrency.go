@@ -1,9 +1,14 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"log"
 	"net/http"
+	"strings"
 )
+
+var urls string
 
 type Checker interface {
 	Check(url string) bool
@@ -21,15 +26,20 @@ func (hc *HttpChecker) Check(url string) bool {
 	return resp.StatusCode == 200
 }
 
-func main() {
-	c := &HttpChecker{}
+func init() {
+	flag.StringVar(&urls, "urls", "", "a separate list of URLs by comma")
+}
 
-	urls := []string{
-		"https://www.google.com",
-		"https://www.youtube.com",
+func main() {
+	flag.Parse()
+
+	if urls == "" {
+		log.Fatal("you must specify at least one url")
 	}
 
-	result := CheckWebsites(c, urls)
+	c := &HttpChecker{}
+
+	result := CheckWebsites(c, strings.Split(urls, ","))
 
 	fmt.Printf("%v\n", result)
 }
