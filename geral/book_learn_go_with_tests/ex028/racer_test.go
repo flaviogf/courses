@@ -8,8 +8,8 @@ import (
 )
 
 func TestRacer(t *testing.T) {
-	slowServer := makeDelayedServer(1 * time.Second)
-	fastServer := makeDelayedServer(0 * time.Second)
+	slowServer := makeDelayedServer(1 * time.Millisecond)
+	fastServer := makeDelayedServer(0 * time.Millisecond)
 
 	defer slowServer.Close()
 	defer fastServer.Close()
@@ -24,8 +24,8 @@ func TestRacer(t *testing.T) {
 	}
 
 	t.Run("when could not get a response before the specified delay", func(t *testing.T) {
-		slowServer := makeDelayedServer(2 * time.Second)
-		fastServer := makeDelayedServer(3 * time.Second)
+		slowServer := makeDelayedServer(2 * time.Millisecond)
+		fastServer := makeDelayedServer(3 * time.Millisecond)
 
 		defer slowServer.Close()
 		defer fastServer.Close()
@@ -33,7 +33,7 @@ func TestRacer(t *testing.T) {
 		slowURL := slowServer.URL
 		fastURL := fastServer.URL
 
-		_, err := ConfigurableRacer(slowURL, fastURL, 1*time.Second)
+		_, err := ConfigurableRacer(slowURL, fastURL, 1*time.Millisecond)
 
 		if err == nil {
 			t.Fatal("did not get an error but wanted one")
