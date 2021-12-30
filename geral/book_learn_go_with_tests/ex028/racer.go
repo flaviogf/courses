@@ -2,11 +2,20 @@ package main
 
 import (
 	"errors"
+	"fmt"
+	"log"
 	"net/http"
 	"time"
 )
 
 func main() {
+	resp, err := Racer("https://google.com", "https://alura.com")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(resp)
 }
 
 func Racer(firstURL, secondURL string) (string, error) {
