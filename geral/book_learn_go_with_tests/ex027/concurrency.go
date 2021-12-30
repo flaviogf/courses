@@ -26,6 +26,11 @@ func (hc *HttpChecker) Check(url string) bool {
 	return resp.StatusCode == 200
 }
 
+type result struct {
+	string
+	bool
+}
+
 func init() {
 	flag.StringVar(&urlStringVar, "url", "", "a comma-separate list of URLs")
 }
@@ -43,19 +48,23 @@ func main() {
 		log.Fatal("you must specify at least one URL")
 	}
 
-	c := &HttpChecker{}
-
-	result := CheckWebsites(c, urls)
-
-	fmt.Printf("%v\n", result)
+	fmt.Printf("%v\n", CheckWebsites(&HttpChecker{}, urls))
 }
 
 func CheckWebsites(c Checker, urls []string) map[string]bool {
-	result := make(map[string]bool)
+	results := make(map[string]bool)
+	cn := make(chan result)
 
 	for _, url := range urls {
-		result[url] = c.Check(url)
+		go func(url string) {
+			cn <- result{url, c.Check(url)}
+		}(url)
 	}
 
-	return result
+	for i := 0; i < len(urls); i++ {
+		r := <-cn
+		results[r.string] = r.bool
+	}
+
+	return results
 }
