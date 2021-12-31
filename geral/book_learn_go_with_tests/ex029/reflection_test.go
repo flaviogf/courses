@@ -12,9 +12,19 @@ func TestWalk(t *testing.T) {
 		ExpectedCalls []string
 	}{
 		{
-			Name:          "when struct has only one field",
-			Input:         struct{ Name string }{"Chris"},
+			Name: "when struct has only one field",
+			Input: struct {
+				Name string
+			}{"Chris"},
 			ExpectedCalls: []string{"Chris"},
+		},
+		{
+			Name: "when struct has more than one field",
+			Input: struct {
+				Name string
+				City string
+			}{"Chris", "NY"},
+			ExpectedCalls: []string{"Chris", "NY"},
 		},
 	}
 
