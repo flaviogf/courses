@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"errors"
+	"io"
 	"testing"
 )
 
@@ -21,7 +22,7 @@ func TestScan(t *testing.T) {
 	port := 80
 	c := &DoubleCloser{}
 
-	_ = Scan(buf, url, port, func(_, _ string) (Closer, error) {
+	_ = Scan(buf, url, port, func(_, _ string) (io.Closer, error) {
 		return c, nil
 	})
 
@@ -37,7 +38,7 @@ func TestScan(t *testing.T) {
 		url := "scanme.nmap.org"
 		port := 80
 
-		err := Scan(buf, url, port, func(_, _ string) (Closer, error) {
+		err := Scan(buf, url, port, func(_, _ string) (io.Closer, error) {
 			return nil, errors.New("ops")
 		})
 
