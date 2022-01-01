@@ -19,7 +19,7 @@ func main() {
 	for i := 1; i <= 1024; i++ {
 		wg.Add(1)
 
-		d := net.Dialer{Timeout: 5 * time.Second}
+		d := net.Dialer{Timeout: 10 * time.Second}
 		go Scan(os.Stdout, "scanme.nmap.org", i, wg, d.Dial)
 	}
 
