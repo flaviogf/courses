@@ -70,11 +70,11 @@ func TestScan(t *testing.T) {
 		t.Errorf("got: %s, want: %s", got, want)
 	}
 
-	if conn.CloseCalls != 1 {
-		t.Errorf("%s got %d calls, but want %d", "Close", conn.CloseCalls, 1)
-	}
-
 	if f.DoneCalls != 1 {
 		t.Errorf("%s got %d calls, but want %d", "Done", f.DoneCalls, 1)
+	}
+
+	if conn.CloseCalls != 1 {
+		t.Errorf("%s got %d calls, but want %d", "Close", conn.CloseCalls, 1)
 	}
 }
