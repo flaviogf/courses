@@ -5,11 +5,14 @@ import (
 	"io"
 )
 
-type Conn interface {
+type Closer interface {
 	Close() error
 }
 
-func Scan(w io.Writer, url string, port int, fn func(network, address string) (Conn, error)) error {
+func main() {
+}
+
+func Scan(w io.Writer, url string, port int, fn func(network, address string) (Closer, error)) error {
 	conn, err := fn("tcp", fmt.Sprintf("%s:%d", url, port))
 
 	if err != nil {
