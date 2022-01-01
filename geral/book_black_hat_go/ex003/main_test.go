@@ -3,26 +3,55 @@ package main
 import (
 	"bytes"
 	"errors"
-	"io"
+	"net"
 	"testing"
+	"time"
 )
 
-type DoubleCloser struct {
-	Calls int
+type DoubleConn struct {
+	CloseCalls int
 }
 
-func (dc *DoubleCloser) Close() error {
-	dc.Calls += 1
+func (d *DoubleConn) Read(b []byte) (n int, err error) {
+	panic("not implemented")
+}
+
+func (d *DoubleConn) Write(b []byte) (n int, err error) {
+	panic("not implemented")
+}
+
+func (d *DoubleConn) Close() error {
+	d.CloseCalls += 1
 	return nil
+}
+
+func (d *DoubleConn) LocalAddr() net.Addr {
+	panic("not implemented")
+}
+
+func (d *DoubleConn) RemoteAddr() net.Addr {
+	panic("not implemented")
+}
+
+func (d *DoubleConn) SetDeadline(t time.Time) error {
+	panic("not implemented")
+}
+
+func (d *DoubleConn) SetReadDeadline(t time.Time) error {
+	panic("not implemented")
+}
+
+func (d *DoubleConn) SetWriteDeadline(t time.Time) error {
+	panic("not implemented")
 }
 
 func TestScan(t *testing.T) {
 	buf := &bytes.Buffer{}
 	url := "scanme.nmap.org"
 	port := 80
-	c := &DoubleCloser{}
+	c := &DoubleConn{}
 
-	_ = Scan(buf, url, port, func(_, _ string) (io.Closer, error) {
+	_ = Scan(buf, url, port, func(_, _ string) (net.Conn, error) {
 		return c, nil
 	})
 
@@ -38,7 +67,7 @@ func TestScan(t *testing.T) {
 		url := "scanme.nmap.org"
 		port := 80
 
-		err := Scan(buf, url, port, func(_, _ string) (io.Closer, error) {
+		err := Scan(buf, url, port, func(_, _ string) (net.Conn, error) {
 			return nil, errors.New("ops")
 		})
 
