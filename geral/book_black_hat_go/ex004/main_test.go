@@ -59,7 +59,7 @@ func TestScan(t *testing.T) {
 	f := &DoubleFinisher{}
 	conn := &DoubleConn{}
 
-	Scan(b, url, port, f, func(_, _ string) (net.Conn, error) {
+	_ = Scan(b, url, port, f, func(_, _ string) (net.Conn, error) {
 		return conn, nil
 	})
 
