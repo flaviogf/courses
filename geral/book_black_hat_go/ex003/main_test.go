@@ -19,10 +19,10 @@ func TestScan(t *testing.T) {
 	buf := &bytes.Buffer{}
 	url := "scanme.nmap.org"
 	port := 80
-	conn := &DoubleCloser{}
+	c := &DoubleCloser{}
 
 	_ = Scan(buf, url, port, func(_, _ string) (Closer, error) {
-		return conn, nil
+		return c, nil
 	})
 
 	got := buf.String()
