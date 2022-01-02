@@ -36,7 +36,7 @@ func main() {
 		jobs <- i
 	}
 
-	for i := 1; i <= numJobs; i++ {
+	for i := 0; i < numJobs; i++ {
 		port := <-results
 
 		if port != 0 {
