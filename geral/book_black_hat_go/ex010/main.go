@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"net"
@@ -27,5 +28,27 @@ func main() {
 func echo(conn net.Conn) {
 	defer conn.Close()
 
-	fmt.Println("It works")
+	r := bufio.NewReader(conn)
+
+	s, err := r.ReadString('\n')
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("received: %s\n", s)
+
+	w := bufio.NewWriter(conn)
+
+	_, err = w.WriteString(s)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = w.Flush()
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
