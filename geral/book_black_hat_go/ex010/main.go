@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"net"
 )
@@ -25,7 +26,7 @@ func main() {
 	}
 }
 
-func echo(conn net.Conn) {
+func echo(conn io.ReadWriteCloser) {
 	defer conn.Close()
 
 	r := bufio.NewReader(conn)
