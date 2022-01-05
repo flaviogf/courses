@@ -25,4 +25,8 @@ func TestDialContext(t *testing.T) {
 	if err == nil {
 		t.Fatal("did not get an error, but would want one")
 	}
+
+	if _, ok := err.(net.Error); !ok {
+		t.Fatal("did not get an net.Error, but would want one")
+	}
 }
