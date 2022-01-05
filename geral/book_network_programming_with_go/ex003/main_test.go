@@ -29,4 +29,8 @@ func TestDialContext(t *testing.T) {
 	if _, ok := err.(net.Error); !ok {
 		t.Fatal("did not get an net.Error, but would want one")
 	}
+
+	if nError, ok := err.(net.Error); ok && !nError.Timeout() {
+		t.Fatal("did not get an Timeout, but would want one")
+	}
 }
