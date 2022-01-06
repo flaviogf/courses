@@ -36,7 +36,7 @@ func TestDialContext(t *testing.T) {
 	cancel()
 	<-signal
 
-	if err := ctx.Err(); err == nil {
+	if err := ctx.Err(); err != context.Canceled {
 		t.Fatal("did not get an error, but would want one")
 	}
 }
