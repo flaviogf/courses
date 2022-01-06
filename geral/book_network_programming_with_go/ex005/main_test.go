@@ -23,8 +23,6 @@ func TestDialContext(t *testing.T) {
 		}
 	}()
 
-	ctx, cancel := context.WithCancel(context.Background())
-
 	worker := func(ctx context.Context, network, address string, jobs <-chan int, results chan<- int) {
 		for j := range jobs {
 			var d net.Dialer
@@ -44,10 +42,10 @@ func TestDialContext(t *testing.T) {
 		}
 	}
 
+	ctx, cancel := context.WithCancel(context.Background())
 	numJobs := 10
 	jobs := make(chan int, numJobs)
 	results := make(chan int, numJobs)
-	successfullyJobs := []int{}
 
 	for w := 1; w <= 3; w++ {
 		go worker(ctx, "tcp", l.Addr().String(), jobs, results)
@@ -63,6 +61,8 @@ func TestDialContext(t *testing.T) {
 		time.Sleep(500 * time.Microsecond)
 		cancel()
 	}()
+
+	successfullyJobs := []int{}
 
 	for i := 1; i <= numJobs; i++ {
 		result := <-results
