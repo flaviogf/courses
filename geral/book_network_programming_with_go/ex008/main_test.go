@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -19,5 +21,7 @@ func TestUnixDomainSocket(t *testing.T) {
 		}
 	}()
 
-	t.Log(dir)
+	socket := filepath.Join(dir, fmt.Sprintf("%d.sock", os.Getpid()))
+
+	t.Log(socket)
 }
