@@ -13,11 +13,11 @@ func TestUnixDomainSocket(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	t.Log(dir)
-
 	defer func() {
 		if rErr := os.RemoveAll(dir); rErr != nil {
 			t.Fatal(rErr)
 		}
 	}()
+
+	t.Log(dir)
 }
