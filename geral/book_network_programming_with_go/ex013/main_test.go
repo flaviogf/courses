@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"io"
 	"io/ioutil"
+	"log"
 	"net"
 	"net/http"
 	"testing"
@@ -21,7 +22,6 @@ func TestSimpleHTTPServer(t *testing.T) {
 	}
 
 	l, err := net.Listen("tcp", srv.Addr)
-
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -86,6 +86,20 @@ func DefaultHandler() http.Handler {
 	t := template.Must(template.New("hello").Parse("Hello, {{.}}!"))
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		t.Execute(w, "friend")
+		var b []byte
+
+		switch r.Method {
+		case http.MethodGet:
+			b = []byte("friend")
+		case http.MethodPost:
+			var err error
+			b, err = ioutil.ReadAll(r.Body)
+
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+
+		t.Execute(w, string(b))
 	})
 }
