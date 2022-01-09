@@ -21,6 +21,15 @@ func TestPostUser(t *testing.T) {
 			_ = r.Body.Close()
 		}(r)
 
+		var user User
+		err := json.NewDecoder(r.Body).Decode(&user)
+
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		t.Log(user)
+
 		w.WriteHeader(http.StatusAccepted)
 	}))
 
