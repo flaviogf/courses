@@ -60,6 +60,10 @@ func TestSimpleHTTPServer(t *testing.T) {
 			t.Errorf("#%d got: %d, want: %d", i, resp.StatusCode, http.StatusOK)
 		}
 	}
+
+	if err := srv.Close(); err != nil {
+		t.Fatal(err)
+	}
 }
 
 func DefaultHandler() http.Handler {
