@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"testing"
@@ -58,6 +59,18 @@ func TestSimpleHTTPServer(t *testing.T) {
 
 		if resp.StatusCode != http.StatusOK {
 			t.Errorf("#%d got: %d, want: %d", i, resp.StatusCode, http.StatusOK)
+		}
+
+		b, err := ioutil.ReadAll(resp.Body)
+
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		_ = resp.Body.Close()
+
+		if c.response != string(b) {
+			t.Errorf("#%d got: %q, want: %q", i, b, c.response)
 		}
 	}
 
