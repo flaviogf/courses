@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
 	"io"
@@ -39,7 +40,8 @@ func TestSimpleHTTPServer(t *testing.T) {
 		code     int
 		response string
 	}{
-		{http.MethodGet, nil, http.StatusOK, "Hello, friend"},
+		{http.MethodGet, nil, http.StatusOK, "Hello, friend!"},
+		{http.MethodPost, bytes.NewBufferString("<world>"), http.StatusOK, "Hello, &lt;world&gt;!"},
 	}
 
 	client := &http.Client{}
@@ -59,7 +61,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 		}
 
 		if resp.StatusCode != http.StatusOK {
-			t.Errorf("#%d got: %d, want: %d", i, resp.StatusCode, http.StatusOK)
+			t.Errorf("#%d got: %d, want: %d", i+1, resp.StatusCode, http.StatusOK)
 		}
 
 		b, err := ioutil.ReadAll(resp.Body)
@@ -71,7 +73,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 		_ = resp.Body.Close()
 
 		if c.response != string(b) {
-			t.Errorf("#%d got: %q, want: %q", i, b, c.response)
+			t.Errorf("#%d got: %q, want: %q", i+1, b, c.response)
 		}
 	}
 
@@ -81,7 +83,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 }
 
 func DefaultHandler() http.Handler {
-	t := template.Must(template.New("hello").Parse("Hello, {{.}}"))
+	t := template.Must(template.New("hello").Parse("Hello, {{.}}!"))
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, "friend")
