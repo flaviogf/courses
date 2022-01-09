@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"io"
 	"io/ioutil"
 	"net"
@@ -80,7 +81,9 @@ func TestSimpleHTTPServer(t *testing.T) {
 }
 
 func DefaultHandler() http.Handler {
+	t := template.Must(template.New("hello").Parse("Hello, {{.}}"))
+
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(200)
+		t.Execute(w, "friend")
 	})
 }
