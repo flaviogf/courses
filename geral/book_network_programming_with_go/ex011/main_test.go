@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -15,6 +16,11 @@ type User struct {
 
 func TestPostUser(t *testing.T) {
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer func(r *http.Request) {
+			_, _ = io.Copy(io.Discard, r.Body)
+			_ = r.Body.Close()
+		}(r)
+
 		w.WriteHeader(http.StatusAccepted)
 	}))
 
