@@ -42,6 +42,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 	}{
 		{http.MethodGet, nil, http.StatusOK, "Hello, friend!"},
 		{http.MethodPost, bytes.NewBufferString("<world>"), http.StatusOK, "Hello, &lt;world&gt;!"},
+		{http.MethodHead, nil, http.StatusMethodNotAllowed, ""},
 	}
 
 	client := &http.Client{}
@@ -60,8 +61,8 @@ func TestSimpleHTTPServer(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		if resp.StatusCode != http.StatusOK {
-			t.Errorf("#%d got: %d, want: %d", i+1, resp.StatusCode, http.StatusOK)
+		if resp.StatusCode != c.code {
+			t.Errorf("#%d got: %d, want: %d", i+1, resp.StatusCode, c.code)
 		}
 
 		b, err := ioutil.ReadAll(resp.Body)
@@ -98,6 +99,9 @@ func DefaultHandler() http.Handler {
 			if err != nil {
 				log.Fatal(err)
 			}
+		default:
+			w.WriteHeader(http.StatusMethodNotAllowed)
+			return
 		}
 
 		t.Execute(w, string(b))
