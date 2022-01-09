@@ -22,6 +22,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 	}
 
 	l, err := net.Listen("tcp", srv.Addr)
+
 	if err != nil {
 		t.Fatal(err)
 	}
