@@ -21,18 +21,18 @@ func TestBreaker(t *testing.T) {
 	doubleCircuit := func(ctx context.Context) (string, error) {
 		n++
 
-		if n < 6 {
+		if n < 3 {
 			return "", ErrOps
 		}
 
 		return "OK", nil
 	}
 
-	breaker := Breaker(doubleCircuit, 5)
+	breaker := Breaker(doubleCircuit, 2)
 
 	results := []Result{}
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		resp, err := breaker(context.Background())
 
 		results = append(results, Result{resp, err})
@@ -45,12 +45,7 @@ func TestBreaker(t *testing.T) {
 	expectedResults := []Result{
 		Result{"", ErrOps},
 		Result{"", ErrOps},
-		Result{"", ErrOps},
-		Result{"", ErrOps},
-		Result{"", ErrOps},
 		Result{"", ErrServiceUnreachable},
-		Result{"OK", nil},
-		Result{"OK", nil},
 		Result{"OK", nil},
 		Result{"OK", nil},
 	}
