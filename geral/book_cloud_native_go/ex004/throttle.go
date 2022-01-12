@@ -20,11 +20,14 @@ func Throttle(effector Effector, max, refil int, delay time.Duration) Effector {
 			ticker := time.NewTicker(delay)
 
 			go func(ctx context.Context) {
+				defer ticker.Stop()
+
 				for {
 					select {
 					case <-ctx.Done():
 						return
 					case <-ticker.C:
+
 						t := tokens + refil
 
 						if t > max {

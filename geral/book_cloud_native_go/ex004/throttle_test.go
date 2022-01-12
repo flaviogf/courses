@@ -19,13 +19,19 @@ func TestThrottle(t *testing.T) {
 
 	throttle := Throttle(doubleEffector, 5, 1, 1*time.Second)
 
-	results := make([]Result, 10)
+	results := []Result{}
 
 	for i := 0; i < 10; i++ {
 		resp, err := throttle(context.TODO())
 		r := Result{resp, err}
-		results[i] = r
+		results = append(results, r)
 	}
+
+	time.Sleep(2 * time.Second)
+
+	resp, err := throttle(context.TODO())
+	r := Result{resp, err}
+	results = append(results, r)
 
 	expectedResults := []Result{
 		Result{"OK", nil},
@@ -38,6 +44,7 @@ func TestThrottle(t *testing.T) {
 		Result{"", ErrTooManyCalls},
 		Result{"", ErrTooManyCalls},
 		Result{"", ErrTooManyCalls},
+		Result{"OK", nil},
 	}
 
 	if !reflect.DeepEqual(results, expectedResults) {
