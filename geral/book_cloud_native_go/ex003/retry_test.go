@@ -32,4 +32,17 @@ func TestRetry(t *testing.T) {
 	if resp != "OK" {
 		t.Errorf("want: %s, got: %s", "OK", resp)
 	}
+
+	t.Run("when the number of retries reach the limit", func(t *testing.T) {
+		doubleEffector := func(ctx context.Context) (string, error) {
+			return "", ErrOops
+		}
+
+		retry := Retry(doubleEffector, 5, 5*time.Millisecond)
+		_, err := retry(context.TODO())
+
+		if err == nil {
+			t.Errorf("did not get an error, but would want one")
+		}
+	})
 }
