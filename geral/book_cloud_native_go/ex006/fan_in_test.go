@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestFanInFanOut(t *testing.T) {
+func TestFanIn(t *testing.T) {
 	channels := []chan int{}
 
 	for i := 0; i < 5; i++ {
@@ -22,7 +22,7 @@ func TestFanInFanOut(t *testing.T) {
 
 	results := []int{}
 
-	for i := range FanInFanOut(channels) {
+	for i := range FanIn(channels) {
 		results = append(results, i)
 	}
 

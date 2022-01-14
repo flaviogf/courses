@@ -1,6 +1,6 @@
 package main
 
-func FanInFanOut(channels []chan int) chan int {
+func FanIn(channels []chan int) chan int {
 	cout := make(chan int)
 
 	go func() {
