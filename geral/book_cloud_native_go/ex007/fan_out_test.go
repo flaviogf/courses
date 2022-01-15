@@ -8,7 +8,7 @@ import (
 func TestFanOut(t *testing.T) {
 	source := make(chan int)
 
-	go func(source chan int) {
+	go func(source chan<- int) {
 		for i := 0; i < 10; i++ {
 			source <- i
 		}

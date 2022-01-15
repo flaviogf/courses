@@ -7,7 +7,7 @@ func FanOut(source chan int, n int) []chan int {
 		dest := make(chan int)
 		dests = append(dests, dest)
 
-		go func(dest chan int) {
+		go func(dest chan<- int) {
 			for i := range source {
 				dest <- i
 			}
