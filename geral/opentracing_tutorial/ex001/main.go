@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/sdk/resource"
 	tracesdk "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 var (
@@ -49,15 +50,19 @@ func main() {
 
 	otel.SetTracerProvider(tp)
 
-	ctx, span := otel.Tracer(serviceName).Start(context.Background(), "main")
+	ctx, span := tracer().Start(context.Background(), "main")
 	defer span.End()
 
 	sayHello(ctx, os.Args[1])
 }
 
 func sayHello(ctx context.Context, name string) {
-	_, span := otel.Tracer(serviceName).Start(ctx, "sayHello")
+	_, span := tracer().Start(ctx, "sayHello")
 	defer span.End()
 
 	fmt.Printf("Hello, %s\n", name)
+}
+
+func tracer() trace.Tracer {
+	return otel.Tracer(serviceName)
 }
