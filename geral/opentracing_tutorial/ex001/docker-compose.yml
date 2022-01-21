@@ -3,6 +3,9 @@ version: '3.9'
 services:
   app:
     build: .
+    environment:
+      JAGER_ENDPOINT: 'http://jaeger:14268/api/traces'
+      SERVICE_NAME: 'hello-world'
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
