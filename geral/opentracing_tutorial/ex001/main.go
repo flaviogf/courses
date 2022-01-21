@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -12,12 +13,24 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
 
+var (
+	jaegerEndpoint string
+	serviceName    string
+)
+
+func init() {
+	jaegerEndpoint = os.Getenv("JAEGER_ENDPOINT")
+	serviceName = os.Getenv("SERVICE_NAME")
+}
+
 func main() {
 	if len(os.Args[1:]) == 0 {
 		log.Fatalln("you must specify a name")
 	}
 
-	exp, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(os.Getenv("JAGER_ENDPOINT"))))
+	exp, err := jaeger.New(
+		jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(jaegerEndpoint)),
+	)
 
 	if err != nil {
 		log.Fatal(err)
@@ -25,19 +38,26 @@ func main() {
 
 	res := resource.NewWithAttributes(
 		semconv.SchemaURL,
-		semconv.ServiceNameKey.String(os.Getenv("SERVICE_NAME")),
+		semconv.ServiceNameKey.String(serviceName),
 	)
 
 	tp := tracesdk.NewTracerProvider(
-		tracesdk.WithBatcher(exp),
+		tracesdk.WithSampler(tracesdk.AlwaysSample()),
+		tracesdk.WithSyncer(exp),
 		tracesdk.WithResource(res),
 	)
 
 	otel.SetTracerProvider(tp)
 
-	sayHello(os.Args[1])
+	ctx, span := otel.Tracer(serviceName).Start(context.Background(), "main")
+	defer span.End()
+
+	sayHello(ctx, os.Args[1])
 }
 
-func sayHello(name string) {
+func sayHello(ctx context.Context, name string) {
+	_, span := otel.Tracer(serviceName).Start(ctx, "sayHello")
+	defer span.End()
+
 	fmt.Printf("Hello, %s\n", name)
 }
