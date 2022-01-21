@@ -29,6 +29,22 @@ func main() {
 		log.Fatalln("you must specify a name")
 	}
 
+	tracer := initTracer()
+
+	ctx, span := tracer.Start(context.Background(), "main")
+	defer span.End()
+
+	sayHello(ctx, tracer, os.Args[1])
+}
+
+func sayHello(ctx context.Context, tracer trace.Tracer, name string) {
+	_, span := tracer.Start(ctx, "sayHello")
+	defer span.End()
+
+	fmt.Printf("Hello, %s\n", name)
+}
+
+func initTracer() trace.Tracer {
 	exp, err := jaeger.New(
 		jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(jaegerEndpoint)),
 	)
@@ -50,19 +66,5 @@ func main() {
 
 	otel.SetTracerProvider(tp)
 
-	ctx, span := tracer().Start(context.Background(), "main")
-	defer span.End()
-
-	sayHello(ctx, os.Args[1])
-}
-
-func sayHello(ctx context.Context, name string) {
-	_, span := tracer().Start(ctx, "sayHello")
-	defer span.End()
-
-	fmt.Printf("Hello, %s\n", name)
-}
-
-func tracer() trace.Tracer {
 	return otel.Tracer(serviceName)
 }
