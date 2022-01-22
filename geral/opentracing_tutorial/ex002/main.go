@@ -8,12 +8,19 @@ import (
 	"os"
 
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	"go.opentelemetry.io/otel/trace"
 )
+
+var jaegerEndpoint string
+
+func init() {
+	jaegerEndpoint = os.Getenv("JAEGER_ENDPOINT")
+}
 
 func main() {
 	tracer := initTracer()
@@ -25,7 +32,15 @@ func main() {
 }
 
 func initTracer() trace.Tracer {
-	e, err := stdouttrace.New(stdouttrace.WithPrettyPrint())
+	stdoutExporter, err := stdouttrace.New(stdouttrace.WithPrettyPrint())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	jaegerExporter, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(jaegerEndpoint)))
+
+	fmt.Println(jaegerEndpoint)
 
 	if err != nil {
 		log.Fatal(err)
@@ -38,7 +53,8 @@ func initTracer() trace.Tracer {
 
 	tp := sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithSyncer(e),
+		sdktrace.WithSyncer(stdoutExporter),
+		sdktrace.WithSyncer(jaegerExporter),
 		sdktrace.WithResource(r),
 	)
 
