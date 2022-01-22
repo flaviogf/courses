@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -26,9 +27,23 @@ func main() {
 	tracer := initTracer()
 
 	ctx, span := tracer.Start(context.Background(), "main")
-	defer span.End()
 
-	sayHello(ctx, tracer, os.Stdout, "Frank")
+	if len(os.Args[1:]) == 0 {
+		span.SetAttributes(
+			attribute.String("error.message", "did not enter a name"),
+			attribute.Bool("error", true),
+		)
+
+		span.End()
+
+		log.Fatal("you must enter a name")
+	}
+
+	span.AddEvent("Starting sayHello")
+
+	sayHello(ctx, tracer, os.Stdout, os.Args[1])
+
+	span.End()
 }
 
 func initTracer() trace.Tracer {
@@ -38,9 +53,9 @@ func initTracer() trace.Tracer {
 		log.Fatal(err)
 	}
 
-	jaegerExporter, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(jaegerEndpoint)))
-
-	fmt.Println(jaegerEndpoint)
+	jaegerExporter, err := jaeger.New(
+		jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(jaegerEndpoint)),
+	)
 
 	if err != nil {
 		log.Fatal(err)
@@ -64,8 +79,15 @@ func initTracer() trace.Tracer {
 }
 
 func sayHello(ctx context.Context, tracer trace.Tracer, w io.Writer, name string) {
-	_, span := tracer.Start(ctx, "say-hello")
+	_, span := tracer.Start(ctx, "sayHello")
 	defer span.End()
 
-	fmt.Fprintf(w, "Hello, %s\n", name)
+	message := fmt.Sprintf("Hello, %s\n", name)
+
+	span.SetAttributes(
+		attribute.String("sayHello.message", message),
+		attribute.String("sayHello.name", name),
+	)
+
+	fmt.Fprint(w, message)
 }
