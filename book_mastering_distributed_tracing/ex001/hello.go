@@ -1,10 +1,12 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
-	"log"
 )
+
+var PersonDoesNotFoundErr = errors.New("person does not found")
 
 type PersonRepository interface {
 	GetPerson(string) (*Person, error)
@@ -23,7 +25,7 @@ func SayHello(w io.Writer, r PersonRepository, name string) error {
 	person, err := r.GetPerson(name)
 
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	if person == nil {
