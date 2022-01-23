@@ -8,24 +8,41 @@ import (
 type FakePersonRepository struct{}
 
 func (r *FakePersonRepository) GetPerson(name string) (*Person, error) {
-	return &Person{"Frank", "How are you doing?"}, nil
+	if name == "Frank" {
+		return &Person{"Frank", "How are you doing?"}, nil
+	}
+
+	return nil, nil
 }
 
 func TestSayHello(t *testing.T) {
-	w := &bytes.Buffer{}
-	r := &FakePersonRepository{}
-
-	err := SayHello(w, r, "Frank")
-
-	if err != nil {
-		t.Error("did not want an error, but got one")
+	testCases := []struct {
+		Writer     *bytes.Buffer
+		PersonName string
+		Repository PersonRepository
+		Err        error
+		Result     string
+	}{
+		{
+			Writer:     &bytes.Buffer{},
+			PersonName: "Frank",
+			Repository: &FakePersonRepository{},
+			Err:        nil,
+			Result:     "Hello, Frank! How are you doing?",
+		},
 	}
 
-	expectedResult := "Hello, Frank! How are you doing?"
+	for _, tc := range testCases {
+		err := SayHello(tc.Writer, tc.Repository, tc.PersonName)
 
-	result := w.String()
+		if err != tc.Err {
+			t.Errorf("got: %v, want: %v\n", err, tc.Err)
+		}
 
-	if result != expectedResult {
-		t.Errorf("got: %s, want: %s\n", result, expectedResult)
+		result := tc.Writer.String()
+
+		if result != tc.Result {
+			t.Errorf("got: %s, want: %s\n", result, tc.Result)
+		}
 	}
 }
