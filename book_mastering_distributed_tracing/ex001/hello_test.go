@@ -30,6 +30,13 @@ func TestSayHello(t *testing.T) {
 			Err:        nil,
 			Result:     "Hello, Frank! How are you doing?",
 		},
+		{
+			Writer:     &bytes.Buffer{},
+			PersonName: "Matt",
+			Repository: &FakePersonRepository{},
+			Err:        nil,
+			Result:     "Hello, Matt!",
+		},
 	}
 
 	for _, tc := range testCases {

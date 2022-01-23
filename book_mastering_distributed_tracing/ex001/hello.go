@@ -26,6 +26,11 @@ func SayHello(w io.Writer, r PersonRepository, name string) error {
 		log.Fatal(err)
 	}
 
+	if person == nil {
+		fmt.Fprintf(w, "Hello, %s!", name)
+		return nil
+	}
+
 	fmt.Fprintf(w, "Hello, %s! %s", person.Name, person.Quote)
 
 	return nil
