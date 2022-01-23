@@ -4,9 +4,18 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 var PersonDoesNotFoundErr = errors.New("person does not found")
+
+type PostgresPersonRepository struct{}
+
+func (r *PostgresPersonRepository) GetPerson(name string) (*Person, error) {
+	return nil, nil
+}
 
 type PersonRepository interface {
 	GetPerson(string) (*Person, error)
@@ -18,7 +27,18 @@ type Person struct {
 }
 
 func main() {
-	fmt.Println("It works")
+}
+
+func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		vars := mux.Vars(r)
+
+		err := SayHello(w, repository, vars["name"])
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	}
 }
 
 func SayHello(w io.Writer, r PersonRepository, name string) error {
