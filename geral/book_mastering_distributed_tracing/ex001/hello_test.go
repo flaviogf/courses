@@ -2,12 +2,13 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"testing"
 )
 
 type FakePersonRepository struct{}
 
-func (r *FakePersonRepository) GetPerson(name string) (*Person, error) {
+func (r *FakePersonRepository) GetPerson(ctx context.Context, name string) (*Person, error) {
 	if name == "Frank" {
 		return &Person{"Frank", "How are you doing?"}, nil
 	}
@@ -40,7 +41,7 @@ func TestSayHello(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		err := SayHello(tc.Writer, tc.Repository, tc.PersonName)
+		err := SayHello(context.TODO(), tc.Writer, tc.Repository, tc.PersonName)
 
 		if err != tc.Err {
 			t.Errorf("got: %v, want: %v\n", err, tc.Err)

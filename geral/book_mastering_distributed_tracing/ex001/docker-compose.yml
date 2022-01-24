@@ -5,10 +5,13 @@ services:
     build: .
     ports:
       - 8087:80
+    environment:
+      DB_DRIVER: 'postgres'
+      DB_CONNECTION: 'host=db user=postgres password=postgres dbname=say_hello sslmode=disable'
   db:
     image: postgres
     volumes:
       - ./db:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'

@@ -1,27 +1,46 @@
 package main
 
 import (
+	"context"
+	"database/sql"
 	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gorilla/mux"
+
+	_ "github.com/lib/pq"
 )
 
 var PersonDoesNotFoundErr = errors.New("person does not found")
 
-type PostgresPersonRepository struct{}
+type PostgresPersonRepository struct {
+	db *sql.DB
+}
 
-func (r *PostgresPersonRepository) GetPerson(name string) (*Person, error) {
-	return nil, nil
+func (r *PostgresPersonRepository) GetPerson(ctx context.Context, name string) (*Person, error) {
+	var p Person
+
+	query := "SELECT name, quote FROM people WHERE name=$1"
+	err := r.db.QueryRowContext(ctx, query, name).Scan(&p.Name, &p.Quote)
+
+	switch {
+	case err == sql.ErrNoRows:
+		return nil, PersonDoesNotFoundErr
+	case err != nil:
+		return nil, err
+	default:
+		return &p, nil
+	}
 }
 
 type PersonRepository interface {
-	GetPerson(string) (*Person, error)
+	GetPerson(context.Context, string) (*Person, error)
 }
 
 type Person struct {
@@ -30,8 +49,20 @@ type Person struct {
 }
 
 func main() {
+	db, err := sql.Open(os.Getenv("DB_DRIVER"), os.Getenv("DB_CONNECTION"))
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = db.Ping()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	r := mux.NewRouter()
-	r.HandleFunc("/sayHello/{name}", sayHelloHandler(&PostgresPersonRepository{}))
+	r.HandleFunc("/sayHello/{name}", sayHelloHandler(&PostgresPersonRepository{db}))
 
 	s := http.Server{
 		Handler:           r,
@@ -54,7 +85,7 @@ func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *htt
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
 
-		err := SayHello(w, repository, vars["name"])
+		err := SayHello(r.Context(), w, repository, vars["name"])
 
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -62,8 +93,8 @@ func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *htt
 	}
 }
 
-func SayHello(w io.Writer, r PersonRepository, name string) error {
-	person, err := r.GetPerson(name)
+func SayHello(ctx context.Context, w io.Writer, r PersonRepository, name string) error {
+	person, err := r.GetPerson(ctx, name)
 
 	if errors.Is(err, PersonDoesNotFoundErr) {
 		fmt.Fprintf(w, "Hello, %s!", name)
