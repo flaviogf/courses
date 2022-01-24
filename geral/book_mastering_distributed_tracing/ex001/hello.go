@@ -4,7 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
+	"net"
 	"net/http"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -27,6 +30,24 @@ type Person struct {
 }
 
 func main() {
+	r := mux.NewRouter()
+	r.HandleFunc("/sayHello/{name}", sayHelloHandler(&PostgresPersonRepository{}))
+
+	s := http.Server{
+		Handler:           r,
+		IdleTimeout:       time.Minute,
+		ReadHeaderTimeout: 5 * time.Second,
+	}
+
+	l, err := net.Listen("tcp", "0.0.0.0:80")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := s.Serve(l); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *http.Request) {

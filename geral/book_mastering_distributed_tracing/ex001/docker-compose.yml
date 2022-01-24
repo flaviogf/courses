@@ -3,3 +3,5 @@ version: '3.9'
 services:
   hello:
     build: .
+    ports:
+      - 8087:80
