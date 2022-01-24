@@ -5,3 +5,10 @@ services:
     build: .
     ports:
       - 8087:80
+  db:
+    image: postgres
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
