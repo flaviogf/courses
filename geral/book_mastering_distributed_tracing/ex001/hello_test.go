@@ -12,11 +12,7 @@ func (r *FakePersonRepository) GetPerson(name string) (*Person, error) {
 		return &Person{"Frank", "How are you doing?"}, nil
 	}
 
-	if name == "Peter" {
-		return nil, PersonDoesNotFoundErr
-	}
-
-	return nil, nil
+	return nil, PersonDoesNotFoundErr
 }
 
 func TestSayHello(t *testing.T) {
@@ -40,13 +36,6 @@ func TestSayHello(t *testing.T) {
 			Repository: &FakePersonRepository{},
 			Err:        nil,
 			Result:     "Hello, Matt!",
-		},
-		{
-			Writer:     &bytes.Buffer{},
-			PersonName: "Peter",
-			Repository: &FakePersonRepository{},
-			Err:        PersonDoesNotFoundErr,
-			Result:     "",
 		},
 	}
 

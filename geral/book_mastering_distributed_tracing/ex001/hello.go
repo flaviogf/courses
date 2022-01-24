@@ -65,13 +65,13 @@ func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *htt
 func SayHello(w io.Writer, r PersonRepository, name string) error {
 	person, err := r.GetPerson(name)
 
-	if err != nil {
-		return err
-	}
-
-	if person == nil {
+	if errors.Is(err, PersonDoesNotFoundErr) {
 		fmt.Fprintf(w, "Hello, %s!", name)
 		return nil
+	}
+
+	if err != nil {
+		return err
 	}
 
 	fmt.Fprintf(w, "Hello, %s! %s", person.Name, person.Quote)
