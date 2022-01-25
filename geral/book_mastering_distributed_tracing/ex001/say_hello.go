@@ -62,7 +62,7 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.HandleFunc("/sayHello/{name}", sayHelloHandler(&PostgresPersonRepository{db}))
+	r.Handle("/sayHello/{name}", sayHelloHandler(&PostgresPersonRepository{db}))
 
 	s := http.Server{
 		Handler:           r,
@@ -81,8 +81,8 @@ func main() {
 	}
 }
 
-func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
+func sayHelloHandler(repository PersonRepository) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
 
 		err := SayHello(r.Context(), w, repository, vars["name"])
@@ -90,7 +90,7 @@ func sayHelloHandler(repository PersonRepository) func(http.ResponseWriter, *htt
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
-	}
+	})
 }
 
 func SayHello(ctx context.Context, w io.Writer, r PersonRepository, name string) error {
