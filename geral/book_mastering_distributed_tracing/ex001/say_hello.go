@@ -14,6 +14,11 @@ import (
 
 	"github.com/gorilla/mux"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/jaeger"
+	"go.opentelemetry.io/otel/sdk/resource"
+	tracesdk "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 
 	_ "github.com/lib/pq"
 )
@@ -61,6 +66,24 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	exp, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(os.Getenv("JAEGER_ENDPOINT"))))
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	res := resource.NewWithAttributes(
+		semconv.SchemaURL,
+		semconv.ServiceNameKey.String("sayHello"),
+	)
+
+	tp := tracesdk.NewTracerProvider(
+		tracesdk.WithBatcher(exp),
+		tracesdk.WithResource(res),
+	)
+
+	otel.SetTracerProvider(tp)
 
 	r := mux.NewRouter()
 	r.Handle("/sayHello/{name}", otelhttp.NewHandler(sayHelloHandler(&PostgresPersonRepository{db}), "sayHello"))

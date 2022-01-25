@@ -8,6 +8,7 @@ services:
     environment:
       DB_DRIVER: 'postgres'
       DB_CONNECTION: 'host=db user=postgres password=postgres dbname=say_hello sslmode=disable'
+      JAEGER_ENDPOINT: 'http://jaeger:14268/api/traces'
   db:
     image: postgres
     volumes:
@@ -15,3 +16,7 @@ services:
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'postgres'
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - 16686:16686
