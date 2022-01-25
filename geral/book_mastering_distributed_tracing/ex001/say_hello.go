@@ -15,6 +15,7 @@ import (
 	"github.com/gorilla/mux"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/sdk/resource"
 	tracesdk "go.opentelemetry.io/otel/sdk/trace"
@@ -30,10 +31,18 @@ type PostgresPersonRepository struct {
 }
 
 func (r *PostgresPersonRepository) GetPerson(ctx context.Context, name string) (*Person, error) {
+	ctx, span := otel.Tracer("postgresPersonRepository").Start(ctx, "getPerson")
+	defer span.End()
+
 	var p Person
 
-	query := "SELECT name, quote FROM people WHERE name=$1"
-	err := r.db.QueryRowContext(ctx, query, name).Scan(&p.Name, &p.Quote)
+	stmt := "SELECT name, quote FROM people WHERE name=$1"
+	err := r.db.QueryRowContext(ctx, stmt, name).Scan(&p.Name, &p.Quote)
+
+	span.SetAttributes(
+		attribute.String("db.statement", stmt),
+		attribute.String("db.operation", "SELECT"),
+	)
 
 	switch {
 	case err == sql.ErrNoRows:
@@ -67,7 +76,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	exp, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(os.Getenv("JAEGER_ENDPOINT"))))
+	exp, err := jaeger.New(
+		jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(os.Getenv("JAEGER_ENDPOINT"))),
+	)
 
 	if err != nil {
 		log.Fatal(err)
@@ -86,7 +97,11 @@ func main() {
 	otel.SetTracerProvider(tp)
 
 	r := mux.NewRouter()
-	r.Handle("/sayHello/{name}", otelhttp.NewHandler(sayHelloHandler(&PostgresPersonRepository{db}), "sayHello"))
+
+	r.Handle(
+		"/sayHello/{name}",
+		otelhttp.NewHandler(sayHelloHandler(&PostgresPersonRepository{db}), "sayHello"),
+	)
 
 	s := http.Server{
 		Handler:           r,
