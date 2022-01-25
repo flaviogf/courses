@@ -100,7 +100,7 @@ func main() {
 
 	r.Handle(
 		"/sayHello/{name}",
-		otelhttp.NewHandler(sayHelloHandler(&PostgresPersonRepository{db}), "sayHello"),
+		otelhttp.NewHandler(sayHelloHandler(&PostgresPersonRepository{db}), "sayHelloHandler"),
 	)
 
 	s := http.Server{
@@ -133,7 +133,18 @@ func sayHelloHandler(repository PersonRepository) http.Handler {
 }
 
 func SayHello(ctx context.Context, w io.Writer, r PersonRepository, name string) error {
+	ctx, span := otel.Tracer("sayHello").Start(ctx, "sayHello")
+	defer span.End()
+
+	span.SetAttributes(
+		attribute.String("name", name),
+	)
+
+	span.AddEvent("start gettting person")
+
 	person, err := r.GetPerson(ctx, name)
+
+	span.AddEvent("finish gettting person")
 
 	if errors.Is(err, PersonDoesNotFoundErr) {
 		fmt.Fprintf(w, "Hello, %s!", name)
