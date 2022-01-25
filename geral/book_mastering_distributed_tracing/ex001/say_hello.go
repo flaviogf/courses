@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 
 	_ "github.com/lib/pq"
 )
@@ -62,7 +63,7 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.Handle("/sayHello/{name}", sayHelloHandler(&PostgresPersonRepository{db}))
+	r.Handle("/sayHello/{name}", otelhttp.NewHandler(sayHelloHandler(&PostgresPersonRepository{db}), "sayHello"))
 
 	s := http.Server{
 		Handler:           r,
