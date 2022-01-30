@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  big_brother:
+    build: .
+    command: ./big_brother
