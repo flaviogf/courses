@@ -4,3 +4,11 @@ services:
   big_brother:
     build: .
     command: ./big_brother
+  big_brother_db:
+    image: postgres
+    environment:
+      POSTGRES_DB: big_brother_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
