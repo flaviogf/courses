@@ -4,11 +4,14 @@ services:
   big_brother:
     build: .
     command: ./big_brother
+    environment:
+      DB_DRIVER: "postgres"
+      DB_DATASOURCE: "dbname=big_brother_db host=big_brother_db user=postgres password=postgres sslmode=disable"
   big_brother_db:
     image: postgres
     environment:
-      POSTGRES_DB: big_brother_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: "big_brother_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
     volumes:
       - ./db:/docker-entrypoint-initdb.d
