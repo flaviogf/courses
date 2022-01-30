@@ -1,12 +1,15 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
 	"net"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -14,6 +17,9 @@ import (
 )
 
 func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
 	db, err := sql.Open(os.Getenv("DB_DRIVER"), os.Getenv("DB_DATASOURCE"))
 
 	if err != nil {
@@ -44,7 +50,18 @@ func main() {
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 
-	if err := s.Serve(l); err != nil {
-		log.Fatal(err)
-	}
+	go func() {
+		if err := s.Serve(l); err != nil {
+			log.Println(err)
+		}
+	}()
+
+	signalCh := make(chan os.Signal, 1)
+	signal.Notify(signalCh, syscall.SIGTERM, syscall.SIGINT)
+	<-signalCh
+
+	db.Close()
+	s.Shutdown(ctx)
+
+	log.Println("Server gracefully finished")
 }
