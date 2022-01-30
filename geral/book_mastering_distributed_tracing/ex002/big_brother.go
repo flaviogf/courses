@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"database/sql"
-	"fmt"
+	"encoding/json"
+	"errors"
 	"log"
 	"net"
 	"net/http"
@@ -34,9 +35,7 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.HandleFunc("/people/{name}", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "It works")
-	})
+	r.Handle("/people/{name}", &GetPersonHandler{r: &PostgresPersonRepository{db: db}})
 
 	l, err := net.Listen("tcp", "0.0.0.0:80")
 
@@ -63,5 +62,48 @@ func main() {
 	db.Close()
 	s.Shutdown(ctx)
 
-	log.Println("Server gracefully finished")
+	log.Println("Server finished")
+}
+
+type Person struct {
+	Name  string `json:"name"`
+	Quote string `json:"quote"`
+}
+
+type GetPersonHandler struct {
+	r PersonRepository
+}
+
+func (g *GetPersonHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+
+	person, err := g.r.GetPerson(r.Context(), vars["name"])
+
+	switch {
+	case errors.Is(err, sql.ErrNoRows):
+		http.Error(w, "Not Found", http.StatusNotFound)
+	case err != nil:
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+	default:
+		enc := json.NewEncoder(w)
+		enc.Encode(person)
+	}
+}
+
+type PostgresPersonRepository struct {
+	db *sql.DB
+}
+
+func (p *PostgresPersonRepository) GetPerson(ctx context.Context, name string) (*Person, error) {
+	stmt := "SELECT name, quote FROM people WHERE name = $1"
+	row := p.db.QueryRowContext(ctx, stmt, name)
+
+	var person Person
+	err := row.Scan(&person.Name, &person.Quote)
+
+	return &person, err
+}
+
+type PersonRepository interface {
+	GetPerson(context.Context, string) (*Person, error)
 }
