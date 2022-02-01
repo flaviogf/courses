@@ -45,6 +45,8 @@ func main() {
 	<-signalCh
 
 	s.Shutdown(ctx)
+
+	log.Println("Server finished")
 }
 
 type FormatterHandler struct{}
