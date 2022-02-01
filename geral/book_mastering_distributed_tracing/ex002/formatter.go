@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net"
@@ -25,7 +26,7 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.Handle("/", &FormatterHandler{})
+	r.Handle("/", &FormatterHandler{}).Methods(http.MethodPost)
 
 	s := http.Server{
 		Handler:           r,
@@ -49,8 +50,24 @@ func main() {
 	log.Println("Server finished")
 }
 
+type Person struct {
+	Name  string
+	Quote string
+}
+
 type FormatterHandler struct{}
 
 func (f *FormatterHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "It works")
+	dec := json.NewDecoder(r.Body)
+
+	defer r.Body.Close()
+
+	var person Person
+
+	if err := dec.Decode(&person); err != nil {
+		http.Error(w, "Could not decode the request body", http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Fprintf(w, "Hello %s! %s", person.Name, person.Quote)
 }
