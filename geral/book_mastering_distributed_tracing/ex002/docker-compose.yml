@@ -14,6 +14,11 @@ services:
     command: ./formatter
     ports:
       - 8081:80
+  say_hello:
+    build: .
+    command: ./say_hello
+    ports:
+      - 8082:80
   big_brother_db:
     image: postgres
     environment:
