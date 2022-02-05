@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"encoding/json"
 	"log"
 	"net"
 	"net/http"
@@ -26,7 +26,7 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.Handle("/", &SayHelloHandler{})
+	r.Handle("/{name}", &SayHelloHandler{}).Methods(http.MethodGet)
 
 	s := http.Server{
 		Handler:           r,
@@ -50,8 +50,36 @@ func main() {
 	log.Println("Server finished")
 }
 
+type Person struct {
+	Name  string
+	Quote string
+}
+
 type SayHelloHandler struct{}
 
 func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "It works")
+	vars := mux.Vars(r)
+
+	name := vars["name"]
+	url := "http://big_brother/people/" + name
+	resp, err := http.Get(url)
+
+	if err != nil {
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
+
+	defer resp.Body.Close()
+
+	var person Person
+
+	switch resp.StatusCode {
+	case 200:
+		json.NewDecoder(resp.Body).Decode(&person)
+	default:
+		person.Name = name
+		person.Quote = "What's up!"
+	}
+
+	json.NewEncoder(w).Encode(person)
 }
