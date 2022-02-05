@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -67,7 +70,31 @@ func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	json.NewEncoder(w).Encode(person)
+	buffer := &bytes.Buffer{}
+
+	if err := json.NewEncoder(buffer).Encode(person); err != nil {
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
+
+	url := "http://formatter"
+	resp, err := http.Post(url, "application/json", buffer)
+
+	if err != nil {
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
+
+	defer resp.Body.Close()
+
+	bytes, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Fprintln(w, string(bytes))
 }
 
 func getPerson(name string) (*Person, error) {
