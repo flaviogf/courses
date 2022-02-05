@@ -60,13 +60,22 @@ type SayHelloHandler struct{}
 func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
-	name := vars["name"]
-	url := "http://big_brother/people/" + name
-	resp, err := http.Get(url)
+	person, err := getPerson(vars["name"])
 
 	if err != nil {
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)
 		return
+	}
+
+	json.NewEncoder(w).Encode(person)
+}
+
+func getPerson(name string) (*Person, error) {
+	url := "http://big_brother/people/" + name
+	resp, err := http.Get(url)
+
+	if err != nil {
+		return nil, err
 	}
 
 	defer resp.Body.Close()
@@ -81,5 +90,5 @@ func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		person.Quote = "What's up!"
 	}
 
-	json.NewEncoder(w).Encode(person)
+	return &person, nil
 }
