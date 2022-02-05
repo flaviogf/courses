@@ -70,31 +70,14 @@ func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	buffer := &bytes.Buffer{}
-
-	if err := json.NewEncoder(buffer).Encode(person); err != nil {
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		return
-	}
-
-	url := "http://formatter"
-	resp, err := http.Post(url, "application/json", buffer)
+	message, err := format(person)
 
 	if err != nil {
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)
 		return
 	}
 
-	defer resp.Body.Close()
-
-	bytes, err := ioutil.ReadAll(resp.Body)
-
-	if err != nil {
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		return
-	}
-
-	fmt.Fprintln(w, string(bytes))
+	fmt.Fprintln(w, message)
 }
 
 func getPerson(name string) (*Person, error) {
@@ -118,4 +101,29 @@ func getPerson(name string) (*Person, error) {
 	}
 
 	return &person, nil
+}
+
+func format(person *Person) (string, error) {
+	buffer := &bytes.Buffer{}
+
+	if err := json.NewEncoder(buffer).Encode(person); err != nil {
+		return "", err
+	}
+
+	url := "http://formatter"
+	resp, err := http.Post(url, "application/json", buffer)
+
+	if err != nil {
+		return "", err
+	}
+
+	defer resp.Body.Close()
+
+	bytes, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		return "", err
+	}
+
+	return string(bytes), nil
 }
