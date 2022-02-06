@@ -15,11 +15,25 @@ import (
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
+	"go.opentelemetry.io/otel"
+	stdout "go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
+
+type Person struct {
+	Name  string `json:"name"`
+	Quote string `json:"quote"`
+}
 
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	initTracer()
 
 	db, err := sql.Open(os.Getenv("DB_DRIVER"), os.Getenv("DB_DATASOURCE"))
 
@@ -34,6 +48,8 @@ func main() {
 	}
 
 	r := mux.NewRouter()
+
+	r.Use(otelmux.Middleware("big-brother"))
 
 	r.Handle("/people/{name}", &GetPersonHandler{r: &PostgresPersonRepository{db: db}})
 
@@ -65,9 +81,21 @@ func main() {
 	log.Println("Server finished")
 }
 
-type Person struct {
-	Name  string `json:"name"`
-	Quote string `json:"quote"`
+func initTracer() {
+	exporter, err := stdout.New(stdout.WithPrettyPrint())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource.NewWithAttributes(semconv.SchemaURL, semconv.ServiceNameKey.String("big-brother"))),
+	)
+
+	otel.SetTracerProvider(tp)
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
 }
 
 type GetPersonHandler struct {
