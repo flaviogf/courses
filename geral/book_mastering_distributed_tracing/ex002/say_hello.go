@@ -89,9 +89,11 @@ func initTracer() {
 type SayHelloHandler struct{}
 
 func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+
 	vars := mux.Vars(r)
 
-	person, err := getPerson(vars["name"])
+	person, err := getPerson(ctx, vars["name"])
 
 	if err != nil {
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)
@@ -108,9 +110,22 @@ func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, message)
 }
 
-func getPerson(name string) (*Person, error) {
+func getPerson(ctx context.Context, name string) (*Person, error) {
 	url := "http://big_brother/people/" + name
-	resp, err := http.Get(url)
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	req = req.WithContext(ctx)
+
+	otel.GetTextMapPropagator().Inject(ctx, propagation.HeaderCarrier(req.Header))
+
+	client := http.Client{Timeout: 5 * time.Second}
+
+	resp, err := client.Do(req)
 
 	if err != nil {
 		return nil, err
