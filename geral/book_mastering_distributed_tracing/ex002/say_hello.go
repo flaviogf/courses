@@ -15,11 +15,28 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
+	"go.opentelemetry.io/otel"
+	stdout "go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	exporter, err := stdout.New(stdout.WithPrettyPrint())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithBatcher(exporter),
+	)
+
+	otel.SetTracerProvider(tp)
 
 	l, err := net.Listen("tcp", "0.0.0.0:80")
 
@@ -28,6 +45,8 @@ func main() {
 	}
 
 	r := mux.NewRouter()
+
+	r.Use(otelmux.Middleware("say-hello"))
 
 	r.Handle("/{name}", &SayHelloHandler{}).Methods(http.MethodGet)
 
