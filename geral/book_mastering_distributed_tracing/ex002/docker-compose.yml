@@ -9,6 +9,8 @@ services:
       DB_DATASOURCE: "dbname=big_brother_db host=big_brother_db user=postgres password=postgres sslmode=disable"
     ports:
       - 8080:80
+    depends_on:
+      - big_brother_db
   formatter:
     build: .
     command: ./formatter
@@ -19,6 +21,9 @@ services:
     command: ./say_hello
     ports:
       - 8082:80
+    depends_on:
+      - big_brother
+      - formatter
   big_brother_db:
     image: postgres
     environment:
