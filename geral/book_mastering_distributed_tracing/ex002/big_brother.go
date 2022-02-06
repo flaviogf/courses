@@ -13,6 +13,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/XSAM/otelsql"
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
@@ -35,7 +36,13 @@ func main() {
 
 	initTracer()
 
-	db, err := sql.Open(os.Getenv("DB_DRIVER"), os.Getenv("DB_DATASOURCE"))
+	driver, err := otelsql.Register("postgres", semconv.DBSystemPostgreSQL.Value.AsString())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	db, err := sql.Open(driver, os.Getenv("DB_DATASOURCE"))
 
 	if err != nil {
 		log.Fatal(err)

@@ -3,6 +3,7 @@ module github.com/courses/geral/book_mastering_distributed_tracing/ex002
 go 1.17
 
 require (
+	github.com/XSAM/otelsql v0.10.0
 	github.com/gorilla/mux v1.8.0
 	github.com/lib/pq v1.10.4
 	go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux v0.28.0

@@ -1,3 +1,5 @@
+github.com/XSAM/otelsql v0.10.0 h1:y8o7q4NaZEV0dBiUC7TuNTHNKyDaX3Z4anntNu7dfYw=
+github.com/XSAM/otelsql v0.10.0/go.mod h1:7n9dZASOnVJncMmBPQjL5OdjQosb5gryCgsgNISnJVo=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/felixge/httpsnoop v1.0.2 h1:+nS9g82KMXccJ/wp0zyRW9ZBHFETmMGtkk+2CTTrW4o=
