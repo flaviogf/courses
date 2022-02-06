@@ -17,7 +17,7 @@ import (
 	"github.com/gorilla/mux"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
 	"go.opentelemetry.io/otel"
-	stdout "go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -70,7 +70,7 @@ func main() {
 }
 
 func initTracer() {
-	exporter, err := stdout.New(stdout.WithPrettyPrint())
+	exporter, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(os.Getenv("JAEGER_ENDPOINT"))))
 
 	if err != nil {
 		log.Fatal(err)
@@ -111,7 +111,7 @@ func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPerson(ctx context.Context, name string) (*Person, error) {
-	url := "http://big_brother/people/" + name
+	url := os.Getenv("BIG_BROTHER_ENDPOINT") + name
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 
@@ -153,7 +153,7 @@ func format(person *Person) (string, error) {
 		return "", err
 	}
 
-	url := "http://formatter"
+	url := os.Getenv("FORMATTER_ENDPOINT")
 	resp, err := http.Post(url, "application/json", buffer)
 
 	if err != nil {

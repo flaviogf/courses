@@ -19,11 +19,16 @@ services:
   say_hello:
     build: .
     command: ./say_hello
+    environment:
+      BIG_BROTHER_ENDPOINT: "http://big_brother/people/"
+      FORMATTER_ENDPOINT: "http://formatter/"
+      JAEGER_ENDPOINT: "http://jaeger:14268/api/traces"
     ports:
       - 8082:80
     depends_on:
       - big_brother
       - formatter
+      - jaeger
   big_brother_db:
     image: postgres
     environment:
@@ -32,3 +37,7 @@ services:
       POSTGRES_PASSWORD: "postgres"
     volumes:
       - ./db:/docker-entrypoint-initdb.d
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - 16686:16686
