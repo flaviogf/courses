@@ -21,6 +21,11 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
+type Person struct {
+	Name  string
+	Quote string
+}
+
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -70,11 +75,6 @@ func main() {
 	s.Shutdown(ctx)
 
 	log.Println("Server finished")
-}
-
-type Person struct {
-	Name  string
-	Quote string
 }
 
 type SayHelloHandler struct{}
