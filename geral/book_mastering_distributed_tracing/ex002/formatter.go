@@ -13,11 +13,25 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/jaeger"
+	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
+
+type Person struct {
+	Name  string
+	Quote string
+}
 
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	initTracer()
 
 	l, err := net.Listen("tcp", "0.0.0.0:80")
 
@@ -26,6 +40,9 @@ func main() {
 	}
 
 	r := mux.NewRouter()
+
+	r.Use(otelmux.Middleware("formatter"))
+
 	r.Handle("/", &FormatterHandler{}).Methods(http.MethodPost)
 
 	s := http.Server{
@@ -50,9 +67,21 @@ func main() {
 	log.Println("Server finished")
 }
 
-type Person struct {
-	Name  string
-	Quote string
+func initTracer() {
+	exporter, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(os.Getenv("JAEGER_ENDPOINT"))))
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource.NewWithAttributes(semconv.SchemaURL, semconv.ServiceNameKey.String("formatter"))),
+	)
+
+	otel.SetTracerProvider(tp)
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
 }
 
 type FormatterHandler struct{}
