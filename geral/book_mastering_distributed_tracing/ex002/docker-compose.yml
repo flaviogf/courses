@@ -7,6 +7,7 @@ services:
     environment:
       DB_DRIVER: "postgres"
       DB_DATASOURCE: "dbname=big_brother_db host=big_brother_db user=postgres password=postgres sslmode=disable"
+      JAEGER_ENDPOINT: "http://jaeger:14268/api/traces"
     ports:
       - 8080:80
     depends_on:
