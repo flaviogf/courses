@@ -100,7 +100,7 @@ func (s *SayHelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	message, err := format(person)
+	message, err := format(ctx, person)
 
 	if err != nil {
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)
@@ -146,15 +146,30 @@ func getPerson(ctx context.Context, name string) (*Person, error) {
 	return &person, nil
 }
 
-func format(person *Person) (string, error) {
+func format(ctx context.Context, person *Person) (string, error) {
+	url := os.Getenv("FORMATTER_ENDPOINT")
+
 	buffer := &bytes.Buffer{}
 
 	if err := json.NewEncoder(buffer).Encode(person); err != nil {
 		return "", err
 	}
 
-	url := os.Getenv("FORMATTER_ENDPOINT")
-	resp, err := http.Post(url, "application/json", buffer)
+	req, err := http.NewRequest(http.MethodPost, url, buffer)
+
+	if err != nil {
+		return "", err
+	}
+
+	req.Header.Add("Content-Type", "application/json")
+
+	req = req.WithContext(ctx)
+
+	otel.GetTextMapPropagator().Inject(ctx, propagation.HeaderCarrier(req.Header))
+
+	client := http.Client{Timeout: 5 * time.Second}
+
+	resp, err := client.Do(req)
 
 	if err != nil {
 		return "", err
