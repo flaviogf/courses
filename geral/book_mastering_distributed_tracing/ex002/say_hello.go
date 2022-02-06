@@ -30,18 +30,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	exporter, err := stdout.New(stdout.WithPrettyPrint())
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	tp := sdktrace.NewTracerProvider(
-		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithBatcher(exporter),
-	)
-
-	otel.SetTracerProvider(tp)
+	initTracer()
 
 	l, err := net.Listen("tcp", "0.0.0.0:80")
 
@@ -75,6 +64,21 @@ func main() {
 	s.Shutdown(ctx)
 
 	log.Println("Server finished")
+}
+
+func initTracer() {
+	exporter, err := stdout.New(stdout.WithPrettyPrint())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithBatcher(exporter),
+	)
+
+	otel.SetTracerProvider(tp)
 }
 
 type SayHelloHandler struct{}
