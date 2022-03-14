@@ -1,9 +1,9 @@
 require 'benchmark'
 
-GC.disable
-
 number_of_rows = 5999
 number_of_columns = 100
+
+GC.disable
 
 data = Array.new(number_of_rows) { Array.new(number_of_columns) { 'x' * 1000 } }
 
