@@ -1,6 +1,6 @@
 require 'benchmark'
 
-num_rows = 10_000
+num_rows = 10000
 num_cols = 10
 
 data = Array.new(num_rows) { Array.new(num_cols) { 'x' * 1000 } }
