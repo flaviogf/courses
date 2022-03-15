@@ -1,6 +1,6 @@
 require 'benchmark'
 
-num_rows = 10_000
+num_rows = 100_000
 num_cols = 10
 
 GC.disable
