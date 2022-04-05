@@ -17,3 +17,7 @@ ls -l
 ```sh
 ls -lt --reverse
 ```
+
+```sh
+file chapter_001.md
+```
