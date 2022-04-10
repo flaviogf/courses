@@ -4,7 +4,7 @@ GC.disable
 
 before = `ps -o rss= -p #{Process.pid}`.to_i / 1024
 
-content = 'x' * 1024 * 1024 * 26
+content = "x\n" * 1024 * 1024 * 13
 
 after = `ps -o rss= -p #{Process.pid}`.to_i / 1024
 usage = after - before
