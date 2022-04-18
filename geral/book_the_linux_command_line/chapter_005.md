@@ -17,3 +17,7 @@ which ls
 ```sh
 which cp
 ```
+
+```sh
+mkdir --help
+```
