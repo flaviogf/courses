@@ -21,3 +21,11 @@ which cp
 ```sh
 mkdir --help
 ```
+
+```sh
+alias foo='cd /usr; ls; cd -'
+```
+
+```sh
+unalias foo
+```
