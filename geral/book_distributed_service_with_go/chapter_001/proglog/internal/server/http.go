@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"net/http"
 	"time"
 
@@ -23,19 +24,43 @@ func NewHTTPServer(addr string) *http.Server {
 }
 
 type httpServer struct {
-	log *Log
+	Log *Log
 }
 
 func newHTTPServer() *httpServer {
 	return &httpServer{
-		log: NewLog(),
+		Log: NewLog(),
 	}
 }
 
-func (h *httpServer) handleProduce(w http.ResponseWriter, r *http.Request) {
+func (s *httpServer) handleProduce(w http.ResponseWriter, r *http.Request) {
+	var req ProduceRequest
+
+	err := json.NewDecoder(r.Body).Decode(&req)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	offset, err := s.Log.Append(req.Record)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	res := ProduceResponse{offset}
+
+	err = json.NewEncoder(w).Encode(res)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
-func (h *httpServer) handleConsume(w http.ResponseWriter, r *http.Request) {
+func (s *httpServer) handleConsume(w http.ResponseWriter, r *http.Request) {
 }
 
 type ProduceRequest struct {
@@ -44,4 +69,12 @@ type ProduceRequest struct {
 
 type ProduceResponse struct {
 	Offset uint64 `json:"offset"`
+}
+
+type ConsumeRequest struct {
+	Offset uint64 `json:"offset"`
+}
+
+type ConsumeResponse struct {
+	Record Record `json:"response"`
 }
