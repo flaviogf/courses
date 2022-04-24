@@ -26,7 +26,13 @@ func main() {
 	}
 
 	if !sliceContains(tables, tableName) {
-		log.Printf("Creating table: %v\n", tableName)
+		log.Printf("Creating table: %s\n", tableName)
+
+		err = adminClient.CreateTable(ctx, tableName)
+
+		if err != nil {
+			log.Fatalf("Could not create table %s: %v", tableName, err)
+		}
 	}
 }
 
