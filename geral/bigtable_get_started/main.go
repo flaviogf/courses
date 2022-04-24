@@ -31,9 +31,17 @@ func main() {
 		err = adminClient.CreateTable(ctx, tableName)
 
 		if err != nil {
-			log.Fatalf("Could not create table %s: %v", tableName, err)
+			log.Fatalf("Could not create table %s: %v\n", tableName, err)
 		}
 	}
+
+	tblInfo, err := adminClient.TableInfo(ctx, tableName)
+
+	if err != nil {
+		log.Fatalf("Could not read info for table %s: %v\n", tableName, err)
+	}
+
+	log.Println(tblInfo.Families)
 }
 
 func sliceContains(tables []string, tableName string) bool {
