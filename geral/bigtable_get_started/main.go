@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"cloud.google.com/go/bigtable"
@@ -12,6 +13,7 @@ func main() {
 	instance := "instance"
 	tableName := "hello-world"
 	columnFamily := "cf1"
+	columnName := "greeting"
 	greetings := []string{"Hello world!", "Hello Cloud Bigtable", "Hello golang!"}
 
 	ctx := context.Background()
@@ -55,9 +57,30 @@ func main() {
 		log.Fatalf("Could not create data operation client: %v\n", err)
 	}
 
-	client.Open(tableName)
+	tbl := client.Open(tableName)
 
-	log.Println(greetings)
+	muts := make([]*bigtable.Mutation, len(greetings))
+	rowKeys := make([]string, len(greetings))
+
+	for i, greeting := range greetings {
+		muts[i] = bigtable.NewMutation()
+		muts[i].Set(columnFamily, columnName, bigtable.Now(), []byte(greeting))
+		rowKeys[i] = fmt.Sprintf("%s%d", columnName, i)
+	}
+
+	rowErrs, err := tbl.ApplyBulk(ctx, rowKeys, muts)
+
+	if err != nil {
+		log.Fatalf("Could not apply bulk row mutation: %v", err)
+	}
+
+	if rowErrs != nil {
+		for _, rowErr := range rowErrs {
+			log.Printf("Erro writing row: %v", rowErr)
+		}
+
+		log.Fatal("Could not write some rows\n")
+	}
 }
 
 func sliceContains(tables []string, tableName string) bool {
