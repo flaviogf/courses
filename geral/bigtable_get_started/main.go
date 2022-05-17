@@ -12,6 +12,7 @@ func main() {
 	instance := "instance"
 	tableName := "hello-world"
 	columnFamily := "cf1"
+	greetings := []string{"Hello world!", "Hello Cloud Bigtable", "Hello golang!"}
 
 	ctx := context.Background()
 	adminClient, err := bigtable.NewAdminClient(ctx, project, instance)
@@ -47,6 +48,16 @@ func main() {
 			log.Fatalf("Could not create column family %s: %v\n", columnFamily, err)
 		}
 	}
+
+	client, err := bigtable.NewClient(ctx, project, instance)
+
+	if err != nil {
+		log.Fatalf("Could not create data operation client: %v\n", err)
+	}
+
+	client.Open(tableName)
+
+	log.Println(greetings)
 }
 
 func sliceContains(tables []string, tableName string) bool {
