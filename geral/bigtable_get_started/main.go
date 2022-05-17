@@ -11,6 +11,7 @@ func main() {
 	project := "project"
 	instance := "instance"
 	tableName := "hello-world"
+	columnFamily := "cf1"
 
 	ctx := context.Background()
 	adminClient, err := bigtable.NewAdminClient(ctx, project, instance)
@@ -41,7 +42,11 @@ func main() {
 		log.Fatalf("Could not read info for table %s: %v\n", tableName, err)
 	}
 
-	log.Println(tblInfo.Families)
+	if !sliceContains(tblInfo.Families, columnFamily) {
+		if err := adminClient.CreateColumnFamily(ctx, tableName, columnFamily); err != nil {
+			log.Fatalf("Could not create column family %s: %v\n", columnFamily, err)
+		}
+	}
 }
 
 func sliceContains(tables []string, tableName string) bool {
