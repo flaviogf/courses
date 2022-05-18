@@ -81,6 +81,16 @@ func main() {
 
 		log.Fatal("Could not write some rows\n")
 	}
+
+	log.Println("Getting a single greeting by row key")
+
+	row, err := tbl.ReadRow(ctx, rowKeys[0], bigtable.RowFilter(bigtable.ColumnFilter(columnName)))
+
+	if err != nil {
+		log.Fatalf("Could not read row with key %s: %v", rowKeys[0], err)
+	}
+
+	log.Printf("\t%s: %s", rowKeys[0], string(row[columnFamily][0].Value))
 }
 
 func sliceContains(tables []string, tableName string) bool {
