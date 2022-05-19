@@ -91,6 +91,12 @@ func main() {
 	}
 
 	log.Printf("\t%s: %s", rowKeys[0], string(row[columnFamily][0].Value))
+
+	err = tbl.ReadRows(ctx, bigtable.PrefixRange(columnName), func(row bigtable.Row) bool {
+		item := row[columnFamily][0]
+		log.Printf("\t%s: %s\n", item.Row, string(item.Value))
+		return true
+	}, bigtable.RowFilter(bigtable.ColumnFilter(columnName)))
 }
 
 func sliceContains(tables []string, tableName string) bool {
