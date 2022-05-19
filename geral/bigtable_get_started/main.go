@@ -97,6 +97,10 @@ func main() {
 		log.Printf("\t%s: %s\n", item.Row, string(item.Value))
 		return true
 	}, bigtable.RowFilter(bigtable.ColumnFilter(columnName)))
+
+	if err = client.Close(); err != nil {
+		log.Printf("Could not close the data client: %v\n", err)
+	}
 }
 
 func sliceContains(tables []string, tableName string) bool {
