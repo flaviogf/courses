@@ -101,6 +101,10 @@ func main() {
 	if err = client.Close(); err != nil {
 		log.Printf("Could not close the data client: %v\n", err)
 	}
+
+	if err = adminClient.DeleteTable(ctx, tableName); err != nil {
+		log.Fatalf("Could not delete table %s: %v\n", tableName, err)
+	}
 }
 
 func sliceContains(tables []string, tableName string) bool {
