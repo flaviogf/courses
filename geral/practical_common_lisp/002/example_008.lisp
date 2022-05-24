@@ -8,3 +8,8 @@
 
 (defun dump-db ()
   (format t "~{~{~a:~10t~a~%~}~}" *db*))
+
+(defun prompt-read (prompt)
+  (format *query-io* "~a: " prompt)
+  (finish-output *query-io*)
+  (read-line *query-io*))
