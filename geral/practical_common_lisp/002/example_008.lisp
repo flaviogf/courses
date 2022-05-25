@@ -13,3 +13,10 @@
   (format *query-io* "~a: " prompt)
   (finish-output *query-io*)
   (read-line *query-io*))
+
+(defun prompt-for-cd ()
+  (make-cd
+    (prompt-read "Artist")
+    (prompt-read "Title")
+    (prompt-read "Rating")
+    (prompt-read "Ripped")))
