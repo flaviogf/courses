@@ -18,5 +18,5 @@
   (make-cd
     (prompt-read "Artist")
     (prompt-read "Title")
-    (parse-integer (prompt-read "Rating") :junk-allowed t)
+    (or (parse-integer (prompt-read "Rating") :junk-allowed t) 0)
     (prompt-read "Ripped [y/n]")))
