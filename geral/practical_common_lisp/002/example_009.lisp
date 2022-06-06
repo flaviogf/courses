@@ -20,3 +20,8 @@
    (prompt-read "Title")
    (prompt-read "Rating")
    (prompt-read "Ripped")))
+
+(defun add-cds ()
+  (loop
+   (append-record (prompt-for-cd))
+   (if (not (y-or-n-p "Another?: ")) (return))))
