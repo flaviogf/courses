@@ -24,3 +24,7 @@
 (defun add-cds ()
   (loop (append-record (prompt-for-cd))
    (unless (yes-or-no-p "another?") (return))))
+
+(defun save-db (filename)
+  (with-open-file (out filename :direction :output :if-exists :supersede)
+    (with-standard-io-syntax (print *db* out))))
