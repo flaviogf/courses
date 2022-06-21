@@ -3,6 +3,6 @@
 (backwards ("hello, world" t format))
 
 (defun make-comparison-expr (field value)
-  (list 'equal (list 'getf field) value))
+  `(equal (getf cd ,field) ,value))
 
 (make-comparison-expr :artist "Frank")
