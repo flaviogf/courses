@@ -1,0 +1,6 @@
+#+title: Example 001
+#+author: flaviogf
+
+* Welcome to Org-mode
+** Sub-heading
+Each extra ~*~ increases the depth by one level.
