@@ -7,3 +7,5 @@ Each extra ~*~ increases the depth by one level.
 
 * TODO Promulgate Org to the world
 ** TODO Create a quickstart
+
+To markup text in Org, simply surround it with one or more characters. *Bold*, /italic/ and _underline_ are fairly intuitive
