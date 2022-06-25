@@ -22,7 +22,6 @@ List can contain checkboxes
 - [ ] not started
 - [-] in progress
 - [X] complete
-
 * Links
 [[https://orgmode.org][a nice website]]
 [[Links][an earlier heading in document]]
