@@ -1,12 +1,20 @@
 #+title: Example 001
 #+author: flaviogf
 
-* Welcome to Org-mode
-** Sub-heading
+* Heading
+** Welcome to Org-mode
+*** Sub-heading
 Each extra ~*~ increases the depth by one level.
-
-* TODO Promulgate Org to the world
-** TODO Create a quickstart
-
+*** TODO Promulgate Org to the world
+**** TODO Create a quickstart
+* Markup 
 To markup text in Org, simply surround it with one or more characters. *Bold*, /italic/ and _underline_ are fairly intuitive and the ability to use the +strikethrough+ is a plus.
 You can _*/combine/*_ the basic markup in any order, however ~code~ and =verbatim= need to be the *_~inner-most~_* markers if they are present since their contents are interpreted =_literally_.=
+* Lists
+To buy:
+1. Milk
+2. Eggs
+   - Organic
+3. Cheese
+   + Parmesan
+   + Mozzarella
