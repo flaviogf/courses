@@ -22,3 +22,29 @@ List can contain checkboxes
 - [ ] not started
 - [-] in progress
 - [X] complete
+
+* Links
+[[https://orgmode.org][a nice website]]
+[[Links][an earlier heading in document]]
+* Images
+[[https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png]]
+* Blocks
+#+begin_example
+monospace
+#+end_example
+
+#+begin_src emacs-lisp
+(message "Hello World")
+#+end_src
+
+#+begin_src ruby
+def factorial(n)
+  if n == 1 || n == 0
+    return 1
+  end
+
+  n * factorial(n-1)
+end
+
+factorial(5)
+#+end_src
