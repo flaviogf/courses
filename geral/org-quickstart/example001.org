@@ -18,3 +18,7 @@ To buy:
 3. Cheese
    + Parmesan
    + Mozzarella
+List can contain checkboxes
+- [ ] not started
+- [-] in progress
+- [X] complete
