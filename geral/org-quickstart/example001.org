@@ -51,3 +51,7 @@ factorial(5)
 
 #+RESULTS:
 : 120
+
+* Tables
+| I    | am  | a    | table |
+| with | two | rows | !     |
