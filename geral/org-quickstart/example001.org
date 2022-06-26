@@ -36,6 +36,9 @@ monospace
 (message "Hello World")
 #+end_src
 
+#+RESULTS:
+: Hello World
+
 #+begin_src ruby
 def factorial(n)
   if n == 1 || n == 0
@@ -47,3 +50,6 @@ end
 
 factorial(5)
 #+end_src
+
+#+RESULTS:
+: 120
