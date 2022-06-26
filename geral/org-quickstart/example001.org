@@ -1,5 +1,5 @@
-#+title: Example 001
-#+author: flaviogf
+#+TITLE: Example 001
+#+AUTHOR: flaviogf
 
 * Heading
 ** Welcome to Org-mode
