@@ -33,20 +33,20 @@ monospace
 #+end_example
 
 #+begin_src emacs-lisp
-(message "Hello World")
+  (message "Hello World")
 #+end_src
 
 #+RESULTS:
 : Hello World
 
 #+begin_src ruby
-def factorial(n)
-  return 1 if n == 1 || n == 0
+  def factorial(n)
+    return 1 if n == 1 || n == 0
 
-  n * factorial(n-1)
-end
+    n * factorial(n-1)
+  end
 
-factorial(5)
+  factorial(5)
 #+end_src
 
 #+RESULTS:
