@@ -20,6 +20,14 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	defer func(ctx context.Context) {
+		err := client.Disconnect(ctx)
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}(ctx)
+
 	collection := client.Database("store").Collection("transcations")
 
 	docs := []interface{}{
