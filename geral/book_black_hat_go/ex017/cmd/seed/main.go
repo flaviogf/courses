@@ -28,7 +28,7 @@ func main() {
 		}
 	}(ctx)
 
-	collection := client.Database("store").Collection("transcations")
+	collection := client.Database("store").Collection("transactions")
 
 	docs := []interface{}{
 		bson.D{
