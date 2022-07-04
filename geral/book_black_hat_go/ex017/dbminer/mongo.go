@@ -16,8 +16,3 @@ func (m *MongoMiner) GetSchema() (*dbminer.Schema, error) {
 
 	return &result, nil
 }
-
-func main() {
-	mongoMiner := NewMongoMiner()
-	dbminer.Search(mongoMiner)
-}
