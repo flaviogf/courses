@@ -1,8 +1,4 @@
-package main
-
-import (
-	"gitub.com/flaviogf/courses/geral/book_black_hat_go/ex017/dbminer"
-)
+package dbminer
 
 type MongoMiner struct {
 }
@@ -11,8 +7,8 @@ func NewMongoMiner() *MongoMiner {
 	return &MongoMiner{}
 }
 
-func (m *MongoMiner) GetSchema() (*dbminer.Schema, error) {
-	var result dbminer.Schema
+func (m *MongoMiner) GetSchema() (*Schema, error) {
+	var result Schema
 
 	return &result, nil
 }
