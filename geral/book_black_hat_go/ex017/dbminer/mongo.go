@@ -2,8 +2,10 @@ package dbminer
 
 import (
 	"context"
+	"log"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -30,6 +32,16 @@ func (m *MongoMiner) GetSchema() (*Schema, error) {
 
 	if err = client.Ping(ctx, readpref.Primary()); err != nil {
 		return nil, err
+	}
+
+	databaseNames, err := client.ListDatabaseNames(ctx, bson.D{})
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for _, databaseName := range databaseNames {
+		log.Println(databaseName)
 	}
 
 	return &result, nil
