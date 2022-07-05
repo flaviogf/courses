@@ -41,7 +41,20 @@ func (m *MongoMiner) GetSchema() (*Schema, error) {
 	}
 
 	for _, databaseName := range databaseNames {
-		log.Println(databaseName)
+		database := Database{Name: databaseName, Tables: []Table{}}
+
+		collections, err := client.Database(databaseName).ListCollectionNames(ctx, bson.D{})
+
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		for _, collection := range collections {
+			table := Table{Name: collection, Columns: []string{}}
+			database.Tables = append(database.Tables, table)
+		}
+
+		result.Databases = append(result.Databases, database)
 	}
 
 	return &result, nil
