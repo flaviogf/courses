@@ -1,10 +1,12 @@
 CREATE DATABASE store;
 
-CREATE TABLE transactions (
+\c store;
+
+CREATE TABLE public.transactions (
   id SERIAL PRIMARY KEY,
   ccnum VARCHAR(32),
   date DATE,
   amount MONEY,
-  cvv CHAR(2),
+  cvv CHAR(4),
   exp DATE
 );

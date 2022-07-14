@@ -18,7 +18,7 @@ type Transaction struct {
 }
 
 func main() {
-	connStr := "user=postgres password=postgres dbname=store sslmode=disable"
+	connStr := "user=postgres password=postgres dbname=store port=54320 sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 
 	if err != nil {
@@ -53,7 +53,7 @@ func main() {
 		},
 	}
 
-	query := "INSERT INTO transactions(ccnum, date, amount, cvv, exp) VALUES ($1, $2, $3, $4, $5)"
+	query := "INSERT INTO public.transactions(ccnum, date, amount, cvv, exp) VALUES ($1, $2, $3, $4, $5)"
 
 	for _, t := range transactions {
 		result, err := conn.ExecContext(ctx, query, t.CCNum, t.Date, t.Amount, t.CVV, t.Exp)
