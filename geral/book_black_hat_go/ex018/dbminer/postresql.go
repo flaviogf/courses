@@ -19,7 +19,7 @@ func NewPostgreSQLMiner() *PostgreSQLMiner {
 func (pq *PostgreSQLMiner) GetSchema() (*Schema, error) {
 	var result Schema
 
-	connStr := "user=postgres password=postgres port=54320 sslmode=disable"
+	connStr := "user=postgres password=postgres port=54320 dbname=store sslmode=disable"
 	conn, err := sql.Open("postgres", connStr)
 
 	if err != nil {
@@ -33,7 +33,7 @@ func (pq *PostgreSQLMiner) GetSchema() (*Schema, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	query := "SELECT datname FROM pg_database;"
+	query := "SELECT table_schema, table_name, column_name FROM information_schema.columns WHERE table_schema NOT IN ('information_schema', 'pg_catalog');"
 
 	rows, err := conn.QueryContext(ctx, query)
 
@@ -44,13 +44,15 @@ func (pq *PostgreSQLMiner) GetSchema() (*Schema, error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var database Database
+		var currschema, currtable, currcol string
 
-		if err = rows.Scan(&database.Name); err != nil {
+		if err = rows.Scan(&currschema, &currtable, &currcol); err != nil {
 			log.Fatalln(err)
 		}
 
-		result.Databases = append(result.Databases, database)
+		log.Println(currschema)
+		log.Println(currtable)
+		log.Println(currcol)
 	}
 
 	return &result, nil
