@@ -12,7 +12,7 @@ import (
 type Transaction struct {
 	CCNum  string
 	Date   time.Time
-	Amount uint32
+	Amount float64
 	CVV    string
 	Exp    time.Time
 }
@@ -47,7 +47,7 @@ func main() {
 		Transaction{
 			"4444333322221111",
 			date,
-			10012,
+			100.12,
 			"1234",
 			exp,
 		},
