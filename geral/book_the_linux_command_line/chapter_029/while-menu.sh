@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DELAY=3
+
 while [[ "$REPLY" != 0 ]]; do
     clear
 
@@ -14,4 +16,15 @@ Please Select:
 EOF
 
     read -p "Enter selection [0-3]> "
+
+    if [[ "$REPLY" =~ ^[0-3]$ ]]; then
+        if [[ "$REPLY" == 1 ]]; then
+            echo "Hostname: ${HOSTNAME}"
+            uptime
+            sleep $DELAY
+        fi
+    else
+        echo "Invalid entry"
+        sleep $DELAY
+    fi
 done
