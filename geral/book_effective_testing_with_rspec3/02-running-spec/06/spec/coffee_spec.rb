@@ -19,7 +19,7 @@ end
 RSpec.describe 'A cup of coffee' do
   let(:coffee) { Coffee.new }
 
-  fit 'costs $1' do
+  it 'costs $1' do
     expect(coffee.price).to eq(1.0)
   end
 
