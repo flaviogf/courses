@@ -25,6 +25,16 @@ RSpec.describe 'An cupp of coffee', :no_database do
     expect(coffee.price).to eq(1.0)
   end
 
+  it 'is light in color' do
+    pending 'Not yet impleted'
+    expect(coffee.color).to be(:light)
+  end
+
+  it 'is cooler than 200 degree Fahrenheit' do
+    pending 'Not yet impleted'
+    expect(coffe.temperature).to be < 200.00
+  end
+
   context 'with milk' do
     before { coffee.add :milk }
 
