@@ -1,3 +1,4 @@
 example_id              | status | run_time        |
 ----------------------- | ------ | --------------- |
-./spec/tea_spec.rb[1:1] | passed | 0.00092 seconds |
+./spec/tea_spec.rb[1:1] | passed | 0.00104 seconds |
+./spec/tea_spec.rb[1:2] | passed | 0.00218 seconds |
