@@ -4,6 +4,9 @@ LIB_PATH = File.join(File.expand_path(__dir__), '..', 'app')
 $LOAD_PATH.unshift(LIB_PATH) unless $LOAD_PATH.include?(LIB_PATH)
 
 require 'byebug'
+require 'json'
+require 'rack/test'
+
 require 'api'
 
 RSpec.configure do |config|

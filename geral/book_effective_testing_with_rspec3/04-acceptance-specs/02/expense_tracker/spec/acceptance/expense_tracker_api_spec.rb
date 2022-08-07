@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-require 'rack/test'
-
 require 'spec_helper'
 
 module ExpenseTracker
