@@ -10,7 +10,7 @@ module ExpenseTracker
       coffee = {
         payee: 'Starbucks',
         price: 575,
-        date: '2017-10-01'
+        date: '2017-06-10'
       }
 
       post '/expenses', JSON.dump(coffee)
