@@ -5,6 +5,7 @@ APP_PATH = File.join(File.expand_path(__dir__), '..', 'app')
 $LOAD_PATH.unshift(APP_PATH) unless $LOAD_PATH.include?(APP_PATH)
 
 require 'api'
+require 'rack/test'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
