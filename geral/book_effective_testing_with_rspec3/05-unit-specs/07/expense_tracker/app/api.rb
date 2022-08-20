@@ -12,8 +12,13 @@ module ExpenseTracker
     post '/expenses' do
       expense = JSON.parse(request.body.read)
       result = @ledger.record(expense)
-      expense.merge!('expense_id' => result.expense_id)
-      JSON.dump(expense)
+
+      if result.success?
+        JSON.dump('expense_id' => result.expense_id)
+      else
+        status 422
+        JSON.dump('error' => result.error)
+      end
     end
   end
 end
