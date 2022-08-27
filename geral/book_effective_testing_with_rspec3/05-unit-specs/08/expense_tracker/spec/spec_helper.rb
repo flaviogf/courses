@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+APP_PATH = File.join(File.expand_path(__dir__), '..', 'app')
+
+$LOAD_PATH.unshift(APP_PATH) unless $LOAD_PATH.include?(APP_PATH)
+
+require 'api'
+require 'rack/test'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -13,15 +20,7 @@ RSpec.configure do |config|
 
   config.filter_run_when_matching :focus
 
-  config.example_status_persistence_file_path = 'spec/examples.txt'
-
   config.disable_monkey_patching!
-
-  config.warnings = true
-
-  config.default_formatter = 'doc' if config.files_to_run.one?
-
-  config.profile_examples = 10
 
   config.order = :random
 
