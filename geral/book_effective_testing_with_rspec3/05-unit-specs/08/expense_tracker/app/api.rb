@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'ledger'
 
 module ExpenseTracker
   class API < Sinatra::Base
-    def initialize(ledger:)
+    def initialize(ledger: Ledger.new)
       @ledger = ledger
       super
     end

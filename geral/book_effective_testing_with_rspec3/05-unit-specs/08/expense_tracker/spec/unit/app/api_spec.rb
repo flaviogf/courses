@@ -6,7 +6,7 @@ module ExpenseTracker
 
     include Rack::Test::Methods
 
-    let(:ledger) { instance_double('Ledger') }
+    let(:ledger) { instance_double('ExpenseTracker::Ledger') }
 
     let(:expense) { { 'some' => 'data' } }
 
