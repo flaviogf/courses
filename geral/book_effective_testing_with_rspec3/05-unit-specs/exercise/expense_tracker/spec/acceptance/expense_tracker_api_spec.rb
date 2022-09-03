@@ -16,6 +16,10 @@ RSpec.describe 'ExpenseTracker API' do
       post '/expenses', JSON.dump(expense)
 
       expect(last_response.status).to eq(200)
+
+      response = JSON.parse(last_response.body)
+
+      expect(response).to include('expense_id' => 42)
     end
   end
 
