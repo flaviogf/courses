@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+task default: %w[test]
+
+task :test do
+  sh 'docker compose run --rm app bundle exec rspec'
+end
