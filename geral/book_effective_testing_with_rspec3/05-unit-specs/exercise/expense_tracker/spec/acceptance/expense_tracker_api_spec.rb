@@ -18,4 +18,8 @@ RSpec.describe 'ExpenseTracker API' do
       expect(last_response.status).to eq(200)
     end
   end
+
+  def app
+    ExpenseTracker::API.new
+  end
 end

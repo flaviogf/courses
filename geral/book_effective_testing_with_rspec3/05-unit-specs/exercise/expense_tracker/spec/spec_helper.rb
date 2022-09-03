@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
-require 'json'
+APP_PATH = File.join(File.expand_path(__dir__), '..', 'app')
+
+$LOAD_PATH.unshift(APP_PATH) unless $LOAD_PATH.include?(APP_PATH)
+
 require 'rack/test'
+
+require 'api'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
