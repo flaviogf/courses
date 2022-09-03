@@ -11,7 +11,7 @@ module ExpenseTracker
         expense = { 'data' => 'something' }
         post '/expenses', JSON.dump(expense)
 
-        expect(last_response.status). to eq(200)
+        expect(last_response.status).to eq(200)
       end
     end
 
