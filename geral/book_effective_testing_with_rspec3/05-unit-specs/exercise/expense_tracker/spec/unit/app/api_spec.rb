@@ -57,6 +57,9 @@ module ExpenseTracker
 
     describe '/expenses/:date (GET)' do
       it 'returns status 200 (OK)' do
+        get '/expenses/2022-08-01'
+
+        expect(last_response.status).to eq(200)
       end
 
       it 'returns the expense records as JSON' do
