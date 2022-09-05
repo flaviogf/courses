@@ -24,12 +24,26 @@ module ExpenseTracker
         expect(last_response.status).to eq(200)
       end
 
-      it 'returnes the recorded expense id' do
+      it 'returns the recorded expense id' do
         post '/expenses', JSON.dump(expense)
 
         response = JSON.parse(last_response.body)
 
         expect(response).to include('expense_id' => 457)
+      end
+    end
+
+    context 'when the expense is invalid' do
+      before do
+        allow(ledger).to receive(:record)
+          .with(expense)
+          .and_return(RecordResult.new(false, nil, 'error'))
+      end
+
+      it 'returns status 422 (Unprocessable Entity' do
+        post '/expenses', JSON.dump(expense)
+
+        expect(last_response.status).to eq(422)
       end
     end
 
