@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+
 require 'spec_helper'
 
 module ExpenseTracker
@@ -37,13 +38,21 @@ module ExpenseTracker
       before do
         allow(ledger).to receive(:record)
           .with(expense)
-          .and_return(RecordResult.new(false, nil, 'error'))
+          .and_return(RecordResult.new(false, nil, 'invalid expense'))
       end
 
       it 'returns status 422 (Unprocessable Entity' do
         post '/expenses', JSON.dump(expense)
 
         expect(last_response.status).to eq(422)
+      end
+
+      it 'returns the error message' do
+        post '/expenses', JSON.dump(expense)
+
+        response = JSON.parse(last_response.body)
+
+        expect(response).to include('error' => 'invalid expense')
       end
     end
 
