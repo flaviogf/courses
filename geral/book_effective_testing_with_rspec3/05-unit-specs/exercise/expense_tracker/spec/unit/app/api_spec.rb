@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 require 'spec_helper'
 
 module ExpenseTracker
@@ -53,6 +52,14 @@ module ExpenseTracker
 
           expect(response).to include('error' => 'invalid expense')
         end
+      end
+    end
+
+    describe '/expenses/:date (GET)' do
+      it 'returns status 200 (OK)' do
+      end
+
+      it 'returns the expense records as JSON' do
       end
     end
 
