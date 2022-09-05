@@ -3,20 +3,38 @@
 require 'spec_helper'
 
 module ExpenseTracker
+  RecordResult = Struct.new(:success?, :expense_id, :error)
+
   RSpec.describe API do
     include Rack::Test::Methods
 
+    let(:ledger) { instance_double('ExpenseTracker::Ledger') }
+    let(:expense) { { 'data' => 'something' } }
+
+    before do
+      allow(ledger).to receive(:record)
+        .with(expense)
+        .and_return(RecordResult.new(true, 457, ''))
+    end
+
     describe '/expenses (POST)' do
       it 'returns status 200 (OK)' do
-        expense = { 'data' => 'something' }
         post '/expenses', JSON.dump(expense)
 
         expect(last_response.status).to eq(200)
       end
+
+      it 'returnes the recorded expense id' do
+        post '/expenses', JSON.dump(expense)
+
+        response = JSON.parse(last_response.body)
+
+        expect(response).to include('expense_id' => 457)
+      end
     end
 
     def app
-      ExpenseTracker::API.new
+      ExpenseTracker::API.new(ledger:)
     end
   end
 end
