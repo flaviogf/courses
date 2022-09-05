@@ -17,6 +17,8 @@ module ExpenseTracker
         JSON.dump('expense_id' => result.expense_id)
       else
         status(422)
+
+        JSON.dump('error' => result.error)
       end
     end
 
