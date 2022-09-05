@@ -2,6 +2,8 @@
 
 require 'sinatra'
 
+require 'ledger'
+
 module ExpenseTracker
   class API < Sinatra::Base
     def initialize(ledger: Ledger.new)

@@ -42,6 +42,14 @@ RSpec.describe 'ExpenseTracker API' do
     end
   end
 
+  describe '/expenses/:date (GET)' do
+    it 'returns the expense list from a specific date' do
+      get '/expenses/2022-08-01'
+
+      expect(last_response.status).to eq(200)
+    end
+  end
+
   def app
     ExpenseTracker::API.new
   end
