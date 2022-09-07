@@ -102,6 +102,14 @@ module ExpenseTracker
 
           expect(last_response.status).to eq(200)
         end
+
+        it 'returns an empty array as JSON' do
+          get '/expenses/2022-08-01'
+
+          response = JSON.parse(last_response.body)
+
+          expect(response).to be_empty
+        end
       end
     end
 
