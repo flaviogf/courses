@@ -1,0 +1,8 @@
+---
+- name: Provision VM
+  hosts: all
+  become: yes
+  become_method: sudo
+  remote_user: ubuntu
+  tasks:
+    - import_tasks: "pam_pwquality.yml"

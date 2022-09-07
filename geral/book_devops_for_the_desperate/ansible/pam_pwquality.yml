@@ -1,0 +1,5 @@
+---
+- name: Install libpam-pwquality
+  package:
+    name: "libpam-pwquality"
+    state: present
