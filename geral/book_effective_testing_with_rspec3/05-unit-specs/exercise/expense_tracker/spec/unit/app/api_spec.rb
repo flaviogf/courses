@@ -56,6 +56,27 @@ module ExpenseTracker
     end
 
     describe '/expenses/:date (GET)' do
+      let(:expenses) do
+        [
+          {
+            'expense_id' => 1,
+            'payee' => 'Starbucks',
+            'amount' => 0.75,
+            'date' => '2022-08-01',
+          },
+          {
+            'expense_id' => 2,
+            'payee' => 'Starbucks',
+            'amount' => 0.75,
+            'date' => '2022-08-01',
+          },
+        ]
+      end
+
+      before do
+        allow(ledger).to receive(:expenses_on).with(anything).and_return(expenses)
+      end
+
       it 'returns status 200 (OK)' do
         get '/expenses/2022-08-01'
 
@@ -63,6 +84,14 @@ module ExpenseTracker
       end
 
       it 'returns the expense records as JSON' do
+        get '/expenses/2022-08-01'
+
+        response = JSON.parse(last_response.body)
+
+        expect(response).to contain_exactly(
+          a_hash_including('expense_id' => 1),
+          a_hash_including('expense_id' => 2)
+        )
       end
     end
 

@@ -24,8 +24,9 @@ module ExpenseTracker
       end
     end
 
-    get '/expenses/:date' do
-      JSON.dump([])
+    get '/expenses/:date' do |date|
+      expenses = @ledger.expenses_on(date)
+      JSON.dump(expenses)
     end
   end
 end
