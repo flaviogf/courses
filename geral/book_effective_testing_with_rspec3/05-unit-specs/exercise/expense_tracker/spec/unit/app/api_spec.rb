@@ -93,6 +93,16 @@ module ExpenseTracker
           a_hash_including('expense_id' => 2)
         )
       end
+
+      context 'when there are no expenses on the given date' do
+        let(:expenses) { [] }
+
+        it 'returns status 200 (OK)' do
+          get '/expenses/2022-08-01'
+
+          expect(last_response.status).to eq(200)
+        end
+      end
     end
 
     def app
