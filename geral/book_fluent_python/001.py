@@ -26,3 +26,5 @@ if __name__ == '__main__':
 
     deck = FrenchDeck()
     print(len(deck))
+
+    print(deck[0])
