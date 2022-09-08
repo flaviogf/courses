@@ -32,3 +32,9 @@ if __name__ == '__main__':
 
     for i in range(3):
         print(choice(deck))
+
+    for card in deck:
+        print(card)
+
+    for card in reversed(deck):
+        print(card)
