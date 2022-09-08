@@ -1,4 +1,5 @@
 import collections
+from random import choice
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
@@ -28,3 +29,6 @@ if __name__ == '__main__':
     print(len(deck))
 
     print(deck[0])
+
+    for i in range(3):
+        print(choice(deck))
