@@ -1,3 +1,5 @@
+#!/bin/env python
+
 import collections
 from random import choice
 
