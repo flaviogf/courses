@@ -6,3 +6,4 @@
   remote_user: ubuntu
   tasks:
     - import_tasks: "pam_pwquality.yml"
+    - import_tasks: "user_and_group.yml"
