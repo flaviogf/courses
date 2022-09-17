@@ -11,3 +11,11 @@
         url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         dest: /usr/local/bin/minikube
         mode: '0755'
+    - name: Install docker dependencies
+      ansible.builtin.apt:
+        update_cache: yes
+        pkg:
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
