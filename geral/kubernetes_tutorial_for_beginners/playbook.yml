@@ -1,7 +1,13 @@
 ---
 - name: Provision VM
   hosts: all
+  become: yes
   remote_user: ubuntu
   tasks:
     - name: Ping
       ping:
+    - name: Download minikube
+      ansible.builtin.get_url:
+        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        dest: /usr/local/bin/minikube
+        mode: '0755'
