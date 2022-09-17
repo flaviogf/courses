@@ -1,0 +1,7 @@
+---
+- name: Provision VM
+  hosts: all
+  remote_user: ubuntu
+  tasks:
+    - name: Ping
+      ping:
