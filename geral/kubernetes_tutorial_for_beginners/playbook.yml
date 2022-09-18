@@ -4,8 +4,6 @@
   become: yes
   remote_user: ubuntu
   tasks:
-    - name: Ping
-      ping:
     - name: Install Minikube
       ansible.builtin.get_url:
         url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -19,13 +17,20 @@
           - curl
           - gnupg
           - lsb-release
+    - name: Add keyrings directory
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
     - name: Install Docker's official GPG
       ansible.builtin.get_url:
         url: https://download.docker.com/linux/ubuntu/gpg
-        dest: /etc/apt/trusted.gpg.d/docker.asc
+        dest: /etc/apt/keyrings/docker.gpg
+        force: yes
+    - name: Dearmor Docker's official GPG
+      shell: "sudo cat /etc/apt/keyrings/docker.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg"
     - name: Add Docker's repository
       ansible.builtin.apt_repository:
-        repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/ubuntu xenial stable"
+        repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu xenial stable"
         filename: docker
     - name: Install Docker
       ansible.builtin.apt:
