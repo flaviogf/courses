@@ -11,7 +11,7 @@
         url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         dest: /usr/local/bin/minikube
         mode: '0755'
-    - name: Install docker dependencies
+    - name: Install Docker's dependencies
       ansible.builtin.apt:
         update_cache: yes
         pkg:
@@ -19,3 +19,12 @@
           - curl
           - gnupg
           - lsb-release
+    - name: Create keyrings directory
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+    - name: Install Docker's official GPG
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.gpg
