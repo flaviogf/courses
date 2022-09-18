@@ -19,18 +19,13 @@
           - curl
           - gnupg
           - lsb-release
-    - name: Create keyrings directory
-      ansible.builtin.file:
-        path: /etc/apt/keyrings
-        state: directory
-        mode: '0755'
     - name: Install Docker's official GPG
       ansible.builtin.get_url:
         url: https://download.docker.com/linux/ubuntu/gpg
-        dest: /etc/apt/keyrings/docker.asc
+        dest: /etc/apt/trusted.gpg.d/docker.asc
     - name: Add Docker's repository
       ansible.builtin.apt_repository:
-        repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu xenial stable"
+        repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/ubuntu xenial stable"
         filename: docker
     - name: Install Docker
       ansible.builtin.apt:
