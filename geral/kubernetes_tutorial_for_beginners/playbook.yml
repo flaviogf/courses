@@ -27,7 +27,8 @@
         dest: /etc/apt/keyrings/docker.gpg
         force: yes
     - name: Dearmor Docker's official GPG
-      shell: "sudo cat /etc/apt/keyrings/docker.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg"
+      ansible.builtin.shell:
+        cmd: cat /etc/apt/keyrings/docker.gpg | gpg --dearmor --yes -o /etc/apt/keyrings/docker.gpg
     - name: Add Docker's repository
       ansible.builtin.apt_repository:
         repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu xenial stable"
@@ -39,4 +40,3 @@
           - docker-ce
           - docker-ce-cli
           - containerd.io
-          - docker-compose-plugin
