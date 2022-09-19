@@ -26,7 +26,7 @@
         url: https://download.docker.com/linux/ubuntu/gpg
         dest: /etc/apt/keyrings/docker.gpg
         force: yes
-    - name: Dearmor Docker's official GPG
+    - name: Setup Docker's official GPG
       ansible.builtin.shell:
         cmd: cat /etc/apt/keyrings/docker.gpg | gpg --dearmor --yes -o /etc/apt/keyrings/docker.gpg
     - name: Add Docker's repository
@@ -40,3 +40,8 @@
           - docker-ce
           - docker-ce-cli
           - containerd.io
+    - name: Add Docker's group to the users' groups
+      ansible.builtin.user:
+        name: vagrant
+        groups: docker
+        append: yes
