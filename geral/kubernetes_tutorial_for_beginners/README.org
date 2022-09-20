@@ -37,3 +37,8 @@ minikube kubectl -- logs nginx-depl-5b59dcd777-sp8jt
 #+begin_src bash
 minikube kubectl -- exec -it mongo-depl-8fbdb868c-wc2r5 -- bash
 #+end_src
+
+* Delete deployment
+#+begin_src bash
+minikube kubectl -- delete deploy mongo-depl
+#+end_src
