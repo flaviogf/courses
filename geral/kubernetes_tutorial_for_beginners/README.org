@@ -5,6 +5,7 @@
 * Create deployment
 #+begin_src bash
 minikube kubectl -- create deployment nginx-depl --image=nginx
+minikube kubectl -- create deployment mongo-depl --image=mongo
 #+end_src
 
 * Get pods
@@ -25,4 +26,14 @@ minikube kubectl -- get replicasets
 * Edit deployment
 #+begin_src bash
 minikube kubectl -- edit deploy nginx-depl
+#+end_src
+
+* Get logs from a pod
+#+begin_src bash
+minikube kubectl -- logs nginx-depl-5b59dcd777-sp8jt
+#+end_src
+
+* Exec on a pod
+#+begin_src bash
+minikube kubectl -- exec -it mongo-depl-8fbdb868c-wc2r5 -- bash
 #+end_src
