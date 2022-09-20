@@ -1,0 +1,28 @@
+#+TITLE: Kubernetes Tutorial for Beginners
+#+AUTHOR: flaviogf
+#+DATE: [2022-09-19 Mon]
+
+* Create deployment
+#+begin_src bash
+minikube kubectl -- create deployment nginx-depl --image=nginx
+#+end_src
+
+* Get pods
+#+begin_src bash
+minikube kubectl -- get pods
+#+end_src
+
+* Get deployments
+#+begin_src bash
+minikube kubectl -- get deployments
+#+end_src
+
+* Get replicasets
+#+begin_src bash
+minikube kubectl -- get replicasets
+#+end_src
+
+* Edit deployment
+#+begin_src bash
+minikube kubectl -- edit deploy nginx-depl
+#+end_src
