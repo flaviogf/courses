@@ -1,0 +1,5 @@
+#+TITLE: Apache Kafka do Zero: O mínimo que você precisa saber
+#+AUTHOR: flaviogf
+#+DATE: [2022-09-29 Thu]
+
++ Message brokers
