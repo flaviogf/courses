@@ -3,3 +3,11 @@
 #+DATE: [2022-09-29 Thu]
 
 + Message brokers
++ Exemplo:
+  - Checkout
+  - Broker
+  - Payment
++ O apache kafka não é um message broker
++ O apache kafka é um sistema de stream de dados
++ Dados continuos
++ Tem todas as informações
