@@ -1,0 +1,8 @@
+#+TITLE: Elasticsearch guide
+#+AUTHOR: flaviogf
+#+DATE: [2022-10-02 Sun]
+
+* Objectives
++ Install, configure, and administer an Elasticsearch cluster
++ Index your data, optimize your indices, and search with the Elasticsearch query language
++ Discover trends, patterns, and anomalies with aggregation and the machine learning APIs
