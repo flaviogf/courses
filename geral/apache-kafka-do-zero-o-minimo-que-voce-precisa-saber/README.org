@@ -11,3 +11,40 @@
 + O apache kafka é um sistema de stream de dados
 + Dados continuos
 + Tem todas as informações
++ Mensageria
++ Pequenas mensagens
++ Video é um exemplo de stream, pois os dados estão sendo enviados, não é apenas uma notifação
++ Event Driven
++ Event Notification
++ Algo mudou, então notifica
++ O Kafka "nada mais é do que um banco de dados"
++ Estrutura resumida de um banco de dados
++ Indice
++ Tabelas
++ Binário
++ O Kafka é em resumo o binário/log
++ Dado no Kafka é imutável
++ O Kafka tem um período de retenção
++ Por padrão o RabbitMQ trabalha com mensagens simples, "pega e joga fora"
++ No Kafka um tópico tem um conjunto de dados
++ Kafka utiliza o padrão Pub/Sub
++ Produtor -> Tópico -> Consumidor
++ Um evento em um tópico pode ser consumido por vários consumidores
++ Um novo consumidor pode ler as mensagens no tópico desde o ínicio
++ Um tópico fica dentro de um broker
++ Se um broker cair o que acontece?
++ Um dos pontos mais importantes
++ Kafka nasceu no Linkedin
++ O Kafka consegue armazenar indefinidamente as mensagens que chagem no Kafka
++ Kafka é um broker em cluster
++ O RabbitMQ envia a mensagem para o consumidor, tem um esforço computacional
++ O Kafka é o contrário, os consumidores conectam para ler as mensagens
++ Kafka trabalha com partições
++ Depois a mensagem vira um segmento
++ Cada partição tem seu próprio log
++ Um mensagem tem headers, key, payload, timestamp
++ Partições são espalhadas pelos brokers
++ Replication Factor
++ 3 brokers, cada partição tem que ter pelo menos 2 partições
++ Criar tópico, número de partições e replication factor
++ Kafka é um sistema de stream distribuído
