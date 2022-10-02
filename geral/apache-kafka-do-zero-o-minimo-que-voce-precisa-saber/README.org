@@ -48,3 +48,7 @@
 + 3 brokers, cada partição tem que ter pelo menos 2 partições
 + Criar tópico, número de partições e replication factor
 + Kafka é um sistema de stream distribuído
++ Garantias de entrega
++ Ack 0 None (Sem Garantia), cenários onde perda de mensagens não são graves, posição de um entregado do Ifood
++ Ack 1 Leader, necessita confirmação do consumidor, transação bancária
++ Ack -1 ALL
