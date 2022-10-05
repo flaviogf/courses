@@ -24,3 +24,114 @@
   - Automate business workflow using Elasticsearch as a storage engine
   - Manage, integrate, and analyze spatial information using Elasticsearch as a geographic information system (GIS)
   - Store and process genetic data using Elasticsearch as a bioinformatics research tool
+
+** Data in: documents and indices
++ Distributed document store
++ Does not store rows of columnar data
++ Stores complex data structures that have been serialized as JSON documents
++ Stored documents are distributed across the cluster
++ And can be accessed immediately from any node
++ When a document is stored, it is indexed and fully searchable in near real-time--within 1 second
++ Elasticsearch uses a data structure called inverted index
++ It supports very fat full-text searches
++ An inverted index lists every unique word that appears in any document, and identifies all of the documents each word occurs in
++ An index is like an optimized collection of documents
++ And each document is a collection of fields
++ By default, Elasticsearch indexes all data in every field
++ And each indexed field has a dedicated, optimized data structure
++ For example
+  - Text fields are stored in inverted indices
+  - Numeric and geo fields are stored in BKD trees
++ The ability to use the per-field data strucutres to assembe and return search result is what makes Elasticsearch so fast
++ Elasticsearch also has the ability to be schema-less
++ When dynamic mapping is enabled, Elasticsearch automatically detects and adds new fields to the index
++ This default behavior makes it easy to index and explore your data
++ Defining your own mappings enable you to
+  - Distinguish between full-text string fields and exact value string fields
+  - Perform language-specific text analysis
+  - Optimize fields for partial matching
+  - Use custom date formats
+  - Use data types sucha as geo_point and geo_shape that canoot be automatically detected
++ It's often useful to index the same field in different ways for different purposes
++ For example
+  - Index a string field as both a text field for full-text search and as a keyword field for sorting or aggregation
+
+** Information out: search and analyze
++ While you can use Elasticsearch as a document store and retrieve documents and their metadata
++ The real power comes from being able to easily access the full suite of search capabilities built on the Apache Lucene search engine library
++ Elasticsearch provides a simple, coherent REST API for managing your clusters, and indexing and searching your data
++ For testing purposes you can easily submit requests directly from the command line or trough the Developer Console in Kibana
++ From your applications you can use the Elasticsearch client for your language of choice: Java, Javascript, Go, .NET, PHP, Per, Python or Ruby
++ Searching your data
++ The Elasticsearch REST APIs support
+  - Structured queries
+  - Full text queries
+  - Complex queries that combine the two
++ Structured queries are similar to the types of queries you can construct in SQL
++ You could search the gender and age fields in your employee index and sort the matches by the hire_date field
++ Full-text queries find all documents that match the query string and return them sorted by relevance
++ Relevance is how good a match they are for your search terms
++ In addition to searching for individual terms, you can perform
+  - Phrase searches
+  - Similarity searches
+  - Prefix searches
++ And get autocomplete suggestions
++ Elasticsearch indexes non-textual data in optimized data structures that support high-performance geo and numerical queries
++ You can access all of these search capabilities using Elasticsearch's comprehensive JSON-style query language (Query DSL)
++ You can also construct SQL-style queries to search and aggregate data natively inside Elasticsearch, and JDBC and OBDC drives enable a broad range of thirdy-party applications to interact with Elasticsearch via SQL
++ Analyzing your data
++ Elasticsearch aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends
++ Aggregations enable you to answer questions like
+  - How many needles are in the haystack?
+  - What is the average length of the needles?
+  - What is te median length of the needles, broken down by manufacturer?
+  - How many needles were added to the haystack in each of the last six months?
++ You can also use aggregations to answer more subtle questions, such as
+  - What are your most popular needle manufacturer?
+  - Are there any unusual or anamalous clumps of needles?
++ Because aggregations leverage the same data-structures used for search, they are also very fast
++ Aggregations operate alongside search requests
++ You can search documents, filter results, and perform analytics at the same time, on the same data, in a single request
++ Aggregations are calculated in the context of a particular search
++ You cant use machine learning features to create accurate baselines of normal behavior in your data and identify anomalous patterns
++ With machine learning, you cant detect
+  - Anomalies related to temporal deviations in values, counts, or frequencies
+  - Statistical rarity
+  - Unusual behaviors for a member of a population
+
+** Scalability and resilience: clusters, nodes, and shards
++ Elasticsearch is built to be always available and to scale with your needs
++ It does so by being distributed by nature
++ You can add servers (nodes) to a cluster to increase capacity and Elasticsearch automatically distributes your data and query load across all of the available nodes
++ Elasticsearch knows how to balance multi-node clusters to provide scale and high availability
++ Under the covers, an Elasticsearch index is really just a grouping of one or more physical shards
++ Where each shard is actually a self-contained index
++ Elasticsearch distributes the documents in an index across multiple shards, and those shards across multiple nodes
++ By doing so Elasticsearch can ensure redundancy, which both protects agains hardware failures and increase query capacity as nodes are added to a cluster
++ As the cluster grows (or shrinks), Elasticsearch automatically migrates shards to rebalance the cluster
++ There are two types of shards
+  - Primaries
+  - Replicas
++ Each document in an index belongs to one primary shard
++ A replica shard is a copy of a primary shard
++ Replicas provide redundant copies of your data
++ The number of primary shards in an index is fixed at the time that an index is created
++ The number of replicas shards can be changed at any time, without interrupting indexing or query operations
++ There are a number of performance considerations and trade offs with respecto to shard size and the number of primary shards configured to an index
++ The more shards, the more overhead there is simply in maintaining those indices
++ The larger the shard size, the longer it takes to move shards around when Elasticsearch needs to rebalance a cluster
++ Querying lots of small shards makes the processing per shard faster, but more queries mean overhead, so querying a smaller number of larger shards might be faster
++ As a starting point
+  - Aim to keep the average shard size between a few GB and a few tens of GB. For use cases with time-based data, it is common to see shards in the 20GB to 40GB range
+  - Avoid the gazillion shards problem. The number of shards a node can hold is proportional to the available heap space. As a general rule, the number of shards per GB of heap space should be leass than 20
++ The best way to determine the optimal configuration for your use case is through testing with your own data and queries
++ In case of disaster
++ A cluster's nodes need good, reliable connections to each other
++ To probide better connections, you typically co-locate the nodes in the same data center or nearby data centers
++ However, to maintain high availability, you also need to avoid any single point of failure
++ To solve both problems the answer is Cross-cluster replication (CCR)
++ CCR provides a way to automatically synchronize indices from your primary cluster to a secondary remote cluster that can serve as a hot backup
++ You can also use CCR to create secondary clusters to serve read requests in geo-proximity to your users
++ Cross-cluster replication is active-passive
++ The index on the primary cluster is the active leader index and handles all write requests
++ Indices replicated to secondary clusters are read-only followers
