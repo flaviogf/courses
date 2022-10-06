@@ -240,3 +240,10 @@
   #+begin_src bash
     docker run -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -e ENROLLMENT_TOKEN="<token>" --name es02 -p 9201:9200 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:8.4.3
   #+end_src
+
++ Security certificates and keys
++ When you install Elasticsearch, the following certificates and keys are generated in the Elasticsearch configuration directory
++ They are used to connect a Kibana instance to your secured Elasticsearch cluster and to encrypt internode communication
++ http_ca.crt -> The CA certificate that is used to sign the certificates for the HTTP layer of the Elasticsearch cluster
++ http.p12 -> Keystore that contains the key and certificate for the HTTP layer of this Node
++ transport.p12 -> Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster
