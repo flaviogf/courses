@@ -247,3 +247,5 @@
 + http_ca.crt -> The CA certificate that is used to sign the certificates for the HTTP layer of the Elasticsearch cluster
 + http.p12 -> Keystore that contains the key and certificate for the HTTP layer of this Node
 + transport.p12 -> Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster
++ To retrieve the password use the /bin/elasticsearch-keystore
++ Start a multi-node cluster with Docker Compose
