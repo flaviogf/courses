@@ -135,3 +135,20 @@
 + Cross-cluster replication is active-passive
 + The index on the primary cluster is the active leader index and handles all write requests
 + Indices replicated to secondary clusters are read-only followers
+
+* Set up Elasticsearch
++ Downloading
++ Installing
++ Starting
++ Configuring
++ Supported platforms
++ Elasticsearch is built using Java
++ Elasticsearch includes a bundled version of OpenJDK
++ The bundled JVM is the recommended JVM and is located within the jdk direcotry of the Elasticsearch home directory
++ To use your own version of JAVA, set the ES_JAVA_HOME environment variable
++ The recommend versions is the LTS
++ Elasticsearch will refuse to start if a known-bad version of Java is used
++ Use dedicated hosts
++ In production the recommend is to run Elasticsearch on a dedicated host or as a primary service
++ Several Elasticsearch features, such as automatica JVM heap sizing, assume it's the only resource-intesive application on the host or container
++ For example, you might run Meticbeat alongised Elasticsearch for cluster statistics, but a resource-heavy Logstash deployment should be on its own host
