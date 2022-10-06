@@ -224,10 +224,19 @@
 + If you need to generate a new enrollment token, run the elasticsearch-create-enrollment-token tool on your existing node
 + This tool is available in the Elasticsearch bin directory of the Docker container
 
-#+begin_src bash
-  docker exec -it es01 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node
-#+end_src
+  #+begin_src bash
+    docker exec -it es01 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node
+  #+end_src
 
-#+begin_src bash
-  docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:8.4.3
-#+end_src
+  #+begin_src bash
+    docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+  #+end_src
+
++ If you experience issues where the container where your first node is running exists when your second node starts
++ Explicitly set values for the JVM heap size
++ To mannually configure the heap size, include the ES_JAVA_OPTS variable and set values for -Xms and -Xmx when starting each node
++ For example, the following command starts node es02 and sets the minimum and maximum JVM heap size to 1GB
+
+  #+begin_src bash
+    docker run -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -e ENROLLMENT_TOKEN="<token>" --name es02 -p 9201:9200 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+  #+end_src
