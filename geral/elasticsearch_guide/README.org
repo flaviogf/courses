@@ -152,3 +152,66 @@
 + In production the recommend is to run Elasticsearch on a dedicated host or as a primary service
 + Several Elasticsearch features, such as automatica JVM heap sizing, assume it's the only resource-intesive application on the host or container
 + For example, you might run Meticbeat alongised Elasticsearch for cluster statistics, but a resource-heavy Logstash deployment should be on its own host
++ Elastic cloud offers all of the features of Elasticsearch, Kibana, and Elastic's Observability
++ Self-manage Elasticsearch options
++ You can
+  - Run Elasticsearch on any Linux, MacOS, or Windows machine
+  - Run Elasticsearch in a Docker container
+  - Set up and manage Elasticsearch, Kibana, Elastic Agent, and the rest of the Elastic Stack on Kubernetes with Elastic Cloud on Kubernetes
+  - Locally is recommended to run Elasticsearch using Docker and running both Elasticsearch and Kibana
++ Elasticsearch install packages
++ Install Elasticsearch with docker
++ Elasticsearch is available as Docker images at www.docker.elastic.co
++ This package contians both free and subscription features
++ Starting in Elasticsearch 8.0, security is enabled by default. With security enabled, Elastic Stack security features require TLS encryption for the transport networking layer, or your cluster will fail to start
++ Install Docker Desktop or Docker Engine
++ At least 4Gib of memory is required
++ Pull Elasticsearch Docker image
+
+#+begin_src bash
+  docker pull docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+#+end_src
+
++ With Elasticsearch Docker image locally you can start a single-node or multi-node cluster
++ Start a single-node cluster with Docker
++ When starting a single-node Elasticsearch cluster in a Docker container, the following security configuration ocrrus automatically
+  - Certificates and keys are generated for the transport and HTTP layers
+  - The TLS configuration settings are written to elasticsearch.yml
+  - A password is generated for the elastic user
+  - An enrollment token is generated for kibana
++ The enrollment token is valid for 30 minutes
++ This token automatically applies the security settings from your Elasticsearch cluster, authenticates to Elasticsearch with the kibana_system user, and writes the security configuration to kibana.yml
++ Stargin a single-node Elasticsearch cluster for development or testing
+  1. Create a new docker network for Elasticsearch and kibana
+
+     #+begin_src bash
+       docker network create elastic
+     #+end_src
+
+  2. Start Elasticsearch in Docker. A password is generated for the elastic user and output to the terminal, plus an enrollment token for enrolling Kibana
+
+     #+begin_src bash
+       docker run --name es01 --net elastic -p 9200:9200 -p 9300:9300 -it docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+     #+end_src
+
+  3. Copy the generated password and enrollment token and save them in a secure location
+     These values are shown only when you start Elasticsearch for the first time
+
+     If you need to reset the password for a specif user, run the elasticsearch-reset-password tool. This tool is available in the Elasticsearch /bin directory of the Docker container
+
+     #+begin_src bash
+       docker exec -it es01 /usr/share/elasticsearch/bin/elasticsearc-reset-password
+     #+end_src
+
+  4. Copy the http_ca.crt security certificate from your Docker container to your local machine
+
+     #+begin_src bash
+       docker cp es01:/usr/share/elasticsearch/config/certs/http_ca.crt .
+     #+end_src
+
+  5. Open a new terminal and verify that you can connect to your Elasticsearch cluster by making an authenticated call, using the http_ca.cert file
+     Enter the password for the elastic user when prompted
+
+     #+begin_src bash
+       curl --cacert http_ca.crt -u elastic http://localhost:9200
+     #+end_src
