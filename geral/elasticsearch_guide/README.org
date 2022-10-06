@@ -181,7 +181,7 @@
   - An enrollment token is generated for kibana
 + The enrollment token is valid for 30 minutes
 + This token automatically applies the security settings from your Elasticsearch cluster, authenticates to Elasticsearch with the kibana_system user, and writes the security configuration to kibana.yml
-+ Stargin a single-node Elasticsearch cluster for development or testing
++ Starting a single-node Elasticsearch cluster for development or testing
   1. Create a new docker network for Elasticsearch and kibana
 
      #+begin_src bash
