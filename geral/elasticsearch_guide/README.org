@@ -152,6 +152,7 @@
 + In production the recommend is to run Elasticsearch on a dedicated host or as a primary service
 + Several Elasticsearch features, such as automatica JVM heap sizing, assume it's the only resource-intesive application on the host or container
 + For example, you might run Meticbeat alongised Elasticsearch for cluster statistics, but a resource-heavy Logstash deployment should be on its own host
+*** Installing Elasticsearch
 + Elastic cloud offers all of the features of Elasticsearch, Kibana, and Elastic's Observability
 + Self-manage Elasticsearch options
 + You can
@@ -160,7 +161,7 @@
   - Set up and manage Elasticsearch, Kibana, Elastic Agent, and the rest of the Elastic Stack on Kubernetes with Elastic Cloud on Kubernetes
   - Locally is recommended to run Elasticsearch using Docker and running both Elasticsearch and Kibana
 + Elasticsearch install packages
-+ Install Elasticsearch with docker
+**** Install Elasticsearch with docker
 + Elasticsearch is available as Docker images at www.docker.elastic.co
 + This package contians both free and subscription features
 + Starting in Elasticsearch 8.0, security is enabled by default. With security enabled, Elastic Stack security features require TLS encryption for the transport networking layer, or your cluster will fail to start
@@ -249,3 +250,88 @@
 + transport.p12 -> Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster
 + To retrieve the password use the /bin/elasticsearch-keystore
 + Start a multi-node cluster with Docker Compose
++ You can use Docker compose to get a multi-node Elasticsearch cluster and Kibana up and running in Docker
++ Prepare the environment
++ .env
++ The .env file sets environmnet variables that are used when you run the docker-compose.yml
++ docker-compose.yml
++ Using the Docker images in production
++ The following requirementes and recommendations apply when running Elasticsearch in Docker in production
++ Set vm.max_map_count to at least 262144
++ Configuration files must be readable by the elasticsearch user
++ By default, Elasticsearch runs inside the container as user elasticsearch using uid:gid 1000:0
++ Increase ulimits for nofile and nproc
++ Verify the init system for the Docker daemon sets them to acceptable values
++ To check the docker daemon defaults for ulimits, run
+
+#+begin_src bash
+  docker run --rm docker.elastic.co/elasticsearch/elasticsearch:{version} /bin/bash -c 'ulimit -Hn && ulimit -Sn && ulimit -Hu && ulimit -Su'
+#+end_src
+
++ If needed, adjust them in the Daemon or override them per container
++ Disable swapping
++ Swapping needs to be disable for performance and node stability
++ If you opt for the bootstrap.memory_lock: true approach, you also need to define the memlock: true ulimit in the Docker Daemon
++ Or explicitly set for the container
+
+#+begin_src bash
+  -e "bootstrap.memory_lock=true" --ulimit memlock=-1:-1
+#+end_src
+
++ Randomize published ports
++ By default the image exposes TCP ports 9200 and 9300
++ For production clusters, randomizing the published ports with --publish--all is recommended
++ Manually set the heap size
++ By default, Elasticsearch automatically sizes JVM heap based on a nodes' roles and the total memory available to the node's container
++ To manually set the heap size in production, bind mount a JVM options file under /usr/share/elasticsearch/config/jvm.options.d
++ For testing you can also manually set the heap size using the ES_JAVA_OPTS
++ For example, to use 16GB specify -e ES_JAVA_OPTS='-Xms16g -Xmx16g'
++ Pin deployments to a specif image version
++ Always bind data volumes
++ You should use a volume bound on /usr/share/elasticsearch/data for the following reasons
+  - The data of your Elasticsearch node won't be lost if the container is killed
+  - Elasticsearch is I/O sensitive and the Docker storage driver is not ideal for fast I/O
+  - It allows the use of advanced Docker volume plugins
++ Avoid using the loop-lvm mode
++ If your are using the devicemapper storage driver, configure docker-engine to use direct-lvm
++ Centralize your logs
++ Considering centralizing your logs by using a different logging driver, the default json-file logging is not ideally suited for production use
++ Configuring Elasticsearch with Docker
++ When you run in Docker, the Elasticsearch configuration files are loaded from /usr/share/elasticsearch/config
++ To use custom configuration files, you bind-mount the files over the configuration files in the image
++ You can set individual Elasticsearch configuration parameters using Docker environment variable
++ You can use the setting name directly as the environment variable name
++ If you cannot do this, for example because your orchestration platform forbids periods in environment variable names, then you can use an alternative style by converting the setting name as follow
+  1. Change the setting name to uppercase
+  2. Prefix it with ES_SETTING_
+  3. Escape any underscores (_) by duplicating them
+  4. Convert all periods (.) to underscores (_)
++ For example, -e bootstrap.memory_lock=true becomes -e ES_SETTING_BOOTSTRAP_MEMORY__LOCK=true
++ You can use the contents of a file to set the value of the ELASTIC_PASSWORD or KEYSTORE_PASSWORD, by suffixing the environment variable name with _FILE
++ For example, to set the Elasticsearch bootstrap password from a file, you can bind mount the file and set the ELASTIC_PASSWORD_FILE environment variable to the mount location
+  #+begin_src bash
+    -e ELASTIC_PASSWORD_FILE=/run/secrets/bootstrapPassword.txt
+  #+end_src
++ You can override the default command for the image to pass Elasticsearch configuration parameters as command line options
++ While bind-mounting your configuration files is usually the preferred method in production, you can also create a custom Docker image that contains your configuration
++ Mounting Elasticsearch configuration files
++ Create custom config files and bind-mount them over the corresponding files in the Docker image
++ If you bind-mount a custom elasticsearch.yml file, ensure it includes the network.host: 0.0.0.0
++ Create an encrypted Elasticsearch keystore
++ By default, Elasticsearch will auto-generate a keystore file for secure settings
++ This file is obfuscated but not encrypted
++ Using custom docker images
++ Troubleshoot Docker errors for Elasticsearch
++ elasticsearch.keystore is a directory
++ elasticsearch.keystroe Device or resource busy
+
+*** Run Elasticsearch locally
++ Start Elasticsearch
+
+  #+begin_src bash
+    docker network create elastic
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+    docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+  #+end_src
+
++ Start Kibana
