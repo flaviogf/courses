@@ -402,3 +402,6 @@
 
 *** Configuring Elasticsearch
 + Elasticsearch ships with good defaults and requires very little configuration
++ Most settings can be changed on running cluster using the Cluster update setting API
++ The configuration files should contain settings wich are node-specific
++ Or settings wich a node requires in order to be able to join a cluster
