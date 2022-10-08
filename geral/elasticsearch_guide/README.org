@@ -215,6 +215,7 @@
 
      #+begin_src bash
        curl --cacert http_ca.crt -u elastic https://localhost:9200
+       curl --cacert http_ca.crt -u elastic "https://localhost:9200/_cluster/health?pretty"
      #+end_src
 
 + Enroll additional nodes
