@@ -348,4 +348,18 @@
 + You send request to Elasticsearch trough REST APIs
 + You can interact with Elasticsearch using any client that sends HTTP requests
 + Kibana developer console provides an easy way to experiment and test requests
-+ You index data into Elasticsearch 
++ You index data into Elasticsearch by sending JSON objects (documents) through the REST API
++ Whether you have structured on unstructured text, numerical data, or geospatial data, Elasticsearch efficiently stores and indexes it in a way that supports fast searchers
++ For timestamped data such as logs and metrics, you typically add documents to a data stream made up of multiple auto-generated backing indices
++ To add single document to an index, submit an HTTP post request that targets the index
+
+  #+begin_src bash
+    curl --cacert http_ca.crt -u elastic -XPOST -H "Content-Type: application/json" "https://localhost:9200/customer/_doc/1 \
+      '{ "firstname": "Jennifer", "lastname": "Walters" }'
+  #+end_src
+
++ This request automatically creates the customer index if it doesn't exist
++ Adds a new document that has an ID of 1
++ Stores and indexes the firstname and lastname fields
++ The new document is available immediatly from any node in the cluster
++ You can retrieve it with a GET request that specifies its document ID
