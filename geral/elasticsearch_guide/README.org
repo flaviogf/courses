@@ -363,3 +363,8 @@
 + Stores and indexes the firstname and lastname fields
 + The new document is available immediatly from any node in the cluster
 + You can retrieve it with a GET request that specifies its document ID
+
+#+begin_src go
+  res, err = es.Get("customer", "1", es.Get.WithPretty())
+  fmt.Println(res, err)
+#+end_src
