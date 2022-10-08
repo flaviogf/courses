@@ -343,3 +343,9 @@
     docker pull docker.elastic.co/elasticsearch/kibana:8:4:3
     docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.4.3
   #+end_src
+
++ Send request to Elasticsearch
++ You send request to Elasticsearch trough REST APIs
++ You can interact with Elasticsearch using any client that sends HTTP requests
++ Kibana developer console provides an easy way to experiment and test requests
++ You index data into Elasticsearch 
