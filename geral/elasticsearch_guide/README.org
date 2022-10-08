@@ -399,3 +399,6 @@
       }
     }
   #+end_src
+
+*** Configuring Elasticsearch
++ Elasticsearch ships with good defaults and requires very little configuration
