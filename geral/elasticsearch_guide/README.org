@@ -411,3 +411,17 @@
 + elasticsearch.yml for configuring Elasticsearch
 + jvm.options for configuring Elasticsearch JVM settings
 + log4j2.properties for configuring Elasticsearch logging
++ These files are located in the config directory of Elasticsearch
++ The location of the config directory can be changed via the ES_PATH_CONF environment variable
+
+**** Config file format
++ The configuration format is YAML
+
+**** Environment variable substitution
++ Environment variables referenced with the ${} notation within the configuration file will be replaced with the value of the environment variable
+
+**** Cluster and node settings types
++ Cluster and node settings can be categorized
++ Dynamic
++ You can configure and update dynamic settings on an running cluster using the cluster update settings API
++ You can also configure dynamic settings locally on an unstarted or shut down node using the elasticsearch.yml
