@@ -368,3 +368,12 @@
   res, err = es.Get("customer", "1", es.Get.WithPretty())
   fmt.Println(res, err)
 #+end_src
+
++ To add multiple documents in one request, use the _bulk API
++ Bulk data must be newline-delimited JSON
++ Each line must end in a newline character (\n)
+
+#+begin_src bash
+  curl --cacert http_ca.crt -u elastic -XPOST -H "Content-Type: application/json" "https://localhost:9200/customer/_doc/1 \
+    '{ "create": {} }\n{ "firstname": "Monica", "lastname": "Rambeau" }\n{ "create": {} }{ "firstname": "Carol", "lastname": "Danvers" }'
+#+end_src
