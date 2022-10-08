@@ -192,6 +192,7 @@
   2. Start Elasticsearch in Docker. A password is generated for the elastic user and output to the terminal, plus an enrollment token for enrolling Kibana
 
      #+begin_src bash
+       sudo sysctl -w vm.max_map_count=262144
        docker run --name es01 --net elastic -p 9200:9200 -p 9300:9300 -it docker.elastic.co/elasticsearch/elasticsearch:8.4.3
      #+end_src
 
