@@ -214,7 +214,7 @@
      Enter the password for the elastic user when prompted
 
      #+begin_src bash
-       curl --cacert http_ca.crt -u elastic http://localhost:9200
+       curl --cacert http_ca.crt -u elastic https://localhost:9200
      #+end_src
 
 + Enroll additional nodes
@@ -335,3 +335,9 @@
   #+end_src
 
 + Start Kibana
++ Kibana enables you to easily send request to Elasticsearch and analyze, visualize, and manage data interactively
+
+  #+begin_src bash
+    docker pull docker.elastic.co/elasticsearch/kibana:8:4:3
+    docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.4.3
+  #+end_src
