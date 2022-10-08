@@ -351,6 +351,7 @@
 + You index data into Elasticsearch by sending JSON objects (documents) through the REST API
 + Whether you have structured on unstructured text, numerical data, or geospatial data, Elasticsearch efficiently stores and indexes it in a way that supports fast searchers
 + For timestamped data such as logs and metrics, you typically add documents to a data stream made up of multiple auto-generated backing indices
+**** Add data
 + To add single document to an index, submit an HTTP post request that targets the index
 
   #+begin_src bash
@@ -381,4 +382,20 @@
     { "firstname": "Monica", "lastname": "Rambaeu" }
     { "create": {} }
     { "firstname": "Carol", "lastname": "Denvers" }
+  #+end_src
+
+**** Search
+
++ Indexed documents are available for search in near real time
++ The following search matches all customers with a first name of Jeniffer in the customer index
+
+  #+begin_src bash
+    GET /customer/_search
+    {
+      "query": {
+        "match": {
+          "firstname": "Jennifer"
+        }
+      }
+    }
   #+end_src
