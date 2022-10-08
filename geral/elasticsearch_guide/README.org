@@ -405,3 +405,9 @@
 + Most settings can be changed on running cluster using the Cluster update setting API
 + The configuration files should contain settings wich are node-specific
 + Or settings wich a node requires in order to be able to join a cluster
+
+**** Config files location
++ Elasticsearch has three configuration files
++ elasticsearch.yml for configuring Elasticsearch
++ jvm.options for configuring Elasticsearch JVM settings
++ log4j2.properties for configuring Elasticsearch logging
