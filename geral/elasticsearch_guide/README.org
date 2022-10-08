@@ -374,6 +374,6 @@
 + Each line must end in a newline character (\n)
 
 #+begin_src bash
-  curl --cacert http_ca.crt -u elastic -XPOST -H "Content-Type: application/json" "https://localhost:9200/customer/_doc/1 \
+  curl --cacert http_ca.crt -u elastic -XPOST -H "Content-Type: application/json" "https://localhost:9200/customer/_bulk \
     '{ "create": {} }\n{ "firstname": "Monica", "lastname": "Rambeau" }\n{ "create": {} }{ "firstname": "Carol", "lastname": "Danvers" }'
 #+end_src
