@@ -14,6 +14,8 @@ func main() {
 	}
 
 	fmt.Printf("Non-Generic Sums: %v and %v\n", SumInts(ints), SumFloats(floats))
+
+	fmt.Printf("Generic Sums: %v and %v\n", SumIntsOrFloats(ints), SumIntsOrFloats(floats))
 }
 
 // SumIntsOrFloats sums the values of map m. It supports both int64 and float64
