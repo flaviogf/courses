@@ -442,7 +442,7 @@
 + Static
 + Static settings can only be configured on an unstarted or shut down node using elasticsearch.yml
 + Static settings must be set on every relevant node in the cluster
-***** Important Elasticsearch configuration
+**** Important Elasticsearch configuration
 + Elasticsearch requires very little configuration to get started
 + But there are a number of items wich must be considered before using cluster in production
   - Path settings
