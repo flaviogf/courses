@@ -20,8 +20,8 @@ var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
 func main() {
 	http.HandleFunc("/view/", makeHandler(viewHandler))
-	http.HandleFunc("/edit/", editHandler)
-	http.HandleFunc("/save/", saveHandler)
+	http.HandleFunc("/edit/", makeHandler(editHandler))
+	http.HandleFunc("/save/", makeHandler(saveHandler))
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
@@ -39,12 +39,6 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
-	title, err := getTitle(w, r)
-
-	if err != nil {
-		return
-	}
-
 	p, err := loadPage(title)
 
 	if err != nil {
@@ -55,13 +49,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	renderTemplate(w, "view", p)
 }
 
-func editHandler(w http.ResponseWriter, r *http.Request) {
-	title, err := getTitle(w, r)
-
-	if err != nil {
-		return
-	}
-
+func editHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 
 	if err != nil {
@@ -71,16 +59,10 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "edit", p)
 }
 
-func saveHandler(w http.ResponseWriter, r *http.Request) {
-	title, err := getTitle(w, r)
-
-	if err != nil {
-		return
-	}
-
+func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 	body := r.FormValue("body")
 	p := &Page{Title: title, Body: []byte(body)}
-	err = p.save()
+	err := p.save()
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
