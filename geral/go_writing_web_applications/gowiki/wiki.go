@@ -19,13 +19,26 @@ var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
 func main() {
-	http.HandleFunc("/view/", viewHandler)
+	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", editHandler)
 	http.HandleFunc("/save/", saveHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-func viewHandler(w http.ResponseWriter, r *http.Request) {
+func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		m := validPath.FindStringSubmatch(r.URL.Path)
+
+		if m == nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		fn(w, r, m[2])
+	}
+}
+
+func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	title, err := getTitle(w, r)
 
 	if err != nil {
