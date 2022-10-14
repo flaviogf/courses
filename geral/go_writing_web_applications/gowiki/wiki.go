@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -20,8 +20,8 @@ func main() {
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/view/"):]
-	page, _ := loadPage(title)
-	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", page.Title, page.Body)
+	p, _ := loadPage(title)
+	renderTemplate(w, "view", p)
 }
 
 func editHandler(w http.ResponseWriter, r *http.Request) {
@@ -32,13 +32,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 		p = &Page{Title: title}
 	}
 
-	fmt.Fprintf(
-		w,
-		"<h1>Editing %s</h1><form action=\"/save/%s\" method=\"POST\"><textarea name=\"body\">%s</textarea><br><input type=\"submit\" value=\"Save\"></form>",
-		p.Title,
-		p.Title,
-		p.Body,
-	)
+	renderTemplate(w, "edit", p)
 }
 
 func loadPage(title string) (*Page, error) {
@@ -50,6 +44,11 @@ func loadPage(title string) (*Page, error) {
 	}
 
 	return &Page{Title: title, Body: body}, nil
+}
+
+func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
+	t, _ := template.ParseFiles(tmpl + ".html")
+	t.Execute(w, p)
 }
 
 func (p *Page) save() error {
