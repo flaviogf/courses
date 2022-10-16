@@ -49,3 +49,13 @@
 + The use of upper-case names for export provides the hook to discriminate the field from the method
 + A setter function, if needed, will likely be called SetOwner
 + Both names read well in practice
+
+#+begin_src go
+  owner := obj.Owner()
+
+  if owner != user {
+    obj.SetOwner(user)
+  }
+#+end_src
+
+** Interface names
