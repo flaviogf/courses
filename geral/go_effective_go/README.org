@@ -59,3 +59,7 @@
 #+end_src
 
 ** Interface names
++ By convetion, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier etc
+
+** MixedCaps
++ Finally, the convention in Go is to use MixedCaps or mixedCaps rather than underscores to write multiword names
