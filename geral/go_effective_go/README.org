@@ -1,0 +1,10 @@
+#+TITLE: Effective go
+#+AUTHOR: flaviogf
+#+DATE: [2022-10-16 Sun]
+
++ Go is a new language, although it borrows ideas from existing languages
++ To write Go well, it's important to understand its properties and idioms
++ It's also important to know the established convetions for programming in Go
+
+* Examples
++ The go package sources are intended to server not only as the core library but also as examples of how to use the language
