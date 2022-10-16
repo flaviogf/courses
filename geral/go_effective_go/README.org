@@ -8,3 +8,37 @@
 
 * Examples
 + The go package sources are intended to server not only as the core library but also as examples of how to use the language
+
+* Formatting
++ With Go the machine take care of most formatting issues
++ The gofmt operates at the package level rather than source file level, it reads a Go program and emits the source in a standard style of indentation and vertical alignment, retaining an if necessary reformatting comments
++ All Go code in the standard packages has been formatted with gofmt
++ Indentation
++ Line length
++ Parentheses
+
+* Commentary
++ Go provides C-style //**// block comments and C++-stule // line comments
++ Line comments are the norm
++ Block comments appear mostly as package comments
++ Comments that appear before top-level declarations, with no intervening newlines, are considered to document the declaration itself
++ These doc comments are the primary documentation for a given Go package or command
+
+* Names
++ Names are as important in Go as in any other language
++ They even have semantic effect
++ The visibility of a name outsied a package is determined by whether its first character is upper case
+
+** Package names
++ When a package is imported, the package name becomes an accessor for the contents
++ The package name should be good: short, concise, evocative
++ By convention, packages are give lower case, single-word names; there should be no need for underscores or mixedCaps
++ Don't worry about collisions, the package name is only the default name for imports; it need not be unique across all source code, and the importing package can choose a different name to use locally
++ Another convention is that the package name is the base name of its source directory
++ The importer of a package will use the name to refer to its content, so exported names in the package can use that fact to avoid repetition
++ Don't use the import . notation
++ For instance, the beffered reader type in the bufio package is called Reader, not BufReader, because users see it as bufio.Reader, which is clear, consice name
++ Because imported entities are always addressed with their package name, they don't conflict with each other
++ Similarly, the function to make new instances of ring.Ring --- wich is the definition of a constructor in go --- would normally be called NewRing, but since Ring is the only type exported by the package, and since the package is called ring, it's called just New, which clients of the package see as ring.New
+
+** Getters
