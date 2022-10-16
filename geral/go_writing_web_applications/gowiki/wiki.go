@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"regexp"
 )
 
@@ -53,6 +54,7 @@ func editHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 
 	if err != nil {
+
 		p = &Page{Title: title}
 	}
 
@@ -73,7 +75,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 }
 
 func loadPage(title string) (*Page, error) {
-	filename := title + ".txt"
+	filename := filepath.Join("data", title+".txt")
 	body, err := os.ReadFile(filename)
 
 	if err != nil {
@@ -103,6 +105,6 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 }
 
 func (p *Page) save() error {
-	filename := p.Title + ".txt"
+	filename := filepath.Join("data", p.Title+".txt")
 	return os.WriteFile(filename, p.Body, 0600)
 }
