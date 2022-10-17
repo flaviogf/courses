@@ -227,3 +227,33 @@
         }
       }
 #+end_src
+
++ Of course, the continue statement also accepts an optional label but it applies only to loops
+
+** Type switch
++ A switch can also be used to discover the dynamic type of an interface variable
++ Such a type switch uses the syntax of a type assertion with the keyword type inside the parentheses
++ If the switch declares a variable in the expression the variable will have the corresponding type in each clause
++ It's also idiomatic to reuse the name in such cases, in effect declaring a new variable with the same name but a different type in each case
+
+#+begin_src go
+  var t interface{}
+
+  t = functionOfSomeType()
+
+  switch t := t.(type) {
+    default:
+      fmt.Printf("unexpected type %T\n", t)
+    case bool:
+      fmt.Printf("boolean %t\n", t)
+    case int:
+      fmt.Printf("integer %d\n", t)
+    case *bool:
+      fmt.Printf("pointer to boolean %t\n", t)
+    case *int:
+      fmt.Printf("pointer to integer %d\n" t)
+  }
+#+end_src
+
+* Functions
+** Multiple return values
