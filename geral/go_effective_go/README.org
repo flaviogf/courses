@@ -257,3 +257,19 @@
 
 * Functions
 ** Multiple return values
++ One of Go's unusual features is tha functions and method can return multiple values
++ In C, a write error is signaled by a negative count with the error code secreted away ina volatile location
++ In Go, Write can return a count and an error: "Yes, your wrote some bytes, but not all of them because you filled the device
++ The signature of the Write method on files from package os is:
+
+  #+begin_src go
+    func (file *File) Write(b []byte) (n int, err error)
+  #+end_src
+
++ The documentation says, it return the number of bytes written and a non-nil error when n != len(b)
++ This is a common style
+
+** Named result parameters
++ The return or result "parameters" of a Go function ca be given names and used as regular variables, just like the incoming parameters
++ When named, they are initialized to the zero for their types when the functions begins
++ If the function executes a return statement with no arguments, the current values of the result parameter are used as the returned values
