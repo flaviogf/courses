@@ -273,3 +273,50 @@
 + The return or result "parameters" of a Go function ca be given names and used as regular variables, just like the incoming parameters
 + When named, they are initialized to the zero for their types when the functions begins
 + If the function executes a return statement with no arguments, the current values of the result parameter are used as the returned values
++ The names are not mandatory but they can make code shorter and clearer
+
+  #+begin_src go
+    func nextInt(b []byte, pos int) (value, nextPos int)
+  #+end_src
+
+** Defer
++ Go's defer statement schedules a function call (the deferred function) to be run immediatyle before the function executing the defer returns
++ It's a unusual but effective way to deal with situations such as resources that must be released regardless of which path a function takes to return
++ The cannical examples are unlocking a mutex or closing a file
+
+  #+begin_src go
+    func Contents(filename string) (string, error) {
+      f, err := os.Open(filename)
+
+      if err != nil {
+        return "", err
+      }
+
+      defer f.Close()
+
+      var result []byte
+      buf := make([]byte, 100)
+      for {
+        n, err := f.Read(buf[0:])
+
+        result = append(result, buf[0:n]...)
+
+        if err != nil {
+          if err == io.EOF {
+            break
+          }
+
+          return "", err
+        }
+      }
+
+      return string(result), nil
+    }
+  #+end_src
+
++ Deferring a call to a function such as Close has two advantages
++ It guarantees that you will never forget to close the file
++ It means that the close sits near the open, which is much clearer than placing it at the end of the function
++ The arguments to the deferred function (which include the received if the function is a method) are evaluated when the defer executes, not when the call executes
++ Besides avoiding worries about variables changing values as the function executes, this means that a single deferred call site can defer multiple function executions
++ Deferred functions are executed in LIFO order
