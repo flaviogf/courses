@@ -320,3 +320,11 @@
 + The arguments to the deferred function (which include the received if the function is a method) are evaluated when the defer executes, not when the call executes
 + Besides avoiding worries about variables changing values as the function executes, this means that a single deferred call site can defer multiple function executions
 + Deferred functions are executed in LIFO order
++ Arguments to deferred functions are evaluated when the defer executes
++ For programmes accustomed to block-level resource management from other languages, defer may seem peculiar
++ But its most interesting and powerful applications come precisely from the fact that itś not block-based but function-based
+
+* Data
+** Allocation with new
++ Go has two allocation primitives
++ The built-in functions new and make
