@@ -328,3 +328,20 @@
 ** Allocation with new
 + Go has two allocation primitives
 + The built-in functions new and make
++ New it's a built-in function that allocates memory, it does not initialize the memory, it only zeros it
+
+** Constructors and composite literals
++ Sometimes the zero value isn't good enough and an initializing constructor is necessary
++ Note that, unlike in C, it's perfectly OK to return the address of a local variable; the storage associated with the variable survives after the function returns
++ In fact, taking the address of a composite literal allocates a fresh instance each time it is evaluated
++ The fields of a composite literal are laid out in order and must all be present
++ However, by labeling the elements explicitly as field:value pairs, the initializer can appear in any order, with the missing ones left as theirs respective zero values
++ Composite literals can also be created for arrays, slices, and maps, with the field labels being indices or map keys as appropriate
+
+** Alocation with make
++ The built-in function make serves a purpose different from new
++ It creates slices, maps, and channels only
++ And it returns an initialized (not zeroed) value of type T
++ The reason for the distinction is that these three types represent, under the covers, references to data structures that must be initialized before use
++ A slice, for example, is a three-item descriptor containing a pointer to the data, the length, and the capacity
++ And until those items are initialized, the slice is nil
