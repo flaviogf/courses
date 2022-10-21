@@ -345,3 +345,47 @@
 + The reason for the distinction is that these three types represent, under the covers, references to data structures that must be initialized before use
 + A slice, for example, is a three-item descriptor containing a pointer to the data, the length, and the capacity
 + And until those items are initialized, the slice is nil
+
+** Arrays
++ Arrays are useful when planning the detailed layout of memory and sometimes can help avoid allocation
++ But primarily they are a building block for slices
++ There are major differences between the ways arrays work in Go and C
++ Arrays are values, assigning one array to another copies all the elements
++ In particular, if you pass an array to a function, it will receive a copy of the arraym not a pointer to it
++ The size of an array is part of its type, the types [10]int and [20]int are distinct
+
+** Slices
++ Slices wrap arrays to give a more general, powerful, and convenient interface to sequences of data
++ Slices hold references to an underlying array, and if you assing one slice to another, both refer to the same array
++ If a function takes a slice argument, changes it makes to the elements of the slice will be visible to the caller
++ Analogous to passing a pointer to the underlying array
++ Although a function can modify the elements of slice, the slice itself (the run-time data structure holding the pointer, length, and capacity) is passed by value
+
+** Two-dimensional slices
++ Go's arrays and slices are one-dimensional
++ To create the equivalente of a 2D array or slice, it is necessary to define an array-of-arrays or slice-of-slices
++ Because slices are variable-length, it is possible to have each inner slice be a different length
++ Sometimes it's necessary to allocate a 2D slice
++ There are two ways to achieve this
++ One is to allocate each slice independently
++ The other is to allocate a single array and point the individual slices into it
+
+** Maps
++ Maps are a convenient and powerful built-in data structure that associates values of one type (the key) with values of another type (the element or value)
++ The key can be of any type for which th equality operator is defined, such as integers, floating point and complex numbers, strings, pointers, interfaces (as long as the dynamic type supports equality), structs and arrays
++ Slices cannot be used as map keys, because equality is not defined on them
++ Like slices, maps hold references to an underlying data structure
++ If you pass a map to a function that changes the contents of the map, the changes will be visible in the caller
++ Maps can be constructured using the usual composite literal syntax with colon-separated key value pairs, so it's easy to build them during initialization
++ Assigning and fetching map values looks syntactically just like doing the same for arrays and slices except that the index doesn't need to be an integer
++ An attempt to fetch a map value with a key that is not present in the map will return the zero value for the type of the entries in the map
++ A set can be implemented as a map with value type bool, set the map entry to true to put the value in the set, and then test it by simple indexing
++ Sometimes you need to distinguish a missing entry from a zero value
++ You can discriminate with a form of multiple assignment
++ Fo obvious reasons this is called the "comma ok" idiom
++ To test for presence in the map without worring about the actual value, you can use the blank identifier in place of the usual variable for the value
++ To delete a map entry, use the delete built-in function, whose argument are the map and the key to be deleted
++ It's saft to do this even if the keys is already absent from the map
+
+** Printing
++ Formatted printing in Go uses a style similar to C's printf family but is richer and more general
