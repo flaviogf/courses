@@ -389,3 +389,9 @@
 
 ** Printing
 + Formatted printing in Go uses a style similar to C's printf family but is richer and more general
++ The functions live in the fmt package and have capitalized names
++ The formatted print functions fmt.Fprint and friends take as a first argument any object that implements the io.Writer interface; the variables os.Stdout and os.Stderr are familiar instances
++ Here things start to diverge from C, the numeric format such as %d do not take flags for sidnedness or size; instead, the printing routines use the type of ther argument to decide these properties
++ If you just want the default conversion, such as decimal for integers, you can use the catchall format %v; the result is exactly what Print and Println would produce
++ Moreover, that format can print any value, even arrays, slices, structs, and maps
++ When priting a struct, the modified format %+v annotates the fields of the structure with their names, and for any value the alternate format %#v prints the value in full Go syntax
