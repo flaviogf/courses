@@ -435,3 +435,4 @@
 
 * Methods
 ** Pointers vs. Values
++ Methods can be defined for any named type (except a pointer or an interface)
