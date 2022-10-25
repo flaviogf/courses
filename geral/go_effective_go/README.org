@@ -395,3 +395,43 @@
 + If you just want the default conversion, such as decimal for integers, you can use the catchall format %v; the result is exactly what Print and Println would produce
 + Moreover, that format can print any value, even arrays, slices, structs, and maps
 + When priting a struct, the modified format %+v annotates the fields of the structure with their names, and for any value the alternate format %#v prints the value in full Go syntax
++ That quoted string format is also available trough %q when applied to a value of type string or []byte
++ The alternate format %#q will use backquotes instead if possible
++ The %x works on strings, byte, arrays and slices as well as on integers, generating a long hexadecimal string, and with a space in the format (% x) it puts spaces between the bytes
++ Another handy format is %T, which prints the type of a value
++ If you want to control the defaut format for a custom type, all that's required is to define a method with the signature String() string on the type
++ If you need to print values of type T as well as pointers to T, the receiver for String must be of value type
++ There is one importante detail to understand about this approach, however: don't construct a String methdo by calling Sprintf in a way that will recur into your String method indefinitely
++ This can happend inf the Sprintf call attempts to print the receiver directly as a string
++ It's also easy to fix: convert the argument to the basic string type, which does not have the method
+
+** Append
++ What append does is append the elementes to the end of the slice and return the result
++ The result needs o be returned because, the underlying array may change
++ Append works a little like Printf, collecting an arbitraty number of arguments
+
+* Initialization
++ Altough it doesn't look superficially very different from initialization i C or C++, initialization in Go is more powerful
++ Complex structures can be built during initialization and the ordering issues amongo initialized objects, even among different packages, are handled correctly
+
+** Constants
++ Contants in Go are just that --- constants
++ They are created at compile time even when defined as locals in functions
++ They can only be numbers, characters (runes), strings or booleans
++ Because of the compile-time restriction, the expressions that define them must be constant expressions, evaluatable by the compiler
++ In Go, enumerated constants are created using the iota enumerator
++ The ability to attach a method such as String to any user-defined type makes it possible for arbitrary values to format themselves automatically for printing
++ Although you'll see it most often applied to structs, this techinique is also useful for scalar types such as floating-point types
+
+** Variables
++ Variables can be initialized just like constants but the initializer can be a general expression computed at run time
+
+** The init function
++ Each source file can definie its own niladic init function to set up whatever state is required
++ Actually each file can have multiple init functions
++ Init is called after all the variable declarartions in the package have evaluated ther initializers
++ And those are evaluated only after all the imported packages have benn initialized
++ Besides initializations that cannot be expressed as declarations, a common use of init functions is to verify or repair correcteness of the program state before real execution begins
+
+* Methods
+** Pointers vs. Values
