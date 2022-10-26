@@ -473,3 +473,28 @@
 #+end_src
 
 + Then the *ByteSlice satisfies the standard interface io.Writer, which is handy. For instance we can print into one
++ We pass the address of a ByteSlice because only *ByteSlice satisfies io.Writer
++ The rule about pointers vs. values for receivers is that value methods can be invoked on pointers and values, but pointer methods can only be invoked on pointers
++ This rule arises because pointer methods can modify the receiver
++ Invoking them on a value would cause the method to receive a copy of the value, so any modification would be discarded
++ The language therefoe disallows this mistake
++ There is a handy exception, tough
++ When the value is addressable, the language takes care of the common case of invoking a pointer method on a value by inserting the address operator automatically
++ By the way, the idea of using Write on a slice of bytes is central to the implementation of bytes.Buffer
+
+** Interfaces and other types
+*** Interfaces
++ Interfaces in Go provide a way to specify the behavior of an object
++ If something can do this, the it can be used here
++ Interfaces with only one or two methods are common in Go code
++ And are usually given a name derived from the method, such as io.Writer for something that implements Write
++ A type can implement multiple interfaces
++ For instance, a collection can be sorted by the routines in package sort if it implements sort.Interface, wich cointains Len(), Less(i, j int) bool, and Swap(i, j int)
+
+*** Conversions
++ The Sprint has complexity O(N^2), which is poor
++ If we convert the Sequence to a plain []int before calling Sprint wecan speed it up
++ Thes method is another example of the conversion technique for calling Sprintf sfaly from a String method
++ Because the two types (Sequence and []int) are the same if we ignore the type name, it's legal to convert between them
++ The conversion doesn't create a new value, it just temporarily acts as though the existing value has a new type
++ There are other legal conversions, such as from integer to floating point, that do create a new value
