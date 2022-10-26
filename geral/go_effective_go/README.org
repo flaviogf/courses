@@ -436,3 +436,40 @@
 * Methods
 ** Pointers vs. Values
 + Methods can be defined for any named type (except a pointer or an interface)
++ The receiver does not have to be a struct
++ We wrote an Append function
++ We can define it as a method on slcies instead
++ To do this, we first declare a named type to wich we can bind the method, and the make the receiver for the method a value of tha type
+
+  #+begin_src go
+    type ByteSlize []byte
+
+    func (slice ByteSlice) Append(data []byte) []byte {
+      // Body
+    }
+  #+end_src
+
++ This stil requires the method to return the updated slice
++ We can eliminate that clumsiness by redefining the method to take a pointer to a ByteSlice as its receiver, so the method can overwirte the caller's slice
+
+#+begin_src go
+  func (p *ByteSlice) Append(data []byte) {
+    slice := *p
+    // Body
+    *p = slice
+  }
+#+end_src
+
++ In fact, we can do even better
++ If we modify our function so it looks like a standard Write method, like this
+
+#+begin_src go
+  func (p *ByteSlice) Write(data []byte) (n int, err error) {
+    slice := *p
+    // Body
+    *p = slice
+    return len(data), nil
+  }
+#+end_src
+
++ Then the *ByteSlice satisfies the standard interface io.Writer, which is handy. For instance we can print into one
