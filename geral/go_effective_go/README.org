@@ -517,3 +517,42 @@
 + Since almost anything can have methods attached, almost anything can satisfy an interface
 + One illustrative example is in the http package, which defines the Handler interface
 + Any object that implements Handler can serve HTTP requests
+
+** The blank identifier
++ The blank identifier can be assigned or declared with any value of any type, with the value discarded harmlessly
++ It's a bit like writint to the Unix /dev/null file: it represents a write-only value to be used as a place-holder where a variable is needed but the actual value is irrelevant
+
+*** The blank identifier in multiple assignment
++ If an assignment requires multiple values on the left side, but one of the values will not be used by the program, a blank identifier on the left-hand-side of the assignment avoids the need to create a dummy variable an makes it clear that the value is to be discarded
+
+*** Unused importas and variables
++ It is an error to import a package or to declare a variable without using it
++ Unused imports bloat the program and slow compilation, while a variable that is initialized but not used is at least a wasted computation and perhaps indicative of a larger bug
++ When a program is under active development, however, unused imports and variables often arise and it can be annoying to delete them just to have the compilation proceed, only to have them be needed again later
++ The blank identifier provides a workaround
++ To silence complaints about the unused imports, use a blank identifier to refer to a symbol from the imported package
++ Similarly, assigning the unused variable fd to the blank identifier will silence the unused variable error
++ By convention, the global declartion to silence import errors should come right after the imports and be commented, both to make easy to find and as a reminder to clean things up later
+
+*** Import for side effect
++ Sometimes it is useful to import a package only for its side effects, without any explicit use
++ For instance, during its init function, the net/http/pprof package registers HTTP handlers that provide debugging information
++ To import the package only for its side effects, rename the package to the blank identifier
++ This form of import make clear that the package is being imported for its side effects, because ther is no other possible use of the package
+
+*** Interface checks
++ As we saw in the discussion of interfaces, a type need not declare explicitly that it implements an interface
++ Instead, a type implements the interface just by implementing ther interface's methods
++ In practice most interface conversions are static and therefore checked at compile time
++ Some interface checks do happend at run-time, though
++ One instance is in the enconding/json package wich defines a Marshaler interface
++ The enconder checks this property at run time with a type assertion
++ If it's necessary only to ask whether a type implements an interface, without actually using the interface itself, perhaps as part of an error check, use the blank identifier to ignore the type-asserted value
++ One place this situation arises is when it is necessary to guarantee within the package implemeting the type that it actually satifies the interface
++ If a type -- for example, json.RawMessage -- needs a custom JSON representation, it should implement json.Marshaler, but there are no static conversions that would cause the compiler to verify this automatically
++ If the type inadvertenly fails to satisfy the interface, the JSON encoder will still work, but will not use the custom implementation
++ To guarantee that the implementation is correct, a global declartion using the blank identifier can be used in the package
++ The assignment involving a conversion of a *RawMessage to a Marshaler requires that *RawMessage implements Marshaler, and that property will be checked at compile time
++ The appearance of the blank identifier in this construct indicates that the declaration exists only for the type checking, not to create a variable
++ Don't do this for every type that satisfies an interface, though
++ By convention, such declarations are only used when there are no static conversions already present in the code, whic is a rare event
