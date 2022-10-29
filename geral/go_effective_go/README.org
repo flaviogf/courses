@@ -556,3 +556,32 @@
 + The appearance of the blank identifier in this construct indicates that the declaration exists only for the type checking, not to create a variable
 + Don't do this for every type that satisfies an interface, though
 + By convention, such declarations are only used when there are no static conversions already present in the code, whic is a rare event
+
+*** Embedding
++ Go does not provide the typical, type-drive notion of subclassing, but it does have the ability to "borrow" pieces of an implementation by embedding types within a struct or interface
++ Interface embedding is very simple
++ We've mentioned the io.Reader and io.Writer intefaces before;
+
+  #+begin_src go
+    type Reader interface {
+      Read(p []byte) (n int, err error)
+    }
+
+    type Writer interface {
+      Write(p []byte) (n int, err error)
+    }
+  #+end_src
+
++ The io package also exports the io.ReadWriter, an interface containing both Read and Write
++ We could specify ioReadWriter by listing the two methods explicitly, but it's easier and more evocative to embed the two interfaces to form the new one
+
+  #+begin_src go
+    type ReadWriter interface {
+      Reader
+      Writer
+    }
+  #+end_src
+
++ This says just what it looks like: A ReadWriter can do what a Reader does and what a Writer does
++ It is a union of the embedded interfaces
++ Only interfaces can be mbedded within interfaces
