@@ -1,3 +1,6 @@
 go 1.19
 
-use ./sample1
+use (
+	./sample1
+	./sample2
+)
