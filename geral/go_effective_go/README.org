@@ -498,3 +498,17 @@
 + Because the two types (Sequence and []int) are the same if we ignore the type name, it's legal to convert between them
 + The conversion doesn't create a new value, it just temporarily acts as though the existing value has a new type
 + There are other legal conversions, such as from integer to floating point, that do create a new value
+
+*** Interface conversions and type assertions
++ Type switchs are a form a coversion
++ They take an inferface and, for each case in the switch, in a sense convert it to the type of that case
++ What if there's only one type we care about? If we know the value holds a string and we just want to extract it?
++ A one-case type switch would do, but so sould a type assertion
++ A type assertion takes an interface value and extracts from it a value of the specified explicit type
++ That type must either be the concrete type held by the inferface, or a second interface type that the value can be converted to
++ But if it turns out that the value does not contain the specified type, the program will crash with a run-time error
++ To guard agains that, use the "comma ok" idiom to test safely, whether the value is a string
+
+*** Generality
++ If a type exists only to implement an interface and will never have exported methods beyond that interface, there is no need to export the type itself
++ Exporting just the interface make it clear the value has no intersting behavior beyond what is described in the interface
