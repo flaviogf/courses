@@ -482,7 +482,7 @@
 + When the value is addressable, the language takes care of the common case of invoking a pointer method on a value by inserting the address operator automatically
 + By the way, the idea of using Write on a slice of bytes is central to the implementation of bytes.Buffer
 
-** Interfaces and other types
+* Interfaces and other types
 *** Interfaces
 + Interfaces in Go provide a way to specify the behavior of an object
 + If something can do this, the it can be used here
@@ -518,7 +518,7 @@
 + One illustrative example is in the http package, which defines the Handler interface
 + Any object that implements Handler can serve HTTP requests
 
-** The blank identifier
+* The blank identifier
 + The blank identifier can be assigned or declared with any value of any type, with the value discarded harmlessly
 + It's a bit like writint to the Unix /dev/null file: it represents a write-only value to be used as a place-holder where a variable is needed but the actual value is irrelevant
 
@@ -557,7 +557,7 @@
 + Don't do this for every type that satisfies an interface, though
 + By convention, such declarations are only used when there are no static conversions already present in the code, whic is a rare event
 
-*** Embedding
+* Embedding
 + Go does not provide the typical, type-drive notion of subclassing, but it does have the ability to "borrow" pieces of an implementation by embedding types within a struct or interface
 + Interface embedding is very simple
 + We've mentioned the io.Reader and io.Writer intefaces before;
@@ -585,3 +585,44 @@
 + This says just what it looks like: A ReadWriter can do what a Reader does and what a Writer does
 + It is a union of the embedded interfaces
 + Only interfaces can be mbedded within interfaces
++ The same basic idea applies to structs, but with more far-reaching implications
++ The bufio package implements a buffered reader/writer combining a reader and a writer into one struct using embedding
+
+  #+begin_src go
+    type ReadWriter {
+      *Reader
+      *Writer
+    }
+  #+end_src
+
++ The embedded elements are pointers to structs and of course must be initialized to point to valid structs before they can be used
++ The ReadWriter struct could be written as
+
+  #+begin_src go
+    type ReadWriter struct {
+      reader *Reader
+      writer *Writer
+    }
+  #+end_src
+
++ But then to promote the methods of the fields and satisfy the io interfaces, we would also need to provide forwarding methods
++ By embedding the strcuts directly, we avoid this bookkeeping
++ There's an important way in which embedding differs from subclassing
++ When we embed a type, the methods of that type become methods of ther outer type, but when they are invoked the receiver of the method is the inner type, not the outer one
++ If we need to refer to an embedded field direclty, the type name of the field, ignoring the package qualifier, serve as a field name
++ Embedding types introduces the problem of name conflicts but the rules to resolve them are simple
++ First, a field or method X hides any other item X in a more deeply nested part of the type
++ Second, if the same name appears at the same nesting level, it is usually an error
++ However, if the duplicate name is never mentioned in the program outside the type definition, it is OK
+
+* Concurrency
+** Share by communicating
++ Concurrent programming in many environments is made difficult by the subtleties required to implement correct access to shared variable
++ Go encourages a different approach in wich shared values are passed around on channels and, in fact, never actively shared by separate threads of execution
++ Only one goroutine has access to the value at any given time
++ Data races cannot occur, by desing
++ To encourage this way of thinking there is a slogan:
++ Do not communicate by sharing memory; instead, share memory by communicating
++ This approach ca be taken too far
++ References counts may be best done by putting a mutex around an integer variable, for instance
++ But as a high-level approach, using channels to control access makes it easier to write clear, correct programs
