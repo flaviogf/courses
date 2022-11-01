@@ -626,3 +626,39 @@
 + This approach ca be taken too far
 + References counts may be best done by putting a mutex around an integer variable, for instance
 + But as a high-level approach, using channels to control access makes it easier to write clear, correct programs
++ Although Go's approach to concurrency originates in Hoare's Communicating Sequential Processes (CSP), it can also be seen as a type-safe generalization of Unix pipes
+
+** Goroutines
++ They're called goroutines because the existing terms -- threads, coroutines, processes, and so on -- convey inaccurate connotations
++ A goroutine has a simple model: it is a function executing concurrently with other goroutines in the same address space
++ It is lightweight, costing little more than the allocation of stack space
++ Goroutines are multiplexed onto multiple OS threads so if one should block, such as while waiting for I/O, others continue to run
++ Their design hides many of the complexities of thread creation and management
++ Prefix a function or method call with the go keyword to run the call in a new goroutine
++ When the call completes, the goroutine exits, silently. (The effect is similar to the Unix shell's & notation for running a command in the background)
+
+** Channels
++ Like maps, channels are allocated with make, and the resulting value acts as a reference to an underlying data structure
++ If an optional integer parameter is provided, it sets the buffer size for the channel
++ The default is zero, for an unbuffered or synchronous channel
+
+  #+begin_src go
+    ci := make(chan int)
+    cj := make(chan int, 0)
+    cs := make(chan *os.File, 100)
+  #+end_src
+
++ Unbuffered channels combine communication -- the exchange of a value -- with synchronization -- guaranteeing that two calculations (goroutines) are in a known state
++ There are lots of nice idioms using channels
++ Here's one to get us started
+
+  #+begin_src go
+    c := make(chan int)
+
+    go func() {
+      list.Sort()
+      c <- 1
+    }()
+
+    <-c
+  #+end_src
