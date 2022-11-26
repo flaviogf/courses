@@ -557,3 +557,7 @@
 - Mapping -> enable or disable dynamic mapping for an index
 - Slowlog -> control over how slow queries and fetch requests are logged
 - Indexing pressure -> configure indexing back pressure limits
+
+** Slow log
+- allows to log slow search into a dedicated log file
+- thresholds can be set for both the query phase of the execution, and fetch phase
