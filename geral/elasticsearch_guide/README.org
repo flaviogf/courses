@@ -493,3 +493,18 @@
 + You set this list using the cluster_inital_master_nodes setting
 
 **** Secure settings
+
+* Index modules
+- Index modules are modules created per index and control all aspects related to an index
+*** Index settings
+- Static
+- Dynamic
+- Static
+  - index.number_of_shards
+    - defaults to 1
+    - this setting can only be set at index creation time
+    - limited 10 1024
+  - index.number_of_routing_shards
+    - used with index.number_of_shards to route documents to a primary shard
+    - uses this value when splitting an index
+    - example: 5 shard index with number_of_routing_shards set to 30 (5 * 2 * 3) could be split by a factor of 2 or 3
