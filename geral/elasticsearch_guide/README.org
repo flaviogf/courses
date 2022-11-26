@@ -508,3 +508,52 @@
     - used with index.number_of_shards to route documents to a primary shard
     - uses this value when splitting an index
     - example: 5 shard index with number_of_routing_shards set to 30 (5 * 2 * 3) could be split by a factor of 2 or 3
+  - index.soft_deletes.enable
+    - defaults to true
+  - index.soft_deletes.retention_lease.period
+    - the maximum period to reatin a shard history
+    - defaults to 12h
+  - index.load_fixed_bitset_filters_eagerly
+    - indicates whether cached filters are pre-loaded for nested queries
+    - default to true
+- Dynamic
+  - index.number_of_replicas
+    - defaults to 1
+  - index.auto_expand_replicas
+  - index.search.idle.after
+    - how long a shard can not receive a search or get request until it's considered search idle
+  - index.refresh_interval
+    - how often to perform a refresh operation, which makes recent changes to the index visible to search
+    - defaults to 1s
+    - can be set to -1 to disable refresh
+    - shards that haven't seen search traffic for at least x seconds will not receive background refreshes until thei receive a search request
+    - searchers that hit an idle shard where a refresh is pending will wait for the next background refresh
+  - index.max_result_window
+    - the maximum value of from + size for searchers to this index
+    - defaults to 10_000
+    - search requests take heap memory and time proportional to from + size and this limits that memory
+  - index.max_inner_result_windo
+    - the maximum value of form + size for inner hits definition and top hits aggregations to this index
+    - defaults to 100
+  - index.max_docvalue_fields_search
+    - the maximum number of docvalue_fields that are allowed in a query
+    - defaults to 100
+  - index.max_script_fields
+    - the maximum number of script_fields that are allowed in a query
+    - defaults to 32
+  - index.max_ngram_diff
+  - index.max_terms_count
+    - the maximum number of terms that can be used in Terms Query
+    - defaults to 65_536
+  - index.max_regex_length
+    - the maximum length of regex that can be used in Regexp Query
+    - defaults to 1000
+  - index.query.default_field
+  - index.routing.allocation.enable
+    - defaults to all
+  - index.routing.rebalance.enable
+    - defaults to all
+*** Settings in other index modules
+- Mapping -> enable or disable dynamic mapping for an index
+- Slowlog -> control over how slow queries and fetch requests are logged
+- Indexing pressure -> configure indexing back pressure limits
