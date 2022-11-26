@@ -491,3 +491,5 @@
 + In development mode, with no discovery settings configured, this step is performed automatically by the nodes themselves
 + Because auto-bootstrapping is inherently unsafe, when starting a new cluster in production mode, you must explicitly list the master-eligible nodes whose votes should be counted in the very first election
 + You set this list using the cluster_inital_master_nodes setting
+
+**** Secure settings
