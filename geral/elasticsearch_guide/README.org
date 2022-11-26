@@ -561,3 +561,6 @@
 ** Slow log
 - allows to log slow search into a dedicated log file
 - thresholds can be set for both the query phase of the execution, and fetch phase
+- all of the settings are dynamic and can be set for each index using the update indices settings API
+- by default thresholds are disabled (set to -1)
+- the search slow log file is configured in the log4j2.properties file
