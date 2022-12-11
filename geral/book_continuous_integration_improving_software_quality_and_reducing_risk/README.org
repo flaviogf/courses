@@ -1,0 +1,30 @@
+#+TITLE: Continuous Integration: Improving Software Quality and Reducing Risk
+#+AUTHOR: flaviogf
+#+DATE: [2022-12-08 Thu]
+
+* Resenha descritiva
+Obra: Integração contínua: Melhorando qualidade de software e reduzindo riscos
+Autor: Paul M, Duvall, Stephen M. Matyas III, Andrew Glover
+Editora: Addison-Wesley Professional
+Data: Junho de 2007
+Edição: 1.a edição
+Tamanho: 283 p
+
+* Introdução
+O objetivo principal do livro é introduzir os conceitos envolvidos no tema de Integração Contínua (CI).
+O autor começa apresentando exemplos práticos de alto nível visando apresentar funcionalidades comuns, termos e componentes presentes em sistemas de CI.
+Após é discutido abordagens de como é possível começar a integrar as práticas de CI no dia-a-dia de desenvolvimento, quais os valores que estas trazem e os motivos que preveni os times de começarem a aplicá-las.
+Não só isso, mas o conteúdo também traz cenários de riscos que podem ser mitigados com a aplicação de CI.
+
+* Resumo
+O autor começa definindo o que CI se propõe a resolver trazendo um exemplo prático de um problema comum em algumas empresas de tecnologias que é a má prática de considerar o /build/ das aplicações como um "evento".
+Esclarece que CI incluí compilação, recriação de banco de dados, execução de testes automatizados e inspeção, /deploy/ de software e recebimento de /feedback/.
+
+*O que é um /build/?*
+Um /build/ é muito mais que uma compilação (ou sua variação para linguagens dinâmicas).
+Um /build/ deve constituir na execução da compilação, testes automatizados, inspeção e /deploy/.
+Um /build/ é o processo de "juntar" o código-fonte e verificar se funcionam como uma unidade coesa.
+
+O autor simplifica os passos da execução do processo de CI da seguinte maneira:
+1. O desenvolvedor executa o /commit/ do código para o repositório de controle de versão, nesse mesmo momento o servidor de CI na máquina de integração está verificando por mudanças nesse repositório.
+2. Logo após a execução do /commit/ o servidor de CI detecta que uma mudança ocorreu no repositório de controle de versão, o servidor de CI busca a cópia mais recente do código-fonte no repositório, então executa o script de build, o qual executa a integração do software.
