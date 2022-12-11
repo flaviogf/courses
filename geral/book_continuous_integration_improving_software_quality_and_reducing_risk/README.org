@@ -30,3 +30,29 @@ O autor simplifica os passos da execução do processo de CI da seguinte maneira
 2. Logo após a execução do /commit/ o servidor de CI detecta que uma mudança ocorreu no repositório de controle de versão, o servidor de CI busca a cópia mais recente do código-fonte no repositório, então executa o /script/ de /build/, o qual executa a integração do /software/.
 3. O servidor de CI gera /feedback/ pelos resultados dos /builds/ por e-mail para os membros do projeto.
 4. O servidor de CI contínua verificando por mudanças no repositório de controle de versão.
+
+Continuando é estabelecido os componentes de uma sistema de CI e suas responsabilidades.
+
+*Desenvolvedor*
+No momento que o desenvolvedor tenha executado todas as modificações relacionadas a sua atividade, ele roda um /build/ privado e então executa o /commit/ de suas mudanças para o repositório de controle de versão.
+Esse passo pode ocorrer a qualquer momento a não afeta os passos seguintes do processo de CI.
+Um /build/ de integração não acontece a não ser que tenha mudanças aplicadas no repositório de controle de versão.
+Esse processo auxilia na descoberta de problemas de forma antecipada.
+Uma vez que se tenha um /build/ automatizado que possa ser executado através de um único comando, o desenvolvedor está apto a executar CI.
+Executando este /build/ automático sempre que haver uma mudança os times podem responder perguntas como:
+1. Todos os componentes do /software/ funcionam juntos?
+2. Qual é a complexidade do meu código?
+3. O time está aderindo os padrões de código?
+4. Qual a cobertura de testes automatizados da minha aplicação?
+5. Todos os testes passaram após a última modificação?
+6. Minha aplicação ainda atende os requisitos de desempenho?
+7. Teve algum problema com o último /deploy/?
+
+*Repositório de Controle de Versão*
+De forma resumida o autor estabelece que para executar um sistema de CI é obrigatório a utilização de um sistema de controle de versão.
+A execução do CI acontece no ramo principal do repositório no sistema de controle de versão.
+
+*Servidor de CI*
+O servidor de CI roda um /build/ de integração sempre que uma mudança é aplicada no repositório do sistema de controle de versão.
+Normalmente o servidor de CI é configurado para verificar por mudanças no repositório do sistema de controle de versão a cada minuto.
+O servidor de CI pega os arquivos de código e roda o /script/ ou /scripts/ de /build/.
