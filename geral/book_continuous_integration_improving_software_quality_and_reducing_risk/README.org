@@ -27,4 +27,6 @@ Um /build/ é o processo de "juntar" o código-fonte e verificar se funcionam co
 
 O autor simplifica os passos da execução do processo de CI da seguinte maneira:
 1. O desenvolvedor executa o /commit/ do código para o repositório de controle de versão, nesse mesmo momento o servidor de CI na máquina de integração está verificando por mudanças nesse repositório.
-2. Logo após a execução do /commit/ o servidor de CI detecta que uma mudança ocorreu no repositório de controle de versão, o servidor de CI busca a cópia mais recente do código-fonte no repositório, então executa o script de build, o qual executa a integração do software.
+2. Logo após a execução do /commit/ o servidor de CI detecta que uma mudança ocorreu no repositório de controle de versão, o servidor de CI busca a cópia mais recente do código-fonte no repositório, então executa o /script/ de /build/, o qual executa a integração do /software/.
+3. O servidor de CI gera /feedback/ pelos resultados dos /builds/ por e-mail para os membros do projeto.
+4. O servidor de CI contínua verificando por mudanças no repositório de controle de versão.
