@@ -56,3 +56,24 @@ A execução do CI acontece no ramo principal do repositório no sistema de cont
 O servidor de CI roda um /build/ de integração sempre que uma mudança é aplicada no repositório do sistema de controle de versão.
 Normalmente o servidor de CI é configurado para verificar por mudanças no repositório do sistema de controle de versão a cada minuto.
 O servidor de CI pega os arquivos de código e roda o /script/ ou /scripts/ de /build/.
+
+*Script de build*
+O /script/ de /build/ é um único /script/ ou um conjunto de /scripts/ utilizado para compilar, testar, inspecionar, e executar o /deploy/ de um /software/.
+Um /script/ de /build/ pode ser executado sem a utilização de um sistema de CI a biblioteca Rake do Ruby é um exemplo de ferramenta que pode automatizar o ciclo de /build/ de um /software/.
+
+*Mecanismo de Feedback*
+Um dos propósitos-chave de um sistema de CI é produzir /feedback/ de um /build/ de integração, devido à necessidade de saber o mais rápido possível se teve um problema no último /build/.
+Recebendo esta informação o problema pode ser resolvido rapidamente.
+
+*Máquina de build de integração*
+É uma máquina separada com a única responsabilidade de integrar software. É nesta máquina que o servidor de CI roda e este verifica de tempos em tempos por mudanças no repositório de controle de versão.
+
+*Como saber se está aplicando CI da forma correta?*
+O autor defini algumas questões básicas que auxiliam no entendimento se as práticas de CI estão sendo aplicadas da forma correta, estas são:
+1. Está sendo utilizado um sistema de controle de versão?
+2. O processo de /build/ é automatizado? Ele executa inteiramente sem intervenção?
+3. Está sendo escrito e rodado testes automatizados?
+4. A execução dos testes faz parte do processo de /build/?
+5. Como é estabelecido os padrões de código e /design/?
+6. Qual dos mecanismos de /feedback/ são automatizados?
+7. O /build/ do /software/ está sendo executado em uma máquina separada?
