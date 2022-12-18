@@ -77,3 +77,10 @@ O autor defini algumas questões básicas que auxiliam no entendimento se as pr�
 5. Como é estabelecido os padrões de código e /design/?
 6. Qual dos mecanismos de /feedback/ são automatizados?
 7. O /build/ do /software/ está sendo executado em uma máquina separada?
+
+*Reduzir suposições*
+O autor defende que desenvolver bons softwares está ligado com a consistência de carregar práticas fundamentais não importando qual a tecnologia.
+Complementa dizendo que um dos maiores problemas ligados ao desenvolvimento de software está ligado a suposições, por exemplo:
+- Assumir que para um método irá ser passado os valores corretos.
+- Assumir que os membros do time irão seguir os padrões de código e design.
+Por fim concluí que suposições no desenvolvimento de software é uma perda de tempo e aumento os riscos.
