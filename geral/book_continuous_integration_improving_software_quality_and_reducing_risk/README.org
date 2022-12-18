@@ -95,3 +95,7 @@ Por fim concluí que suposições no desenvolvimento de software é uma perda de
 Devido ao CI integrar, rodar testes e inspeção varias vezes ao dia, tem uma grande chance de problemas serem descobertos no momento que são introduzidos.
 Não só isso, mas incorporando testes e inspeção no processo automatizado, os atributos de saúde do software, como complexidade, podem ser avaliados ao longo do tempo.
 Junto a isso reduzindo processos repetitivos com a automatização do CI é poupado tempo, custo e esforço.
+
+*Reduzindo riscos utilizando CI*
+Imprevistos sempre vão ocorrer em um projeto.
+CI ajuda na identificação e na mitigação dos riscos, facilitando a avaliação e reportando a saúde do projeto baseado em evidências concretas.
