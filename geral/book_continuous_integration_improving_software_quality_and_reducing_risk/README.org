@@ -99,3 +99,10 @@ Junto a isso reduzindo processos repetitivos com a automatização do CI é poup
 *Reduzindo riscos utilizando CI*
 Imprevistos sempre vão ocorrer em um projeto.
 CI ajuda na identificação e na mitigação dos riscos, facilitando a avaliação e reportando a saúde do projeto baseado em evidências concretas.
+Se você pode reduzir certos riscos do software, você pode aumentar sua qualidade.
+Alguns riscos comuns a muitas organizações que podem ser mitigados pelo CI são:
+- A não capacidade de gerar software entrégavel.
+- A não automatização do deploy, desperdiçando tempo e esforço.
+- Descoberta de problemas no software em etapas avançados do processo.
+- Falta de visibilidade do projeto.
+- Software com baixa qualidade.
