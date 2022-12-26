@@ -50,3 +50,11 @@ terraform fmt
 #+begin_src bash
 terraform validate
 #+end_src
+
+#+begin_src bash
+terraform show
+#+end_src
+
+#+begin_src bash
+terraform state list
+#+end_src
