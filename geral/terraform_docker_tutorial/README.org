@@ -58,3 +58,11 @@ terraform show
 #+begin_src bash
 terraform state list
 #+end_src
+
+#+begin_src bash
+terraform apply -var "container_name=YetAnotherName"
+#+end_src
+
+#+begin_src bash
+terraform output
+#+end_src
