@@ -20,3 +20,13 @@ Currently, exists more than 1,000 providers to manage resources on:
 6. Splunk
 7. Datadog
 8. And many others
+
+Steps to deploy infrastructure with Terraform:
+
+1. Scope
+2. Author
+3. Initialize
+4. Plan
+5. Apply
+
+Terraform keeps track of your real infrastructure in a state file, which acts as a source of truth for your environment.
