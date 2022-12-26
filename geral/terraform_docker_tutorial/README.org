@@ -42,3 +42,11 @@ terraform apply
 #+begin_src bash
 terraform destroy
 #+end_src
+
+#+begin_src bash
+terraform fmt
+#+end_src
+
+#+begin_src bash
+terraform validate
+#+end_src
