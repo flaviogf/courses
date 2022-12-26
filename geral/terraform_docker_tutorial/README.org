@@ -30,3 +30,15 @@ Steps to deploy infrastructure with Terraform:
 5. Apply
 
 Terraform keeps track of your real infrastructure in a state file, which acts as a source of truth for your environment.
+
+#+begin_src bash
+terraform init
+#+end_src
+
+#+begin_src bash
+terraform apply
+#+end_src
+
+#+begin_src bash
+terraform destroy
+#+end_src
