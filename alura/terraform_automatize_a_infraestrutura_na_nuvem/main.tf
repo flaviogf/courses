@@ -16,7 +16,7 @@ resource "aws_instance" "dev" {
   ami             = "ami-0574da719dca65348"
   instance_type   = "t2.micro"
   key_name        = "terraform-aws"
-  security_groups = ["sg-0dbb8840ebbcd0c72"]
+  security_groups = [aws_security_group.allow_ssh.name]
 
   tags = {
     Name = "dev-${count.index}"
@@ -27,8 +27,9 @@ resource "aws_security_group" "allow_ssh" {
   name = "allow_ssh"
 
   ingress {
-    from_port = 22
-    to_port   = 22
-    protocol  = "tcp"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
