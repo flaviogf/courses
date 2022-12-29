@@ -1,0 +1,35 @@
+---
+- name: Provision VM
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install unzip
+      ansible.builtin.apt:
+        name: unzip
+        state: present
+
+    - name: Download Terraform
+      ansible.builtin.get_url:
+        url: https://releases.hashicorp.com/terraform/1.3.6/terraform_1.3.6_linux_amd64.zip
+        dest: /tmp/terraform.zip
+
+    - name: Unarchive Terraform
+      ansible.builtin.unarchive:
+        src: /tmp/terraform.zip
+        dest: /usr/local/bin
+        remote_src: yes
+
+    - name: Download AWS CLI
+      ansible.builtin.get_url:
+        url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        dest: /tmp/awscli.zip
+
+    - name: Unarchive AWS CLI
+      ansible.builtin.unarchive:
+        src: /tmp/awscli.zip
+        dest: /tmp
+        remote_src: yes
+
+    - name: Install AWS CLI
+      ansible.builtin.shell: /tmp/aws/install --update
