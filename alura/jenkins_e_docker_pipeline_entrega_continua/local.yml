@@ -1,0 +1,38 @@
+---
+- name: Provision VM
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Update cache
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install ca-certificates
+    ansible.builtin.apt:
+      name: ca-certificates
+      state: latest
+
+  - name: Add Jenkins APT Key
+    ansible.builtin.get_url:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+      dest: /usr/share/keyrings/jenkins-keyring.asc
+
+  - name: Add Jenkins APT Source
+    ansible.builtin.apt_repository:
+      repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+      state: present
+
+  - name: Update cache
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install Java
+    ansible.builtin.apt:
+      name: openjdk-11-jre
+      state: latest
+
+  - name: Install Jenkins
+    ansible.builtin.apt:
+      name: jenkins
+      state: latest
