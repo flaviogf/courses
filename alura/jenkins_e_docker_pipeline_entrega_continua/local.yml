@@ -45,3 +45,9 @@
           dest: /tmp/get-docker.sh
       - name: Execute installer
         ansible.builtin.shell: "sh /tmp/get-docker.sh"
+
+  - name: Copy docker.service.d/override.conf
+    ansible.builtin.copy:
+      src: docker.service.d/override.conf
+      dest: /etc/systemd/system/docker.service.d/override.conf
+      mode: '0644'
