@@ -15,6 +15,13 @@ public class BonusTest {
   }
 
   @Test
+  public void valueReturnsATenPercentBonusWhenSalaryIsEqualToTenThousand() {
+    Employee employee = new Employee("Peter", new BigDecimal("10000.00"));
+    BigDecimal value = new Bonus(employee).getValue();
+    assertEquals(new BigDecimal("1000.00"), value);
+  }
+
+  @Test
   public void valueReturnsAZeroBonusWhenSalaryIsGreaterThanTenThousand() {
     Employee employee = new Employee("Bruce", new BigDecimal("10001.00"));
     BigDecimal value = new Bonus(employee).getValue();
