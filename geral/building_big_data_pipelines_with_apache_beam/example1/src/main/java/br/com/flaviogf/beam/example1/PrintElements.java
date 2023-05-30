@@ -7,15 +7,15 @@ import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PDone;
 
 public class PrintElements<T> extends PTransform<PCollection<T>, PDone> {
+  public static <T> PrintElements<T> of() {
+    return new PrintElements<T>();
+  }
+
   private static class LogResultDoFn<T> extends DoFn<T, Void> {
     @ProcessElement
     public void process(@Element T element) {
       System.out.println(element);
     }
-  }
-
-  public static <T> PrintElements<T> of() {
-    return new PrintElements<T>();
   }
 
   @Override
