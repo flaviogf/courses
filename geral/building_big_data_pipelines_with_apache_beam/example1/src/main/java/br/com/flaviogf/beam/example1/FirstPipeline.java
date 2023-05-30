@@ -17,7 +17,7 @@ public class FirstPipeline {
 
     Pipeline pipeline = Pipeline.create();
 
-    pipeline.apply(Create.of(lines)).apply(PrintElements.of());
+    pipeline.apply(Create.of(lines)).apply(Tokenize.of()).apply(PrintElements.of());
 
     pipeline.run().waitUntilFinish();
   }
