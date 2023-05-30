@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.transforms.Create;
-import org.apache.beam.sdk.values.PCollection;
 
 public class FirstPipeline {
   public static void main(String[] args) throws IOException {
@@ -18,9 +17,7 @@ public class FirstPipeline {
 
     Pipeline pipeline = Pipeline.create();
 
-    PCollection<String> input = pipeline.apply(Create.of(lines));
-
-    input.apply(PrintElements.of());
+    pipeline.apply(Create.of(lines)).apply(PrintElements.of());
 
     pipeline.run().waitUntilFinish();
   }
