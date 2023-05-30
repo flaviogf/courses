@@ -7,6 +7,13 @@ import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PDone;
 
 public class PrintElements<T> extends PTransform<PCollection<T>, PDone> {
+  private static class LogResultDoFn<T> extends DoFn<T, Void> {
+    @ProcessElement
+    public void process(@Element T element) {
+      System.out.println(element);
+    }
+  }
+
   public static <T> PrintElements<T> of() {
     return new PrintElements<T>();
   }
@@ -15,12 +22,5 @@ public class PrintElements<T> extends PTransform<PCollection<T>, PDone> {
   public PDone expand(PCollection<T> input) {
     input.apply(ParDo.of(new LogResultDoFn<T>()));
     return PDone.in(input.getPipeline());
-  }
-
-  private static class LogResultDoFn<T> extends DoFn<T, Void> {
-    @ProcessElement
-    public void process(@Element T element) {
-      System.out.println(element);
-    }
   }
 }
