@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  laravel:
+    build:
+      context: ./otimizando_imagens/laravel
+    image: flaviogf/laravel:prod
+  nginx:
+    build:
+      context: ./otimizando_imagens/nginx
+    image: flaviogf/nginx:prod
+    ports:
+      - 8080:80
