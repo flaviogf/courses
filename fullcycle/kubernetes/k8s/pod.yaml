@@ -1,0 +1,12 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+  name: go-server
+  labels:
+    app: go-server
+
+spec:
+  containers:
+  - name: go-server
+    image: flaviogf/fullcycle-kubernetes:latest
